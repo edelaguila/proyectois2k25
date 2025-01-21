@@ -1,0 +1,18 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaCierreI.chm
+Contents file=ayuda.hhc
+Default Window=AyudaCierre
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaCierre="Ayuda para el formulario de Cierre Contable","ayuda.hhc",,"AyudaCierre.html","AyudaCierre.html","AyudaCierre2.html","AyudaCierre2",,,0x23520,,0x4387e,,,,,,,,0
+
+
+[FILES]
+AyudaCierre.html
+AyudaCierre2.html
+
+[INFOTYPES]
+

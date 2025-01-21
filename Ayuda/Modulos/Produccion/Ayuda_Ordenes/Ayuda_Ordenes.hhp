@@ -1,0 +1,15 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_Ordenes.chm
+Contents file=Ayuda_Ordenes.hhc
+Default topic=Ayuda_Ordenes.html
+Display compile progress=No
+Index file=Ayuda_Ordenes.hhk
+Language=0x80a Español (México)
+
+
+[FILES]
+Ayuda_Ordenes.html
+
+[INFOTYPES]
+

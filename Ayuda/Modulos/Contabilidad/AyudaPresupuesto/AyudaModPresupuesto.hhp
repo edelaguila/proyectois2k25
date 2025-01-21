@@ -1,0 +1,21 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaModPresupuesto.chm
+Contents file=AyudaModPresupuesto.hhc
+Default Window=AyudaPresupuesto
+Default topic=AyudaIncremento.html
+Display compile progress=No
+Language=0x409 English (United States)
+
+[WINDOWS]
+AyudaPresupuesto="Ayudas para presupuesto.","AyudaModPresupuesto.hhc",,"AyudaPresupuesto.html","AyudaPresupuesto.html","AyudaOpciones.html","AyudaOpciones","AyudaIncremento.html","AyudaIncremento",0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+AyudaIncremento.html
+AyudaOpciones.html
+AyudaPresupuesto.html
+AyudaReportes.html
+
+[INFOTYPES]
+

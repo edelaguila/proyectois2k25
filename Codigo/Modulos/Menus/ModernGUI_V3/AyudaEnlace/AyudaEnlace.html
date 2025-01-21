@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda del Formulario de Pólizas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f4ef;
+            margin: 20px;
+            color: #6b4f4f;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #a37c50;
+            text-align: center;
+            font-size: 2em;
+            margin-top: 10px;
+        }
+
+        h2 {
+            color: #a37c50;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .button-description {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .button-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #a37c50;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .button-image {
+            width: 40px; /* Ajusta el tamaño según tus necesidades */
+            height: 40px; /* Ajusta el tamaño según tus necesidades */
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+
+        .combo-description, .detail-description {
+            margin-left: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #a37c50;
+            margin-top: 20px;
+        }
+
+        .container p, .combo-description p, .detail-description p {
+            color: #6b4f4f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="VaultTechLogo.png" alt="Vault Tech Logo" style="display: block; margin: 0 auto; max-width: 100px;">
+        <h1>Vault Tech</h1>
+        <p style="text-align: center; color: #a37c50; font-size: 1.1em;">Protegiendo tu mundo digital, asegurando tu futuro</p>
+
+        <div class="section">
+            <h2>Funciones de los Botones</h2>
+            <img src="Enlace.png" alt="Agregar" width="auto" height="500" style="text-align: center;">
+            <div class="button-description">
+                <p><strong>Botón Agregar:</strong> Despliega una ventana para añadir un nuevo registro en la base de datos.</p>
+            </div>
+            <div class="button-description">
+                <p><strong>Botón guardar:</strong> Permite al finalizar la creación de la póliza, almacenarla en base de datos.</p>
+            </div>
+            <div class="button-description">
+                <p><strong>Botón cancelar:</strong> Permite detener el ingreso de una póliza.</p>
+            </div>
+            <div class="button-description">
+                <p><strong>Botón salir:</strong> Cierra el formulario de creación de póliza</p>
+            </div>
+            <div class="button-description">
+                <p><strong>Botón aceptar:</strong> Al presionarlo la cuenta, operación y valor seleccionada se ingresa en la Póliza.</p>
+            </div>
+            <div class="button-description">
+                <p><strong>Botones quitar:</strong> Te permite quitar una fila dentro de la póliza.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Campos y Selección de Datos</h2>
+            <p>El formulario incluye varios campos y combos que obtienen información específica.</p>
+            <div class="combo-description">
+                <p><strong>Fecha:</strong> Selecciona la fecha en la que se registra la póliza.</p>
+                <p><strong>Tipo de Póliza:</strong> Selecciona el tipo de póliza que se está creando (por ejemplo, "DE AJUSTE").</p>
+                <p><strong>Concepto:</strong> Campo para ingresar una breve descripción o concepto de la póliza.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Detalle de la Póliza</h2>
+            <p>En esta sección, puedes especificar detalles adicionales para la póliza.</p>
+            <div class="detail-description">
+                <p><strong>Cuenta:</strong> Selecciona la cuenta a la cual se aplicará la operación.</p>
+                <p><strong>Cargo/Abono:</strong> Selecciona si la operación es un cargo o un abono.</p>
+                <p><strong>Valor:</strong> Ingresar el valor correspondiente para la operación.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Detalle de Movimiento</h2>
+            <p>La tabla en la parte inferior muestra el detalle de los movimientos agregados a la póliza, incluyendo el código, cuenta, cargo y abono. Los totales de cargo y abono se muestran al final del formulario.</p>
+        </div>
+
+        <div class="footer">
+            &copy; 2024 - Vault tech. Todos los derechos reservados.
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

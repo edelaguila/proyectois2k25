@@ -1,0 +1,15 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_Lotes.chm
+Contents file=Ayuda_Lotes.hhc
+Default topic=Ayuda_Lotes.html
+Display compile progress=No
+Index file=Ayuda_Lotes.hhk
+Language=0x100a Español (Guatemala)
+
+
+[FILES]
+Ayuda_Lotes.html
+
+[INFOTYPES]
+

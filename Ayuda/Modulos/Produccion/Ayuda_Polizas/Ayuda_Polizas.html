@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Tech - Gestión de Pólizas</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f4ef;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        img {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 32px;
+            color: #AA885B;
+            margin: 0;
+        }
+        p {
+            font-size: 20px;
+            color: #AA885B;
+            margin-bottom: 40px;
+        }
+        .content {
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: left;
+        }
+        .content h2 {
+            font-size: 24px;
+            color: #AA885B;
+            margin-bottom: 20px;
+        }
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .content li {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .content li strong {
+            color: #AA885B;
+        }
+        .faq {
+            margin-top: 30px;
+        }
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #AA885B;
+        }
+    </style>
+</head>
+<body>
+    <img src="Logo.png" alt="Vault Tech Logo">
+    <h1>Vault Tech - Gestión de Pólizas</h1>
+    <p>Administra tus registros contables de manera eficiente</p>
+
+    <div class="content">
+        <h2>Funciones de los Botones</h2>
+        <ul>
+            <li><strong>Botón Nueva Póliza:</strong> Activa el formulario para iniciar el registro de una nueva póliza.</li>
+            <li><strong>Botón Aceptar:</strong> Añade un detalle de póliza (cargo o abono) a la lista de movimientos.</li>
+            <li><strong>Botón Quitar:</strong> Elimina el detalle seleccionado de la lista de movimientos y actualiza el saldo.</li>
+            <li><strong>Botón Registrar Póliza:</strong> Guarda toda la póliza y valida que cargos y abonos estén balanceados.</li>
+            <li><strong>Botón Cancelar:</strong> Restablece el formulario y borra los datos ingresados.</li>
+            <li><strong>Botón Salir:</strong> Cierra el formulario de gestión de pólizas.</li>
+        </ul>
+
+        <div class="faq">
+            <h2>Preguntas Frecuentes</h2>
+            <ul>
+                <li><strong>¿Cómo ingreso detalles en una póliza?</strong> Selecciona la cuenta, tipo de operación (cargo o abono) e ingresa el valor. Luego, presiona "Aceptar" para añadir el detalle.</li>
+                <li><strong>¿Por qué el saldo no es cero?</strong> El saldo se calcula en tiempo real. Si el total de cargos no coincide con el de abonos, el saldo mostrará un valor diferente de cero, indicando un desbalance.</li>
+                <li><strong>¿Cómo registro una póliza completa?</strong> Después de ingresar los detalles, presiona "Registrar Póliza". Solo podrás guardar si el saldo es cero.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Vault Tech - Todos los derechos reservados.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=..\..\..\..\..\..\1.chm
+Contents file=Ayuda_Polizas.hhc
+Default topic=Ayuda_Polizas.html
+Display compile progress=No
+Index file=Ayuda_Polizas.hhk
+Language=0x100a Español (Guatemala)
+
+
+[FILES]
+Ayuda_Polizas.html
+
+[INFOTYPES]
+

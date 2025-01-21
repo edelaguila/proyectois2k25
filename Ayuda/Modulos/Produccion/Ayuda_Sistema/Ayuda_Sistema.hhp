@@ -1,0 +1,15 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_Sistema.chm
+Contents file=Ayuda_Sistema.hhc
+Default topic=Ayuda_Sistema.html
+Display compile progress=No
+Index file=Ayuda_Sistema.hhk
+Language=0x80a Español (México)
+
+
+[FILES]
+Ayuda_Sistema.html
+
+[INFOTYPES]
+

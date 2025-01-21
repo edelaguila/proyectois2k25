@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaLiquidaciones2.chm
+Contents file=Ayuda_Liquidaciones2.hhc
+Default Window=AyudaLiquidaciones
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaLiquidaciones="Ayuda para el formulario de Liquidaciones","Ayuda_Liquidaciones2.hhc",,"Ayuda_Frm_Liquidaciones_2024.html","Ayuda_Frm_Liquidaciones_2024.html",,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+Ayuda_Frm_Liquidaciones_2024.html
+
+[INFOTYPES]
+

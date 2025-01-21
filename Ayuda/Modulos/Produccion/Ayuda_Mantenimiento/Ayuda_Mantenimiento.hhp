@@ -1,0 +1,15 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_Mantenimiento.chm
+Contents file=Ayuda_Mantenimiento.hhc
+Default topic=Ayuda_Mantenimiento.html
+Display compile progress=No
+Index file=Ayuda_Mantenimiento.hhk
+Language=0x100a Español (Guatemala)
+
+
+[FILES]
+Ayuda_Mantenimiento.html
+
+[INFOTYPES]
+

@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=CotizacionAyuda.chm
+Contents file=CotizacionAyuda.hhc
+Default Window=AyudasCotizacion
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudasCotizacion="cotizacion Ayudas","CotizacionAyuda.hhc",,"Guia-Cotizacion.html","Guia-Cotizacion.html",,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+Guia-Cotizacion.html
+
+[INFOTYPES]
+

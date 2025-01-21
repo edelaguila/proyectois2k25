@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaRecetas.chm
+Contents file=AyudaRecetas.hhc
+Default Window=AyudaRecetas
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaRecetas="Ayuda para Recetas y Recetas Detalles","AyudaRecetas.hhc",,"AyudaRecetas.html","AyudaRecetas.html","AyudaRecetas.html","AyudaRecetas","AyudaRecetas.html","AyudaRecetas",0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+AyudaRecetas.html
+
+[INFOTYPES]
+

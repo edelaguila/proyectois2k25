@@ -1,0 +1,15 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=MovBancarios.chm
+Contents file=Contenido.hhc
+Default topic=..\ANALISIS II INDIVIDUAL\Ayuda\Modulos\Bancos\Movimientos Bancarios\Movimientos Bancarios.html
+Display compile progress=No
+Index file=Index.hhk
+Language=0x540a Español (Estados Unidos)
+
+
+[FILES]
+..\ANALISIS II INDIVIDUAL\Ayuda\Modulos\Bancos\Movimientos Bancarios\Movimientos Bancarios.html
+
+[INFOTYPES]
+

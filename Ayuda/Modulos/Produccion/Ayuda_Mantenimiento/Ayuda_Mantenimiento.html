@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Tech - Gestión de Mantenimiento de Producción</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f4ef;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        img {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 32px;
+            color: #AA885B;
+            margin: 0;
+        }
+        p {
+            font-size: 20px;
+            color: #AA885B;
+            margin-bottom: 40px;
+        }
+        .content {
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: left;
+        }
+        .content h2 {
+            font-size: 24px;
+            color: #AA885B;
+            margin-bottom: 20px;
+        }
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .content li {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .content li strong {
+            color: #AA885B;
+        }
+        .faq {
+            margin-top: 30px;
+        }
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #AA885B;
+        }
+    </style>
+</head>
+<body>
+    <img src="Logo.png" alt="Vault Tech Logo">
+    <h1>Vault Tech - Gestión de Mantenimiento de Producción</h1>
+    <p>Administra los mantenimientos de maquinaria de producción de manera eficiente</p>
+
+    <div class="content">
+        <h2>Funciones de los Botones</h2>
+        <ul>
+            <li><strong>Botón Nuevo:</strong> Limpia los campos del formulario y carga el siguiente ID disponible para un nuevo registro de mantenimiento.</li>
+            <li><strong>Botón Agregar:</strong> Agrega un nuevo registro de mantenimiento con la información ingresada, como el nombre de la máquina, tipo de máquina, horas de operación, fecha del último y próximo mantenimiento, área y porcentaje de desgaste.</li>
+            <li><strong>Botón Actualizar:</strong> Actualiza el registro de mantenimiento seleccionado en la lista, permitiendo modificar la información de la máquina y el mantenimiento.</li>
+            <li><strong>Botón Eliminar:</strong> Desactiva el mantenimiento seleccionado, cambiando su estado a inactivo en la base de datos.</li>
+            <li><strong>Botón Ayuda:</strong> Abre el archivo de ayuda que proporciona una guía sobre el uso del sistema.</li>
+            <li><strong>Botón Reporte:</strong> Abre un reporte de los mantenimientos generados en el sistema.</li>
+        </ul>
+
+        <div class="faq">
+            <h2>Preguntas Frecuentes</h2>
+            <ul>
+                <li><strong>¿Cómo seleccionar una máquina?</strong> Elige el nombre de la máquina en el campo correspondiente, y el sistema completará automáticamente el tipo de máquina y su ID.</li>
+                <li><strong>¿Qué información se necesita para agregar un mantenimiento?</strong> Debes ingresar el nombre de la máquina, el tipo, las horas de operación, la periodicidad del mantenimiento, la fecha del último y próximo mantenimiento, el área y el porcentaje de desgaste.</li>
+                <li><strong>¿Cómo se desactiva un mantenimiento?</strong> Selecciona el mantenimiento en la lista y presiona "Eliminar" para desactivarlo.</li>
+                <li><strong>¿Cómo actualizo un mantenimiento?</strong> Selecciona el mantenimiento en la lista, modifica los valores que desees y presiona "Actualizar".</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Vault Tech - Todos los derechos reservados.
+    </footer>
+</body>
+</html>

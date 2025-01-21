@@ -1,0 +1,18 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=planilla.chm
+Contents file=planilla.hhc
+Default Window=Planilla
+Display compile progress=No
+Language=0x580a Español (Latinoamérica)
+
+[WINDOWS]
+Planilla="Ayuda Planilla","planilla.hhc",,,,,,,,0x23520,,0x3006,,,,,,,,0
+
+
+[FILES]
+Planilla.html
+PlanillaPercepciones.html
+
+[INFOTYPES]
+

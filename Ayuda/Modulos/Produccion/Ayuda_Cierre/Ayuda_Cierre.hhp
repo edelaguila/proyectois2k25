@@ -1,0 +1,15 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_Cierre.chm
+Contents file=Ayuda_Cierre.hhc
+Default topic=Ayuda_Cierre.html
+Display compile progress=No
+Index file=Indice.hhk
+Language=0x100a Español (Guatemala)
+
+
+[FILES]
+Ayuda_Cierre.html
+
+[INFOTYPES]
+

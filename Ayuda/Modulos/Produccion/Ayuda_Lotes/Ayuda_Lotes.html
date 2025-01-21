@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Tech - Gestión de Lotes</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f4ef;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        img {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 32px;
+            color: #AA885B;
+            margin: 0;
+        }
+        p {
+            font-size: 20px;
+            color: #AA885B;
+            margin-bottom: 40px;
+        }
+        .content {
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: left;
+        }
+        .content h2 {
+            font-size: 24px;
+            color: #AA885B;
+            margin-bottom: 20px;
+        }
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .content li {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .content li strong {
+            color: #AA885B;
+        }
+        .faq {
+            margin-top: 30px;
+        }
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #AA885B;
+        }
+    </style>
+</head>
+<body>
+    <img src="Logo.png" alt="Vault Tech Logo">
+    <h1>Vault Tech - Gestión de Lotes</h1>
+    <p>Administra los lotes de producción de manera eficiente</p>
+
+    <div class="content">
+        <h2>Funciones de los Botones</h2>
+        <ul>
+            <li><strong>Agregar Lote:</strong> Permite agregar un nuevo lote a la base de datos. Este lote incluirá un identificador, código, fecha de producción, cantidad y estado. También debe asociarse a un producto específico.</li>
+            <li><strong>Actualizar Lote:</strong> Permite actualizar la información de un lote existente, modificando los datos como el código, fecha de producción, cantidad y estado.</li>
+            <li><strong>Desactivar Lote:</strong> Cambia el estado de un lote a "inactivo", asegurando que no se utilice en futuras operaciones.</li>
+        </ul>
+
+        <div class="faq">
+            <h2>Preguntas Frecuentes</h2>
+            <ul>
+                <li><strong>¿Cómo puedo agregar un nuevo lote?</strong> Accede a la sección de lotes y selecciona la opción "Agregar Lote". Ingresa los datos necesarios, como ID de lote, código, fecha de producción, cantidad y estado, y luego selecciona el producto asociado.</li>
+                <li><strong>¿Cómo se desactiva un lote?</strong> Selecciona el lote que deseas desactivar y presiona "Desactivar Lote". Esto actualizará el estado del lote a inactivo en la base de datos.</li>
+                <li><strong>¿Cómo actualizar un lote existente?</strong> Selecciona el lote que deseas actualizar, modifica los datos según sea necesario y guarda los cambios.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Vault Tech - Todos los derechos reservados.
+    </footer>
+</body>
+</html>
