@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaEstadosFinancieros.chm
+Contents file=Ayuda.hhc
+Default Window=Ayuda EF
+Display compile progress=No
+Language=0xc0a Español (España, internacional)
+
+[WINDOWS]
+Ayuda EF="Ayuda Estados Financieros","Ayuda.hhc",,"Htmlayuda.html","Htmlayuda.html",,,,,0x2120,,0x387e,,,,,,,,0
+
+
+[FILES]
+Htmlayuda.html
+
+[INFOTYPES]
+

@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{297D9C27-8C25-4E10-84F5-628F535C18B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Capa_Vista_Contabilidad</RootNamespace>
+    <AssemblyName>Capa_Vista_Contabilidad</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Capa_Controlador_Contabilidad">
+      <HintPath>..\Capa_Controlador_Contabilidad\bin\Debug\Capa_Controlador_Contabilidad.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Controlador_Seguridad">
+      <HintPath>..\..\..\Componentes\Seguridad\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_CierreContable">
+      <HintPath>..\CierreContable\CierreContable\Capa_Vista_CierreContable\bin\Debug\Capa_Vista_CierreContable.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_EstadosFinancieros, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\EstadosFinancieros\Capa_Vista_EstadosFinancieros\bin\Debug\Capa_Vista_EstadosFinancieros.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Polizas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Capa_Vista_Polizas\Capa_Vista_Polizas\bin\Debug\Capa_Vista_Polizas.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Presupuesto, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Presupuesto\Capa_Vista_Presupuesto\bin\Debug\Capa_Vista_Presupuesto.dll</HintPath>
+    </Reference>
+    <Reference Include="Interfac_V3">
+      <HintPath>..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivoFijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivoFijo.Designer.cs">
+      <DependentUpon>ActivoFijo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AtivosFijos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AtivosFijos.Designer.cs">
+      <DependentUpon>AtivosFijos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cuentas.Designer.cs">
+      <DependentUpon>Cuentas.cs</DependentUpon>
+    </Compile>
+    <!-- Incluyendo ambos formularios -->
+    <Compile Include="EstadosFinancieros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EstadosFinancieros.Designer.cs">
+      <DependentUpon>EstadosFinancieros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad_MDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contabilidad_MDI.Designer.cs">
+      <DependentUpon>Contabilidad_MDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCierre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCierre.Designer.cs">
+      <DependentUpon>FormCierre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento Tipo Poliza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento Tipo Poliza.Designer.cs">
+      <DependentUpon>Mantenimiento Tipo Poliza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimientoactivofijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimientoactivofijo.Designer.cs">
+      <DependentUpon>Mantenimientoactivofijo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoEncabezadoCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoEncabezadoCuenta.Designer.cs">
+      <DependentUpon>MantenimientoEncabezadoCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mantenimientomarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mantenimientomarca.Designer.cs">
+      <DependentUpon>mantenimientomarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimientotipoactivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimientotipoactivo.Designer.cs">
+      <DependentUpon>Mantenimientotipoactivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoTipoCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoTipoCuenta.Designer.cs">
+      <DependentUpon>MantenimientoTipoCuenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento_Cuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento_Cuentas.Designer.cs">
+      <DependentUpon>Mantenimiento_Cuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presupuesto.Designer.cs">
+      <DependentUpon>Presupuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPoliza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TipoPoliza.Designer.cs">
+      <DependentUpon>TipoPoliza.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Incluyendo ambos recursos -->
+    <EmbeddedResource Include="ActivoFijo.resx">
+      <DependentUpon>ActivoFijo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AtivosFijos.resx">
+      <DependentUpon>AtivosFijos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cuentas.resx">
+      <DependentUpon>Cuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EstadosFinancieros.resx">
+      <DependentUpon>EstadosFinancieros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad_MDI.resx">
+      <DependentUpon>Contabilidad_MDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCierre.resx">
+      <DependentUpon>FormCierre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento Tipo Poliza.resx">
+      <DependentUpon>Mantenimiento Tipo Poliza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimientoactivofijo.resx">
+      <DependentUpon>Mantenimientoactivofijo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoEncabezadoCuenta.resx">
+      <DependentUpon>MantenimientoEncabezadoCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mantenimientomarca.resx">
+      <DependentUpon>mantenimientomarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimientotipoactivo.resx">
+      <DependentUpon>Mantenimientotipoactivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoTipoCuenta.resx">
+      <DependentUpon>MantenimientoTipoCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento_Cuentas.resx">
+      <DependentUpon>Mantenimiento_Cuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presupuesto.resx">
+      <DependentUpon>Presupuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TipoPoliza.resx">
+      <DependentUpon>TipoPoliza.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\pago-en-linea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mant1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ProcCOnta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marca-de-verificacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SalirMDI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ayudamdi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SALIR_V4.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
