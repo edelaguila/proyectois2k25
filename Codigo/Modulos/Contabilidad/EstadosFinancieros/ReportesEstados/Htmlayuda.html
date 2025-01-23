@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda - Estados Financieros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(248, 140, 140);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 0;
+        }
+        h2 {
+            color: #666;
+            margin-top: 20px;
+        }
+        p, li {
+            line-height: 1.6;
+        }
+        .important-note {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .important-note strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Ayuda - Consulta de Estados Financieros</h1>
+
+        <p>Este formulario permite consultar los estados financieros de la empresa, organizados en tres secciones principales:</p>
+        
+        <ul>
+            <li><strong>Balance</strong>: Permite revisar el balance general de la empresa, ya sea el actual o el histórico.</li>
+            <li><strong>Estado de Resultados</strong>: Muestra los resultados financieros de la empresa, pudiendo elegir entre el estado actual o uno histórico.</li>
+            <li><strong>Flujo de Efectivo</strong>: Ofrece una vista sobre el flujo de efectivo actual o histórico de la empresa.</li>
+        </ul>
+
+        <h2>Opciones de Consulta</h2>
+
+        <p>Para cada sección, puedes seleccionar una de las dos opciones de consulta:</p>
+
+        <ul>
+            <li><strong>Actual</strong>: Muestra los datos financieros más recientes.</li>
+            <li><strong>Histórico</strong>: Permite ver los estados financieros correspondientes a un mes y año específico, brindando una visión retrospectiva de la situación financiera de la empresa.</li>
+        </ul>
+
+        <div class="important-note">
+            <p><strong>Nota Importante:</strong> Para que el sistema funcione correctamente, es necesario que el nombre del DSN y de la base de datos sea <strong>"colchoneria"</strong>. De lo contrario, no se podrán realizar las consultas de los estados financieros.</p>
+        </div>
+    </div>
+
+</body>
+</html>
