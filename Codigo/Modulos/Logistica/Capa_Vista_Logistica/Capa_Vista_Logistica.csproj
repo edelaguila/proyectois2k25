@@ -35,12 +35,8 @@
     <Reference Include="Capa_Controlador_Logistica">
       <HintPath>..\Capa_Controlador_Logistica\bin\Debug\Capa_Controlador_Logistica.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Controlador_Seguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Backup\asis22k24proy2\Codigo\Componentes\Seguridad\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_AmmyCatun">
-      <HintPath>..\MVC_AmmyCatun\Capa_Vista_AmmyCatun\bin\Debug\Capa_Vista_AmmyCatun.dll</HintPath>
+    <Reference Include="Capa_Controlador_Seguridad">
+      <HintPath>..\..\..\Componentes\Seguridad\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_JDSC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -50,7 +46,7 @@
       <HintPath>..\MVC_MiguelCrisostomo\Capa_Vista_MiguelCrisostomo\bin\Debug\Capa_Vista_MiguelCrisostomo.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Navegador">
-      <HintPath>..\..\..\Componentes\Navegador\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+      <HintPath>..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
