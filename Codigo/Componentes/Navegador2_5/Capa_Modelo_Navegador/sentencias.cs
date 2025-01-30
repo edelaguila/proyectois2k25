@@ -129,15 +129,24 @@ namespace Capa_Modelo_Navegador
                 }
             }
         }
-
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         public string ObtenerValorClave(string sTabla, string sCampoClave, string sCampoDescriptivo, string valorDescriptivo)
         {
             string sQuery = $"SELECT {sCampoClave} FROM {sTabla} WHERE {sCampoDescriptivo} = '{valorDescriptivo}'";
-            OdbcCommand command = new OdbcCommand(sQuery, cn.ProbarConexion());
-            string resultado = command.ExecuteScalar()?.ToString();
+            string resultado = null;
+
+            using (OdbcConnection conn = cn.ProbarConexion())  // Uso de 'using' para gestionar la conexión
+            {
+                using (OdbcCommand command = new OdbcCommand(sQuery, conn))
+                {
+                    resultado = command.ExecuteScalar()?.ToString();
+                }
+            }
+
             Console.WriteLine(sQuery);
             return resultado;
         }
+
 
 
 
@@ -147,6 +156,7 @@ namespace Capa_Modelo_Navegador
 
 
         //******************************************** CODIGO HECHO POR EMANUEL BARAHONA ***************************** 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método que obtiene el último ID de una tabla
         public string ObtenerId(string sTabla)
         {
@@ -182,7 +192,7 @@ namespace Capa_Modelo_Navegador
             return sId;
         }
 
-
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para obtener datos adicionales de una tabla (no se especifica para qué se usan)
         public string[] ObtenerExtra(string sTabla)
         {
@@ -210,6 +220,7 @@ namespace Capa_Modelo_Navegador
 
 
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para obtener el ID de usuario basado en su nombre de usuario
         public string ObtenerIdUsuarioPorUsername(string sUsername)
         {
@@ -233,6 +244,7 @@ namespace Capa_Modelo_Navegador
             }
         }
 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método que cuenta los campos en una tabla
         public int ContarAlias(string sTabla)
         {
@@ -262,6 +274,7 @@ namespace Capa_Modelo_Navegador
 
 
         //******************************************** CODIGO HECHO POR JOEL LOPEZ ***************************** 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para contar registros en la tabla de ayuda
         public int ContarReg(string sIdIndice)
         {
@@ -286,7 +299,7 @@ namespace Capa_Modelo_Navegador
             return iCampos;
         }
 
-        
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         public string ModRuta(string sIdAyuda)
         {
             string sRuta = "";
@@ -310,6 +323,7 @@ namespace Capa_Modelo_Navegador
 
 
         //******************************************** CODIGO HECHO POR JORGE AVILA ***************************** 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método que obtiene la ruta del reporte basada en el ID de la aplicación
         public string RutaReporte(string sIdIndice)
         {
@@ -335,6 +349,7 @@ namespace Capa_Modelo_Navegador
             return sIndice2;
         }
 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para obtener un índice modificado basado en el ID de ayuda
         public string ModIndice(string sIdAyuda)
         {
@@ -359,6 +374,7 @@ namespace Capa_Modelo_Navegador
 
 
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para probar si una tabla existe en la base de datos
         public string ProbarTabla(string sTabla)
         {
@@ -380,7 +396,7 @@ namespace Capa_Modelo_Navegador
             return sError;
         }
 
-
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para probar si una tabla tiene un campo de estado
         public string ProbarEstado(string sTabla)
         {
@@ -402,7 +418,7 @@ namespace Capa_Modelo_Navegador
             return sError;
         }
 
-
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método que cuenta los registros activos en una tabla
         public int ProbarRegistros(string sTabla)
         {
@@ -466,6 +482,7 @@ namespace Capa_Modelo_Navegador
 
 
         //******************************************** CODIGO HECHO POR SEBASTIAN LETONA ***************************** 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para obtener las propiedades de las columnas de una tabla
         public List<(string nombreColumna, bool esAutoIncremental, bool esClaveForanea, bool esTinyInt)> ObtenerColumnasYPropiedades(string sNombreTabla)
         {
@@ -519,6 +536,7 @@ namespace Capa_Modelo_Navegador
 
 
         //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para ejecutar una serie de consultas SQL dentro de una transacción
         public void EjecutarQueryConTransaccion(List<string> sQueries)
         {
@@ -545,7 +563,7 @@ namespace Capa_Modelo_Navegador
             }
         }
 
-
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para obtener los tipos de datos de los campos en una tabla
         public string[] ObtenerTipo(string sTabla)
         {
@@ -577,6 +595,7 @@ namespace Capa_Modelo_Navegador
 
 
         //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para obtener las llaves de los campos en una tabla
         public string[] ObtenerLLave(string sTabla)
         {
@@ -603,7 +622,7 @@ namespace Capa_Modelo_Navegador
             return sCampos;
         }
 
-
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para obtener los ítems de un ComboBox desde la base de datos
         public Dictionary<string, string> ObtenerItems(string sTabla, string sCampoClave, string sCampoDisplay)
         {
@@ -667,7 +686,7 @@ namespace Capa_Modelo_Navegador
             return sNuevaCadena;
         }
 
-
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para obtener la llave de un campo en la tabla
         public string LlaveCampo(string sTabla, string sCampo, string sValor)
         {
@@ -687,7 +706,7 @@ namespace Capa_Modelo_Navegador
             return sLlave;
         }
 
-
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para obtener la llave de un campo en reverso (no está claro para qué se usa)
         public string LlaveCampoReverso(string sTabla, string sCampo, string sValor)
         {
@@ -723,6 +742,7 @@ namespace Capa_Modelo_Navegador
 
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para obtener el ID del módulo basado en el ID de la aplicación
         public string IdModulo(string sAplicacion)
         {
@@ -752,6 +772,7 @@ namespace Capa_Modelo_Navegador
         }
 
 
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método para ejecutar una consulta SQL
         public void EjecutarQuery(string sQuery)
         {
@@ -773,6 +794,7 @@ namespace Capa_Modelo_Navegador
 
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
         // Método para obtener la clave primaria de una tabla
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         public string ObtenerClavePrimaria(string sNombreTabla)
         {
             string sClavePrimaria = "";
@@ -806,6 +828,7 @@ namespace Capa_Modelo_Navegador
 
 
         // Método para obtener la clave foránea que referencia a otra tabla
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         public string ObtenerClaveForanea(string sTablaOrigen, string sTablaReferencia)
         {
             string sClaveForanea = null;
@@ -847,6 +870,7 @@ namespace Capa_Modelo_Navegador
         // Asumiendo que tienes una clase para la conexión
 
         // Método para obtener las relaciones de claves foráneas desde la base de datos
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         public (string tablaRelacionada, string campoClave, string campoDisplay) ObtenerRelacionesForaneas(string sTablaOrigen, string sCampo)
             {
                 string tablaRelacionada = null;
@@ -891,7 +915,7 @@ namespace Capa_Modelo_Navegador
                 return (tablaRelacionada, campoClave, campoClave); // Ambos campoClave y campoDisplay serán el ID
             }
 
-
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         public OdbcDataAdapter llenarTblAyuda(string tabla)
         {
             string sql = "SELECT * FROM " + tabla + " ;";
