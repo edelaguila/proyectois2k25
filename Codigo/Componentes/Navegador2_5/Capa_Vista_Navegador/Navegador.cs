@@ -2405,19 +2405,37 @@ namespace Capa_Vista_Navegador
         {
             menu_reporteria reportes = new menu_reporteria();
             reportes.Show(); // Muestra el formulario del menú de reportes.
+
         }
 
         // Maneja el evento de clic en el botón de consulta.
+        private ConsultaSimple formularioConsulta = null; // Variable global para el formulario
+
         private void Btn_Consultar_Click(object sender, EventArgs e)
         {
-            // Se obtiene el ID del usuario.
-            string sIdUsuario1 = logic.ObtenerIdUsuario(sIdUsuario);
+            if (formularioConsulta == null || formularioConsulta.IsDisposed)
+            {
+                // Se obtiene el ID del usuario
+                string sIdUsuario1 = logic.ObtenerIdUsuario(sIdUsuario);
 
-           
-            ConsultaSimple nueva = new ConsultaSimple(sTablaPrincipal);
-            nueva.Show();
-            lg.funinsertarabitacora(sIdUsuario, "Entro a consultas", "consultas", sIdAplicacion);
-            BotonesYPermisosSinMensaje();
+                // Crear y mostrar el formulario
+                formularioConsulta = new ConsultaSimple(sTablaPrincipal);
+                formularioConsulta.FormClosed += (s, args) => Btn_Consultar.Enabled = true; // Reactivar botón al cerrar
+                formularioConsulta.Show();
+
+                // Deshabilitar botón para evitar abrir otra instancia
+                Btn_Consultar.Enabled = false;
+
+                // Registrar en bitácora
+                lg.funinsertarabitacora(sIdUsuario, "Entro a consultas", "consultas", sIdAplicacion);
+
+                // Aplicar permisos
+                BotonesYPermisosSinMensaje();
+            }
+            else
+            {
+                formularioConsulta.BringToFront(); // Si ya está abierto, traerlo al frente
+            }
         }
 
 

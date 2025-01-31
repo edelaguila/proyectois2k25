@@ -39,7 +39,6 @@
             this.Btn_Anterior = new System.Windows.Forms.Button();
             this.Btn_FlechaInicio = new System.Windows.Forms.Button();
             this.Btn_Refrescar = new System.Windows.Forms.Button();
-            this.Btn_Consultar = new System.Windows.Forms.Button();
             this.Btn_Eliminar = new System.Windows.Forms.Button();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Guardar = new System.Windows.Forms.Button();
@@ -50,6 +49,7 @@
             this.Txt_Tabla = new System.Windows.Forms.Label();
             this.Bw_1 = new System.ComponentModel.BackgroundWorker();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.Btn_Consultar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Informacion)).BeginInit();
             this.Tlp_Panel2.SuspendLayout();
             this.SuspendLayout();
@@ -258,25 +258,6 @@
             this.Btn_Refrescar.UseVisualStyleBackColor = false;
             this.Btn_Refrescar.Click += new System.EventHandler(this.Btn_Refrescar_Click);
             // 
-            // Btn_Consultar
-            // 
-            this.Btn_Consultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Btn_Consultar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Btn_Consultar.Enabled = false;
-            this.Btn_Consultar.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.Btn_Consultar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Btn_Consultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Consultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Consultar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Consultar.Image")));
-            this.Btn_Consultar.Location = new System.Drawing.Point(375, 0);
-            this.Btn_Consultar.Margin = new System.Windows.Forms.Padding(0);
-            this.Btn_Consultar.Name = "Btn_Consultar";
-            this.Btn_Consultar.Size = new System.Drawing.Size(75, 65);
-            this.Btn_Consultar.TabIndex = 5;
-            this.Btn_Consultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Consultar.UseVisualStyleBackColor = false;
-            this.Btn_Consultar.Click += new System.EventHandler(this.Btn_Consultar_Click);
-            // 
             // Btn_Eliminar
             // 
             this.Btn_Eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -393,6 +374,25 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(8, 8);
             this.flowLayoutPanel1.TabIndex = 9;
             // 
+            // Btn_Consultar
+            // 
+            this.Btn_Consultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Btn_Consultar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Btn_Consultar.Enabled = false;
+            this.Btn_Consultar.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.Btn_Consultar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Btn_Consultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Consultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Consultar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Consultar.Image")));
+            this.Btn_Consultar.Location = new System.Drawing.Point(375, 0);
+            this.Btn_Consultar.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_Consultar.Name = "Btn_Consultar";
+            this.Btn_Consultar.Size = new System.Drawing.Size(75, 65);
+            this.Btn_Consultar.TabIndex = 5;
+            this.Btn_Consultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Consultar.UseVisualStyleBackColor = false;
+            this.Btn_Consultar.Click += new System.EventHandler(this.Btn_Consultar_Click);
+            // 
             // Navegador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -421,7 +421,6 @@
         private System.Windows.Forms.Button Btn_Siguiente;
         private System.Windows.Forms.Button Btn_Anterior;
         private System.Windows.Forms.Button Btn_FlechaInicio;
-        private System.Windows.Forms.Button Btn_Consultar;
         private System.Windows.Forms.Button Btn_Eliminar;
         private System.Windows.Forms.Button Btn_Cancelar;
         private System.Windows.Forms.Button Btn_Guardar;
@@ -435,5 +434,6 @@
         private System.ComponentModel.BackgroundWorker Bw_1;
         private System.Windows.Forms.Button Btn_Refrescar;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button Btn_Consultar;
     }
 }
