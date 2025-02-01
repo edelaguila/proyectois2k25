@@ -2450,6 +2450,9 @@ namespace Capa_Vista_Navegador
             lg.funinsertarabitacora(sIdUsuario, "Entro a los registros de ayuda", sTablaPrincipal, sIdAplicacion);
         }
 
+        //***************************corregido por Kevin López 31/01/25**************************************
+        // Error en la logica de cierre de formularios que usaban el navegador provocado por el uso de .visible lo cual ocultaba dichos formularios en vez de liberar los recursos y finalizar conexiones a la BD
+        // por lo cual se opto por reemplazar esa instruccion por un .Dispose que finalizaba por completo todo recurso utilizado por el formulario, lo que permite volver a abrir el mismo formulario segun la logica que sigue el MDI.
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
             {
@@ -2475,13 +2478,13 @@ namespace Capa_Vista_Navegador
                                 if (drRespuestaGuardar == DialogResult.Yes)
                                 {
                                     GuardadoForsozo();
-                                    frmCerrar.Visible = false;
+                                    frmCerrar.Dispose(); // Correccion de .Visible reemplazado por .Dispose
                                     lg.funinsertarabitacora(sIdUsuario, "Salio del Navegador", sTablaPrincipal, sIdAplicacion);
                                 }
                                 // Si el usuario elige "No", se cierra el formulario sin guardar.
                                 else if (drRespuestaGuardar == DialogResult.No)
                                 {
-                                    frmCerrar.Visible = false;
+                                    frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
                                 else if (drRespuestaGuardar == DialogResult.Cancel)
@@ -2516,7 +2519,7 @@ namespace Capa_Vista_Navegador
                                 // Si el usuario elige "No", se cierra el formulario sin finalizar la modificación.
                                 else if (drRespuestaModificar == DialogResult.No)
                                 {
-                                    frmCerrar.Visible = false;
+                                    frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
                                 else if (drRespuestaModificar == DialogResult.Cancel)
@@ -2551,7 +2554,7 @@ namespace Capa_Vista_Navegador
                                 // Si el usuario elige "No", se cierra el formulario sin finalizar la eliminación.
                                 else if (drRespuestaEliminar == DialogResult.No)
                                 {
-                                    frmCerrar.Visible = false;
+                                    frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
                                 else if (drRespuestaEliminar == DialogResult.Cancel)
@@ -2573,7 +2576,7 @@ namespace Capa_Vista_Navegador
                     // Si el usuario confirma, cierra el formulario.
                     if (drConfirmacionFinal == DialogResult.Yes)
                     {
-                        frmCerrar.Visible = false;
+                        frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
                     }
                     else
                     {
