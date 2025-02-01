@@ -33,5 +33,10 @@ namespace Capa_Vista_Nominas
 
             navegador1.AsignarComboConTabla("tbl_empleados", "pk_clave", "empleados_nombre", 1);
         }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
