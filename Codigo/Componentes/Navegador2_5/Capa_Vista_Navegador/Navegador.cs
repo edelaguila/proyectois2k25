@@ -101,6 +101,8 @@ namespace Capa_Vista_Navegador
             tpAyuda.SetToolTip(Btn_Salir, "Cerrar el formulario actual.");
             tpAyuda.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
 
+            Btn_Refrescar.Enabled = false;
+
         }
 
 
@@ -1647,7 +1649,7 @@ namespace Capa_Vista_Navegador
                 Btn_Cancelar.Enabled = false;
                 Btn_Ingresar.Enabled = true;
                 Btn_Eliminar.Enabled = true;
-                Btn_Refrescar.Enabled = true;
+                Btn_Refrescar.Enabled = false;
                 Deshabilitarcampos_y_botones();
                 // Actualizar el DataGridView y los controles a su estado original
                 ActualizarDataGridView();
@@ -2278,6 +2280,7 @@ namespace Capa_Vista_Navegador
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
                 );
+                Btn_Refrescar.Enabled = true;
 
                 if (drResult == DialogResult.No)
                 {
