@@ -19,7 +19,7 @@ namespace Capa_Vista_Contabilidad
             string idusuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
 
             // --------------- TABLA MANTENIMIENTO ------------------------
-            string[] alias = { "codigo", "nombre", "estado" };
+            string[] alias = { "ID", "Nombre", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.FromArgb(242, 133, 122));

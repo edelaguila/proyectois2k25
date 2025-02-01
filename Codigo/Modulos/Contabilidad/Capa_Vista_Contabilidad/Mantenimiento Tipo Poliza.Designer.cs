@@ -37,16 +37,19 @@ namespace Capa_Vista_Contabilidad
             this.navegador1.BackColor = System.Drawing.Color.White;
             this.navegador1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navegador1.Location = new System.Drawing.Point(0, 0);
+            this.navegador1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.navegador1.Name = "navegador1";
-            this.navegador1.Size = new System.Drawing.Size(838, 613);
+            this.navegador1.Size = new System.Drawing.Size(1117, 754);
             this.navegador1.TabIndex = 0;
+            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
             // Mantenimiento_Tipo_Poliza
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 613);
+            this.ClientSize = new System.Drawing.Size(1117, 754);
             this.Controls.Add(this.navegador1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Mantenimiento_Tipo_Poliza";
             this.Text = "Mantenimiento_Tipo_Poliza";
             this.ResumeLayout(false);

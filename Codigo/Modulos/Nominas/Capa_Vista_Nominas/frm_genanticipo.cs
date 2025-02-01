@@ -20,7 +20,7 @@ namespace Capa_Vista_Nominas
 
             // ---------------------------------- Brandon Boch ----------------------------------
             // Utilizando navegador
-            string[] alias = { "pk_registro_anticipos", "anticipos_cantidad", "anticipos_descripcion", "anticipos_mes", "fk_clave_empleado", "estado" };
+            string[] alias = { "ID Anticipos", "Cantidad", "Descripcion", "Anticipos_Mes", "ID Empleado", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.FromArgb(145, 79, 219));
@@ -34,6 +34,11 @@ namespace Capa_Vista_Nominas
 
             navegador1.AsignarComboConTabla("tbl_empleados", "pk_clave", "empleados_nombre", 1);
 
+
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
 
         }
     }
