@@ -33,12 +33,18 @@ namespace Capa_Modelo_Navegador
                 }
 
                 // Obtener los campos de la tabla principal de forma dinámica
-                string[] sCamposDesc = ObtenerCampos(sTabla);
+                // Mejoras en las validaciones--Hecho por José Andrés Verón y Elvir Sandoval 31/01/2025
+                if (string.IsNullOrEmpty(sTabla) || sTabla.Any(c => !char.IsLetterOrDigit(c) && c != '_'))
+                {
+                    throw new ArgumentException("El nombre de la tabla no es válido.");
+                }
+
+                string[] sCamposDesc = ObtenerCampos(sTabla); 
+
                 if (sCamposDesc == null || sCamposDesc.Length == 0)
                 {
                     throw new InvalidOperationException("No se pudieron obtener los campos de la tabla principal.");
                 }
-
                 // Inicia con el primer campo de la tabla
                 string sCamposSelect = sTabla + "." + sCamposDesc[0];
 
@@ -129,14 +135,23 @@ namespace Capa_Modelo_Navegador
                 }
             }
         }
-
+        //Mejora de validaciones para evitar posible SQL Injection--Hecho por José Andrés Verón y Elvir Sandoval  31/01/2025
         public string ObtenerValorClave(string sTabla, string sCampoClave, string sCampoDescriptivo, string valorDescriptivo)
         {
-            string sQuery = $"SELECT {sCampoClave} FROM {sTabla} WHERE {sCampoDescriptivo} = '{valorDescriptivo}'";
-            OdbcCommand command = new OdbcCommand(sQuery, cn.ProbarConexion());
-            string resultado = command.ExecuteScalar()?.ToString();
-            Console.WriteLine(sQuery);
-            return resultado;
+            if (string.IsNullOrEmpty(sTabla) || string.IsNullOrEmpty(sCampoClave) || string.IsNullOrEmpty(sCampoDescriptivo) || string.IsNullOrEmpty(valorDescriptivo))
+            {
+                throw new ArgumentException("Ninguno de los parámetros puede estar vacío o nulo.");
+            }
+
+            string sQuery = $"SELECT {sCampoClave} FROM {sTabla} WHERE {sCampoDescriptivo} = ?";
+
+            using (OdbcCommand command = new OdbcCommand(sQuery, cn.ProbarConexion()))
+            {
+                command.Parameters.AddWithValue("?", valorDescriptivo);
+
+                object resultado = command.ExecuteScalar();
+                return resultado?.ToString() ?? string.Empty; // Evita devolver null
+            }
         }
 
 
@@ -148,31 +163,33 @@ namespace Capa_Modelo_Navegador
 
         //******************************************** CODIGO HECHO POR EMANUEL BARAHONA ***************************** 
         // Método que obtiene el último ID de una tabla
+        //Validaciones de campos -Hecho por José Andrés Verón y Elvir Sandoval  31/01/2025
         public string ObtenerId(string sTabla)
         {
-            string[] sCamposDesc = ObtenerCampos(sTabla);
-            string sSql = "SELECT MAX(" + sCamposDesc[0] + ") FROM " + sTabla + ";";
-            string sId = "";
-            OdbcCommand command = new OdbcCommand(sSql, cn.ProbarConexion());
-            OdbcDataReader reader = command.ExecuteReader();
-            if (reader.HasRows)
+            if (string.IsNullOrEmpty(sTabla) || sTabla.Any(c => !char.IsLetterOrDigit(c) && c != '_'))
             {
-                if (reader.Read())
+                throw new ArgumentException("El nombre de la tabla no es válido.");
+            }
+
+            string[] sCamposDesc = ObtenerCampos(sTabla);
+
+            if (sCamposDesc == null || sCamposDesc.Length == 0)
+            {
+                throw new InvalidOperationException("No se encontraron campos en la tabla.");
+            }
+
+            string sSql = $"SELECT MAX({sCamposDesc[0]}) FROM {sTabla};";
+            string sId = "1";
+
+            using (OdbcCommand command = new OdbcCommand(sSql, cn.ProbarConexion()))
+            using (OdbcDataReader reader = command.ExecuteReader())
+            {
+                if (reader.Read() && !reader.IsDBNull(0))
                 {
-                    if (reader.GetValue(0).ToString() == null || reader.GetValue(0).ToString() == "")
-                    {
-                        sId = "1";
-                    }
-                    else
-                    {
-                        sId = reader.GetValue(0).ToString();
-                    }
+                    sId = reader.GetValue(0).ToString();
                 }
             }
-            else
-            {
-                sId = "1";
-            }
+
             return sId;
         }
 
@@ -701,16 +718,24 @@ namespace Capa_Modelo_Navegador
         }
 
         // Método para ejecutar una consulta SQL
+        //Manejar excepciones adecuadamente y registrar los errores, validar que sQuery no esté vacía--Hechor por José Andrés Verón y Elvir Sandoval  31/01/2025
         public void EjecutarQuery(string sQuery)
         {
+            if (string.IsNullOrWhiteSpace(sQuery))
+            {
+                throw new ArgumentException("La consulta SQL no puede estar vacía o contener solo espacios en blanco.");
+            }
+
             try
             {
-                OdbcCommand consulta = new OdbcCommand(sQuery, cn.ProbarConexion());
-                consulta.ExecuteNonQuery();
+                using (OdbcCommand consulta = new OdbcCommand(sQuery, cn.ProbarConexion()))
+                {
+                    consulta.ExecuteNonQuery();
+                }
             }
             catch (OdbcException ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine("Error al ejecutar la consulta SQL: " + ex.Message);
             }
         }
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
