@@ -2595,41 +2595,97 @@ namespace Capa_Vista_Navegador
             }
         }
 
+        //****************************************************** modificado por Kateryn De Leon (30/01/2025)************************************************
+        // Declarar el ToolTip en el botón de Ayuda
+        private ToolTip toolTipAyuda = new ToolTip();
+
         private void Btn_Ayuda_Click(object sender, EventArgs e)
+        {
+
+            // Busca la carpeta raíz del proyecto llamada proyectois2k25 a partir de la ruta del ejecutable.
+            // Si encuentra la carpeta, busca el archivo AyudaNavegador.chm dentro de ella y sus subcarpetas.
+            //Si el archivo es encontrado, intenta abrirlo usando Help.ShowHelp().Si falla, lo abre directamente con el proceso del sistema.
+
+
+            // Mostrar el ToolTip en el botón de ayuda
+            toolTipAyuda.SetToolTip(Btn_Ayuda, "Documento de ayuda");
+
+            // Obtener la ruta del ejecutable
+            string sExecutablePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Buscar la carpeta raíz "proyectois2k25" desde el ejecutable
+            string sProjectPath = sFindProjectRootDirectory(sExecutablePath, "proyectois2k25");
+
+            if (string.IsNullOrEmpty(sProjectPath))
+            {
+                MessageBox.Show("❌ ERROR: No se encontró la carpeta 'proyectois2k25'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Buscar el archivo AyudaNavegador.chm en la carpeta raíz y subcarpetas
+            string sPathAyuda = sfunFindFileInDirectory(sProjectPath, "AyudaNavegador.chm");
+
+            // Si el archivo fue encontrado, abrirlo
+            if (!string.IsNullOrEmpty(sPathAyuda))
+            {
+                try
+                {
+                    Help.ShowHelp(null, sPathAyuda); //para abrir archivo si es encontrado 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("⚠️ Error al abrir el archivo con Help.ShowHelp(): " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Diagnostics.Process.Start(sPathAyuda);
+                }
+            }
+            else
+            {
+                MessageBox.Show("❌ ERROR: No se encontró el archivo AyudaNavegador.chm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); //mensaje de error
+            }
+        }
+
+
+        /// Busca la carpeta raíz del proyecto "proyectois2k25" comenzando desde una ruta dada
+        /// y subiendo niveles en la jerarquía de directorios hasta encontrarla.
+        private string sFindProjectRootDirectory(string startPath, string stargetFolder)
+        {
+            DirectoryInfo dir = new DirectoryInfo(startPath);
+            // aca estara subiendo niveles o  la jerarquía de directorios hasta encontrar la carpeta "proyectois2k25"
+            while (dir != null)
+            {
+                if (dir.Name.Equals(stargetFolder, StringComparison.OrdinalIgnoreCase))
+                {
+                    return dir.FullName; // Retorna la ruta de la carpeta raíz
+                }
+                dir = dir.Parent; // Subir un nivel en la jerarquía
+            }
+            return null; // Retorna null si no encuentra la carpeta
+        }
+
+        //Busca el archivo (AyudaNavegador.chm) dentro de un directorio y sus subcarpetas.
+        private string sfunFindFileInDirectory(string sDirectory, string sFileName)
         {
             try
             {
-                // Obtener el directorio raíz del proyecto subiendo suficientes niveles
-                string sProjectRootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\.."));
+                if (Directory.Exists(sDirectory))
 
-                // Combinar la ruta base con la carpeta "Ayuda\AyudaHTML"
-                string sAyudaPath = Path.Combine(sProjectRootPath, "Ayuda", "Ayuda_Navegador", sRutaAyuda);
 
-                // Mostrar la ruta en un MessageBox antes de proceder
-                //MessageBox.Show("Buscando archivo de ayuda en la ruta: " + ayudaPath, "Ruta de Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Verificar que el archivo de ayuda exista antes de intentar abrirlo
-                if (File.Exists(sAyudaPath))
                 {
-                    // Mostrar la ayuda utilizando la ruta completa y el índice
-                    Help.ShowHelp(this, sAyudaPath, sIndiceAyuda);
-                    lg.funinsertarabitacora(sIdUsuario, "Vio un documento de ayuda", sTablaPrincipal, sIdAplicacion);
-                }
-                else
-                {
-                    // Mostrar un mensaje de error si el archivo de ayuda no se encuentra
-                    MessageBox.Show("No se encontró el archivo de ayuda en la ruta especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Buscar todos los archivos .chm dentro de la carpeta y subcarpetas
+                    string[] sFiles = Directory.GetFiles(sDirectory, "*.chm", SearchOption.AllDirectories);
+                    // Retornar el archivo que coincida con el nombre buscado
+                    return sFiles.FirstOrDefault(file => Path.GetFileName(file).Equals(sFileName, StringComparison.OrdinalIgnoreCase));
                 }
             }
             catch (Exception ex)
             {
-                // Mostrar un mensaje de error en caso de una excepción
-                MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
+                MessageBox.Show("⚠️ Error al buscar el archivo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // mensaje de error
             }
 
-            BotonesYPermisosSinMensaje();
+            return null; //retorna a null
         }
+
+        //  *****************************************Fin Katy******************************************************************************
         private void button_Paint(object sender, PaintEventArgs e)
         {
             BiselUtil.AplicarBisel(sender as Button, e);
