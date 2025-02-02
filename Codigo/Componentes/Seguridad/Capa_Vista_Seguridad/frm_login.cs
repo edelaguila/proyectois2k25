@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using Capa_Controlador_Seguridad;
 using System.Security.Cryptography;
 using System.IO;
-//using Interfac_V3; // Necesario para Directory, File, Path y SearchOption
+using Interfac_V3; // Necesario para Directory, File, Path y SearchOption
 //Editado el 29 sep 2024 para evitar el acoplamiento circular
 
 namespace Capa_Vista_Seguridad
@@ -77,8 +77,8 @@ namespace Capa_Vista_Seguridad
                             logica l = new logica();
                             l.funinsertarabitacora(Txt_usuario.Text.Trim(), "Se logeo al sistema", "Login", "1000");
 
-                            //FormModulos formulario = new FormModulos(Txt_usuario.Text); // Asegúrate de que este es el nombre correcto de la clase                         
-                            //formulario.Show();
+                            FormModulos formulario = new FormModulos(Txt_usuario.Text); // Asegúrate de que este es el nombre correcto de la clase                         
+                            formulario.Show();
 
 
                             //Pasa el nombre de usuario al constructor de MDI_Seguridad
