@@ -18,7 +18,7 @@ namespace Capa_Vista_Contabilidad
 
             string idusuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
 
-            string[] alias = { "Codigo", "TipoCuenta", "Grupo cuenta", "Nombre", "Cargo-Mes", "Abono-Mes", "Saldo-Anterior", "Saldo-Actual", "Cargo-Acumulado", "Abono-Acumulado", "Cuenta-padre", "Efectivo", "Estado" };
+            string[] alias = { "ID", "TipoCuenta", "Grupo cuenta", "Nombre", "Cargo-Mes", "Abono-Mes", "Saldo-Anterior", "Saldo-Actual", "Cargo-Acumulado", "Abono-Acumulado", "Cuenta-padre", "Efectivo", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.FromArgb(242, 133, 122));

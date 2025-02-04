@@ -15,7 +15,7 @@ namespace Capa_Vista_CompraVenta
         public Frm_proveedores(String idUsuario)
         {
             InitializeComponent();
-            string[] alias = { "Codigo", "Nombre", "direccion", "telefono", "email", "fecha registro", "estado", "Deuda" };
+            string[] alias = { "ID", "Nombre", "Direccion", "Telefono", "Email", "Fecha registro", "Estado", "Deuda" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.FromArgb(255, 255, 192));

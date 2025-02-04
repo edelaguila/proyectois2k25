@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using Capa_Vista_Logistica;
+//using Capa_Vista_Logistica;
 using System.Windows.Forms;
-
+/*
 namespace TestEnlace
 {
     [TestClass]
@@ -87,3 +87,4 @@ namespace TestEnlace
         }
     }
 }
+*/

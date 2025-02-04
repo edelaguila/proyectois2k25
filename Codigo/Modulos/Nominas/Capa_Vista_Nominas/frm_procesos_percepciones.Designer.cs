@@ -80,9 +80,9 @@ namespace Capa_Vista_Nominas
             this.Lbl_pk_dedu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.Lbl_pk_dedu.Location = new System.Drawing.Point(68, 138);
             this.Lbl_pk_dedu.Name = "Lbl_pk_dedu";
-            this.Lbl_pk_dedu.Size = new System.Drawing.Size(145, 24);
+            this.Lbl_pk_dedu.Size = new System.Drawing.Size(29, 24);
             this.Lbl_pk_dedu.TabIndex = 5;
-            this.Lbl_pk_dedu.Text = "pk_dedu_perp";
+            this.Lbl_pk_dedu.Text = "ID";
             // 
             // Lbl_concepto
             // 

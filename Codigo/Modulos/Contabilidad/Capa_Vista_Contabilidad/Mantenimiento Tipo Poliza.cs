@@ -19,7 +19,7 @@ namespace Capa_Vista_Contabilidad
             string idusuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
 
 
-            string[] alias = { "codigo", "tipo", "estado" };
+            string[] alias = { "ID", "Tipo", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.FromArgb(242, 133, 122));
@@ -30,6 +30,11 @@ namespace Capa_Vista_Contabilidad
             navegador1.AsignarTabla("tbl_tipopoliza");
 
             navegador1.AsignarNombreForm("TIPO POLIZA");
+
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
 
         }
     }

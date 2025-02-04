@@ -26,5 +26,10 @@ namespace Capa_Vista_Nominas
         {
             InitializeComponent();
         }
+
+        private void frm_nominas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
