@@ -16,58 +16,49 @@ namespace Capa_Modelo_Navegador
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
         // Método que llena una tabla con datos relacionados a otra tabla si es necesario.
-        public OdbcDataAdapter LlenaTbl(string sTabla, List<Tuple<string, string, string, string>> relacionesForaneas)
+        public DataTable LlenaTbl(string sTabla, List<Tuple<string, string, string, string>> relacionesForaneas)
         {
             OdbcConnection conn = cn.ProbarConexion();
+            DataTable dataTable = new DataTable();
 
             try
             {
-                // Verifica que las relaciones no sean nulas
                 if (relacionesForaneas == null)
                 {
                     relacionesForaneas = new List<Tuple<string, string, string, string>>();
                 }
 
-                // Verificar que la conexión esté activa
                 if (conn == null)
                 {
                     throw new InvalidOperationException("La conexión a la base de datos no está disponible.");
                 }
 
-                // Obtener los campos de la tabla principal de forma dinámica
                 string[] sCamposDesc = ObtenerCampos(sTabla);
                 if (sCamposDesc == null || sCamposDesc.Length == 0)
                 {
                     throw new InvalidOperationException("No se pudieron obtener los campos de la tabla principal.");
                 }
 
-                // Inicia con el primer campo de la tabla
                 string sCamposSelect = sTabla + "." + sCamposDesc[0];
-
-                // Diccionario para evitar duplicados de columnas
                 Dictionary<string, int> dicColumnasRegistradas = new Dictionary<string, int>();
                 dicColumnasRegistradas[sCamposDesc[0]] = 1;
 
-                // Obtener las propiedades de las columnas de la tabla principal
                 var vColumnasPropiedades = ObtenerColumnasYPropiedades(sTabla);
                 if (vColumnasPropiedades == null)
                 {
                     throw new InvalidOperationException("No se pudieron obtener las propiedades de las columnas de la tabla.");
                 }
 
-                // Recorrer los campos de la tabla principal
                 foreach (var (sNombreColumna, bEsAutoIncremental, bEsClaveForanea, bEsTinyInt) in vColumnasPropiedades)
                 {
-                    // Evitar agregar la columna principal dos veces
-                    if (sNombreColumna == sCamposDesc[0])
-                        continue;
+                    if (sNombreColumna == sCamposDesc[0]) continue;
 
-                    // Si es una clave foránea, buscar si hay una relación foránea que la reemplace
                     bool columnaReemplazada = false;
 
                     foreach (var relacion in relacionesForaneas)
                     {
-                        if (string.IsNullOrEmpty(relacion.Item1) || string.IsNullOrEmpty(relacion.Item2) || string.IsNullOrEmpty(relacion.Item3) || string.IsNullOrEmpty(relacion.Item4))
+                        if (string.IsNullOrEmpty(relacion.Item1) || string.IsNullOrEmpty(relacion.Item2) ||
+                            string.IsNullOrEmpty(relacion.Item3) || string.IsNullOrEmpty(relacion.Item4))
                         {
                             throw new ArgumentException("Uno de los valores en las relaciones foráneas es nulo o vacío.");
                         }
@@ -76,7 +67,6 @@ namespace Capa_Modelo_Navegador
                         string sCampoDescriptivo = relacion.Item2;
                         string sColumnaForanea = relacion.Item3;
 
-                        // Si la columna actual es una clave foránea, la reemplazamos por su campo descriptivo
                         if (sNombreColumna == sColumnaForanea)
                         {
                             sCamposSelect += ", " + sTablaRelacionada + "." + sCampoDescriptivo + " AS " + sCampoDescriptivo;
@@ -86,7 +76,6 @@ namespace Capa_Modelo_Navegador
                         }
                     }
 
-                    // Si no fue reemplazada como clave foránea, agregarla como está
                     if (!columnaReemplazada)
                     {
                         sCamposSelect += ", " + sTabla + "." + sNombreColumna;
@@ -94,68 +83,61 @@ namespace Capa_Modelo_Navegador
                     }
                 }
 
-                // Crear el comando SQL para seleccionar los campos
                 string sSql = "SELECT " + sCamposSelect + " FROM " + sTabla;
 
-                // Agregar los LEFT JOIN para cada relación foránea
                 foreach (var relacion in relacionesForaneas)
                 {
                     string sTablaRelacionada = relacion.Item1;
                     string sColumnaForanea = relacion.Item3;
                     string sColumnaPrimariaRelacionada = relacion.Item4;
 
-                    // Añadir el LEFT JOIN con la tabla relacionada
                     sSql += " LEFT JOIN " + sTablaRelacionada + " ON " + sTabla + "." + sColumnaForanea + " = " + sTablaRelacionada + "." + sColumnaPrimariaRelacionada;
                 }
 
-                // Filtrar por estado (activo o inactivo)
                 sSql += " WHERE " + sTabla + ".estado = 0 OR " + sTabla + ".estado = 1";
-
-                // Ordenar por la columna principal en orden descendente
                 sSql += " ORDER BY " + sCamposDesc[0] + " DESC;";
 
-                Console.WriteLine(sSql); // Imprimir la consulta SQL generada para debugging
+                Console.WriteLine(sSql);
 
-                // Crear un adaptador de datos para ejecutar la consulta
-                OdbcDataAdapter dataTable = new OdbcDataAdapter(sSql, conn);
-
-                return dataTable;
+                using (OdbcDataAdapter adapter = new OdbcDataAdapter(sSql, conn))
+                {
+                    adapter.Fill(dataTable);
+                }
             }
             finally
             {
-                // Cerrar la conexión después de ejecutar la consulta
                 if (conn != null && conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                     Console.WriteLine("Conexión cerrada después de llenar la tabla");
                 }
             }
-        }
-        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
 
+            return dataTable;
+        }
+
+        //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
+        //Implementacion De Cierre de conexiones
         //IMPLEMENTACION DE PARAMETROS JOEL LOPEZ 30/01/2025
         public string ObtenerValorClave(string sTabla, string sCampoClave, string sCampoDescriptivo, string valorDescriptivo)
         {
             string sQuery = $"SELECT {sCampoClave} FROM {sTabla} WHERE {sCampoDescriptivo} = ?"; // Uso de parámetro
             string resultado = null;
 
-            using (OdbcConnection conn = cn.ProbarConexion()) // Uso de 'using' para gestionar la conexión
+            using (OdbcConnection conn = cn.ProbarConexion()) // Se asegura que la conexión se cierre correctamente
             {
+                conn.Open();
                 using (OdbcCommand command = new OdbcCommand(sQuery, conn))
                 {
                     command.Parameters.AddWithValue("?", valorDescriptivo); // Se añade el parámetro de forma segura
-                    resultado = command.ExecuteScalar()?.ToString();
+                    var valor = command.ExecuteScalar();
+                    resultado = valor != null ? valor.ToString() : null; // Manejo de null
                 }
             }
 
-            Console.WriteLine(sQuery); // OJO: Esto no imprimirá el valor real del parámetro
+            Console.WriteLine($"Ejecutando consulta: {sQuery.Replace("?", "'" + valorDescriptivo + "'")}"); // Para debug
             return resultado;
         }
-
-
-
-
-
 
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
@@ -167,42 +149,31 @@ namespace Capa_Modelo_Navegador
         public string ObtenerId(string sTabla)
         {
             string[] sCamposDesc = ObtenerCampos(sTabla);
-            string sSql = "SELECT MAX(" + sCamposDesc[0] + ") FROM " + sTabla + ";";
-            string sId = "";
-
-            using (OdbcCommand command = new OdbcCommand(sSql, cn.ProbarConexion()))
+            if (sCamposDesc == null || sCamposDesc.Length == 0)
             {
-                using (OdbcDataReader reader = command.ExecuteReader())
+                throw new InvalidOperationException("No se pudieron obtener los campos de la tabla.");
+            }
+
+            string sSql = $"SELECT MAX({sCamposDesc[0]}) FROM {sTabla};";
+            string sId = "1"; // Valor predeterminado en caso de que no haya registros.
+
+            using (OdbcConnection conn = cn.ProbarConexion())
+            {
+                conn.Open();
+                using (OdbcCommand command = new OdbcCommand(sSql, conn))
                 {
-                    if (reader.HasRows)
-                    {
-                        if (reader.Read())
-                        {
-                            if (reader.GetValue(0).ToString() == null || reader.GetValue(0).ToString() == "")
-                            {
-                                sId = "1";
-                            }
-                            else
-                            {
-                                sId = reader.GetValue(0).ToString();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        sId = "1";
-                    }
+                    var resultado = command.ExecuteScalar();
+                    sId = (resultado == null || resultado == DBNull.Value) ? "1" : resultado.ToString();
                 }
             }
 
+            Console.WriteLine($"Ejecutando consulta: {sSql}"); // Debug
             return sId;
         }
-
         //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
+        //Implementacion de cierre de conexiones por Javier Chamo
 
         //******************************************** CODIGO HECHO POR EMANUEL BARAHONA ***************************** 
-
-
 
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
         //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
@@ -210,50 +181,52 @@ namespace Capa_Modelo_Navegador
         // Método para obtener el ID de usuario basado en su nombre de usuario
         public string ObtenerIdUsuarioPorUsername(string sUsername)
         {
-            string sSql = "SELECT Pk_id_usuario FROM tbl_usuarios WHERE username_usuario = @username"; // Parámetro explícito
+            string sSql = "SELECT Pk_id_usuario FROM tbl_usuarios WHERE username_usuario = ?"; // Parámetro seguro
 
-            using (OdbcCommand command = new OdbcCommand(sSql, cn.ProbarConexion()))
+            using (OdbcConnection conn = cn.ProbarConexion())
             {
-                command.Parameters.AddWithValue("@username", sUsername);
-
-                using (OdbcDataReader reader = command.ExecuteReader())
+                conn.Open();
+                using (OdbcCommand command = new OdbcCommand(sSql, conn))
                 {
-                    if (reader.Read())
+                    command.Parameters.AddWithValue("?", sUsername);
+
+                    using (OdbcDataReader reader = command.ExecuteReader())
                     {
-                        return reader["Pk_id_usuario"].ToString();
-                    }
-                    else
-                    {
-                        return "-1";
+                        return reader.Read() ? reader["Pk_id_usuario"].ToString() : "-1";
                     }
                 }
             }
         }
-
 
         //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         // Método que cuenta los campos en una tabla
         public int ContarAlias(string sTabla)
         {
             int iCampos = 0;
+            string sSql = $"DESCRIBE {sTabla}";
 
             try
             {
-                using (OdbcCommand command = new OdbcCommand("DESCRIBE " + sTabla + "", cn.ProbarConexion()))
+                using (OdbcConnection conn = cn.ProbarConexion())
                 {
-                    using (OdbcDataReader reader = command.ExecuteReader())
+                    conn.Open();
+                    using (OdbcCommand command = new OdbcCommand(sSql, conn))
                     {
-                        while (reader.Read())
+                        using (OdbcDataReader reader = command.ExecuteReader())
                         {
-                            iCampos++;
+                            while (reader.Read())
+                            {
+                                iCampos++;
+                            }
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message.ToString() + " \nError en obtenerTipo, revise los parámetros de la tabla  \n -" + sTabla.ToUpper() + "\n -");
+                Console.WriteLine($"Error al contar alias en la tabla {sTabla.ToUpper()}: {ex.Message}");
             }
+
             return iCampos;
         }
 
@@ -470,10 +443,7 @@ namespace Capa_Modelo_Navegador
 
             return iRegistros;
         }
-
-
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN ***************************** 
-
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
         // Método para obtener los nombres de los campos de una tabla
@@ -513,7 +483,6 @@ namespace Capa_Modelo_Navegador
             return sCampos;
         }
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ ***************************** 
-
 
         //******************************************** CODIGO HECHO POR SEBASTIAN LETONA ***************************** 
         //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
@@ -989,8 +958,6 @@ namespace Capa_Modelo_Navegador
 
             return dataTable;
         }
-
-
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
     }
 }
