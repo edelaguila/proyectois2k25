@@ -513,7 +513,7 @@ namespace Capa_Vista_Seguridad
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
                     );
-
+                    //*Aqui manda la información, ir a ver a logica.cs
                     DataTable dtAplicaciones = logic.funConsultaLogicaPermisosUsuarioAplicacion(sUsuario, sAplicacion, sIngresar, sConsulta, sModificar, sEliminar, sImprimir);
 
                 }
