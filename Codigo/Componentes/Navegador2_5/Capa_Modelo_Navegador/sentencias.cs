@@ -208,9 +208,13 @@ namespace Capa_Modelo_Navegador
         //IMPLEMENTACION DE USING POR JOSE DANIEL SIERRA 30/01/2025
         //IMPLEMENTACION DE PARAMETROS JOEL LOPEZ 30/01/2025
         // Método para obtener el ID de usuario basado en su nombre de usuario
+
+        /*Ismar Cortez 6/2/25*/
+        /*El error se estaba produciendo aqui, basicamente porque se le mandaba el parametro como @username y devolvia -1
+         haciendo que nunca se diera la validación del usuario y por ende los permisos necesarios*/
         public string ObtenerIdUsuarioPorUsername(string sUsername)
         {
-            string sSql = "SELECT Pk_id_usuario FROM tbl_usuarios WHERE username_usuario = @username"; // Parámetro explícito
+            string sSql = "SELECT Pk_id_usuario FROM tbl_usuarios WHERE username_usuario = ?"; // Parámetro explícito
 
             using (OdbcCommand command = new OdbcCommand(sSql, cn.ProbarConexion()))
             {
