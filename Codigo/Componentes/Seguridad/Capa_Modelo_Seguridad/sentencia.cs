@@ -151,7 +151,7 @@ namespace Capa_Modelo_Seguridad
         public OdbcDataAdapter funInsertarPermisosUA(string sCodigoUsuario, string sNombreAplicacion, string sIngresar, string sConsulta, string sModificar, string sEliminar, string sImprimir)
         {
             string sCodigoAplicacion = " ";
-            string sCodigoUsuarios = " ";
+            string sNumeroUsuario = " ";
 
             try
             {
@@ -164,20 +164,26 @@ namespace Capa_Modelo_Seguridad
                     sCodigoAplicacion = almacena.GetString(0);
                 }
 
+                /*Al parecer aqui esta el error
+                * Ismar Cortez 30/1/25
+                * **/
 
+                // Obtén el código del usuario
                 // Obtén el código del usuario
                 OdbcCommand sqlCodigoUsuario = new OdbcCommand("SELECT Pk_id_usuario FROM Tbl_usuarios WHERE nombre_usuario = '" + sCodigoUsuario + "' ", cn.conectar());
                 OdbcDataReader almacenaUsuario = sqlCodigoUsuario.ExecuteReader();
 
                 while (almacenaUsuario.Read() == true)
                 {
-                    sCodigoUsuarios = almacenaUsuario.GetString(0);
+                    sNumeroUsuario = almacenaUsuario.GetString(0);
                 }
                 almacenaUsuario.Close();
                 sqlCodigoUsuario.Connection.Close();
                 //MessageBox.Show(sCodigoUsuario);
                 // Inserta los permisos usando el código de la aplicación y el código del usuario
-                string sqlInsertarPermisosUA = "INSERT INTO Tbl_permisos_aplicaciones_usuario(Fk_id_usuario, Fk_id_aplicacion, guardar_permiso, buscar_permiso, modificar_permiso, eliminar_permiso, imprimir_permiso) VALUES ('" + sCodigoUsuario + "','" + sCodigoAplicacion + "', '" + sIngresar + "', '" + sConsulta + "', '" + sModificar + "', '" + sEliminar + "', '" + sImprimir + "');";
+                /*Ismar Cortez - 30/1/25*/
+                /*Aqui se corrigio el error, era una "s", porque debia ser sCodigoUsuarios en lugar de sCodigoUsuario*/
+                string sqlInsertarPermisosUA = "INSERT INTO Tbl_permisos_aplicaciones_usuario(Fk_id_usuario, Fk_id_aplicacion, guardar_permiso, buscar_permiso, modificar_permiso, eliminar_permiso, imprimir_permiso) VALUES ('" + sNumeroUsuario + "','" + sCodigoAplicacion + "', '" + sIngresar + "', '" + sConsulta + "', '" + sModificar + "', '" + sEliminar + "', '" + sImprimir + "');";
                 // MessageBox.Show(sqlInsertarPermisosUA);
                 // Ejecuta el comando de inserción
                 OdbcDataAdapter dataPermisosUA = new OdbcDataAdapter(sqlInsertarPermisosUA, cn.conectar());
