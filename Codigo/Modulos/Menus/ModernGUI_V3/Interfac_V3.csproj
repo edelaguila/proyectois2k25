@@ -70,11 +70,12 @@
     <Reference Include="Capa_Vista_Produccion">
       <HintPath>..\..\Produccion\Produccion\Capa_Vista_Produccion\bin\Debug\Capa_Vista_Produccion.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Seguridad">
-      <HintPath>..\..\..\Componentes\Seguridad\Capa_Vista_Seguridad\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
-    </Reference>
     <Reference Include="Capa_Vista_Banco">
       <HintPath>..\..\Bancos\Bancos\Capa_Vista_Banco\bin\Debug\Capa_Vista_Banco.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Seguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Componentes\Seguridad2_5\Capa_Vista_Seguridad\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
