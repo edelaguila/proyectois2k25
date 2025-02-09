@@ -296,6 +296,9 @@ namespace Capa_Vista_Seguridad
 
             Pnl_inferior.BackColor = Color.FromArgb(171, 196, 255);
             Pnl_inferior.ForeColor = Color.Black; // Texto en negro
+
+            statusStrip.BackColor = Color.FromArgb(121, 160, 255);
+            statusStrip.ForeColor = Color.Black; // Texto en negro
         }
 
 
