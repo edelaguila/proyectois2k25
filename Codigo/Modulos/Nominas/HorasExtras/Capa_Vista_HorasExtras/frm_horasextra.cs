@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 using System.IO; // Necesario para Directory, File, Path y SearchOption
 using Capa_Controlador_HorasExtras;
-using Capa_Vista_Nominas;
+//using Capa_Vista_Nominas;
 
 
 namespace Capa_Vista_HorasExtras
