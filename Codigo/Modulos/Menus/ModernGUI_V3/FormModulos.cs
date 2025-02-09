@@ -48,16 +48,22 @@ namespace Interfac_V3
 
         private void btnSeguridad_Click(object sender, EventArgs e)
         {
-            var usuario = new Capa_Vista_Seguridad.frm_login();
-            string idUsuario = usuario.Txt_usuario.ToString();
+            // Verificar si el formulario ya está abierto
+            var formAbierto = Application.OpenForms.OfType<MDI_Seguridad>().FirstOrDefault();
 
-            frm_login login = new frm_login();
-            login.ShowDialog();
+            if (formAbierto == null)  // Si no está abierto, abrirlo
+            {
+                MDI_Seguridad formMDI = new MDI_Seguridad(UsuarioSesion.GetIdUsuario());
+                formMDI.Show();
+            }
+            else  // Si ya está abierto, activarlo
+            {
+                formAbierto.BringToFront();
+            }
 
-            MDI_Seguridad formMDI = new MDI_Seguridad(idUsuario);
-            formMDI.Show();
-            this.Hide();
+            this.Hide();  // Ocultar el formulario actual
         }
+
 
         private void btnSalir_Click(object sender, EventArgs e)
         {

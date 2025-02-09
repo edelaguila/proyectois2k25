@@ -53,9 +53,9 @@
             this.lbl_nombreUsuario = new System.Windows.Forms.Label();
             this.lbl_usuario = new System.Windows.Forms.Label();
             this.Pnl_inferior = new System.Windows.Forms.Panel();
-            this.Pnl_fecha = new System.Windows.Forms.Panel();
-            this.Lbl_fecha = new System.Windows.Forms.Label();
             this.Lbl_inferiorfecha = new System.Windows.Forms.Label();
+            this.Lbl_fecha = new System.Windows.Forms.Label();
+            this.Pnl_fecha = new System.Windows.Forms.Panel();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.Pnl_usuario.SuspendLayout();
@@ -265,17 +265,15 @@
             this.Pnl_inferior.TabIndex = 4;
             this.Pnl_inferior.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // Pnl_fecha
+            // Lbl_inferiorfecha
             // 
-            this.Pnl_fecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Pnl_fecha.BackColor = System.Drawing.Color.Transparent;
-            this.Pnl_fecha.Controls.Add(this.Lbl_fecha);
-            this.Pnl_fecha.Controls.Add(this.Lbl_inferiorfecha);
-            this.Pnl_fecha.Location = new System.Drawing.Point(706, 4);
-            this.Pnl_fecha.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pnl_fecha.Name = "Pnl_fecha";
-            this.Pnl_fecha.Size = new System.Drawing.Size(259, 46);
-            this.Pnl_fecha.TabIndex = 2;
+            this.Lbl_inferiorfecha.AutoSize = true;
+            this.Lbl_inferiorfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_inferiorfecha.Location = new System.Drawing.Point(3, 11);
+            this.Lbl_inferiorfecha.Name = "Lbl_inferiorfecha";
+            this.Lbl_inferiorfecha.Size = new System.Drawing.Size(73, 25);
+            this.Lbl_inferiorfecha.TabIndex = 0;
+            this.Lbl_inferiorfecha.Text = "Fecha:";
             // 
             // Lbl_fecha
             // 
@@ -288,20 +286,23 @@
             this.Lbl_fecha.TabIndex = 1;
             this.Lbl_fecha.Text = "--";
             // 
-            // Lbl_inferiorfecha
+            // Pnl_fecha
             // 
-            this.Lbl_inferiorfecha.AutoSize = true;
-            this.Lbl_inferiorfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_inferiorfecha.Location = new System.Drawing.Point(3, 11);
-            this.Lbl_inferiorfecha.Name = "Lbl_inferiorfecha";
-            this.Lbl_inferiorfecha.Size = new System.Drawing.Size(73, 25);
-            this.Lbl_inferiorfecha.TabIndex = 0;
-            this.Lbl_inferiorfecha.Text = "Fecha:";
+            this.Pnl_fecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Pnl_fecha.BackColor = System.Drawing.Color.Transparent;
+            this.Pnl_fecha.Controls.Add(this.Lbl_fecha);
+            this.Pnl_fecha.Controls.Add(this.Lbl_inferiorfecha);
+            this.Pnl_fecha.Location = new System.Drawing.Point(706, 4);
+            this.Pnl_fecha.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pnl_fecha.Name = "Pnl_fecha";
+            this.Pnl_fecha.Size = new System.Drawing.Size(259, 46);
+            this.Pnl_fecha.TabIndex = 2;
             // 
             // MDI_Seguridad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1053, 1015);
             this.Controls.Add(this.Pnl_inferior);
             this.Controls.Add(this.statusStrip);
