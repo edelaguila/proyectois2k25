@@ -46,21 +46,21 @@
             this.cambioContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Pnl_usuario = new System.Windows.Forms.Panel();
             this.lbl_nombreUsuario = new System.Windows.Forms.Label();
             this.lbl_usuario = new System.Windows.Forms.Label();
             this.Pnl_inferior = new System.Windows.Forms.Panel();
-            this.Lbl_inferiorfecha = new System.Windows.Forms.Label();
-            this.Lbl_fecha = new System.Windows.Forms.Label();
             this.Pnl_fecha = new System.Windows.Forms.Panel();
+            this.Lbl_fecha = new System.Windows.Forms.Label();
+            this.Lbl_inferiorfecha = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
-            this.statusStrip.SuspendLayout();
             this.Pnl_usuario.SuspendLayout();
             this.Pnl_inferior.SuspendLayout();
             this.Pnl_fecha.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -199,31 +199,13 @@
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             this.ayudaToolStripMenuItem.Click += new System.EventHandler(this.ayudaToolStripMenuItem_Click);
             // 
-            // statusStrip
-            // 
-            this.statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip.Location = new System.Drawing.Point(0, 989);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 22, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1053, 26);
-            this.statusStrip.TabIndex = 2;
-            this.statusStrip.Text = "StatusStrip";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(54, 20);
-            this.toolStripStatusLabel1.Text = "Estado";
-            // 
             // Pnl_usuario
             // 
             this.Pnl_usuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Pnl_usuario.BackColor = System.Drawing.Color.Transparent;
             this.Pnl_usuario.Controls.Add(this.lbl_nombreUsuario);
             this.Pnl_usuario.Controls.Add(this.lbl_usuario);
-            this.Pnl_usuario.Location = new System.Drawing.Point(442, 6);
+            this.Pnl_usuario.Location = new System.Drawing.Point(441, 14);
             this.Pnl_usuario.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pnl_usuario.Name = "Pnl_usuario";
             this.Pnl_usuario.Size = new System.Drawing.Size(225, 46);
@@ -255,25 +237,28 @@
             // Pnl_inferior
             // 
             this.Pnl_inferior.BackColor = System.Drawing.Color.Transparent;
+            this.Pnl_inferior.Controls.Add(this.statusStrip1);
             this.Pnl_inferior.Controls.Add(this.Pnl_fecha);
             this.Pnl_inferior.Controls.Add(this.Pnl_usuario);
             this.Pnl_inferior.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Pnl_inferior.Location = new System.Drawing.Point(0, 938);
+            this.Pnl_inferior.Location = new System.Drawing.Point(0, 929);
             this.Pnl_inferior.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pnl_inferior.Name = "Pnl_inferior";
-            this.Pnl_inferior.Size = new System.Drawing.Size(1053, 51);
+            this.Pnl_inferior.Size = new System.Drawing.Size(1053, 86);
             this.Pnl_inferior.TabIndex = 4;
             this.Pnl_inferior.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // Lbl_inferiorfecha
+            // Pnl_fecha
             // 
-            this.Lbl_inferiorfecha.AutoSize = true;
-            this.Lbl_inferiorfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_inferiorfecha.Location = new System.Drawing.Point(3, 11);
-            this.Lbl_inferiorfecha.Name = "Lbl_inferiorfecha";
-            this.Lbl_inferiorfecha.Size = new System.Drawing.Size(73, 25);
-            this.Lbl_inferiorfecha.TabIndex = 0;
-            this.Lbl_inferiorfecha.Text = "Fecha:";
+            this.Pnl_fecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Pnl_fecha.BackColor = System.Drawing.Color.Transparent;
+            this.Pnl_fecha.Controls.Add(this.Lbl_fecha);
+            this.Pnl_fecha.Controls.Add(this.Lbl_inferiorfecha);
+            this.Pnl_fecha.Location = new System.Drawing.Point(706, 14);
+            this.Pnl_fecha.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Pnl_fecha.Name = "Pnl_fecha";
+            this.Pnl_fecha.Size = new System.Drawing.Size(259, 46);
+            this.Pnl_fecha.TabIndex = 2;
             // 
             // Lbl_fecha
             // 
@@ -286,17 +271,32 @@
             this.Lbl_fecha.TabIndex = 1;
             this.Lbl_fecha.Text = "--";
             // 
-            // Pnl_fecha
+            // Lbl_inferiorfecha
             // 
-            this.Pnl_fecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Pnl_fecha.BackColor = System.Drawing.Color.Transparent;
-            this.Pnl_fecha.Controls.Add(this.Lbl_fecha);
-            this.Pnl_fecha.Controls.Add(this.Lbl_inferiorfecha);
-            this.Pnl_fecha.Location = new System.Drawing.Point(706, 4);
-            this.Pnl_fecha.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Pnl_fecha.Name = "Pnl_fecha";
-            this.Pnl_fecha.Size = new System.Drawing.Size(259, 46);
-            this.Pnl_fecha.TabIndex = 2;
+            this.Lbl_inferiorfecha.AutoSize = true;
+            this.Lbl_inferiorfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_inferiorfecha.Location = new System.Drawing.Point(3, 11);
+            this.Lbl_inferiorfecha.Name = "Lbl_inferiorfecha";
+            this.Lbl_inferiorfecha.Size = new System.Drawing.Size(73, 25);
+            this.Lbl_inferiorfecha.TabIndex = 0;
+            this.Lbl_inferiorfecha.Text = "Fecha:";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 60);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1053, 26);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // MDI_Seguridad
             // 
@@ -305,7 +305,6 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1053, 1015);
             this.Controls.Add(this.Pnl_inferior);
-            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -320,13 +319,14 @@
             this.Load += new System.EventHandler(this.MDI_Seguridad_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
             this.Pnl_usuario.ResumeLayout(false);
             this.Pnl_usuario.PerformLayout();
             this.Pnl_inferior.ResumeLayout(false);
+            this.Pnl_inferior.PerformLayout();
             this.Pnl_fecha.ResumeLayout(false);
             this.Pnl_fecha.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,7 +335,6 @@
 
 
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientosToolStripMenuItem;
@@ -352,7 +351,6 @@
         private System.Windows.Forms.ToolStripMenuItem asignacionDeAplicacionesAPerfilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asignacionModuloAAplicacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Panel Pnl_usuario;
         public System.Windows.Forms.Label lbl_nombreUsuario;
         private System.Windows.Forms.Label lbl_usuario;
@@ -360,6 +358,8 @@
         private System.Windows.Forms.Panel Pnl_fecha;
         public System.Windows.Forms.Label Lbl_fecha;
         private System.Windows.Forms.Label Lbl_inferiorfecha;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

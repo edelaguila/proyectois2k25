@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO; // Necesario para Directory, File, Path y SearchOption
 using Capa_Controlador_Seguridad;
+
+
 namespace Capa_Vista_Seguridad
 {
     public partial class MDI_Seguridad : Form
@@ -27,6 +29,19 @@ namespace Capa_Vista_Seguridad
 
             // Mensaje de bienvenida
             MessageBox.Show($"¡Bienvenido al módulo de seguridad, {idUsuario}!", "Bienvenida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //*Nuevo: Evento para detectar la interacción con el menú
+            menuStrip.ItemClicked += MenuStrip_ItemClicked;
+
+            //*Nuevo: Estado inicial
+            toolStripStatusLabel1.Text = "Estado: Inactivo";
+        }
+
+        //*Nuevo:
+        private void MenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Estado: Activo";
+
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -34,7 +49,19 @@ namespace Capa_Vista_Seguridad
             Form childForm = new Form();
             childForm.MdiParent = this;
             childForm.Text = "Ventana " + childFormNumber++;
+            //*Nuevo
+            childForm.FormClosed += ChildForm_FormClosed; // Evento al cerrar la ventana
             childForm.Show();
+        }
+
+        //*Nuevo:
+        private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Si no hay más ventanas abiertas, restablecer el estado
+            if (MdiChildren.Length == 0)
+            {
+                toolStripStatusLabel1.Text = "Estado: Inactivo";
+            }
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -300,8 +327,14 @@ namespace Capa_Vista_Seguridad
             Pnl_inferior.BackColor = Color.FromArgb(171, 196, 255);
             Pnl_inferior.ForeColor = Color.Black; // Texto en negro
 
-            statusStrip.BackColor = Color.FromArgb(121, 160, 255);
-            statusStrip.ForeColor = Color.Black; // Texto en negro
+            //statusStrip.BackColor = Color.FromArgb(121, 160, 255);
+            //statusStrip.ForeColor = Color.Black; // Texto en negro
+
+            //Nuevo: Estado inicial del statusStrip
+            toolStripStatusLabel1.Text = "Estado: Inactivo";
+
+            statusStrip1.BackColor = Color.FromArgb(121, 160, 255);
+            statusStrip1.ForeColor = Color.Black; // Texto en negro
         }
 
 
@@ -402,7 +435,7 @@ namespace Capa_Vista_Seguridad
 
             // Retroceder a la carpeta del proyecto
             string projectPath = Path.GetFullPath(Path.Combine(executablePath, @"..\..\"));
-            MessageBox.Show("1" + projectPath);
+            //MessageBox.Show("1" + projectPath);
 
             // Combinar con la ruta fija de "asis22k24proy2\Codigo\Componentes\Seguridad"
             //string basePath = Path.Combine(projectPath, @"asis22k24proy2\Codigo\Componentes\Seguridad");
@@ -420,7 +453,7 @@ namespace Capa_Vista_Seguridad
             // Verifica si el archivo existe antes de intentar abrirlo
             if (!string.IsNullOrEmpty(pathAyuda))
             {
-                MessageBox.Show("El archivo sí está.");
+                //MessageBox.Show("El archivo sí está.");
                 // Abre el archivo de ayuda .chm en la sección especificada
                 Help.ShowHelp(null, pathAyuda, "ayudaMDI_Seguridad_2024.html");
             }
@@ -447,7 +480,7 @@ namespace Capa_Vista_Seguridad
                     {
                         if (Path.GetFileName(file).Equals(fileName, StringComparison.OrdinalIgnoreCase))
                         {
-                            MessageBox.Show("Archivo encontrado: " + file);
+                            //MessageBox.Show("Archivo encontrado: " + file);
                             return file;
                         }
                     }
