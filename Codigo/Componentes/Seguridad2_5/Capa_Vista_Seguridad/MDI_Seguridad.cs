@@ -24,6 +24,9 @@ namespace Capa_Vista_Seguridad
             lbl_nombreUsuario.Text = idUsuario;
             DateTime fechaHoraActual = DateTime.Now;
             Lbl_fecha.Text = fechaHoraActual.ToString();
+
+            // Mensaje de bienvenida
+            MessageBox.Show($"¡Bienvenido al módulo de seguridad, {idUsuario}!", "Bienvenida", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ShowNewForm(object sender, EventArgs e)

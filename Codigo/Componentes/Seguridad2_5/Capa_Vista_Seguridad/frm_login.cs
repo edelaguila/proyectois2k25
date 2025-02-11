@@ -82,8 +82,8 @@ namespace Capa_Vista_Seguridad
 
 
                             //Pasa el nombre de usuario al constructor de MDI_Seguridad
-                            //MDI_Seguridad formMDI = new MDI_Seguridad(Txt_usuario.Text);
-                            //formMDI.Show();
+                            MDI_Seguridad formMDI = new MDI_Seguridad(Txt_usuario.Text);
+                            formMDI.Show();
                         }
                         else
                         {
