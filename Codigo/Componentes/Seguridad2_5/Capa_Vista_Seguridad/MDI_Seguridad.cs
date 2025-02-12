@@ -220,7 +220,7 @@ namespace Capa_Vista_Seguridad
             logica l = new logica(idUsuario);
             l.funinsertarabitacora(idUsuario, "Cerro sesion en el sistema", "Login", "1301");
 
-            // Crear y mostrar el nuevo login
+            // Devolver al FormModulos con el usuario aun en linea Joel López 12/02/2024
             FormModulos login = new FormModulos(idUsuario);
             login.FormClosed += (s, args) =>
             {
