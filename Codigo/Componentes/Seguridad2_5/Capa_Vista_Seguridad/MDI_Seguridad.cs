@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO; // Necesario para Directory, File, Path y SearchOption
 using Capa_Controlador_Seguridad;
+using Interfac_V3;
 namespace Capa_Vista_Seguridad
 {
     public partial class MDI_Seguridad : Form
@@ -220,7 +221,7 @@ namespace Capa_Vista_Seguridad
             l.funinsertarabitacora(idUsuario, "Cerro sesion en el sistema", "Login", "1301");
 
             // Crear y mostrar el nuevo login
-            frm_login login = new frm_login();
+            FormModulos login = new FormModulos(idUsuario);
             login.FormClosed += (s, args) =>
             {
                 if (login.DialogResult != DialogResult.OK)
