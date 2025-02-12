@@ -74,15 +74,21 @@ namespace Interfac_V3
 
         private void btnSeguridad_Click(object sender, EventArgs e)
         {
-            var usuario = new Capa_Vista_Seguridad.frm_login();
-            string idUsuario = usuario.Txt_usuario.ToString();
+            // Ahora el MDI_Seguriidad se abrirá solamente si se hace login correctamente (Daniel Sierra 0901-21-12750 - 08-02-2025)
+            // Creamos y mostramos el formulario de login
+            using (frm_login login = new Capa_Vista_Seguridad.frm_login())
+            {
+                // Mostrar el formulario de login y esperar que regrese el resultado
+                if (login.ShowDialog() == DialogResult.OK) // Si el login es exitoso
+                {
+                    string idUsuario = login.obtenerNombreUsuario(); // Obtener el usuario logueado
 
-            frm_login login = new frm_login();
-            login.ShowDialog();
-
-            MDI_Seguridad formMDI = new MDI_Seguridad(idUsuario);
-            formMDI.Show();
-            this.Hide();
+                    // Abrir MDI_Seguridad solo si el login fue exitoso
+                    MDI_Seguridad formMDI = new MDI_Seguridad(idUsuario);
+                    formMDI.Show();
+                    this.Hide(); // Ocultar el formulario de inicio
+                }
+            }
         }
 
         private void btnSeguridad_MouseEnter(object sender, EventArgs e)
