@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaModulos.chm
+Contents file=AyudaModulos.hhc
+Default Window=AyudaModulos
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaModulos="Ayuda para el mantenimiento de módulos.","AyudaModulos.hhc",,"ayudaModulos_2024.html","ayudaModulos_2024.html",,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+ayudaModulos_2024.html
+
+[INFOTYPES]
+
