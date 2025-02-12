@@ -71,6 +71,8 @@ namespace Capa_Vista_Seguridad
 
                         if (bExisteUsuario)
                         {
+                            //Linea implementada para garantizar que el Login se realizó y permitir abrir el MDI_seguridad (Daniel Sierra 08/02/2025)
+                            this.DialogResult = DialogResult.OK;
                             // Ocultar el formulario de login en lugar de cerrarlo
                             this.Hide();
  
@@ -116,7 +118,9 @@ namespace Capa_Vista_Seguridad
 
         private void Btn_cancelar_Click_1(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Correccion de error, ahora el boton cancelar no cierra el programa y vuelve al menú de módulos y componentes (Realizado por Daniel Serra 0901-21-12740 el 08/02/2024)
+            this.DialogResult = DialogResult.Cancel; // Indicar que se canceló el login
+            this.Close(); // Cierra el formulario de login
         }
 
         private void Cb_ver_password_CheckedChanged_1(object sender, EventArgs e)
