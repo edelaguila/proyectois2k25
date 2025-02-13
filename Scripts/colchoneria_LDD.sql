@@ -92,12 +92,13 @@ CREATE   PROCEDURE `cambiarContrasenia` (IN `usuario` VARCHAR(255), IN `nuevaCon
     END IF;
 END$$
 
+-- Se hizó cambio en el procedimiento para que valide si el usuario esta activo o inactivo / 08-02-2025 / Brandon Boch 
 CREATE   PROCEDURE `procedimientoLogin` (IN `p_usuario` VARCHAR(20), IN `p_clave` VARCHAR(100))   BEGIN
     DECLARE usuario_existe INT;
 
     SELECT COUNT(*) INTO usuario_existe
     FROM tbl_usuarios
-    WHERE username_usuario = p_usuario AND password_usuario = p_clave;
+    WHERE username_usuario = p_usuario AND password_usuario = p_clave AND estado_usuario = 1;
 
     -- Si el usuario existe, actualiza el tiempo de última conexión
     IF usuario_existe > 0 THEN
