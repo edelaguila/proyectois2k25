@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantemientoMódulos));
             this.Gpb_buscar = new System.Windows.Forms.GroupBox();
             this.Txt_buscar = new System.Windows.Forms.TextBox();
             this.Gpb_datos = new System.Windows.Forms.GroupBox();
+            this.Dgv_modulos = new System.Windows.Forms.DataGridView();
             this.Txt_nombre = new System.Windows.Forms.TextBox();
             this.Txt_codigo = new System.Windows.Forms.TextBox();
             this.Gpb_estado = new System.Windows.Forms.GroupBox();
@@ -50,11 +52,10 @@
             this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
             this.Btn_agregar = new System.Windows.Forms.Button();
-            this.Dgv_modulos = new System.Windows.Forms.DataGridView();
             this.Gpb_buscar.SuspendLayout();
             this.Gpb_datos.SuspendLayout();
-            this.Gpb_estado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_modulos)).BeginInit();
+            this.Gpb_estado.SuspendLayout();
             this.SuspendLayout();
             // 
             // Gpb_buscar
@@ -76,7 +77,7 @@
             this.Txt_buscar.Location = new System.Drawing.Point(37, 36);
             this.Txt_buscar.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_buscar.Name = "Txt_buscar";
-            this.Txt_buscar.Size = new System.Drawing.Size(573, 30);
+            this.Txt_buscar.Size = new System.Drawing.Size(573, 40);
             this.Txt_buscar.TabIndex = 6;
             // 
             // Gpb_datos
@@ -100,6 +101,20 @@
             this.Gpb_datos.TabStop = false;
             this.Gpb_datos.Text = "Datos";
             // 
+            // Dgv_modulos
+            // 
+            this.Dgv_modulos.AllowUserToAddRows = false;
+            this.Dgv_modulos.AllowUserToDeleteRows = false;
+            this.Dgv_modulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Dgv_modulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_modulos.Location = new System.Drawing.Point(7, 227);
+            this.Dgv_modulos.Name = "Dgv_modulos";
+            this.Dgv_modulos.ReadOnly = true;
+            this.Dgv_modulos.RowHeadersWidth = 72;
+            this.Dgv_modulos.RowTemplate.Height = 31;
+            this.Dgv_modulos.Size = new System.Drawing.Size(634, 194);
+            this.Dgv_modulos.TabIndex = 259;
+            // 
             // Txt_nombre
             // 
             this.Txt_nombre.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,7 +132,7 @@
             this.Txt_codigo.Location = new System.Drawing.Point(246, 27);
             this.Txt_codigo.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_codigo.Name = "Txt_codigo";
-            this.Txt_codigo.Size = new System.Drawing.Size(297, 28);
+            this.Txt_codigo.Size = new System.Drawing.Size(297, 36);
             this.Txt_codigo.TabIndex = 4;
             // 
             // Gpb_estado
@@ -140,7 +155,7 @@
             this.Rdb_inhabilitado.Location = new System.Drawing.Point(248, 29);
             this.Rdb_inhabilitado.Margin = new System.Windows.Forms.Padding(4);
             this.Rdb_inhabilitado.Name = "Rdb_inhabilitado";
-            this.Rdb_inhabilitado.Size = new System.Drawing.Size(131, 25);
+            this.Rdb_inhabilitado.Size = new System.Drawing.Size(180, 34);
             this.Rdb_inhabilitado.TabIndex = 1;
             this.Rdb_inhabilitado.TabStop = true;
             this.Rdb_inhabilitado.Text = "Inhabilitado";
@@ -152,7 +167,7 @@
             this.Rdb_habilitado.Location = new System.Drawing.Point(74, 29);
             this.Rdb_habilitado.Margin = new System.Windows.Forms.Padding(4);
             this.Rdb_habilitado.Name = "Rdb_habilitado";
-            this.Rdb_habilitado.Size = new System.Drawing.Size(118, 25);
+            this.Rdb_habilitado.Size = new System.Drawing.Size(160, 34);
             this.Rdb_habilitado.TabIndex = 0;
             this.Rdb_habilitado.TabStop = true;
             this.Rdb_habilitado.Text = "Habilitado";
@@ -166,7 +181,7 @@
             this.Txt_descripcionmodulo.Location = new System.Drawing.Point(69, 111);
             this.Txt_descripcionmodulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Txt_descripcionmodulo.Name = "Txt_descripcionmodulo";
-            this.Txt_descripcionmodulo.Size = new System.Drawing.Size(107, 21);
+            this.Txt_descripcionmodulo.Size = new System.Drawing.Size(155, 30);
             this.Txt_descripcionmodulo.TabIndex = 2;
             this.Txt_descripcionmodulo.Text = "Descripción";
             // 
@@ -177,7 +192,7 @@
             this.Txt_nombremodulo.Location = new System.Drawing.Point(69, 69);
             this.Txt_nombremodulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Txt_nombremodulo.Name = "Txt_nombremodulo";
-            this.Txt_nombremodulo.Size = new System.Drawing.Size(77, 21);
+            this.Txt_nombremodulo.Size = new System.Drawing.Size(110, 30);
             this.Txt_nombremodulo.TabIndex = 1;
             this.Txt_nombremodulo.Text = "Nombre";
             // 
@@ -188,7 +203,7 @@
             this.Txt_id.Location = new System.Drawing.Point(69, 27);
             this.Txt_id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Txt_id.Name = "Txt_id";
-            this.Txt_id.Size = new System.Drawing.Size(169, 21);
+            this.Txt_id.Size = new System.Drawing.Size(241, 30);
             this.Txt_id.TabIndex = 0;
             this.Txt_id.Text = "Código de Módulo";
             // 
@@ -198,7 +213,7 @@
             this.Txt_descripcion.Location = new System.Drawing.Point(244, 108);
             this.Txt_descripcion.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_descripcion.Name = "Txt_descripcion";
-            this.Txt_descripcion.Size = new System.Drawing.Size(297, 28);
+            this.Txt_descripcion.Size = new System.Drawing.Size(297, 36);
             this.Txt_descripcion.TabIndex = 1;
             this.Txt_descripcion.Tag = "1";
             // 
@@ -209,7 +224,7 @@
             this.Txt_titulo.ForeColor = System.Drawing.Color.Transparent;
             this.Txt_titulo.Location = new System.Drawing.Point(198, 9);
             this.Txt_titulo.Name = "Txt_titulo";
-            this.Txt_titulo.Size = new System.Drawing.Size(561, 45);
+            this.Txt_titulo.Size = new System.Drawing.Size(775, 63);
             this.Txt_titulo.TabIndex = 291;
             this.Txt_titulo.Text = "M a n t e n i m i e n t o   d e   M ó d u l o s";
             // 
@@ -348,23 +363,9 @@
             this.Btn_agregar.UseVisualStyleBackColor = false;
             this.Btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
             // 
-            // Dgv_modulos
-            // 
-            this.Dgv_modulos.AllowUserToAddRows = false;
-            this.Dgv_modulos.AllowUserToDeleteRows = false;
-            this.Dgv_modulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.Dgv_modulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_modulos.Location = new System.Drawing.Point(7, 227);
-            this.Dgv_modulos.Name = "Dgv_modulos";
-            this.Dgv_modulos.ReadOnly = true;
-            this.Dgv_modulos.RowHeadersWidth = 72;
-            this.Dgv_modulos.RowTemplate.Height = 31;
-            this.Dgv_modulos.Size = new System.Drawing.Size(634, 194);
-            this.Dgv_modulos.TabIndex = 259;
-            // 
             // frmMantemientoMódulos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(223)))));
             this.ClientSize = new System.Drawing.Size(973, 685);
@@ -382,6 +383,7 @@
             this.Controls.Add(this.Gpb_datos);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMantemientoMódulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -391,9 +393,9 @@
             this.Gpb_buscar.PerformLayout();
             this.Gpb_datos.ResumeLayout(false);
             this.Gpb_datos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_modulos)).EndInit();
             this.Gpb_estado.ResumeLayout(false);
             this.Gpb_estado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_modulos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
