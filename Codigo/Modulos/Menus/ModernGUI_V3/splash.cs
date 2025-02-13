@@ -22,7 +22,7 @@ namespace Interfac_V3
                 timer1.Stop();
                 this.Hide();
 
-                frm_login login = new frm_login();
+               frm_login login = new frm_login();
                login.ShowDialog();
 
 
