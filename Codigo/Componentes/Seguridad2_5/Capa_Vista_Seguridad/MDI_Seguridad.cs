@@ -17,14 +17,17 @@ namespace Capa_Vista_Seguridad
     {
         private int childFormNumber = 0;
         string idUsuario;
+        private Timer timer;
 
         public MDI_Seguridad(string idUsuario)
         {
             InitializeComponent();
             this.idUsuario = idUsuario;
             lbl_nombreUsuario.Text = idUsuario;
-            DateTime fechaHoraActual = DateTime.Now;
-            Lbl_fecha.Text = fechaHoraActual.ToString();
+            timer = new Timer();
+            timer.Interval = 1000; // 1000 ms = 1 segundo
+            timer.Tick += timer1_Tick;
+            timer.Start();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -474,6 +477,17 @@ namespace Capa_Vista_Seguridad
         private void toolStripStatusLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void MDI_Seguridad_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            timer.Stop();
+            timer.Dispose();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Lbl_fecha.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
 
         //------------------------------------------ Fin KATERYN DE LEON y Gabriela Suc ------------------------------------------

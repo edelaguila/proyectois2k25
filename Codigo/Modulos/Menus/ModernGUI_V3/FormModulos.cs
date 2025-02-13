@@ -10,13 +10,13 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Vista_Nominas;
+//using Capa_Vista_Nominas;
 
-using Capa_Vista_Banco;
-using Capa_Vista_Contabilidad;
+//using Capa_Vista_Banco;
+//using Capa_Vista_Contabilidad;
 //using Capa_Vista_Produccion;
 //using Capa_Vista_Banco;
-using Capa_Vista_CompraVenta;
+//using Capa_Vista_CompraVenta;
 
 
 namespace Interfac_V3
@@ -134,7 +134,7 @@ namespace Interfac_V3
                     // Abrir MDI_Seguridad solo si el login fue exitoso
                     MDI_Seguridad formMDI = new MDI_Seguridad(idUsuario);
                     formMDI.Show();
-                    this.Hide(); // Ocultar el formulario de inicio
+                    this.Hide(); // Ocultar el formulario de inicio*/
 
                 }
                 else
@@ -188,8 +188,8 @@ namespace Interfac_V3
             Aqui debe de agregarse la referencia a nominas
             */
 
-            frm_principal_nominas nominas = new frm_principal_nominas(UsuarioSesion.GetIdUsuario());
-            nominas.Show();
+            //frm_principal_nominas nominas = new frm_principal_nominas(UsuarioSesion.GetIdUsuario());
+            //nominas.Show();
 
 
         }
@@ -205,8 +205,8 @@ namespace Interfac_V3
 
         private void Btn_Logistica_Click(object sender, EventArgs e)
         {
-            Capa_Vista_Logistica.FormPrincipal logistica = new Capa_Vista_Logistica.FormPrincipal(UsuarioSesion.GetIdUsuario());
-            logistica.Show();
+            //Capa_Vista_Logistica.FormPrincipal logistica = new Capa_Vista_Logistica.FormPrincipal(UsuarioSesion.GetIdUsuario());
+            //logistica.Show();
         }
 
         private void Btn_Logistica_MouseEnter(object sender, EventArgs e)
@@ -220,8 +220,8 @@ namespace Interfac_V3
 
         private void Btn_Contabilidad_Click(object sender, EventArgs e)
         {
-            Contabilidad_MDI conta = new Contabilidad_MDI(UsuarioSesion.GetIdUsuario());
-            conta.Show();
+            //Contabilidad_MDI conta = new Contabilidad_MDI(UsuarioSesion.GetIdUsuario());
+            //conta.Show();
         }
 
         private void Btn_Contabilidad_MouseEnter(object sender, EventArgs e)
@@ -235,8 +235,8 @@ namespace Interfac_V3
 
         private void Btn_Compras_Click(object sender, EventArgs e)
         {
-            Frm_MDI_general_CompraVenta Cv = new Frm_MDI_general_CompraVenta(UsuarioSesion.GetIdUsuario());
-            Cv.Show();
+            //Frm_MDI_general_CompraVenta Cv = new Frm_MDI_general_CompraVenta(UsuarioSesion.GetIdUsuario());
+            //Cv.Show();
 
         }
 
@@ -252,8 +252,8 @@ namespace Interfac_V3
         private void Btn_Bancos_Click(object sender, EventArgs e)
         {
             // Redirige a Modulo Bancos
-            frm_principal_bancos banco = new frm_principal_bancos(UsuarioSesion.GetIdUsuario());
-            banco.Show();
+            //frm_principal_bancos banco = new frm_principal_bancos(UsuarioSesion.GetIdUsuario());
+            //banco.Show();
 
         }
 
