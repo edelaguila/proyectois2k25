@@ -2008,5 +2008,33 @@ namespace Capa_Modelo_Seguridad
         }
 
         //---------------------------------Emerzon Garcia Termina------------------------------------------------------------------------------------------
+
+        /********Ismar Cortez 10/2/25***/
+        public string ObtenerIdUsuarioPorUsername(string sUsername)
+        {
+            string sSql = "SELECT Pk_id_usuario FROM tbl_usuarios WHERE username_usuario = ?"; // Parámetro explícito
+
+            using (OdbcCommand command = new OdbcCommand(sSql, cn.conectar()))
+            {
+                command.Parameters.AddWithValue("@username", sUsername);
+
+                using (OdbcDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader["Pk_id_usuario"].ToString();
+                    }
+                    else
+                    {
+                        return "-1";
+                    }
+                }
+            }
+        }
+        /*****************************************************************************/
+
+
+
+
     }
 }
