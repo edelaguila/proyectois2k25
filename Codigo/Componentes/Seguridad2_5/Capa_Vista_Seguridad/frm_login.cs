@@ -119,8 +119,11 @@ namespace Capa_Vista_Seguridad
         private void Btn_cancelar_Click_1(object sender, EventArgs e)
         {
             //Correccion de error, ahora el boton cancelar no cierra el programa y vuelve al menú de módulos y componentes (Realizado por Daniel Serra 0901-21-12740 el 08/02/2024)
-            this.DialogResult = DialogResult.Cancel; // Indicar que se canceló el login
-            this.Close(); // Cierra el formulario de login
+            //this.DialogResult = DialogResult.Cancel; // Indicar que se canceló el login
+            //this.Close(); // Cierra el formulario de login
+
+            /*Modificado por Ismar Cortez 12/2/25**/
+            Application.Exit();
         }
 
         private void Cb_ver_password_CheckedChanged_1(object sender, EventArgs e)
