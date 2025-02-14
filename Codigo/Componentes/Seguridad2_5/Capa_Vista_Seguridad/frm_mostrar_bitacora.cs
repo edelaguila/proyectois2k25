@@ -212,7 +212,7 @@ namespace Capa_Vista_Seguridad
 
             // Retroceder a la carpeta del proyecto
             string projectPath = Path.GetFullPath(Path.Combine(executablePath, @"..\..\"));
-            MessageBox.Show("1" + projectPath);
+            //MessageBox.Show("1" + projectPath);
 
             // Combinar con la ruta fija de "asis22k24proy2\Codigo\Componentes\Seguridad"
             //string basePath = Path.Combine(projectPath, @"asis22k24proy2\Codigo\Componentes\Seguridad");
@@ -230,7 +230,7 @@ namespace Capa_Vista_Seguridad
             // Verifica si el archivo existe antes de intentar abrirlo
             if (!string.IsNullOrEmpty(pathAyuda))
             {
-                MessageBox.Show("El archivo sí está.");
+                //MessageBox.Show("El archivo sí está.");
                 // Abre el archivo de ayuda .chm en la sección especificada
                 Help.ShowHelp(null, pathAyuda, "ayudaMostrarBitacora_2024.html");
             }
@@ -256,7 +256,7 @@ namespace Capa_Vista_Seguridad
                     {
                         if (Path.GetFileName(file).Equals(fileName, StringComparison.OrdinalIgnoreCase))
                         {
-                            MessageBox.Show("Archivo encontrado: " + file);
+                            //MessageBox.Show("Archivo encontrado: " + file);
                             return file;
                         }
                     }

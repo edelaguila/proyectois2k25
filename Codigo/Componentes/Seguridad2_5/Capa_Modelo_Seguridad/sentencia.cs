@@ -71,7 +71,6 @@ namespace Capa_Modelo_Seguridad
             string smodulos = "SELECT Pk_id_modulos as ID_Modulos, nombre_modulo as Modulo, descripcion_modulo as Descripcion, estado_modulo as Estado FROM Tbl_modulos";
             OdbcDataAdapter datamodulos = new OdbcDataAdapter(smodulos, cn.conectar());
             funInsertarBitacora(idUsuario, "Realizo una consulta a modulos", "tbl_modulos", "1000");
-            MessageBox.Show("");
             return datamodulos;
         }
         /**************************************************/
