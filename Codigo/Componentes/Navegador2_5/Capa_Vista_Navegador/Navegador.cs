@@ -101,8 +101,6 @@ namespace Capa_Vista_Navegador
             tpAyuda.SetToolTip(Btn_Salir, "Cerrar el formulario actual.");
             tpAyuda.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
 
-            Btn_Refrescar.Enabled = false;
-
         }
 
 
@@ -303,15 +301,15 @@ namespace Capa_Vista_Navegador
             this.sIdAplicacion = sIdAplicacion; // Asigna el ID de la aplicación
         }
 
-        //-----------Comentarios fueron hechos por Ammy Patricia Catún López 0901-21-4857 28/01/2024 -----------------------------
+
         private int NumeroAlias()
         {
-            int iIndex = 0;//Declara e inicializa la variable iIndex en 0, Este servira como contador.
-            foreach (string sCad in arrAliasCampos)//Recorre cada elemento del arreglo de arraAliasCampos.
+            int iIndex = 0;
+            foreach (string sCad in arrAliasCampos)
             {
-                if (sCad != null && sCad != "")//Verifica si el elemento no es nulo ni una cadena vacía.
+                if (sCad != null && sCad != "")
                 {
-                    iIndex++;//Si la condición se cumple, incrementa el contador
+                    iIndex++;
                 }
             }
             return iIndex; // Devuelve el número de alias asignados
@@ -356,215 +354,165 @@ namespace Capa_Vista_Navegador
             return sDato; // Devuelve el valor del campo encontrado
         }
 
-        // Método para asignar alias a los campos (se actualizó de aliasC a arrAliasCampos)
         public void AsignarAlias(string[] arrAlias)
         {
-            arrAlias.CopyTo(arrAliasCampos, 0); // Copia los alias desde el arreglo de entrada arrAlias al arreglo arrAliasCampos
+            arrAlias.CopyTo(arrAliasCampos, 0); // Cambiado aliasC a arrAliasCampos
         }
-        //*******************Comentraios hechos por Ammy Patricia Catun Lopez 0901-21-4857*********************
+
         //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
 
-        // Método para asignar la ayuda relacionada con un formulario
         public void AsignarAyuda(string sAyudar)
         {
-            // Se verifica si la tabla 'ayuda' existe
             string sAyudaOK = logic.TestTabla("ayuda");
-
-            // Si la tabla 'ayuda' existe (sAyudaOK está vacío), procede con la validación
             if (sAyudaOK == "")
             {
-                // Si existe un registro para el ID de ayuda, obtiene los valores de ruta e índice de la ayuda
                 if (logic.ContarRegAyuda(sAyudar) > 0)
                 {
-                    sIdAyuda = sAyudar; // Asigna el ID de la ayuda
-                    sRutaAyuda = logic.ModRuta(sIdAyuda); // Obtiene la ruta de la ayuda
-                    sIndiceAyuda = logic.ModIndice(sIdAyuda); // Obtiene el índice de la ayuda
-
-                    // Verifica si la ruta o el índice están vacíos o nulos
+                    sIdAyuda = sAyudar; 
+                    sRutaAyuda = logic.ModRuta(sIdAyuda);
+                    sIndiceAyuda = logic.ModIndice(sIdAyuda); 
                     if (sRutaAyuda == "" || sIndiceAyuda == "" || sRutaAyuda == null || sIndiceAyuda == null)
                     {
-                        // Muestra un mensaje de advertencia si la ruta o el índice están vacíos
                         DialogResult drValidacion = MessageBox.Show("La Ruta o índice de la ayuda está vacía", "Verificación de requisitos", MessageBoxButtons.OK);
-
-                        // Si el usuario confirma el mensaje, se marca como incorrecto
                         if (drValidacion == DialogResult.OK)
                         {
-                            iCorrecto = 1; // Marca como incorrecto
+                            iCorrecto = 1; 
                         }
                     }
                 }
                 else
                 {
-                    // Si no se encuentra el ID de ayuda, muestra un mensaje para verificar el ID
                     DialogResult drValidacion = MessageBox.Show("Por favor verifique el id de Ayuda asignado al form", "Verificación de requisitos", MessageBoxButtons.OK);
-
-                    // Si el usuario confirma el mensaje, se marca como incorrecto
                     if (drValidacion == DialogResult.OK)
                     {
-                        iCorrecto = 1; // Marca como incorrecto
+                        iCorrecto = 1;
                     }
                 }
 
             }
             else
             {
-                // Si la tabla 'ayuda' no existe, muestra un mensaje para incluirla
                 DialogResult drValidacion = MessageBox.Show(sAyudaOK + ", Por favor incluirla", "Verificación de requisitos", MessageBoxButtons.OK);
-
-                // Si el usuario confirma el mensaje, se marca como incorrecto
                 if (drValidacion == DialogResult.OK)
                 {
-                    iCorrecto = 1; // Marca como incorrecto
+                    iCorrecto = 1; 
                 }
             }
         }
 
-        // Método para asignar el ID de un reporte
         public void AsignarReporte(string sRepo)
         {
-            sIdReporte = sRepo; // Asigna el ID del reporte
+            sIdReporte = sRepo; 
         }
 
-        //----------Comentarios hechos por Ammy Catún 0901-21-4857------------------
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS ***************************** 
 
-        // Asigna la referencia al formulario de salida, que se utilizará más adelante.
         public void AsignarSalida(Form frmSalida)
         {
-            frmCerrar = frmSalida;
+            frmCerrar = frmSalida; 
         }
 
-        // Asigna el color de la fuente que se usará en el formulario o componente.
         public void AsignarColorFuente(Color colFuenteC)
         {
-            cColorFuente = colFuenteC;
+            cColorFuente = colFuenteC; 
         }
 
-        // Asigna el nombre de la tabla principal que se utilizará en la operación.
         public void AsignarTabla(string sTabla)
         {
-            sTablaPrincipal = sTabla;
+            sTablaPrincipal = sTabla; 
         }
 
-        // Asigna una lista de tablas adicionales que se utilizarán en la operación.
         public void AsignarTablas(List<string> lstTablas)
         {
-            lstTablasAdicionales = lstTablas;
+            lstTablasAdicionales = lstTablas; 
         }
 
-        // Asigna el nombre del formulario y actualiza el campo de texto con el nombre asignado.
         public void AsignarNombreForm(string sNom)
         {
-            sNombreFormulario = sNom;
-            Txt_Tabla.Text = sNombreFormulario; // Actualiza el texto de un control de texto con el nombre del formulario.
+            sNombreFormulario = sNom; 
+            Txt_Tabla.Text = sNombreFormulario; 
         }
 
-
         //******************************************** CODIGO HECHO POR JOSUE CACAO ***************************** 
-        // Método para asignar un ComboBox con datos provenientes de una tabla de la base de datos
-        public void AsignarComboConTabla(string sTablaPrincipal, string sCampoClave, string sCampoDisplay, int iModo)
-        {
-            // Verifica si la tabla existe llamando a la función TestTabla de la lógica de negocio
-            string sTablaOK = logic.TestTabla(sTablaPrincipal);
 
-            // Si la tabla es válida (es decir, TestTabla no devuelve un mensaje de error)
+       public void AsignarComboConTabla(string sTablaPrincipal, string sCampoClave, string sCampoDisplay, int iModo)
+        {
+            // Verifica si la sTablaPrincipal existe
+            string sTablaOK = logic.TestTabla(sTablaPrincipal);
             if (sTablaOK == "")
             {
-                // Asigna los valores correspondientes al combo en los arreglos de almacenamiento
-                arrModoCampoCombo[iNumeroCombos] = iModo;             // Guarda el modo del ComboBox
-                arrTablaCombo[iNumeroCombos] = sTablaPrincipal;       // Guarda el nombre de la tabla
-                arrCampoCombo[iNumeroCombos] = sCampoClave;          // Guarda el campo clave (ID o identificador)
-                arrCampoDisplayCombo[iNumeroCombos] = sCampoDisplay; // Guarda el campo a mostrar en el ComboBox
-
-                // Agrega la información a una lista de datos del combo usando una tupla
+                // Asigna los valores para el combo
+                arrModoCampoCombo[iNumeroCombos] = iModo; 
+                arrTablaCombo[iNumeroCombos] = sTablaPrincipal;
+                arrCampoCombo[iNumeroCombos] = sCampoClave;
+                arrCampoDisplayCombo[iNumeroCombos] = sCampoDisplay;
                 comboData.Add(new Tuple<string, string, string>(sTablaPrincipal, sCampoClave, sCampoDisplay));
-
-                // Incrementa el contador de combos
                 iNumeroCombos++;
+               
             }
             else
             {
-                // Si la tabla no existe o hay un problema con el campo, muestra un mensaje de error al usuario
-                DialogResult drValidacion = MessageBox.Show(
-                    sTablaOK + ", o el campo seleccionado\n para el ComboBox es incorrecto", // Mensaje de error
-                    "Verificación de requisitos", // Título de la ventana
-                    MessageBoxButtons.OK // Solo un botón "OK"
-                );
-
-                // Si el usuario presiona "OK", se marca la validación como incorrecta
+                // Muestra error si la sTablaPrincipal o campo son incorrectos
+                DialogResult drValidacion = MessageBox.Show(sTablaOK + ", o el campo seleccionado\n para el ComboBox es incorrecto", "Verificación de requisitos", MessageBoxButtons.OK);
                 if (drValidacion == DialogResult.OK)
                 {
-                    iCorrecto = 1; // Marca que hubo un error (se asume que iCorrecto es un flag de validación)
+                    iCorrecto = 1; // Cambiado correcto a iCorrecto
                 }
             }
         }
-
 
 
         //******************************************** CODIGO HECHO POR ANIKA ESCOTO ***************************** 
 
-        // Método para asignar un nuevo color de fondo
         public void AsignarColorFondo(Color colNuevo)
         {
-            cNuevoColorFondo = colNuevo; // Guarda el color recibido en la variable cNuevoColorFondo
+            cNuevoColorFondo = colNuevo; 
         }
 
-        // Método para asignar un combo con una lista de elementos
         public void AsignarComboConLista(int iPos, string sLista)
         {
-            iPosicionCombo = iPos - 1; // Ajusta la posición del combo restando 1 (para indexar desde 0)
-
-            LimpiarLista(sLista); // Llama al método para limpiar y cargar la lista de elementos
-
-            arrModoCampoCombo[iNumeroCombos] = 0; // Asigna un modo específico para el combo en la lista de modos
-            iNumeroCombos++; // Incrementa el número total de combos registrados
+            iPosicionCombo = iPos - 1; 
+            LimpiarLista(sLista);
+            arrModoCampoCombo[iNumeroCombos] = 0; 
+            iNumeroCombos++;
         }
 
-        // Método para limpiar una lista de elementos y separarlos en un array
         void LimpiarLista(string sCadena)
         {
-            LimpiarListaItems(); // Llama a un método (no mostrado aquí) que limpia la lista de items previamente almacenados
-
-            int iContadorCadena = 0; // Índice para recorrer la cadena de entrada
-            int iContadorArray = 0; // Índice para almacenar elementos en el array
-            string sPalabra = ""; // Variable temporal para almacenar cada palabra extraída
-
-            // Bucle que recorre la cadena carácter por carácter
+            LimpiarListaItems();
+            int iContadorCadena = 0;
+            int iContadorArray = 0;
+            string sPalabra = "";
             while (iContadorCadena < sCadena.Length)
             {
-                // Si el carácter actual no es '|', lo agrega a la palabra en construcción
                 if (sCadena[iContadorCadena] != '|')
                 {
-                    sPalabra += sCadena[iContadorCadena]; // Agrega el carácter a la palabra temporal
-                    iContadorCadena++; // Avanza al siguiente carácter
+                    sPalabra += sCadena[iContadorCadena];
+                    iContadorCadena++;
                 }
                 else
                 {
-                    // Si encuentra '|', almacena la palabra en el array y reinicia la variable sPalabra
-                    arrListaItems[iContadorArray] = sPalabra; // Guarda la palabra en el array
-                    sPalabra = ""; // Reinicia la variable para la siguiente palabra
-                    iContadorArray++; // Avanza al siguiente índice del array
-                    iContadorCadena++; // Avanza al siguiente carácter para continuar la lectura
+                    arrListaItems[iContadorArray] = sPalabra; 
+                    sPalabra = "";
+                    iContadorArray++;
+                    iContadorCadena++;
                 }
             }
         }
 
-        // Método para limpiar todos los elementos de la lista
+
         void LimpiarListaItems()
         {
-            // Recorre todo el arreglo arrListaItems
-            for (int iIndex = 0; iIndex < arrListaItems.Length; iIndex++)
+            for (int iIndex = 0; iIndex < arrListaItems.Length; iIndex++) 
             {
-                // Asigna una cadena vacía a cada posición del arreglo, eliminando su contenido previo
-                arrListaItems[iIndex] = "";
+                arrListaItems[iIndex] = ""; 
             }
         }
-
         //******************************************** CODIGO HECHO POR SEBASTIAN LETONA ***************************** 
 
         //******************************************** CODIGO HECHO POR JORGE AVILA***************************** 
-        // Método para crear dinámicamente los componentes en el formulario
-        void CreaComponentes()        {
+        void CreaComponentes()
+        {
             // Obtiene los campos, tipos de datos y llaves de la sTablaPrincipal
             string[] sCampos = logic.Campos(sTablaPrincipal);
             string[] sTipos = logic.Tipos(sTablaPrincipal);
@@ -580,7 +528,7 @@ namespace Capa_Vista_Navegador
             int posY = 150; // Posición inicial en Y
             int desplazamientoY = 60; // Espacio vertical entre controles
 
-            while (iIndex < iFin) //Itera sobre cada campo de la tabla
+            while (iIndex < iFin)
             {
                 // Calcular la posición en la que se colocará el Label y el control asociado
                 int currentPosY = posY + ((iNumeroCampos - 1) % maxFilasPorColumna) * desplazamientoY;
@@ -594,90 +542,90 @@ namespace Capa_Vista_Navegador
 
                 // Crea un Label para cada campo
                 Label lb = new Label();
-                lb.Text = arrAliasCampos[iIndex];//Asigna el alias del campo como texto de el
-                lb.Location = new Point(posX, currentPosY);//Establece la posición del label en formulario
-                lb.Name = "lb_" + sCampos[iIndex];//Asigna un nombre único basado en elcampo
-                lb.Font = new Font(fFuenteLabels.FontFamily, fFuenteLabels.Size * 1.3f, FontStyle.Bold | fFuenteLabels.Style); //Aplica estilo al texto
-                lb.ForeColor = cColorFuente;//Define el color del texto del Label
-                lb.AutoSize = true; //Permite que el  label se ajuste automaticamente a su contenido
-                this.Controls.Add(lb); //Agrega el label al formulario 
+                lb.Text = arrAliasCampos[iIndex];
+                lb.Location = new Point(posX, currentPosY);
+                lb.Name = "lb_" + sCampos[iIndex];
+                lb.Font = new Font(fFuenteLabels.FontFamily, fFuenteLabels.Size * 1.3f, FontStyle.Bold | fFuenteLabels.Style);
+                lb.ForeColor = cColorFuente;
+                lb.AutoSize = true;
+                this.Controls.Add(lb);
 
                 // Dependiendo del tipo de campo, crea el componente adecuado
-                string nombreComponente = sCampos[iIndex];//Define el nombre del componente y su posición debajo del label
-                Point controlPosition = new Point(posX, currentPosY + lb.Height + 5); // Posicióna el control debajo del label.
+                string nombreComponente = sCampos[iIndex];
+                Point controlPosition = new Point(posX, currentPosY + lb.Height + 5); // Posición del control debajo del Label
 
-                switch (sTipos[iIndex]) //Evalua el tipo de campo y crea el control adecuado
+                switch (sTipos[iIndex])
                 {
-                    case "int": //Si el campo es numero entero
+                    case "int":
                         arrTipoCampos[iIndex] = "Num";
                         if (sLlaves[iIndex] != "MUL")
                         {
-                            CrearTextBoxNumerico(nombreComponente, controlPosition); //Crea un  TextBox para números
+                            CrearTextBoxNumerico(nombreComponente, controlPosition);
                         }
-                        else//Si es una clave foránea, crea un ComboBox con los valores relacionados
+                        else
                         {
-                            string tablaRelacionada = logic.DetectarTablaRelacionada(sTablaPrincipal, sCampos[iIndex]);//Obtiene la tabla relacionada
-                            string campoClave = logic.DetectarClaveRelacionada(sTablaPrincipal, sCampos[iIndex]);//obtiene la clave relacionada
+                            string tablaRelacionada = logic.DetectarTablaRelacionada(sTablaPrincipal, sCampos[iIndex]);
+                            string campoClave = logic.DetectarClaveRelacionada(sTablaPrincipal, sCampos[iIndex]);
 
-                            dicItems = logic.Items(tablaRelacionada, campoClave, campoClave);//Obtiene los valores disponibles
+                            dicItems = logic.Items(tablaRelacionada, campoClave, campoClave);
 
-                            CrearComboBox(nombreComponente, controlPosition); //Crea un comboBox
+                            CrearComboBox(nombreComponente, controlPosition);
                         }
                         break;
 
                     case "varchar":
-                    case "text": //Si el campo es de tipo texto 
+                    case "text":
                         arrTipoCampos[iIndex] = "Text";
-                        if (sLlaves[iIndex] != "MUL") //si no es clave foránea
+                        if (sLlaves[iIndex] != "MUL")
                         {
-                            CrearTextBoxVarchar(nombreComponente, controlPosition);//Crea un TextBox para texto
+                            CrearTextBoxVarchar(nombreComponente, controlPosition);
                         }
-                        else//Si es una clave foránea, crea un comboBox con los valores relacionados
+                        else
                         {
-                            string tablaRelacionada = logic.DetectarTablaRelacionada(sTablaPrincipal, sCampos[iIndex]);//Obtiene la tabla relacionada
-                            string campoClave = logic.DetectarClaveRelacionada(sTablaPrincipal, sCampos[iIndex]); //Obtiene la clave relacionada
+                            string tablaRelacionada = logic.DetectarTablaRelacionada(sTablaPrincipal, sCampos[iIndex]);
+                            string campoClave = logic.DetectarClaveRelacionada(sTablaPrincipal, sCampos[iIndex]);
 
-                            dicItems = logic.Items(tablaRelacionada, campoClave, campoClave);//Obtiene valores disponibles
+                            dicItems = logic.Items(tablaRelacionada, campoClave, campoClave);
 
                             CrearComboBox(nombreComponente, controlPosition);
                         }
                         break;
 
                     case "date":
-                    case "datetime"://Si el campo es de tipo fecha o fecha y hora
+                    case "datetime":
                         arrTipoCampos[iIndex] = "Date";
-                        if (sLlaves[iIndex] != "MUL") //Si no es clave foránea
+                        if (sLlaves[iIndex] != "MUL")
                         {
-                            CrearDateTimePicker(nombreComponente, controlPosition);//Crea un Datetimepicker
+                            CrearDateTimePicker(nombreComponente, controlPosition);
                         }
-                        else // Si es clave foránea, crea un ComboBox con los valores relacionados
+                        else
                         {
-                            string tablaRelacionada = logic.DetectarTablaRelacionada(sTablaPrincipal, sCampos[iIndex]); //// Obtiene la tabla relacionada
-                            string campoClave = logic.DetectarClaveRelacionada(sTablaPrincipal, sCampos[iIndex]);// Obtiene la clave relacionada
+                            string tablaRelacionada = logic.DetectarTablaRelacionada(sTablaPrincipal, sCampos[iIndex]);
+                            string campoClave = logic.DetectarClaveRelacionada(sTablaPrincipal, sCampos[iIndex]);
 
-                            dicItems = logic.Items(tablaRelacionada, campoClave, campoClave);  // Obtiene los valores disponibles
+                            dicItems = logic.Items(tablaRelacionada, campoClave, campoClave);
 
-                            CrearComboBox(nombreComponente, controlPosition); // Crea un ComboBox
+                            CrearComboBox(nombreComponente, controlPosition);
                         }
                         break;
 
-                    case "time": //Si el campo es de tipo hora
+                    case "time":
                         arrTipoCampos[iIndex] = "Time";
-                        CrearCampoHora(nombreComponente, controlPosition);//Crea controlpara regresar hora
+                        CrearCampoHora(nombreComponente, controlPosition);
                         break;
 
                     case "float":
                     case "decimal":
-                    case "double":  //Si el campo es un número decimal
+                    case "double":
                         arrTipoCampos[iIndex] = "Decimal";
-                        CrearCampoDecimales(nombreComponente, controlPosition);//Crea un campo numérico para decimales
+                        CrearCampoDecimales(nombreComponente, controlPosition);
                         break;
 
                     case "tinyint":
                         arrTipoCampos[iIndex] = "Bool";
-                        if (sLlaves[iIndex] != "MUL") //Si no es clave foránea
+                        if (sLlaves[iIndex] != "MUL")
                         {
-                            CrearBotonEstado(nombreComponente, controlPosition);//Crea un botón para cambiar el estado
+                            CrearBotonEstado(nombreComponente, controlPosition);
                         }
                         else
                         {
@@ -685,65 +633,49 @@ namespace Capa_Vista_Navegador
                         }
                         break;
 
-                    default: // Si el tipo de campo no está reconocido.
-                        if (!string.IsNullOrEmpty(sTipos[iIndex])) // Si el tipo de dato no está vacío
+                    default:
+                        if (!string.IsNullOrEmpty(sTipos[iIndex]))
                         {
-                            MessageBox.Show($"La tabla {sTablaPrincipal} posee un campo {sTipos[iIndex]}, este tipo de dato no es reconocido por el navegador.", "Verificación de requisitos", MessageBoxButtons.OK, MessageBoxIcon.Warning);  // Muestra un mensaje de advertencia.
+                            MessageBox.Show($"La tabla {sTablaPrincipal} posee un campo {sTipos[iIndex]}, este tipo de dato no es reconocido por el navegador.", "Verificación de requisitos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         break;
                 }
 
-                iNumeroCampos++;// Incrementa el número de campos procesados
-                iIndex++;  // Avanza al siguiente campo en la lista.
-            
-        }
+                iNumeroCampos++;
+                iIndex++;
+            }
         }
 
 
-        // Método que crea un TextBox con validación para campos de tipo varchar (texto).
-        void CrearTextBoxVarchar(string sNom, Point location)
+        void CrearTextBoxVarchar(String sNom, Point location)
         {
-            // Crear una nueva instancia de TextBox.
             TextBox tb = new TextBox();
-
-            // Ajustar el tamaño del TextBox para que sea un poco más grande (20% mayor).
             tb.Width = (int)(tb.Width * 1.2);
             tb.Height = (int)(tb.Height * 1.2);
-
-            // Establecer la ubicación del TextBox en el formulario (pasada como parámetro).
             tb.Location = location;
-
-            // Asignar un nombre único al TextBox.
             tb.Name = sNom;
-
-            // Añadir el TextBox al formulario para que sea visible y pueda interactuar con el usuario.
             this.Controls.Add(tb);
-
-            // Vincular un evento para validar la entrada del usuario, asegurando que solo se ingrese texto.
-            tb.KeyPress += ParaValidarVarchar_KeyPress; // Función para validar entrada de texto.
+            tb.KeyPress += ParaValidarVarchar_KeyPress; // Función para validar entrada de texto
         }
-
-        //Método para crear un ComboBox con datos dinámicos
         void CrearComboBox(String sNom, Point location)
         {
             // Se obtienen los elementos para el ComboBox
-            if (arrTablaCombo[iNumeroCombosAux] != null) //Verifica si hay una tabla válida en la posición actual 
+            if (arrTablaCombo[iNumeroCombosAux] != null)
             {
-                //Obtiene los elementos desde la lógica de negocio según la tabla y los campos indicados 
                 dicItems = logic.Items(arrTablaCombo[iNumeroCombosAux], arrCampoCombo[iNumeroCombosAux], arrCampoDisplayCombo[iNumeroCombosAux]);
             }
-            if (iNumeroCombos > iNumeroCombosAux) { iNumeroCombosAux++; } //Incremeneta el índice auxiliar si hay más combos
+            if (iNumeroCombos > iNumeroCombosAux) { iNumeroCombosAux++; }
 
             ComboBox cb = new ComboBox(); // Crea un nuevo ComboBox
-            cb.Width = (int)(cb.Width * 1.2); //Aumenta el ancho del ComboBox en un 20%
-            cb.Height = (int)(cb.Height * 1.2);// Aumenta la altura del ComboBox en un 20%
+            cb.Width = (int)(cb.Width * 1.2);
+            cb.Height = (int)(cb.Height * 1.2);
             cb.Location = location; // Establece la ubicación del ComboBox
             cb.Name = sNom; // Establece el nombre del ComboBox
 
             // Enlaza los datos al ComboBox
-            BindingSource bs = new BindingSource();//Crea una fuente de datos enlazada
-            bs.DataSource = dicItems;//Asigna el diccionario de elementos como fuente de datos 
-            cb.DataSource = bs;// Asigna la fuente de datos al comboBox
+            BindingSource bs = new BindingSource();
+            bs.DataSource = dicItems;
+            cb.DataSource = bs;
             cb.DisplayMember = "Value"; // Muestra el valor en el ComboBox
             cb.ValueMember = "Key";     // Almacena la clave seleccionada
 
@@ -754,7 +686,7 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR JORGE AVILA***************************** 
 
         //******************************************** CODIGO HECHO POR DIEGO MARROQUIN*****************************
-        //********Comentarios hechos por Ammy Patricia Catún López 0901-21-4857*************************************************************
+
         // Función que maneja el evento click de los botones, cambiando su estado entre "Activado" y "Desactivado"
         void Func_click(object sender, EventArgs e)
         {
@@ -765,18 +697,17 @@ namespace Capa_Vista_Navegador
             if (btn != null)
             {
                 // Cambia el estado del botón en función de su estado actual
-                if (btn.Text == "Activado") //Si el texto del botón es "Activado"....
+                if (btn.Text == "Activado")
                 {
-                    //Cambia el estado del botón en función de su estado actual
-                    btn.Text = "Desactivado"; //Cambia el texto del botón a "Desactivado"
-                    btn.BackColor = Color.Red;//Cambia elcolor de fondo del botón a rojo
-                    iEstadoFormulario = 0;//Estableceel estadp del formualrio en 0 (desactivado)
+                    btn.Text = "Desactivado";
+                    btn.BackColor = Color.Red;
+                    iEstadoFormulario = 0;
                 }
-                else //Si el texto del no es "Activado" (es "Desactivado")......
+                else
                 {
-                    btn.Text = "Activado";//Cambia el texto del botón a "Activado"
-                    btn.BackColor = Color.Green;//Cambia el color de fonfo del botón a verde
-                    iEstadoFormulario = 1;// Establece el estado del formulario en 1 (activado)
+                    btn.Text = "Activado";
+                    btn.BackColor = Color.Green;
+                    iEstadoFormulario = 1;
                 }
             }
         }
@@ -801,7 +732,6 @@ namespace Capa_Vista_Navegador
                                     // iPosicionInicial++; // Ya no es necesario incrementar iPosicionInicial aquí
         }
         // Función que crea un TextBox para números y lo añade al formulario
-        //--------------Comentarios hechos por Ammy Patricia Catún López---0901-21-4857------------------------
         void CrearTextBoxNumerico(String sNom)
         {
             TextBox tb = new TextBox();
@@ -939,91 +869,64 @@ namespace Capa_Vista_Navegador
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS*****************************
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
-        // Método que crea un DateTimePicker con formato personalizado.
-        void CrearDateTimePicker(string sNom, Point location)
+        void CrearDateTimePicker(String sNom, Point location)
         {
-            // Crear una nueva instancia de DateTimePicker.
-            DateTimePicker dtp = new DateTimePicker();
-
-            // Ajustar el tamaño del DateTimePicker (20% mayor).
+            DateTimePicker dtp = new DateTimePicker(); // Crea un nuevo DateTimePicker
             dtp.Width = (int)(dtp.Width * 1.2);
             dtp.Height = (int)(dtp.Height * 1.2);
-
-            // Establecer la ubicación del DateTimePicker en el formulario.
-            dtp.Location = location;
-
-            // Establecer el formato personalizado para la fecha (año-mes-día).
+            dtp.Location = location; // Establece la ubicación del DateTimePicker
             dtp.Format = DateTimePickerFormat.Custom;
             dtp.CustomFormat = "yyyy-MM-dd";
-
-            // Ajustar el ancho a un valor fijo (100).
             dtp.Width = 100;
-
-            // Asignar un nombre único al DateTimePicker.
-            dtp.Name = sNom;
-
-            // Añadir el DateTimePicker al formulario para que sea visible y funcione correctamente.
-            this.Controls.Add(dtp);
+            dtp.Name = sNom; // Establece el nombre del DateTimePicker
+            this.Controls.Add(dtp); // Añade el DateTimePicker al formulario
+                                    // iPosicionInicial++; // Ya no es necesario incrementar iPosicionInicial aquí
         }
 
-        // Método para deshabilitar todos los campos de entrada (TextBox, DateTimePicker, ComboBox) y botones.
         public void Deshabilitarcampos_y_botones()
         {
-            // Iterar sobre todos los controles del formulario.
             foreach (Control componente in Controls)
             {
-                // Si el control es un TextBox, DateTimePicker, ComboBox o Button, deshabilitarlo.
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox || componente is Button)
                 {
-                    componente.Enabled = false; // Bloquea el control para que no se pueda modificar.
+                    componente.Enabled = false; // De esta manera bloqueamos todos los TextBox, DateTimePicker y ComboBox
                 }
             }
-
-            // Deshabilitar botones específicos (modificar, eliminar, guardar y cancelar).
             Btn_Modificar.Enabled = false;
             Btn_Eliminar.Enabled = false;
             Btn_Guardar.Enabled = false;
             Btn_Cancelar.Enabled = false;
         }
 
-        // Método para habilitar los campos de entrada (TextBox, DateTimePicker, ComboBox) y botones.
         public void HabilitarCampos_y_Botones()
         {
-            // Iterar sobre todos los controles del formulario.
             foreach (Control componente in Controls)
             {
-                // Si el control es un TextBox, DateTimePicker, ComboBox o Button, habilitarlo.
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox || componente is Button)
                 {
-                    componente.Enabled = true; // Habilita el control para que el usuario pueda interactuar con él.
+                    componente.Enabled = true; // Habilita todos los TextBox, DateTimePicker y ComboBox para edición
                 }
             }
-
-            // Habilitar botones específicos (eliminar, guardar y cancelar).
-            Btn_Eliminar.Enabled = true;
-            Btn_Guardar.Enabled = true;
-            Btn_Cancelar.Enabled = true;
+            // Btn_Modificar.Enabled = true;
+           Btn_Eliminar.Enabled = true;
+           Btn_Guardar.Enabled = true;
+           Btn_Cancelar.Enabled = true;
         }
 
-        // Método para actualizar los datos mostrados en el DataGridView.
         public void ActualizarDataGridView()
         {
-            // Consultar los datos relacionados con la tabla principal y las relaciones foráneas (a través de la capa lógica).
+            // Pasar todas las relaciones foráneas a la capa lógica
             DataTable dt = logic.ConsultaLogica(sTablaPrincipal, relacionesForaneas);
-
-            // Asignar los datos al DataGridView para mostrarlos en la interfaz.
             Dgv_Informacion.DataSource = dt;
 
-            // Asignar alias como encabezados de las columnas del DataGridView.
+            // Asignar los alias como encabezados de las columnas
             int iHead = 0;
             while (iHead < logic.ContarCampos(sTablaPrincipal))
             {
-                // Asignar el alias del campo como encabezado de columna.
                 Dgv_Informacion.Columns[iHead].HeaderText = arrAliasCampos[iHead];
                 iHead++;
             }
         }
-
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
 
@@ -1137,7 +1040,7 @@ namespace Capa_Vista_Navegador
             // Retornar la consulta construida.
             return sQuery;
         }
-        //--------------Comentarios hechos por Ammy Patricia Catún López---0901-21-4857------------------------
+
         //******************************************** CODIGO HECHO POR MATY MANCILLA*****************************
 
         //******************************************** CODIGO HECHO POR JOEL LOPEZ***************************** 
@@ -1217,56 +1120,44 @@ namespace Capa_Vista_Navegador
             return sQuery;
         }
         //******************************************** CODIGO HECHO POR JOEL LOPEZ***************************** 
-//*****************Comentarios hechos por Ammy Patricia Catún López 0901-21-4857*************************************************************
+
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
-        // Función recursiva para obtener todos los controles, incluyendo los anidados.
         private IEnumerable<Control> GetAllControls(Control container)
         {
-            // Itera a través de los controles del contenedor principal.
+            // Función recursiva para obtener todos los controles, incluyendo los anidados
             foreach (Control control in container.Controls)
             {
-                // Llamada recursiva para obtener los controles anidados.
                 foreach (Control child in GetAllControls(control))
                 {
-                    yield return child; // Devuelve el control hijo.
+                    yield return child;
                 }
-                yield return control; // Devuelve el control principal.
+                yield return control;
             }
         }
 
-        // Método para generar una consulta UPDATE en base a los campos de la tabla principal.
+
         string CrearUpdate(string sTablaPrincipal, string sNombreClavePrimaria)
         {
-            // Obtener los nombres de los campos de la tabla principal.
             string[] arrColumnasTabla = logic.Campos(sTablaPrincipal);
-
-            // Iniciar la consulta UPDATE.
             string sQuery = "UPDATE " + sTablaPrincipal + " SET ";
             string sWhereQuery = " WHERE ";
             string sCampos = "";
             int valor = 0;
 
-            // Utiliza la función recursiva para obtener solo los controles relevantes de la interfaz.
+            // Utiliza la nueva función para obtener solo los controles relevantes
             foreach (Control componente in GetRelevantControls(this))
             {
-                // Ignora los controles cuyo nombre comienza con "extra_"
                 if (componente.Name.StartsWith("extra_"))
                 {
-                    continue;
+                    continue; // Ignora los componentes que tienen el prefijo "extra_"
                 }
 
-                // Procesa solo los controles de tipo TextBox, DateTimePicker, ComboBox o Button.
                 if (componente is TextBox || componente is DateTimePicker || componente is ComboBox || componente is Button)
                 {
                     string sNombreCampo = componente.Name;
-
-                    // Verifica si el campo existe en la tabla y no es la clave primaria.
                     if (arrColumnasTabla.Contains(sNombreCampo) && sNombreCampo != sNombreClavePrimaria)
                     {
-                        // Obtiene el valor del componente correspondiente.
                         string sValorCampo = ObtenerValorDelComponente(componente, ref valor);
-
-                        // Si el valor no es vacío, agrega el campo y su valor a la consulta.
                         if (!string.IsNullOrEmpty(sValorCampo))
                         {
                             sCampos += $"{sNombreCampo} = '{sValorCampo}', ";
@@ -1275,78 +1166,56 @@ namespace Capa_Vista_Navegador
                 }
             }
 
-            // Si no se han encontrado campos para actualizar, muestra un mensaje y retorna null.
             if (string.IsNullOrEmpty(sCampos))
             {
                 Console.WriteLine($"No hay campos para actualizar en la tabla {sTablaPrincipal}");
                 return null;
             }
 
-            // Elimina la coma y el espacio extra al final de la lista de campos.
             sCampos = sCampos.TrimEnd(' ', ',');
-
-            // Obtiene el valor de la clave primaria de la fila seleccionada en el DataGridView.
             string sValorClave = Dgv_Informacion.CurrentRow.Cells[0].Value.ToString();
-
-            // Construye la parte WHERE de la consulta, usando la clave primaria.
             sWhereQuery += $"{sNombreClavePrimaria} = '{sValorClave}'";
-
-            // Construye la consulta completa.
             sQuery += sCampos + sWhereQuery + ";";
-
-            // Muestra la consulta generada para el UPDATE.
             Console.WriteLine("Consulta generada para el UPDATE: " + sQuery);
 
-            // Retorna la consulta SQL generada.
             return sQuery;
         }
 
-        // Método que obtiene el valor de un componente de la interfaz, dependiendo de su tipo.
         private string ObtenerValorDelComponente(Control componente, ref int valor)
         {
             string sValorCampo = "";
-
-            // Si el componente es un ComboBox, obtiene el valor relacionado desde la lógica de negocio.
             if (componente is ComboBox cb)
             {
                 Console.WriteLine($"Procesando ComboBox: {componente.Name}, Valor actual: {valor}, Tamaño de comboData: {comboData.Count}");
-                if (valor < comboData.Count) // Verificar que el índice esté dentro del rango.
+                if (valor < comboData.Count) // Verificar que el índice esté dentro del rango
                 {
                     var comboInfo = comboData[valor];
                     string sTabla = comboInfo.Item1;
                     string sCampoClave = comboInfo.Item2;
                     string sCampoDisplay = comboInfo.Item3;
-
-                    // Obtener el valor relacionado con el ComboBox desde la capa lógica.
                     sValorCampo = logic.ObtenerValorClaveDesdeLogica(sTabla, sCampoClave, sCampoDisplay, cb.Text);
-                    valor++; // Incrementa el índice para el próximo ComboBox.
+                    valor++;
                 }
                 else
                 {
-                    // Si el índice está fuera de rango, muestra un mensaje de advertencia.
                     Console.WriteLine($"Índice fuera de rango: {valor} en comboData para la tabla relacionada.");
                 }
             }
-            // Si el componente es un DateTimePicker, obtiene la fecha seleccionada.
             else if (componente is DateTimePicker dtp)
             {
                 sValorCampo = dtp.Value.ToString("yyyy-MM-dd");
             }
-            // Si el componente es un TextBox, obtiene el texto ingresado.
             else if (componente is TextBox)
             {
                 sValorCampo = componente.Text;
             }
-            // Si el componente es un Button, obtiene un valor de "1" o "0" dependiendo del texto del botón.
             else if (componente is Button btn)
             {
                 sValorCampo = (btn.Text == "Activado") ? "1" : "0";
             }
 
-            // Retorna el valor obtenido.
             return sValorCampo;
         }
-
 
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ***************************** 
@@ -1494,35 +1363,31 @@ namespace Capa_Vista_Navegador
                     return;
                 }
 
-                // Recorrido de los controles para habilitar la edición y asignar valores
+                // Recorre los controles para habilitar la edición
                 foreach (Control componente in Controls)
                 {
-                    // Si el componente es un TextBox, DateTimePicker o ComboBox
                     if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                     {
-                        // Verifica que el índice esté dentro del rango de celdas del DataGridView
+                        // Verifica que iIndice esté dentro del rango antes de acceder a la celda
                         if (iIndice < Dgv_Informacion.CurrentRow.Cells.Count)
                         {
-                            // Si el campo es el ID (y es de tipo entero autoincremental), deshabilita el campo
+                            // Deshabilita el campo del ID si es entero (autoincremental)
                             if (iIndice == 0 && arrTipos[0] == "int")
                             {
                                 componente.Enabled = false;
                             }
                             else
                             {
-                                // Si el componente es un ComboBox, asigna el valor correspondiente
                                 if (componente is ComboBox comboBox)
                                 {
-                                    // Verifica si el ComboBox necesita una revisión con la función LlaveCampoRev
                                     if (arrModoCampoCombo[iNumCombo] == 1)
                                     {
-                                        // Obtiene el valor de la llave correspondiente a partir de la lógica de negocio
                                         string valorLlave = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString());
 
-                                        // Verifica que el valor obtenido no sea vacío o nulo
+                                        // Verifica que el valor asignado no sea vacío o nulo
                                         if (!string.IsNullOrEmpty(valorLlave))
                                         {
-                                            comboBox.Text = valorLlave; // Asigna el valor al ComboBox
+                                            comboBox.Text = valorLlave;
                                         }
                                         else
                                         {
@@ -1531,80 +1396,71 @@ namespace Capa_Vista_Navegador
                                     }
                                     else
                                     {
-                                        // Si no requiere revisión con LlaveCampoRev, asigna el valor directamente al ComboBox
+                                        // Asigna el valor directamente si no requiere revisión con `LlaveCampoRev`
                                         comboBox.Text = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString();
                                     }
 
-                                    iNumCombo++; // Incrementa el contador para el siguiente ComboBox
+                                    iNumCombo++; // Incrementa el contador de ComboBox
                                 }
                                 else
                                 {
-                                    // Si el componente no es un ComboBox, asigna el valor directamente a TextBox o DateTimePicker
+                                    // Asigna el texto para los demás controles (TextBox, DateTimePicker, etc.)
                                     componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString();
                                 }
                             }
 
-                            // Incrementa el índice para acceder a la siguiente celda en el DataGridView
-                            iIndice++;
+                            iIndice++; // Incrementa el índice solo si se ha accedido a una celda válida
                         }
                         else
                         {
-                            // Si el índice está fuera del rango de celdas, muestra un mensaje y sale del bucle
                             Console.WriteLine($"El índice {iIndice} está fuera del rango de las celdas disponibles en el DataGridView.");
-                            break;
+                            break; // Sale del bucle si el índice está fuera de rango
                         }
                     }
 
-                    // Si el componente es un botón
                     if (componente is Button)
                     {
-                        // No incrementar el índice para los botones, ya que no están vinculados a una celda
+                        // No incrementar iIndice para los botones, ya que no están vinculados a una celda
                         if (iIndice < Dgv_Informacion.CurrentRow.Cells.Count)
                         {
-                            // Obtiene el valor del estado del registro (activado/desactivado) desde el DataGridView
                             string sEstadoRegistro = Dgv_Informacion.CurrentRow.Cells[iIndice].Value.ToString();
 
-                            // Si el registro está desactivado (estado 0), cambia el texto y color del botón
                             if (sEstadoRegistro == "0")
                             {
                                 componente.Text = "Desactivado";
-                                componente.BackColor = Color.Red; // Color rojo para desactivado
-                                iEstadoFormulario = 0; // Estado desactivado
+                                componente.BackColor = Color.Red;
+                                iEstadoFormulario = 0;
                             }
                             else if (sEstadoRegistro == "1")
                             {
-                                // Si el registro está activado (estado 1), cambia el texto y color del botón
                                 componente.Text = "Activado";
-                                componente.BackColor = Color.Green; // Color verde para activado
-                                iEstadoFormulario = 1; // Estado activado
+                                componente.BackColor = Color.Green;
+                                iEstadoFormulario = 1;
                             }
 
-                            // Habilita el botón
                             componente.Enabled = true;
 
-                            // Incrementa el índice solo si el botón está vinculado a una celda en el DataGridView
+                            // Solo incrementar el índice si el botón está vinculado a una celda (en caso de que esté)
                             iIndice++;
                         }
                         else
                         {
-                            // Si el índice está fuera del rango, muestra un mensaje y sale del bucle
                             Console.WriteLine($"El índice {iIndice} está fuera del rango al configurar el botón.");
-                            break;
+                            break; // Sale del bucle si el índice está fuera de rango
                         }
                     }
                 }
 
-                // Llama a la función que habilita y deshabilita botones según los permisos del usuario
-                BotonesYPermisosSinMensaje();
+                // Habilita y deshabilita botones según el usuario
+               BotonesYPermisosSinMensaje();
 
-                // Deshabilita el botón de ingreso y eliminación, habilita el botón de cancelar
                 Btn_Ingresar.Enabled = false;
                 Btn_Eliminar.Enabled = false;
                 Btn_Cancelar.Enabled = true;
             }
             catch (Exception ex)
             {
-                // Manejo de errores y muestra un mensaje de error más profesional
+                // Manejo de errores y muestra un mensaje más profesional
                 MessageBox.Show(
                     "Ocurrió un error durante la modificación del registro.\n\n" +
                     "Detalles del error: " + ex.Message + "\n\n" +
@@ -1614,14 +1470,15 @@ namespace Capa_Vista_Navegador
                     MessageBoxIcon.Error
                 );
             }
+
         }
 
 
-            //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ*****************************
+        //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ*****************************
 
 
-            //******************************************** CODIGO HECHO POR JORGE AVILA***************************** 
-            private void Btn_Cancelar_Click(object sender, EventArgs e)
+        //******************************************** CODIGO HECHO POR JORGE AVILA***************************** 
+        private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1649,7 +1506,7 @@ namespace Capa_Vista_Navegador
                 Btn_Cancelar.Enabled = false;
                 Btn_Ingresar.Enabled = true;
                 Btn_Eliminar.Enabled = true;
-                Btn_Refrescar.Enabled = false;
+                Btn_Refrescar.Enabled = true;
                 Deshabilitarcampos_y_botones();
                 // Actualizar el DataGridView y los controles a su estado original
                 ActualizarDataGridView();
@@ -1864,67 +1721,52 @@ namespace Capa_Vista_Navegador
         // Este método maneja el evento de clic en el botón "Anterior".
         private void Btn_Anterior_Click(object sender, EventArgs e)
         {
-            int iIndex = 0; // Variable para controlar el índice de las celdas
-            string[] arrCampos = logic.Campos(sTablaPrincipal); // Obtiene los nombres de las columnas de la tabla principal
+            int iIndex = 0;
+            string[] arrCampos = logic.Campos(sTablaPrincipal); 
 
-            // Obtiene el índice de la fila seleccionada en el DataGridView
-            int iFila = Dgv_Informacion.SelectedRows[0].Index;
+            int iFila = Dgv_Informacion.SelectedRows[0].Index; 
 
-            // Si la fila seleccionada no es la primera (iFila > 0), selecciona la fila anterior
             if (iFila > 0)
             {
-                // Selecciona la fila anterior en el DataGridView
-                Dgv_Informacion.Rows[iFila - 1].Selected = true;
-                // Establece la celda actual como la primera celda de la fila anterior
+                Dgv_Informacion.Rows[iFila - 1].Selected = true; 
                 Dgv_Informacion.CurrentCell = Dgv_Informacion.Rows[iFila - 1].Cells[0];
 
-                int iNumCombo = 0; // Contador para los ComboBox
+                int iNumCombo = 0;
                 foreach (Control componente in Controls)
                 {
-                    // Recorre todos los controles del formulario para actualizar los valores
                     if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                     {
                         if (componente is ComboBox)
                         {
-                            // Si el control es un ComboBox, asigna el valor correspondiente
-                            if (arrModoCampoCombo[iNumCombo] == 1) // Verifica si el ComboBox requiere revisión de la llave
+                            if (arrModoCampoCombo[iNumCombo] == 1) 
                             {
-                                // Asigna el valor revisado a través de la lógica de negocio
                                 componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString());
                             }
                             else
                             {
-                                // Si no requiere revisión, asigna el valor directamente
                                 componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                             }
-                            iNumCombo++; // Incrementa el contador para ComboBox
+                            iNumCombo++; 
                         }
                         else
                         {
-                            // Para TextBox o DateTimePicker, asigna el valor directamente
                             componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                         }
-                        iIndex++; // Incrementa el índice para el siguiente campo
+                        iIndex++;
                     }
-
-                    // Si el componente es un botón, maneja su estado (activado/desactivado)
                     if (componente is Button)
                     {
-                        string sVarEstado = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
-
-                        // Si el estado del registro es "0", establece el botón como "Desactivado"
+                        string sVarEstado = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString(); 
                         if (sVarEstado == "0")
                         {
                             componente.Text = "Desactivado";
-                            componente.BackColor = Color.Red; // Color rojo para desactivado
+                            componente.BackColor = Color.Red;
                         }
-                        // Si el estado es "1", establece el botón como "Activado"
                         if (sVarEstado == "1")
                         {
                             componente.Text = "Activado";
-                            componente.BackColor = Color.Green; // Color verde para activado
+                            componente.BackColor = Color.Green;
                         }
-                        // Deshabilita el botón
                         componente.Enabled = false;
                     }
                 }
@@ -1934,67 +1776,52 @@ namespace Capa_Vista_Navegador
         // Este método maneja el evento de clic en el botón "Siguiente".
         private void Btn_Siguiente_Click(object sender, EventArgs e)
         {
-            int iIndex = 0; // Variable para controlar el índice de las celdas
-            string[] arrCampos = logic.Campos(sTablaPrincipal); // Obtiene los nombres de las columnas de la tabla principal
+            int iIndex = 0;
+            string[] arrCampos = logic.Campos(sTablaPrincipal); 
 
-            // Obtiene el índice de la fila seleccionada en el DataGridView
-            int iFila = Dgv_Informacion.SelectedRows[0].Index;
+            int iFila = Dgv_Informacion.SelectedRows[0].Index; 
 
-            // Si la fila seleccionada no es la última (iFila < total filas - 1), selecciona la siguiente fila
             if (iFila < Dgv_Informacion.Rows.Count - 1)
             {
-                // Selecciona la fila siguiente en el DataGridView
-                Dgv_Informacion.Rows[iFila + 1].Selected = true;
-                // Establece la celda actual como la primera celda de la fila siguiente
-                Dgv_Informacion.CurrentCell = Dgv_Informacion.Rows[iFila + 1].Cells[0];
+                Dgv_Informacion.Rows[iFila + 1].Selected = true; 
+                Dgv_Informacion.CurrentCell = Dgv_Informacion.Rows[iFila + 1].Cells[0]; 
 
-                int iNumCombo = 0; // Contador para los ComboBox
+                int iNumCombo = 0; 
                 foreach (Control componente in Controls)
                 {
-                    // Recorre todos los controles del formulario para actualizar los valores
                     if (componente is TextBox || componente is DateTimePicker || componente is ComboBox)
                     {
                         if (componente is ComboBox)
                         {
-                            // Si el control es un ComboBox, asigna el valor correspondiente
-                            if (arrModoCampoCombo[iNumCombo] == 1) // Verifica si el ComboBox requiere revisión de la llave
+                            if (arrModoCampoCombo[iNumCombo] == 1) 
                             {
-                                // Asigna el valor revisado a través de la lógica de negocio
                                 componente.Text = logic.LlaveCampoRev(arrTablaCombo[iNumCombo], arrCampoCombo[iNumCombo], Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString());
                             }
                             else
                             {
-                                // Si no requiere revisión, asigna el valor directamente
                                 componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                             }
-                            iNumCombo++; // Incrementa el contador para ComboBox
+                            iNumCombo++;
                         }
                         else
                         {
-                            // Para TextBox o DateTimePicker, asigna el valor directamente
                             componente.Text = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
                         }
-                        iIndex++; // Incrementa el índice para el siguiente campo
+                        iIndex++;
                     }
-
-                    // Si el componente es un botón, maneja su estado (activado/desactivado)
                     if (componente is Button)
                     {
                         string sVarEstado = Dgv_Informacion.CurrentRow.Cells[iIndex].Value.ToString();
-
-                        // Si el estado del registro es "0", establece el botón como "Desactivado"
                         if (sVarEstado == "0")
                         {
                             componente.Text = "Desactivado";
-                            componente.BackColor = Color.Red; // Color rojo para desactivado
+                            componente.BackColor = Color.Red;
                         }
-                        // Si el estado es "1", establece el botón como "Activado"
                         if (sVarEstado == "1")
                         {
                             componente.Text = "Activado";
-                            componente.BackColor = Color.Green; // Color verde para activado
+                            componente.BackColor = Color.Green;
                         }
-                        // Deshabilita el botón
                         componente.Enabled = false;
                     }
                 }
@@ -2280,7 +2107,6 @@ namespace Capa_Vista_Navegador
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
                 );
-                Btn_Refrescar.Enabled = true;
 
                 if (drResult == DialogResult.No)
                 {
@@ -2301,17 +2127,16 @@ namespace Capa_Vista_Navegador
                     }
                 }
 
-                if (!bLleno)//Verifica si la variable bLleno es falsa (lo que indica que hay campos vacíos)
-                { 
+                if (!bLleno)
+                {
                     MessageBox.Show(
-                        //Muestra un cuadro de mensaje advirtiendo al usuario que debe completar todos los campos antes de guardar
-                        "Por favor, complete todos los campos antes de guardar.\n\n" + //Mensaje que se mostrará al usuario
-                        "El registro no se puede guardar mientras existan campos vacíos.", //Mensaje adicional con más detalles
-                        "Campos Vacíos", //Titulo de la ventana del mensaje
-                        MessageBoxButtons.OK, //Botón que el usuario puede presionar (Solo "OK")
-                        MessageBoxIcon.Warning //Ícono de advertencia para resaltar el mensaje
+                        "Por favor, complete todos los campos antes de guardar.\n\n" +
+                        "El registro no se puede guardar mientras existan campos vacíos.",
+                        "Campos Vacíos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
                     );
-                    return; //Se detiene la ejecución del código y no se procede con el guardado de datos
+                    return;
                 }
 
 
@@ -2580,37 +2405,19 @@ namespace Capa_Vista_Navegador
         {
             menu_reporteria reportes = new menu_reporteria();
             reportes.Show(); // Muestra el formulario del menú de reportes.
-
         }
 
         // Maneja el evento de clic en el botón de consulta.
-        private ConsultaSimple formularioConsulta = null; // Variable global para el formulario
-
         private void Btn_Consultar_Click(object sender, EventArgs e)
         {
-            if (formularioConsulta == null || formularioConsulta.IsDisposed)
-            {
-                // Se obtiene el ID del usuario
-                string sIdUsuario1 = logic.ObtenerIdUsuario(sIdUsuario);
+            // Se obtiene el ID del usuario.
+            string sIdUsuario1 = logic.ObtenerIdUsuario(sIdUsuario);
 
-                // Crear y mostrar el formulario
-                formularioConsulta = new ConsultaSimple(sTablaPrincipal);
-                formularioConsulta.FormClosed += (s, args) => Btn_Consultar.Enabled = true; // Reactivar botón al cerrar
-                formularioConsulta.Show();
-
-                // Deshabilitar botón para evitar abrir otra instancia
-                Btn_Consultar.Enabled = false;
-
-                // Registrar en bitácora
-                lg.funinsertarabitacora(sIdUsuario, "Entro a consultas", "consultas", sIdAplicacion);
-
-                // Aplicar permisos
-                BotonesYPermisosSinMensaje();
-            }
-            else
-            {
-                formularioConsulta.BringToFront(); // Si ya está abierto, traerlo al frente
-            }
+           
+            ConsultaSimple nueva = new ConsultaSimple(sTablaPrincipal);
+            nueva.Show();
+            lg.funinsertarabitacora(sIdUsuario, "Entro a consultas", "consultas", sIdAplicacion);
+            BotonesYPermisosSinMensaje();
         }
 
 
@@ -2643,6 +2450,9 @@ namespace Capa_Vista_Navegador
             lg.funinsertarabitacora(sIdUsuario, "Entro a los registros de ayuda", sTablaPrincipal, sIdAplicacion);
         }
 
+        //***************************corregido por Kevin López 31/01/25**************************************
+        // Error en la logica de cierre de formularios que usaban el navegador provocado por el uso de .visible lo cual ocultaba dichos formularios en vez de liberar los recursos y finalizar conexiones a la BD
+        // por lo cual se opto por reemplazar esa instruccion por un .Dispose que finalizaba por completo todo recurso utilizado por el formulario, lo que permite volver a abrir el mismo formulario segun la logica que sigue el MDI.
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
             {
@@ -2668,13 +2478,13 @@ namespace Capa_Vista_Navegador
                                 if (drRespuestaGuardar == DialogResult.Yes)
                                 {
                                     GuardadoForsozo();
-                                    frmCerrar.Visible = false;
+                                    frmCerrar.Dispose(); // Correccion de .Visible reemplazado por .Dispose
                                     lg.funinsertarabitacora(sIdUsuario, "Salio del Navegador", sTablaPrincipal, sIdAplicacion);
                                 }
                                 // Si el usuario elige "No", se cierra el formulario sin guardar.
                                 else if (drRespuestaGuardar == DialogResult.No)
                                 {
-                                    frmCerrar.Visible = false;
+                                    frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
                                 else if (drRespuestaGuardar == DialogResult.Cancel)
@@ -2709,7 +2519,7 @@ namespace Capa_Vista_Navegador
                                 // Si el usuario elige "No", se cierra el formulario sin finalizar la modificación.
                                 else if (drRespuestaModificar == DialogResult.No)
                                 {
-                                    frmCerrar.Visible = false;
+                                    frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
                                 else if (drRespuestaModificar == DialogResult.Cancel)
@@ -2744,7 +2554,7 @@ namespace Capa_Vista_Navegador
                                 // Si el usuario elige "No", se cierra el formulario sin finalizar la eliminación.
                                 else if (drRespuestaEliminar == DialogResult.No)
                                 {
-                                    frmCerrar.Visible = false;
+                                    frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
                                 else if (drRespuestaEliminar == DialogResult.Cancel)
@@ -2766,7 +2576,7 @@ namespace Capa_Vista_Navegador
                     // Si el usuario confirma, cierra el formulario.
                     if (drConfirmacionFinal == DialogResult.Yes)
                     {
-                        frmCerrar.Visible = false;
+                        frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
                     }
                     else
                     {
@@ -2788,41 +2598,97 @@ namespace Capa_Vista_Navegador
             }
         }
 
+        //****************************************************** modificado por Kateryn De Leon (30/01/2025)************************************************
+        // Declarar el ToolTip en el botón de Ayuda
+        private ToolTip toolTipAyuda = new ToolTip();
+
         private void Btn_Ayuda_Click(object sender, EventArgs e)
+        {
+
+            // Busca la carpeta raíz del proyecto llamada proyectois2k25 a partir de la ruta del ejecutable.
+            // Si encuentra la carpeta, busca el archivo AyudaNavegador.chm dentro de ella y sus subcarpetas.
+            //Si el archivo es encontrado, intenta abrirlo usando Help.ShowHelp().Si falla, lo abre directamente con el proceso del sistema.
+
+
+            // Mostrar el ToolTip en el botón de ayuda
+            toolTipAyuda.SetToolTip(Btn_Ayuda, "Documento de ayuda");
+
+            // Obtener la ruta del ejecutable
+            string sExecutablePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Buscar la carpeta raíz "proyectois2k25" desde el ejecutable
+            string sProjectPath = sFindProjectRootDirectory(sExecutablePath, "proyectois2k25");
+
+            if (string.IsNullOrEmpty(sProjectPath))
+            {
+                MessageBox.Show("❌ ERROR: No se encontró la carpeta 'proyectois2k25'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Buscar el archivo AyudaNavegador.chm en la carpeta raíz y subcarpetas
+            string sPathAyuda = sfunFindFileInDirectory(sProjectPath, "AyudaNavegador.chm");
+
+            // Si el archivo fue encontrado, abrirlo
+            if (!string.IsNullOrEmpty(sPathAyuda))
+            {
+                try
+                {
+                    Help.ShowHelp(null, sPathAyuda); //para abrir archivo si es encontrado 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("⚠️ Error al abrir el archivo con Help.ShowHelp(): " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Diagnostics.Process.Start(sPathAyuda);
+                }
+            }
+            else
+            {
+                MessageBox.Show("❌ ERROR: No se encontró el archivo AyudaNavegador.chm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); //mensaje de error
+            }
+        }
+
+
+        /// Busca la carpeta raíz del proyecto "proyectois2k25" comenzando desde una ruta dada
+        /// y subiendo niveles en la jerarquía de directorios hasta encontrarla.
+        private string sFindProjectRootDirectory(string startPath, string stargetFolder)
+        {
+            DirectoryInfo dir = new DirectoryInfo(startPath);
+            // aca estara subiendo niveles o  la jerarquía de directorios hasta encontrar la carpeta "proyectois2k25"
+            while (dir != null)
+            {
+                if (dir.Name.Equals(stargetFolder, StringComparison.OrdinalIgnoreCase))
+                {
+                    return dir.FullName; // Retorna la ruta de la carpeta raíz
+                }
+                dir = dir.Parent; // Subir un nivel en la jerarquía
+            }
+            return null; // Retorna null si no encuentra la carpeta
+        }
+
+        //Busca el archivo (AyudaNavegador.chm) dentro de un directorio y sus subcarpetas.
+        private string sfunFindFileInDirectory(string sDirectory, string sFileName)
         {
             try
             {
-                // Obtener el directorio raíz del proyecto subiendo suficientes niveles
-                string sProjectRootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\.."));
+                if (Directory.Exists(sDirectory))
 
-                // Combinar la ruta base con la carpeta "Ayuda\AyudaHTML"
-                string sAyudaPath = Path.Combine(sProjectRootPath, "Ayuda", "Ayuda_Navegador", sRutaAyuda);
 
-                // Mostrar la ruta en un MessageBox antes de proceder
-                //MessageBox.Show("Buscando archivo de ayuda en la ruta: " + ayudaPath, "Ruta de Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Verificar que el archivo de ayuda exista antes de intentar abrirlo
-                if (File.Exists(sAyudaPath))
                 {
-                    // Mostrar la ayuda utilizando la ruta completa y el índice
-                    Help.ShowHelp(this, sAyudaPath, sIndiceAyuda);
-                    lg.funinsertarabitacora(sIdUsuario, "Vio un documento de ayuda", sTablaPrincipal, sIdAplicacion);
-                }
-                else
-                {
-                    // Mostrar un mensaje de error si el archivo de ayuda no se encuentra
-                    MessageBox.Show("No se encontró el archivo de ayuda en la ruta especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Buscar todos los archivos .chm dentro de la carpeta y subcarpetas
+                    string[] sFiles = Directory.GetFiles(sDirectory, "*.chm", SearchOption.AllDirectories);
+                    // Retornar el archivo que coincida con el nombre buscado
+                    return sFiles.FirstOrDefault(file => Path.GetFileName(file).Equals(sFileName, StringComparison.OrdinalIgnoreCase));
                 }
             }
             catch (Exception ex)
             {
-                // Mostrar un mensaje de error en caso de una excepción
-                MessageBox.Show("Ocurrió un error al abrir la ayuda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Error al abrir la ayuda: " + ex.ToString());
+                MessageBox.Show("⚠️ Error al buscar el archivo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // mensaje de error
             }
 
-            BotonesYPermisosSinMensaje();
+            return null; //retorna a null
         }
+
+        //  *****************************************Fin Katy******************************************************************************
         private void button_Paint(object sender, PaintEventArgs e)
         {
             BiselUtil.AplicarBisel(sender as Button, e);
@@ -2858,7 +2724,7 @@ namespace Capa_Vista_Navegador
                                     SystemColors.ControlDark, 3, ButtonBorderStyle.Inset,          // Derecha
                                     SystemColors.ControlDark, 3, ButtonBorderStyle.Inset);
         }
-        //*********************Comentarios por Ammy Patricia Catun Lopez 0901-21-4857******************************************
+
         //******************************************** CODIGO HECHO POR VICTOR CASTELLANOS *****************************
     }
 }
