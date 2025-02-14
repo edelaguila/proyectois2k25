@@ -522,7 +522,7 @@ namespace Capa_Vista_Seguridad
                     {
                         if (Path.GetFileName(file).Equals(fileName, StringComparison.OrdinalIgnoreCase))
                         {
-                            MessageBox.Show("Archivo encontrado: " + file);
+                            //MessageBox.Show("Archivo encontrado: " + file);
                             return file;
                         }
                     }
