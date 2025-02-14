@@ -33,7 +33,15 @@ namespace Capa_Modelo_Navegador
                 {
                     throw new InvalidOperationException("La conexión a la base de datos no está disponible.");
                 }
+				
+				// Mejoras en las validaciones--Hecho por José Andrés Verón y Elvir Sandoval 31/01/2025
+                if (string.IsNullOrEmpty(sTabla) || sTabla.Any(c => !char.IsLetterOrDigit(c) && c != '_'))
+                {
+                    throw new ArgumentException("El nombre de la tabla no es válido.");
+                }
 
+                string[] sCamposDesc = ObtenerCampos(sTabla);
+				
                 // Obtener los campos de la tabla principal de forma dinámica
                 string[] sCamposDesc = ObtenerCampos(sTabla);
                 if (sCamposDesc == null || sCamposDesc.Length == 0)
