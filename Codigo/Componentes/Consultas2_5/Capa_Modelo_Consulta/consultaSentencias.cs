@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,53 +25,116 @@ namespace Capa_Modelo_Consulta
          Modificado por Carlos González 
          */
 
+        //Cierre de conexiones (Daniel Sierra 0901-21-12740) 14/02/2025
+        //Parametros agregados (Joel López 0901-21-4188) 14/02/2025
         public OdbcDataAdapter buscartbl(string BD)
         {
-            string sql = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '" + BD + "'";
-            // Asegúrate de que la conexión esté funcionando
-            OdbcConnection connection = con.connection();
-            if (connection.State != ConnectionState.Open)
+            string sql = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = ?";
+
+            try
             {
-                MessageBox.Show("No se pudo establecer la conexión con la base de datos.");
+                OdbcConnection connection = con.connection();
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+
+                using (OdbcCommand command = new OdbcCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("?", BD);
+
+                    // OdbcDataAdapter no debe estar dentro de using, ya que lo retornamos
+                    return new OdbcDataAdapter(command);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al consultar la base de datos: " + ex.Message);
                 return null;
             }
-
-            OdbcDataAdapter datatable = new OdbcDataAdapter(sql, connection);
-            return datatable;
         }
 
 
+        //Cierre de conexiones (Daniel Sierra 0901-21-12740) 14/02/2025
+        //Validaciones de Nombre de tabla (Joel López 0901-21-4188) 14/02/2025
         public void insertar(string dato, string tipo, string tabla)
         {
+            // Validar nombres de tabla y columna para evitar inyección SQL
+            if (!EsNombreValido(tabla) || !EsNombreValido(tipo))
+            {
+                MessageBox.Show("Nombre de tabla o columna no válido.");
+                return;
+            }
+
+            string sql = $"INSERT INTO {tabla} ({tipo}) VALUES (?)";
+
             try
             {
-                string sql = "insert into " + tabla + "(" + tipo + ") values (" + dato + ")";
-                OdbcCommand cmd = new OdbcCommand(sql, con.connection());
-                cmd.ExecuteNonQuery();
+                using (OdbcConnection connection = con.connection())
+                {
+                    if (connection.State != ConnectionState.Open)
+                    {
+                        connection.Open();
+                    }
+
+                    using (OdbcCommand cmd = new OdbcCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("?", dato);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                MessageBox.Show("Error al insertar datos: " + e.Message);
             }
         }
 
+        // Método auxiliar para validar nombres de tablas y columnas
+        private bool EsNombreValido(string nombre)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(nombre, @"^[a-zA-Z0-9_]+$");
+        }
+
+
+
+        //Cierre de conexiones (Daniel Sierra 0901-21-12740) 14/02/2025
+        //Parámetros colocados (Joel López 0901-21-4188) 14/02/2025
         public List<string> ObtenerColumnas(string tabla)
         {
             List<string> columns = new List<string>();
+
+            // Validar que el nombre de la tabla sea seguro
+            if (!EsNombreValido(tabla))
+            {
+                Console.WriteLine("Nombre de tabla no válido.");
+                return columns;
+            }
+
+            string query = $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
+                           $"WHERE TABLE_SCHEMA = ? AND TABLE_NAME = ?;";
+
             try
             {
-                // Usa la variable 'baseDatos' ya definida en la clase
-                string query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
-                               "WHERE TABLE_SCHEMA = '" + baseDatos + "' AND TABLE_NAME = '" + tabla + "';";
-                // Ejecutamos el comando con la conexión activa
-                using (OdbcCommand cmd = new OdbcCommand(query, this.conn.connection()))
+                using (OdbcConnection connection = this.conn.connection()) // Se abre la conexión
                 {
-                    OdbcDataReader reader = cmd.ExecuteReader();
-                    // Añadimos las columnas a la lista
-                    while (reader.Read())
+                    if (connection.State != ConnectionState.Open)
                     {
-                        string column = reader.GetString(0);
-                        columns.Add(column);
+                        connection.Open();
+                    }
+
+                    using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("?", baseDatos); // Parámetro seguro
+                        cmd.Parameters.AddWithValue("?", tabla); // Parámetro seguro
+
+                        using (OdbcDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                columns.Add(reader.GetString(0));
+                            }
+                        }
                     }
                 }
             }
@@ -79,6 +142,7 @@ namespace Capa_Modelo_Consulta
             {
                 Console.WriteLine("Error al obtener columnas: " + e.Message);
             }
+
             return columns;
         }
 
@@ -87,101 +151,34 @@ namespace Capa_Modelo_Consulta
          */
 
 
+        //Cierre de conexiones (Daniel Sierra 0901-21-12740) 14/02/2025
         public void actualizar(string setClause, string tabla, string condicion)
         {
             try
             {
-                // Construir la consulta UPDATE con la cláusula SET y la condición WHERE
                 string sql = $"UPDATE {tabla} SET {setClause} WHERE {condicion}";
-                OdbcCommand cmd = new OdbcCommand(sql, con.connection());
-                cmd.ExecuteNonQuery();
+
+                using (OdbcConnection connection = con.connection()) // Se abre la conexión
+                {
+                    connection.Open();
+
+                    using (OdbcCommand cmd = new OdbcCommand(sql, connection))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                } // La conexión se cierra automáticamente aquí
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-            }
-
-            //////////////// FIN SALVADOR MARTÍNEZ ////////////////
-
-        }
-
-        public void insertarconsulta(string cadena)
-        {
-            try
-            {
-                OdbcCommand consulta = new OdbcCommand(cadena, con.connection());
-                consulta.ExecuteNonQuery();
-            }
-            catch (Exception Error)
-            {
-                Console.WriteLine("Error en modelo" + Error);
+                Console.WriteLine("Error al actualizar: " + e.Message);
             }
         }
-        public OdbcDataAdapter llenartb2(string sql)
-        {
-            OdbcDataAdapter datatable = new OdbcDataAdapter(sql, con.connection());
-            return datatable;
-        }
-
-        public string ObtenerTipoDeDato(string seleccion, string tablaN1)
-        {
-            string Tipo = string.Empty;
-            using (OdbcConnection conn = con.connection())
-            {
-                string query = "SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA ='" + baseDatos + "' AND TABLE_NAME = '" + tablaN1 + "' AND COLUMN_NAME = '" + seleccion + "'";
-                using (OdbcCommand cmd = new OdbcCommand(query, conn))
-                {
-                    object result = cmd.ExecuteScalar();
-                    if (result != DBNull.Value)
-                    {
-                        Tipo = result.ToString();
-                    }
-                }
-            } return Tipo;
-        }
-
-        public DataTable BuscarPor2(string datobuscar, string buscaren, string operador, string tableN, DataTable dt, Label lbl_cadena)
-        {
-            OdbcConnection con = new OdbcConnection("Dsn=HotelSConexion");
-            if (string.IsNullOrEmpty(buscaren))
-            {
-                String textalert = " El campo buscar, se encuentra vacio ";
-                MessageBox.Show(textalert);
-            }
-            else
-            {
-                try
-                {
-                    String cadenaB = "";
-                    con.Open();
-                    cadenaB = "SELECT * FROM " + tableN + " WHERE " + buscaren + " " + operador + " '" + datobuscar + "';";
-                    lbl_cadena.Text = "Buscando : " + datobuscar + " En Columna : " + buscaren;
-                    OdbcDataAdapter datos = new OdbcDataAdapter(cadenaB, con);
-                    datos.Fill(dt);
-                    OdbcCommand comando = new OdbcCommand(cadenaB, con);
-                    OdbcDataReader leer;
-                    leer = comando.ExecuteReader();
-
-                }
-                catch (Exception ex)
-                {
-                    String textalert = "No se pudo";
-                    MessageBox.Show("Error: " + ex.Message);
-                    MessageBox.Show(textalert);
-                }
-
-                con.Close();
-            }
-            return dt;
-        }
-
 
 
 
         //modficado por Sebastian Luna
-        
-        
 
+        //Cierre de conexiones (Daniel Sierra 0901-21-12740) 14/02/2025
         public List<string> ObtenerNombresConsultas()
         {
             List<string> nombresConsultas = new List<string>();
@@ -189,15 +186,20 @@ namespace Capa_Modelo_Consulta
             {
                 // Consulta para obtener solo los nombres de las consultas
                 string query = "SELECT consultaInteligente_nombre_consulta FROM tbl_consultaInteligente;";
-                // Ejecutamos el comando con la conexión activa
-                using (OdbcCommand cmd = new OdbcCommand(query, this.conn.connection()))
+
+                // Ejecutamos el comando con la conexión activa usando 'using'
+                using (OdbcConnection con = this.conn.connection()) // Asegúrate de que esta es la conexión activa
                 {
-                    OdbcDataReader reader = cmd.ExecuteReader();
-                    // Añadimos los nombres de consulta a la lista
-                    while (reader.Read())
+                    con.Open();
+                    using (OdbcCommand cmd = new OdbcCommand(query, con)) // Utilizamos el comando dentro de 'using'
+                    using (OdbcDataReader reader = cmd.ExecuteReader()) // El 'OdbcDataReader' también debe ser usado dentro de 'using'
                     {
-                        string nombreConsulta = reader.GetString(0);
-                        nombresConsultas.Add(nombreConsulta);
+                        // Añadimos los nombres de consulta a la lista
+                        while (reader.Read())
+                        {
+                            string nombreConsulta = reader.GetString(0);
+                            nombresConsultas.Add(nombreConsulta);
+                        }
                     }
                 }
             }
@@ -237,77 +239,124 @@ namespace Capa_Modelo_Consulta
             } return query;
         }
 
+        //Cierre de conexiones (Daniel Sierra 0901-21-12740) 14/02/2025
         public OdbcDataAdapter EjecutarQuery(string query)
         {
-            OdbcDataAdapter adapter = null;
             try
             {
-                // Crear el adaptador de datos para ejecutar el query
-                adapter = new OdbcDataAdapter(query, this.conn.connection());
+                // Usamos 'using' para asegurar que la conexión y adaptador se cierren correctamente
+                using (OdbcConnection con = this.conn.connection()) // Crea y maneja la conexión
+                {
+                    con.Open(); // Abre la conexión
+
+                    // Usamos el 'using' para el adaptador de datos, asegurando su cierre adecuado
+                    using (OdbcDataAdapter adapter = new OdbcDataAdapter(query, con))
+                    {
+                        return adapter; // Retornamos el adaptador para que se pueda usar fuera de esta función
+                    }
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error al ejecutar el query: " + ex.Message);
+                return null; // Retorna null en caso de error
             }
-            return adapter;
         }
+
 
         public void EliminarConsulta(string nombreConsulta)
         {
+            string sql = "UPDATE tbl_consultaInteligente SET consultaInteligente_consulta_estatus = 0 WHERE consultaInteligente_nombre_consulta = ?";
+
             try
             {
-                string sql = "UPDATE tbl_consultaInteligente SET  consultaInteligente_consulta_estatus = 0 WHERE consultaInteligente_nombre_consulta = ?";
-                using (OdbcCommand cmd = new OdbcCommand(sql, con.connection()))
+                using (OdbcConnection connection = con.connection())
                 {
-                    cmd.Parameters.AddWithValue("@nombreConsulta", nombreConsulta);
-                    cmd.ExecuteNonQuery();
-                }
+                    connection.Open();
+
+                    using (OdbcCommand cmd = new OdbcCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("?", nombreConsulta);
+                        cmd.ExecuteNonQuery();
+                    }
+                } // La conexión se cierra automáticamente aquí
             }
             catch (Exception e)
             {
                 Console.WriteLine("Error al eliminar la consulta: " + e.Message);
             }
         }
-        //Fin de participacion de sebastian luna
 
+        //Fin de participacion de sebastian luna
+        //Parametros colocados (Joel López 0901-21-4188)
         // para ayudas
         public string modIndice(string idAyuda)
         {
             string indice = "";
-            string query = "SELECT indice FROM ayuda WHERE id_ayuda = ?"; // Parámetro seguro
+            string query = "SELECT indice FROM ayuda WHERE id_ayuda = ?"; // Consulta segura
 
-            using (OdbcCommand command = new OdbcCommand(query,this.conn.connection()))
+            try
             {
-                command.Parameters.AddWithValue("Id_ayuda", idAyuda);
-                using (OdbcDataReader reader = command.ExecuteReader())
+                using (OdbcConnection connection = this.conn.connection())
                 {
-                    if (reader.Read())
+                    connection.Open(); // Asegurar que la conexión está abierta
+
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
                     {
-                        indice = reader.GetString(0); // Asignamos el valor de la columna Indice
+                        command.Parameters.AddWithValue("?", idAyuda);
+
+                        using (OdbcDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                indice = reader.GetString(0); // Asignamos el valor de la columna 'indice'
+                            }
+                        }
                     }
-                }
+                } // La conexión se cierra automáticamente aquí
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el índice: " + ex.Message);
             }
 
             return indice;
         }
+
+        //Parametros colocados (Joel López 0901-21-4188)
+
         public string modRuta(string idAyuda)
         {
             string ruta = "";
-            string query = "SELECT Ruta FROM ayuda WHERE Id_ayuda = ?"; // Parámetro seguro
+            string query = "SELECT Ruta FROM ayuda WHERE Id_ayuda = ?"; // Consulta segura
 
-            using (OdbcCommand command = new OdbcCommand(query,this.conn.connection()))
+            try
             {
-                command.Parameters.AddWithValue("id_ayuda", idAyuda);
-                using (OdbcDataReader reader = command.ExecuteReader())
+                using (OdbcConnection connection = this.conn.connection())
                 {
-                    if (reader.Read())
+                    connection.Open(); // Asegurar que la conexión está abierta
+
+                    using (OdbcCommand command = new OdbcCommand(query, connection))
                     {
-                        ruta = reader.GetString(0); // Asignamos el valor de la columna Ruta
+                        command.Parameters.AddWithValue("?", idAyuda);
+
+                        using (OdbcDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                ruta = reader.GetString(0); // Asignamos el valor de la columna 'Ruta'
+                            }
+                        }
                     }
-                }
+                } // La conexión se cierra automáticamente aquí
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la ruta: " + ex.Message);
             }
 
             return ruta;
         }
+
     }
 }

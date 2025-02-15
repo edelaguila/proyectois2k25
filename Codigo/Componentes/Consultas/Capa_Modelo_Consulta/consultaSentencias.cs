@@ -27,7 +27,8 @@ namespace Capa_Modelo_Consulta
 
         public OdbcDataAdapter buscartbl(string BD)
         {
-            string sql = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '" + BD + "'";
+            string sql = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = ?";
+
             // Asegúrate de que la conexión esté funcionando
             OdbcConnection connection = con.connection();
             if (connection.State != ConnectionState.Open)
@@ -36,9 +37,15 @@ namespace Capa_Modelo_Consulta
                 return null;
             }
 
-            OdbcDataAdapter datatable = new OdbcDataAdapter(sql, connection);
+            // Crear el comando y agregar el parámetro
+            OdbcCommand command = new OdbcCommand(sql, connection);
+            command.Parameters.AddWithValue("@tableName", BD);
+
+            // Pasar el comando al DataAdapter
+            OdbcDataAdapter datatable = new OdbcDataAdapter(command);
             return datatable;
         }
+
 
 
         public void insertar(string dato, string tipo, string tabla)

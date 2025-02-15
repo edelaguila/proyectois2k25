@@ -40,7 +40,7 @@ namespace Capa_Modelo_Navegador
                     throw new ArgumentException("El nombre de la tabla no es válido.");
                 }
 
-                string[] sCamposDesc = ObtenerCampos(sTabla);
+                //string[] sCamposDesc = ObtenerCampos(sTabla);
 				
                 // Obtener los campos de la tabla principal de forma dinámica
                 string[] sCamposDesc = ObtenerCampos(sTabla);
