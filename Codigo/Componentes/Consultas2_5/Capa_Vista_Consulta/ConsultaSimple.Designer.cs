@@ -40,7 +40,7 @@ namespace Capa_Vista_Consulta
             this.cboCampo = new System.Windows.Forms.ComboBox();
             this.cboOperador = new System.Windows.Forms.ComboBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.btnAyudas = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultar2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +84,7 @@ namespace Capa_Vista_Consulta
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(20, 95);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 22);
+            this.label1.Size = new System.Drawing.Size(94, 33);
             this.label1.TabIndex = 39;
             this.label1.Text = "Campo";
             // 
@@ -93,7 +93,7 @@ namespace Capa_Vista_Consulta
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(226, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 22);
+            this.label2.Size = new System.Drawing.Size(130, 33);
             this.label2.TabIndex = 40;
             this.label2.Text = "Operación";
             // 
@@ -102,7 +102,7 @@ namespace Capa_Vista_Consulta
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(359, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 22);
+            this.label3.Size = new System.Drawing.Size(75, 33);
             this.label3.TabIndex = 41;
             this.label3.Text = "Valor";
             // 
@@ -110,7 +110,7 @@ namespace Capa_Vista_Consulta
             // 
             this.txtValor.Location = new System.Drawing.Point(362, 133);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(190, 30);
+            this.txtValor.Size = new System.Drawing.Size(190, 40);
             this.txtValor.TabIndex = 42;
             // 
             // cboCampo
@@ -118,7 +118,7 @@ namespace Capa_Vista_Consulta
             this.cboCampo.FormattingEnabled = true;
             this.cboCampo.Location = new System.Drawing.Point(24, 130);
             this.cboCampo.Name = "cboCampo";
-            this.cboCampo.Size = new System.Drawing.Size(163, 30);
+            this.cboCampo.Size = new System.Drawing.Size(163, 41);
             this.cboCampo.TabIndex = 43;
             // 
             // cboOperador
@@ -126,7 +126,7 @@ namespace Capa_Vista_Consulta
             this.cboOperador.FormattingEnabled = true;
             this.cboOperador.Location = new System.Drawing.Point(228, 130);
             this.cboOperador.Name = "cboOperador";
-            this.cboOperador.Size = new System.Drawing.Size(79, 30);
+            this.cboOperador.Size = new System.Drawing.Size(79, 41);
             this.cboOperador.TabIndex = 44;
             // 
             // label33
@@ -136,30 +136,30 @@ namespace Capa_Vista_Consulta
             this.label33.Location = new System.Drawing.Point(329, 25);
             this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(284, 46);
+            this.label33.Size = new System.Drawing.Size(397, 64);
             this.label33.TabIndex = 45;
             this.label33.Text = "Consulta Simple";
             // 
-            // btnAyudas
+            // btnAyuda
             // 
-            this.btnAyudas.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnAyudas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAyudas.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnAyudas.Image = ((System.Drawing.Image)(resources.GetObject("btnAyudas.Image")));
-            this.btnAyudas.Location = new System.Drawing.Point(780, 80);
-            this.btnAyudas.Name = "btnAyudas";
-            this.btnAyudas.Size = new System.Drawing.Size(96, 80);
-            this.btnAyudas.TabIndex = 46;
-            this.btnAyudas.UseVisualStyleBackColor = true;
-            this.btnAyudas.Click += new System.EventHandler(this.button1_Click);
+            this.btnAyuda.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAyuda.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAyuda.Image = ((System.Drawing.Image)(resources.GetObject("btnAyuda.Image")));
+            this.btnAyuda.Location = new System.Drawing.Point(780, 80);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(96, 80);
+            this.btnAyuda.TabIndex = 46;
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.button1_Click);
             // 
             // ConsultaSimple
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(916, 450);
-            this.Controls.Add(this.btnAyudas);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.cboOperador);
             this.Controls.Add(this.cboCampo);
@@ -192,6 +192,6 @@ namespace Capa_Vista_Consulta
         private System.Windows.Forms.ComboBox cboCampo;
         private System.Windows.Forms.ComboBox cboOperador;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Button btnAyudas;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }
