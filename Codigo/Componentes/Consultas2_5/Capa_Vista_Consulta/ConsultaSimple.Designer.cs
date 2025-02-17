@@ -84,7 +84,7 @@ namespace Capa_Vista_Consulta
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(20, 95);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 33);
+            this.label1.Size = new System.Drawing.Size(66, 22);
             this.label1.TabIndex = 39;
             this.label1.Text = "Campo";
             // 
@@ -93,7 +93,7 @@ namespace Capa_Vista_Consulta
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(226, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 33);
+            this.label2.Size = new System.Drawing.Size(93, 22);
             this.label2.TabIndex = 40;
             this.label2.Text = "Operación";
             // 
@@ -102,7 +102,7 @@ namespace Capa_Vista_Consulta
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(359, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 33);
+            this.label3.Size = new System.Drawing.Size(53, 22);
             this.label3.TabIndex = 41;
             this.label3.Text = "Valor";
             // 
@@ -110,7 +110,7 @@ namespace Capa_Vista_Consulta
             // 
             this.txtValor.Location = new System.Drawing.Point(362, 133);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(190, 40);
+            this.txtValor.Size = new System.Drawing.Size(190, 30);
             this.txtValor.TabIndex = 42;
             // 
             // cboCampo
@@ -118,7 +118,7 @@ namespace Capa_Vista_Consulta
             this.cboCampo.FormattingEnabled = true;
             this.cboCampo.Location = new System.Drawing.Point(24, 130);
             this.cboCampo.Name = "cboCampo";
-            this.cboCampo.Size = new System.Drawing.Size(163, 41);
+            this.cboCampo.Size = new System.Drawing.Size(163, 30);
             this.cboCampo.TabIndex = 43;
             // 
             // cboOperador
@@ -126,7 +126,7 @@ namespace Capa_Vista_Consulta
             this.cboOperador.FormattingEnabled = true;
             this.cboOperador.Location = new System.Drawing.Point(228, 130);
             this.cboOperador.Name = "cboOperador";
-            this.cboOperador.Size = new System.Drawing.Size(79, 41);
+            this.cboOperador.Size = new System.Drawing.Size(79, 30);
             this.cboOperador.TabIndex = 44;
             // 
             // label33
@@ -136,7 +136,7 @@ namespace Capa_Vista_Consulta
             this.label33.Location = new System.Drawing.Point(329, 25);
             this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(397, 64);
+            this.label33.Size = new System.Drawing.Size(284, 46);
             this.label33.TabIndex = 45;
             this.label33.Text = "Consulta Simple";
             // 
@@ -155,7 +155,7 @@ namespace Capa_Vista_Consulta
             // 
             // ConsultaSimple
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(916, 450);
@@ -171,6 +171,8 @@ namespace Capa_Vista_Consulta
             this.Controls.Add(this.btnCancelar2);
             this.Controls.Add(this.btnConsultar2);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ConsultaSimple";
             this.Text = "ConsultaSimple";
             this.Load += new System.EventHandler(this.ConsultaSimple_Load);
