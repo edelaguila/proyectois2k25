@@ -18,7 +18,7 @@ namespace Capa_Vista_Contabilidad
 
             string idusuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
 
-            string[] alias = { "Codigo", "TipoCuenta", "Grupo cuenta", "Nombre", "Cargo-Mes", "Abono-Mes", "Saldo-Anterior", "Saldo-Actual", "Cargo-Acumulado", "Abono-Acumulado", "Cuenta-padre", "Efectivo", "Estado" };
+            string[] alias = { "ID", "Tipo", "Grupo cuenta", "Nombre", "Cargo_Mes", "Abono_Mes", "Saldo_Anterior", "Saldo_Actual", "Cargo_Acumulado", "Abono_Acumulado", "Cuenta_padre", "Efectivo", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.FromArgb(242, 133, 122));
@@ -36,6 +36,11 @@ namespace Capa_Vista_Contabilidad
             navegador1.AsignarForaneas("tbl_cuentas", "nombre_cuenta", "Pk_id_cuenta", "Pk_id_cuenta");
             navegador1.AsignarForaneas("tbl_cuentas", "nombre_cuenta", "Pk_id_cuenta", "Pk_id_cuenta");
             navegador1.AsignarForaneas("tbl_cuentas", "nombre_cuenta", "Pk_id_cuenta_enlace", "Pk_id_cuenta"); */
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

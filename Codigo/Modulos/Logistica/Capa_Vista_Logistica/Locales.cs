@@ -16,7 +16,7 @@ namespace Capa_Vista_Logistica
         {
             InitializeComponent();
             string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
-            string[] alias = { "codigo", "nombre", "ubicacion", "capacidad", "estado", "fecha" };
+            string[] alias = { "ID", "Nombre", "Ubicacion", "Capacidad", "Estado", "Fecha" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.LightBlue);
@@ -26,6 +26,11 @@ namespace Capa_Vista_Logistica
             navegador1.AsignarAyuda("1");
             navegador1.AsignarTabla("tbl_locales");
             navegador1.AsignarNombreForm("LOCALES");
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

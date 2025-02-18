@@ -22,7 +22,7 @@ namespace Capa_Vista_Nominas
          //   string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
 
             // Prueba con la tabla inicial/
-            string[] alias = { "pk_registro_horas", "horas_mes ", "horas_cantidad_horas", " fk_clave_empleado", "estado" };
+            string[] alias = { "ID", "Horas_mes ", "Cantidad_horas", " ID Empleado", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.LightGray);
@@ -32,6 +32,11 @@ namespace Capa_Vista_Nominas
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
             navegador1.AsignarNombreForm("Horas Extra");
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
