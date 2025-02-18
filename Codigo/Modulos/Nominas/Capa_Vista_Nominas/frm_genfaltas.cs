@@ -18,7 +18,7 @@ namespace Capa_Vista_Nominas
             string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
             /// Marco Alejandro Monroy*/
             /*Prueba con navegador*/
-            string[] alias = { "pk_registro_faltas", "faltas_fecha_falta", "faltas_mes", "faltas_justificacion", "fk_clave_empleado", "estado" };
+            string[] alias = { "ID", "Fecha_falta", "Faltas_mes", "Justificacion", "ID Empleado", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.MediumPurple);
@@ -31,6 +31,11 @@ namespace Capa_Vista_Nominas
 
 
             navegador1.AsignarComboConTabla("tbl_empleados", "pk_clave", "empleados_nombre", 1);
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

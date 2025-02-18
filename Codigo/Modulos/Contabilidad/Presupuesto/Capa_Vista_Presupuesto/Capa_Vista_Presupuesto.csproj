@@ -39,7 +39,7 @@
       <HintPath>..\Capa_Controlador_Presupuesto\bin\Debug\Capa_Controlador_Presupuesto.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Controlador_Seguridad">
-      <HintPath>..\..\..\..\Componentes\Seguridad\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+      <HintPath>..\..\..\..\Componentes\Seguridad2_5\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <HintPath>..\packages\CrystalReports.Engine.13.0.4003\lib\net40\CrystalDecisions.CrystalReports.Engine.dll</HintPath>

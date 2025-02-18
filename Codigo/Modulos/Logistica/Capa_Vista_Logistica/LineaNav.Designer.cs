@@ -37,16 +37,19 @@ namespace Capa_Vista_Logistica
             this.navegador1.BackColor = System.Drawing.Color.White;
             this.navegador1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navegador1.Location = new System.Drawing.Point(0, 0);
+            this.navegador1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.navegador1.Name = "navegador1";
-            this.navegador1.Size = new System.Drawing.Size(865, 650);
+            this.navegador1.Size = new System.Drawing.Size(1153, 800);
             this.navegador1.TabIndex = 0;
+            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
             // LineaNav
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 650);
+            this.ClientSize = new System.Drawing.Size(1153, 800);
             this.Controls.Add(this.navegador1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LineaNav";
             this.Text = "MantenimientoNav";
             this.ResumeLayout(false);

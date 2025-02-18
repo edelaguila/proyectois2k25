@@ -35,14 +35,14 @@
       <HintPath>..\Capa_Controlador_Polizas\bin\Debug\Capa_Controlador_Polizas.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Controlador_Seguridad">
-      <HintPath>..\..\..\..\Componentes\Seguridad\Capa_Vista_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+      <HintPath>..\..\..\..\Componentes\Seguridad2_5\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Polizas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Capa_Vista_Polizas.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Seguridad">
-      <HintPath>..\..\..\..\Componentes\Seguridad\Capa_Vista_Seguridad\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
+      <HintPath>..\..\..\..\Componentes\Seguridad2_5\Capa_Vista_Seguridad\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

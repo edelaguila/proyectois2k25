@@ -15,7 +15,7 @@ namespace Capa_Vista_CompraVenta
         public Frm_clientes(String idUsuario)
         {
             InitializeComponent();
-            string[] alias = { "Codigo", "Nombre", "apellido", "nit", "telefono", "direccion", "No.cuenta", "estado", "Tipo", "deuda", "vendedor acargo", "lista precios" };
+            string[] alias = { "ID", "Nombre", "Apellido", "Nit", "Telefono", "Direccion", "No.cuenta", "Estado", "Tipo", "Deuda", "Vendedor acargo", "Lista precios" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.FromArgb(255, 255, 192));
@@ -25,6 +25,11 @@ namespace Capa_Vista_CompraVenta
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
             navegador1.AsignarNombreForm("Mantenimiento clientes");
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
