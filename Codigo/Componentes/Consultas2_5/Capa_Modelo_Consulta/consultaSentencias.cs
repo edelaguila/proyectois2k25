@@ -57,11 +57,11 @@ namespace Capa_Modelo_Consulta
         //Validaciones de Nombre de tabla (Joel López 0901-21-4188) 14/02/2025
         public void insertar_dato(string s_dato, string s_tipo, string s_tabla)
         {
-            if (!es_nombre_valido(s_tabla) || !es_nombre_valido(s_tipo))
-            {
-                MessageBox.Show("Nombre de tabla o columna no válido.");
-                return;
-            }
+            //if (!es_nombre_valido(s_tabla) || !es_nombre_valido(s_tipo))
+            //{
+            //    MessageBox.Show("Nombre de tabla o columna no válido.");
+            //    return;
+            //}
             string s_sql = $"INSERT INTO {s_tabla} ({s_tipo}) VALUES (?)";
             try
             {
@@ -82,40 +82,68 @@ namespace Capa_Modelo_Consulta
         }
 
         // Método auxiliar para validar nombres de tablas y columnas
-        private bool es_nombre_valido(string s_nombre)
-        {
-            return Regex.IsMatch(s_nombre, "^[a-zA-Z0-9_]+$");
-        }
+        //private bool es_nombre_valido(string s_nombre)
+        //{
+        //    return Regex.IsMatch(s_nombre, "^[a-zA-Z0-9_]+$");
+        //}
 
 
 
-        //Cierre de conexiones (Daniel Sierra 0901-21-12740) 14/02/2025
-        //Parámetros colocados (Joel López 0901-21-4188) 14/02/2025
+        ////Cierre de conexiones (Daniel Sierra 0901-21-12740) 14/02/2025
+        ////Parámetros colocados (Joel López 0901-21-4188) 14/02/2025
+        //public List<string> obtener_columnas(string s_tabla)
+        //{
+        //    List<string> lst_columnas = new List<string>();
+        //    if (!es_nombre_valido(s_tabla))
+        //    {
+        //        Console.WriteLine("Nombre de tabla no válido.");
+        //        return lst_columnas;
+        //    }
+        //    string s_query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ? AND TABLE_NAME = ?;";
+        //    try
+        //    {
+        //        using (OdbcConnection conn = this.conn.connection())
+        //        {
+        //            conn.Open();
+        //            using (OdbcCommand cmd = new OdbcCommand(s_query, conn))
+        //            {
+        //                cmd.Parameters.AddWithValue("?", s_base_datos);
+        //                cmd.Parameters.AddWithValue("?", s_tabla);
+        //                using (OdbcDataReader reader = cmd.ExecuteReader())
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        lst_columnas.Add(reader.GetString(0));
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine("Error al obtener columnas: " + e.Message);
+        //    }
+        //    return lst_columnas;
+        //}
+
+        /***********Original - Combobox************************/
         public List<string> obtener_columnas(string s_tabla)
         {
-            List<string> lst_columnas = new List<string>();
-            if (!es_nombre_valido(s_tabla))
-            {
-                Console.WriteLine("Nombre de tabla no válido.");
-                return lst_columnas;
-            }
-            string s_query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ? AND TABLE_NAME = ?;";
+            List<string> columns = new List<string>();
             try
             {
-                using (OdbcConnection conn = this.conn.connection())
+                // Usa la variable 'baseDatos' ya definida en la clase
+                string query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
+                               "WHERE TABLE_SCHEMA = '" + s_base_datos + "' AND TABLE_NAME = '" + s_tabla + "';";
+                // Ejecutamos el comando con la conexión activa
+                using (OdbcCommand cmd = new OdbcCommand(query, this.conn.connection()))
                 {
-                    conn.Open();
-                    using (OdbcCommand cmd = new OdbcCommand(s_query, conn))
+                    OdbcDataReader reader = cmd.ExecuteReader();
+                    // Añadimos las columnas a la lista
+                    while (reader.Read())
                     {
-                        cmd.Parameters.AddWithValue("?", s_base_datos);
-                        cmd.Parameters.AddWithValue("?", s_tabla);
-                        using (OdbcDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                lst_columnas.Add(reader.GetString(0));
-                            }
-                        }
+                        string column = reader.GetString(0);
+                        columns.Add(column);
                     }
                 }
             }
@@ -123,8 +151,9 @@ namespace Capa_Modelo_Consulta
             {
                 Console.WriteLine("Error al obtener columnas: " + e.Message);
             }
-            return lst_columnas;
+            return columns;
         }
+        /*******************************************************/
 
 
         /*
@@ -210,29 +239,42 @@ namespace Capa_Modelo_Consulta
         //Cierre de conexiones (Daniel Sierra 0901-21-12740) 14/02/2025
         public OdbcDataAdapter EjecutarQuery(string query)
         {
+            /*****Original******/
+            OdbcDataAdapter adapter = null;
             try
             {
-                // Usamos 'using' para asegurar que la conexión y adaptador se cierren correctamente
-                using (OdbcConnection con = this.conn.connection()) // Crea y maneja la conexión
-                {
-                    con.Open(); // Abre la conexión
-
-                    // Usamos el 'using' para el adaptador de datos, asegurando su cierre adecuado
-                    using (OdbcDataAdapter adapter = new OdbcDataAdapter(query, con))
-                    {
-                        return adapter; // Retornamos el adaptador para que se pueda usar fuera de esta función
-                    }
-                }
+                // Crear el adaptador de datos para ejecutar el query
+                adapter = new OdbcDataAdapter(query, this.conn.connection());
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error al ejecutar el query: " + ex.Message);
-                return null; // Retorna null en caso de error
             }
+            return adapter;
+            /*********************/
+            //try
+            //{
+            //    // Usamos 'using' para asegurar que la conexión y adaptador se cierren correctamente
+            //    using (OdbcConnection con = this.conn.connection()) // Crea y maneja la conexión
+            //    {
+            //        con.Open(); // Abre la conexión
+
+            //        // Usamos el 'using' para el adaptador de datos, asegurando su cierre adecuado
+            //        using (OdbcDataAdapter adapter = new OdbcDataAdapter(query, con))
+            //        {
+            //            return adapter; // Retornamos el adaptador para que se pueda usar fuera de esta función
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error al ejecutar el query: " + ex.Message);
+            //    return null; // Retorna null en caso de error
+            //}
         }
 
 
-       public void eliminar_consulta(string s_nombre_consulta)
+        public void eliminar_consulta(string s_nombre_consulta)
         {
             string s_sql = "UPDATE tbl_consultaInteligente SET consultaInteligente_consulta_estatus = 0 WHERE consultaInteligente_nombre_consulta = ?";
             try
