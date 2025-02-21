@@ -53,30 +53,43 @@ namespace Capa_Vista_Consulta
 
         private void btnConsultar2_Click_1(object sender, EventArgs e)
         {
+            /********Codigo original****************************************************/
             try
             {
-                // Obtener el nombre real de la columna seleccionada en el ComboBox
-                var selectedItem = cboCampo.SelectedItem as ComboBoxItem;
-                if (selectedItem != null)
-                {
-                    // Usar el nombre real de la columna para evitar errores de sintaxis en MySQL
-                    datos = new string[] { selectedItem.RealColumnName, cboOperador.Text, txtValor.Text };
-
-                    // Generar la consulta con los valores corregidos
-                    DataTable resultados = csControlador.GenerarQuery(datos, BD);
-
-                    // Mostrar los resultados en el DataGridView
-                    dgvConsultar2.DataSource = resultados;
-                }
-                else
-                {
-                    MessageBox.Show("Por favor, selecciona un campo válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                //MessageBox.Show("Se presiono");
+                datos = new string[] { cboCampo.Text, cboOperador.Text, txtValor.Text };
+                DataTable resultados = csControlador.GenerarQuery(datos, BD);
+                dgvConsultar2.DataSource = resultados;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            /******************************************************************************/
+            //try
+            //{
+            //    // Obtener el nombre real de la columna seleccionada en el ComboBox
+            //    var selectedItem = cboCampo.SelectedItem as ComboBoxItem;
+            //    if (selectedItem != null)
+            //    {
+            //        // Usar el nombre real de la columna para evitar errores de sintaxis en MySQL
+            //        datos = new string[] { selectedItem.RealColumnName, cboOperador.Text, txtValor.Text };
+
+            //        // Generar la consulta con los valores corregidos
+            //        DataTable resultados = csControlador.GenerarQuery(datos, BD);
+
+            //        // Mostrar los resultados en el DataGridView
+            //        dgvConsultar2.DataSource = resultados;
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Por favor, selecciona un campo válido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btnCancelar2_Click_1(object sender, EventArgs e)
