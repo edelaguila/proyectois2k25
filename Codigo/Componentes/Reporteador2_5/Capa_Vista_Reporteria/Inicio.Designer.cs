@@ -56,20 +56,20 @@ namespace Capa_Vista_Reporteria
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(245, 30);
+            this.label1.Font = new System.Drawing.Font("Courier New", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(174, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 24);
+            this.label1.Size = new System.Drawing.Size(395, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "Reportes Generales";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(133, 74);
+            this.label2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(125, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 17);
+            this.label2.Size = new System.Drawing.Size(48, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ruta";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -77,8 +77,8 @@ namespace Capa_Vista_Reporteria
             // Btn_Examinar
             // 
             this.Btn_Examinar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Btn_Examinar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Examinar.Location = new System.Drawing.Point(574, 66);
+            this.Btn_Examinar.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Examinar.Location = new System.Drawing.Point(591, 66);
             this.Btn_Examinar.Name = "Btn_Examinar";
             this.Btn_Examinar.Size = new System.Drawing.Size(105, 29);
             this.Btn_Examinar.TabIndex = 2;
@@ -88,7 +88,7 @@ namespace Capa_Vista_Reporteria
             // 
             // Txt_Ruta
             // 
-            this.Txt_Ruta.Location = new System.Drawing.Point(172, 74);
+            this.Txt_Ruta.Location = new System.Drawing.Point(176, 72);
             this.Txt_Ruta.Name = "Txt_Ruta";
             this.Txt_Ruta.Size = new System.Drawing.Size(397, 20);
             this.Txt_Ruta.TabIndex = 3;
@@ -96,27 +96,27 @@ namespace Capa_Vista_Reporteria
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(39, 112);
+            this.label3.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 112);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 17);
+            this.label3.Size = new System.Drawing.Size(78, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "Archivo";
             // 
             // Txt_NombreA
             // 
-            this.Txt_NombreA.Location = new System.Drawing.Point(100, 112);
+            this.Txt_NombreA.Location = new System.Drawing.Point(85, 112);
             this.Txt_NombreA.Name = "Txt_NombreA";
-            this.Txt_NombreA.Size = new System.Drawing.Size(122, 20);
+            this.Txt_NombreA.Size = new System.Drawing.Size(99, 20);
             this.Txt_NombreA.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(228, 112);
+            this.label4.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(188, 112);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 17);
+            this.label4.Size = new System.Drawing.Size(108, 18);
             this.label4.TabIndex = 6;
             this.label4.Text = "Aplicación";
             // 
@@ -178,19 +178,21 @@ namespace Capa_Vista_Reporteria
             // 
             this.Dgv_Regreporteria.AllowUserToAddRows = false;
             this.Dgv_Regreporteria.AllowUserToDeleteRows = false;
+            this.Dgv_Regreporteria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv_Regreporteria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Regreporteria.Location = new System.Drawing.Point(12, 242);
+            this.Dgv_Regreporteria.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Dgv_Regreporteria.Location = new System.Drawing.Point(0, 289);
             this.Dgv_Regreporteria.Name = "Dgv_Regreporteria";
             this.Dgv_Regreporteria.ReadOnly = true;
             this.Dgv_Regreporteria.RowHeadersWidth = 62;
-            this.Dgv_Regreporteria.Size = new System.Drawing.Size(667, 177);
+            this.Dgv_Regreporteria.Size = new System.Drawing.Size(703, 177);
             this.Dgv_Regreporteria.TabIndex = 13;
             this.Dgv_Regreporteria.DoubleClick += new System.EventHandler(this.Dgv_Regreporteria_DoubleClick);
             // 
             // Cbo_Aplicacion
             // 
             this.Cbo_Aplicacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbo_Aplicacion.Location = new System.Drawing.Point(297, 112);
+            this.Cbo_Aplicacion.Location = new System.Drawing.Point(294, 112);
             this.Cbo_Aplicacion.Name = "Cbo_Aplicacion";
             this.Cbo_Aplicacion.Size = new System.Drawing.Size(85, 21);
             this.Cbo_Aplicacion.TabIndex = 14;
@@ -198,10 +200,10 @@ namespace Capa_Vista_Reporteria
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(388, 115);
+            this.label5.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(380, 113);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 17);
+            this.label5.Size = new System.Drawing.Size(68, 18);
             this.label5.TabIndex = 15;
             this.label5.Text = "Estado";
             // 
@@ -224,17 +226,17 @@ namespace Capa_Vista_Reporteria
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(28, 74);
+            this.label6.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(8, 72);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(21, 17);
+            this.label6.Size = new System.Drawing.Size(28, 18);
             this.label6.TabIndex = 18;
             this.label6.Text = "ID";
             // 
             // Txt_IDReporte
             // 
             this.Txt_IDReporte.Enabled = false;
-            this.Txt_IDReporte.Location = new System.Drawing.Point(64, 74);
+            this.Txt_IDReporte.Location = new System.Drawing.Point(43, 72);
             this.Txt_IDReporte.Name = "Txt_IDReporte";
             this.Txt_IDReporte.Size = new System.Drawing.Size(52, 20);
             this.Txt_IDReporte.TabIndex = 19;
@@ -245,7 +247,7 @@ namespace Capa_Vista_Reporteria
             this.Cbo_Estado.Items.AddRange(new object[] {
             "No_visible",
             "Visible"});
-            this.Cbo_Estado.Location = new System.Drawing.Point(440, 112);
+            this.Cbo_Estado.Location = new System.Drawing.Point(445, 112);
             this.Cbo_Estado.Name = "Cbo_Estado";
             this.Cbo_Estado.Size = new System.Drawing.Size(87, 21);
             this.Cbo_Estado.TabIndex = 16;
@@ -253,7 +255,7 @@ namespace Capa_Vista_Reporteria
             // Cbo_Modulo
             // 
             this.Cbo_Modulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbo_Modulo.Location = new System.Drawing.Point(595, 112);
+            this.Cbo_Modulo.Location = new System.Drawing.Point(608, 112);
             this.Cbo_Modulo.Name = "Cbo_Modulo";
             this.Cbo_Modulo.Size = new System.Drawing.Size(85, 21);
             this.Cbo_Modulo.TabIndex = 21;
@@ -261,10 +263,10 @@ namespace Capa_Vista_Reporteria
             // Lbl_Modulos
             // 
             this.Lbl_Modulos.AutoSize = true;
-            this.Lbl_Modulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Modulos.Location = new System.Drawing.Point(533, 115);
+            this.Lbl_Modulos.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Modulos.Location = new System.Drawing.Point(534, 114);
             this.Lbl_Modulos.Name = "Lbl_Modulos";
-            this.Lbl_Modulos.Size = new System.Drawing.Size(61, 17);
+            this.Lbl_Modulos.Size = new System.Drawing.Size(78, 18);
             this.Lbl_Modulos.TabIndex = 20;
             this.Lbl_Modulos.Text = "Módulos";
             // 
@@ -272,7 +274,7 @@ namespace Capa_Vista_Reporteria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(177)))), ((int)(((byte)(252)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(232)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(703, 466);
             this.Controls.Add(this.Cbo_Modulo);
             this.Controls.Add(this.Lbl_Modulos);
@@ -294,6 +296,8 @@ namespace Capa_Vista_Reporteria
             this.Controls.Add(this.Btn_Examinar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(719, 505);
+            this.MinimumSize = new System.Drawing.Size(719, 505);
             this.Name = "Inicio";
             this.Text = "Inicio";
             this.Load += new System.EventHandler(this.Inicio_Load);
