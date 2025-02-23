@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=frmCambioClave.chm
+Contents file=frmCambioClave.hhc
+Default Window=frmCambioClave
+Display compile progress=No
+Language=0x580a Español (Latinoamérica)
+
+[WINDOWS]
+frmCambioClave="Ayuda - CambioClave","frmCambioClave.hhc",,,,,,,,0x23520,,0x3006,,,,,,,,0
+
+
+[FILES]
+cambio_clave.html
+
+[INFOTYPES]
+

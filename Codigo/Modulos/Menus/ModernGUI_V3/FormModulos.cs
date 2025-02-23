@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Vista_Nominas;
+//using Capa_Vista_Nominas;
 
 //using Capa_Vista_Banco;
 //using Capa_Vista_Contabilidad;
@@ -188,8 +188,8 @@ namespace Interfac_V3
             Aqui debe de agregarse la referencia a nominas
             */
 
-            frm_principal_nominas nominas = new frm_principal_nominas(UsuarioSesion.GetIdUsuario());
-            nominas.Show();
+            //frm_principal_nominas nominas = new frm_principal_nominas(UsuarioSesion.GetIdUsuario());
+            //nominas.Show();
 
 
         }
