@@ -1,6 +1,4 @@
-DROP DATABASE IF exists sistemapasaportes;
-CREATE DATABASE sistemapasaportes;
-USE sistemapasaportes;
+USE colchoneria;
 
 -- Tabla Nacionalidad
 CREATE TABLE IF NOT EXISTS Tbl_nacionalidad (
