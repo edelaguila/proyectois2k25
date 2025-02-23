@@ -1,0 +1,19 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaLogistica.chm
+Contents file=AyudaLogistica.hhc
+Default Window=Ayuda Logística
+Default topic=AyudaLogistica.html
+Display compile progress=No
+Language=0x580a Spanish (Latin America)
+Title=Ayuda módulo de logística
+
+[WINDOWS]
+Ayuda Logística="Ayuda del módulo de logística","AyudaLogistica.hhc",,"AyudaLogistica.html","AyudaLogistica.html",,,,,0x2120,,0x3006,[430,79,1580,976],,,,,,,0
+
+
+[FILES]
+AyudaLogistica.html
+
+[INFOTYPES]
+

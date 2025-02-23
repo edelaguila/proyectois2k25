@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35026.282
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_Migracion", "Capa_Vista_Migracion\Capa_Vista_Migracion.csproj", "{E149D24D-AAE1-42B4-B912-92054A2C8C84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Controlador_Migracion", "Capa_Controlador_Migracion\Capa_Controlador_Migracion.csproj", "{E341CCED-ABCD-467C-AA04-DECBA4DFA2E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Modelo_Migracion", "Capa_Modelo_Migracion\Capa_Modelo_Migracion.csproj", "{C30F9E65-DC97-4E26-899A-519DCC490CEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E149D24D-AAE1-42B4-B912-92054A2C8C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E149D24D-AAE1-42B4-B912-92054A2C8C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E149D24D-AAE1-42B4-B912-92054A2C8C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E149D24D-AAE1-42B4-B912-92054A2C8C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E341CCED-ABCD-467C-AA04-DECBA4DFA2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E341CCED-ABCD-467C-AA04-DECBA4DFA2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E341CCED-ABCD-467C-AA04-DECBA4DFA2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E341CCED-ABCD-467C-AA04-DECBA4DFA2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30F9E65-DC97-4E26-899A-519DCC490CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30F9E65-DC97-4E26-899A-519DCC490CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30F9E65-DC97-4E26-899A-519DCC490CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30F9E65-DC97-4E26-899A-519DCC490CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40E78007-43F6-4358-A265-D850A83B9599}
+	EndGlobalSection
+EndGlobal

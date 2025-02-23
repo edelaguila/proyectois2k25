@@ -1,0 +1,19 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaReportes.chm
+Contents file=AyudaRep.hhc
+Default Window=AS2 Proyecto Final - Componente Reporteador
+Default topic=AyudaRep.html
+Display compile progress=No
+Language=0x409 Inglés (Estados Unidos)
+Title=AyudaReportes
+
+[WINDOWS]
+AS2 Proyecto Final - Componente Reporteador=,"AyudaRep.hhc",,"AyudaRep.html","AyudaRep.html","AyudaRep.html","Ayuda Reporteador","AyudaRep.html","Ayuda Reporteador",0x2120,,0x4387e,[669,167,1742,878],,,,,,,0
+
+
+[FILES]
+AyudaRep.html
+
+[INFOTYPES]
+
