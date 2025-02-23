@@ -57,9 +57,10 @@ namespace Capa_Vista_Reporteria
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Courier New", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(174, 9);
+            this.label1.Location = new System.Drawing.Point(232, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(395, 39);
+            this.label1.Size = new System.Drawing.Size(488, 47);
             this.label1.TabIndex = 0;
             this.label1.Text = "Reportes Generales";
             // 
@@ -67,9 +68,10 @@ namespace Capa_Vista_Reporteria
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(125, 72);
+            this.label2.Location = new System.Drawing.Point(167, 89);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 18);
+            this.label2.Size = new System.Drawing.Size(58, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ruta";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -78,9 +80,10 @@ namespace Capa_Vista_Reporteria
             // 
             this.Btn_Examinar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Examinar.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Examinar.Location = new System.Drawing.Point(591, 66);
+            this.Btn_Examinar.Location = new System.Drawing.Point(788, 81);
+            this.Btn_Examinar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Examinar.Name = "Btn_Examinar";
-            this.Btn_Examinar.Size = new System.Drawing.Size(105, 29);
+            this.Btn_Examinar.Size = new System.Drawing.Size(140, 36);
             this.Btn_Examinar.TabIndex = 2;
             this.Btn_Examinar.Text = "Examinar";
             this.Btn_Examinar.UseVisualStyleBackColor = true;
@@ -88,75 +91,82 @@ namespace Capa_Vista_Reporteria
             // 
             // Txt_Ruta
             // 
-            this.Txt_Ruta.Location = new System.Drawing.Point(176, 72);
+            this.Txt_Ruta.Location = new System.Drawing.Point(235, 89);
+            this.Txt_Ruta.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_Ruta.Name = "Txt_Ruta";
-            this.Txt_Ruta.Size = new System.Drawing.Size(397, 20);
+            this.Txt_Ruta.Size = new System.Drawing.Size(528, 22);
             this.Txt_Ruta.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 112);
+            this.label3.Location = new System.Drawing.Point(8, 138);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 18);
+            this.label3.Size = new System.Drawing.Size(94, 22);
             this.label3.TabIndex = 4;
             this.label3.Text = "Archivo";
             // 
             // Txt_NombreA
             // 
-            this.Txt_NombreA.Location = new System.Drawing.Point(85, 112);
+            this.Txt_NombreA.Location = new System.Drawing.Point(113, 138);
+            this.Txt_NombreA.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_NombreA.Name = "Txt_NombreA";
-            this.Txt_NombreA.Size = new System.Drawing.Size(99, 20);
+            this.Txt_NombreA.Size = new System.Drawing.Size(131, 22);
             this.Txt_NombreA.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(188, 112);
+            this.label4.Location = new System.Drawing.Point(251, 138);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 18);
+            this.label4.Size = new System.Drawing.Size(130, 22);
             this.label4.TabIndex = 6;
             this.label4.Text = "Aplicación";
             // 
             // Btn_Guardar
             // 
-            this.Btn_Guardar.BackColor = System.Drawing.Color.White;
+            this.Btn_Guardar.BackColor = System.Drawing.Color.Transparent;
             this.Btn_Guardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Guardar.Image")));
-            this.Btn_Guardar.Location = new System.Drawing.Point(88, 162);
+            this.Btn_Guardar.Location = new System.Drawing.Point(117, 199);
+            this.Btn_Guardar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Guardar.Name = "Btn_Guardar";
-            this.Btn_Guardar.Size = new System.Drawing.Size(56, 53);
+            this.Btn_Guardar.Size = new System.Drawing.Size(80, 74);
             this.Btn_Guardar.TabIndex = 8;
             this.Btn_Guardar.UseVisualStyleBackColor = false;
             this.Btn_Guardar.Click += new System.EventHandler(this.Btn_Guardar_Click);
             // 
             // Btn_Modificar
             // 
-            this.Btn_Modificar.BackColor = System.Drawing.Color.White;
+            this.Btn_Modificar.BackColor = System.Drawing.Color.Transparent;
             this.Btn_Modificar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Modificar.Enabled = false;
             this.Btn_Modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Modificar.Image")));
-            this.Btn_Modificar.Location = new System.Drawing.Point(188, 162);
+            this.Btn_Modificar.Location = new System.Drawing.Point(255, 199);
+            this.Btn_Modificar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Modificar.Name = "Btn_Modificar";
-            this.Btn_Modificar.Size = new System.Drawing.Size(56, 53);
+            this.Btn_Modificar.Size = new System.Drawing.Size(80, 74);
             this.Btn_Modificar.TabIndex = 9;
             this.Btn_Modificar.UseVisualStyleBackColor = false;
             this.Btn_Modificar.Click += new System.EventHandler(this.Btn_Modificar_Click);
             // 
             // Btn_Eliminar
             // 
-            this.Btn_Eliminar.BackColor = System.Drawing.Color.White;
+            this.Btn_Eliminar.BackColor = System.Drawing.Color.Transparent;
             this.Btn_Eliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Eliminar.Enabled = false;
             this.Btn_Eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Eliminar.Image")));
-            this.Btn_Eliminar.Location = new System.Drawing.Point(288, 162);
+            this.Btn_Eliminar.Location = new System.Drawing.Point(392, 199);
+            this.Btn_Eliminar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Eliminar.Name = "Btn_Eliminar";
-            this.Btn_Eliminar.Size = new System.Drawing.Size(56, 53);
+            this.Btn_Eliminar.Size = new System.Drawing.Size(80, 74);
             this.Btn_Eliminar.TabIndex = 10;
             this.Btn_Eliminar.UseVisualStyleBackColor = false;
             this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
@@ -167,9 +177,10 @@ namespace Capa_Vista_Reporteria
             this.Btn_VerReporte.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_VerReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_VerReporte.Image = ((System.Drawing.Image)(resources.GetObject("Btn_VerReporte.Image")));
-            this.Btn_VerReporte.Location = new System.Drawing.Point(561, 162);
+            this.Btn_VerReporte.Location = new System.Drawing.Point(688, 199);
+            this.Btn_VerReporte.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_VerReporte.Name = "Btn_VerReporte";
-            this.Btn_VerReporte.Size = new System.Drawing.Size(56, 53);
+            this.Btn_VerReporte.Size = new System.Drawing.Size(80, 74);
             this.Btn_VerReporte.TabIndex = 12;
             this.Btn_VerReporte.UseVisualStyleBackColor = false;
             this.Btn_VerReporte.Click += new System.EventHandler(this.Btn_VerReporte_Click);
@@ -181,44 +192,47 @@ namespace Capa_Vista_Reporteria
             this.Dgv_Regreporteria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv_Regreporteria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Regreporteria.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Dgv_Regreporteria.Location = new System.Drawing.Point(0, 289);
+            this.Dgv_Regreporteria.Location = new System.Drawing.Point(0, 346);
+            this.Dgv_Regreporteria.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_Regreporteria.Name = "Dgv_Regreporteria";
             this.Dgv_Regreporteria.ReadOnly = true;
             this.Dgv_Regreporteria.RowHeadersWidth = 62;
-            this.Dgv_Regreporteria.Size = new System.Drawing.Size(703, 177);
+            this.Dgv_Regreporteria.Size = new System.Drawing.Size(935, 218);
             this.Dgv_Regreporteria.TabIndex = 13;
             this.Dgv_Regreporteria.DoubleClick += new System.EventHandler(this.Dgv_Regreporteria_DoubleClick);
             // 
             // Cbo_Aplicacion
             // 
             this.Cbo_Aplicacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbo_Aplicacion.Location = new System.Drawing.Point(294, 112);
+            this.Cbo_Aplicacion.Location = new System.Drawing.Point(392, 138);
+            this.Cbo_Aplicacion.Margin = new System.Windows.Forms.Padding(4);
             this.Cbo_Aplicacion.Name = "Cbo_Aplicacion";
-            this.Cbo_Aplicacion.Size = new System.Drawing.Size(85, 21);
+            this.Cbo_Aplicacion.Size = new System.Drawing.Size(112, 24);
             this.Cbo_Aplicacion.TabIndex = 14;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(380, 113);
+            this.label5.Location = new System.Drawing.Point(507, 139);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 18);
+            this.label5.Size = new System.Drawing.Size(82, 22);
             this.label5.TabIndex = 15;
             this.label5.Text = "Estado";
             // 
             // Btn_Actualizar
             // 
-            this.Btn_Actualizar.BackColor = System.Drawing.Color.White;
+            this.Btn_Actualizar.BackColor = System.Drawing.Color.Transparent;
             this.Btn_Actualizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Actualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Actualizar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Actualizar.Image")));
             this.Btn_Actualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Actualizar.Location = new System.Drawing.Point(388, 162);
+            this.Btn_Actualizar.Location = new System.Drawing.Point(542, 199);
+            this.Btn_Actualizar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Actualizar.Name = "Btn_Actualizar";
-            this.Btn_Actualizar.Size = new System.Drawing.Size(136, 53);
+            this.Btn_Actualizar.Size = new System.Drawing.Size(93, 74);
             this.Btn_Actualizar.TabIndex = 17;
-            this.Btn_Actualizar.Text = "Limpiar";
             this.Btn_Actualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_Actualizar.UseVisualStyleBackColor = false;
             this.Btn_Actualizar.Click += new System.EventHandler(this.Btn_Actualizar_Click);
@@ -227,18 +241,20 @@ namespace Capa_Vista_Reporteria
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 72);
+            this.label6.Location = new System.Drawing.Point(11, 89);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 18);
+            this.label6.Size = new System.Drawing.Size(34, 22);
             this.label6.TabIndex = 18;
             this.label6.Text = "ID";
             // 
             // Txt_IDReporte
             // 
             this.Txt_IDReporte.Enabled = false;
-            this.Txt_IDReporte.Location = new System.Drawing.Point(43, 72);
+            this.Txt_IDReporte.Location = new System.Drawing.Point(57, 89);
+            this.Txt_IDReporte.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_IDReporte.Name = "Txt_IDReporte";
-            this.Txt_IDReporte.Size = new System.Drawing.Size(52, 20);
+            this.Txt_IDReporte.Size = new System.Drawing.Size(68, 22);
             this.Txt_IDReporte.TabIndex = 19;
             // 
             // Cbo_Estado
@@ -247,35 +263,38 @@ namespace Capa_Vista_Reporteria
             this.Cbo_Estado.Items.AddRange(new object[] {
             "No_visible",
             "Visible"});
-            this.Cbo_Estado.Location = new System.Drawing.Point(445, 112);
+            this.Cbo_Estado.Location = new System.Drawing.Point(593, 138);
+            this.Cbo_Estado.Margin = new System.Windows.Forms.Padding(4);
             this.Cbo_Estado.Name = "Cbo_Estado";
-            this.Cbo_Estado.Size = new System.Drawing.Size(87, 21);
+            this.Cbo_Estado.Size = new System.Drawing.Size(115, 24);
             this.Cbo_Estado.TabIndex = 16;
             // 
             // Cbo_Modulo
             // 
             this.Cbo_Modulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbo_Modulo.Location = new System.Drawing.Point(608, 112);
+            this.Cbo_Modulo.Location = new System.Drawing.Point(811, 138);
+            this.Cbo_Modulo.Margin = new System.Windows.Forms.Padding(4);
             this.Cbo_Modulo.Name = "Cbo_Modulo";
-            this.Cbo_Modulo.Size = new System.Drawing.Size(85, 21);
+            this.Cbo_Modulo.Size = new System.Drawing.Size(112, 24);
             this.Cbo_Modulo.TabIndex = 21;
             // 
             // Lbl_Modulos
             // 
             this.Lbl_Modulos.AutoSize = true;
             this.Lbl_Modulos.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Modulos.Location = new System.Drawing.Point(534, 114);
+            this.Lbl_Modulos.Location = new System.Drawing.Point(712, 140);
+            this.Lbl_Modulos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_Modulos.Name = "Lbl_Modulos";
-            this.Lbl_Modulos.Size = new System.Drawing.Size(78, 18);
+            this.Lbl_Modulos.Size = new System.Drawing.Size(94, 22);
             this.Lbl_Modulos.TabIndex = 20;
             this.Lbl_Modulos.Text = "Módulos";
             // 
             // Inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(232)))), ((int)(((byte)(242)))));
-            this.ClientSize = new System.Drawing.Size(703, 466);
+            this.ClientSize = new System.Drawing.Size(935, 564);
             this.Controls.Add(this.Cbo_Modulo);
             this.Controls.Add(this.Lbl_Modulos);
             this.Controls.Add(this.Cbo_Estado);
@@ -296,8 +315,9 @@ namespace Capa_Vista_Reporteria
             this.Controls.Add(this.Btn_Examinar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(719, 505);
-            this.MinimumSize = new System.Drawing.Size(719, 505);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(953, 611);
+            this.MinimumSize = new System.Drawing.Size(953, 611);
             this.Name = "Inicio";
             this.Text = "Inicio";
             this.Load += new System.EventHandler(this.Inicio_Load);
