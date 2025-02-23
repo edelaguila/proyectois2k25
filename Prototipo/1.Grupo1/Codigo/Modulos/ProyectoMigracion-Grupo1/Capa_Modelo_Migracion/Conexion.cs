@@ -13,7 +13,7 @@ namespace Capa_Modelo_Migracion
         public OdbcConnection conexion()
         {
             //creacion de la conexion via ODBC
-            OdbcConnection conn = new OdbcConnection("Dsn=pasaporte");
+            OdbcConnection conn = new OdbcConnection("Dsn=colchoneria");
             try
             {
                 conn.Open();
