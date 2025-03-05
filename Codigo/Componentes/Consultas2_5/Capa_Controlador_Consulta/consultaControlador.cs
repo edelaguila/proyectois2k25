@@ -202,7 +202,7 @@ public void InsertarDatos(string[] tipos, string[] datos, string tabla)
         string dato = $"'{nombreConsulta}','{tipoConsulta}','{queryGenerado}','{status}'";
 
         // Llamar a la capa de modelo para insertar la consulta
-        csSentencias.insertar(dato, tipo, tabla);
+        csSentencias.insertar_dato(dato, tipo, tabla);
 
         MessageBox.Show("Datos guardados correctamente");
     }
@@ -250,7 +250,7 @@ public void InsertarDatos(string[] tipos, string[] datos, string tabla)
         };
 
             // Obtener las columnas desde la BD
-            List<string> columnas = csSentencias.ObtenerColumnas(tabla);
+            List<string> columnas = csSentencias.obtener_columnas(tabla);
 
             // Limpiar el ComboBox
             comboBoxCampos.Items.Clear();
@@ -304,7 +304,7 @@ public void InsertarDatos(string[] tipos, string[] datos, string tabla)
 
         public void CargarTablas(ComboBox comboBox1, string BD)
         {
-            OdbcDataAdapter dt = csSentencias.buscartbl(BD);
+            OdbcDataAdapter dt = csSentencias.obtener_tablas(BD);
             DataTable table = new DataTable();
             dt.Fill(table);
             int contador = 0;
@@ -344,7 +344,7 @@ public void InsertarDatos(string[] tipos, string[] datos, string tabla)
         public void obtenerNombresConsultas(ComboBox comboBoxConsultas)
         {
             // Recibimos la lista de nombres de consultas desde el modelo
-            List<string> nombresConsultas = csSentencias.ObtenerNombresConsultas();
+            List<string> nombresConsultas = csSentencias.obtener_nombres_consultas();
             // Limpiamos el ComboBox antes de añadir nuevos nombres
             comboBoxConsultas.Items.Clear();
             // Añadimos cada nombre de consulta al ComboBox
@@ -368,7 +368,7 @@ public void InsertarDatos(string[] tipos, string[] datos, string tabla)
                 // Construir la condición WHERE para la actualización
                 string condicion = $"consultaInteligente_nombre_consulta = '{nombreConsulta}'";
                 // Llamar al método actualizar con la cláusula SET y la condición WHERE
-                csSentencias.actualizar(setClause, tabla, condicion);
+                csSentencias.actualizar_datos(setClause, tabla, condicion);
                 MessageBox.Show("Datos actualizados correctamente");
             }
             catch (Exception ex)
@@ -388,7 +388,7 @@ public void InsertarDatos(string[] tipos, string[] datos, string tabla)
         public void obtenerNombresConsultas1(ComboBox comboBoxConsultas)
         {
             // Recibimos la lista de nombres de consultas desde el modelo
-            List<string> nombresConsultas = csSentencias.ObtenerNombresConsultas();
+            List<string> nombresConsultas = csSentencias.obtener_nombres_consultas();
             // Limpiamos el ComboBox antes de añadir nuevos nombres
             comboBoxConsultas.Items.Clear();
             // Añadimos cada nombre de consulta al ComboBox
@@ -405,7 +405,7 @@ public void InsertarDatos(string[] tipos, string[] datos, string tabla)
             try
             {
                 // 1. Obtener la cadena SQL del query seleccionado
-                string query = csSentencias.ObtenerQueryPorNombre(querySeleccionado);
+                string query = csSentencias.obtener_query_por_nombre(querySeleccionado);
                 // 2. Mostrar la cadena SQL en el TextBox
                 txtQuery1.Text = query;
                 // 3. Ejecutar el query y llenar el DataGridView con los resultados
@@ -428,7 +428,7 @@ public void InsertarDatos(string[] tipos, string[] datos, string tabla)
             {
                 // Mostrar la cadena generada del query seleccionado en el TextBox
                 string querySeleccionado = cboQuery1.SelectedItem.ToString();
-                string query = csSentencias.ObtenerQueryPorNombre(querySeleccionado);
+                string query = csSentencias.obtener_query_por_nombre(querySeleccionado);
                 txtQuery1.Text = query;
             }
         }
@@ -436,7 +436,7 @@ public void InsertarDatos(string[] tipos, string[] datos, string tabla)
         public void EliminarConsulta(string nombreConsulta)
         {
             // Llamar al método de la capa de modelo para actualizar el estado de la consulta
-            csSentencias.EliminarConsulta(nombreConsulta);
+            csSentencias.eliminar_consulta(nombreConsulta);
         }
         //Fin participacion Sebastian Luna
 

@@ -1,0 +1,40 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+h1 {
+  color: #f70606;
+  text-align: center;
+  font-size: 40px;
+}
+
+h2 {
+  color: #050505;
+  text-align: justify;
+  font-size: 22px;
+}
+
+p {
+  font-size: 16px; /* Cambia el tamaño de la fuente aquí */
+  text-align: justify;
+  padding: 10px; /* Reduce el padding a 10px para reducir el espacio interno */
+  margin-bottom: 20px; /* Espacio entre párrafos */
+}
+
+img {
+  display: block;
+  margin: 20px auto; /* Controla el espacio entre imágenes */
+}
+
+.imgVaul {
+  width: 200px;
+  height: 180px;
+}
