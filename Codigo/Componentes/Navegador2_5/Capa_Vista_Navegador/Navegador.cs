@@ -69,7 +69,10 @@ namespace Capa_Vista_Navegador
         List<Tuple<string, string, string>> comboData = new List<Tuple<string, string, string>>();
         Dictionary<string, string[]> aliasPorTabla = new Dictionary<string, string[]>();
 
-
+//***************************************Agregado por Kevin López 17/02/25 ****************************************************************
+//clase estatica para manejar la referencia al formulario de Consulta Simple
+        public static ConsultaSimple FormConsultaSimple = null;
+//***************************************Fin Kevin López 17/02/25 ****************************************************************   
 
         public Navegador()
         {
@@ -102,7 +105,6 @@ namespace Capa_Vista_Navegador
             tpAyuda.SetToolTip(Btn_Imprimir, "Mostrar un Reporte");
 
         }
-
 
         // Método para manejar la carga del navegador
         private void Navegador_Load(object sender, EventArgs e)
@@ -2407,19 +2409,23 @@ namespace Capa_Vista_Navegador
             reportes.Show(); // Muestra el formulario del menú de reportes.
         }
 
+        //**************************Modificado por Kevin Lopez 17/02/25******************************
+        //se agrega variable para almacenar la referencia del formulario y poder usarla para cerrar desde donde se necesite
+        private ConsultaSimple consultaSimpleForm;
+
         // Maneja el evento de clic en el botón de consulta.
         private void Btn_Consultar_Click(object sender, EventArgs e)
         {
             // Se obtiene el ID del usuario.
             string sIdUsuario1 = logic.ObtenerIdUsuario(sIdUsuario);
 
-           
-            ConsultaSimple nueva = new ConsultaSimple(sTablaPrincipal);
-            nueva.Show();
+
+            consultaSimpleForm = new ConsultaSimple(sTablaPrincipal);
+            consultaSimpleForm.Show();
             lg.funinsertarabitacora(sIdUsuario, "Entro a consultas", "consultas", sIdAplicacion);
             BotonesYPermisosSinMensaje();
         }
-
+        //*************************Fin Kevin Lopez 17/02/25******************************
 
         //******************************************** CODIGO HECHO POR BRAYAN HERNANDEZ *****************************
 
@@ -2453,11 +2459,28 @@ namespace Capa_Vista_Navegador
         //***************************corregido por Kevin López 31/01/25**************************************
         // Error en la logica de cierre de formularios que usaban el navegador provocado por el uso de .visible lo cual ocultaba dichos formularios en vez de liberar los recursos y finalizar conexiones a la BD
         // por lo cual se opto por reemplazar esa instruccion por un .Dispose que finalizaba por completo todo recurso utilizado por el formulario, lo que permite volver a abrir el mismo formulario segun la logica que sigue el MDI.
-        private void Btn_Salir_Click(object sender, EventArgs e)
+        
+
+        //**************Agregado por Kevin Lopez 17/02/25******************
+        //se agrega funcion para poder corregir el cierre del formulario de consulta simple, el cual no se cerraba al utilizar el boton salir del navegador
+                        
+        private void CerrarConsultaSimple()
+        {
+            //Cierre de formulario de consulta simple al utilizar el boton salir del navegador
+            if (consultaSimpleForm != null && !consultaSimpleForm.IsDisposed)
+            {
+                consultaSimpleForm.Close(); // Cierra el formulario
+                consultaSimpleForm = null;  // Asigna null para evitar referencias posteriores
+            }
+        }   
+        //**************Fin Kevin Lopez 17/02/25******************
+
+    private void Btn_Salir_Click(object sender, EventArgs e)
         {
             {
                 try
                 {
+
                     // Verifica si se está en medio de una operación de guardado y se quiere salir sin finalizar.
                     if (Btn_Guardar.Enabled == true && Btn_Cancelar.Enabled == true && Btn_Eliminar.Enabled == false && Btn_Modificar.Enabled == false && Btn_Ingresar.Enabled == false)
                     {
@@ -2479,12 +2502,14 @@ namespace Capa_Vista_Navegador
                                 {
                                     GuardadoForsozo();
                                     frmCerrar.Dispose(); // Correccion de .Visible reemplazado por .Dispose
+                                    CerrarConsultaSimple(); //Agregado 17/02/25 por Kevin Lopez
                                     lg.funinsertarabitacora(sIdUsuario, "Salio del Navegador", sTablaPrincipal, sIdAplicacion);
                                 }
                                 // Si el usuario elige "No", se cierra el formulario sin guardar.
                                 else if (drRespuestaGuardar == DialogResult.No)
                                 {
                                     frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
+                                    CerrarConsultaSimple(); //Agregado 17/02/25 por Kevin Lopez
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
                                 else if (drRespuestaGuardar == DialogResult.Cancel)
@@ -2520,6 +2545,7 @@ namespace Capa_Vista_Navegador
                                 else if (drRespuestaModificar == DialogResult.No)
                                 {
                                     frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
+                                    CerrarConsultaSimple(); //Agregado 17/02/25 por Kevin Lopez
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
                                 else if (drRespuestaModificar == DialogResult.Cancel)
@@ -2555,6 +2581,7 @@ namespace Capa_Vista_Navegador
                                 else if (drRespuestaEliminar == DialogResult.No)
                                 {
                                     frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
+                                    CerrarConsultaSimple(); //Agregado 17/02/25 por Kevin Lopez
                                 }
                                 // Si el usuario elige "Cancel", se cancela la salida y permanece en el formulario.
                                 else if (drRespuestaEliminar == DialogResult.Cancel)
@@ -2577,6 +2604,7 @@ namespace Capa_Vista_Navegador
                     if (drConfirmacionFinal == DialogResult.Yes)
                     {
                         frmCerrar.Dispose();  // Correccion de .Visible reemplazado por .Dispose
+                        CerrarConsultaSimple(); //Agregado 17/02/25 por Kevin Lopez
                     }
                     else
                     {

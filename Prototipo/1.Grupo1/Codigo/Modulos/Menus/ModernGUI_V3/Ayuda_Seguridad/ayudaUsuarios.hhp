@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=ayudaUsuarios.chm
+Contents file=AyudaUsuarios.hhc
+Default Window=AyudaUsuarios
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaUsuarios="Ayuda para el mantenimiento de Usuarios.","AyudaUsuarios.hhc",,"ayudaUsuarios_2024.html","ayudaUsuarios_2024.html",,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+ayudaUsuarios_2024.html
+
+[INFOTYPES]
+

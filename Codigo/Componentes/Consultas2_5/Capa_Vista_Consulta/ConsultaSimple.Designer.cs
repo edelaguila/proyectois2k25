@@ -40,7 +40,7 @@ namespace Capa_Vista_Consulta
             this.cboCampo = new System.Windows.Forms.ComboBox();
             this.cboOperador = new System.Windows.Forms.ComboBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.btnAyudas = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultar2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,18 +140,18 @@ namespace Capa_Vista_Consulta
             this.label33.TabIndex = 45;
             this.label33.Text = "Consulta Simple";
             // 
-            // btnAyudas
+            // btnAyuda
             // 
-            this.btnAyudas.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnAyudas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAyudas.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnAyudas.Image = ((System.Drawing.Image)(resources.GetObject("btnAyudas.Image")));
-            this.btnAyudas.Location = new System.Drawing.Point(780, 80);
-            this.btnAyudas.Name = "btnAyudas";
-            this.btnAyudas.Size = new System.Drawing.Size(96, 80);
-            this.btnAyudas.TabIndex = 46;
-            this.btnAyudas.UseVisualStyleBackColor = true;
-            this.btnAyudas.Click += new System.EventHandler(this.button1_Click);
+            this.btnAyuda.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAyuda.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAyuda.Image = ((System.Drawing.Image)(resources.GetObject("btnAyuda.Image")));
+            this.btnAyuda.Location = new System.Drawing.Point(780, 80);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(96, 80);
+            this.btnAyuda.TabIndex = 46;
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.button1_Click);
             // 
             // ConsultaSimple
             // 
@@ -159,7 +159,7 @@ namespace Capa_Vista_Consulta
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(916, 450);
-            this.Controls.Add(this.btnAyudas);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.cboOperador);
             this.Controls.Add(this.cboCampo);
@@ -171,6 +171,8 @@ namespace Capa_Vista_Consulta
             this.Controls.Add(this.btnCancelar2);
             this.Controls.Add(this.btnConsultar2);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ConsultaSimple";
             this.Text = "ConsultaSimple";
             this.Load += new System.EventHandler(this.ConsultaSimple_Load);
@@ -192,6 +194,6 @@ namespace Capa_Vista_Consulta
         private System.Windows.Forms.ComboBox cboCampo;
         private System.Windows.Forms.ComboBox cboOperador;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Button btnAyudas;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }
