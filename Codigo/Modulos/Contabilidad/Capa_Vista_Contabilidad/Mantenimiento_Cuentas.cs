@@ -37,10 +37,5 @@ namespace Capa_Vista_Contabilidad
             navegador1.AsignarForaneas("tbl_cuentas", "nombre_cuenta", "Pk_id_cuenta", "Pk_id_cuenta");
             navegador1.AsignarForaneas("tbl_cuentas", "nombre_cuenta", "Pk_id_cuenta_enlace", "Pk_id_cuenta"); */
         }
-
-        private void navegador1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

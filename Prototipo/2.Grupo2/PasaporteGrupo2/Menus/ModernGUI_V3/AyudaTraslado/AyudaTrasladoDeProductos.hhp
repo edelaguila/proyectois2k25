@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaTrasladoDeProductos.chm
+Contents file=AyudaTrasladoDeProductos.hhc
+Default Window=TrasladoDeProductos
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+TrasladoDeProductos=,"AyudaTrasladoDeProductos.hhc",,,,,,,,0x23520,,0x3006,,,,,,,,0
+
+
+[FILES]
+AyudaTrasladoDeProductos.html
+
+[INFOTYPES]
+

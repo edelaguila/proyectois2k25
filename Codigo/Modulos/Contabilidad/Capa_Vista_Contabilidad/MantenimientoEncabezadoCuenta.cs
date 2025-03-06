@@ -33,10 +33,5 @@ namespace Capa_Vista_Contabilidad
             navegador1.AsignarNombreForm("CLASE CUENTA");
 
         }
-
-        private void navegador1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

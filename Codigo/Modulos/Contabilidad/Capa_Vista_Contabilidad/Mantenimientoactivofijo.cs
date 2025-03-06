@@ -43,9 +43,5 @@ namespace Capa_Vista_Contabilidad
 
         }
 
-        private void navegador1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

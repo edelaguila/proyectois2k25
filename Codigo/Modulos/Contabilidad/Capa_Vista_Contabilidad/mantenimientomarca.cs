@@ -27,10 +27,5 @@ namespace Capa_Vista_Contabilidad
             navegador1.AsignarTabla("tbl_identidadactivo");
             navegador1.AsignarNombreForm("Marca");
         }
-
-        private void navegador1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

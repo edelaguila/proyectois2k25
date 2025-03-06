@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaConta.chm
+Contents file=AyudaConta.hhc
+Default Window=Ayuda contabilidad
+Display compile progress=No
+Language=0x80a Español (México)
+
+[WINDOWS]
+Ayuda contabilidad="Ayuda para el módulo de contabilidad","AyudaConta.hhc",,"AyudaConta.html",,,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+AyudaConta.html
+
+[INFOTYPES]
+

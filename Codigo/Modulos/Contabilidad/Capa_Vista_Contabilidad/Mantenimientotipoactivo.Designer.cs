@@ -41,7 +41,6 @@ namespace Capa_Vista_Contabilidad
             this.navegador1.Name = "navegador1";
             this.navegador1.Size = new System.Drawing.Size(1131, 641);
             this.navegador1.TabIndex = 0;
-            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
             // Mantenimientotipoactivo
             // 

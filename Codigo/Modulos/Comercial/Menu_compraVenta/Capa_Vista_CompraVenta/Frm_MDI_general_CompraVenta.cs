@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_CompraVenta;
-//using Capa_Vista_Cotizacion;
+using Capa_Vista_Cotizacion;
 //using Capa_Vista_Factura;
 using Interfac_V3;
-//using Capa_Vista_ListaPrecios;
+using Capa_Vista_ListaPrecios;
 /*using Capa_Vista_Polizas;
 using Capa_vista_pedido;
 using Capa_Vista_OrdenCompra;
@@ -89,9 +89,9 @@ namespace Capa_Vista_CompraVenta
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //frm_MantenimientoListas Ven = new frm_MantenimientoListas(idUsuario);
-            //Ven.MdiParent = this;
-            //Ven.Show();
+            frm_MantenimientoListas Ven = new frm_MantenimientoListas(idUsuario);
+            Ven.MdiParent = this;
+            Ven.Show();
         }
 
         private void Btn_vendedores_Click(object sender, EventArgs e)
@@ -117,9 +117,9 @@ namespace Capa_Vista_CompraVenta
 
         private void button12_Click(object sender, EventArgs e)
         {
-           // frm_cotizaciones formulario = new frm_cotizaciones();
-            //formulario.MdiParent = this;
-            //formulario.Show();
+            frm_cotizaciones formulario = new frm_cotizaciones();
+            formulario.MdiParent = this;
+            formulario.Show();
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -138,9 +138,9 @@ namespace Capa_Vista_CompraVenta
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //frm_ListadoInicio Ven = new frm_ListadoInicio(idUsuario);
-            //Ven.MdiParent = this;
-            //Ven.Show();
+            frm_ListadoInicio Ven = new frm_ListadoInicio(idUsuario);
+            Ven.MdiParent = this;
+            Ven.Show();
         }
 
         private void button7_Click(object sender, EventArgs e)

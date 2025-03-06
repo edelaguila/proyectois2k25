@@ -27,10 +27,5 @@ namespace Capa_Vista_Logistica
             navegador1.AsignarTabla("tbl_locales");
             navegador1.AsignarNombreForm("LOCALES");
         }
-
-        private void navegador1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

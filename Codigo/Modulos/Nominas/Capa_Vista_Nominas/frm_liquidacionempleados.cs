@@ -19,7 +19,7 @@ namespace Capa_Vista_Nominas
 
             // ---------------------------------- Gabriela Suc ----------------------------------
             // Utilizando navegador
-            string[] alias = { "ID", "Aguinaldo", "Bono_14", "Vacaciones", "Tipo_operacion", "ID Empleado", "Estado" };
+            string[] alias = { "pk_registro_liquidacion", "liquidacion_aguinaldo", "liquidacion_bono_14", "liquidacion_vacaciones", "liquidacion_tipo_operacion", "fk_clave_empleado", "estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#AEA1D6"));
@@ -32,11 +32,6 @@ namespace Capa_Vista_Nominas
 
 
             navegador1.AsignarComboConTabla("tbl_empleados", "pk_clave", "empleados_nombre", 1);
-        }
-
-        private void navegador1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

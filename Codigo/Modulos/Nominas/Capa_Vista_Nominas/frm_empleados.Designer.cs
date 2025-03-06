@@ -39,7 +39,7 @@ namespace Capa_Vista_Nominas
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(504, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 17);
+            this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Empleados";
             // 
@@ -48,11 +48,10 @@ namespace Capa_Vista_Nominas
             this.navegador1.BackColor = System.Drawing.Color.White;
             this.navegador1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navegador1.Location = new System.Drawing.Point(0, 0);
-            this.navegador1.Margin = new System.Windows.Forms.Padding(4);
+            this.navegador1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.navegador1.Name = "navegador1";
             this.navegador1.Size = new System.Drawing.Size(1116, 721);
             this.navegador1.TabIndex = 1;
-            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
             // frm_empleados
             // 

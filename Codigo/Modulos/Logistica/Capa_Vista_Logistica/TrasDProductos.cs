@@ -28,10 +28,5 @@ namespace Capa_Vista_Logistica
             navegador1.AsignarAyuda("1");
             navegador1.AsignarNombreForm("Productos");
         }
-
-        private void navegador1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

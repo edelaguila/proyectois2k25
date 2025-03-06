@@ -30,10 +30,7 @@ namespace Capa_Vista_Logistica
             navegador1.AsignarNombreForm("ALMACEN");
         }
 
-        private void navegador1_Load(object sender, EventArgs e)
-        {
-
+        
         }
-    }
     }
 
