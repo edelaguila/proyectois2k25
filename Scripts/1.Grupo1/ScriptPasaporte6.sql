@@ -130,6 +130,13 @@ CREATE TABLE IF NOT EXISTS Tbl_pago (
   FOREIGN KEY (Fk_id_cita) REFERENCES Tbl_cita(Pk_id_cita)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
+CREATE TABLE IF NOT EXISTS Tbl_pago_detalle (
+  Pk_id_pago_detalle INT AUTO_INCREMENT NOT NULL,
+  detalle_total_persona decimal(10,2),
+  estado TINYINT(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (Pk_id_pago_detalle)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
 -- Tabla Pasaporte
 CREATE TABLE IF NOT EXISTS Tbl_pasaporte (
   Pk_id_pasaporte INT AUTO_INCREMENT NOT NULL,
