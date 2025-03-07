@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS Tbl_cita (
   fecha_cita DATETIME NOT NULL,
   Fk_id_oficina INT NOT NULL,
   Fk_id_empleado INT NOT NULL,
-  Fk_id_estado_solicitud INT NOT NULL,
+  -- Fk_id_estado_solicitud INT NOT NULL,
   estado TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (Pk_id_cita),
   FOREIGN KEY (Fk_id_usuario) REFERENCES Tbl_usuario(Pk_id_usuario),
