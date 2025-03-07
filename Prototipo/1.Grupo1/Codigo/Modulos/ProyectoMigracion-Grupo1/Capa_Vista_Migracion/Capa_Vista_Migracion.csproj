@@ -34,8 +34,17 @@
     <Reference Include="Capa_Controlador_Migracion">
       <HintPath>..\Capa_Controlador_Migracion\bin\Debug\Capa_Controlador_Migracion.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_GeneraPasaporte">
+      <HintPath>..\..\GeneracionPasaporte\Capa_Vista_GeneraPasaporte\bin\Debug\Capa_Vista_GeneraPasaporte.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Menor">
+      <HintPath>..\..\Generacion de PasaporteMenor\Capa_Vista_Menor\bin\Debug\Capa_Vista_Menor.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\..\..\Codigo\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Pago">
+      <HintPath>..\..\GenPago\Capa_Vista_Pago\bin\Debug\Capa_Vista_Pago.dll</HintPath>
     </Reference>
     <Reference Include="Interfac_V3">
       <HintPath>..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
