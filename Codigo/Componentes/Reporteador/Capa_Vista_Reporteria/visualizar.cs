@@ -24,7 +24,7 @@ namespace Capa_Vista_Reporteria
         public void mostrar()
         {
             // Realizado por: José Daniel Sierra Cruz - 0901-21-12740
-            string sRutaProyecto = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\..\"));
+            string sRutaProyecto = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\..\..\"));
             string sRutaReporte = Path.Combine(sRutaProyecto, "Reportes", direccion_reporte.Text);
             ReportDocument crystalrpt = new ReportDocument();
             try

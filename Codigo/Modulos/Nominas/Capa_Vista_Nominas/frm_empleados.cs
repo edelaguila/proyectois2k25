@@ -29,11 +29,11 @@ namespace Capa_Vista_Nominas
             string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
             /***************Fernando Jose Garcia <3*********************/
             ///*****Con tabla que tenga comboboxs foraneas *****/
-            string[] alias = { "Clave", "nombre", "apellido", "fecha nacimiento", "no_identificacion",
+            string[] alias = { "ID", "Nombre", "Apellido", "Fecha_Nac", "No. Identificacion",
 
-                "codigo postal","fecha alta","fecha baja","causa baja"
+                "Codigo postal","Fecha_alta","Fecha_baja","Causa_baja"
 
-                ,"fk_id_departamento","fk_id_puestos","estado" };
+                ,"ID Depto","ID Puesto","Estado" };
 
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);

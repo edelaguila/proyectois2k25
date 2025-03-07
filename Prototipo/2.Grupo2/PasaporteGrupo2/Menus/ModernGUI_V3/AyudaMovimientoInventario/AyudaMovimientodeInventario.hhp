@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaMovimientodeInventario.chm
+Contents file=ayuda.hhc
+Default Window=ayudaMovimientoInventario
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+ayudaMovimientoInventario="Ayuda para el usuario","ayuda.hhc",,"AyudaMovimientoInventario.html","AyudaMovimientoInventario.html",,,,,0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+AyudaMovimientoInventario.html
+
+[INFOTYPES]
+
