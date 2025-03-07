@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=frmAplicaciones.chm
+Contents file=frmAplicaciones.hhc
+Default Window=frmAplicaciones
+Display compile progress=No
+Language=0x580a Español (Latinoamérica)
+
+[WINDOWS]
+frmAplicaciones="Ayuda- frmAplicaciones","frmAplicaciones.hhc",,,,,,,,0x23520,,0x3006,,,,,,,,0
+
+
+[FILES]
+Aplicaciones.html
+
+[INFOTYPES]
+

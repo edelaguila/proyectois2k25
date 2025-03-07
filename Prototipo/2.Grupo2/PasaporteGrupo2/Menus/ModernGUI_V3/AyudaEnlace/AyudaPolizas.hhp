@@ -1,0 +1,18 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaPolizas.chm
+Contents file=AyudaPolizas.hhc
+Default Window=Ayuda pólizas
+Default topic=AyudaEnlace.html
+Display compile progress=No
+Language=0x80a Spanish (Mexico)
+
+[WINDOWS]
+Ayuda pólizas="Ayuda para el formulario de enlace de contabilidad - pólizas","AyudaPolizas.hhc",,"AyudaEnlace.html",,,,,,0x23520,,0x387e,[617,214,1357,854],,,,,,,0
+
+
+[FILES]
+AyudaEnlace.html
+
+[INFOTYPES]
+

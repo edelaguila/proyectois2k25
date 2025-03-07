@@ -228,26 +228,26 @@ namespace Capa_Vista_Logistica
 
         private void Btn_MenuProcesosOpcion3_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<Capa_Vista_MiguelCrisostomo.TrasladoDeProductos>();
-            ocultaSubMenu();
+            /*AbrirFormulario<Capa_Vista_MiguelCrisostomo.TrasladoDeProductos>();
+            ocultaSubMenu();*/
         }
 
         private void Btn_MenuProcesosOpcion4_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<MVC_JavierChamo.Mantenimiento_de_Vehiculos>();
-            ocultaSubMenu();
+            /*AbrirFormulario<MVC_JavierChamo.Mantenimiento_de_Vehiculos>();
+            ocultaSubMenu();*/
         }
 
         private void Btn_MenuProcesosOpcion5_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<MVC_JavierChamo.Movimiento_de_Inventario>();
-            ocultaSubMenu();
+            /*AbrirFormulario<MVC_JavierChamo.Movimiento_de_Inventario>();
+            ocultaSubMenu();*/
         }
 
         private void Btn_MenuProcesosOpcion6_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<Capa_Vista_JDSC.MonitoreoAlmacen>();
-            ocultaSubMenu();
+            /*AbrirFormulario<Capa_Vista_JDSC.MonitoreoAlmacen>();
+            ocultaSubMenu();*/
         }
 
         private void Btn_MenuProcesosOpcion7_Click(object sender, EventArgs e)
