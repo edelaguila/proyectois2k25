@@ -197,7 +197,7 @@ INSERT INTO Tbl_empleado (nombre_empleado, apellido_empleado, cargo_empleado, Fk
 ('Ana', 'Martinez', 'Supervisor', 2);
 
 -- Poblar la tabla Tbl_cita
-INSERT INTO Tbl_cita (Fk_id_usuario, fecha_cita, Fk_id_oficina, Fk_id_empleado, Fk_id_estado_solicitud) VALUES
+INSERT INTO Tbl_cita (Fk_id_usuario, fecha_cita, Fk_id_oficina, Fk_id_empleado, estado) VALUES
 (1, '2024-03-01 09:00:00', 1, 1, 1),
 (2, '2024-03-02 10:30:00', 2, 2, 1);
 
