@@ -16,5 +16,10 @@ namespace Capa_Vista_Pago
         {
             InitializeComponent();
         }
+
+        private void frm_GeneracionPago_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

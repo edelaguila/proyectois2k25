@@ -11,9 +11,9 @@ using System.Data;
 using System.Data.Odbc;
 using Capa_Controlador_Migracion;
 
-//using Capa_Vista_GeneraPasaporte;
-//using Capa_Vista_Menor;
-//using Capa_Vista_Pago;
+using Capa_Vista_GeneraPasaporte;
+using Capa_Vista_Menor;
+using Capa_Vista_Pago;
 
 namespace Capa_Vista_Migracion
 {
@@ -266,8 +266,8 @@ namespace Capa_Vista_Migracion
         private void btn_Pago_Click(object sender, EventArgs e)
         {
             ////Codigo para mostrar otro formulario
-            //AbrirFormulario<frm_GeneracionPago>();
-            //OcualtarSubmenu();
+            AbrirFormulario<frm_GeneracionPago>();
+            OcualtarSubmenu();
         }
 
         private void btn_Generaciondepasaporte_Click(object sender, EventArgs e)
@@ -283,29 +283,29 @@ namespace Capa_Vista_Migracion
         private void btn_Nuevo_Click_1(object sender, EventArgs e)
         {
             ////Codigo para mostrar otro formulario
-            //AbrirFormulario<NuevoPasaporte>();
-            //OcualtarSubmenu();
+            AbrirFormulario<NuevoPasaporte>();
+            OcualtarSubmenu();
         }
 
         private void btn_Renovacion_Click_1(object sender, EventArgs e)
         {
             ////Codigo para mostrar otro formulario
-            //AbrirFormulario<Renovacion>();
-            //OcualtarSubmenu();
+            AbrirFormulario<Renovacion>();
+            OcualtarSubmenu();
         }
 
         private void btn_Nuevomenor_Click_1(object sender, EventArgs e)
         {
             ////Codigo para mostrar otro formulario
-            //AbrirFormulario<frm_nuevoMenor>();
-            //OcualtarSubmenu();
+            AbrirFormulario<frm_nuevoMenor>();
+            OcualtarSubmenu();
         }
 
         private void btn_Renovacionmenor_Click_1(object sender, EventArgs e)
         {
             ////Codigo para mostrar otro formulario
-            //AbrirFormulario<frm_renovacionMenor>();
-            //OcualtarSubmenu();
+            AbrirFormulario<frm_renovacionMenor>();
+            OcualtarSubmenu();
         }
 
         private void btn_Salir_Click_1(object sender, EventArgs e)
