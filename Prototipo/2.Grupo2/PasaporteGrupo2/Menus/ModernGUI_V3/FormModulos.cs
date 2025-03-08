@@ -185,7 +185,7 @@ namespace Interfac_V3
         
         private void Btn_Logistica_Click(object sender, EventArgs e)
         {
-            Capa_Vista_Pasaporte.FormPrincipal pasa = new Capa_Vista_Pasaporte.FormPrincipal(UsuarioSesion.GetIdUsuario());
+           Capa_Vista_Pasaporte.FormPrincipal pasa = new Capa_Vista_Pasaporte.FormPrincipal(UsuarioSesion.GetIdUsuario());
             pasa.Show();
             
         }

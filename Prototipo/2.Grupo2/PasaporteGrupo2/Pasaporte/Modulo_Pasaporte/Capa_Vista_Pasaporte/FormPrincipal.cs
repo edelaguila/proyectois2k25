@@ -12,6 +12,7 @@ using Capa_Vista_Pasaporte;
 using Capa_Vista_CDE;
 using Capa_Vista_Sol;
 using CapaVistaPagos;
+using Capa_Vista_Tramite;
 
 namespace Capa_Vista_Pasaporte   
 {
@@ -231,6 +232,17 @@ namespace Capa_Vista_Pasaporte
         private void button9_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Oficinas>();
+            ocultaSubMenu();
+        }
+
+        private void panelMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Frm_Tramite_Pasaporte>();
             ocultaSubMenu();
         }
         #endregion
