@@ -115,7 +115,7 @@ namespace Interfac_V3
                     // Abrir MDI_Seguridad solo si el login fue exitoso
                     MDI_Seguridad formMDI = new MDI_Seguridad(idUsuario);
                     formMDI.Show();
-                    this.Hide(); // Ocultar el formulario de inicio*/
+                    this.Hide();  // Ocultar el formulario de inicio*/
 
                 }
                 else
