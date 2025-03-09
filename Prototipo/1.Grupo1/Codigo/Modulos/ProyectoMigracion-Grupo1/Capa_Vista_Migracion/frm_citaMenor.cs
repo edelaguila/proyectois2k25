@@ -23,7 +23,7 @@ namespace Capa_Vista_Migracion
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#ffd96b"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("Tbl_cita_menor");
-            navegador1.ObtenerIdAplicacion("1000");
+            navegador1.ObtenerIdAplicacion("6001");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
             navegador1.AsignarNombreForm("Citas Menor");
