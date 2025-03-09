@@ -2381,6 +2381,8 @@ namespace Capa_Vista_Navegador
             this.Hide(); // Oculta el formulario actual.
         }
 
+        
+        //*Nuevo / MC___________________________________________________________________________________________________________________________
         // Maneja el evento de clic en el botón de imprimir.
         private void Btn_Imprimir_Click_1(object sender, EventArgs e)
         {
@@ -2390,17 +2392,35 @@ namespace Capa_Vista_Navegador
             // Se obtiene el ID de la aplicación.
             ObtenerIdAplicacion(sIdAplicacion);
 
-            // Se consulta la ruta del reporte usando el ID de la aplicación.
+            // 📌 Verifica el valor de `sIdAplicacion`
+            if (string.IsNullOrEmpty(sIdAplicacion))
+            {
+                MessageBox.Show("⚠️ ERROR: El ID de la aplicación está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Obtener la ruta del reporte
             string sRuta = controlador.queryRuta(sIdAplicacion);
 
-            // Si la ruta es válida, se abre el visor de reportes con la ruta obtenida.
-            if (!string.IsNullOrEmpty(sIdAplicacion))
+
+            // 📌 Verifica la ruta obtenida
+            if (string.IsNullOrEmpty(sRuta))
             {
-                Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar(sRuta);
-                visualizar.ShowDialog(); // Muestra el reporte en un diálogo modal.
-                lg.funinsertarabitacora(sIdUsuario, "Vio un reporte", sTablaPrincipal, sIdAplicacion);
+                MessageBox.Show("⚠️ ERROR: No se pudo obtener la ruta del reporte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            // 📌 Mostrar la ruta obtenida
+            //MessageBox.Show($"Ruta obtenida: {sRuta}", "Depuración");
+
+            // Mostrar el visor de reportes
+            Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar(sRuta);
+            visualizar.ShowDialog();
+            lg.funinsertarabitacora(sIdUsuario, "Vio un reporte", sTablaPrincipal, sIdAplicacion);
         }
+
+        //_____________________________________________________________________________________________________________--_-______________________
+        
 
         // Maneja el evento de clic en el botón principal de reportes.
         private void Btn_Reportes_Principal_Click(object sender, EventArgs e)

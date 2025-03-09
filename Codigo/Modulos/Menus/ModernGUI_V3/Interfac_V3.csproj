@@ -68,11 +68,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Logistica\Capa_Vista_Logistica\bin\Debug\Capa_Vista_Logistica.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Nominas">
       <HintPath>..\..\Nominas\Capa_Vista_Nominas\bin\Debug\Capa_Vista_Nominas.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Produccion">
       <HintPath>..\..\Produccion\Produccion\Capa_Vista_Produccion\bin\Debug\Capa_Vista_Produccion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Reporteria, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Componentes\Reporteador2_5\Capa_Vista_Reporteria\bin\Debug\Capa_Vista_Reporteria.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Seguridad">
       <HintPath>..\..\..\Componentes\Seguridad2_5\Capa_Vista_Seguridad\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
