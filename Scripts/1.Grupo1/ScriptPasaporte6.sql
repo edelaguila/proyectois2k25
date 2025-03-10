@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS Tbl_cita (
   fecha_cita DATETIME NOT NULL,
   Fk_id_oficina INT NOT NULL,
   Fk_id_empleado INT NOT NULL,
-  Fk_id_estado_solicitud INT NOT NULL,
+  -- Fk_id_estado_solicitud INT NOT NULL,
   estado TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (Pk_id_cita),
   FOREIGN KEY (Fk_id_usuario) REFERENCES Tbl_usuario(Pk_id_usuario),
@@ -128,6 +128,13 @@ CREATE TABLE IF NOT EXISTS Tbl_pago (
   PRIMARY KEY (Pk_id_pago),
   FOREIGN KEY (Fk_id_usuario) REFERENCES Tbl_usuario(Pk_id_usuario),
   FOREIGN KEY (Fk_id_cita) REFERENCES Tbl_cita(Pk_id_cita)
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS Tbl_pago_detalle (
+  Pk_id_pago_detalle INT AUTO_INCREMENT NOT NULL,
+  detalle_total_persona decimal(10,2),
+  estado TINYINT(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (Pk_id_pago_detalle)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
 
 -- Tabla Pasaporte
@@ -190,7 +197,7 @@ INSERT INTO Tbl_empleado (nombre_empleado, apellido_empleado, cargo_empleado, Fk
 ('Ana', 'Martinez', 'Supervisor', 2);
 
 -- Poblar la tabla Tbl_cita
-INSERT INTO Tbl_cita (Fk_id_usuario, fecha_cita, Fk_id_oficina, Fk_id_empleado, Fk_id_estado_solicitud) VALUES
+INSERT INTO Tbl_cita (Fk_id_usuario, fecha_cita, Fk_id_oficina, Fk_id_empleado, estado) VALUES
 (1, '2024-03-01 09:00:00', 1, 1, 1),
 (2, '2024-03-02 10:30:00', 2, 2, 1);
 
