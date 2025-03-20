@@ -46,7 +46,7 @@
       <HintPath>..\MVC_JoseDanielSierra\Capa_Vista_JDSC\bin\Debug\Capa_Vista_JDSC.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_MiguelCrisostomo">
-      <HintPath>..\MVC_MiguelCrisostomo\Capa_Vista_MiguelCrisostomo\bin\Debug\Capa_Vista_MiguelCrisostomo.dll</HintPath>
+      <HintPath>..\MVC_MiguelCrisostomo 2_5\Capa_Vista_MiguelCrisostomo\bin\Debug\Capa_Vista_MiguelCrisostomo.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
