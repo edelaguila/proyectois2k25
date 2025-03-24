@@ -25,12 +25,12 @@ namespace MVC_JavierChamo
 
         public void btn_Guardar_Click(object sender, EventArgs e)
         {
-
             capa_Controlador_Logistica.Pro_RealizarMovimientoInventario(
                 Convert.ToInt32(Cbo_estado.Text),
                 Convert.ToInt32(Cbo_idProducto.SelectedValue),  // Asegúrate de usar SelectedValue
                 Convert.ToInt32(Cbo_idStock.SelectedValue),     // Cambia esto
-                Convert.ToInt32(Cbo_Local.SelectedValue)              // Cambia esto
+                Convert.ToInt32(Cbo_Local.SelectedValue),              // Cambia esto
+                Convert.ToString(Cbo_tipomovimiento.SelectedValue)
             );
             CargarSolicitudesenDatagriedView();
         }
@@ -75,10 +75,6 @@ namespace MVC_JavierChamo
                     Cbo_Local.ValueMember = "Pk_ID_LOCAL";
                     Cbo_Local.SelectedIndex = -1;
                 }
-                else
-                {
-                    MessageBox.Show("No se encontraron locales para mostrar.");
-                }
             }
             catch (Exception ex)
             {
@@ -122,7 +118,7 @@ namespace MVC_JavierChamo
 
         private void btn_Editar_Click(object sender, EventArgs e)
         {
-            capa_Controlador_Logistica.Pro_ModificarMovimientoInventario(Convert.ToInt32(txt_numMovimiento.Text), Convert.ToInt32(Cbo_estado.Text), Convert.ToInt32(Cbo_idProducto.Text), Convert.ToInt32(Cbo_idStock.Text), Convert.ToInt32(Cbo_Local.Text));
+            capa_Controlador_Logistica.Pro_ModificarMovimientoInventario(Convert.ToInt32(txt_numMovimiento.Text), Convert.ToInt32(Cbo_estado.Text), Convert.ToInt32(Cbo_idProducto.Text), Convert.ToInt32(Cbo_idStock.Text), Convert.ToInt32(Cbo_Local.Text), Convert.ToString(Cbo_tipomovimiento.Text));
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)

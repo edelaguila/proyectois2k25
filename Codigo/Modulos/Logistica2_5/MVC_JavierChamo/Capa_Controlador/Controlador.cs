@@ -48,9 +48,9 @@ namespace Capa_Controlador
         }
 
         // Lógica del módulo de movimiento de inventario
-        public void Pro_RealizarMovimientoInventario(int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales)
+        public void Pro_RealizarMovimientoInventario(int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales, string s_tipoMovimiento)
         {
-            g_pSentencias.Pro_InsertarMovimientoInventario(i_estado, i_fkIdProducto, i_fkIdStock, i_fkIdLocales);
+            g_pSentencias.Pro_InsertarMovimientoInventario(i_estado, i_fkIdProducto, i_fkIdStock, i_fkIdLocales, s_tipoMovimiento);
         }
 
         public DataTable Fun_ObtenerProductos()
@@ -76,9 +76,9 @@ namespace Capa_Controlador
             return dt_tablaMovimientos;
         }
 
-        public void Pro_ModificarMovimientoInventario(int i_idMovimiento, int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales)
+        public void Pro_ModificarMovimientoInventario(int i_idMovimiento, int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales, string s_tipoMovimiento)
         {
-            g_pSentencias.Pro_ModificarMovimientoInventario(i_idMovimiento, i_estado, i_fkIdProducto, i_fkIdStock, i_fkIdLocales);
+            g_pSentencias.Pro_ModificarMovimientoInventario(i_idMovimiento, i_estado, i_fkIdProducto, i_fkIdStock, i_fkIdLocales, s_tipoMovimiento);
         }
 
         public void Pro_EliminarMovimiento(int i_idMovimiento)

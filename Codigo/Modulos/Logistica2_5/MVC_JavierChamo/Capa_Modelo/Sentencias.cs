@@ -20,7 +20,7 @@ namespace Capa_Modelo
         // (métodos de mantenimiento ya estandarizados previamente)
 
         // Lógica del módulo de movimiento de inventario
-        public void Pro_InsertarMovimientoInventario(int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales)
+        public void Pro_InsertarMovimientoInventario(int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales, string s_tipoMovimiento)
         {
             OdbcConnection o_cn = cn.conexion();
             if (o_cn == null)
@@ -31,12 +31,13 @@ namespace Capa_Modelo
 
             try
             {
-                string s_query = "INSERT INTO tbl_movimiento_de_inventario (estado, fk_id_producto, fk_id_stock, fk_id_locales) VALUES (?, ?, ?, ?)";
+                string s_query = "INSERT INTO tbl_movimiento_de_inventario (estado, fk_id_producto, fk_id_stock, fk_id_locales, tipo_movimiento) VALUES (?, ?, ?, ?, ?)";
                 OdbcCommand cmd = new OdbcCommand(s_query, o_cn);
                 cmd.Parameters.AddWithValue("@estado", i_estado);
                 cmd.Parameters.AddWithValue("@fk_id_producto", i_fkIdProducto);
                 cmd.Parameters.AddWithValue("@fk_id_stock", i_fkIdStock);
                 cmd.Parameters.AddWithValue("@fk_id_locales", i_fkIdLocales);
+                cmd.Parameters.AddWithValue("@tipo_movimiento", s_tipoMovimiento);
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Movimiento de inventario agregado correctamente");
@@ -148,7 +149,7 @@ namespace Capa_Modelo
             return dataTable;
         }
 
-        public void Pro_ModificarMovimientoInventario(int i_idMovimiento, int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales)
+        public void Pro_ModificarMovimientoInventario(int i_idMovimiento, int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales, string s_tipoMovimiento)
         {
             OdbcConnection o_cn = cn.conexion();
             if (o_cn == null)
@@ -159,12 +160,13 @@ namespace Capa_Modelo
 
             try
             {
-                string s_query = "UPDATE tbl_movimiento_de_inventario SET estado = ?, fk_id_producto = ?, fk_id_stock = ?, fk_id_locales = ? WHERE pk_id_movimiento = ?";
+                string s_query = "UPDATE tbl_movimiento_de_inventario SET estado = ?, fk_id_producto = ?, fk_id_stock = ?, fk_id_locales = ?, tipo_movimiento = ? WHERE pk_id_movimiento = ?";
                 OdbcCommand cmd = new OdbcCommand(s_query, o_cn);
                 cmd.Parameters.AddWithValue("@estado", i_estado);
                 cmd.Parameters.AddWithValue("@fk_id_producto", i_fkIdProducto);
                 cmd.Parameters.AddWithValue("@fk_id_stock", i_fkIdStock);
                 cmd.Parameters.AddWithValue("@fk_id_locales", i_fkIdLocales);
+                cmd.Parameters.AddWithValue("@tipo_movimiento", s_tipoMovimiento);
                 cmd.Parameters.AddWithValue("@pk_id_movimiento", i_idMovimiento);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se ha modificado de forma exitosa la solicitud");
@@ -277,6 +279,7 @@ namespace Capa_Modelo
                     string s_fkIdProducto = dr["fk_id_producto"].ToString();
                     string s_fkIdStock = dr["fk_id_stock"].ToString();
                     string s_fkIdLocales = dr["fk_id_locales"].ToString();
+                    string s_tipoMovimiento = dr["tipo_movimiento"].ToString();
 
                     Document doc = new Document();
                     string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -300,6 +303,7 @@ namespace Capa_Modelo
                     doc.Add(new Paragraph("ID de Producto: " + s_fkIdProducto, contentFont));
                     doc.Add(new Paragraph("ID de Stock: " + s_fkIdStock, contentFont));
                     doc.Add(new Paragraph("ID de Local: " + s_fkIdLocales, contentFont));
+                    doc.Add(new Paragraph("Tipo de Movimiento: " + s_tipoMovimiento, contentFont));
                     doc.Add(new Paragraph(" "));
 
                     // Firma
