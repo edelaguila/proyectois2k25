@@ -200,11 +200,13 @@ ALTER TABLE Tbl_Formadepago
 CHANGE COLUMN pado_estado estado TINYINT DEFAULT 1 NOT NULL;
 
 -- TBL_Deudas_Clientes
-ALTER TABLE Tbl_Deudas_Clientes
-ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
+-- ALTER TABLE Tbl_Deudas_Clientes
+-- ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
 
+-- ALTER TABLE Tbl_Deudas_Clientes
+-- ADD COLUMN Efecto_trans VARCHAR(150) NOT NULL;
 ALTER TABLE Tbl_Deudas_Clientes
-ADD COLUMN Efecto_trans VARCHAR(150) NOT NULL;
+ADD COLUMN deuda_mora VARCHAR(150) NOT NULL;
 
 ALTER TABLE Tbl_Deudas_Clientes
 ADD COLUMN Fk_id_factura INT NOT NULL,
@@ -414,13 +416,13 @@ FOREIGN KEY (Fk_id_vendedor) REFERENCES Tbl_vendedores(Pk_id_vendedor);
 ALTER TABLE Tbl_clientes 
 CHANGE Clientes_estado estado TINYINT(1) DEFAULT 1;
 
-ALTER TABLE Tbl_clientes 
-ADD COLUMN Fk_id_lista_Encabezado INT NOT NULL;
+-- ALTER TABLE Tbl_clientes 
+-- ADD COLUMN Fk_id_lista_Encabezado INT NOT NULL;
 
-ALTER TABLE Tbl_clientes 
-ADD CONSTRAINT FK_id_lista_Encabezado
-FOREIGN KEY (Fk_id_lista_Encabezado) 
-REFERENCES Tbl_lista_encabezado(Pk_id_lista_Encabezado);
+-- ALTER TABLE Tbl_clientes 
+-- ADD CONSTRAINT FK_id_lista_Encabezado
+-- FOREIGN KEY (Fk_id_lista_Encabezado) 
+-- REFERENCES Tbl_lista_encabezado(Pk_id_lista_Encabezado);
 
 ALTER TABLE Tbl_proveedores
 ADD COLUMN Proveedor_deuda DECIMAL(10, 2) DEFAULT 0.00;
