@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaFaltas.chm
+Contents file=AyudaFaltas.hhc
+Default Window=Ayuda de faltas
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+Ayuda de faltas="Faltas","AyudaFaltas.hhc",,"AyudaFaltas.html","AyudaFaltas.html","AyudaFaltas.html","AyudaFaltas","AyudaFaltas.html","AyudaFaltas",0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+AyudaFaltas.html
+
+[INFOTYPES]
+
