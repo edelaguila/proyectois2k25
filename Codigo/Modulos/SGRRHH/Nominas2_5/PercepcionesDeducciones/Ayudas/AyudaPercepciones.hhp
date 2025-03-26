@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaPercepciones.chm
+Contents file=AyudaPercepciones.hhc
+Default Window=AyudaPercepciones
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaPercepciones="Ayuda - Percepciones","AyudaPercepciones.hhc",,"ayudaPercepciones_2024.html","ayudaPercepciones_2024.html",,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+ayudaPercepciones_2024.html
+
+[INFOTYPES]
+
