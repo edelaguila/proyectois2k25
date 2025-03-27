@@ -17,7 +17,7 @@ using System.Windows.Forms;
 //using Capa_Vista_Produccion;
 //using Capa_Vista_Banco;
 //using Capa_Vista_CompraVenta;
-
+using Capa_Vista_Carrera;
 
 namespace Interfac_V3
 {
@@ -191,6 +191,8 @@ namespace Interfac_V3
             //frm_principal_nominas nominas = new frm_principal_nominas(UsuarioSesion.GetIdUsuario());
             //nominas.Show();
 
+           //frm_Promociones promociones = new frm_Promociones(UsuarioSesion.GetIdUsuario());
+           // promociones.Show();
 
         }
 
