@@ -41,7 +41,8 @@
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
-    <Reference Include="Interfac_V3">
+    <Reference Include="Interfac_V3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
     </Reference>
     <Reference Include="System" />
