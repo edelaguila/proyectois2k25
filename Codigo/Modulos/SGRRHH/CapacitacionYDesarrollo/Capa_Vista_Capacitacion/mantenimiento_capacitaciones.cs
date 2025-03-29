@@ -16,7 +16,7 @@ namespace Capa_Vista_Capacitacion
         {
             InitializeComponent();
 
-            //string idusuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
+            string idusuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
 
 
             string[] alias = { "ID", "Nombre", "Descripcion", "Departamento", "Instructor", "Fecha", "Hora", "Competencia", "Nivel_Final", "estado" };
@@ -26,7 +26,7 @@ namespace Capa_Vista_Capacitacion
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.ObtenerIdAplicacion("8000");
             navegador1.AsignarAyuda("1");
-            //navegador1.ObtenerIdUsuario(idusuario);
+            navegador1.ObtenerIdUsuario(idusuario);
             navegador1.AsignarTabla("tbl_capacitaciones");
 
             navegador1.AsignarNombreForm("CAPACITACIONES");
