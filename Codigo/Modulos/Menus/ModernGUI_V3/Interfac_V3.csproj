@@ -71,11 +71,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Logistica\Capa_Vista_Logistica\bin\Debug\Capa_Vista_Logistica.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Nominas">
-      <HintPath>..\..\Nominas\Capa_Vista_Nominas\bin\Debug\Capa_Vista_Nominas.dll</HintPath>
-    </Reference>
     <Reference Include="Capa_Vista_Produccion">
       <HintPath>..\..\Produccion\Produccion\Capa_Vista_Produccion\bin\Debug\Capa_Vista_Produccion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_RRHH">
+      <HintPath>..\..\SGRRHH\MDI_RRHH\Capa_Vista_RRHH\bin\Debug\Capa_Vista_RRHH.exe</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Seguridad">
       <HintPath>..\..\..\Componentes\Seguridad2_5\Capa_Vista_Seguridad\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
