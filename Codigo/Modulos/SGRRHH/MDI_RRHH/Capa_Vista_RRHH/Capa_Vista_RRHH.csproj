@@ -70,6 +70,9 @@
     <Reference Include="Capa_Vista_Reclutamiento">
       <HintPath>..\..\ReclutamientoSeleccion\Reclutamiento\Capa_Vista_Reclutamiento\bin\Debug\Capa_Vista_Reclutamiento.dll</HintPath>
     </Reference>
+    <Reference Include="Modelo_Vista_AsistenciaYFaltas">
+      <HintPath>..\..\Asistencia y Faltas\Modelo_Vista_AsistenciaYFaltas\bin\Debug\Modelo_Vista_AsistenciaYFaltas.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

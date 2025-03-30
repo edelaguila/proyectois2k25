@@ -18,7 +18,7 @@ using Capa_Vista_Capacitacion;
 using Capa_Vista_Reclutamiento;
 using Capa_Vista_Evaluacion;
 using Capa_Vista_GD;
-
+using Modelo_Vista_AsistenciaYFaltas;
 
 namespace Capa_Vista_RRHH
 {
@@ -263,6 +263,18 @@ namespace Capa_Vista_RRHH
         {
             frm_registrodisciplinario GD = new frm_registrodisciplinario();
             GD.Show();
+        }
+
+        private void asistenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_importar_asistencia asistencia = new frm_importar_asistencia();
+            asistencia.Show();
+        }
+
+        private void permisoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_permisos asistencia = new frm_permisos();
+            asistencia.Show();
         }
     }
 }
