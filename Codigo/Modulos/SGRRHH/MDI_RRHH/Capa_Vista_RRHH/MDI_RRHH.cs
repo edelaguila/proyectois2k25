@@ -17,6 +17,7 @@ using Capa_Vista_Carrera;
 using Capa_Vista_Capacitacion;
 using Capa_Vista_Reclutamiento;
 using Capa_Vista_Evaluacion;
+using Capa_Vista_GD;
 
 
 namespace Capa_Vista_RRHH
@@ -256,6 +257,12 @@ namespace Capa_Vista_RRHH
         {
             Frm_Resultados_Evaluacion deptos = new Frm_Resultados_Evaluacion();
             deptos.Show();
+        }
+
+        private void faltasDisciplinariasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_registrodisciplinario GD = new frm_registrodisciplinario();
+            GD.Show();
         }
     }
 }
