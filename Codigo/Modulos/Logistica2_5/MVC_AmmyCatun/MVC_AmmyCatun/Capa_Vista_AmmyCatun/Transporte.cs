@@ -196,6 +196,16 @@ namespace Capa_Vista_AmmyCatun
         {
 
         }
+
+        private void Txt_HLL_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dgv_Vehiculo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

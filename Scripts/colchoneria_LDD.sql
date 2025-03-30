@@ -1031,8 +1031,6 @@ ALTER TABLE Tbl_Productos
 ADD COLUMN empaque VARCHAR(50) NOT NULL;
 ALTER TABLE Tbl_Productos
 CHANGE COLUMN medidaProducto pesoProducto VARCHAR(20);
-ALTER TABLE Tbl_Productos
-MODIFY estado TINYINT NOT NULL DEFAULT 1;
 
 CREATE TABLE Tbl_TrasladoProductos (
     Pk_id_TrasladoProductos INT AUTO_INCREMENT PRIMARY KEY,

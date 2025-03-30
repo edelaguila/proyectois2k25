@@ -749,5 +749,15 @@ namespace Capa_Vista_MiguelCrisostomo
         {
 
         }
+
+        private void Txt_Destino_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cbo_CodigoProd_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

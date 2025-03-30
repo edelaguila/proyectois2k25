@@ -12,9 +12,10 @@ namespace Capa_Vista_CompraVenta
 {
     public partial class Frm_clientes : Form
     {
-        public Frm_clientes(String idUsuario)
+        public Frm_clientes()
         {
             InitializeComponent();
+            string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
             string[] alias = { "ID", "Nombre", "Apellido", "Nit", "Telefono", "Direccion", "No.cuenta", "Estado", "Tipo", "Deuda", "Vendedor acargo", "Lista precios" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);

@@ -100,9 +100,9 @@ namespace Capa_Vista_MiguelCrisostomo
             // Pic_Img
             // 
             this.Pic_Img.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Img.Image")));
-            this.Pic_Img.Location = new System.Drawing.Point(41, 57);
+            this.Pic_Img.Location = new System.Drawing.Point(64, 23);
             this.Pic_Img.Name = "Pic_Img";
-            this.Pic_Img.Size = new System.Drawing.Size(100, 91);
+            this.Pic_Img.Size = new System.Drawing.Size(204, 170);
             this.Pic_Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Img.TabIndex = 26;
             this.Pic_Img.TabStop = false;
@@ -112,21 +112,21 @@ namespace Capa_Vista_MiguelCrisostomo
             this.groupBox3.Controls.Add(this.Pic_Ayuda);
             this.groupBox3.Controls.Add(this.Pic_Reporte);
             this.groupBox3.Controls.Add(this.Pic_Salir);
-            this.groupBox3.Controls.Add(this.Pic_Editar);
             this.groupBox3.Controls.Add(this.Pic_Guardar);
             this.groupBox3.Controls.Add(this.Pic_Ingresar);
-            this.groupBox3.Location = new System.Drawing.Point(175, 57);
+            this.groupBox3.Controls.Add(this.Pic_Editar);
+            this.groupBox3.Location = new System.Drawing.Point(370, 96);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(606, 100);
+            this.groupBox3.Size = new System.Drawing.Size(1142, 130);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             // 
             // Pic_Ayuda
             // 
             this.Pic_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Ayuda.Image")));
-            this.Pic_Ayuda.Location = new System.Drawing.Point(404, 15);
+            this.Pic_Ayuda.Location = new System.Drawing.Point(755, 21);
             this.Pic_Ayuda.Name = "Pic_Ayuda";
-            this.Pic_Ayuda.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Ayuda.Size = new System.Drawing.Size(90, 85);
             this.Pic_Ayuda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Ayuda.TabIndex = 27;
             this.Pic_Ayuda.TabStop = false;
@@ -136,9 +136,9 @@ namespace Capa_Vista_MiguelCrisostomo
             // Pic_Reporte
             // 
             this.Pic_Reporte.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Reporte.Image")));
-            this.Pic_Reporte.Location = new System.Drawing.Point(327, 15);
+            this.Pic_Reporte.Location = new System.Drawing.Point(584, 21);
             this.Pic_Reporte.Name = "Pic_Reporte";
-            this.Pic_Reporte.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Reporte.Size = new System.Drawing.Size(90, 85);
             this.Pic_Reporte.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Reporte.TabIndex = 28;
             this.Pic_Reporte.TabStop = false;
@@ -148,9 +148,9 @@ namespace Capa_Vista_MiguelCrisostomo
             // Pic_Salir
             // 
             this.Pic_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Salir.Image")));
-            this.Pic_Salir.Location = new System.Drawing.Point(526, 15);
+            this.Pic_Salir.Location = new System.Drawing.Point(851, 21);
             this.Pic_Salir.Name = "Pic_Salir";
-            this.Pic_Salir.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Salir.Size = new System.Drawing.Size(90, 85);
             this.Pic_Salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Salir.TabIndex = 27;
             this.Pic_Salir.TabStop = false;
@@ -160,9 +160,9 @@ namespace Capa_Vista_MiguelCrisostomo
             // Pic_Editar
             // 
             this.Pic_Editar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Editar.Image")));
-            this.Pic_Editar.Location = new System.Drawing.Point(112, 15);
+            this.Pic_Editar.Location = new System.Drawing.Point(318, 21);
             this.Pic_Editar.Name = "Pic_Editar";
-            this.Pic_Editar.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Editar.Size = new System.Drawing.Size(90, 85);
             this.Pic_Editar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Editar.TabIndex = 27;
             this.Pic_Editar.TabStop = false;
@@ -172,9 +172,9 @@ namespace Capa_Vista_MiguelCrisostomo
             // Pic_Guardar
             // 
             this.Pic_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Guardar.Image")));
-            this.Pic_Guardar.Location = new System.Drawing.Point(192, 15);
+            this.Pic_Guardar.Location = new System.Drawing.Point(488, 21);
             this.Pic_Guardar.Name = "Pic_Guardar";
-            this.Pic_Guardar.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Guardar.Size = new System.Drawing.Size(90, 85);
             this.Pic_Guardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Guardar.TabIndex = 27;
             this.Pic_Guardar.TabStop = false;
@@ -184,9 +184,9 @@ namespace Capa_Vista_MiguelCrisostomo
             // Pic_Ingresar
             // 
             this.Pic_Ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Ingresar.Image")));
-            this.Pic_Ingresar.Location = new System.Drawing.Point(32, 15);
+            this.Pic_Ingresar.Location = new System.Drawing.Point(222, 21);
             this.Pic_Ingresar.Name = "Pic_Ingresar";
-            this.Pic_Ingresar.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Ingresar.Size = new System.Drawing.Size(90, 85);
             this.Pic_Ingresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Ingresar.TabIndex = 27;
             this.Pic_Ingresar.TabStop = false;
@@ -199,9 +199,9 @@ namespace Capa_Vista_MiguelCrisostomo
             this.groupBox2.Controls.Add(this.Pic_Actualizar);
             this.groupBox2.Controls.Add(this.Dgv_TrasladoDProductos);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(22, 395);
+            this.groupBox2.Location = new System.Drawing.Point(266, 605);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(791, 288);
+            this.groupBox2.Size = new System.Drawing.Size(1372, 344);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle De Movimientos";
@@ -209,7 +209,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_Actualizar
             // 
             this.Txt_Actualizar.AutoSize = true;
-            this.Txt_Actualizar.Location = new System.Drawing.Point(675, 98);
+            this.Txt_Actualizar.Location = new System.Drawing.Point(1246, 117);
             this.Txt_Actualizar.Name = "Txt_Actualizar";
             this.Txt_Actualizar.Size = new System.Drawing.Size(98, 23);
             this.Txt_Actualizar.TabIndex = 28;
@@ -219,9 +219,9 @@ namespace Capa_Vista_MiguelCrisostomo
             // 
             this.Pic_Actualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Pic_Actualizar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Actualizar.Image")));
-            this.Pic_Actualizar.Location = new System.Drawing.Point(690, 30);
+            this.Pic_Actualizar.Location = new System.Drawing.Point(1250, 29);
             this.Pic_Actualizar.Name = "Pic_Actualizar";
-            this.Pic_Actualizar.Size = new System.Drawing.Size(74, 65);
+            this.Pic_Actualizar.Size = new System.Drawing.Size(90, 85);
             this.Pic_Actualizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Actualizar.TabIndex = 27;
             this.Pic_Actualizar.TabStop = false;
@@ -232,11 +232,11 @@ namespace Capa_Vista_MiguelCrisostomo
             // 
             this.Dgv_TrasladoDProductos.BackgroundColor = System.Drawing.Color.White;
             this.Dgv_TrasladoDProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_TrasladoDProductos.Location = new System.Drawing.Point(19, 30);
+            this.Dgv_TrasladoDProductos.Location = new System.Drawing.Point(51, 29);
             this.Dgv_TrasladoDProductos.Name = "Dgv_TrasladoDProductos";
             this.Dgv_TrasladoDProductos.RowHeadersWidth = 51;
             this.Dgv_TrasladoDProductos.RowTemplate.Height = 24;
-            this.Dgv_TrasladoDProductos.Size = new System.Drawing.Size(650, 239);
+            this.Dgv_TrasladoDProductos.Size = new System.Drawing.Size(1168, 295);
             this.Dgv_TrasladoDProductos.TabIndex = 0;
             // 
             // groupBox1
@@ -252,9 +252,9 @@ namespace Capa_Vista_MiguelCrisostomo
             this.groupBox1.Controls.Add(this.Cbo_Destino);
             this.groupBox1.Controls.Add(this.Txt_Destino);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(22, 163);
+            this.groupBox1.Location = new System.Drawing.Point(370, 242);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(791, 100);
+            this.groupBox1.Size = new System.Drawing.Size(1142, 147);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transporte";
@@ -262,7 +262,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_PV
             // 
             this.Txt_PV.AutoSize = true;
-            this.Txt_PV.Location = new System.Drawing.Point(485, 29);
+            this.Txt_PV.Location = new System.Drawing.Point(646, 50);
             this.Txt_PV.Name = "Txt_PV";
             this.Txt_PV.Size = new System.Drawing.Size(71, 23);
             this.Txt_PV.TabIndex = 22;
@@ -271,23 +271,23 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_PesoTotalV
             // 
             this.Txt_PesoTotalV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_PesoTotalV.Location = new System.Drawing.Point(490, 55);
+            this.Txt_PesoTotalV.Location = new System.Drawing.Point(651, 76);
             this.Txt_PesoTotalV.Name = "Txt_PesoTotalV";
-            this.Txt_PesoTotalV.Size = new System.Drawing.Size(54, 30);
+            this.Txt_PesoTotalV.Size = new System.Drawing.Size(66, 30);
             this.Txt_PesoTotalV.TabIndex = 21;
             // 
             // Dtp_Fecha_Traslado
             // 
             this.Dtp_Fecha_Traslado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dtp_Fecha_Traslado.Location = new System.Drawing.Point(596, 55);
+            this.Dtp_Fecha_Traslado.Location = new System.Drawing.Point(757, 76);
             this.Dtp_Fecha_Traslado.Name = "Dtp_Fecha_Traslado";
-            this.Dtp_Fecha_Traslado.Size = new System.Drawing.Size(168, 30);
+            this.Dtp_Fecha_Traslado.Size = new System.Drawing.Size(333, 30);
             this.Dtp_Fecha_Traslado.TabIndex = 20;
             // 
             // Txt_FechaT
             // 
             this.Txt_FechaT.AutoSize = true;
-            this.Txt_FechaT.Location = new System.Drawing.Point(618, 29);
+            this.Txt_FechaT.Location = new System.Drawing.Point(753, 50);
             this.Txt_FechaT.Name = "Txt_FechaT";
             this.Txt_FechaT.Size = new System.Drawing.Size(123, 23);
             this.Txt_FechaT.TabIndex = 19;
@@ -296,7 +296,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_Veh
             // 
             this.Txt_Veh.AutoSize = true;
-            this.Txt_Veh.Location = new System.Drawing.Point(365, 29);
+            this.Txt_Veh.Location = new System.Drawing.Point(462, 50);
             this.Txt_Veh.Name = "Txt_Veh";
             this.Txt_Veh.Size = new System.Drawing.Size(81, 23);
             this.Txt_Veh.TabIndex = 16;
@@ -305,7 +305,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_Id1
             // 
             this.Txt_Id1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Id1.Location = new System.Drawing.Point(96, 55);
+            this.Txt_Id1.Location = new System.Drawing.Point(100, 75);
             this.Txt_Id1.Name = "Txt_Id1";
             this.Txt_Id1.ReadOnly = true;
             this.Txt_Id1.Size = new System.Drawing.Size(36, 30);
@@ -314,7 +314,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_idGia
             // 
             this.Txt_idGia.AutoSize = true;
-            this.Txt_idGia.Location = new System.Drawing.Point(54, 29);
+            this.Txt_idGia.Location = new System.Drawing.Point(58, 49);
             this.Txt_idGia.Name = "Txt_idGia";
             this.Txt_idGia.Size = new System.Drawing.Size(136, 23);
             this.Txt_idGia.TabIndex = 14;
@@ -324,28 +324,29 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_Vehiculo
             // 
             this.Txt_Vehiculo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Vehiculo.Location = new System.Drawing.Point(359, 55);
+            this.Txt_Vehiculo.Location = new System.Drawing.Point(466, 76);
             this.Txt_Vehiculo.Name = "Txt_Vehiculo";
-            this.Txt_Vehiculo.Size = new System.Drawing.Size(100, 30);
+            this.Txt_Vehiculo.Size = new System.Drawing.Size(147, 30);
             this.Txt_Vehiculo.TabIndex = 5;
             // 
             // Cbo_Destino
             // 
             this.Cbo_Destino.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_Destino.FormattingEnabled = true;
-            this.Cbo_Destino.Location = new System.Drawing.Point(185, 54);
+            this.Cbo_Destino.Location = new System.Drawing.Point(222, 75);
             this.Cbo_Destino.Name = "Cbo_Destino";
-            this.Cbo_Destino.Size = new System.Drawing.Size(147, 31);
+            this.Cbo_Destino.Size = new System.Drawing.Size(203, 31);
             this.Cbo_Destino.TabIndex = 1;
             // 
             // Txt_Destino
             // 
             this.Txt_Destino.AutoSize = true;
-            this.Txt_Destino.Location = new System.Drawing.Point(224, 29);
+            this.Txt_Destino.Location = new System.Drawing.Point(218, 50);
             this.Txt_Destino.Name = "Txt_Destino";
             this.Txt_Destino.Size = new System.Drawing.Size(74, 23);
             this.Txt_Destino.TabIndex = 0;
             this.Txt_Destino.Text = "Destino";
+            this.Txt_Destino.Click += new System.EventHandler(this.Txt_Destino_Click);
             // 
             // groupBox4
             // 
@@ -355,6 +356,7 @@ namespace Capa_Vista_MiguelCrisostomo
             this.groupBox4.Controls.Add(this.Txt_PesoProd);
             this.groupBox4.Controls.Add(this.Txt_IdProd2);
             this.groupBox4.Controls.Add(this.Txt_Sck);
+            this.groupBox4.Controls.Add(this.Pic_Aceptar);
             this.groupBox4.Controls.Add(this.Txt_PesoPto);
             this.groupBox4.Controls.Add(this.Txt_Prod);
             this.groupBox4.Controls.Add(this.Txt_Codigo);
@@ -365,11 +367,10 @@ namespace Capa_Vista_MiguelCrisostomo
             this.groupBox4.Controls.Add(this.Txt_Cant);
             this.groupBox4.Controls.Add(this.Txt_PrecioU);
             this.groupBox4.Controls.Add(this.Txt_Cantidad);
-            this.groupBox4.Controls.Add(this.Pic_Aceptar);
             this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(22, 269);
+            this.groupBox4.Location = new System.Drawing.Point(370, 411);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(791, 120);
+            this.groupBox4.Size = new System.Drawing.Size(1142, 166);
             this.groupBox4.TabIndex = 27;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Productos";
@@ -378,15 +379,16 @@ namespace Capa_Vista_MiguelCrisostomo
             // 
             this.Cbo_CodigoProd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_CodigoProd.FormattingEnabled = true;
-            this.Cbo_CodigoProd.Location = new System.Drawing.Point(87, 56);
+            this.Cbo_CodigoProd.Location = new System.Drawing.Point(147, 83);
             this.Cbo_CodigoProd.Name = "Cbo_CodigoProd";
-            this.Cbo_CodigoProd.Size = new System.Drawing.Size(81, 31);
+            this.Cbo_CodigoProd.Size = new System.Drawing.Size(121, 31);
             this.Cbo_CodigoProd.TabIndex = 36;
+            this.Cbo_CodigoProd.SelectedIndexChanged += new System.EventHandler(this.Cbo_CodigoProd_SelectedIndexChanged_1);
             // 
             // Txt_Id2
             // 
             this.Txt_Id2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Id2.Location = new System.Drawing.Point(43, 57);
+            this.Txt_Id2.Location = new System.Drawing.Point(75, 84);
             this.Txt_Id2.Name = "Txt_Id2";
             this.Txt_Id2.Size = new System.Drawing.Size(38, 30);
             this.Txt_Id2.TabIndex = 35;
@@ -394,15 +396,15 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_NombreProd
             // 
             this.Txt_NombreProd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_NombreProd.Location = new System.Drawing.Point(174, 57);
+            this.Txt_NombreProd.Location = new System.Drawing.Point(302, 85);
             this.Txt_NombreProd.Name = "Txt_NombreProd";
-            this.Txt_NombreProd.Size = new System.Drawing.Size(100, 30);
+            this.Txt_NombreProd.Size = new System.Drawing.Size(181, 30);
             this.Txt_NombreProd.TabIndex = 34;
             // 
             // Txt_PesoProd
             // 
             this.Txt_PesoProd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_PesoProd.Location = new System.Drawing.Point(280, 57);
+            this.Txt_PesoProd.Location = new System.Drawing.Point(513, 85);
             this.Txt_PesoProd.Name = "Txt_PesoProd";
             this.Txt_PesoProd.Size = new System.Drawing.Size(130, 30);
             this.Txt_PesoProd.TabIndex = 33;
@@ -410,7 +412,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_IdProd2
             // 
             this.Txt_IdProd2.AutoSize = true;
-            this.Txt_IdProd2.Location = new System.Drawing.Point(50, 31);
+            this.Txt_IdProd2.Location = new System.Drawing.Point(82, 58);
             this.Txt_IdProd2.Name = "Txt_IdProd2";
             this.Txt_IdProd2.Size = new System.Drawing.Size(31, 23);
             this.Txt_IdProd2.TabIndex = 32;
@@ -420,7 +422,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_Sck
             // 
             this.Txt_Sck.AutoSize = true;
-            this.Txt_Sck.Location = new System.Drawing.Point(416, 29);
+            this.Txt_Sck.Location = new System.Drawing.Point(664, 57);
             this.Txt_Sck.Name = "Txt_Sck";
             this.Txt_Sck.Size = new System.Drawing.Size(58, 23);
             this.Txt_Sck.TabIndex = 31;
@@ -430,7 +432,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_PesoPto
             // 
             this.Txt_PesoPto.AutoSize = true;
-            this.Txt_PesoPto.Location = new System.Drawing.Point(279, 31);
+            this.Txt_PesoPto.Location = new System.Drawing.Point(512, 59);
             this.Txt_PesoPto.Name = "Txt_PesoPto";
             this.Txt_PesoPto.Size = new System.Drawing.Size(131, 23);
             this.Txt_PesoPto.TabIndex = 30;
@@ -440,7 +442,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_Prod
             // 
             this.Txt_Prod.AutoSize = true;
-            this.Txt_Prod.Location = new System.Drawing.Point(181, 31);
+            this.Txt_Prod.Location = new System.Drawing.Point(298, 59);
             this.Txt_Prod.Name = "Txt_Prod";
             this.Txt_Prod.Size = new System.Drawing.Size(86, 23);
             this.Txt_Prod.TabIndex = 29;
@@ -450,7 +452,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_Codigo
             // 
             this.Txt_Codigo.AutoSize = true;
-            this.Txt_Codigo.Location = new System.Drawing.Point(92, 31);
+            this.Txt_Codigo.Location = new System.Drawing.Point(147, 58);
             this.Txt_Codigo.Name = "Txt_Codigo";
             this.Txt_Codigo.Size = new System.Drawing.Size(69, 23);
             this.Txt_Codigo.TabIndex = 28;
@@ -461,7 +463,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_Stock
             // 
             this.Txt_Stock.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Stock.Location = new System.Drawing.Point(422, 57);
+            this.Txt_Stock.Location = new System.Drawing.Point(670, 85);
             this.Txt_Stock.Name = "Txt_Stock";
             this.Txt_Stock.Size = new System.Drawing.Size(47, 30);
             this.Txt_Stock.TabIndex = 16;
@@ -470,7 +472,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // 
             this.Lbl_CostoTProd.AutoSize = true;
             this.Lbl_CostoTProd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_CostoTProd.Location = new System.Drawing.Point(597, 89);
+            this.Lbl_CostoTProd.Location = new System.Drawing.Point(878, 117);
             this.Lbl_CostoTProd.Name = "Lbl_CostoTProd";
             this.Lbl_CostoTProd.Size = new System.Drawing.Size(45, 23);
             this.Lbl_CostoTProd.TabIndex = 12;
@@ -480,7 +482,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_CostU
             // 
             this.Txt_CostU.AutoSize = true;
-            this.Txt_CostU.Location = new System.Drawing.Point(517, 60);
+            this.Txt_CostU.Location = new System.Drawing.Point(798, 88);
             this.Txt_CostU.Name = "Txt_CostU";
             this.Txt_CostU.Size = new System.Drawing.Size(73, 23);
             this.Txt_CostU.TabIndex = 15;
@@ -490,7 +492,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_CostTtal
             // 
             this.Txt_CostTtal.AutoSize = true;
-            this.Txt_CostTtal.Location = new System.Drawing.Point(484, 89);
+            this.Txt_CostTtal.Location = new System.Drawing.Point(765, 117);
             this.Txt_CostTtal.Name = "Txt_CostTtal";
             this.Txt_CostTtal.Size = new System.Drawing.Size(107, 23);
             this.Txt_CostTtal.TabIndex = 14;
@@ -500,7 +502,7 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_Cant
             // 
             this.Txt_Cant.AutoSize = true;
-            this.Txt_Cant.Location = new System.Drawing.Point(504, 29);
+            this.Txt_Cant.Location = new System.Drawing.Point(785, 57);
             this.Txt_Cant.Name = "Txt_Cant";
             this.Txt_Cant.Size = new System.Drawing.Size(86, 23);
             this.Txt_Cant.TabIndex = 13;
@@ -510,25 +512,25 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_PrecioU
             // 
             this.Txt_PrecioU.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_PrecioU.Location = new System.Drawing.Point(596, 56);
+            this.Txt_PrecioU.Location = new System.Drawing.Point(877, 84);
             this.Txt_PrecioU.Name = "Txt_PrecioU";
-            this.Txt_PrecioU.Size = new System.Drawing.Size(65, 30);
+            this.Txt_PrecioU.Size = new System.Drawing.Size(99, 30);
             this.Txt_PrecioU.TabIndex = 2;
             // 
             // Txt_Cantidad
             // 
             this.Txt_Cantidad.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Cantidad.Location = new System.Drawing.Point(596, 22);
+            this.Txt_Cantidad.Location = new System.Drawing.Point(877, 50);
             this.Txt_Cantidad.Name = "Txt_Cantidad";
-            this.Txt_Cantidad.Size = new System.Drawing.Size(65, 30);
+            this.Txt_Cantidad.Size = new System.Drawing.Size(99, 30);
             this.Txt_Cantidad.TabIndex = 1;
             // 
             // Pic_Aceptar
             // 
             this.Pic_Aceptar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Aceptar.Image")));
-            this.Pic_Aceptar.Location = new System.Drawing.Point(688, 31);
+            this.Pic_Aceptar.Location = new System.Drawing.Point(1002, 50);
             this.Pic_Aceptar.Name = "Pic_Aceptar";
-            this.Pic_Aceptar.Size = new System.Drawing.Size(76, 72);
+            this.Pic_Aceptar.Size = new System.Drawing.Size(90, 85);
             this.Pic_Aceptar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Aceptar.TabIndex = 0;
             this.Pic_Aceptar.TabStop = false;
@@ -538,19 +540,19 @@ namespace Capa_Vista_MiguelCrisostomo
             // Txt_Datos
             // 
             this.Txt_Datos.AutoSize = true;
-            this.Txt_Datos.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Datos.Location = new System.Drawing.Point(279, 10);
+            this.Txt_Datos.Font = new System.Drawing.Font("Haettenschweiler", 48F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Datos.Location = new System.Drawing.Point(632, 9);
             this.Txt_Datos.Name = "Txt_Datos";
-            this.Txt_Datos.Size = new System.Drawing.Size(315, 44);
+            this.Txt_Datos.Size = new System.Drawing.Size(596, 84);
             this.Txt_Datos.TabIndex = 28;
-            this.Txt_Datos.Text = "Traslado De Productos";
+            this.Txt_Datos.Text = "Traslado De Productos.";
             // 
             // TrasladoDeProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(832, 695);
+            this.ClientSize = new System.Drawing.Size(1858, 1012);
             this.Controls.Add(this.Txt_Datos);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.Pic_Img);
