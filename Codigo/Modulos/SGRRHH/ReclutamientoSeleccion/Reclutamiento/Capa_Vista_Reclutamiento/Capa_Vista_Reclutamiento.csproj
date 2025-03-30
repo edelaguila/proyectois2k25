@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5A6BE2A8-C6E7-47B6-A402-EED22CFE13C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Capa_Vista_Reclutamiento</RootNamespace>
+    <AssemblyName>Capa_Vista_Reclutamiento</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Capa_Controlador_Reclutamiento">
+      <HintPath>..\Capa_Controlador_Reclutamiento\bin\Debug\Capa_Controlador_Reclutamiento.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Interfac_V3">
+      <HintPath>..\..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Frm_ats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ats.Designer.cs">
+      <DependentUpon>Frm_ats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_competencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_competencias.Designer.cs">
+      <DependentUpon>Frm_competencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_perfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_perfil.Designer.cs">
+      <DependentUpon>Frm_perfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Postulante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Postulante.Designer.cs">
+      <DependentUpon>Frm_Postulante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Frm_ats.resx">
+      <DependentUpon>Frm_ats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_competencias.resx">
+      <DependentUpon>Frm_competencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_perfil.resx">
+      <DependentUpon>Frm_perfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Postulante.resx">
+      <DependentUpon>Frm_Postulante.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
