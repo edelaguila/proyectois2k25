@@ -14,6 +14,9 @@ using Capa_Vista_Anticipos;
 using Capa_Vista_Liquidaciones;
 using Capa_Vista_PercepcionesDeducciones;
 using Capa_Vista_Carrera;
+using Capa_Vista_Capacitacion;
+using Capa_Vista_Reclutamiento;
+using Capa_Vista_Evaluacion;
 
 
 namespace Capa_Vista_RRHH
@@ -187,6 +190,71 @@ namespace Capa_Vista_RRHH
         private void carreraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm_Carrera deptos = new frm_Carrera();
+            deptos.Show();
+        }
+
+        private void capacitacionesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            mantenimiento_capacitaciones deptos = new mantenimiento_capacitaciones();
+            deptos.Show();
+        }
+
+        private void instructoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mantenimiento_instructores deptos = new mantenimiento_instructores();
+            deptos.Show();
+        }
+
+        private void postulanteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Postulante deptos = new Frm_Postulante();
+            deptos.Show();
+        }
+
+        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_perfil deptos = new Frm_perfil();
+            deptos.Show();
+        }
+
+        private void competenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_competencias deptos = new Frm_competencias();
+            deptos.Show();
+        }
+
+        private void aTSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_ats deptos = new Frm_ats();
+            deptos.Show();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void bonosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Bonos_Promociones deptos = new Frm_Bonos_Promociones();
+            deptos.Show();
+        }
+
+        private void promocionesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Frm_Bonos_Promociones deptos = new Frm_Bonos_Promociones();
+            //deptos.Show();
+        }
+
+        private void bonosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Frm_Bonos_Promociones deptos = new Frm_Bonos_Promociones();
+            deptos.Show();
+        }
+
+        private void resultadosEvaluaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Resultados_Evaluacion deptos = new Frm_Resultados_Evaluacion();
             deptos.Show();
         }
     }
