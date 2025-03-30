@@ -44,7 +44,7 @@
       <HintPath>..\Liquidaciones_Empleados\Capa_Vista_Liquidaciones\bin\Debug\Capa_Vista_Liquidaciones.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Navegador">
-      <HintPath>..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+      <HintPath>..\..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_PercepcionesDeducciones">
       <HintPath>..\..\..\..\..\..\..\..\Escritorio\PercepcionesDeducciones\Capa_Vista_PercepcionesDeducciones\bin\Debug\Capa_Vista_PercepcionesDeducciones.dll</HintPath>
@@ -56,7 +56,7 @@
       <HintPath>..\packages\Castle.Core.5.1.1\lib\net462\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Interfac_V3">
-      <HintPath>..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
+      <HintPath>..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
     </Reference>
     <Reference Include="Moq, Version=4.20.72.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.20.72\lib\net462\Moq.dll</HintPath>

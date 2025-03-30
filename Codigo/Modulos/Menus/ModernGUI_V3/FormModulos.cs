@@ -19,6 +19,9 @@ using System.Windows.Forms;
 //using Capa_Vista_CompraVenta;
 //using Capa_Vista_Carrera;
 
+
+//using Capa_Vista_RRHH;
+
 namespace Interfac_V3
 {
     public partial class FormModulos : Form
@@ -191,8 +194,12 @@ namespace Interfac_V3
             //frm_principal_nominas nominas = new frm_principal_nominas(UsuarioSesion.GetIdUsuario());
             //nominas.Show();
 
-           //frm_Promociones promociones = new frm_Promociones(UsuarioSesion.GetIdUsuario());
-           // promociones.Show();
+            //frm_Promociones promociones = new frm_Promociones(UsuarioSesion.GetIdUsuario());
+            // promociones.Show();
+
+            //MDI_RRHH Recursos = new MDI_RRHH(UsuarioSesion.GetIdUsuario());
+            //Recursos.Show();
+
 
         }
 

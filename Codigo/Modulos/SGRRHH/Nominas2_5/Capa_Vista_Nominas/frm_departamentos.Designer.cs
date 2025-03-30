@@ -48,7 +48,7 @@ namespace Capa_Vista_Nominas
             this.navegador1.BackColor = System.Drawing.Color.White;
             this.navegador1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navegador1.Location = new System.Drawing.Point(0, 0);
-            this.navegador1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.navegador1.Margin = new System.Windows.Forms.Padding(4);
             this.navegador1.Name = "navegador1";
             this.navegador1.Size = new System.Drawing.Size(1109, 721);
             this.navegador1.TabIndex = 2;
@@ -62,6 +62,7 @@ namespace Capa_Vista_Nominas
             this.Controls.Add(this.label1);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "frm_departamentos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_departamentos";
             this.ResumeLayout(false);
             this.PerformLayout();

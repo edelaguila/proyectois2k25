@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Liquidaciones;
-using Capa_Vista_Polizas;
+//using Capa_Vista_Polizas;
 using Capa_Controlador_Seguridad;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Windows.Forms;
@@ -233,8 +233,8 @@ namespace Capa_Vista_Liquidaciones
 
         private void Btn_enlace_contabilidad_Click(object sender, EventArgs e)
         {
-            frmPolizas polizas = new frmPolizas();
-            polizas.Show();
+            //frmPolizas polizas = new frmPolizas();
+            //polizas.Show();
         }
 
         private void meCargarLiquidaciones()

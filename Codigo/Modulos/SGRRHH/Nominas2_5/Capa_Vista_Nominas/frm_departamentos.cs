@@ -31,7 +31,7 @@ namespace Capa_Vista_Nominas
             string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
             /*Marco Alejandro Monroy**/
             /****Prueba con la tabla inicial****/
-            string[] alias = { "ID Depto", "Nombre_Depto", "Descripcion", "Estado" };
+            string[] alias = { "ID Depto", "Nombre_Depto", "Descripcion", "Estado", "Departamento Competencia" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#AEA1D6"));
