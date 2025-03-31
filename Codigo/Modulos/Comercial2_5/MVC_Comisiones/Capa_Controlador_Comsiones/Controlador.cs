@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Capa_Vista_Tramite
+namespace Capa_Controlador_Comsiones
 {
-    public class Class1
+    class Controlador
     {
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4939C763-DB04-4906-BA4F-6CEFC4A58547}</ProjectGuid>
+    <ProjectGuid>{0979E267-DB64-4B0A-BEE9-1B6C0EE0A378}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_Controlador_Pedidos</RootNamespace>
-    <AssemblyName>Capa_Controlador_Pedidos</AssemblyName>
+    <RootNamespace>Capa_Vista_Cotizacion</RootNamespace>
+    <AssemblyName>Capa_Vista_Cotizacion</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,8 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Controlador_Cotizacion">
+      <HintPath>..\Capa_Controlador_Cotizacion\bin\Debug\Capa_Controlador_Cotizacion.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controlador.cs" />
+    <Compile Include="Frm_Cotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Cotizacion.Designer.cs">
+      <DependentUpon>Frm_Cotizacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Frm_Cotizacion.resx">
+      <DependentUpon>Frm_Cotizacion.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

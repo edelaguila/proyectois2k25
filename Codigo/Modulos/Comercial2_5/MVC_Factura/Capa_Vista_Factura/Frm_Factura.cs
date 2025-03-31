@@ -8,23 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Capa_Vista_Pedidos
+namespace Capa_Vista_Factura
 {
-    public partial class Frm_Pedidos : Form
+    public partial class Frm_Factura : Form
     {
-        public Frm_Pedidos()
+        public Frm_Factura()
         {
             InitializeComponent();
-        }
-
-        private void Frm_Pedidos_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Btn_insertar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

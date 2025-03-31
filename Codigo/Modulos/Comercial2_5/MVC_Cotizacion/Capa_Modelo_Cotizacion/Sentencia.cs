@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Capa_Controlador_Tramite
+namespace Capa_Modelo_Cotizacion
 {
-    public class Class1
+    class Sentencia
     {
     }
 }
