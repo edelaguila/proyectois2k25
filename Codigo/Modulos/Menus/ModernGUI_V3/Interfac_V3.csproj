@@ -55,7 +55,7 @@
     </Reference>
     <Reference Include="Capa_Vista_CompraVenta, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Comercial\Menu_compraVenta\Capa_Vista_CompraVenta\bin\Debug\Capa_Vista_CompraVenta.dll</HintPath>
+      <HintPath>..\..\Comercial2_5\Menu_compraVenta\Capa_Vista_CompraVenta\bin\Debug\Capa_Vista_CompraVenta.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Contabilidad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BDDE64B2-470D-486A-B5A1-055765122DAC}</ProjectGuid>
+    <ProjectGuid>{A4D37914-E74C-4FE0-A1CE-3C31EDD96DD7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_Vista_ListaPrecios</RootNamespace>
-    <AssemblyName>Capa_Vista_ListaPrecios</AssemblyName>
+    <RootNamespace>Capa_Vista_Cotizacion</RootNamespace>
+    <AssemblyName>Capa_Vista_Cotizacion</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,27 +32,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="Capa_Controlador_ListaPrecios, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Capa_Controlador_Cotizacion">
+      <HintPath>..\Capa_Controlador_Cotizacion\bin\Debug\Capa_Controlador_Cotizacion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Modelo_Cotizacion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Capa_Controlador_ListaPrecios\bin\Debug\Capa_Controlador_ListaPrecios.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Controlador_Seguridad">
-      <HintPath>..\..\..\..\Componentes\Seguridad2_5\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Modelo_Seguridad">
-      <HintPath>..\..\..\..\Componentes\Seguridad2_5\Capa_Modelo_Seguridad\bin\Debug\Capa_Modelo_Seguridad.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+      <HintPath>..\Capa_Modelo_Cotizacion\bin\Debug\Capa_Modelo_Cotizacion.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="Interfac_V3">
-      <HintPath>..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
-    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -65,31 +57,20 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frm_ListadoInicio.cs">
+    <Compile Include="CotizacionReporte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_ListadoInicio.Designer.cs">
-      <DependentUpon>frm_ListadoInicio.cs</DependentUpon>
+    <Compile Include="CotizacionReporte.Designer.cs">
+      <DependentUpon>CotizacionReporte.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_ListadoPrecios.cs">
+    <Compile Include="frm_cotizaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_ListadoPrecios.Designer.cs">
-      <DependentUpon>frm_ListadoPrecios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frm_MantenimientoListas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_MantenimientoListas.Designer.cs">
-      <DependentUpon>frm_MantenimientoListas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ListasReporte.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ListasReporte.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="frm_cotizaciones.Designer.cs">
+      <DependentUpon>frm_cotizaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -97,70 +78,66 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ReporteListas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReporteListas.Designer.cs">
-      <DependentUpon>ReporteListas.cs</DependentUpon>
+    <Compile Include="ReporteCotizacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteCotizacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frm_ListadoInicio.resx">
-      <DependentUpon>frm_ListadoInicio.cs</DependentUpon>
+    <EmbeddedResource Include="CotizacionReporte.resx">
+      <DependentUpon>CotizacionReporte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_ListadoPrecios.resx">
-      <DependentUpon>frm_ListadoPrecios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_MantenimientoListas.resx">
-      <DependentUpon>frm_MantenimientoListas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ListasReporte.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ListasReporte.cs</LastGenOutput>
+    <EmbeddedResource Include="frm_cotizaciones.resx">
+      <DependentUpon>frm_cotizaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteListas.resx">
-      <DependentUpon>ReporteListas.cs</DependentUpon>
+    <EmbeddedResource Include="ReporteCotizacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteCotizacion.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\agregar.jpg" />
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\eliminar.jpg" />
+    <None Include="Recursos\D1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\buscar.jpg" />
+    <None Include="Recursos\A1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\reportes.jpg" />
+    <None Include="Recursos\AYUDA.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ayuda.jpg" />
+    <None Include="Recursos\B1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\salir.jpg" />
+    <None Include="Recursos\C1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\editar.jpg" />
+    <None Include="Recursos\E1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cancelar.jpg" />
+    <None Include="Recursos\G1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\actualizar.jpg" />
+    <None Include="Recursos\GE1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\guardar.jpg" />
+    <None Include="Recursos\REPO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Recursos\S1.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
