@@ -43,7 +43,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(316, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 17);
+            this.label1.Size = new System.Drawing.Size(154, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Importacion de Asitencia";
             // 
@@ -78,7 +78,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.txtRutaArchivo.AutoSize = true;
             this.txtRutaArchivo.Location = new System.Drawing.Point(84, 142);
             this.txtRutaArchivo.Name = "txtRutaArchivo";
-            this.txtRutaArchivo.Size = new System.Drawing.Size(60, 17);
+            this.txtRutaArchivo.Size = new System.Drawing.Size(56, 16);
             this.txtRutaArchivo.TabIndex = 4;
             this.txtRutaArchivo.Text = "Importar";
             // 
@@ -95,6 +95,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(807, 492);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtRutaArchivo);
@@ -103,7 +104,9 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.Controls.Add(this.dgvAsistencias);
             this.Controls.Add(this.label1);
             this.Name = "frm_importar_asistencia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_importar_asistencia";
+            this.Load += new System.EventHandler(this.frm_importar_asistencia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistencias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -52,7 +52,7 @@ namespace Capa_Vista_PercepcionesDeducciones
             this.Lbl_deducciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_deducciones.Location = new System.Drawing.Point(409, 28);
             this.Lbl_deducciones.Name = "Lbl_deducciones";
-            this.Lbl_deducciones.Size = new System.Drawing.Size(357, 32);
+            this.Lbl_deducciones.Size = new System.Drawing.Size(356, 32);
             this.Lbl_deducciones.TabIndex = 4;
             this.Lbl_deducciones.Text = "Generación Deducciones";
             // 
@@ -90,7 +90,7 @@ namespace Capa_Vista_PercepcionesDeducciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(161)))), ((int)(((byte)(214)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1182, 541);
             this.Controls.Add(this.Btn_reportes);
             this.Controls.Add(this.Btn_ayuda);

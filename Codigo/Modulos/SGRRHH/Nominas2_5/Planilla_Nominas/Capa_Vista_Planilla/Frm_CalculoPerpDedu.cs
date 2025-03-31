@@ -28,7 +28,7 @@ namespace Capa_Vista_Planilla
             InitializeComponent();
             proCargarEncabezado();
             proCargarTotalMes();
-            this.BackColor = ColorTranslator.FromHtml("#AEA1D6");
+            //this.BackColor = ColorTranslator.FromHtml("#B4D2F0");
             System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
             toolTip.SetToolTip(Btn_insertar, "Insertar un nuevo registro");
             toolTip.SetToolTip(Btn_guardar, "Guardar el registro actual");

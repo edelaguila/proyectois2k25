@@ -22,7 +22,7 @@ namespace Capa_Vista_Reclutamiento
             string[] alias = { "Id Postulante", "Id Puesto a Aplicar", "Nombre", "Apellido", "Email", "Telefono", "Expriencia", "Trabajo anterior", "Puesto atnerior", "Nivel educativo", "titulo obtenido", "Disponibilidad", "Salario pretendido", "Fecha", "estado"};
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.FromArgb(145, 79, 219));
+            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("tbl_postulante");
             navegador1.ObtenerIdAplicacion("1000");

@@ -276,5 +276,10 @@ namespace Capa_Vista_RRHH
             frm_permisos asistencia = new frm_permisos();
             asistencia.Show();
         }
+
+        private void gestiónFaltasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

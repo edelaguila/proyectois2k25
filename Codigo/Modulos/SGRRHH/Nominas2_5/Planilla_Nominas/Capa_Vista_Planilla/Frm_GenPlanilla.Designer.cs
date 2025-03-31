@@ -120,7 +120,7 @@
             this.label1.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(82, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(278, 45);
+            this.label1.Size = new System.Drawing.Size(269, 44);
             this.label1.TabIndex = 35;
             this.label1.Text = "Encabezado Planilla";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -285,7 +285,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1415, 592);
             this.Controls.Add(this.Btn_salir);
             this.Controls.Add(this.Btn_Reportes);
@@ -314,6 +314,7 @@
             this.Name = "Frm_GenPlanilla";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formulario Encabezado Planilla";
+            this.Load += new System.EventHandler(this.Frm_GenPlanilla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_encabezado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_encabezadoInicial)).EndInit();
             this.ResumeLayout(false);

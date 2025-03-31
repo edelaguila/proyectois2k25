@@ -41,6 +41,7 @@ namespace Capa_Vista_GD
             this.navegador1.Name = "navegador1";
             this.navegador1.Size = new System.Drawing.Size(1599, 825);
             this.navegador1.TabIndex = 0;
+            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
             // frm_registrodisciplinario
             // 
@@ -49,6 +50,7 @@ namespace Capa_Vista_GD
             this.ClientSize = new System.Drawing.Size(1599, 825);
             this.Controls.Add(this.navegador1);
             this.Name = "frm_registrodisciplinario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro Disciplinario";
             this.ResumeLayout(false);
 

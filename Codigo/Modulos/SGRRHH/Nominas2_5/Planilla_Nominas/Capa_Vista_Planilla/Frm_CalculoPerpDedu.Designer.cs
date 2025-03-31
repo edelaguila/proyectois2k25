@@ -99,7 +99,7 @@
             this.Lbl_Vinculacion.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_Vinculacion.Location = new System.Drawing.Point(10, 91);
             this.Lbl_Vinculacion.Name = "Lbl_Vinculacion";
-            this.Lbl_Vinculacion.Size = new System.Drawing.Size(714, 45);
+            this.Lbl_Vinculacion.Size = new System.Drawing.Size(684, 44);
             this.Lbl_Vinculacion.TabIndex = 78;
             this.Lbl_Vinculacion.Text = "Vinculacion Empleados a Deducciones/Percepciones";
             // 
@@ -255,7 +255,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1235, 592);
             this.Controls.Add(this.Lbl_Totales);
             this.Controls.Add(this.Btn_salir);

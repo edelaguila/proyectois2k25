@@ -22,7 +22,7 @@ namespace Capa_Vista_Reclutamiento
             string[] alias = { "Id competencia", "Competencia", "Descripación", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.FromArgb(145, 79, 219));
+            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("Tbl_competencias");
             navegador1.ObtenerIdAplicacion("1000");

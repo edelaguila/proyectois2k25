@@ -31,7 +31,7 @@ namespace Capa_Vista_Planilla
         public Frm_GenPlanilla()
         {
             InitializeComponent();
-            this.BackColor = ColorTranslator.FromHtml("#AEA1D6");
+            //this.BackColor = ColorTranslator.FromHtml("#AEA1D6");
             System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
             toolTip.SetToolTip(Btn_insertar, "Insertar un nuevo registro");
             toolTip.SetToolTip(Btn_guardar, "Guardar el registro actual");
@@ -939,6 +939,11 @@ namespace Capa_Vista_Planilla
             {
                 this.Close();
             }
+        }
+
+        private void Frm_GenPlanilla_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Capa_Vista_Nominas
             string[] alias = { "pk_registro_liquidacion", "liquidacion_aguinaldo", "liquidacion_bono_14", "liquidacion_vacaciones", "liquidacion_tipo_operacion", "fk_clave_empleado", "estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#AEA1D6"));
+            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("tbl_liquidacion_trabajadores");
             navegador1.ObtenerIdAplicacion("1000");

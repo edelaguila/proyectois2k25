@@ -41,6 +41,7 @@ namespace Capa_Vista_Evaluacion
             this.navegador1.Name = "navegador1";
             this.navegador1.Size = new System.Drawing.Size(1082, 582);
             this.navegador1.TabIndex = 0;
+            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
             // Frm_Resultados_Evaluacion
             // 
@@ -49,6 +50,7 @@ namespace Capa_Vista_Evaluacion
             this.ClientSize = new System.Drawing.Size(1082, 582);
             this.Controls.Add(this.navegador1);
             this.Name = "Frm_Resultados_Evaluacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frm_Resultados_Evaluacion";
             this.ResumeLayout(false);
 

@@ -37,7 +37,7 @@ namespace Capa_Vista_Nominas
 
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#AEA1D6"));
+            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.ObtenerIdAplicacion("1000");
             navegador1.AsignarAyuda("1");

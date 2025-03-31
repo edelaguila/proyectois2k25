@@ -65,7 +65,7 @@ namespace Capa_Vista_Liquidaciones
             this.Lbl_titulo_liquidaciones.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_titulo_liquidaciones.Location = new System.Drawing.Point(350, 128);
             this.Lbl_titulo_liquidaciones.Name = "Lbl_titulo_liquidaciones";
-            this.Lbl_titulo_liquidaciones.Size = new System.Drawing.Size(321, 44);
+            this.Lbl_titulo_liquidaciones.Size = new System.Drawing.Size(320, 44);
             this.Lbl_titulo_liquidaciones.TabIndex = 0;
             this.Lbl_titulo_liquidaciones.Text = "Cálculo de liquidaciones";
             // 
@@ -313,7 +313,7 @@ namespace Capa_Vista_Liquidaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(161)))), ((int)(((byte)(214)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1034, 865);
             this.Controls.Add(this.Dgv_liquidaciones);
             this.Controls.Add(this.Btn_enlace_contabilidad);
