@@ -106,7 +106,12 @@ namespace Modelo_Vista_AsistenciaYFaltas
                     MessageBox.Show($"Error al procesar el archivo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+        private void frm_importar_asistencia_Load(object sender, EventArgs e)
+        {
+
         }
+    }
 }
 
 

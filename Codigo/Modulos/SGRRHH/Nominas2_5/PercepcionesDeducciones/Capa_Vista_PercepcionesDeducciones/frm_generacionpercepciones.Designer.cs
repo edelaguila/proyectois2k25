@@ -42,7 +42,7 @@ namespace Capa_Vista_PercepcionesDeducciones
             this.Lbl_percepciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_percepciones.Location = new System.Drawing.Point(409, 28);
             this.Lbl_percepciones.Name = "Lbl_percepciones";
-            this.Lbl_percepciones.Size = new System.Drawing.Size(366, 32);
+            this.Lbl_percepciones.Size = new System.Drawing.Size(365, 32);
             this.Lbl_percepciones.TabIndex = 0;
             this.Lbl_percepciones.Text = "Generación Percepciones";
             // 
@@ -90,7 +90,7 @@ namespace Capa_Vista_PercepcionesDeducciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(161)))), ((int)(((byte)(214)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1182, 541);
             this.Controls.Add(this.Btn_reportes);
             this.Controls.Add(this.Btn_ayuda);

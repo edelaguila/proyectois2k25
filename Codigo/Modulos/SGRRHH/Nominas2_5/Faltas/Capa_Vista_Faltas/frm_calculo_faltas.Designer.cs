@@ -107,7 +107,7 @@ namespace Capa_Vista_Faltas
             this.Lbl_ControlFaltas.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_ControlFaltas.Location = new System.Drawing.Point(344, 37);
             this.Lbl_ControlFaltas.Name = "Lbl_ControlFaltas";
-            this.Lbl_ControlFaltas.Size = new System.Drawing.Size(361, 44);
+            this.Lbl_ControlFaltas.Size = new System.Drawing.Size(360, 44);
             this.Lbl_ControlFaltas.TabIndex = 6;
             this.Lbl_ControlFaltas.Text = "Calculo del Valor de Faltas";
             this.Lbl_ControlFaltas.Click += new System.EventHandler(this.Lbl_ControlFaltas_Click);
@@ -138,7 +138,7 @@ namespace Capa_Vista_Faltas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(161)))), ((int)(((byte)(214)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1035, 450);
             this.Controls.Add(this.Btn_Reportes);
             this.Controls.Add(this.Btn_Ayudas);

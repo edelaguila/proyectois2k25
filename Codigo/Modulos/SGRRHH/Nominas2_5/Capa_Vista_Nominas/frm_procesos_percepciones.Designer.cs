@@ -70,7 +70,7 @@ namespace Capa_Vista_Nominas
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(374, 99);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 24);
+            this.label1.Size = new System.Drawing.Size(220, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Procesos Percepciones";
             // 
@@ -80,7 +80,7 @@ namespace Capa_Vista_Nominas
             this.Lbl_pk_dedu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.Lbl_pk_dedu.Location = new System.Drawing.Point(68, 138);
             this.Lbl_pk_dedu.Name = "Lbl_pk_dedu";
-            this.Lbl_pk_dedu.Size = new System.Drawing.Size(145, 24);
+            this.Lbl_pk_dedu.Size = new System.Drawing.Size(137, 22);
             this.Lbl_pk_dedu.TabIndex = 5;
             this.Lbl_pk_dedu.Text = "pk_dedu_perp";
             // 
@@ -90,7 +90,7 @@ namespace Capa_Vista_Nominas
             this.Lbl_concepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.Lbl_concepto.Location = new System.Drawing.Point(68, 211);
             this.Lbl_concepto.Name = "Lbl_concepto";
-            this.Lbl_concepto.Size = new System.Drawing.Size(100, 24);
+            this.Lbl_concepto.Size = new System.Drawing.Size(95, 22);
             this.Lbl_concepto.TabIndex = 6;
             this.Lbl_concepto.Text = "Concepto";
             // 
@@ -100,7 +100,7 @@ namespace Capa_Vista_Nominas
             this.Lbl_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.Lbl_tipo.Location = new System.Drawing.Point(68, 247);
             this.Lbl_tipo.Name = "Lbl_tipo";
-            this.Lbl_tipo.Size = new System.Drawing.Size(52, 24);
+            this.Lbl_tipo.Size = new System.Drawing.Size(50, 22);
             this.Lbl_tipo.TabIndex = 7;
             this.Lbl_tipo.Text = "Tipo";
             // 
@@ -110,7 +110,7 @@ namespace Capa_Vista_Nominas
             this.Lbl_aplicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.Lbl_aplicacion.Location = new System.Drawing.Point(513, 133);
             this.Lbl_aplicacion.Name = "Lbl_aplicacion";
-            this.Lbl_aplicacion.Size = new System.Drawing.Size(108, 24);
+            this.Lbl_aplicacion.Size = new System.Drawing.Size(102, 22);
             this.Lbl_aplicacion.TabIndex = 8;
             this.Lbl_aplicacion.Text = "Aplicación";
             // 
@@ -120,7 +120,7 @@ namespace Capa_Vista_Nominas
             this.Lbl_excepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.Lbl_excepcion.Location = new System.Drawing.Point(513, 173);
             this.Lbl_excepcion.Name = "Lbl_excepcion";
-            this.Lbl_excepcion.Size = new System.Drawing.Size(110, 24);
+            this.Lbl_excepcion.Size = new System.Drawing.Size(102, 22);
             this.Lbl_excepcion.TabIndex = 9;
             this.Lbl_excepcion.Text = "Excepción";
             // 
@@ -130,7 +130,7 @@ namespace Capa_Vista_Nominas
             this.Lbl_monto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.Lbl_monto.Location = new System.Drawing.Point(513, 210);
             this.Lbl_monto.Name = "Lbl_monto";
-            this.Lbl_monto.Size = new System.Drawing.Size(68, 24);
+            this.Lbl_monto.Size = new System.Drawing.Size(64, 22);
             this.Lbl_monto.TabIndex = 10;
             this.Lbl_monto.Text = "Monto";
             // 
@@ -140,7 +140,7 @@ namespace Capa_Vista_Nominas
             this.Lbl_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_estado.Location = new System.Drawing.Point(512, 247);
             this.Lbl_estado.Name = "Lbl_estado";
-            this.Lbl_estado.Size = new System.Drawing.Size(74, 24);
+            this.Lbl_estado.Size = new System.Drawing.Size(72, 22);
             this.Lbl_estado.TabIndex = 11;
             this.Lbl_estado.Text = "Estado";
             // 
@@ -370,7 +370,7 @@ namespace Capa_Vista_Nominas
             this.Lbl_clase.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.Lbl_clase.Location = new System.Drawing.Point(68, 173);
             this.Lbl_clase.Name = "Lbl_clase";
-            this.Lbl_clase.Size = new System.Drawing.Size(62, 24);
+            this.Lbl_clase.Size = new System.Drawing.Size(61, 22);
             this.Lbl_clase.TabIndex = 33;
             this.Lbl_clase.Text = "Clase";
             // 
@@ -378,7 +378,7 @@ namespace Capa_Vista_Nominas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(171)))), ((int)(((byte)(214)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1062, 675);
             this.Controls.Add(this.Cbo_clase);
             this.Controls.Add(this.Lbl_clase);

@@ -23,7 +23,7 @@ namespace Capa_Vista_Nominas
             string[] alias = { "pk_registro_vacaciones", "asignacion_vacaciones_descripcion", "asignacion_vacaciones_fecha_inicio", "asignacion_vacaciones_fecha_fin", "fk_clave_empleado", "estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#AEA1D6"));
+            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("tbl_asignacion_vacaciones");
             navegador1.ObtenerIdAplicacion("1000");

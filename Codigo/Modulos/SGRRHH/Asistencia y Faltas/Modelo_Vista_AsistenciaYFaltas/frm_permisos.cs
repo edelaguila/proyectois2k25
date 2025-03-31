@@ -21,7 +21,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             string[] alias = { "pk_id_permiso", "fk_id_empleado", "fecha_inicio", "fecha_fin", " tipo_permiso", " aprobado", " estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.MediumPurple);
+            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("tbl_permisos");
             navegador1.ObtenerIdAplicacion("1000");
@@ -31,6 +31,11 @@ namespace Modelo_Vista_AsistenciaYFaltas
 
 
             navegador1.AsignarComboConTabla("tbl_empleados", "pk_clave", "empleados_nombre", 1);
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

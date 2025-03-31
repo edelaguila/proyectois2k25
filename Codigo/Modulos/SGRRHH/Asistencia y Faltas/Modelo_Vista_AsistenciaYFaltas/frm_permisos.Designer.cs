@@ -41,6 +41,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.navegador1.Name = "navegador1";
             this.navegador1.Size = new System.Drawing.Size(960, 483);
             this.navegador1.TabIndex = 0;
+            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
             // frm_permisos
             // 
@@ -49,6 +50,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.ClientSize = new System.Drawing.Size(960, 483);
             this.Controls.Add(this.navegador1);
             this.Name = "frm_permisos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_permisos";
             this.ResumeLayout(false);
 

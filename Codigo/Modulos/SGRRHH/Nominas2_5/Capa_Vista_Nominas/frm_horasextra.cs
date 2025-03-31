@@ -25,7 +25,7 @@ namespace Capa_Vista_Nominas
             string[] alias = { "pk_registro_horas", "horas_mes ", "horas_cantidad_horas", " fk_clave_empleado", "estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.LightGray);
+            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("tbl_horas_extra");
             navegador1.ObtenerIdAplicacion("1000");

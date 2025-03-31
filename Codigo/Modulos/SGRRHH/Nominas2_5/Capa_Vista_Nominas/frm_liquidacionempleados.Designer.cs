@@ -49,6 +49,7 @@ namespace Capa_Vista_Nominas
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.navegador1);
             this.Name = "frm_liquidacionempleados";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liquidación de Empleados";
             this.ResumeLayout(false);
 

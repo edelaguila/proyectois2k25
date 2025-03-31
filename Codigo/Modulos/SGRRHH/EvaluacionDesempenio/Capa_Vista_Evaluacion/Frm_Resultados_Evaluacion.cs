@@ -21,7 +21,7 @@ namespace Capa_Vista_Evaluacion
             string[] alias = { "ID Resultado", "ID Empleado", "Calificación Final", "Fecha Consolidación", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.BlueViolet);
+            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.ObtenerIdAplicacion("8000");
             navegador1.AsignarAyuda("1");
@@ -30,6 +30,11 @@ namespace Capa_Vista_Evaluacion
 
             navegador1.AsignarNombreForm("RESULTADOS DE EVALUACIÓN");
             
+
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
 
         }
     }

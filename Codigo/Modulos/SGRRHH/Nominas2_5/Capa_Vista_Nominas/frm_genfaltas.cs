@@ -21,7 +21,7 @@ namespace Capa_Vista_Nominas
             string[] alias = { "pk_registro_faltas", "faltas_fecha_falta", "faltas_mes", "faltas_justificacion", "fk_clave_empleado", "estado", "Justificada","ID_Permiso" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.MediumPurple);
+            navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("tbl_control_faltas");
             navegador1.ObtenerIdAplicacion("1000");

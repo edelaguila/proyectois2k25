@@ -49,6 +49,7 @@ namespace Capa_Vista_Nominas
             this.ClientSize = new System.Drawing.Size(1101, 571);
             this.Controls.Add(this.navegador1);
             this.Name = "frm_genfaltas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generación Faltas";
             this.ResumeLayout(false);
 
