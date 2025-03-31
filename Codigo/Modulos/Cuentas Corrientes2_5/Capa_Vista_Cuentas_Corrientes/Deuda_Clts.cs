@@ -44,7 +44,6 @@ namespace Capa_Vista_Cuentas_Corrientes
             Dgv_deudas.Columns[6].HeaderText = "fecha_vencimiento_deuda";
             Dgv_deudas.Columns[7].HeaderText = "descriptcion_deuda";
             Dgv_deudas.Columns[8].HeaderText = "estado_deuda";
-            Dgv_deudas.Columns[9].HeaderText = "mora";
 
         }
         /*private void cargarEfecto()
@@ -90,13 +89,23 @@ namespace Capa_Vista_Cuentas_Corrientes
 
         private void Btn_guardar_Click(object sender, EventArgs e)
         {
+            string idDeuda = Txt_id_deuda.Text.Trim();
+            string idFactura = Cbo_idfactura.Text.Trim();
+            string idCliente = Cbo_id_clientes.Text.Trim();
+            string idCobrador = Cbo_id_cobrador.Text.Trim();
+            string monto = Txt_montoDeuda.Text.Trim();
+            DateTime fechaI = Dtp_FechaI.Value;
+            DateTime fechaV = Dtp_FechaV.Value;
+            string descripcion = Txt_Descipcion.Text.Trim();
+            string estado = Cbo_estado.Text.Trim();
 
-            controlador.guardarDeudas(Txt_id_deuda, Cbo_id_clientes.Text, Cbo_id_cobrador.Text,  Cbo_idfactura.Text,
-                Txt_montoDeuda.Text, Txt_FechaI.Text, Txt_FechaV.Text, Txt_Descipcion.Text, Cbo_estado.Text, Txt_mora.Text);
+            controlador.guardarDeudas(idDeuda, idCliente, idCobrador, idFactura, monto, fechaI, fechaV, descripcion, estado);
             actualizarVistaDeudas();
             getIdD();
-            CalcularMora();
+
+
         }
+
 
         private void Btn_Buscar_Click(object sender, EventArgs e)
         {
@@ -122,8 +131,8 @@ namespace Capa_Vista_Cuentas_Corrientes
             //Cbo_Efecto.SelectedIndex = 0;
             Cbo_idfactura.SelectedIndex = 0;
             Txt_montoDeuda.Text = "";
-            Txt_FechaI.Text = "";
-            Txt_FechaV.Text = "";
+            //Dtp_FechaV.Text = "";
+            //Dtp_FechaV.Text = "";
             Txt_Descipcion.Text = "";
             Cbo_estado.SelectedIndex = 0;
 
@@ -149,15 +158,14 @@ namespace Capa_Vista_Cuentas_Corrientes
                 Txt_id_deuda.Text = Dgv_deudas.CurrentRow.Cells[0].Value.ToString();
                 Cbo_id_clientes.Text = Dgv_deudas.CurrentRow.Cells[1].Value.ToString();
                 Cbo_id_cobrador.Text = Dgv_deudas.CurrentRow.Cells[2].Value.ToString();
-               // Cbo_tipoT.Text = Dgv_deudas.CurrentRow.Cells[3].Value.ToString();
-               // Cbo_Efecto.Text = Dgv_deudas.CurrentRow.Cells[4].Value.ToString();
+                // Cbo_tipoT.Text = Dgv_deudas.CurrentRow.Cells[3].Value.ToString();
+                // Cbo_Efecto.Text = Dgv_deudas.CurrentRow.Cells[4].Value.ToString();
                 Cbo_idfactura.Text = Dgv_deudas.CurrentRow.Cells[3].Value.ToString();
                 Txt_montoDeuda.Text = Dgv_deudas.CurrentRow.Cells[4].Value.ToString();
-                Txt_FechaI.Text = Dgv_deudas.CurrentRow.Cells[5].Value.ToString();
-                Txt_FechaV.Text = Dgv_deudas.CurrentRow.Cells[6].Value.ToString();
+                Dtp_FechaI.Value = Convert.ToDateTime(Dgv_deudas.CurrentRow.Cells[5].Value);
+                Dtp_FechaV.Value = Convert.ToDateTime(Dgv_deudas.CurrentRow.Cells[6].Value);
                 Txt_Descipcion.Text = Dgv_deudas.CurrentRow.Cells[7].Value.ToString();
                 Cbo_estado.Text = Dgv_deudas.CurrentRow.Cells[8].Value.ToString();
-                Txt_mora.Text = Dgv_deudas.CurrentRow.Cells[9].Value.ToString();
             }
         }
 
@@ -171,14 +179,13 @@ namespace Capa_Vista_Cuentas_Corrientes
                 int idCobrador = Convert.ToInt32(Cbo_id_cobrador.Text.Trim());
                 int idDeuda = Convert.ToInt32(Txt_id_deuda.Text.Trim());
                 string monto = Txt_montoDeuda.Text.Trim();
-                string fechaI = Txt_FechaI.Text.Trim();
-                string fechaV = Txt_FechaV.Text.Trim();
+                DateTime fechaI = Dtp_FechaI.Value;
+                DateTime fechaV = Dtp_FechaV.Value;
                 string descripcion = Txt_Descipcion.Text.Trim();
-                string mora = Txt_mora.Text.Trim();
 
                 // Modificar la transacción con monto como string
                 bool resultado = controlador.ModificarTransaccion(
-                    idDeuda, idCliente, idCobrador, idFactura, monto, fechaI, fechaV, descripcion, estado, mora
+                    idDeuda, idCliente, idCobrador, idFactura, monto, fechaI, fechaV, descripcion, estado
                 );
 
                 if (resultado)
@@ -199,6 +206,7 @@ namespace Capa_Vista_Cuentas_Corrientes
                 MessageBox.Show("Error al modificar: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         
@@ -309,39 +317,32 @@ namespace Capa_Vista_Cuentas_Corrientes
         private void Txt_mora_TextChanged(object sender, EventArgs e)
         {
 
-            CalcularMora();
+
 
         }
-        private void CalcularMora()
+
+        private void Txt_montoDeuda_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
-                decimal montoDeuda = Convert.ToDecimal(Txt_montoDeuda.Text);
-                DateTime fechaVencimiento = Convert.ToDateTime(Txt_FechaV.Text);
-                DateTime fechaActual = DateTime.Today;
-                decimal tasaInteresMoratorio = 0.45m;
-
-             
-                int diasAtraso = (fechaActual - fechaVencimiento).Days;
-
-                if (diasAtraso > 0) 
+                if (!string.IsNullOrEmpty(Txt_montoDeuda.Text)) // Evita mostrar el mensaje varias veces
                 {
-                    decimal mora = ((tasaInteresMoratorio * montoDeuda) / 360) * diasAtraso;
-
-                    // Mostrar resultado en el formulario
-                    Txt_mora.Text = mora.ToString("F2"); 
+                    MessageBox.Show("Solo se permiten números.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else
-                {
-                    Txt_mora.Text = "0.00"; 
-                }
+                e.Handled = true;
             }
-            catch (Exception ex)
+
+            // Solo un punto decimal permitido
+            if (e.KeyChar == '.' && (sender as TextBox).Text.Contains("."))
             {
-                MessageBox.Show("Error en el cálculo: " + ex.Message);
+                e.Handled = true;
             }
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 // Formulario Shelly

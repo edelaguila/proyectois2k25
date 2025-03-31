@@ -20,7 +20,7 @@ namespace Capa_Modelo_Cuentas_Corrientes
         public OdbcDataAdapter DisplayDeudas()// método que obtiene el contenido de la tabla VENDEDORES
         {
             string sSql = "SELECT Pk_id_deuda, Fk_id_cliente, Fk_id_cobrador, Fk_id_factura, deuda_monto, deuda_fecha_inicio_deuda, deuda_fecha_vencimiento_deuda, " +
-                "deuda_descripcion_deuda, deuda_estado, deuda_mora FROM  " + sTabla_Deuda + " WHERE Pk_id_deuda IS NOT NULL AND Pk_id_deuda != '';";
+                "deuda_descripcion_deuda, deuda_estado FROM  " + sTabla_Deuda + " WHERE Pk_id_deuda IS NOT NULL AND Pk_id_deuda != '';";
             OdbcDataAdapter dataTable = new OdbcDataAdapter();
             try
             {
@@ -35,16 +35,16 @@ namespace Capa_Modelo_Cuentas_Corrientes
         }
 
         public void registrarDeuda(string Pk_id_deuda, string Fk_id_cliente, string Fk_id_cobrador, string sFk_idfactura,
-            string monto_deuda, string fecha_inicio_deuda, string fecha_vencimiento_deuda, string descripcion_deuda, string estado_deuda, string mora)
+            string monto_deuda, DateTime fecha_inicio_deuda, DateTime fecha_vencimiento_deuda, string descripcion_deuda, string estado_deuda)
         {
             //la variable campos es una variable plana donde se ponen los nombres de las columnas para guardar el reporte
             try
             {
                 string sCampos = " Pk_id_deuda, Fk_id_cliente, Fk_id_cobrador, Fk_id_factura, deuda_monto," +
-                    "deuda_fecha_inicio_deuda, deuda_fecha_vencimiento_deuda, deuda_descripcion_deuda, deuda_estado, deuda_mora";
+                    "deuda_fecha_inicio_deuda, deuda_fecha_vencimiento_deuda, deuda_descripcion_deuda, deuda_estado";
                 string sSql = "INSERT INTO " + sTabla_Deuda + " (" + sCampos + ") VALUES ('" + Pk_id_deuda + "', '" + Fk_id_cliente + "', '"
                     + Fk_id_cobrador + "', '" + sFk_idfactura + "','" + monto_deuda + "', '" + fecha_inicio_deuda + "', '" + fecha_vencimiento_deuda +
-                    "', '" + descripcion_deuda + "', '" + estado_deuda + "', '" + mora + "');";
+                    "', '" + descripcion_deuda + "', '" + estado_deuda + "');";
                 OdbcCommand cmd = new OdbcCommand(sSql, conexion.conexion());
                 cmd.ExecuteNonQuery();
             }
@@ -54,16 +54,17 @@ namespace Capa_Modelo_Cuentas_Corrientes
             }
         }
 
-        public bool ModificarTransaccion(int idDeuda, int idCliente, int idCobrador, int idFactura, string monto, string fechaI, 
-            string fechaV, string descripcion, int estado, string mora)
+        public bool ModificarTransaccion(int idDeuda, int idCliente, int idCobrador, int idFactura, string monto, DateTime fechaI,
+            DateTime fechaV, string descripcion, int estado)
         {
             try
             {
-                string sql = "UPDATE Tbl_Deudas_Clientes SET " +
-                    "Fk_id_cliente = ?, Fk_id_cobrador = ?, Fk_id_factura = ?, " +
-                    "deuda_monto = ?, deuda_fecha_inicio_deuda = ?, deuda_fecha_vencimiento_deuda = ?, " +
-                    "deuda_descripcion_deuda = ?, deuda_estado = ?, deuda_mora = ? " +
-                    "WHERE Pk_id_deuda = ?";
+
+                string sql = "UPDATE Tbl_Deudas SET " +
+                             "Fk_id_cliente = ?, Fk_id_cobrador = ?, Fk_id_factura = ?, " +
+                             "deuda_monto = ?, deuda_fecha_inicio_deuda = ?, deuda_fecha_vencimiento_deuda = ?, " +
+                             "deuda_descripcion_deuda = ?, deuda_estado = ? " +
+                             "WHERE Pk_id_deuda = ?";
 
                 using (OdbcConnection conn = conexion.conexion())
                 {
@@ -73,14 +74,18 @@ namespace Capa_Modelo_Cuentas_Corrientes
                         cmd.Parameters.AddWithValue("@idCobrador", idCobrador);
                         cmd.Parameters.AddWithValue("@idFactura", idFactura);
                         cmd.Parameters.AddWithValue("@monto", monto);
-                        cmd.Parameters.AddWithValue("@fechaI", fechaI);
-                        cmd.Parameters.AddWithValue("@fechaV", fechaV);
+                        cmd.Parameters.Add(new OdbcParameter("@fechaI", OdbcType.Date)).Value = fechaI;
+                        cmd.Parameters.Add(new OdbcParameter("@fechaV", OdbcType.Date)).Value = fechaV;
                         cmd.Parameters.AddWithValue("@descripcion", descripcion);
                         cmd.Parameters.AddWithValue("@estado", estado);
-                        cmd.Parameters.AddWithValue("@mora", mora);
                         cmd.Parameters.AddWithValue("@idDeuda", idDeuda);
 
-                        cmd.ExecuteNonQuery();
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        if (filasAfectadas == 0)
+                        {
+                            Console.WriteLine("No se modificó ninguna fila. Verifique si el ID de la deuda existe.");
+                            return false;
+                        }
                         return true;
                     }
                 }
@@ -93,10 +98,11 @@ namespace Capa_Modelo_Cuentas_Corrientes
         }
 
 
+
         public OdbcDataAdapter queryDeuda(string sQuery)
         {
             string sql = "SELECT Pk_id_deuda, Fk_id_cliente, Fk_id_cobrador, Fk_id_factura, deuda_monto, deuda_fecha_inicio_deuda, deuda_fecha_vencimiento_deuda, " +
-                    "deuda_descripcion_deuda, deuda_estado, deuda_mora  FROM "
+                    "deuda_descripcion_deuda, deuda_estado  FROM "
                 + sTabla_Deuda + " WHERE Pk_id_deuda LIKE '%" + sQuery + "%' OR Pk_id_deuda LIKE '%" + sQuery + "%';";
 
             OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, conexion.conexion());
@@ -279,7 +285,7 @@ namespace Capa_Modelo_Cuentas_Corrientes
         }
 
         public void ActualizarDeuda(string Pk_id_deuda, string Fk_id_cliente, string Fk_id_cobrador, string sFk_idfactura,
-            string monto_deuda, string fechaI, string fechav, string descripcion, string deuda, string mora)
+            string monto_deuda, DateTime fechaI, DateTime fechav, string descripcion, string deuda)
         {
             try
             {
@@ -290,7 +296,6 @@ namespace Capa_Modelo_Cuentas_Corrientes
                               $"deuda_fecha_inicio_deuda = '{fechaI}', " +
                               $"deuda_fecha_vencimiento_deuda = '{fechav}', deuda_descripcion_deuda = '{descripcion}', " +
                               $"deuda_estado = '{deuda}',"+
-                              $"deuda_mora = '{mora}'" +
                               $"WHERE Pk_id_deuda = '{Pk_id_deuda}'";
 
                 OdbcCommand cmd = new OdbcCommand(sSql, conexion.conexion());

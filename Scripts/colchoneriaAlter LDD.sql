@@ -164,8 +164,6 @@ ALTER TABLE Tbl_Marca
 ADD COLUMN comision DOUBLE NOT NULL;
 ALTER TABLE Tbl_Linea
 ADD COLUMN comision DOUBLE NOT NULL;
-ALTER TABLE Tbl_Productos
-MODIFY estado TINYINT NOT NULL DEFAULT 1;
 
 -- ALTERS DEL MODULO DE CUENTAS CORRIENTES 31-10-2024
 
@@ -207,8 +205,6 @@ CHANGE COLUMN pado_estado estado TINYINT DEFAULT 1 NOT NULL;
 
 -- ALTER TABLE Tbl_Deudas_Clientes
 -- ADD COLUMN Efecto_trans VARCHAR(150) NOT NULL;
-ALTER TABLE Tbl_Deudas_Clientes
-ADD COLUMN deuda_mora VARCHAR(150) NOT NULL;
 
 ALTER TABLE Tbl_Deudas_Clientes
 ADD COLUMN Fk_id_factura INT NOT NULL,
@@ -403,21 +399,31 @@ CREATE TABLE IF NOT EXISTS Tbl_vendedores (
     PRIMARY KEY (Pk_id_vendedor)
 );
 
+ ALTER TABLE Tbl_clientes 
+ADD COLUMN Cliente_email VARCHAR(20) NOT NULL;
  
  ALTER TABLE Tbl_clientes 
 ADD COLUMN Cliente_Tipo VARCHAR(20) NOT NULL;
 
 ALTER TABLE Tbl_clientes
-ADD COLUMN Clientes_deuda DECIMAL(10, 2) DEFAULT 0.00;
+ADD COLUMN Cliente_lim_credito DECIMAL(10, 2) DEFAULT 0.00;
+
+ALTER TABLE Tbl_clientes
+ADD COLUMN Cliente_dias_credito int (5) NOT NULL ;
 
 ALTER TABLE Tbl_clientes 
-ADD Fk_id_vendedor INT NOT NULL,
-ADD CONSTRAINT FK_vendedor_cliente
-FOREIGN KEY (Fk_id_vendedor) REFERENCES Tbl_vendedores(Pk_id_vendedor); 
+ADD COLUMN Clientes_fechaRegistro DATETIME;
 
 ALTER TABLE Tbl_clientes 
 CHANGE Clientes_estado estado TINYINT(1) DEFAULT 1;
 
+-- ALTER TABLE Tbl_clientes
+-- ADD COLUMN Clientes_deuda DECIMAL(10, 2) DEFAULT 0.00;
+
+-- ALTER TABLE Tbl_clientes 
+-- ADD Fk_id_vendedor INT NOT NULL,
+-- ADD CONSTRAINT FK_vendedor_cliente
+-- FOREIGN KEY (Fk_id_vendedor) REFERENCES Tbl_vendedores(Pk_id_vendedor); 
 -- ALTER TABLE Tbl_clientes 
 -- ADD COLUMN Fk_id_lista_Encabezado INT NOT NULL;
 
@@ -431,7 +437,6 @@ ADD COLUMN Proveedor_deuda DECIMAL(10, 2) DEFAULT 0.00;
 
 ALTER TABLE Tbl_proveedores 
 CHANGE Prov_estado estado TINYINT(1) DEFAULT 1;
-
 
 CREATE TABLE IF NOT EXISTS Tbl_cotizacion_encabezado (
     Pk_id_cotizacionEnc VARCHAR(20) NOT NULL UNIQUE,

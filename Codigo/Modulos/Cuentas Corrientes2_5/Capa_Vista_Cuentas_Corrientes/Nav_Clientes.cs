@@ -19,7 +19,7 @@ namespace Capa_Vista_Cuentas_Corrientes
             InitializeComponent();
             string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
 
-            string[] alias = { "id_clientes", "nombre", "apellido", "nit_cliente","telefono","direccion","no_cuenta","estado", "Tipo Cliente", "Deuda", "ID_Vendedor" };
+            string[] alias = { "id_clientes", "nombre", "apellido", "nit_cliente","telefono","direccion","no_cuenta","estado", "E-mail","Tipo Cliente", "Límite Crédito", "´Días Credito", "Fecha Registro" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.CadetBlue);

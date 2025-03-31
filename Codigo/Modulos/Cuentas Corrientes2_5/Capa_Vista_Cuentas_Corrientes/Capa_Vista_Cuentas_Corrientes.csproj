@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caja_Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caja_Clientes.Designer.cs">
+      <DependentUpon>Caja_Clientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeudaCliente.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -172,6 +178,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Caja_Clientes.resx">
+      <DependentUpon>Caja_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeudaCliente.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DeudaCliente.cs</LastGenOutput>

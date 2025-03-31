@@ -152,13 +152,6 @@ namespace Capa_Vista_Cuentas_Corrientes
         {
 
         }
-
-        private void btn_Vendedor_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario<Nav_Vendedores>();
-            btn_Vendedor.BackColor = Color.FromArgb(12, 61, 92);
-            ocultaSubMenu();
-        }
         private void btnMenuCatalogosOpcion2_Click(object sender, EventArgs e)
         {
             
@@ -167,29 +160,6 @@ namespace Capa_Vista_Cuentas_Corrientes
         private void btn_MenuProveedor_Click(object sender, EventArgs e)
         {
             muestraSubMenu(panelMenuProveedores);
-        }
-
-        private void btn_Clientes_Click_1(object sender, EventArgs e)
-        {
-            AbrirFormulario<Nav_Clientes>();
-            btn_Clientes.BackColor = Color.FromArgb(12, 61, 92);
-            ocultaSubMenu();
-        }
-
-        private void btn_Cobrador_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario<Nav_Cobrador>();
-            btn_Cobrador.BackColor = Color.FromArgb(12, 61, 92);
-            ocultaSubMenu();
-
-        }
-
-        private void Btn_TransCuentas_Click(object sender, EventArgs e)
-        {
-            AbrirFormulario<Nav_Transaccion_Cuentas>();
-            Btn_TransCuentas.BackColor = Color.FromArgb(12, 61, 92);
-            ocultaSubMenu();
-
         }
 
         private void Btn_Proveedores_Click(object sender, EventArgs e)
@@ -336,9 +306,9 @@ namespace Capa_Vista_Cuentas_Corrientes
 
         private void Btn_Proceso_CajaC_Click(object sender, EventArgs e)
         {
-            /*AbrirFormulario<DeudaProveedores>();
-             Btn_Proceso_CajaC.BackColor = Color.FromArgb(12, 61, 92);
-            ocultaSubMenu();*/
+            AbrirFormulario<Caja_Clientes>();
+            Btn_Proceso_CajaC.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
         }
 
         private void btn_Deudas_Click(object sender, EventArgs e)
@@ -358,6 +328,34 @@ namespace Capa_Vista_Cuentas_Corrientes
         {
             AbrirFormulario<CapaVista_AndresVeron.frm_transaccion_clientes>();
             Btn_Proceso_TransaccionC.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+        private void btn_Clientes_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Nav_Clientes>();
+            btn_Clientes.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+        private void btn_Vendedor_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormulario<Nav_Vendedores>();
+            btn_Vendedor.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+        private void btn_Cobrador_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormulario<Nav_Cobrador>();
+            btn_Cobrador.BackColor = Color.FromArgb(12, 61, 92);
+            ocultaSubMenu();
+        }
+
+        private void Btn_TransCuentas_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormulario<Nav_Transaccion_Cuentas>();
+            Btn_TransCuentas.BackColor = Color.FromArgb(12, 61, 92);
             ocultaSubMenu();
         }
         #endregion
