@@ -8,21 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Capa_Vista_Pedidos
+namespace Capa_Vista_Comisiones
 {
-    public partial class Frm_Pedidos : Form
+    public partial class Frm_Comisiones : Form
     {
-        public Frm_Pedidos()
+        public Frm_Comisiones()
         {
             InitializeComponent();
         }
 
-        private void Frm_Pedidos_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Btn_insertar_Click(object sender, EventArgs e)
+        private void Lbl_vendedor_Click(object sender, EventArgs e)
         {
 
         }

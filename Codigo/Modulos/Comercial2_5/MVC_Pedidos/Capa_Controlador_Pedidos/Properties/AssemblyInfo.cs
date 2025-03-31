@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Capa_Controlador_Tramite")]
+[assembly: AssemblyTitle("Capa_Controlador_Pedidos")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Capa_Controlador_Tramite")]
+[assembly: AssemblyProduct("Capa_Controlador_Pedidos")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como id. de typelib si este proyecto se expone a COM.
-[assembly: Guid("77197829-2315-4083-bf49-c86e99009138")]
+[assembly: Guid("4939c763-db04-4906-ba4f-6cefc4a58547")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //

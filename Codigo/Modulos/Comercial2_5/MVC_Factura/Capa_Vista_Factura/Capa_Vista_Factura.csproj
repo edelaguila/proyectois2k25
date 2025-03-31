@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4939C763-DB04-4906-BA4F-6CEFC4A58547}</ProjectGuid>
+    <ProjectGuid>{2046FD54-1F4A-4F88-9AFB-76A055ACAD8C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_Controlador_Pedidos</RootNamespace>
-    <AssemblyName>Capa_Controlador_Pedidos</AssemblyName>
+    <RootNamespace>Capa_Vista_Factura</RootNamespace>
+    <AssemblyName>Capa_Vista_Factura</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,8 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Controlador_Factura">
+      <HintPath>..\Capa_Controlador_Factura\bin\Debug\Capa_Controlador_Factura.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controlador.cs" />
+    <Compile Include="Frm_Factura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Factura.Designer.cs">
+      <DependentUpon>Frm_Factura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Frm_Factura.resx">
+      <DependentUpon>Frm_Factura.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

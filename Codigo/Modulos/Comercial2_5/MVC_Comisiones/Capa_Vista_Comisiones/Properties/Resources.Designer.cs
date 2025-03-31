@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Capa_Vista_Tramite.Properties {
+namespace Capa_Vista_Comisiones.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Capa_Vista_Tramite.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Capa_Vista_Tramite.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Capa_Vista_Comisiones.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,9 @@ namespace Capa_Vista_Tramite.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap control_de_pasaportes {
+        internal static System.Drawing.Bitmap buscar1 {
             get {
-                object obj = ResourceManager.GetObject("control-de-pasaportes", resourceCulture);
+                object obj = ResourceManager.GetObject("buscar1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Capa_Vista_Tramite.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pasaporte {
+        internal static System.Drawing.Bitmap cancelar {
             get {
-                object obj = ResourceManager.GetObject("pasaporte", resourceCulture);
+                object obj = ResourceManager.GetObject("cancelar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,19 @@ namespace Capa_Vista_Tramite.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pasaporte_internacional {
+        internal static System.Drawing.Bitmap preguntas {
             get {
-                object obj = ResourceManager.GetObject("pasaporte-internacional", resourceCulture);
+                object obj = ResourceManager.GetObject("preguntas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reporte {
+            get {
+                object obj = ResourceManager.GetObject("reporte", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
