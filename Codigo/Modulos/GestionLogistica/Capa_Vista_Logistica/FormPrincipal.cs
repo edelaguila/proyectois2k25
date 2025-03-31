@@ -19,7 +19,8 @@ namespace Capa_Vista_Logistica
         public FormPrincipal(String idUsuario)
         {
             InitializeComponent();
-            ocultaSubMenu();
+            muestraSubMenu(panelMenuCatalogos);
+            muestraSubMenu(panelMenuProcesos);
 
             this.idUsuario = idUsuario;
 
@@ -163,7 +164,7 @@ namespace Capa_Vista_Logistica
         {
             //AbrirFormulario<Form1>();
             //btnMenuCatalogos.BackColor = Color.FromArgb(12, 61, 92);
-            muestraSubMenu(panelMenuCatalogos);
+            
         }
 
        
@@ -179,24 +180,21 @@ namespace Capa_Vista_Logistica
         private void btnMenuCatalogosOpcion1_Click(object sender, EventArgs e)
         {
             AbrirFormulario<TrasDProductos>();
-            ocultaSubMenu();
         }
 
         private void btnMenuProcesos_Click(object sender, EventArgs e)
         {
-            muestraSubMenu(panelMenuProcesos);
+            
         }
 
         private void btnMenuCatalogosOpcion2_Click_1(object sender, EventArgs e)
         {
             AbrirFormulario<Locales>();
-            ocultaSubMenu();
         }
 
         private void btnMenuProcesosOpcion1_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_AmmyCatun.Transporte>();
-            ocultaSubMenu();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -207,61 +205,51 @@ namespace Capa_Vista_Logistica
         private void Btn_MenuCatalogosOpcion3_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Almacenes>();
-            ocultaSubMenu();
         }
 
         private void Btn_MenuCatalogosOpcion4_Click(object sender, EventArgs e)
         {
             AbrirFormulario<MarcaNav>();
-            ocultaSubMenu();
         }
 
         private void Btn_MenuCatalogosOpcion5_Click(object sender, EventArgs e)
         {
             AbrirFormulario<LineaNav>();
-            ocultaSubMenu();
         }
 
         private void Btn_MenuCatalogosOpcion6_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_AmmyCatun.frm_Chofer>();
-            ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion2_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_AmmyCatun.Transporte_Vehiculos>();
-            ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion3_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_MiguelCrisostomo.TrasladoDeProductos>();
-            ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion4_Click(object sender, EventArgs e)
         {
             AbrirFormulario<MVC_JavierChamo.Mantenimiento_de_Vehiculos>();
-            ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion5_Click(object sender, EventArgs e)
         {
             AbrirFormulario<MVC_JavierChamo.Movimiento_de_Inventario>();
-            ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion6_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_JDSC.MonitoreoAlmacen>();
-            ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion7_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Frm_Polizas>();
-            ocultaSubMenu();
         }
 
         private void Btn_ayuda_Click(object sender, EventArgs e)
@@ -339,76 +327,106 @@ namespace Capa_Vista_Logistica
         private void Btn_CuentMantClient1_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Nav_Vendedores>();
-            ocultaSubMenu();
         }
 
         private void Btn_CuentMantClient2_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Nav_Clientes>();
-            ocultaSubMenu();
         }
 
         private void Btn_CuentMantClient3_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Nav_Cobrador>();
-            ocultaSubMenu();
         }
 
         private void Btn_CuentMantClient4_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Nav_Transaccion_Cuentas>();
-            ocultaSubMenu();
         }
 
         private void Btn_CuentMantProv1_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Nav_Proveedores>();
-            ocultaSubMenu();
         }
 
         private void Btn_CuentProcCl1_Click(object sender, EventArgs e)
         {
             AbrirFormulario<CapaVista_AndresVeron.frm_transaccion_clientes>();
-            ocultaSubMenu();
         }
 
         private void Btn_CuentProcProv1_Click(object sender, EventArgs e)
         {
-            ocultaSubMenu();
+            
         }
 
         private void Btn_ComMant1_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_CompraVenta.Frm_proveedores>();
-            ocultaSubMenu();
         }
 
         private void Btn_ComMant2_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_CompraVenta.Frm_clientes>();
-            ocultaSubMenu();
         }
 
         private void Btn_ComMant3_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_CompraVenta.Frm_vendedores>();
-            ocultaSubMenu();
         }
 
         private void Btn_ComMant4_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_ListaPrecios.frm_MantenimientoListas>();
-            ocultaSubMenu();
         }
 
         private void Btn_ComProcC1_Click(object sender, EventArgs e)
         {
-            ocultaSubMenu();
+            
         }
 
         private void Btn_ComProcV1_Click(object sender, EventArgs e)
         {
-            ocultaSubMenu();
+            
+        }
+
+        private void Btn_CuentMantClient_Click(object sender, EventArgs e)
+        {
+            muestraSubMenu(panelMenuCuentMat);
+        }
+
+        private void Btn_CuentMantProv_Click(object sender, EventArgs e)
+        {
+            muestraSubMenu(panelMenuCuentMat);
+        }
+
+        private void Btn_CuentProcCl_Click(object sender, EventArgs e)
+        {
+            muestraSubMenu(panelMenuCuentProc);
+        }
+
+        private void Btn_CuentProcProv_Click(object sender, EventArgs e)
+        {
+            muestraSubMenu(panelMenuCuentProc);
+        }
+
+        private void Btn_ComMant_Click(object sender, EventArgs e)
+        {
+            muestraSubMenu(panelMenuComMant);
+        }
+
+        private void Btn_ComProcC_Click(object sender, EventArgs e)
+        {
+            muestraSubMenu(panelMenuComProc);
+        }
+
+        private void Btn_ComProcV_Click(object sender, EventArgs e)
+        {
+            muestraSubMenu(panelMenuComProc);
+        }
+
+        private void btnSeparacionCuentasCorrientes_Click(object sender, EventArgs e)
+        {
+            muestraSubMenu(panelMenuModulos);
         }
 
         #endregion
