@@ -36,10 +36,8 @@ namespace Capa_Vista_AmmyCatun
             this.Dgv_Vehiculo = new System.Windows.Forms.DataGridView();
             this.Gpb_Mantenimiento = new System.Windows.Forms.GroupBox();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
-            this.Btn_Reporte = new System.Windows.Forms.Button();
             this.Btn_Modificar = new System.Windows.Forms.Button();
             this.Btn_Eliminar = new System.Windows.Forms.Button();
-            this.Btn_Ingresar = new System.Windows.Forms.Button();
             this.Txt_Datos = new System.Windows.Forms.Label();
             this.Gpb_Vehiculo = new System.Windows.Forms.GroupBox();
             this.Txt_IDVeh = new System.Windows.Forms.TextBox();
@@ -61,6 +59,8 @@ namespace Capa_Vista_AmmyCatun
             this.Txt_Plac = new System.Windows.Forms.Label();
             this.Txt_IdChof = new System.Windows.Forms.Label();
             this.Pic_Transporte = new System.Windows.Forms.PictureBox();
+            this.Btn_Reporte = new System.Windows.Forms.Button();
+            this.Btn_Ingresar = new System.Windows.Forms.Button();
             this.Gpb_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Vehiculo)).BeginInit();
             this.Gpb_Mantenimiento.SuspendLayout();
@@ -75,11 +75,11 @@ namespace Capa_Vista_AmmyCatun
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Gpb_Detalle.Controls.Add(this.Dgv_Vehiculo);
             this.Gpb_Detalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Detalle.Location = new System.Drawing.Point(494, 363);
+            this.Gpb_Detalle.Location = new System.Drawing.Point(24, 564);
             this.Gpb_Detalle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Gpb_Detalle.Name = "Gpb_Detalle";
             this.Gpb_Detalle.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Gpb_Detalle.Size = new System.Drawing.Size(1211, 204);
+            this.Gpb_Detalle.Size = new System.Drawing.Size(1448, 315);
             this.Gpb_Detalle.TabIndex = 31;
             this.Gpb_Detalle.TabStop = false;
             this.Gpb_Detalle.Text = "Detalle Vehiculo";
@@ -88,28 +88,28 @@ namespace Capa_Vista_AmmyCatun
             // 
             this.Dgv_Vehiculo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Dgv_Vehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Vehiculo.Location = new System.Drawing.Point(59, 28);
+            this.Dgv_Vehiculo.Location = new System.Drawing.Point(19, 47);
             this.Dgv_Vehiculo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dgv_Vehiculo.Name = "Dgv_Vehiculo";
             this.Dgv_Vehiculo.RowHeadersWidth = 51;
             this.Dgv_Vehiculo.RowTemplate.Height = 24;
-            this.Dgv_Vehiculo.Size = new System.Drawing.Size(1135, 153);
+            this.Dgv_Vehiculo.Size = new System.Drawing.Size(1366, 186);
             this.Dgv_Vehiculo.TabIndex = 3;
             this.Dgv_Vehiculo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Vehiculo_CellContentClick);
             // 
             // Gpb_Mantenimiento
             // 
+            this.Gpb_Mantenimiento.Controls.Add(this.Btn_Ingresar);
             this.Gpb_Mantenimiento.Controls.Add(this.Btn_Ayuda);
             this.Gpb_Mantenimiento.Controls.Add(this.Btn_Reporte);
             this.Gpb_Mantenimiento.Controls.Add(this.Btn_Modificar);
             this.Gpb_Mantenimiento.Controls.Add(this.Btn_Eliminar);
-            this.Gpb_Mantenimiento.Controls.Add(this.Btn_Ingresar);
             this.Gpb_Mantenimiento.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Mantenimiento.Location = new System.Drawing.Point(32, 338);
+            this.Gpb_Mantenimiento.Location = new System.Drawing.Point(98, 85);
             this.Gpb_Mantenimiento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Gpb_Mantenimiento.Name = "Gpb_Mantenimiento";
             this.Gpb_Mantenimiento.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Gpb_Mantenimiento.Size = new System.Drawing.Size(431, 130);
+            this.Gpb_Mantenimiento.Size = new System.Drawing.Size(511, 172);
             this.Gpb_Mantenimiento.TabIndex = 30;
             this.Gpb_Mantenimiento.TabStop = false;
             this.Gpb_Mantenimiento.Text = "MANTENIMIENTO";
@@ -117,35 +117,23 @@ namespace Capa_Vista_AmmyCatun
             // Btn_Ayuda
             // 
             this.Btn_Ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Ayuda.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.AYUDA_V4;
-            this.Btn_Ayuda.Location = new System.Drawing.Point(226, 43);
+            this.Btn_Ayuda.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.preguntas;
+            this.Btn_Ayuda.Location = new System.Drawing.Point(393, 47);
             this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
-            this.Btn_Ayuda.Size = new System.Drawing.Size(66, 67);
+            this.Btn_Ayuda.Size = new System.Drawing.Size(85, 71);
             this.Btn_Ayuda.TabIndex = 5;
             this.Btn_Ayuda.UseVisualStyleBackColor = false;
             this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
             // 
-            // Btn_Reporte
-            // 
-            this.Btn_Reporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Reporte.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.reporte;
-            this.Btn_Reporte.Location = new System.Drawing.Point(151, 43);
-            this.Btn_Reporte.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Reporte.Name = "Btn_Reporte";
-            this.Btn_Reporte.Size = new System.Drawing.Size(69, 67);
-            this.Btn_Reporte.TabIndex = 4;
-            this.Btn_Reporte.UseVisualStyleBackColor = false;
-            this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
-            // 
             // Btn_Modificar
             // 
             this.Btn_Modificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Modificar.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.EDITAR_V4;
-            this.Btn_Modificar.Location = new System.Drawing.Point(298, 43);
+            this.Btn_Modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Modificar.Image")));
+            this.Btn_Modificar.Location = new System.Drawing.Point(107, 50);
             this.Btn_Modificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Modificar.Name = "Btn_Modificar";
-            this.Btn_Modificar.Size = new System.Drawing.Size(54, 67);
+            this.Btn_Modificar.Size = new System.Drawing.Size(88, 74);
             this.Btn_Modificar.TabIndex = 2;
             this.Btn_Modificar.UseVisualStyleBackColor = false;
             this.Btn_Modificar.Click += new System.EventHandler(this.Btn_Modificar_Click);
@@ -153,32 +141,20 @@ namespace Capa_Vista_AmmyCatun
             // Btn_Eliminar
             // 
             this.Btn_Eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Eliminar.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.BORRAR_V4;
-            this.Btn_Eliminar.Location = new System.Drawing.Point(80, 43);
+            this.Btn_Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Eliminar.Image")));
+            this.Btn_Eliminar.Location = new System.Drawing.Point(201, 50);
             this.Btn_Eliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Eliminar.Name = "Btn_Eliminar";
-            this.Btn_Eliminar.Size = new System.Drawing.Size(62, 67);
+            this.Btn_Eliminar.Size = new System.Drawing.Size(84, 74);
             this.Btn_Eliminar.TabIndex = 1;
             this.Btn_Eliminar.UseVisualStyleBackColor = false;
             this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
-            // 
-            // Btn_Ingresar
-            // 
-            this.Btn_Ingresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Ingresar.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.guardar;
-            this.Btn_Ingresar.Location = new System.Drawing.Point(6, 43);
-            this.Btn_Ingresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Ingresar.Name = "Btn_Ingresar";
-            this.Btn_Ingresar.Size = new System.Drawing.Size(68, 67);
-            this.Btn_Ingresar.TabIndex = 0;
-            this.Btn_Ingresar.UseVisualStyleBackColor = false;
-            this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
             // 
             // Txt_Datos
             // 
             this.Txt_Datos.AutoSize = true;
             this.Txt_Datos.Font = new System.Drawing.Font("Haettenschweiler", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Datos.Location = new System.Drawing.Point(583, 7);
+            this.Txt_Datos.Location = new System.Drawing.Point(579, 20);
             this.Txt_Datos.Name = "Txt_Datos";
             this.Txt_Datos.Size = new System.Drawing.Size(321, 45);
             this.Txt_Datos.TabIndex = 33;
@@ -205,7 +181,7 @@ namespace Capa_Vista_AmmyCatun
             this.Gpb_Vehiculo.Controls.Add(this.Txt_Plac);
             this.Gpb_Vehiculo.Controls.Add(this.Txt_IdChof);
             this.Gpb_Vehiculo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Vehiculo.Location = new System.Drawing.Point(44, 53);
+            this.Gpb_Vehiculo.Location = new System.Drawing.Point(24, 291);
             this.Gpb_Vehiculo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Gpb_Vehiculo.Name = "Gpb_Vehiculo";
             this.Gpb_Vehiculo.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -273,7 +249,7 @@ namespace Capa_Vista_AmmyCatun
             // Txt_Color
             // 
             this.Txt_Color.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Color.Location = new System.Drawing.Point(172, 157);
+            this.Txt_Color.Location = new System.Drawing.Point(166, 157);
             this.Txt_Color.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_Color.Name = "Txt_Color";
             this.Txt_Color.Size = new System.Drawing.Size(210, 30);
@@ -383,20 +359,44 @@ namespace Capa_Vista_AmmyCatun
             // Pic_Transporte
             // 
             this.Pic_Transporte.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Transporte.Image")));
-            this.Pic_Transporte.Location = new System.Drawing.Point(962, 81);
+            this.Pic_Transporte.Location = new System.Drawing.Point(993, 90);
             this.Pic_Transporte.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Pic_Transporte.Name = "Pic_Transporte";
-            this.Pic_Transporte.Size = new System.Drawing.Size(310, 216);
+            this.Pic_Transporte.Size = new System.Drawing.Size(386, 310);
             this.Pic_Transporte.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Transporte.TabIndex = 34;
             this.Pic_Transporte.TabStop = false;
+            // 
+            // Btn_Reporte
+            // 
+            this.Btn_Reporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
+            this.Btn_Reporte.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.reporte;
+            this.Btn_Reporte.Location = new System.Drawing.Point(291, 47);
+            this.Btn_Reporte.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Reporte.Name = "Btn_Reporte";
+            this.Btn_Reporte.Size = new System.Drawing.Size(87, 71);
+            this.Btn_Reporte.TabIndex = 4;
+            this.Btn_Reporte.UseVisualStyleBackColor = false;
+            this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
+            // 
+            // Btn_Ingresar
+            // 
+            this.Btn_Ingresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
+            this.Btn_Ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ingresar.Image")));
+            this.Btn_Ingresar.Location = new System.Drawing.Point(18, 50);
+            this.Btn_Ingresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Ingresar.Name = "Btn_Ingresar";
+            this.Btn_Ingresar.Size = new System.Drawing.Size(83, 74);
+            this.Btn_Ingresar.TabIndex = 0;
+            this.Btn_Ingresar.UseVisualStyleBackColor = false;
+            this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
             // 
             // Transporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(1700, 751);
+            this.ClientSize = new System.Drawing.Size(1700, 878);
             this.Controls.Add(this.Pic_Transporte);
             this.Controls.Add(this.Txt_Datos);
             this.Controls.Add(this.Gpb_Mantenimiento);

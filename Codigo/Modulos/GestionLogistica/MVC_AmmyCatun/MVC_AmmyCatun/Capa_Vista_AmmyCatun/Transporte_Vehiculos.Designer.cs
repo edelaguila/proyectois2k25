@@ -31,6 +31,7 @@ namespace Capa_Vista_AmmyCatun
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transporte_Vehiculos));
             this.Gpb_Mantenimiento = new System.Windows.Forms.GroupBox();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
             this.Btn_Reporte = new System.Windows.Forms.Button();
@@ -85,11 +86,11 @@ namespace Capa_Vista_AmmyCatun
             this.Gpb_Mantenimiento.Controls.Add(this.Btn_Eliminar);
             this.Gpb_Mantenimiento.Controls.Add(this.Btn_Ingresar);
             this.Gpb_Mantenimiento.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Mantenimiento.Location = new System.Drawing.Point(976, 113);
+            this.Gpb_Mantenimiento.Location = new System.Drawing.Point(110, 91);
             this.Gpb_Mantenimiento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Gpb_Mantenimiento.Name = "Gpb_Mantenimiento";
             this.Gpb_Mantenimiento.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Gpb_Mantenimiento.Size = new System.Drawing.Size(506, 122);
+            this.Gpb_Mantenimiento.Size = new System.Drawing.Size(461, 121);
             this.Gpb_Mantenimiento.TabIndex = 32;
             this.Gpb_Mantenimiento.TabStop = false;
             this.Gpb_Mantenimiento.Text = "MANTENIMIENTO";
@@ -97,11 +98,11 @@ namespace Capa_Vista_AmmyCatun
             // Btn_Ayuda
             // 
             this.Btn_Ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Ayuda.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.AYUDA_V4;
-            this.Btn_Ayuda.Location = new System.Drawing.Point(211, 31);
+            this.Btn_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayuda.Image")));
+            this.Btn_Ayuda.Location = new System.Drawing.Point(192, 31);
             this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
-            this.Btn_Ayuda.Size = new System.Drawing.Size(79, 61);
+            this.Btn_Ayuda.Size = new System.Drawing.Size(85, 71);
             this.Btn_Ayuda.TabIndex = 6;
             this.Btn_Ayuda.UseVisualStyleBackColor = false;
             this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
@@ -110,10 +111,10 @@ namespace Capa_Vista_AmmyCatun
             // 
             this.Btn_Reporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
             this.Btn_Reporte.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.reporte;
-            this.Btn_Reporte.Location = new System.Drawing.Point(296, 31);
+            this.Btn_Reporte.Location = new System.Drawing.Point(283, 31);
             this.Btn_Reporte.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Reporte.Name = "Btn_Reporte";
-            this.Btn_Reporte.Size = new System.Drawing.Size(72, 61);
+            this.Btn_Reporte.Size = new System.Drawing.Size(85, 71);
             this.Btn_Reporte.TabIndex = 4;
             this.Btn_Reporte.UseVisualStyleBackColor = false;
             this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
@@ -121,11 +122,11 @@ namespace Capa_Vista_AmmyCatun
             // Btn_Modificar
             // 
             this.Btn_Modificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Modificar.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.EDITAR_V4;
+            this.Btn_Modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Modificar.Image")));
             this.Btn_Modificar.Location = new System.Drawing.Point(374, 31);
             this.Btn_Modificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Modificar.Name = "Btn_Modificar";
-            this.Btn_Modificar.Size = new System.Drawing.Size(67, 61);
+            this.Btn_Modificar.Size = new System.Drawing.Size(73, 71);
             this.Btn_Modificar.TabIndex = 2;
             this.Btn_Modificar.UseVisualStyleBackColor = false;
             this.Btn_Modificar.Click += new System.EventHandler(this.Btn_Modificar_Click);
@@ -133,11 +134,11 @@ namespace Capa_Vista_AmmyCatun
             // Btn_Eliminar
             // 
             this.Btn_Eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Eliminar.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.BORRAR_V4;
-            this.Btn_Eliminar.Location = new System.Drawing.Point(123, 31);
+            this.Btn_Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Eliminar.Image")));
+            this.Btn_Eliminar.Location = new System.Drawing.Point(104, 31);
             this.Btn_Eliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Eliminar.Name = "Btn_Eliminar";
-            this.Btn_Eliminar.Size = new System.Drawing.Size(71, 61);
+            this.Btn_Eliminar.Size = new System.Drawing.Size(75, 71);
             this.Btn_Eliminar.TabIndex = 1;
             this.Btn_Eliminar.UseVisualStyleBackColor = false;
             this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
@@ -145,11 +146,11 @@ namespace Capa_Vista_AmmyCatun
             // Btn_Ingresar
             // 
             this.Btn_Ingresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Ingresar.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.guardar;
-            this.Btn_Ingresar.Location = new System.Drawing.Point(26, 31);
+            this.Btn_Ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ingresar.Image")));
+            this.Btn_Ingresar.Location = new System.Drawing.Point(21, 31);
             this.Btn_Ingresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Ingresar.Name = "Btn_Ingresar";
-            this.Btn_Ingresar.Size = new System.Drawing.Size(91, 61);
+            this.Btn_Ingresar.Size = new System.Drawing.Size(77, 71);
             this.Btn_Ingresar.TabIndex = 0;
             this.Btn_Ingresar.UseVisualStyleBackColor = false;
             this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
@@ -160,7 +161,7 @@ namespace Capa_Vista_AmmyCatun
             this.Gpb_Destinatario.Controls.Add(this.Txt_ID_2);
             this.Gpb_Destinatario.Controls.Add(this.Txt_IdDestinatario);
             this.Gpb_Destinatario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Destinatario.Location = new System.Drawing.Point(567, 113);
+            this.Gpb_Destinatario.Location = new System.Drawing.Point(1041, 91);
             this.Gpb_Destinatario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Gpb_Destinatario.Name = "Gpb_Destinatario";
             this.Gpb_Destinatario.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -401,7 +402,7 @@ namespace Capa_Vista_AmmyCatun
             this.Gpb_Remitente.Controls.Add(this.button1);
             this.Gpb_Remitente.Controls.Add(this.Txt_IdRemitente);
             this.Gpb_Remitente.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Remitente.Location = new System.Drawing.Point(76, 113);
+            this.Gpb_Remitente.Location = new System.Drawing.Point(628, 91);
             this.Gpb_Remitente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Gpb_Remitente.Name = "Gpb_Remitente";
             this.Gpb_Remitente.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
