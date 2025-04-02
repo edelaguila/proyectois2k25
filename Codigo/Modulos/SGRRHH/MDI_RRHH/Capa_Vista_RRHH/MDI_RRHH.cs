@@ -281,5 +281,10 @@ namespace Capa_Vista_RRHH
         {
 
         }
+
+        private void gestiónEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
