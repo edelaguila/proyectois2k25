@@ -23,7 +23,7 @@ namespace Capa_Vista_Evaluacion
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
-            navegador1.ObtenerIdAplicacion("8000");
+            navegador1.ObtenerIdAplicacion("17001");
             navegador1.AsignarAyuda("1");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarTabla("tbl_resultados_evaluacion");
