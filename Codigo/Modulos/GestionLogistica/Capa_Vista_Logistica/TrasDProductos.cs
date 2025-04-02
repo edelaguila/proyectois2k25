@@ -20,7 +20,7 @@ namespace Capa_Vista_Logistica
             string[] alias = { "ID Producto", "Cod_Producto", "Nom_Producto", "Peso", "PrecUnitario", "Precio Venta", "Costo Compra", "Clasificación", "Stock", "Empaque", "ID Receta", "Comisión Inv", "Comisión Costo", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.LightBlue);
+            navegador1.AsignarColorFondo(Color.FromArgb(218, 247, 245));
             navegador1.AsignarColorFuente(Color.BlueViolet);
             navegador1.AsignarTabla("Tbl_Productos");
             navegador1.ObtenerIdAplicacion("2000");

@@ -19,7 +19,7 @@ namespace Capa_Vista_Logistica
             string[] alias = { "ID Marca", "Nombre", "Descripción", "Estado", "ID Producto", "Comisión" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.LightBlue);
+            navegador1.AsignarColorFondo(Color.FromArgb(218, 247, 245));
             navegador1.AsignarColorFuente(Color.BlueViolet);
             navegador1.AsignarTabla("Tbl_Marca");
             navegador1.ObtenerIdAplicacion("2000");

@@ -21,7 +21,7 @@ namespace Capa_Vista_Logistica
             string[] alias = { "ID Bodega", "Nombre Bodega", "Ubicación", "Capacidad", "Fecha Registro", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.LightBlue);
+            navegador1.AsignarColorFondo(Color.FromArgb(218, 247, 245));
             navegador1.AsignarColorFuente(Color.BlueViolet);
             navegador1.AsignarTabla("TBL_BODEGAS");
             navegador1.ObtenerIdAplicacion("2000");

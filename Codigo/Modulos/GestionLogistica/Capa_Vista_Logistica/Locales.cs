@@ -19,7 +19,7 @@ namespace Capa_Vista_Logistica
             string[] alias = { "ID", "Nombre", "Ubicacion", "Capacidad", "Estado", "Fecha" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.LightBlue);
+            navegador1.AsignarColorFondo(Color.FromArgb(218, 247, 245));
             navegador1.AsignarColorFuente(Color.BlueViolet);
             navegador1.ObtenerIdAplicacion("2000");
             navegador1.ObtenerIdUsuario(idUsuario);
