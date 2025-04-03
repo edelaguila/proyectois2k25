@@ -248,7 +248,7 @@ namespace Capa_Vista_GD
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_evidencias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ingreso de evidencias";
+            this.Text = "15002 - Ingreso de evidencias";
             this.Gpb_EvidenciaValida.ResumeLayout(false);
             this.Gpb_EvidenciaValida.PerformLayout();
             this.ResumeLayout(false);

@@ -249,7 +249,7 @@ namespace Capa_Vista_GD
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_sanciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Aplicar sancion";
+            this.Text = "15003 - Registro de Sancion";
             this.ResumeLayout(false);
             this.PerformLayout();
 

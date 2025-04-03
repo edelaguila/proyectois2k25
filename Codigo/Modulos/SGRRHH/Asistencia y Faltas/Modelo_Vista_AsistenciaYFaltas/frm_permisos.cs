@@ -27,7 +27,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             navegador1.ObtenerIdAplicacion("16002");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
-            navegador1.AsignarNombreForm("Asignacion de permisos");
+            //navegador1.AsignarNombreForm("Asignacion de permisos");
 
 
             navegador1.AsignarComboConTabla("tbl_empleados", "pk_clave", "empleados_nombre", 1);
