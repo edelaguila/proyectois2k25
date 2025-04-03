@@ -25,10 +25,10 @@ namespace Capa_Vista_Reclutamiento
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("Tbl_ats");
-            navegador1.ObtenerIdAplicacion("1000");
+            navegador1.ObtenerIdAplicacion("13004");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
-            navegador1.AsignarNombreForm("Estado ATS");
+            navegador1.AsignarNombreForm("");
 
             navegador1.AsignarComboConTabla("Tbl_postulante", "Pk_id_postulante", "nombre_postulante", 1);
             navegador1.AsignarComboConTabla("Tbl_puestos_trabajo", "Pk_id_puestos", "puestos_nombre_puesto", 1);

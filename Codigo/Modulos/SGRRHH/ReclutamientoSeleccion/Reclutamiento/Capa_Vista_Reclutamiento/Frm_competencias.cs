@@ -25,10 +25,10 @@ namespace Capa_Vista_Reclutamiento
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("Tbl_competencias");
-            navegador1.ObtenerIdAplicacion("1000");
+            navegador1.ObtenerIdAplicacion("13003");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
-            navegador1.AsignarNombreForm("Competencias");
+            navegador1.AsignarNombreForm("");
 
         }
     }
