@@ -45,6 +45,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MVC_AmmyCatun\MVC_AmmyCatun\Capa_Vista_AmmyCatun\bin\Debug\Capa_Vista_AmmyCatun.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Compras">
+      <HintPath>..\..\Comercial2_5\MVC_Compras\Capa_Vista_Compras\bin\Debug\Capa_Vista_Compras.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_CompraVenta">
       <HintPath>..\..\Comercial2_5\Menu_compraVenta\Capa_Vista_CompraVenta\bin\Debug\Capa_Vista_CompraVenta.dll</HintPath>
     </Reference>

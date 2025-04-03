@@ -321,6 +321,15 @@ CREATE TABLE `venta` (
   `estado` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `tbl_commpra` (
+  `id_compra` int(11) NOT NULL,
+  `monto` int(11) NOT NULL,
+  `nombre_cliente` varchar(50) NOT NULL,
+`nombre_producto` varchar(50) NOT NULL,
+  `nombre_empleado` varchar(50) NOT NULL,
+  `estado` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- Estructura Stand-in para la vista `vwaplicacionperfil`
 -- (Véase abajo para la vista actual)
 --

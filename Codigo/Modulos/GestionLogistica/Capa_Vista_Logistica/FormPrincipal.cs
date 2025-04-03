@@ -388,6 +388,7 @@ namespace Capa_Vista_Logistica
 
         private void Btn_ComProcC1_Click_1(object sender, EventArgs e)
         {
+            AbrirFormulario<Capa_Vista_Compras.Frm_Compras>();
             ocultaSubMenu();
         }
 
