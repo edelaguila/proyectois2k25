@@ -383,6 +383,7 @@ namespace Capa_Vista_Logistica
 
         private void Btn_CuentProcProv2_Click_1(object sender, EventArgs e)
         {
+            AbrirFormulario<Capa_Vista_CPP.Transacc_proveedores>();
             ocultaSubMenu();
         }
 
