@@ -20,7 +20,7 @@ using System.Windows.Forms;
 //using Capa_Vista_Carrera;
 
 
-using Capa_Vista_RRHH;
+//using Capa_Vista_RRHH;
 
 namespace Interfac_V3
 {
