@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Lbl_Titulo = new System.Windows.Forms.Label();
             this.Lbl_ID = new System.Windows.Forms.Label();
             this.Lbl_Emp = new System.Windows.Forms.Label();
             this.Lbl_Fecha = new System.Windows.Forms.Label();
@@ -58,21 +57,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_promociones)).BeginInit();
             this.SuspendLayout();
             // 
-            // Lbl_Titulo
-            // 
-            this.Lbl_Titulo.AutoSize = true;
-            this.Lbl_Titulo.Font = new System.Drawing.Font("Haettenschweiler", 25.8F);
-            this.Lbl_Titulo.Location = new System.Drawing.Point(40, 107);
-            this.Lbl_Titulo.Name = "Lbl_Titulo";
-            this.Lbl_Titulo.Size = new System.Drawing.Size(185, 44);
-            this.Lbl_Titulo.TabIndex = 9;
-            this.Lbl_Titulo.Text = "Promociones";
-            // 
             // Lbl_ID
             // 
             this.Lbl_ID.AutoSize = true;
             this.Lbl_ID.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.Lbl_ID.Location = new System.Drawing.Point(44, 192);
+            this.Lbl_ID.Location = new System.Drawing.Point(39, 136);
             this.Lbl_ID.Name = "Lbl_ID";
             this.Lbl_ID.Size = new System.Drawing.Size(126, 22);
             this.Lbl_ID.TabIndex = 10;
@@ -82,7 +71,7 @@
             // 
             this.Lbl_Emp.AutoSize = true;
             this.Lbl_Emp.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.Lbl_Emp.Location = new System.Drawing.Point(44, 236);
+            this.Lbl_Emp.Location = new System.Drawing.Point(39, 180);
             this.Lbl_Emp.Name = "Lbl_Emp";
             this.Lbl_Emp.Size = new System.Drawing.Size(90, 22);
             this.Lbl_Emp.TabIndex = 11;
@@ -92,7 +81,7 @@
             // 
             this.Lbl_Fecha.AutoSize = true;
             this.Lbl_Fecha.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.Lbl_Fecha.Location = new System.Drawing.Point(44, 283);
+            this.Lbl_Fecha.Location = new System.Drawing.Point(39, 227);
             this.Lbl_Fecha.Name = "Lbl_Fecha";
             this.Lbl_Fecha.Size = new System.Drawing.Size(57, 22);
             this.Lbl_Fecha.TabIndex = 12;
@@ -102,7 +91,7 @@
             // 
             this.Lbl_PuestoActual.AutoSize = true;
             this.Lbl_PuestoActual.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.Lbl_PuestoActual.Location = new System.Drawing.Point(44, 334);
+            this.Lbl_PuestoActual.Location = new System.Drawing.Point(39, 278);
             this.Lbl_PuestoActual.Name = "Lbl_PuestoActual";
             this.Lbl_PuestoActual.Size = new System.Drawing.Size(118, 22);
             this.Lbl_PuestoActual.TabIndex = 13;
@@ -112,7 +101,7 @@
             // 
             this.Lbl_SalarioActual.AutoSize = true;
             this.Lbl_SalarioActual.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.Lbl_SalarioActual.Location = new System.Drawing.Point(513, 191);
+            this.Lbl_SalarioActual.Location = new System.Drawing.Point(508, 135);
             this.Lbl_SalarioActual.Name = "Lbl_SalarioActual";
             this.Lbl_SalarioActual.Size = new System.Drawing.Size(124, 22);
             this.Lbl_SalarioActual.TabIndex = 14;
@@ -122,7 +111,7 @@
             // 
             this.Lbl_PuestoNuevo.AutoSize = true;
             this.Lbl_PuestoNuevo.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.Lbl_PuestoNuevo.Location = new System.Drawing.Point(513, 237);
+            this.Lbl_PuestoNuevo.Location = new System.Drawing.Point(508, 181);
             this.Lbl_PuestoNuevo.Name = "Lbl_PuestoNuevo";
             this.Lbl_PuestoNuevo.Size = new System.Drawing.Size(119, 22);
             this.Lbl_PuestoNuevo.TabIndex = 15;
@@ -132,7 +121,7 @@
             // 
             this.Lbl_SalarioNuevo.AutoSize = true;
             this.Lbl_SalarioNuevo.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.Lbl_SalarioNuevo.Location = new System.Drawing.Point(513, 283);
+            this.Lbl_SalarioNuevo.Location = new System.Drawing.Point(508, 227);
             this.Lbl_SalarioNuevo.Name = "Lbl_SalarioNuevo";
             this.Lbl_SalarioNuevo.Size = new System.Drawing.Size(125, 22);
             this.Lbl_SalarioNuevo.TabIndex = 16;
@@ -142,7 +131,7 @@
             // 
             this.Lbl_Motivo.AutoSize = true;
             this.Lbl_Motivo.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.Lbl_Motivo.Location = new System.Drawing.Point(517, 335);
+            this.Lbl_Motivo.Location = new System.Drawing.Point(512, 279);
             this.Lbl_Motivo.Name = "Lbl_Motivo";
             this.Lbl_Motivo.Size = new System.Drawing.Size(68, 22);
             this.Lbl_Motivo.TabIndex = 17;
@@ -150,56 +139,56 @@
             // 
             // txt_ID
             // 
-            this.txt_ID.Location = new System.Drawing.Point(189, 192);
+            this.txt_ID.Location = new System.Drawing.Point(184, 136);
             this.txt_ID.Name = "txt_ID";
             this.txt_ID.Size = new System.Drawing.Size(174, 22);
             this.txt_ID.TabIndex = 18;
             // 
             // txt_empleado
             // 
-            this.txt_empleado.Location = new System.Drawing.Point(189, 237);
+            this.txt_empleado.Location = new System.Drawing.Point(184, 181);
             this.txt_empleado.Name = "txt_empleado";
             this.txt_empleado.Size = new System.Drawing.Size(174, 22);
             this.txt_empleado.TabIndex = 19;
             // 
             // dtp_fecha
             // 
-            this.dtp_fecha.Location = new System.Drawing.Point(189, 282);
+            this.dtp_fecha.Location = new System.Drawing.Point(184, 226);
             this.dtp_fecha.Name = "dtp_fecha";
             this.dtp_fecha.Size = new System.Drawing.Size(271, 22);
             this.dtp_fecha.TabIndex = 20;
             // 
             // txt_PuestoActual
             // 
-            this.txt_PuestoActual.Location = new System.Drawing.Point(189, 335);
+            this.txt_PuestoActual.Location = new System.Drawing.Point(184, 279);
             this.txt_PuestoActual.Name = "txt_PuestoActual";
             this.txt_PuestoActual.Size = new System.Drawing.Size(174, 22);
             this.txt_PuestoActual.TabIndex = 21;
             // 
             // txt_SalarioActual
             // 
-            this.txt_SalarioActual.Location = new System.Drawing.Point(675, 191);
+            this.txt_SalarioActual.Location = new System.Drawing.Point(670, 135);
             this.txt_SalarioActual.Name = "txt_SalarioActual";
             this.txt_SalarioActual.Size = new System.Drawing.Size(174, 22);
             this.txt_SalarioActual.TabIndex = 22;
             // 
             // txt_PuestoNuevo
             // 
-            this.txt_PuestoNuevo.Location = new System.Drawing.Point(675, 238);
+            this.txt_PuestoNuevo.Location = new System.Drawing.Point(670, 182);
             this.txt_PuestoNuevo.Name = "txt_PuestoNuevo";
             this.txt_PuestoNuevo.Size = new System.Drawing.Size(174, 22);
             this.txt_PuestoNuevo.TabIndex = 23;
             // 
             // txt_SalarioNuevo
             // 
-            this.txt_SalarioNuevo.Location = new System.Drawing.Point(675, 284);
+            this.txt_SalarioNuevo.Location = new System.Drawing.Point(670, 228);
             this.txt_SalarioNuevo.Name = "txt_SalarioNuevo";
             this.txt_SalarioNuevo.Size = new System.Drawing.Size(174, 22);
             this.txt_SalarioNuevo.TabIndex = 24;
             // 
             // txt_Motivo
             // 
-            this.txt_Motivo.Location = new System.Drawing.Point(675, 336);
+            this.txt_Motivo.Location = new System.Drawing.Point(670, 280);
             this.txt_Motivo.Multiline = true;
             this.txt_Motivo.Name = "txt_Motivo";
             this.txt_Motivo.Size = new System.Drawing.Size(306, 83);
@@ -208,7 +197,7 @@
             // dgv_promociones
             // 
             this.dgv_promociones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_promociones.Location = new System.Drawing.Point(39, 448);
+            this.dgv_promociones.Location = new System.Drawing.Point(34, 392);
             this.dgv_promociones.Name = "dgv_promociones";
             this.dgv_promociones.RowHeadersWidth = 51;
             this.dgv_promociones.RowTemplate.Height = 24;
@@ -217,7 +206,7 @@
             // 
             // Btn_Reporte
             // 
-            this.Btn_Reporte.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.reporte;
+            this.Btn_Reporte.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.reporte__2_;
             this.Btn_Reporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Reporte.Location = new System.Drawing.Point(699, 12);
             this.Btn_Reporte.Name = "Btn_Reporte";
@@ -227,7 +216,7 @@
             // 
             // Btn_Ayuda
             // 
-            this.Btn_Ayuda.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.preguntas;
+            this.Btn_Ayuda.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.preguntas__1___1_;
             this.Btn_Ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Ayuda.Location = new System.Drawing.Point(604, 12);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
@@ -237,7 +226,7 @@
             // 
             // Btn_Salir
             // 
-            this.Btn_Salir.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.cerrar_sesion;
+            this.Btn_Salir.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.cerrar_sesion__1___1_;
             this.Btn_Salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Salir.Location = new System.Drawing.Point(794, 12);
             this.Btn_Salir.Name = "Btn_Salir";
@@ -248,7 +237,7 @@
             // 
             // Btn_Buscar
             // 
-            this.Btn_Buscar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.buscar;
+            this.Btn_Buscar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.buscar__1___1___1_;
             this.Btn_Buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Buscar.Location = new System.Drawing.Point(509, 12);
             this.Btn_Buscar.Name = "Btn_Buscar";
@@ -258,7 +247,7 @@
             // 
             // Btn_Eliminar
             // 
-            this.Btn_Eliminar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.borrar;
+            this.Btn_Eliminar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.borrar__1___1_;
             this.Btn_Eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Eliminar.Location = new System.Drawing.Point(414, 12);
             this.Btn_Eliminar.Name = "Btn_Eliminar";
@@ -268,7 +257,7 @@
             // 
             // Btn_Editar
             // 
-            this.Btn_Editar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.convenio;
+            this.Btn_Editar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.convenio__1___1_;
             this.Btn_Editar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Editar.Location = new System.Drawing.Point(319, 12);
             this.Btn_Editar.Name = "Btn_Editar";
@@ -278,7 +267,7 @@
             // 
             // Btn_Cancelar
             // 
-            this.Btn_Cancelar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.cancelar;
+            this.Btn_Cancelar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.cancelar__1___1_;
             this.Btn_Cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Cancelar.Location = new System.Drawing.Point(222, 12);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
@@ -288,7 +277,7 @@
             // 
             // Btn_Guardar
             // 
-            this.Btn_Guardar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.ahorrar;
+            this.Btn_Guardar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.ahorrar__1___1_;
             this.Btn_Guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Guardar.Location = new System.Drawing.Point(127, 12);
             this.Btn_Guardar.Name = "Btn_Guardar";
@@ -298,7 +287,7 @@
             // 
             // Btn_Nuevo
             // 
-            this.Btn_Nuevo.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.agregar_archivo;
+            this.Btn_Nuevo.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.agregar_archivo__1___1___1_;
             this.Btn_Nuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Nuevo.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Btn_Nuevo.Location = new System.Drawing.Point(31, 12);
@@ -330,7 +319,6 @@
             this.Controls.Add(this.Lbl_Fecha);
             this.Controls.Add(this.Lbl_Emp);
             this.Controls.Add(this.Lbl_ID);
-            this.Controls.Add(this.Lbl_Titulo);
             this.Controls.Add(this.Btn_Reporte);
             this.Controls.Add(this.Btn_Ayuda);
             this.Controls.Add(this.Btn_Salir);
@@ -342,7 +330,7 @@
             this.Controls.Add(this.Btn_Nuevo);
             this.Name = "frm_Promociones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Promociones";
+            this.Text = "12001-Promociones";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_promociones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -360,7 +348,6 @@
         private System.Windows.Forms.Button Btn_Salir;
         private System.Windows.Forms.Button Btn_Ayuda;
         private System.Windows.Forms.Button Btn_Reporte;
-        private System.Windows.Forms.Label Lbl_Titulo;
         private System.Windows.Forms.Label Lbl_ID;
         private System.Windows.Forms.Label Lbl_Emp;
         private System.Windows.Forms.Label Lbl_Fecha;
