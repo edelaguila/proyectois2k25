@@ -287,6 +287,7 @@ DROP COLUMN Fk_id_pais,
 DROP COLUMN Fk_id_pago,
 DROP COLUMN transaccion_serie;
 
+
 -- TBL_caja_proveedor
 
 ALTER TABLE Tbl_caja_proveedor MODIFY COLUMN caja_fecha_registro VARCHAR(150) NOT NULL;
@@ -418,20 +419,35 @@ ALTER TABLE Tbl_clientes
 ADD COLUMN Fecha_Registro DATE NOT NULL;
 
 
--- ALTER TABLE Tbl_clientes
--- ADD COLUMN Clientes_deuda DECIMAL(10, 2) DEFAULT 0.00;
+ALTER TABLE Tbl_clientes
+ADD COLUMN Clientes_deuda DECIMAL(10, 2) DEFAULT 0.00;
 
--- ALTER TABLE Tbl_clientes 
--- ADD Fk_id_vendedor INT NOT NULL,
--- ADD CONSTRAINT FK_vendedor_cliente
--- FOREIGN KEY (Fk_id_vendedor) REFERENCES Tbl_vendedores(Pk_id_vendedor); 
--- ALTER TABLE Tbl_clientes 
--- ADD COLUMN Fk_id_lista_Encabezado INT NOT NULL;
+ALTER TABLE Tbl_clientes
+DROP COLUMN Clientes_deuda;
 
--- ALTER TABLE Tbl_clientes 
--- ADD CONSTRAINT FK_id_lista_Encabezado
--- FOREIGN KEY (Fk_id_lista_Encabezado) 
--- REFERENCES Tbl_lista_encabezado(Pk_id_lista_Encabezado);
+ALTER TABLE Tbl_clientes 
+ADD Fk_id_vendedor INT NOT NULL,
+ADD CONSTRAINT FK_vendedor_cliente
+FOREIGN KEY (Fk_id_vendedor) REFERENCES Tbl_vendedores(Pk_id_vendedor); 
+
+select *from Tbl_clientes;
+
+ALTER TABLE Tbl_clientes 
+DROP FOREIGN KEY FK_vendedor_cliente;
+ALTER TABLE Tbl_clientes
+DROP COLUMN Fk_id_vendedor;
+
+ALTER TABLE Tbl_clientes 
+ADD COLUMN Fk_id_lista_Encabezado INT NOT NULL;
+
+ALTER TABLE Tbl_clientes 
+ADD CONSTRAINT FK_id_lista_Encabezado
+FOREIGN KEY (Fk_id_lista_Encabezado) REFERENCES Tbl_lista_encabezado(Pk_id_lista_Encabezado);
+
+ALTER TABLE Tbl_clientes 
+DROP FOREIGN KEY Fk_id_lista_Encabezado;
+ALTER TABLE Tbl_clientes
+DROP COLUMN FK_id_lista_Encabezado;
 
 ALTER TABLE Tbl_proveedores
 ADD COLUMN Proveedor_deuda DECIMAL(10, 2) DEFAULT 0.00;
