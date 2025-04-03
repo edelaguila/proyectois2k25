@@ -298,5 +298,17 @@ namespace Capa_Vista_RRHH
             Capa_Vista_Capacitacion.notas_capacitación asistencia = new Capa_Vista_Capacitacion.notas_capacitación();
             asistencia.Show();
         }
+
+        private void registrarEvidenciasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_evidencias GD = new frm_evidencias();
+            GD.Show();
+        }
+
+        private void aplicarSanciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_sanciones GD = new frm_sanciones();
+            GD.Show();
+        }
     }
 }
