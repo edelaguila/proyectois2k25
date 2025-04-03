@@ -227,7 +227,7 @@ namespace Capa_Vista_Seguridad
             FormModulos login = new FormModulos(idUsuario);
             login.FormClosed += (s, args) =>
             {
-               // if (login.DialogResult != DialogResult.OK)
+                if (login.DialogResult != DialogResult.OK)
                 {
                     Application.Exit();
                 }
