@@ -24,7 +24,7 @@ namespace Capa_Vista_Capacitacion
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
-            navegador1.ObtenerIdAplicacion("14000");
+            navegador1.ObtenerIdAplicacion("14001");
             navegador1.AsignarAyuda("1");
             navegador1.ObtenerIdUsuario(idusuario);
             navegador1.AsignarTabla("tbl_capacitaciones");
