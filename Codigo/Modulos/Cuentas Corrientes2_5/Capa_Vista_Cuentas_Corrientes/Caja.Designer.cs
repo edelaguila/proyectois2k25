@@ -88,9 +88,11 @@
             this.groupBox2.Controls.Add(this.Txt_monto_trans);
             this.groupBox2.Controls.Add(this.Cbo_id_deuda);
             this.groupBox2.Controls.Add(this.Text_IdFactura);
-            this.groupBox2.Location = new System.Drawing.Point(9, 176);
+            this.groupBox2.Location = new System.Drawing.Point(8, 141);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1122, 313);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(997, 250);
             this.groupBox2.TabIndex = 155;
             this.groupBox2.TabStop = false;
             // 
@@ -98,10 +100,10 @@
             // 
             this.Lbl_monto_pago.AutoSize = true;
             this.Lbl_monto_pago.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_monto_pago.Location = new System.Drawing.Point(607, 87);
+            this.Lbl_monto_pago.Location = new System.Drawing.Point(540, 70);
             this.Lbl_monto_pago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_monto_pago.Name = "Lbl_monto_pago";
-            this.Lbl_monto_pago.Size = new System.Drawing.Size(233, 27);
+            this.Lbl_monto_pago.Size = new System.Drawing.Size(192, 22);
             this.Lbl_monto_pago.TabIndex = 120;
             this.Lbl_monto_pago.Text = "Monto de Transacción:";
             // 
@@ -109,10 +111,10 @@
             // 
             this.Lbl_NombreCliente.AutoSize = true;
             this.Lbl_NombreCliente.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_NombreCliente.Location = new System.Drawing.Point(19, 95);
+            this.Lbl_NombreCliente.Location = new System.Drawing.Point(17, 76);
             this.Lbl_NombreCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_NombreCliente.Name = "Lbl_NombreCliente";
-            this.Lbl_NombreCliente.Size = new System.Drawing.Size(102, 27);
+            this.Lbl_NombreCliente.Size = new System.Drawing.Size(85, 22);
             this.Lbl_NombreCliente.TabIndex = 117;
             this.Lbl_NombreCliente.Text = "Nombre: ";
             // 
@@ -120,30 +122,30 @@
             // 
             this.Lbl_id_cobra_deuda.AutoSize = true;
             this.Lbl_id_cobra_deuda.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_id_cobra_deuda.Location = new System.Drawing.Point(19, 195);
+            this.Lbl_id_cobra_deuda.Location = new System.Drawing.Point(17, 156);
             this.Lbl_id_cobra_deuda.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_id_cobra_deuda.Name = "Lbl_id_cobra_deuda";
-            this.Lbl_id_cobra_deuda.Size = new System.Drawing.Size(156, 27);
+            this.Lbl_id_cobra_deuda.Size = new System.Drawing.Size(130, 22);
             this.Lbl_id_cobra_deuda.TabIndex = 118;
             this.Lbl_id_cobra_deuda.Text = "Código Deuda:";
             // 
             // Txt_estado
             // 
             this.Txt_estado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_estado.Location = new System.Drawing.Point(890, 237);
-            this.Txt_estado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Txt_estado.Location = new System.Drawing.Point(791, 190);
+            this.Txt_estado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_estado.Name = "Txt_estado";
-            this.Txt_estado.Size = new System.Drawing.Size(164, 35);
+            this.Txt_estado.Size = new System.Drawing.Size(146, 30);
             this.Txt_estado.TabIndex = 149;
             // 
             // Lbl_saldo_restante
             // 
             this.Lbl_saldo_restante.AutoSize = true;
             this.Lbl_saldo_restante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_saldo_restante.Location = new System.Drawing.Point(667, 140);
+            this.Lbl_saldo_restante.Location = new System.Drawing.Point(593, 112);
             this.Lbl_saldo_restante.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_saldo_restante.Name = "Lbl_saldo_restante";
-            this.Lbl_saldo_restante.Size = new System.Drawing.Size(161, 27);
+            this.Lbl_saldo_restante.Size = new System.Drawing.Size(134, 22);
             this.Lbl_saldo_restante.TabIndex = 119;
             this.Lbl_saldo_restante.Text = "Saldo Restante:";
             // 
@@ -151,20 +153,19 @@
             // 
             this.Cbo_Id_factura.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_Id_factura.FormattingEnabled = true;
-            this.Cbo_Id_factura.Location = new System.Drawing.Point(259, 142);
-            this.Cbo_Id_factura.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Cbo_Id_factura.Location = new System.Drawing.Point(230, 114);
             this.Cbo_Id_factura.Name = "Cbo_Id_factura";
-            this.Cbo_Id_factura.Size = new System.Drawing.Size(136, 35);
+            this.Cbo_Id_factura.Size = new System.Drawing.Size(121, 30);
             this.Cbo_Id_factura.TabIndex = 148;
             // 
             // Lbl_idCliente
             // 
             this.Lbl_idCliente.AutoSize = true;
             this.Lbl_idCliente.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_idCliente.Location = new System.Drawing.Point(19, 45);
+            this.Lbl_idCliente.Location = new System.Drawing.Point(17, 36);
             this.Lbl_idCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_idCliente.Name = "Lbl_idCliente";
-            this.Lbl_idCliente.Size = new System.Drawing.Size(87, 27);
+            this.Lbl_idCliente.Size = new System.Drawing.Size(74, 22);
             this.Lbl_idCliente.TabIndex = 121;
             this.Lbl_idCliente.Text = "Código:";
             // 
@@ -172,125 +173,125 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(25, 145);
+            this.label1.Location = new System.Drawing.Point(22, 116);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 27);
+            this.label1.Size = new System.Drawing.Size(114, 22);
             this.label1.TabIndex = 147;
             this.label1.Text = "No. Factura: ";
             // 
             // Txt_id_CP
             // 
             this.Txt_id_CP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_id_CP.Location = new System.Drawing.Point(259, 42);
-            this.Txt_id_CP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Txt_id_CP.Location = new System.Drawing.Point(230, 34);
+            this.Txt_id_CP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_id_CP.Name = "Txt_id_CP";
-            this.Txt_id_CP.Size = new System.Drawing.Size(192, 35);
+            this.Txt_id_CP.Size = new System.Drawing.Size(171, 30);
             this.Txt_id_CP.TabIndex = 122;
             // 
             // Dtp_fecha_reg
             // 
-            this.Dtp_fecha_reg.Location = new System.Drawing.Point(890, 196);
+            this.Dtp_fecha_reg.Location = new System.Drawing.Point(791, 157);
+            this.Dtp_fecha_reg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dtp_fecha_reg.Name = "Dtp_fecha_reg";
-            this.Dtp_fecha_reg.Size = new System.Drawing.Size(200, 26);
+            this.Dtp_fecha_reg.Size = new System.Drawing.Size(178, 22);
             this.Dtp_fecha_reg.TabIndex = 146;
             // 
             // Lbl_mora
             // 
             this.Lbl_mora.AutoSize = true;
             this.Lbl_mora.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_mora.Location = new System.Drawing.Point(730, 49);
+            this.Lbl_mora.Location = new System.Drawing.Point(649, 39);
             this.Lbl_mora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_mora.Name = "Lbl_mora";
-            this.Lbl_mora.Size = new System.Drawing.Size(70, 27);
+            this.Lbl_mora.Size = new System.Drawing.Size(59, 22);
             this.Lbl_mora.TabIndex = 124;
             this.Lbl_mora.Text = "Mora:";
             // 
             // Txt_Nombre
             // 
             this.Txt_Nombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Nombre.Location = new System.Drawing.Point(258, 90);
-            this.Txt_Nombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Txt_Nombre.Location = new System.Drawing.Point(229, 72);
+            this.Txt_Nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_Nombre.Name = "Txt_Nombre";
-            this.Txt_Nombre.Size = new System.Drawing.Size(291, 35);
+            this.Txt_Nombre.Size = new System.Drawing.Size(259, 30);
             this.Txt_Nombre.TabIndex = 145;
             // 
             // Txt_mora
             // 
             this.Txt_mora.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_mora.Location = new System.Drawing.Point(890, 42);
-            this.Txt_mora.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Txt_mora.Location = new System.Drawing.Point(791, 34);
+            this.Txt_mora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_mora.Name = "Txt_mora";
-            this.Txt_mora.Size = new System.Drawing.Size(164, 35);
+            this.Txt_mora.Size = new System.Drawing.Size(146, 30);
             this.Txt_mora.TabIndex = 125;
             // 
             // Txt_monto_deuda
             // 
             this.Txt_monto_deuda.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_monto_deuda.Location = new System.Drawing.Point(258, 248);
-            this.Txt_monto_deuda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Txt_monto_deuda.Location = new System.Drawing.Point(229, 198);
+            this.Txt_monto_deuda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_monto_deuda.Name = "Txt_monto_deuda";
-            this.Txt_monto_deuda.Size = new System.Drawing.Size(136, 35);
+            this.Txt_monto_deuda.Size = new System.Drawing.Size(121, 30);
             this.Txt_monto_deuda.TabIndex = 144;
             // 
             // Lbl_estado_cuenta
             // 
             this.Lbl_estado_cuenta.AutoSize = true;
             this.Lbl_estado_cuenta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_estado_cuenta.Location = new System.Drawing.Point(623, 245);
+            this.Lbl_estado_cuenta.Location = new System.Drawing.Point(554, 196);
             this.Lbl_estado_cuenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_estado_cuenta.Name = "Lbl_estado_cuenta";
-            this.Lbl_estado_cuenta.Size = new System.Drawing.Size(188, 27);
+            this.Lbl_estado_cuenta.Size = new System.Drawing.Size(153, 22);
             this.Lbl_estado_cuenta.TabIndex = 127;
             this.Lbl_estado_cuenta.Text = "Estado de Cuenta:";
             // 
             // Txt_Saldo_restante
             // 
             this.Txt_Saldo_restante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_Saldo_restante.Location = new System.Drawing.Point(890, 137);
-            this.Txt_Saldo_restante.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Txt_Saldo_restante.Location = new System.Drawing.Point(791, 110);
+            this.Txt_Saldo_restante.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_Saldo_restante.Name = "Txt_Saldo_restante";
-            this.Txt_Saldo_restante.Size = new System.Drawing.Size(164, 35);
+            this.Txt_Saldo_restante.Size = new System.Drawing.Size(146, 30);
             this.Txt_Saldo_restante.TabIndex = 141;
             // 
             // Lbl_fecha_registro
             // 
             this.Lbl_fecha_registro.AutoSize = true;
             this.Lbl_fecha_registro.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_fecha_registro.Location = new System.Drawing.Point(645, 196);
+            this.Lbl_fecha_registro.Location = new System.Drawing.Point(573, 157);
             this.Lbl_fecha_registro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_fecha_registro.Name = "Lbl_fecha_registro";
-            this.Lbl_fecha_registro.Size = new System.Drawing.Size(183, 27);
+            this.Lbl_fecha_registro.Size = new System.Drawing.Size(153, 22);
             this.Lbl_fecha_registro.TabIndex = 128;
             this.Lbl_fecha_registro.Text = "Fecha de registro:";
             // 
             // Txt_monto_trans
             // 
             this.Txt_monto_trans.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_monto_trans.Location = new System.Drawing.Point(890, 87);
-            this.Txt_monto_trans.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Txt_monto_trans.Location = new System.Drawing.Point(791, 70);
+            this.Txt_monto_trans.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Txt_monto_trans.Name = "Txt_monto_trans";
-            this.Txt_monto_trans.Size = new System.Drawing.Size(164, 35);
+            this.Txt_monto_trans.Size = new System.Drawing.Size(146, 30);
             this.Txt_monto_trans.TabIndex = 140;
             // 
             // Cbo_id_deuda
             // 
             this.Cbo_id_deuda.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_id_deuda.FormattingEnabled = true;
-            this.Cbo_id_deuda.Location = new System.Drawing.Point(258, 196);
-            this.Cbo_id_deuda.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Cbo_id_deuda.Location = new System.Drawing.Point(229, 157);
             this.Cbo_id_deuda.Name = "Cbo_id_deuda";
-            this.Cbo_id_deuda.Size = new System.Drawing.Size(136, 35);
+            this.Cbo_id_deuda.Size = new System.Drawing.Size(121, 30);
             this.Cbo_id_deuda.TabIndex = 135;
             // 
             // Text_IdFactura
             // 
             this.Text_IdFactura.AutoSize = true;
             this.Text_IdFactura.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Text_IdFactura.Location = new System.Drawing.Point(25, 249);
+            this.Text_IdFactura.Location = new System.Drawing.Point(22, 199);
             this.Text_IdFactura.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Text_IdFactura.Name = "Text_IdFactura";
-            this.Text_IdFactura.Size = new System.Drawing.Size(151, 27);
+            this.Text_IdFactura.Size = new System.Drawing.Size(123, 22);
             this.Text_IdFactura.TabIndex = 137;
             this.Text_IdFactura.Text = "Monto Deuda:";
             // 
@@ -304,9 +305,11 @@
             this.groupBox1.Controls.Add(this.Btn_Buscar);
             this.groupBox1.Controls.Add(this.Btn_salir);
             this.groupBox1.Controls.Add(this.Btn_reportes);
-            this.groupBox1.Location = new System.Drawing.Point(279, 40);
+            this.groupBox1.Location = new System.Drawing.Point(248, 32);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(690, 102);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(613, 82);
             this.groupBox1.TabIndex = 154;
             this.groupBox1.TabStop = false;
             // 
@@ -315,10 +318,9 @@
             this.Btn_Ayudas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
             this.Btn_Ayudas.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ayudas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayudas.Image")));
-            this.Btn_Ayudas.Location = new System.Drawing.Point(508, 13);
-            this.Btn_Ayudas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Btn_Ayudas.Location = new System.Drawing.Point(452, 10);
             this.Btn_Ayudas.Name = "Btn_Ayudas";
-            this.Btn_Ayudas.Size = new System.Drawing.Size(73, 77);
+            this.Btn_Ayudas.Size = new System.Drawing.Size(65, 62);
             this.Btn_Ayudas.TabIndex = 142;
             this.Btn_Ayudas.UseVisualStyleBackColor = false;
             // 
@@ -327,10 +329,10 @@
             this.Btn_editar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
             this.Btn_editar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_editar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_editar.Image")));
-            this.Btn_editar.Location = new System.Drawing.Point(276, 13);
-            this.Btn_editar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Btn_editar.Location = new System.Drawing.Point(245, 10);
+            this.Btn_editar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Btn_editar.Name = "Btn_editar";
-            this.Btn_editar.Size = new System.Drawing.Size(68, 78);
+            this.Btn_editar.Size = new System.Drawing.Size(60, 62);
             this.Btn_editar.TabIndex = 130;
             this.Btn_editar.UseVisualStyleBackColor = false;
             // 
@@ -339,10 +341,10 @@
             this.Btn_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
             this.Btn_eliminar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_eliminar.Image")));
-            this.Btn_eliminar.Location = new System.Drawing.Point(201, 13);
-            this.Btn_eliminar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Btn_eliminar.Location = new System.Drawing.Point(179, 10);
+            this.Btn_eliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Btn_eliminar.Name = "Btn_eliminar";
-            this.Btn_eliminar.Size = new System.Drawing.Size(65, 78);
+            this.Btn_eliminar.Size = new System.Drawing.Size(58, 62);
             this.Btn_eliminar.TabIndex = 131;
             this.Btn_eliminar.UseVisualStyleBackColor = false;
             // 
@@ -351,10 +353,10 @@
             this.Btn_guardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
             this.Btn_guardar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_guardar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_guardar.Image")));
-            this.Btn_guardar.Location = new System.Drawing.Point(122, 14);
-            this.Btn_guardar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Btn_guardar.Location = new System.Drawing.Point(108, 11);
+            this.Btn_guardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Btn_guardar.Name = "Btn_guardar";
-            this.Btn_guardar.Size = new System.Drawing.Size(71, 76);
+            this.Btn_guardar.Size = new System.Drawing.Size(63, 61);
             this.Btn_guardar.TabIndex = 132;
             this.Btn_guardar.UseVisualStyleBackColor = false;
             this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
@@ -364,10 +366,10 @@
             this.Btn_Actualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
             this.Btn_Actualizar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Actualizar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Actualizar.Image")));
-            this.Btn_Actualizar.Location = new System.Drawing.Point(46, 13);
-            this.Btn_Actualizar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Btn_Actualizar.Location = new System.Drawing.Point(41, 10);
+            this.Btn_Actualizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Btn_Actualizar.Name = "Btn_Actualizar";
-            this.Btn_Actualizar.Size = new System.Drawing.Size(68, 78);
+            this.Btn_Actualizar.Size = new System.Drawing.Size(60, 62);
             this.Btn_Actualizar.TabIndex = 133;
             this.Btn_Actualizar.UseVisualStyleBackColor = false;
             this.Btn_Actualizar.Click += new System.EventHandler(this.Btn_Actualizar_Click);
@@ -377,10 +379,10 @@
             this.Btn_Buscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
             this.Btn_Buscar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Buscar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Buscar.Image")));
-            this.Btn_Buscar.Location = new System.Drawing.Point(352, 13);
-            this.Btn_Buscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Btn_Buscar.Location = new System.Drawing.Point(313, 10);
+            this.Btn_Buscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Btn_Buscar.Name = "Btn_Buscar";
-            this.Btn_Buscar.Size = new System.Drawing.Size(70, 78);
+            this.Btn_Buscar.Size = new System.Drawing.Size(62, 62);
             this.Btn_Buscar.TabIndex = 136;
             this.Btn_Buscar.UseVisualStyleBackColor = false;
             // 
@@ -389,22 +391,21 @@
             this.Btn_salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
             this.Btn_salir.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_salir.Image")));
-            this.Btn_salir.Location = new System.Drawing.Point(587, 13);
-            this.Btn_salir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Btn_salir.Location = new System.Drawing.Point(522, 10);
             this.Btn_salir.Name = "Btn_salir";
-            this.Btn_salir.Size = new System.Drawing.Size(71, 77);
+            this.Btn_salir.Size = new System.Drawing.Size(63, 62);
             this.Btn_salir.TabIndex = 139;
             this.Btn_salir.UseVisualStyleBackColor = false;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
             // Btn_reportes
             // 
             this.Btn_reportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
             this.Btn_reportes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_reportes.Image = ((System.Drawing.Image)(resources.GetObject("Btn_reportes.Image")));
-            this.Btn_reportes.Location = new System.Drawing.Point(429, 13);
-            this.Btn_reportes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Btn_reportes.Location = new System.Drawing.Point(381, 10);
             this.Btn_reportes.Name = "Btn_reportes";
-            this.Btn_reportes.Size = new System.Drawing.Size(73, 77);
+            this.Btn_reportes.Size = new System.Drawing.Size(65, 62);
             this.Btn_reportes.TabIndex = 143;
             this.Btn_reportes.UseVisualStyleBackColor = false;
             // 
@@ -412,33 +413,35 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(491, 136);
+            this.label3.Location = new System.Drawing.Point(436, 109);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 37);
+            this.label3.Size = new System.Drawing.Size(113, 33);
             this.label3.TabIndex = 153;
             this.label3.Text = "- CAJA -";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 547);
+            this.dataGridView1.Location = new System.Drawing.Point(8, 438);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1066, 227);
+            this.dataGridView1.Size = new System.Drawing.Size(948, 182);
             this.dataGridView1.TabIndex = 156;
             // 
             // Caja
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(1141, 834);
+            this.ClientSize = new System.Drawing.Size(1014, 667);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Caja";
             this.Text = "Caja";
             this.groupBox2.ResumeLayout(false);

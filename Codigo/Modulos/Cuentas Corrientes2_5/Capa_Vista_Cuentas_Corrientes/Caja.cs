@@ -103,5 +103,10 @@ namespace Capa_Vista_Cuentas_Corrientes
 
             Dtp_fecha_reg.Value = DateTime.Now;
         }
-     }
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
 }
