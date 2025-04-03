@@ -64,6 +64,12 @@
     <Compile Include="Frm_competencias.Designer.cs">
       <DependentUpon>Frm_competencias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Expediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Expediente.Designer.cs">
+      <DependentUpon>Frm_Expediente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_perfil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,11 @@
       <DependentUpon>Frm_Postulante.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Frm_ats.resx">
@@ -85,11 +96,18 @@
     <EmbeddedResource Include="Frm_competencias.resx">
       <DependentUpon>Frm_competencias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Expediente.resx">
+      <DependentUpon>Frm_Expediente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_perfil.resx">
       <DependentUpon>Frm_perfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Postulante.resx">
       <DependentUpon>Frm_Postulante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
