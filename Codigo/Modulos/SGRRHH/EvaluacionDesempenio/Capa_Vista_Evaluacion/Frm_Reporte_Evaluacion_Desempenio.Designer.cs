@@ -56,9 +56,11 @@ namespace Capa_Vista_Evaluacion
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(38, 125);
+            this.groupBox1.Location = new System.Drawing.Point(28, 102);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(868, 235);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(651, 191);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Empleado y Evaluador";
@@ -67,50 +69,56 @@ namespace Capa_Vista_Evaluacion
             // 
             this.comboBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(434, 116);
+            this.comboBox3.Location = new System.Drawing.Point(326, 94);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(348, 30);
+            this.comboBox3.Size = new System.Drawing.Size(262, 27);
             this.comboBox3.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 118);
+            this.label5.Location = new System.Drawing.Point(19, 96);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(131, 23);
+            this.label5.Size = new System.Drawing.Size(105, 19);
             this.label5.TabIndex = 8;
             this.label5.Text = "Departamento";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(434, 171);
+            this.dateTimePicker1.Location = new System.Drawing.Point(326, 139);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(348, 30);
+            this.dateTimePicker1.Size = new System.Drawing.Size(262, 26);
             this.dateTimePicker1.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 171);
+            this.label4.Location = new System.Drawing.Point(19, 139);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 23);
+            this.label4.Size = new System.Drawing.Size(54, 19);
             this.label4.TabIndex = 5;
             this.label4.Text = "Fecha:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 116);
+            this.label3.Location = new System.Drawing.Point(19, 94);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 23);
+            this.label3.Size = new System.Drawing.Size(0, 19);
             this.label3.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 70);
+            this.label1.Location = new System.Drawing.Point(19, 57);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.Size = new System.Drawing.Size(80, 19);
             this.label1.TabIndex = 2;
             this.label1.Text = "Empleado:";
             // 
@@ -118,69 +126,76 @@ namespace Capa_Vista_Evaluacion
             // 
             this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(434, 63);
+            this.comboBox1.Location = new System.Drawing.Point(326, 51);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(348, 30);
+            this.comboBox1.Size = new System.Drawing.Size(262, 27);
             this.comboBox1.TabIndex = 0;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(38, 389);
+            this.dataGridView1.Location = new System.Drawing.Point(28, 316);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(880, 344);
+            this.dataGridView1.Size = new System.Drawing.Size(660, 280);
             this.dataGridView1.TabIndex = 13;
             // 
             // button2
             // 
             this.button2.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.buscar;
-            this.button2.Location = new System.Drawing.Point(622, 32);
+            this.button2.Location = new System.Drawing.Point(28, 11);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(66, 68);
+            this.button2.Size = new System.Drawing.Size(68, 72);
             this.button2.TabIndex = 15;
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
             this.button1.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.reporte__1_;
-            this.button1.Location = new System.Drawing.Point(694, 32);
+            this.button1.Location = new System.Drawing.Point(116, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 68);
+            this.button1.Size = new System.Drawing.Size(70, 72);
             this.button1.TabIndex = 14;
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
             this.button3.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.preguntas;
-            this.button3.Location = new System.Drawing.Point(766, 32);
+            this.button3.Location = new System.Drawing.Point(204, 11);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 68);
+            this.button3.Size = new System.Drawing.Size(64, 72);
             this.button3.TabIndex = 18;
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
             this.button4.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.cerrar_sesion;
-            this.button4.Location = new System.Drawing.Point(839, 32);
+            this.button4.Location = new System.Drawing.Point(285, 11);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(67, 68);
+            this.button4.Size = new System.Drawing.Size(65, 72);
             this.button4.TabIndex = 20;
             this.button4.UseVisualStyleBackColor = true;
             // 
             // Frm_Reporte_Evaluacion_Desempenio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(950, 767);
+            this.ClientSize = new System.Drawing.Size(712, 623);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Frm_Reporte_Evaluacion_Desempenio";
             this.Text = "17004-Reporte de Evaluación";
             this.groupBox1.ResumeLayout(false);
