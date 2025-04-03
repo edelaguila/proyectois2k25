@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caja.Designer.cs">
+      <DependentUpon>Caja.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeudaCliente.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,20 +164,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ReporteDeudaC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReporteDeudaC.Designer.cs">
-      <DependentUpon>ReporteDeudaC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReporteDeudaP.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReporteDeudaP.Designer.cs">
-      <DependentUpon>ReporteDeudaP.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Caja.resx">
+      <DependentUpon>Caja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeudaCliente.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DeudaCliente.cs</LastGenOutput>
@@ -217,12 +214,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReporteDeudaC.resx">
-      <DependentUpon>ReporteDeudaC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReporteDeudaP.resx">
-      <DependentUpon>ReporteDeudaP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +277,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\preguntas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ahorrar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-archivo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-archivo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

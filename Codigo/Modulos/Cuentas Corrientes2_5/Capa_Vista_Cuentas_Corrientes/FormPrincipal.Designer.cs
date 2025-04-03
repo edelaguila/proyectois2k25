@@ -58,16 +58,16 @@
             this.Btn_Proveedores = new System.Windows.Forms.Button();
             this.btn_MenuProveedor = new System.Windows.Forms.Button();
             this.panelMenuCatalogos = new System.Windows.Forms.Panel();
-            this.Btn_TransCuentas = new System.Windows.Forms.Button();
-            this.btn_Cobrador = new System.Windows.Forms.Button();
-            this.btn_Clientes = new System.Windows.Forms.Button();
-            this.btn_Vendedor = new System.Windows.Forms.Button();
             this.btn_MenuCatalogosClientes = new System.Windows.Forms.Button();
             this.panelBarraTitulo = new System.Windows.Forms.Panel();
             this.btnRestaurar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
+            this.btn_Clientes = new System.Windows.Forms.Button();
+            this.btn_Vendedor = new System.Windows.Forms.Button();
+            this.btn_Cobrador = new System.Windows.Forms.Button();
+            this.Btn_TransCuentas = new System.Windows.Forms.Button();
             this.panelContenedor.SuspendLayout();
             this.panelformularios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -535,8 +535,8 @@
             this.panelMenuCatalogos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(110)))), ((int)(((byte)(6)))));
             this.panelMenuCatalogos.Controls.Add(this.Btn_TransCuentas);
             this.panelMenuCatalogos.Controls.Add(this.btn_Cobrador);
-            this.panelMenuCatalogos.Controls.Add(this.btn_Clientes);
             this.panelMenuCatalogos.Controls.Add(this.btn_Vendedor);
+            this.panelMenuCatalogos.Controls.Add(this.btn_Clientes);
             this.panelMenuCatalogos.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenuCatalogos.Location = new System.Drawing.Point(0, 68);
             this.panelMenuCatalogos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -545,74 +545,6 @@
             this.panelMenuCatalogos.TabIndex = 4;
             this.panelMenuCatalogos.Visible = false;
             this.panelMenuCatalogos.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenuCatalogos_Paint);
-            // 
-            // Btn_TransCuentas
-            // 
-            this.Btn_TransCuentas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Btn_TransCuentas.FlatAppearance.BorderSize = 0;
-            this.Btn_TransCuentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_TransCuentas.ForeColor = System.Drawing.Color.Silver;
-            this.Btn_TransCuentas.Location = new System.Drawing.Point(0, 156);
-            this.Btn_TransCuentas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Btn_TransCuentas.Name = "Btn_TransCuentas";
-            this.Btn_TransCuentas.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.Btn_TransCuentas.Size = new System.Drawing.Size(340, 54);
-            this.Btn_TransCuentas.TabIndex = 3;
-            this.Btn_TransCuentas.Text = "Transaccion de Cuentas";
-            this.Btn_TransCuentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_TransCuentas.UseVisualStyleBackColor = true;
-            this.Btn_TransCuentas.Click += new System.EventHandler(this.Btn_TransCuentas_Click);
-            // 
-            // btn_Cobrador
-            // 
-            this.btn_Cobrador.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Cobrador.FlatAppearance.BorderSize = 0;
-            this.btn_Cobrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cobrador.ForeColor = System.Drawing.Color.Silver;
-            this.btn_Cobrador.Location = new System.Drawing.Point(0, 102);
-            this.btn_Cobrador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_Cobrador.Name = "btn_Cobrador";
-            this.btn_Cobrador.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btn_Cobrador.Size = new System.Drawing.Size(340, 54);
-            this.btn_Cobrador.TabIndex = 2;
-            this.btn_Cobrador.Text = "Cobradores";
-            this.btn_Cobrador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Cobrador.UseVisualStyleBackColor = true;
-            this.btn_Cobrador.Click += new System.EventHandler(this.btn_Cobrador_Click);
-            // 
-            // btn_Clientes
-            // 
-            this.btn_Clientes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Clientes.FlatAppearance.BorderSize = 0;
-            this.btn_Clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Clientes.ForeColor = System.Drawing.Color.Silver;
-            this.btn_Clientes.Location = new System.Drawing.Point(0, 48);
-            this.btn_Clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_Clientes.Name = "btn_Clientes";
-            this.btn_Clientes.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btn_Clientes.Size = new System.Drawing.Size(340, 54);
-            this.btn_Clientes.TabIndex = 1;
-            this.btn_Clientes.Text = "Clientes";
-            this.btn_Clientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Clientes.UseVisualStyleBackColor = true;
-            this.btn_Clientes.Click += new System.EventHandler(this.btn_Clientes_Click_1);
-            // 
-            // btn_Vendedor
-            // 
-            this.btn_Vendedor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Vendedor.FlatAppearance.BorderSize = 0;
-            this.btn_Vendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Vendedor.ForeColor = System.Drawing.Color.Silver;
-            this.btn_Vendedor.Location = new System.Drawing.Point(0, 0);
-            this.btn_Vendedor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_Vendedor.Name = "btn_Vendedor";
-            this.btn_Vendedor.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
-            this.btn_Vendedor.Size = new System.Drawing.Size(340, 48);
-            this.btn_Vendedor.TabIndex = 0;
-            this.btn_Vendedor.Text = "Vendedores";
-            this.btn_Vendedor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Vendedor.UseVisualStyleBackColor = true;
-            this.btn_Vendedor.Click += new System.EventHandler(this.btn_Vendedor_Click);
             // 
             // btn_MenuCatalogosClientes
             // 
@@ -709,6 +641,74 @@
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // btn_Clientes
+            // 
+            this.btn_Clientes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Clientes.FlatAppearance.BorderSize = 0;
+            this.btn_Clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Clientes.ForeColor = System.Drawing.Color.Silver;
+            this.btn_Clientes.Location = new System.Drawing.Point(0, 0);
+            this.btn_Clientes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Clientes.Name = "btn_Clientes";
+            this.btn_Clientes.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
+            this.btn_Clientes.Size = new System.Drawing.Size(340, 54);
+            this.btn_Clientes.TabIndex = 4;
+            this.btn_Clientes.Text = "Clientes";
+            this.btn_Clientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Clientes.UseVisualStyleBackColor = true;
+            this.btn_Clientes.Click += new System.EventHandler(this.btn_Clientes_Click);
+            // 
+            // btn_Vendedor
+            // 
+            this.btn_Vendedor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Vendedor.FlatAppearance.BorderSize = 0;
+            this.btn_Vendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Vendedor.ForeColor = System.Drawing.Color.Silver;
+            this.btn_Vendedor.Location = new System.Drawing.Point(0, 54);
+            this.btn_Vendedor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Vendedor.Name = "btn_Vendedor";
+            this.btn_Vendedor.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
+            this.btn_Vendedor.Size = new System.Drawing.Size(340, 48);
+            this.btn_Vendedor.TabIndex = 5;
+            this.btn_Vendedor.Text = "Vendedores";
+            this.btn_Vendedor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Vendedor.UseVisualStyleBackColor = true;
+            this.btn_Vendedor.Click += new System.EventHandler(this.btn_Vendedor_Click_1);
+            // 
+            // btn_Cobrador
+            // 
+            this.btn_Cobrador.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Cobrador.FlatAppearance.BorderSize = 0;
+            this.btn_Cobrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Cobrador.ForeColor = System.Drawing.Color.Silver;
+            this.btn_Cobrador.Location = new System.Drawing.Point(0, 102);
+            this.btn_Cobrador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Cobrador.Name = "btn_Cobrador";
+            this.btn_Cobrador.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
+            this.btn_Cobrador.Size = new System.Drawing.Size(340, 54);
+            this.btn_Cobrador.TabIndex = 6;
+            this.btn_Cobrador.Text = "Cobradores";
+            this.btn_Cobrador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Cobrador.UseVisualStyleBackColor = true;
+            this.btn_Cobrador.Click += new System.EventHandler(this.btn_Cobrador_Click_1);
+            // 
+            // Btn_TransCuentas
+            // 
+            this.Btn_TransCuentas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_TransCuentas.FlatAppearance.BorderSize = 0;
+            this.Btn_TransCuentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_TransCuentas.ForeColor = System.Drawing.Color.Silver;
+            this.Btn_TransCuentas.Location = new System.Drawing.Point(0, 156);
+            this.Btn_TransCuentas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Btn_TransCuentas.Name = "Btn_TransCuentas";
+            this.Btn_TransCuentas.Padding = new System.Windows.Forms.Padding(39, 0, 0, 0);
+            this.Btn_TransCuentas.Size = new System.Drawing.Size(340, 54);
+            this.Btn_TransCuentas.TabIndex = 7;
+            this.Btn_TransCuentas.Text = "Transaccion de Cuentas";
+            this.Btn_TransCuentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_TransCuentas.UseVisualStyleBackColor = true;
+            this.Btn_TransCuentas.Click += new System.EventHandler(this.Btn_TransCuentas_Click_1);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -753,13 +753,9 @@
         private System.Windows.Forms.Button btn_MenuCatalogosClientes;
         private System.Windows.Forms.Panel panelIdentificacion;
         private System.Windows.Forms.Panel panelMenuCatalogos;
-        private System.Windows.Forms.Button btn_Vendedor;
-        private System.Windows.Forms.Button btn_Clientes;
         private System.Windows.Forms.Panel panelMenuProveedores;
         private System.Windows.Forms.Button Btn_TransaccionC;
         private System.Windows.Forms.Button Btn_Proveedores;
-        private System.Windows.Forms.Button Btn_TransCuentas;
-        private System.Windows.Forms.Button btn_Cobrador;
         private System.Windows.Forms.Panel panelformularios;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl_nombeArea;
@@ -782,6 +778,10 @@
         private System.Windows.Forms.Button Btn_DeudasProv;
         private System.Windows.Forms.Button btn_Deudas;
         private System.Windows.Forms.Button Btn_salir;
+        private System.Windows.Forms.Button Btn_TransCuentas;
+        private System.Windows.Forms.Button btn_Cobrador;
+        private System.Windows.Forms.Button btn_Vendedor;
+        private System.Windows.Forms.Button btn_Clientes;
     }
 }
 
