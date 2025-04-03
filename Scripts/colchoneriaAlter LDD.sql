@@ -402,13 +402,30 @@ CREATE TABLE IF NOT EXISTS Tbl_vendedores (
     FOREIGN KEY (Fk_id_empleado) REFERENCES tbl_empleados(pk_clave),
     PRIMARY KEY (Pk_id_vendedor)
 );
+ALTER TABLE Tbl_clientes 
+CHANGE Clientes_estado estado TINYINT(1) DEFAULT 1;
 
+ ALTER TABLE Tbl_clientes 
+ADD COLUMN Cliente_email VARCHAR(20) NOT NULL;
  
  ALTER TABLE Tbl_clientes 
 ADD COLUMN Cliente_Tipo VARCHAR(20) NOT NULL;
 
 ALTER TABLE Tbl_clientes
+ADD COLUMN Cliente_lim_credito DECIMAL(10, 2) DEFAULT 0.00;
+
+ALTER TABLE Tbl_clientes
+ADD COLUMN Cliente_dias_credito int (5) NOT NULL ;
+
+ALTER TABLE Tbl_clientes 
+ADD COLUMN Fecha_Registro DATE NOT NULL;
+
+
+ALTER TABLE Tbl_clientes
 ADD COLUMN Clientes_deuda DECIMAL(10, 2) DEFAULT 0.00;
+
+ALTER TABLE Tbl_clientes
+DROP COLUMN Clientes_deuda;
 
 ALTER TABLE Tbl_clientes 
 ADD Fk_id_vendedor INT NOT NULL,
@@ -416,15 +433,21 @@ ADD CONSTRAINT FK_vendedor_cliente
 FOREIGN KEY (Fk_id_vendedor) REFERENCES Tbl_vendedores(Pk_id_vendedor); 
 
 ALTER TABLE Tbl_clientes 
-CHANGE Clientes_estado estado TINYINT(1) DEFAULT 1;
+DROP FOREIGN KEY FK_vendedor_cliente;
+ALTER TABLE Tbl_clientes
+DROP COLUMN Fk_id_vendedor;
 
--- ALTER TABLE Tbl_clientes 
--- ADD COLUMN Fk_id_lista_Encabezado INT NOT NULL;
+ALTER TABLE Tbl_clientes 
+ADD COLUMN Fk_id_lista_Encabezado INT NOT NULL;
 
--- ALTER TABLE Tbl_clientes 
--- ADD CONSTRAINT FK_id_lista_Encabezado
--- FOREIGN KEY (Fk_id_lista_Encabezado) 
--- REFERENCES Tbl_lista_encabezado(Pk_id_lista_Encabezado);
+ALTER TABLE Tbl_clientes 
+ADD CONSTRAINT FK_id_lista_Encabezado
+FOREIGN KEY (Fk_id_lista_Encabezado) REFERENCES Tbl_lista_encabezado(Pk_id_lista_Encabezado);
+
+ALTER TABLE Tbl_clientes 
+DROP FOREIGN KEY Fk_id_lista_Encabezado;
+ALTER TABLE Tbl_clientes
+DROP COLUMN FK_id_lista_Encabezado;
 
 ALTER TABLE Tbl_proveedores
 ADD COLUMN Proveedor_deuda DECIMAL(10, 2) DEFAULT 0.00;

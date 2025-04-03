@@ -65,14 +65,13 @@ namespace Capa_Controlador_Cuentas_Corrientes
             return transaccionCodes;
         }
 
-        public int guardarDeudas(TextBox Pk_id_deuda, string sFk_id_cliente, string sFk_id_cobrador, string sFk_idfactura,
-             string smonto_deuda, string sfecha_inicio_deuda, string sfecha_vencimiento_deuda, string sdescripcion_deuda, string sestado_deuda, string smora)
+        public int guardarDeudas(string Pk_id_deuda, string sFk_id_cliente, string sFk_id_cobrador, string sFk_idfactura,
+             string smonto_deuda, DateTime sfecha_inicio_deuda, DateTime sfecha_vencimiento_deuda, string sdescripcion_deuda, string sestado_deuda)
         {
             
             //se valida que el textbox no este vacío o con espacios en blanco
-            if (string.IsNullOrEmpty(Pk_id_deuda.Text) || string.IsNullOrEmpty(sFk_id_cliente) || string.IsNullOrEmpty(sFk_id_cobrador)  || string.IsNullOrEmpty(sFk_idfactura) ||
-                string.IsNullOrEmpty(smonto_deuda) || string.IsNullOrEmpty(sfecha_inicio_deuda) ||
-                string.IsNullOrEmpty(sfecha_vencimiento_deuda) || string.IsNullOrEmpty(sdescripcion_deuda) || string.IsNullOrEmpty(sestado_deuda) || string.IsNullOrEmpty(smora))
+            if (string.IsNullOrEmpty(Pk_id_deuda) || string.IsNullOrEmpty(sFk_id_cliente) || string.IsNullOrEmpty(sFk_id_cobrador)  || string.IsNullOrEmpty(sFk_idfactura) ||
+                string.IsNullOrEmpty(smonto_deuda) || string.IsNullOrEmpty(sdescripcion_deuda) || string.IsNullOrEmpty(sestado_deuda))
             {
                 MessageBox.Show("Existen campos vacios o datos incorrectos, revise y vuelva a intentarlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
@@ -85,15 +84,15 @@ namespace Capa_Controlador_Cuentas_Corrientes
                     {
                         // Actualizar transacción existente
                         sentencias.ActualizarDeuda(idDeudaSeleccionada, sFk_id_cliente, sFk_id_cobrador, sFk_idfactura,
-                        smonto_deuda, sfecha_inicio_deuda, sfecha_vencimiento_deuda, sdescripcion_deuda, sestado_deuda, smora);
+                        smonto_deuda, sfecha_inicio_deuda, sfecha_vencimiento_deuda, sdescripcion_deuda, sestado_deuda);
                         MessageBox.Show("Registro actualizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         esEdicion = false; // Resetear modo edición
                     }
                     else
                     {
                         // Guardar nueva transacción
-                        sentencias.registrarDeuda(Pk_id_deuda.Text, sFk_id_cliente, sFk_id_cobrador, sFk_idfactura,
-                    smonto_deuda, sfecha_inicio_deuda, sfecha_vencimiento_deuda, sdescripcion_deuda, sestado_deuda, smora);
+                        sentencias.registrarDeuda(Pk_id_deuda, sFk_id_cliente, sFk_id_cobrador, sFk_idfactura,
+                    smonto_deuda, sfecha_inicio_deuda, sfecha_vencimiento_deuda, sdescripcion_deuda, sestado_deuda);
                         MessageBox.Show("Registro guardado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
@@ -109,22 +108,16 @@ namespace Capa_Controlador_Cuentas_Corrientes
             }
             
         }
-        public decimal CalcularMora(decimal smonto_deuda, decimal tasaInteres, DateTime sfecha_vencimiento_deuda)
-        {
-            int diasAtraso = (DateTime.Today - sfecha_vencimiento_deuda).Days;
-            if (diasAtraso > 0)
-            {
-                return ((tasaInteres * smonto_deuda) / 360) * diasAtraso;
-            }
-            return 0; // No hay mora si no hay atraso
-        }
+    
    
 
 
-        public bool ModificarTransaccion(int idDeuda, int idCliente, int idCobrador, int idFactura, string monto, string fechaI, 
-            string fechaV, string descripcion, int estado, string mora)
+        public bool ModificarTransaccion(int idDeuda, int idCliente, int idCobrador, int idFactura, string monto, DateTime fechaI,
+            DateTime fechaV, string descripcion, int estado)
         {
-            return sentencias.ModificarTransaccion(idDeuda, idCliente, idCobrador, idFactura, monto, fechaI, fechaV, descripcion, estado, mora);
+            
+
+            return sentencias.ModificarTransaccion(idDeuda, idCliente, idCobrador, idFactura, monto, fechaI, fechaV, descripcion, estado);
         }
             
         public DataTable queryDeuda(TextBox query)

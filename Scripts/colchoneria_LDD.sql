@@ -1477,8 +1477,8 @@ CREATE TABLE IF NOT EXISTS `Tbl_Deudas_Clientes` (
     Fk_id_cobrador INT NOT NULL,
     Fk_id_pago INT NOT NULL,
     deuda_monto DECIMAL(10, 2) NOT NULL,
-    deuda_fecha_inicio_deuda VARCHAR(255) NOT NULL,
-    deuda_fecha_vencimiento_deuda VARCHAR(255) NOT NULL,
+    deuda_fecha_inicio_deuda DATE,
+    deuda_fecha_vencimiento_deuda DATE,
     deuda_descripcion_deuda VARCHAR(255),
     deuda_estado TINYINT DEFAULT 1 NOT NULL,
     FOREIGN KEY (`Fk_id_cliente`) REFERENCES `Tbl_clientes` (Pk_id_cliente),
@@ -1491,7 +1491,7 @@ CREATE TABLE IF NOT EXISTS `Tbl_Transaccion_cliente` (
 	Pk_id_transaccion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Fk_id_cliente INT NOT NULL,
     Fk_id_pais INT NOT NULL,
-    transaccion_fecha VARCHAR(150) NOT NULL,
+    transaccion_fecha DATE NOT NULL,
     tansaccion_cuenta VARCHAR(150) NOT NULL,
     transaccion_cuotas VARCHAR(2) NOT NULL,
     transaccion_monto Decimal(10,2),
@@ -1528,7 +1528,7 @@ CREATE TABLE IF NOT EXISTS Tbl_caja_cliente (
     caja_transaccion_monto DECIMAL(10, 2) NOT NULL,
     caja_saldo_restante DECIMAL(10, 2) NOT NULL DEFAULT 0,
     caja_estado TINYINT DEFAULT 1 NOT NULL, -- 0 = cancelado, 1 = pendiente
-    caja_fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    caja_fecha_registro DATE,
     FOREIGN KEY (Fk_id_cliente) REFERENCES Tbl_clientes (Pk_id_cliente),
     FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Clientes (Pk_id_deuda)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

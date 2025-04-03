@@ -83,6 +83,16 @@ namespace Capa_Vista_Cuentas_Corrientes.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap agregar_archivo10 {
+            get {
+                object obj = ResourceManager.GetObject("agregar-archivo10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap agregar_archivo2 {
             get {
                 object obj = ResourceManager.GetObject("agregar-archivo2", resourceCulture);
@@ -133,9 +143,49 @@ namespace Capa_Vista_Cuentas_Corrientes.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap agregar_archivo7 {
+            get {
+                object obj = ResourceManager.GetObject("agregar-archivo7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap agregar_archivo8 {
+            get {
+                object obj = ResourceManager.GetObject("agregar-archivo8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap agregar_archivo9 {
+            get {
+                object obj = ResourceManager.GetObject("agregar-archivo9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ahorrar {
             get {
                 object obj = ResourceManager.GetObject("ahorrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ahorrar__1_ {
+            get {
+                object obj = ResourceManager.GetObject("ahorrar (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,6 +316,16 @@ namespace Capa_Vista_Cuentas_Corrientes.Properties {
         internal static System.Drawing.Bitmap cancelar1 {
             get {
                 object obj = ResourceManager.GetObject("cancelar1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cancelar2 {
+            get {
+                object obj = ResourceManager.GetObject("cancelar2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

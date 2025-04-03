@@ -232,9 +232,9 @@ namespace Capa_Vista_Cuentas_Corrientes
 
         private void Btn_reportes_Click(object sender, EventArgs e)
         {
-          ReporteDeudaP
-           frm = new ReporteDeudaP();
-           frm.Show();
+          //ReporteDeudaP
+          // frm = new ReporteDeudaP();
+          // frm.Show();
         }
     }
 }

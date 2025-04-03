@@ -118,20 +118,26 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="agregar-archivo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar-archivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="borrar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\borrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="salir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\salir.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ahorrar4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ahorrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="agregar-archivo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="agregar-archivo7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\agregar-archivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="agregar-archivo4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\agregar-archivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="agregar-archivo5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\agregar-archivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ahorrar5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ahorrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lista-de-verificacion1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lista-de-verificacion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,26 +151,23 @@
   <data name="WhatsApp Image 2024-10-13 at 5.24.35 PM" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhatsApp Image 2024-10-13 at 5.24.35 PM.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ahorrar5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="ahorrar6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ahorrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="grupo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\grupo.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="convenio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\convenio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LogoC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LogoC.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="verificado1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\verificado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="transacciones" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\transacciones.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ahorrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ahorrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="verificado1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\verificado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="verificado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\verificado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,23 +178,35 @@
   <data name="borrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\borrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ahorrar (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ahorrar (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buscar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buscar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="agregar-archivo6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\agregar-archivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LogoC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LogoC.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="grupo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\grupo.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="WhatsApp Image 2024-11-07 at 9.08.55 PM" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhatsApp Image 2024-11-07 at 9.08.55 PM.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="salir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\salir.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ahorrar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ahorrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="agregar-archivo10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar-archivo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="verificado3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\verificado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar-archivo9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar-archivo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,11 +220,14 @@
   <data name="disco-flexible (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\disco-flexible (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="agregar-archivo5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar-archivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar-archivo8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar-archivo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="WhatsApp Image 2024-11-07 at 9.13.34 PM" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WhatsApp Image 2024-11-07 at 9.13.34 PM.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="convenio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\convenio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="convenio1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\convenio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,7 +280,7 @@
   <data name="salir1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\salir.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ahorrar6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ahorrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cancelar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancelar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
