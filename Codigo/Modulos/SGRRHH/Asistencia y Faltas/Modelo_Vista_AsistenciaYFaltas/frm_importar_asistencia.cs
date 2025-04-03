@@ -34,7 +34,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    txtRutaArchivo.Text = openFileDialog.FileName;
+                    txt_RutaArchivo.Text = openFileDialog.FileName;
                     CargarDatosEnGrid(openFileDialog.FileName);
                 }
             }
@@ -42,13 +42,13 @@ namespace Modelo_Vista_AsistenciaYFaltas
             // Evento para importar la asistencia
             private void btnImportar_Click(object sender, EventArgs e)
             {
-                if (string.IsNullOrEmpty(txtRutaArchivo.Text))
+                if (string.IsNullOrEmpty(txt_RutaArchivo.Text))
                 {
                     MessageBox.Show("Seleccione un archivo antes de importar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                ProcesarArchivoAsistencia(txtRutaArchivo.Text);
+                ProcesarArchivoAsistencia(txt_RutaArchivo.Text);
             }
 
             // Cargar datos en el DataGridView antes de importar
