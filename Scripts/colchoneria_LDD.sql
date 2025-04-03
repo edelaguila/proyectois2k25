@@ -321,6 +321,15 @@ CREATE TABLE `venta` (
   `estado` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `tbl_commpra` (
+  `id_compra` int(11) NOT NULL,
+  `monto` int(11) NOT NULL,
+  `nombre_cliente` varchar(50) NOT NULL,
+`nombre_producto` varchar(50) NOT NULL,
+  `nombre_empleado` varchar(50) NOT NULL,
+  `estado` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- Estructura Stand-in para la vista `vwaplicacionperfil`
 -- (Véase abajo para la vista actual)
 --
@@ -1031,8 +1040,6 @@ ALTER TABLE Tbl_Productos
 ADD COLUMN empaque VARCHAR(50) NOT NULL;
 ALTER TABLE Tbl_Productos
 CHANGE COLUMN medidaProducto pesoProducto VARCHAR(20);
-ALTER TABLE Tbl_Productos
-MODIFY estado TINYINT NOT NULL DEFAULT 1;
 
 CREATE TABLE Tbl_TrasladoProductos (
     Pk_id_TrasladoProductos INT AUTO_INCREMENT PRIMARY KEY,
@@ -1160,12 +1167,7 @@ CREATE TABLE IF NOT EXISTS Tbl_clientes(
     Clientes_No_Cuenta VARCHAR(255) NOT NULL,
     Clientes_estado tinyint(1) DEFAULT 1,
     PRIMARY KEY (Pk_id_cliente)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
- select *FROM Tbl_clientes;
--- select *FROM Tbl_proveedores;
-
-
+);
 
 -- Tabla Vendedores
 CREATE TABLE IF NOT EXISTS Tbl_vendedores (
@@ -1489,7 +1491,7 @@ CREATE TABLE IF NOT EXISTS `Tbl_Transaccion_cliente` (
 	Pk_id_transaccion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Fk_id_cliente INT NOT NULL,
     Fk_id_pais INT NOT NULL,
-    transaccion_fecha VARCHAR(150) NOT NULL,
+    transaccion_fecha DATE NOT NULL,
     tansaccion_cuenta VARCHAR(150) NOT NULL,
     transaccion_cuotas VARCHAR(2) NOT NULL,
     transaccion_monto Decimal(10,2),
@@ -1573,7 +1575,7 @@ CREATE TABLE IF NOT EXISTS Tbl_caja_proveedor (
     caja_transaccion_monto DECIMAL(10, 2) NOT NULL,
     caja_saldo_restante DECIMAL(10, 2) NOT NULL DEFAULT 0,
     caja_estado TINYINT DEFAULT 1 NOT NULL, -- 0 = cancelado, 1 = pendiente
-    caja_fecha_registro DATE,
+    caja_fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (Fk_id_proveedor) REFERENCES Tbl_proveedores (Pk_prov_id),
     FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Proveedores (Pk_id_deuda)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
