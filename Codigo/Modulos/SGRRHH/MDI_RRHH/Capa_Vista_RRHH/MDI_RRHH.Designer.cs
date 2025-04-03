@@ -67,6 +67,8 @@
             this.cierresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónDisciplinariaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.faltasDisciplinariasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarEvidenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aplicarSanciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónFaltasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permisoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,8 +82,9 @@
             this.Pnl_Usuario = new System.Windows.Forms.Panel();
             this.lbl_nombreUsuario = new System.Windows.Forms.Label();
             this.Lbl_Usuario = new System.Windows.Forms.Label();
-            this.registrarEvidenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aplicarSanciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expedienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.evaluacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.Pnl_inferior.SuspendLayout();
             this.Pnl_Fecha.SuspendLayout();
@@ -323,7 +326,8 @@
             this.postulanteToolStripMenuItem,
             this.perfilToolStripMenuItem,
             this.competenciaToolStripMenuItem,
-            this.aTSToolStripMenuItem});
+            this.aTSToolStripMenuItem,
+            this.expedienteToolStripMenuItem});
             this.reclutamientoYSelecciónToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.reclutamientoYSelecciónToolStripMenuItem.Name = "reclutamientoYSelecciónToolStripMenuItem";
             this.reclutamientoYSelecciónToolStripMenuItem.Size = new System.Drawing.Size(197, 24);
@@ -332,28 +336,28 @@
             // postulanteToolStripMenuItem
             // 
             this.postulanteToolStripMenuItem.Name = "postulanteToolStripMenuItem";
-            this.postulanteToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.postulanteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.postulanteToolStripMenuItem.Text = "Postulante";
             this.postulanteToolStripMenuItem.Click += new System.EventHandler(this.postulanteToolStripMenuItem_Click);
             // 
             // perfilToolStripMenuItem
             // 
             this.perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.perfilToolStripMenuItem.Text = "Perfil";
             this.perfilToolStripMenuItem.Click += new System.EventHandler(this.perfilToolStripMenuItem_Click);
             // 
             // competenciaToolStripMenuItem
             // 
             this.competenciaToolStripMenuItem.Name = "competenciaToolStripMenuItem";
-            this.competenciaToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.competenciaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.competenciaToolStripMenuItem.Text = "Competencia";
             this.competenciaToolStripMenuItem.Click += new System.EventHandler(this.competenciaToolStripMenuItem_Click);
             // 
             // aTSToolStripMenuItem
             // 
             this.aTSToolStripMenuItem.Name = "aTSToolStripMenuItem";
-            this.aTSToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.aTSToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.aTSToolStripMenuItem.Text = "ATS";
             this.aTSToolStripMenuItem.Click += new System.EventHandler(this.aTSToolStripMenuItem_Click);
             // 
@@ -412,9 +416,23 @@
             this.registrarEvidenciasToolStripMenuItem,
             this.aplicarSanciónToolStripMenuItem});
             this.faltasDisciplinariasToolStripMenuItem.Name = "faltasDisciplinariasToolStripMenuItem";
-            this.faltasDisciplinariasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.faltasDisciplinariasToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.faltasDisciplinariasToolStripMenuItem.Text = "Faltas Disciplinarias";
             this.faltasDisciplinariasToolStripMenuItem.Click += new System.EventHandler(this.faltasDisciplinariasToolStripMenuItem_Click);
+            // 
+            // registrarEvidenciasToolStripMenuItem
+            // 
+            this.registrarEvidenciasToolStripMenuItem.Name = "registrarEvidenciasToolStripMenuItem";
+            this.registrarEvidenciasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.registrarEvidenciasToolStripMenuItem.Text = "Registrar evidencias";
+            this.registrarEvidenciasToolStripMenuItem.Click += new System.EventHandler(this.registrarEvidenciasToolStripMenuItem_Click);
+            // 
+            // aplicarSanciónToolStripMenuItem
+            // 
+            this.aplicarSanciónToolStripMenuItem.Name = "aplicarSanciónToolStripMenuItem";
+            this.aplicarSanciónToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aplicarSanciónToolStripMenuItem.Text = "Aplicar sanción";
+            this.aplicarSanciónToolStripMenuItem.Click += new System.EventHandler(this.aplicarSanciónToolStripMenuItem_Click);
             // 
             // gestiónFaltasToolStripMenuItem
             // 
@@ -445,7 +463,9 @@
             // 
             this.evaluacionDesempeñoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bonosToolStripMenuItem,
-            this.resultadosEvaluaToolStripMenuItem});
+            this.resultadosEvaluaToolStripMenuItem,
+            this.evaluacionesToolStripMenuItem,
+            this.reporteToolStripMenuItem});
             this.evaluacionDesempeñoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.evaluacionDesempeñoToolStripMenuItem.Name = "evaluacionDesempeñoToolStripMenuItem";
             this.evaluacionDesempeñoToolStripMenuItem.Size = new System.Drawing.Size(178, 24);
@@ -545,19 +565,26 @@
             this.Lbl_Usuario.Text = "Usuario:";
             this.Lbl_Usuario.Click += new System.EventHandler(this.label1_Click);
             // 
-            // registrarEvidenciasToolStripMenuItem
+            // expedienteToolStripMenuItem
             // 
-            this.registrarEvidenciasToolStripMenuItem.Name = "registrarEvidenciasToolStripMenuItem";
-            this.registrarEvidenciasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.registrarEvidenciasToolStripMenuItem.Text = "Registrar evidencias";
-            this.registrarEvidenciasToolStripMenuItem.Click += new System.EventHandler(this.registrarEvidenciasToolStripMenuItem_Click);
+            this.expedienteToolStripMenuItem.Name = "expedienteToolStripMenuItem";
+            this.expedienteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.expedienteToolStripMenuItem.Text = "Expediente";
+            this.expedienteToolStripMenuItem.Click += new System.EventHandler(this.expedienteToolStripMenuItem_Click);
             // 
-            // aplicarSanciónToolStripMenuItem
+            // evaluacionesToolStripMenuItem
             // 
-            this.aplicarSanciónToolStripMenuItem.Name = "aplicarSanciónToolStripMenuItem";
-            this.aplicarSanciónToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.aplicarSanciónToolStripMenuItem.Text = "Aplicar sanción";
-            this.aplicarSanciónToolStripMenuItem.Click += new System.EventHandler(this.aplicarSanciónToolStripMenuItem_Click);
+            this.evaluacionesToolStripMenuItem.Name = "evaluacionesToolStripMenuItem";
+            this.evaluacionesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.evaluacionesToolStripMenuItem.Text = "Evaluaciones";
+            this.evaluacionesToolStripMenuItem.Click += new System.EventHandler(this.evaluacionesToolStripMenuItem_Click);
+            // 
+            // reporteToolStripMenuItem
+            // 
+            this.reporteToolStripMenuItem.Name = "reporteToolStripMenuItem";
+            this.reporteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.reporteToolStripMenuItem.Text = "Reporte";
+            this.reporteToolStripMenuItem.Click += new System.EventHandler(this.reporteToolStripMenuItem_Click);
             // 
             // MDI_RRHH
             // 
@@ -643,5 +670,8 @@
         private System.Windows.Forms.ToolStripMenuItem cierresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarEvidenciasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aplicarSanciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expedienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem evaluacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteToolStripMenuItem;
     }
 }

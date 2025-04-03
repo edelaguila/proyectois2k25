@@ -51,7 +51,7 @@ namespace Capa_Vista_Evaluacion
             this.Controls.Add(this.navegador1);
             this.Name = "Frm_Resultados_Evaluacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Frm_Resultados_Evaluacion";
+            this.Text = "17001-Mant. Resultado de Evaluaciones";
             this.ResumeLayout(false);
 
         }

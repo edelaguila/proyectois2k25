@@ -50,7 +50,7 @@ namespace Capa_Vista_Evaluacion
             this.Controls.Add(this.navegador1);
             this.Name = "Frm_Bonos_Promociones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Frm_Bonos_Promociones";
+            this.Text = "17002-Mant. Bonos y Promociones";
             this.ResumeLayout(false);
 
         }

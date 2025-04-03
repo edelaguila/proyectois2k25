@@ -30,21 +30,22 @@ namespace Capa_Vista_Evaluacion
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -62,43 +63,41 @@ namespace Capa_Vista_Evaluacion
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.Txt_monto = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Txt_monto = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -120,65 +119,14 @@ namespace Capa_Vista_Evaluacion
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Empleado y Evaluador";
             // 
-            // comboBox1
+            // comboBox3
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(278, 68);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(348, 30);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(278, 215);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(348, 30);
-            this.comboBox2.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Empleado:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 222);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 23);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Tipo de Evaluación";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 29);
-            this.label3.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 171);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 23);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Fecha:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(278, 171);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(348, 30);
-            this.dateTimePicker1.TabIndex = 7;
+            this.comboBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(278, 116);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(348, 30);
+            this.comboBox3.TabIndex = 9;
             // 
             // label5
             // 
@@ -189,14 +137,65 @@ namespace Capa_Vista_Evaluacion
             this.label5.TabIndex = 8;
             this.label5.Text = "Evaluador:";
             // 
-            // comboBox3
+            // dateTimePicker1
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(278, 116);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(348, 30);
-            this.comboBox3.TabIndex = 9;
+            this.dateTimePicker1.Location = new System.Drawing.Point(278, 171);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(348, 30);
+            this.dateTimePicker1.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 171);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 23);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Fecha:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 23);
+            this.label3.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 222);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 23);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Tipo de Evaluación";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Empleado:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(278, 215);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(348, 30);
+            this.comboBox2.TabIndex = 1;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(278, 68);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(348, 30);
+            this.comboBox1.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -213,12 +212,28 @@ namespace Capa_Vista_Evaluacion
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Evaluación General";
             // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(264, 67);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(362, 30);
+            this.textBox11.TabIndex = 41;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(264, 118);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(362, 30);
+            this.textBox10.TabIndex = 40;
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(25, 118);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(145, 29);
+            this.label17.Size = new System.Drawing.Size(116, 23);
             this.label17.TabIndex = 8;
             this.label17.Text = "Calificación:";
             // 
@@ -235,19 +250,9 @@ namespace Capa_Vista_Evaluacion
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(25, 70);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(176, 29);
+            this.label21.Size = new System.Drawing.Size(141, 23);
             this.label21.TabIndex = 2;
             this.label21.Text = "Observaciones:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Haettenschweiler", 25.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(48, 71);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(346, 44);
-            this.label18.TabIndex = 10;
-            this.label18.Text = "Evaluación de Desempeño";
             // 
             // button4
             // 
@@ -325,7 +330,7 @@ namespace Capa_Vista_Evaluacion
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(25, 118);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(152, 23);
+            this.label6.Size = new System.Drawing.Size(172, 23);
             this.label6.TabIndex = 8;
             this.label6.Text = "Trabajo en Equipo:\t";
             // 
@@ -433,159 +438,13 @@ namespace Capa_Vista_Evaluacion
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Evaluación de empleado";
             // 
-            // button5
+            // textBox9
             // 
-            this.button5.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.reporte__1_;
-            this.button5.Location = new System.Drawing.Point(1363, 80);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(66, 68);
-            this.button5.TabIndex = 28;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(342, 118);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(88, 30);
-            this.numericUpDown2.TabIndex = 28;
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Location = new System.Drawing.Point(342, 175);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(88, 30);
-            this.numericUpDown3.TabIndex = 29;
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.Location = new System.Drawing.Point(342, 222);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(88, 30);
-            this.numericUpDown4.TabIndex = 30;
-            // 
-            // numericUpDown5
-            // 
-            this.numericUpDown5.Location = new System.Drawing.Point(342, 271);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(88, 30);
-            this.numericUpDown5.TabIndex = 31;
-            // 
-            // numericUpDown6
-            // 
-            this.numericUpDown6.Location = new System.Drawing.Point(342, 313);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(88, 30);
-            this.numericUpDown6.TabIndex = 32;
-            // 
-            // numericUpDown7
-            // 
-            this.numericUpDown7.Location = new System.Drawing.Point(342, 361);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(88, 30);
-            this.numericUpDown7.TabIndex = 33;
-            // 
-            // numericUpDown8
-            // 
-            this.numericUpDown8.Location = new System.Drawing.Point(342, 418);
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(88, 30);
-            this.numericUpDown8.TabIndex = 34;
-            // 
-            // numericUpDown9
-            // 
-            this.numericUpDown9.Location = new System.Drawing.Point(342, 464);
-            this.numericUpDown9.Name = "numericUpDown9";
-            this.numericUpDown9.Size = new System.Drawing.Size(88, 30);
-            this.numericUpDown9.TabIndex = 35;
-            // 
-            // numericUpDown10
-            // 
-            this.numericUpDown10.Location = new System.Drawing.Point(342, 518);
-            this.numericUpDown10.Name = "numericUpDown10";
-            this.numericUpDown10.Size = new System.Drawing.Size(88, 30);
-            this.numericUpDown10.TabIndex = 36;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(327, 26);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(136, 29);
-            this.label20.TabIndex = 37;
-            this.label20.Text = "Calificación";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(519, 26);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(168, 29);
-            this.label22.TabIndex = 38;
-            this.label22.Text = "Observaciones";
-            // 
-            // Txt_monto
-            // 
-            this.Txt_monto.Location = new System.Drawing.Point(509, 62);
-            this.Txt_monto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Txt_monto.Name = "Txt_monto";
-            this.Txt_monto.Size = new System.Drawing.Size(223, 30);
-            this.Txt_monto.TabIndex = 39;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(509, 118);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(223, 30);
-            this.textBox1.TabIndex = 40;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(509, 175);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(223, 30);
-            this.textBox2.TabIndex = 41;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(509, 222);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(223, 30);
-            this.textBox3.TabIndex = 42;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(509, 273);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(223, 30);
-            this.textBox4.TabIndex = 43;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(509, 317);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(223, 30);
-            this.textBox5.TabIndex = 44;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(509, 368);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(223, 30);
-            this.textBox6.TabIndex = 45;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(509, 420);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(223, 30);
-            this.textBox7.TabIndex = 46;
+            this.textBox9.Location = new System.Drawing.Point(509, 517);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(223, 30);
+            this.textBox9.TabIndex = 48;
             // 
             // textBox8
             // 
@@ -595,29 +454,159 @@ namespace Capa_Vista_Evaluacion
             this.textBox8.Size = new System.Drawing.Size(223, 30);
             this.textBox8.TabIndex = 47;
             // 
-            // textBox9
+            // textBox7
             // 
-            this.textBox9.Location = new System.Drawing.Point(509, 517);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(223, 30);
-            this.textBox9.TabIndex = 48;
+            this.textBox7.Location = new System.Drawing.Point(509, 420);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(223, 30);
+            this.textBox7.TabIndex = 46;
             // 
-            // textBox10
+            // textBox6
             // 
-            this.textBox10.Location = new System.Drawing.Point(264, 118);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(362, 30);
-            this.textBox10.TabIndex = 40;
+            this.textBox6.Location = new System.Drawing.Point(509, 368);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(223, 30);
+            this.textBox6.TabIndex = 45;
             // 
-            // textBox11
+            // textBox5
             // 
-            this.textBox11.Location = new System.Drawing.Point(264, 67);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(362, 30);
-            this.textBox11.TabIndex = 41;
+            this.textBox5.Location = new System.Drawing.Point(509, 317);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(223, 30);
+            this.textBox5.TabIndex = 44;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(509, 273);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(223, 30);
+            this.textBox4.TabIndex = 43;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(509, 222);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(223, 30);
+            this.textBox3.TabIndex = 42;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(509, 175);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(223, 30);
+            this.textBox2.TabIndex = 41;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(509, 118);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(223, 30);
+            this.textBox1.TabIndex = 40;
+            // 
+            // Txt_monto
+            // 
+            this.Txt_monto.Location = new System.Drawing.Point(509, 62);
+            this.Txt_monto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Txt_monto.Name = "Txt_monto";
+            this.Txt_monto.Size = new System.Drawing.Size(223, 30);
+            this.Txt_monto.TabIndex = 39;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(519, 26);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(134, 23);
+            this.label22.TabIndex = 38;
+            this.label22.Text = "Observaciones";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(327, 26);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(109, 23);
+            this.label20.TabIndex = 37;
+            this.label20.Text = "Calificación";
+            // 
+            // numericUpDown10
+            // 
+            this.numericUpDown10.Location = new System.Drawing.Point(342, 518);
+            this.numericUpDown10.Name = "numericUpDown10";
+            this.numericUpDown10.Size = new System.Drawing.Size(88, 30);
+            this.numericUpDown10.TabIndex = 36;
+            // 
+            // numericUpDown9
+            // 
+            this.numericUpDown9.Location = new System.Drawing.Point(342, 464);
+            this.numericUpDown9.Name = "numericUpDown9";
+            this.numericUpDown9.Size = new System.Drawing.Size(88, 30);
+            this.numericUpDown9.TabIndex = 35;
+            // 
+            // numericUpDown8
+            // 
+            this.numericUpDown8.Location = new System.Drawing.Point(342, 418);
+            this.numericUpDown8.Name = "numericUpDown8";
+            this.numericUpDown8.Size = new System.Drawing.Size(88, 30);
+            this.numericUpDown8.TabIndex = 34;
+            // 
+            // numericUpDown7
+            // 
+            this.numericUpDown7.Location = new System.Drawing.Point(342, 361);
+            this.numericUpDown7.Name = "numericUpDown7";
+            this.numericUpDown7.Size = new System.Drawing.Size(88, 30);
+            this.numericUpDown7.TabIndex = 33;
+            // 
+            // numericUpDown6
+            // 
+            this.numericUpDown6.Location = new System.Drawing.Point(342, 313);
+            this.numericUpDown6.Name = "numericUpDown6";
+            this.numericUpDown6.Size = new System.Drawing.Size(88, 30);
+            this.numericUpDown6.TabIndex = 32;
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.Location = new System.Drawing.Point(342, 271);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(88, 30);
+            this.numericUpDown5.TabIndex = 31;
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Location = new System.Drawing.Point(342, 222);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(88, 30);
+            this.numericUpDown4.TabIndex = 30;
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(342, 175);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(88, 30);
+            this.numericUpDown3.TabIndex = 29;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(342, 118);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(88, 30);
+            this.numericUpDown2.TabIndex = 28;
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.reporte__1_;
+            this.button5.Location = new System.Drawing.Point(1363, 80);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(66, 68);
+            this.button5.TabIndex = 28;
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // Frm_Evaluacion
             // 
@@ -630,12 +619,11 @@ namespace Capa_Vista_Evaluacion
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Frm_Evaluacion";
-            this.Text = "Frm_Evaluacion";
+            this.Text = "17003-Evaluación";
             this.Load += new System.EventHandler(this.Frm_Evaluacion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -644,17 +632,16 @@ namespace Capa_Vista_Evaluacion
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -675,7 +662,6 @@ namespace Capa_Vista_Evaluacion
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;

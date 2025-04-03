@@ -310,5 +310,23 @@ namespace Capa_Vista_RRHH
             frm_sanciones GD = new frm_sanciones();
             GD.Show();
         }
+
+        private void expedienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Expediente exp = new Frm_Expediente();
+            exp.Show();
+        }
+
+        private void evaluacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Evaluacion ev = new Frm_Evaluacion();
+            ev.Show();
+        }
+
+        private void reporteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Reporte_Evaluacion_Desempenio repo = new Frm_Reporte_Evaluacion_Desempenio();
+            repo.Show();    
+        }
     }
 }

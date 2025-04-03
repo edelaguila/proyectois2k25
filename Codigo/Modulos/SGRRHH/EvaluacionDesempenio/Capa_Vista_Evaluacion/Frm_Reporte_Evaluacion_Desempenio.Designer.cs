@@ -29,15 +29,14 @@ namespace Capa_Vista_Evaluacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -46,16 +45,6 @@ namespace Capa_Vista_Evaluacion
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Haettenschweiler", 25.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(30, 32);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(459, 44);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "Reporte Evaluación de Desempeño";
             // 
             // groupBox1
             // 
@@ -74,12 +63,21 @@ namespace Capa_Vista_Evaluacion
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Empleado y Evaluador";
             // 
+            // comboBox3
+            // 
+            this.comboBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(434, 116);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(348, 30);
+            this.comboBox3.TabIndex = 9;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(25, 118);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 29);
+            this.label5.Size = new System.Drawing.Size(131, 23);
             this.label5.TabIndex = 8;
             this.label5.Text = "Departamento";
             // 
@@ -124,15 +122,6 @@ namespace Capa_Vista_Evaluacion
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(348, 30);
             this.comboBox1.TabIndex = 0;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(434, 116);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(348, 30);
-            this.comboBox3.TabIndex = 9;
             // 
             // dataGridView1
             // 
@@ -192,20 +181,16 @@ namespace Capa_Vista_Evaluacion
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label18);
             this.Name = "Frm_Reporte_Evaluacion_Desempenio";
-            this.Text = "Frm_Reporte_Evaluacion_Desempenio";
+            this.Text = "17004-Reporte de Evaluación";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label5;
