@@ -22,7 +22,7 @@ namespace Capa_Vista_Cuentas_Corrientes
             string[] alias = { "id_clientes", "nombre", "apellido", "nit_cliente","telefono","direccion","no_cuenta", "estado", "E-mail","Tipo Cliente", "Límite Crédito", "Días Credito","Fecha_Registro" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.CadetBlue);
+            navegador1.AsignarColorFondo(Color.FromArgb(218, 247, 245));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("Tbl_clientes");
             navegador1.ObtenerIdAplicacion("1000");

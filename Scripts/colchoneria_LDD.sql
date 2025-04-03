@@ -1030,8 +1030,7 @@ CREATE TABLE Tbl_Productos (
     nombreProducto VARCHAR(30) NOT NULL,
     medidaProducto VARCHAR(20) NOT NULL,
     precioUnitario DECIMAL(10, 2) NOT NULL,
-    clasificacion VARCHAR(30) NOT NULL,
-    estado VARCHAR(50) NOT NULL DEFAULT 'Activo'
+    clasificacion VARCHAR(30) NOT NULL
 );
 
 ALTER TABLE Tbl_Productos

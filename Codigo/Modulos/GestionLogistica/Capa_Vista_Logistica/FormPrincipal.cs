@@ -9,7 +9,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Vista_Cuentas_Corrientes;
 
 namespace Capa_Vista_Logistica
 {
@@ -187,7 +186,7 @@ namespace Capa_Vista_Logistica
 
         private void btnMenuProcesosOpcion1_Click(object sender, EventArgs e)
         {
-            //AbrirFormulario<Capa_Vista_AmmyCatun.Transporte>();
+            AbrirFormulario<Capa_Vista_AmmyCatun.Transporte>();
             ocultaSubMenu();
         }
 
@@ -216,37 +215,37 @@ namespace Capa_Vista_Logistica
 
         private void Btn_MenuCatalogosOpcion6_Click(object sender, EventArgs e)
         {
-            //AbrirFormulario<Capa_Vista_AmmyCatun.frm_Chofer>();
+            AbrirFormulario<Capa_Vista_AmmyCatun.frm_Chofer>();
             ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion2_Click(object sender, EventArgs e)
         {
-            //AbrirFormulario<Capa_Vista_AmmyCatun.Transporte_Vehiculos>();
+            AbrirFormulario<Capa_Vista_AmmyCatun.Transporte_Vehiculos>();
             ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion3_Click(object sender, EventArgs e)
         {
-           // AbrirFormulario<Capa_Vista_MiguelCrisostomo.TrasladoDeProductos>();
+            AbrirFormulario<Capa_Vista_MiguelCrisostomo.TrasladoDeProductos>();
             ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion4_Click(object sender, EventArgs e)
         {
-          //  AbrirFormulario<MVC_JavierChamo.Mantenimiento_de_Vehiculos>();
+            AbrirFormulario<MVC_JavierChamo.Mantenimiento_de_Vehiculos>();
             ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion5_Click(object sender, EventArgs e)
         {
-           // AbrirFormulario<MVC_JavierChamo.Movimiento_de_Inventario>();
+            AbrirFormulario<MVC_JavierChamo.Movimiento_de_Inventario>();
             ocultaSubMenu();
         }
 
         private void Btn_MenuProcesosOpcion6_Click(object sender, EventArgs e)
         {
-           // AbrirFormulario<Capa_Vista_JDSC.MonitoreoAlmacen>();
+            AbrirFormulario<Capa_Vista_JDSC.MonitoreoAlmacen>();
             ocultaSubMenu();
         }
 
@@ -360,20 +359,20 @@ namespace Capa_Vista_Logistica
 
         private void Btn_ComMant1_Click_1(object sender, EventArgs e)
         {
-           // AbrirFormulario<Capa_Vista_CompraVenta.Frm_proveedores>();
-           // ocultaSubMenu();
+            AbrirFormulario<Capa_Vista_CompraVenta.Frm_proveedores>();
+            ocultaSubMenu();
         }
 
         private void Btn_ComMant3_Click_1(object sender, EventArgs e)
         {
-            //AbrirFormulario<Capa_Vista_CompraVenta.Frm_vendedores>();
-            //ocultaSubMenu();
+            AbrirFormulario<Capa_Vista_CompraVenta.Frm_vendedores>();
+            ocultaSubMenu();
         }
 
         private void Btn_ComMant4_Click_1(object sender, EventArgs e)
         {
-            //AbrirFormulario<Capa_Vista_ListaPrecios.frm_MantenimientoListas>();
-           // ocultaSubMenu();
+            AbrirFormulario<Capa_Vista_ListaPrecios.frm_MantenimientoListas>();
+            ocultaSubMenu();
         }
 
         private void Btn_CuentProcCl2_Click_1(object sender, EventArgs e)

@@ -19,7 +19,7 @@ namespace Capa_Vista_CompraVenta
             string[] alias = { "ID", "Nombre", "Direccion", "Telefono", "Email", "Fecha registro", "Estado", "Deuda" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.FromArgb(255, 255, 192));
+            navegador1.AsignarColorFondo(Color.FromArgb(218, 247, 245));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("Tbl_proveedores");
             navegador1.ObtenerIdAplicacion("3000");

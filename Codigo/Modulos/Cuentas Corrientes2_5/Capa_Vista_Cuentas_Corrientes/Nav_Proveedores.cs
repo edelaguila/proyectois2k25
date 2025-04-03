@@ -21,7 +21,7 @@ namespace Capa_Vista_Cuentas_Corrientes
 
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
-            navegador1.AsignarColorFondo(Color.CadetBlue);
+            navegador1.AsignarColorFondo(Color.FromArgb(218, 247, 245));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("Tbl_proveedores");
             navegador1.ObtenerIdAplicacion("1000");
