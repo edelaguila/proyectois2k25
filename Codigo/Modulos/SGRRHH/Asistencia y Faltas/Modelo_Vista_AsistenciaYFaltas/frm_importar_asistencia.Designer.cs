@@ -127,7 +127,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.Controls.Add(this.dgvAsistencias);
             this.Name = "frm_importar_asistencia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "16002";
+            this.Text = "16002-Importar Asistencia";
             this.Load += new System.EventHandler(this.frm_importar_asistencia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistencias)).EndInit();
             this.ResumeLayout(false);

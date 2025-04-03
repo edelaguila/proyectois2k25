@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Lbl_Titulo = new System.Windows.Forms.Label();
             this.txt_empleado = new System.Windows.Forms.TextBox();
             this.Lbl_Emp = new System.Windows.Forms.Label();
-            this.Btn_Buscar = new System.Windows.Forms.Button();
             this.dgv_nominas = new System.Windows.Forms.DataGridView();
             this.dgv_Reclutamiento = new System.Windows.Forms.DataGridView();
             this.dgv_Capacitaciones = new System.Windows.Forms.DataGridView();
@@ -44,6 +42,7 @@
             this.dgv_disciplina = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.Btn_Buscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_nominas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Reclutamiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Capacitaciones)).BeginInit();
@@ -51,16 +50,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_disciplina)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Lbl_Titulo
-            // 
-            this.Lbl_Titulo.AutoSize = true;
-            this.Lbl_Titulo.Font = new System.Drawing.Font("Haettenschweiler", 25.8F);
-            this.Lbl_Titulo.Location = new System.Drawing.Point(401, 1);
-            this.Lbl_Titulo.Name = "Lbl_Titulo";
-            this.Lbl_Titulo.Size = new System.Drawing.Size(310, 44);
-            this.Lbl_Titulo.TabIndex = 10;
-            this.Lbl_Titulo.Text = "Desarrollo De Carrera";
             // 
             // txt_empleado
             // 
@@ -78,16 +67,6 @@
             this.Lbl_Emp.Size = new System.Drawing.Size(90, 22);
             this.Lbl_Emp.TabIndex = 20;
             this.Lbl_Emp.Text = "Empleado";
-            // 
-            // Btn_Buscar
-            // 
-            this.Btn_Buscar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.buscar;
-            this.Btn_Buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Btn_Buscar.Location = new System.Drawing.Point(336, 73);
-            this.Btn_Buscar.Name = "Btn_Buscar";
-            this.Btn_Buscar.Size = new System.Drawing.Size(67, 62);
-            this.Btn_Buscar.TabIndex = 22;
-            this.Btn_Buscar.UseVisualStyleBackColor = true;
             // 
             // dgv_nominas
             // 
@@ -135,7 +114,7 @@
             this.Lbl_Nominas.Font = new System.Drawing.Font("Haettenschweiler", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_Nominas.Location = new System.Drawing.Point(190, 161);
             this.Lbl_Nominas.Name = "Lbl_Nominas";
-            this.Lbl_Nominas.Size = new System.Drawing.Size(101, 35);
+            this.Lbl_Nominas.Size = new System.Drawing.Size(99, 34);
             this.Lbl_Nominas.TabIndex = 28;
             this.Lbl_Nominas.Text = "Nóminas";
             // 
@@ -145,7 +124,7 @@
             this.Lbl_Reclutamiento.Font = new System.Drawing.Font("Haettenschweiler", 19.8F);
             this.Lbl_Reclutamiento.Location = new System.Drawing.Point(722, 161);
             this.Lbl_Reclutamiento.Name = "Lbl_Reclutamiento";
-            this.Lbl_Reclutamiento.Size = new System.Drawing.Size(284, 35);
+            this.Lbl_Reclutamiento.Size = new System.Drawing.Size(276, 34);
             this.Lbl_Reclutamiento.TabIndex = 29;
             this.Lbl_Reclutamiento.Text = "Reclutamiento y selección";
             // 
@@ -155,7 +134,7 @@
             this.Lbl_Capacitaciones.Font = new System.Drawing.Font("Haettenschweiler", 19.8F);
             this.Lbl_Capacitaciones.Location = new System.Drawing.Point(190, 466);
             this.Lbl_Capacitaciones.Name = "Lbl_Capacitaciones";
-            this.Lbl_Capacitaciones.Size = new System.Drawing.Size(170, 35);
+            this.Lbl_Capacitaciones.Size = new System.Drawing.Size(167, 34);
             this.Lbl_Capacitaciones.TabIndex = 30;
             this.Lbl_Capacitaciones.Text = "Capacitaciones";
             // 
@@ -165,7 +144,7 @@
             this.Lbl_Desempenio.Font = new System.Drawing.Font("Haettenschweiler", 19.8F);
             this.Lbl_Desempenio.Location = new System.Drawing.Point(722, 466);
             this.Lbl_Desempenio.Name = "Lbl_Desempenio";
-            this.Lbl_Desempenio.Size = new System.Drawing.Size(297, 35);
+            this.Lbl_Desempenio.Size = new System.Drawing.Size(292, 34);
             this.Lbl_Desempenio.TabIndex = 31;
             this.Lbl_Desempenio.Text = "Evaluaciones de desempeño";
             // 
@@ -175,7 +154,7 @@
             this.Lbl_Disciplina.Font = new System.Drawing.Font("Haettenschweiler", 19.8F);
             this.Lbl_Disciplina.Location = new System.Drawing.Point(190, 750);
             this.Lbl_Disciplina.Name = "Lbl_Disciplina";
-            this.Lbl_Disciplina.Size = new System.Drawing.Size(142, 35);
+            this.Lbl_Disciplina.Size = new System.Drawing.Size(137, 34);
             this.Lbl_Disciplina.TabIndex = 33;
             this.Lbl_Disciplina.Text = "Disciplinaria";
             // 
@@ -205,7 +184,6 @@
             this.panel1.Controls.Add(this.Btn_Buscar);
             this.panel1.Controls.Add(this.txt_empleado);
             this.panel1.Controls.Add(this.Lbl_Emp);
-            this.panel1.Controls.Add(this.Lbl_Titulo);
             this.panel1.Location = new System.Drawing.Point(-5, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1186, 1047);
@@ -219,6 +197,16 @@
             this.vScrollBar1.Size = new System.Drawing.Size(21, 1047);
             this.vScrollBar1.TabIndex = 34;
             // 
+            // Btn_Buscar
+            // 
+            this.Btn_Buscar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.buscar__1___1___1_1;
+            this.Btn_Buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_Buscar.Location = new System.Drawing.Point(336, 73);
+            this.Btn_Buscar.Name = "Btn_Buscar";
+            this.Btn_Buscar.Size = new System.Drawing.Size(67, 62);
+            this.Btn_Buscar.TabIndex = 22;
+            this.Btn_Buscar.UseVisualStyleBackColor = true;
+            // 
             // frm_Carrera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -228,7 +216,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frm_Carrera";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Desarrollo Carrera";
+            this.Text = "12002-Carrera";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_nominas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Reclutamiento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Capacitaciones)).EndInit();
@@ -241,8 +229,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label Lbl_Titulo;
         private System.Windows.Forms.TextBox txt_empleado;
         private System.Windows.Forms.Label Lbl_Emp;
         private System.Windows.Forms.Button Btn_Buscar;

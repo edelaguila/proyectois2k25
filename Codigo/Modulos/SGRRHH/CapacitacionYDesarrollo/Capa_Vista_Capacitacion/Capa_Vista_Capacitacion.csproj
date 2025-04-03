@@ -57,11 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="14004 - notas_capacitacion.cs">
+    <Compile Include="notas_capacitacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="14004 - notas_capacitacion.Designer.cs">
-      <DependentUpon>14004 - notas_capacitacion.cs</DependentUpon>
+    <Compile Include="notas_capacitacion.Designer.cs">
+      <DependentUpon>notas_capacitacion.cs</DependentUpon>
     </Compile>
     <Compile Include="cierre_capacitacion.cs">
       <SubType>Form</SubType>
@@ -89,8 +89,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="14004 - notas_capacitacion.resx">
-      <DependentUpon>14004 - notas_capacitacion.cs</DependentUpon>
+    <EmbeddedResource Include="notas_capacitacion.resx">
+      <DependentUpon>notas_capacitacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cierre_capacitacion.resx">
       <DependentUpon>cierre_capacitacion.cs</DependentUpon>
