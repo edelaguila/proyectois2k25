@@ -1,0 +1,183 @@
+﻿body {
+    font-family: 'Dosis', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    background-color: #f5f5f5;
+}
+
+.login-design {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.waves {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+.waves img {
+    max-width: 100%;
+    height: auto;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.login-data {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-data img {
+    width: 120px;
+    margin-bottom: 1.5rem;
+}
+
+.login-data h1 {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.input-fill {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.input-fill input {
+    width: 100%;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 2px solid #e0e0e0;
+    background: transparent;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input-fill input:focus {
+    outline: none;
+    border-color: #6c1aef;
+}
+
+.input-fill input:hover {
+    background-color: #f8f9fa;
+}
+
+.input-fill input:focus + .input-label,
+.input-fill input:not(:placeholder-shown) + .input-label {
+    transform: translateY(-1.8rem);
+    font-size: 0.85rem;
+    color: #6c1aef;
+}
+
+.input-fill .input-label {
+    position: absolute;
+    left: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-fill i {
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.login-data a {
+    display: block;
+    text-align: center;
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.login-data a:hover {
+    color: #6c1aef;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 30px;
+    background-color: #6c1aef;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-login:hover {
+    background-color: #5615c7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 26, 239, 0.3);
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.alert-danger {
+    background-color: #ffe5e5;
+    color: #ff3333;
+    border: 1px solid #ffcccc;
+}
+
+.text-danger {
+    color: #ff3333;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .login-design {
+        grid-template-columns: 1fr;
+    }
+
+    .waves {
+        display: none;
+    }
+
+    .login {
+        padding: 2rem 1rem;
+    }
+
+    .login-data {
+        padding: 0 1rem;
+    }
+}

@@ -1,0 +1,321 @@
+﻿@{
+    ViewBag.Title = "Horas Extras";
+    Layout = null;
+}
+
+<div class="overtime-section">
+    <div class="section-header">
+        <h1>Registro de Horas Extras</h1>
+        <p>Registra y consulta tus horas extras trabajadas</p>
+    </div>
+
+    <div class="overtime-form-container">
+        <form class="overtime-form">
+            <div class="form-group">
+                <label for="date">Fecha</label>
+                <input type="date" id="date" class="form-control" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="startTime">Hora Inicio</label>
+                    <input type="time" id="startTime" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="endTime">Hora Fin</label>
+                    <input type="time" id="endTime" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="reason">Motivo</label>
+                <textarea id="reason" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="supervisor">Supervisor</label>
+                <select id="supervisor" class="form-control" required>
+                    <option value="">Selecciona un supervisor</option>
+                    <option value="1">Juan Pérez</option>
+                    <option value="2">María García</option>
+                    <option value="3">Carlos López</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Registrar Horas
+                </button>
+                <button type="reset" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="overtime-summary">
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="summary-info">
+                <h3>Total Horas Extras</h3>
+                <p class="summary-value">24h</p>
+                <span class="summary-period">Este mes</span>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="summary-info">
+                <h3>Días con Extras</h3>
+                <p class="summary-value">8</p>
+                <span class="summary-period">Este mes</span>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <div class="summary-info">
+                <h3>Monto Estimado</h3>
+                <p class="summary-value">$480</p>
+                <span class="summary-period">Este mes</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="overtime-history">
+        <h2>Historial de Horas Extras</h2>
+        <div class="table-responsive">
+            <table class="overtime-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Inicio</th>
+                        <th>Fin</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>15/03/2024</td>
+                        <td>18:00</td>
+                        <td>20:00</td>
+                        <td>2h</td>
+                        <td><span class="badge badge-success">Aprobado</span></td>
+                        <td>
+                            <button class="btn-icon" title="Ver detalles">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>14/03/2024</td>
+                        <td>17:30</td>
+                        <td>19:30</td>
+                        <td>2h</td>
+                        <td><span class="badge badge-warning">Pendiente</span></td>
+                        <td>
+                            <button class="btn-icon" title="Ver detalles">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .overtime-section {
+        padding: 2rem;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    .section-header h1 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+
+    .overtime-form-container {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        font-weight: 500;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary);
+        outline: none;
+    }
+
+    .overtime-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .summary-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .summary-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        background: var(--primary-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.5rem;
+    }
+
+    .summary-info h3 {
+        font-size: 0.875rem;
+        color: var(--text-light);
+        margin: 0;
+    }
+
+    .summary-value {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text);
+        margin: 0.25rem 0;
+    }
+
+    .summary-period {
+        font-size: 0.75rem;
+        color: var(--text-light);
+    }
+
+    .overtime-history {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .overtime-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .overtime-table th,
+    .overtime-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .overtime-table th {
+        font-weight: 600;
+        color: var(--text);
+        background: var(--background);
+    }
+
+    .badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+    }
+
+    .badge-success {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .badge-warning {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .btn-icon {
+        background: none;
+        border: none;
+        color: var(--primary);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-icon:hover {
+        background: var(--secondary);
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background: var(--primary);
+        color: white;
+    }
+
+    .btn-secondary {
+        background: var(--secondary);
+        color: var(--text);
+    }
+</style>

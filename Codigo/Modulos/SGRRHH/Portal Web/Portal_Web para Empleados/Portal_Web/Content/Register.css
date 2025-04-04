@@ -1,0 +1,182 @@
+﻿body {
+    font-family: 'Dosis', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6c1aef 0%, #8a4fff 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-design {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem;
+    overflow: hidden;
+}
+
+.register {
+    padding: 3rem 2rem;
+}
+
+.register-data {
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.register-data h1 {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.register-data h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #6c1aef, #8a4fff);
+    border-radius: 2px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-fill {
+    position: relative;
+    margin-bottom: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.input-fill:hover {
+    background-color: #f0f2f5;
+}
+
+.input-fill input,
+.input-fill select {
+    width: 100%;
+    padding: 0.8rem 2.5rem;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.input-fill input:focus,
+.input-fill select:focus {
+    outline: none;
+    border-color: #6c1aef;
+    background-color: #ffffff;
+}
+
+.input-fill input:focus + .input-label,
+.input-fill input:not(:placeholder-shown) + .input-label,
+.input-fill select:focus + .input-label,
+.input-fill select:not(:placeholder-shown) + .input-label {
+    transform: translateY(-1.5rem);
+    font-size: 0.85rem;
+    color: #6c1aef;
+}
+
+.input-fill .input-label {
+    position: absolute;
+    left: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-fill i {
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c1aef;
+    font-size: 1.2rem;
+}
+
+.register-form {
+    width: 100%;
+}
+
+.register-form a {
+    display: block;
+    text-align: center;
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.register-form a:hover {
+    color: #6c1aef;
+}
+
+.btn-register {
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to right, #6c1aef, #8a4fff);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(108, 26, 239, 0.2);
+}
+
+.btn-register:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(108, 26, 239, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .register {
+        padding: 2rem 1rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .register-design {
+        margin: 1rem;
+    }
+
+    .register-data h1 {
+        font-size: 2rem;
+    }
+}
+

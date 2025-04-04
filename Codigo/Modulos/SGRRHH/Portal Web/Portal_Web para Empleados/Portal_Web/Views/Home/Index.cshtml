@@ -1,0 +1,252 @@
+﻿@{
+    ViewBag.Title = "Colchoneria Las Cobijas";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/normalize.css" />
+</head>
+<body>
+    <!-- Botón de menú móvil -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="~/img/logo.png" alt="Logo" class="brand-logo">
+                <h2>Portal Empleados</h2>
+            </div>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="user-info">
+            <div class="user-avatar">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="user-details">
+                <h3>John Doe</h3>
+                <span>Desarrollador Senior</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a href="#dashboard" data-section="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#perfil" data-section="perfil">
+                        <i class="fas fa-user"></i>
+                        <span>Mi Perfil</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#asistencia" data-section="asistencia">
+                        <i class="fas fa-clock"></i>
+                        <span>Asistencia</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#vacaciones" data-section="vacaciones">
+                        <i class="fas fa-calendar"></i>
+                        <span>Vacaciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#documentos" data-section="documentos">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Documentos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#nomina" data-section="nomina">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Nómina</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" data-section="quejas">
+                        <i class="fas fa-comment-alt"></i>
+                        <span>Quejas o Reclamos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" data-section="horas-extras">
+                        <i class="fas fa-business-time"></i>
+                        <span>Horas Extras</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="main-content" id="mainContent">
+        <div id="contentArea">
+            <header class="top-bar">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar...">
+                    </div>
+                </div>
+                <div class="top-bar-right">
+                    <div class="notifications">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                    </div>
+                    <div class="user-menu">
+                        <div class="dropdown-toggle">
+                            <div class="user-avatar-small">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span>Javier</span>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="#" data-section="perfil">
+                                <i class="fas fa-user"></i> Mi Perfil
+                            </a>
+                            <a href="#" data-section="documentos">
+                                <i class="fas fa-file-alt"></i> Mis Documentos
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="@Url.Action("Logout", "Home")">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard">
+                <div class="welcome-section">
+                    <h1>Bienvenido, John</h1>
+                    <p>Aquí está el resumen de tu actividad</p>
+                </div>
+
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Horas Trabajadas</h3>
+                            <p class="stat-value">164h</p>
+                            <span class="stat-period">Este mes</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Días Disponibles</h3>
+                            <p class="stat-value">15</p>
+                            <span class="stat-period">Vacaciones</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Documentos</h3>
+                            <p class="stat-value">3</p>
+                            <span class="stat-period">Pendientes</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Proyectos</h3>
+                            <p class="stat-value">4</p>
+                            <span class="stat-period">Activos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="grid-item attendance-chart">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Registro de Asistencia</h2>
+                                <div class="card-actions">
+                                    <button class="btn-icon">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-item upcoming-events">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Próximos Eventos</h2>
+                                <div class="card-actions">
+                                    <button class="btn-icon">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="events-list">
+                                    <li class="event-item">
+                                        <div class="event-date">
+                                            <span class="day">15</span>
+                                            <span class="month">MAR</span>
+                                        </div>
+                                        <div class="event-details">
+                                            <h4>Reunión de Equipo</h4>
+                                            <p>10:00 AM - Sala de Conferencias</p>
+                                        </div>
+                                    </li>
+                                    <li class="event-item">
+                                        <div class="event-date">
+                                            <span class="day">18</span>
+                                            <span class="month">MAR</span>
+                                        </div>
+                                        <div class="event-details">
+                                            <h4>Revisión de Proyecto</h4>
+                                            <p>2:30 PM - Sala Virtual</p>
+            </div>
+                                    </li>
+                                </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="~/Content/js/sidebar.js"></script>
+    <script src="~/Content/js/index.js"></script>
+</body>
+</html>
