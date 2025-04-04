@@ -45,17 +45,27 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MVC_AmmyCatun\MVC_AmmyCatun\Capa_Vista_AmmyCatun\bin\Debug\Capa_Vista_AmmyCatun.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Comisiones">
+      <HintPath>..\..\Comercial2_5\MVC_Comisiones\Capa_Vista_Comisiones\bin\Debug\Capa_Vista_Comisiones.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Compras">
       <HintPath>..\..\Comercial2_5\MVC_Compras\Capa_Vista_Compras\bin\Debug\Capa_Vista_Compras.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_CompraVenta">
       <HintPath>..\..\Comercial2_5\Menu_compraVenta\Capa_Vista_CompraVenta\bin\Debug\Capa_Vista_CompraVenta.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Cotizacion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Comercial2_5\MVC_Cotizacion\Capa_Vista_Cotizacion\bin\Debug\Capa_Vista_Cotizacion.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_CPP">
       <HintPath>..\..\Cuentas Corrientes2_5\CuentasPorPagar\Capa_Vista_CPP\bin\Debug\Capa_Vista_CPP.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Cuentas_Corrientes">
       <HintPath>..\..\Cuentas Corrientes2_5\Capa_Vista_Cuentas_Corrientes\bin\Debug\Capa_Vista_Cuentas_Corrientes.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Factura">
+      <HintPath>..\..\Comercial2_5\MVC_Factura\Capa_Vista_Factura\bin\Debug\Capa_Vista_Factura.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_JDSC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -70,6 +80,9 @@
     </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Pedidos">
+      <HintPath>..\..\Comercial2_5\MVC_Pedidos\Capa_Vista_Pedidos\bin\Debug\Capa_Vista_Pedidos.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />

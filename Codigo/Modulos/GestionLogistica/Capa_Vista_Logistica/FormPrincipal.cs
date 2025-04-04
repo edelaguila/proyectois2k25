@@ -387,13 +387,13 @@ namespace Capa_Vista_Logistica
             ocultaSubMenu();
         }
 
-        private void Btn_ComProcC1_Click_1(object sender, EventArgs e)
+        private void Btn_ComProcC1_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_Compras.Frm_Compras>();
             ocultaSubMenu();
         }
 
-        private void Btn_ComProcV1_Click_1(object sender, EventArgs e)
+        private void Btn_ComProcV1_Click(object sender, EventArgs e)
         {
             ocultaSubMenu();
         }
@@ -413,6 +413,29 @@ namespace Capa_Vista_Logistica
         private void Btn_Cuentas_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Caja>();
+            ocultaSubMenu();
+        }
+
+        private void Btn_ComProc3_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Capa_Vista_Comisiones.Frm_Comisiones>();
+            ocultaSubMenu();
+        }
+
+        private void Btn_ComProc4_Click(object sender, EventArgs e)
+        {
+            ocultaSubMenu();
+        }
+
+        private void Btn_ComProc5_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Capa_Vista_Factura.Frm_Factura>();
+            ocultaSubMenu();
+        }
+
+        private void Btn_ComProc6_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Capa_Vista_Pedidos.Frm_Pedidos>();
             ocultaSubMenu();
         }
 

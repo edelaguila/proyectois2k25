@@ -76,11 +76,9 @@ namespace Capa_Vista_Pedidos
             this.Gpb_Encabezado.Controls.Add(this.Lbl_Vendedor);
             this.Gpb_Encabezado.Controls.Add(this.Lbl_ID);
             this.Gpb_Encabezado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Encabezado.Location = new System.Drawing.Point(29, 47);
-            this.Gpb_Encabezado.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_Encabezado.Location = new System.Drawing.Point(22, 38);
             this.Gpb_Encabezado.Name = "Gpb_Encabezado";
-            this.Gpb_Encabezado.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_Encabezado.Size = new System.Drawing.Size(980, 146);
+            this.Gpb_Encabezado.Size = new System.Drawing.Size(735, 119);
             this.Gpb_Encabezado.TabIndex = 10;
             this.Gpb_Encabezado.TabStop = false;
             this.Gpb_Encabezado.Text = "Encabezado";
@@ -88,28 +86,25 @@ namespace Capa_Vista_Pedidos
             // Txt_IdEncabezado
             // 
             this.Txt_IdEncabezado.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_IdEncabezado.Location = new System.Drawing.Point(137, 34);
-            this.Txt_IdEncabezado.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_IdEncabezado.Location = new System.Drawing.Point(103, 28);
             this.Txt_IdEncabezado.Name = "Txt_IdEncabezado";
-            this.Txt_IdEncabezado.Size = new System.Drawing.Size(160, 26);
+            this.Txt_IdEncabezado.Size = new System.Drawing.Size(121, 22);
             this.Txt_IdEncabezado.TabIndex = 9;
             // 
             // Btn_cancelar
             // 
-            this.Btn_cancelar.Location = new System.Drawing.Point(817, 89);
-            this.Btn_cancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_cancelar.Location = new System.Drawing.Point(613, 72);
             this.Btn_cancelar.Name = "Btn_cancelar";
-            this.Btn_cancelar.Size = new System.Drawing.Size(100, 28);
+            this.Btn_cancelar.Size = new System.Drawing.Size(75, 23);
             this.Btn_cancelar.TabIndex = 8;
             this.Btn_cancelar.Text = "Cancelar";
             this.Btn_cancelar.UseVisualStyleBackColor = true;
             // 
             // Btn_insertar
             // 
-            this.Btn_insertar.Location = new System.Drawing.Point(817, 38);
-            this.Btn_insertar.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_insertar.Location = new System.Drawing.Point(613, 31);
             this.Btn_insertar.Name = "Btn_insertar";
-            this.Btn_insertar.Size = new System.Drawing.Size(100, 28);
+            this.Btn_insertar.Size = new System.Drawing.Size(75, 23);
             this.Btn_insertar.TabIndex = 7;
             this.Btn_insertar.Text = "Insertar";
             this.Btn_insertar.UseVisualStyleBackColor = true;
@@ -118,69 +113,62 @@ namespace Capa_Vista_Pedidos
             // Dtp_fecha
             // 
             this.Dtp_fecha.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dtp_fecha.Location = new System.Drawing.Point(447, 74);
-            this.Dtp_fecha.Margin = new System.Windows.Forms.Padding(4);
+            this.Dtp_fecha.Location = new System.Drawing.Point(335, 60);
             this.Dtp_fecha.Name = "Dtp_fecha";
-            this.Dtp_fecha.Size = new System.Drawing.Size(265, 26);
+            this.Dtp_fecha.Size = new System.Drawing.Size(200, 22);
             this.Dtp_fecha.TabIndex = 6;
             // 
             // Cbo_cliente
             // 
             this.Cbo_cliente.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_cliente.FormattingEnabled = true;
-            this.Cbo_cliente.Location = new System.Drawing.Point(137, 112);
-            this.Cbo_cliente.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_cliente.Location = new System.Drawing.Point(103, 91);
             this.Cbo_cliente.Name = "Cbo_cliente";
-            this.Cbo_cliente.Size = new System.Drawing.Size(160, 27);
+            this.Cbo_cliente.Size = new System.Drawing.Size(121, 23);
             this.Cbo_cliente.TabIndex = 5;
             // 
             // Cbo_vendedor
             // 
             this.Cbo_vendedor.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_vendedor.FormattingEnabled = true;
-            this.Cbo_vendedor.Location = new System.Drawing.Point(137, 73);
-            this.Cbo_vendedor.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_vendedor.Location = new System.Drawing.Point(103, 59);
             this.Cbo_vendedor.Name = "Cbo_vendedor";
-            this.Cbo_vendedor.Size = new System.Drawing.Size(160, 27);
+            this.Cbo_vendedor.Size = new System.Drawing.Size(121, 23);
             this.Cbo_vendedor.TabIndex = 4;
             // 
             // Lbl_FechaVencimiento
             // 
             this.Lbl_FechaVencimiento.AutoSize = true;
-            this.Lbl_FechaVencimiento.Location = new System.Drawing.Point(493, 38);
-            this.Lbl_FechaVencimiento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_FechaVencimiento.Location = new System.Drawing.Point(370, 31);
             this.Lbl_FechaVencimiento.Name = "Lbl_FechaVencimiento";
-            this.Lbl_FechaVencimiento.Size = new System.Drawing.Size(159, 22);
+            this.Lbl_FechaVencimiento.Size = new System.Drawing.Size(123, 19);
             this.Lbl_FechaVencimiento.TabIndex = 3;
             this.Lbl_FechaVencimiento.Text = "Fecha Vencimiento";
             // 
             // Lbl_Clientes
             // 
             this.Lbl_Clientes.AutoSize = true;
-            this.Lbl_Clientes.Location = new System.Drawing.Point(39, 116);
-            this.Lbl_Clientes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_Clientes.Location = new System.Drawing.Point(29, 94);
             this.Lbl_Clientes.Name = "Lbl_Clientes";
-            this.Lbl_Clientes.Size = new System.Drawing.Size(67, 22);
+            this.Lbl_Clientes.Size = new System.Drawing.Size(51, 19);
             this.Lbl_Clientes.TabIndex = 2;
             this.Lbl_Clientes.Text = "Cliente";
             // 
             // Lbl_Vendedor
             // 
             this.Lbl_Vendedor.AutoSize = true;
-            this.Lbl_Vendedor.Location = new System.Drawing.Point(39, 78);
-            this.Lbl_Vendedor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_Vendedor.Location = new System.Drawing.Point(29, 63);
             this.Lbl_Vendedor.Name = "Lbl_Vendedor";
-            this.Lbl_Vendedor.Size = new System.Drawing.Size(85, 22);
+            this.Lbl_Vendedor.Size = new System.Drawing.Size(68, 19);
             this.Lbl_Vendedor.TabIndex = 1;
             this.Lbl_Vendedor.Text = "Vendedor";
             // 
             // Lbl_ID
             // 
             this.Lbl_ID.AutoSize = true;
-            this.Lbl_ID.Location = new System.Drawing.Point(47, 35);
-            this.Lbl_ID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_ID.Location = new System.Drawing.Point(35, 28);
             this.Lbl_ID.Name = "Lbl_ID";
-            this.Lbl_ID.Size = new System.Drawing.Size(30, 22);
+            this.Lbl_ID.Size = new System.Drawing.Size(25, 19);
             this.Lbl_ID.TabIndex = 0;
             this.Lbl_ID.Text = "ID";
             // 
@@ -202,31 +190,27 @@ namespace Capa_Vista_Pedidos
             this.Gpb_Detalle.Controls.Add(this.label6);
             this.Gpb_Detalle.Controls.Add(this.Lbl_subtot);
             this.Gpb_Detalle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Detalle.Location = new System.Drawing.Point(29, 201);
-            this.Gpb_Detalle.Margin = new System.Windows.Forms.Padding(4);
+            this.Gpb_Detalle.Location = new System.Drawing.Point(22, 163);
             this.Gpb_Detalle.Name = "Gpb_Detalle";
-            this.Gpb_Detalle.Padding = new System.Windows.Forms.Padding(4);
-            this.Gpb_Detalle.Size = new System.Drawing.Size(980, 209);
+            this.Gpb_Detalle.Size = new System.Drawing.Size(735, 170);
             this.Gpb_Detalle.TabIndex = 9;
             this.Gpb_Detalle.TabStop = false;
             this.Gpb_Detalle.Text = "Detalle";
             // 
             // Btn_insertarD
             // 
-            this.Btn_insertarD.Location = new System.Drawing.Point(817, 57);
-            this.Btn_insertarD.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_insertarD.Location = new System.Drawing.Point(613, 46);
             this.Btn_insertarD.Name = "Btn_insertarD";
-            this.Btn_insertarD.Size = new System.Drawing.Size(100, 28);
+            this.Btn_insertarD.Size = new System.Drawing.Size(75, 23);
             this.Btn_insertarD.TabIndex = 26;
             this.Btn_insertarD.Text = "Insertar";
             this.Btn_insertarD.UseVisualStyleBackColor = true;
             // 
             // Btn_cancelarD
             // 
-            this.Btn_cancelarD.Location = new System.Drawing.Point(817, 129);
-            this.Btn_cancelarD.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_cancelarD.Location = new System.Drawing.Point(613, 105);
             this.Btn_cancelarD.Name = "Btn_cancelarD";
-            this.Btn_cancelarD.Size = new System.Drawing.Size(100, 28);
+            this.Btn_cancelarD.Size = new System.Drawing.Size(75, 23);
             this.Btn_cancelarD.TabIndex = 27;
             this.Btn_cancelarD.Text = "Cancelar";
             this.Btn_cancelarD.UseVisualStyleBackColor = true;
@@ -235,38 +219,34 @@ namespace Capa_Vista_Pedidos
             // 
             this.Cbo_encabezado.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_encabezado.FormattingEnabled = true;
-            this.Cbo_encabezado.Location = new System.Drawing.Point(187, 96);
-            this.Cbo_encabezado.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_encabezado.Location = new System.Drawing.Point(140, 78);
             this.Cbo_encabezado.Name = "Cbo_encabezado";
-            this.Cbo_encabezado.Size = new System.Drawing.Size(160, 27);
+            this.Cbo_encabezado.Size = new System.Drawing.Size(121, 23);
             this.Cbo_encabezado.TabIndex = 25;
             // 
             // Lbl_IdEncab
             // 
             this.Lbl_IdEncab.AutoSize = true;
-            this.Lbl_IdEncab.Location = new System.Drawing.Point(47, 101);
-            this.Lbl_IdEncab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_IdEncab.Location = new System.Drawing.Point(35, 82);
             this.Lbl_IdEncab.Name = "Lbl_IdEncab";
-            this.Lbl_IdEncab.Size = new System.Drawing.Size(130, 22);
+            this.Lbl_IdEncab.Size = new System.Drawing.Size(103, 19);
             this.Lbl_IdEncab.TabIndex = 24;
             this.Lbl_IdEncab.Text = "ID Encabezado";
             // 
             // Txt_IDdetalle
             // 
             this.Txt_IDdetalle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_IDdetalle.Location = new System.Drawing.Point(187, 53);
-            this.Txt_IDdetalle.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_IDdetalle.Location = new System.Drawing.Point(140, 43);
             this.Txt_IDdetalle.Name = "Txt_IDdetalle";
-            this.Txt_IDdetalle.Size = new System.Drawing.Size(160, 26);
+            this.Txt_IDdetalle.Size = new System.Drawing.Size(121, 22);
             this.Txt_IDdetalle.TabIndex = 23;
             // 
             // Lbl_IdDet
             // 
             this.Lbl_IdDet.AutoSize = true;
-            this.Lbl_IdDet.Location = new System.Drawing.Point(47, 57);
-            this.Lbl_IdDet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_IdDet.Location = new System.Drawing.Point(35, 46);
             this.Lbl_IdDet.Name = "Lbl_IdDet";
-            this.Lbl_IdDet.Size = new System.Drawing.Size(30, 22);
+            this.Lbl_IdDet.Size = new System.Drawing.Size(25, 19);
             this.Lbl_IdDet.TabIndex = 22;
             this.Lbl_IdDet.Text = "ID";
             // 
@@ -274,85 +254,76 @@ namespace Capa_Vista_Pedidos
             // 
             this.Cbo_Cotizacion.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_Cotizacion.FormattingEnabled = true;
-            this.Cbo_Cotizacion.Location = new System.Drawing.Point(184, 137);
-            this.Cbo_Cotizacion.Margin = new System.Windows.Forms.Padding(4);
+            this.Cbo_Cotizacion.Location = new System.Drawing.Point(138, 111);
             this.Cbo_Cotizacion.Name = "Cbo_Cotizacion";
-            this.Cbo_Cotizacion.Size = new System.Drawing.Size(160, 27);
+            this.Cbo_Cotizacion.Size = new System.Drawing.Size(121, 23);
             this.Cbo_Cotizacion.TabIndex = 20;
             // 
             // Lbl_IdCoti
             // 
             this.Lbl_IdCoti.AutoSize = true;
-            this.Lbl_IdCoti.Location = new System.Drawing.Point(47, 138);
-            this.Lbl_IdCoti.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_IdCoti.Location = new System.Drawing.Point(35, 112);
             this.Lbl_IdCoti.Name = "Lbl_IdCoti";
-            this.Lbl_IdCoti.Size = new System.Drawing.Size(120, 22);
+            this.Lbl_IdCoti.Size = new System.Drawing.Size(93, 19);
             this.Lbl_IdCoti.TabIndex = 19;
             this.Lbl_IdCoti.Text = "ID Cotización";
             // 
             // Lbl_precioTot
             // 
             this.Lbl_precioTot.AutoSize = true;
-            this.Lbl_precioTot.Location = new System.Drawing.Point(452, 132);
-            this.Lbl_precioTot.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_precioTot.Location = new System.Drawing.Point(339, 107);
             this.Lbl_precioTot.Name = "Lbl_precioTot";
-            this.Lbl_precioTot.Size = new System.Drawing.Size(108, 22);
+            this.Lbl_precioTot.Size = new System.Drawing.Size(82, 19);
             this.Lbl_precioTot.TabIndex = 21;
             this.Lbl_precioTot.Text = "Precio Total";
             // 
             // Txt_precioTotal
             // 
             this.Txt_precioTotal.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_precioTotal.Location = new System.Drawing.Point(577, 132);
-            this.Txt_precioTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_precioTotal.Location = new System.Drawing.Point(433, 107);
             this.Txt_precioTotal.Name = "Txt_precioTotal";
-            this.Txt_precioTotal.Size = new System.Drawing.Size(160, 26);
+            this.Txt_precioTotal.Size = new System.Drawing.Size(121, 22);
             this.Txt_precioTotal.TabIndex = 20;
             // 
             // Txt_subtotal
             // 
             this.Txt_subtotal.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_subtotal.Location = new System.Drawing.Point(577, 48);
-            this.Txt_subtotal.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_subtotal.Location = new System.Drawing.Point(433, 39);
             this.Txt_subtotal.Name = "Txt_subtotal";
-            this.Txt_subtotal.Size = new System.Drawing.Size(160, 26);
+            this.Txt_subtotal.Size = new System.Drawing.Size(121, 22);
             this.Txt_subtotal.TabIndex = 19;
             // 
             // Lbl_IVA
             // 
             this.Lbl_IVA.AutoSize = true;
-            this.Lbl_IVA.Location = new System.Drawing.Point(451, 96);
-            this.Lbl_IVA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_IVA.Location = new System.Drawing.Point(338, 78);
             this.Lbl_IVA.Name = "Lbl_IVA";
-            this.Lbl_IVA.Size = new System.Drawing.Size(40, 22);
+            this.Lbl_IVA.Size = new System.Drawing.Size(34, 19);
             this.Lbl_IVA.TabIndex = 16;
             this.Lbl_IVA.Text = "IVA";
             // 
             // Txt_IVA
             // 
             this.Txt_IVA.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_IVA.Location = new System.Drawing.Point(577, 87);
-            this.Txt_IVA.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_IVA.Location = new System.Drawing.Point(433, 71);
             this.Txt_IVA.Name = "Txt_IVA";
-            this.Txt_IVA.Size = new System.Drawing.Size(160, 26);
+            this.Txt_IVA.Size = new System.Drawing.Size(121, 22);
             this.Txt_IVA.TabIndex = 10;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(39, 98);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(29, 80);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 22);
+            this.label6.Size = new System.Drawing.Size(0, 19);
             this.label6.TabIndex = 10;
             // 
             // Lbl_subtot
             // 
             this.Lbl_subtot.AutoSize = true;
-            this.Lbl_subtot.Location = new System.Drawing.Point(451, 57);
-            this.Lbl_subtot.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_subtot.Location = new System.Drawing.Point(338, 46);
             this.Lbl_subtot.Name = "Lbl_subtot";
-            this.Lbl_subtot.Size = new System.Drawing.Size(75, 22);
+            this.Lbl_subtot.Size = new System.Drawing.Size(59, 19);
             this.Lbl_subtot.TabIndex = 9;
             this.Lbl_subtot.Text = "Subtotal";
             // 
@@ -360,33 +331,32 @@ namespace Capa_Vista_Pedidos
             // 
             this.Lbl_titulo.AutoSize = true;
             this.Lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_titulo.Location = new System.Drawing.Point(480, 18);
-            this.Lbl_titulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_titulo.Location = new System.Drawing.Point(360, 15);
             this.Lbl_titulo.Name = "Lbl_titulo";
-            this.Lbl_titulo.Size = new System.Drawing.Size(90, 25);
+            this.Lbl_titulo.Size = new System.Drawing.Size(73, 20);
             this.Lbl_titulo.TabIndex = 8;
             this.Lbl_titulo.Text = "Pedidos";
             // 
             // Dgv_pedido
             // 
             this.Dgv_pedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_pedido.Location = new System.Drawing.Point(29, 429);
-            this.Dgv_pedido.Margin = new System.Windows.Forms.Padding(4);
+            this.Dgv_pedido.Location = new System.Drawing.Point(22, 349);
             this.Dgv_pedido.Name = "Dgv_pedido";
             this.Dgv_pedido.RowHeadersWidth = 51;
-            this.Dgv_pedido.Size = new System.Drawing.Size(980, 162);
+            this.Dgv_pedido.Size = new System.Drawing.Size(735, 132);
             this.Dgv_pedido.TabIndex = 7;
             // 
             // Frm_Pedidos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightYellow;
-            this.ClientSize = new System.Drawing.Size(1092, 613);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
+            this.ClientSize = new System.Drawing.Size(819, 498);
             this.Controls.Add(this.Gpb_Encabezado);
             this.Controls.Add(this.Gpb_Detalle);
             this.Controls.Add(this.Lbl_titulo);
             this.Controls.Add(this.Dgv_pedido);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Frm_Pedidos";
             this.Text = "Frm_Pedidos";
             this.Load += new System.EventHandler(this.Frm_Pedidos_Load);
