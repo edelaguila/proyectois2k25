@@ -51,6 +51,9 @@
     <Reference Include="Capa_Vista_CompraVenta">
       <HintPath>..\..\Comercial2_5\Menu_compraVenta\Capa_Vista_CompraVenta\bin\Debug\Capa_Vista_CompraVenta.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_CPP">
+      <HintPath>..\..\Cuentas Corrientes2_5\CuentasPorPagar\Capa_Vista_CPP\bin\Debug\Capa_Vista_CPP.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Cuentas_Corrientes">
       <HintPath>..\..\Cuentas Corrientes2_5\Capa_Vista_Cuentas_Corrientes\bin\Debug\Capa_Vista_Cuentas_Corrientes.dll</HintPath>
     </Reference>
