@@ -1,0 +1,77 @@
+﻿@model Portal_Web.Models.Users
+@{
+    Layout = null;
+}
+@{
+    ViewBag.Tittle = "Registro de Usuario";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+          integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="~/Content/normalize.css" />
+    <link rel="stylesheet" href="~/Content/Register.css" />
+    <title>Registro de Usuario</title>
+</head>
+<body>
+    <div class="register-design">
+        <div class="register">
+            <div class="register-data">
+                <h1>Registro de Usuario</h1>
+                @using (Html.BeginForm("Register", "Auth", FormMethod.Post, new { @class = "register-form" }))
+                {
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-user"></i>
+                                @Html.TextBoxFor(m => m.UserName, new { placeholder = " " })
+                                @Html.LabelFor(m => m.UserName, "Nombre de Usuario", new { @class = "input-label" })
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-envelope"></i>
+                                @Html.TextBoxFor(m => m.Email, new { placeholder = " " })
+                                @Html.LabelFor(m => m.Email, "Correo Electrónico", new { @class = "input-label" })
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-lock"></i>
+                                @Html.PasswordFor(m => m.PasswordHash, new { placeholder = " " })
+                                @Html.LabelFor(m => m.PasswordHash, "Contraseña", new { @class = "input-label" })
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-user-tag"></i>
+                                <select name="RoleId" class="form-control">
+                                    @foreach (var rol in ViewBag.Roles)
+                                    {
+                                        <option value="@rol.RoleId">@rol.RoleName</option>
+                                    }
+                                </select>
+                                <label class="input-label">Rol</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-register">Registrarse</button>
+                    <a href="@Url.Action("Login", "Auth")">¿Ya tienes una cuenta? Inicia sesión</a>
+                }
+            </div>
+        </div>
+        <div class="waves"></div>
+    </div>
+</body>
+</html>
