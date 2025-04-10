@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Capa_Modelo_Seguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Componentes\Seguridad\Capa_Modelo_Seguridad\bin\Debug\Capa_Modelo_Seguridad.dll</HintPath>
+      <HintPath>..\..\..\..\Componentes\Seguridad2_5\Capa_Controlador_Seguridad\bin\Debug\Capa_Modelo_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

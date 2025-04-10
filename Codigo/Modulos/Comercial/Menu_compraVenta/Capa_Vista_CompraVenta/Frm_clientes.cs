@@ -26,5 +26,10 @@ namespace Capa_Vista_CompraVenta
             navegador1.AsignarAyuda("1");
             navegador1.AsignarNombreForm("Mantenimiento clientes");
         }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
