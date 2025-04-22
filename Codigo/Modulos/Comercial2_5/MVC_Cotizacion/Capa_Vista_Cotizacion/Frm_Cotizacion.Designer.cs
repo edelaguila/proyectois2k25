@@ -70,10 +70,10 @@ namespace Capa_Vista_Cotizacion
             // Lbl_titulo
             // 
             this.Lbl_titulo.AutoSize = true;
-            this.Lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_titulo.Location = new System.Drawing.Point(355, 16);
+            this.Lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_titulo.Location = new System.Drawing.Point(301, 8);
             this.Lbl_titulo.Name = "Lbl_titulo";
-            this.Lbl_titulo.Size = new System.Drawing.Size(93, 20);
+            this.Lbl_titulo.Size = new System.Drawing.Size(135, 29);
             this.Lbl_titulo.TabIndex = 27;
             this.Lbl_titulo.Text = "Cotizacion";
             // 
@@ -397,7 +397,7 @@ namespace Capa_Vista_Cotizacion
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.Gpb_Encabezado);
             this.Controls.Add(this.label14);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_Cotizacion";
             this.Text = "Frm_Cotizacion";
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_cotizacion)).EndInit();

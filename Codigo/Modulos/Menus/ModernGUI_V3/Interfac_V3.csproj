@@ -61,6 +61,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Contabilidad\Capa_Vista_Contabilidad\bin\Debug\Capa_Vista_Contabilidad.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Cotizacion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Comercial2_5\MVC_Cotizacion\Capa_Vista_Cotizacion\bin\Debug\Capa_Vista_Cotizacion.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Cuentas_Corrientes">
       <HintPath>..\..\Cuentas Corrientes2_5\Capa_Vista_Cuentas_Corrientes\bin\Debug\Capa_Vista_Cuentas_Corrientes.dll</HintPath>
     </Reference>

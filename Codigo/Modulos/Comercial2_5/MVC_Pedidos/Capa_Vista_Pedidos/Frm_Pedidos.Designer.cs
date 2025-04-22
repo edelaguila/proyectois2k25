@@ -330,10 +330,10 @@ namespace Capa_Vista_Pedidos
             // Lbl_titulo
             // 
             this.Lbl_titulo.AutoSize = true;
-            this.Lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_titulo.Location = new System.Drawing.Point(360, 15);
+            this.Lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_titulo.Location = new System.Drawing.Point(309, 9);
             this.Lbl_titulo.Name = "Lbl_titulo";
-            this.Lbl_titulo.Size = new System.Drawing.Size(73, 20);
+            this.Lbl_titulo.Size = new System.Drawing.Size(110, 29);
             this.Lbl_titulo.TabIndex = 8;
             this.Lbl_titulo.Text = "Pedidos";
             // 
@@ -356,7 +356,7 @@ namespace Capa_Vista_Pedidos
             this.Controls.Add(this.Gpb_Detalle);
             this.Controls.Add(this.Lbl_titulo);
             this.Controls.Add(this.Dgv_pedido);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_Pedidos";
             this.Text = "Frm_Pedidos";
             this.Load += new System.EventHandler(this.Frm_Pedidos_Load);

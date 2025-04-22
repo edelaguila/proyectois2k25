@@ -30,9 +30,11 @@ namespace Capa_Vista_Comisiones
         private void InitializeComponent()
         {
             this.Gpb_ayuda = new System.Windows.Forms.GroupBox();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Cbo_vendedor = new System.Windows.Forms.ComboBox();
             this.Lbl_vendedor = new System.Windows.Forms.Label();
             this.Gpb_limpiar = new System.Windows.Forms.GroupBox();
+            this.Btn_limpiar = new System.Windows.Forms.Button();
             this.Txt_porcentaje = new System.Windows.Forms.TextBox();
             this.Lbl_comision = new System.Windows.Forms.Label();
             this.Txt_nombre = new System.Windows.Forms.TextBox();
@@ -57,9 +59,8 @@ namespace Capa_Vista_Comisiones
             this.Lbl_total = new System.Windows.Forms.Label();
             this.Gpb_reporte = new System.Windows.Forms.GroupBox();
             this.Btn_reporte = new System.Windows.Forms.Button();
-            this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_buscar = new System.Windows.Forms.Button();
-            this.Btn_limpiar = new System.Windows.Forms.Button();
+            this.Lbl_titulo = new System.Windows.Forms.Label();
             this.Gpb_ayuda.SuspendLayout();
             this.Gpb_limpiar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_ventas)).BeginInit();
@@ -72,21 +73,33 @@ namespace Capa_Vista_Comisiones
             // 
             this.Gpb_ayuda.Controls.Add(this.Btn_ayuda);
             this.Gpb_ayuda.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_ayuda.Location = new System.Drawing.Point(774, 20);
-            this.Gpb_ayuda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Gpb_ayuda.Location = new System.Drawing.Point(774, 55);
+            this.Gpb_ayuda.Margin = new System.Windows.Forms.Padding(2);
             this.Gpb_ayuda.Name = "Gpb_ayuda";
-            this.Gpb_ayuda.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Gpb_ayuda.Padding = new System.Windows.Forms.Padding(2);
             this.Gpb_ayuda.Size = new System.Drawing.Size(123, 94);
             this.Gpb_ayuda.TabIndex = 70;
             this.Gpb_ayuda.TabStop = false;
             this.Gpb_ayuda.Text = "Ayudas:";
             // 
+            // Btn_ayuda
+            // 
+            this.Btn_ayuda.FlatAppearance.BorderSize = 0;
+            this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_ayuda.Image = global::Capa_Vista_Comisiones.Properties.Resources.preguntas1;
+            this.Btn_ayuda.Location = new System.Drawing.Point(35, 24);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(54, 55);
+            this.Btn_ayuda.TabIndex = 53;
+            this.Btn_ayuda.UseVisualStyleBackColor = true;
+            // 
             // Cbo_vendedor
             // 
             this.Cbo_vendedor.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_vendedor.FormattingEnabled = true;
-            this.Cbo_vendedor.Location = new System.Drawing.Point(121, 205);
-            this.Cbo_vendedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cbo_vendedor.Location = new System.Drawing.Point(121, 240);
+            this.Cbo_vendedor.Margin = new System.Windows.Forms.Padding(2);
             this.Cbo_vendedor.Name = "Cbo_vendedor";
             this.Cbo_vendedor.Size = new System.Drawing.Size(214, 27);
             this.Cbo_vendedor.TabIndex = 69;
@@ -95,7 +108,7 @@ namespace Capa_Vista_Comisiones
             // 
             this.Lbl_vendedor.AutoSize = true;
             this.Lbl_vendedor.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_vendedor.Location = new System.Drawing.Point(48, 205);
+            this.Lbl_vendedor.Location = new System.Drawing.Point(48, 240);
             this.Lbl_vendedor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lbl_vendedor.Name = "Lbl_vendedor";
             this.Lbl_vendedor.Size = new System.Drawing.Size(71, 19);
@@ -107,21 +120,33 @@ namespace Capa_Vista_Comisiones
             // 
             this.Gpb_limpiar.Controls.Add(this.Btn_limpiar);
             this.Gpb_limpiar.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_limpiar.Location = new System.Drawing.Point(774, 144);
-            this.Gpb_limpiar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Gpb_limpiar.Location = new System.Drawing.Point(774, 179);
+            this.Gpb_limpiar.Margin = new System.Windows.Forms.Padding(2);
             this.Gpb_limpiar.Name = "Gpb_limpiar";
-            this.Gpb_limpiar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Gpb_limpiar.Padding = new System.Windows.Forms.Padding(2);
             this.Gpb_limpiar.Size = new System.Drawing.Size(123, 94);
             this.Gpb_limpiar.TabIndex = 66;
             this.Gpb_limpiar.TabStop = false;
             this.Gpb_limpiar.Text = "Limpiar campos:";
             // 
+            // Btn_limpiar
+            // 
+            this.Btn_limpiar.FlatAppearance.BorderSize = 0;
+            this.Btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_limpiar.Image = global::Capa_Vista_Comisiones.Properties.Resources.cancelar1;
+            this.Btn_limpiar.Location = new System.Drawing.Point(35, 24);
+            this.Btn_limpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_limpiar.Name = "Btn_limpiar";
+            this.Btn_limpiar.Size = new System.Drawing.Size(54, 55);
+            this.Btn_limpiar.TabIndex = 53;
+            this.Btn_limpiar.UseVisualStyleBackColor = true;
+            // 
             // Txt_porcentaje
             // 
             this.Txt_porcentaje.Enabled = false;
             this.Txt_porcentaje.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_porcentaje.Location = new System.Drawing.Point(837, 250);
-            this.Txt_porcentaje.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_porcentaje.Location = new System.Drawing.Point(837, 285);
+            this.Txt_porcentaje.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_porcentaje.Name = "Txt_porcentaje";
             this.Txt_porcentaje.Size = new System.Drawing.Size(61, 26);
             this.Txt_porcentaje.TabIndex = 65;
@@ -130,7 +155,7 @@ namespace Capa_Vista_Comisiones
             // 
             this.Lbl_comision.AutoSize = true;
             this.Lbl_comision.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_comision.Location = new System.Drawing.Point(697, 257);
+            this.Lbl_comision.Location = new System.Drawing.Point(697, 292);
             this.Lbl_comision.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lbl_comision.Name = "Lbl_comision";
             this.Lbl_comision.Size = new System.Drawing.Size(138, 19);
@@ -141,8 +166,8 @@ namespace Capa_Vista_Comisiones
             // 
             this.Txt_nombre.Enabled = false;
             this.Txt_nombre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_nombre.Location = new System.Drawing.Point(46, 243);
-            this.Txt_nombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_nombre.Location = new System.Drawing.Point(46, 278);
+            this.Txt_nombre.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_nombre.Name = "Txt_nombre";
             this.Txt_nombre.Size = new System.Drawing.Size(288, 26);
             this.Txt_nombre.TabIndex = 62;
@@ -150,8 +175,8 @@ namespace Capa_Vista_Comisiones
             // Dgv_ventas
             // 
             this.Dgv_ventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_ventas.Location = new System.Drawing.Point(46, 280);
-            this.Dgv_ventas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Dgv_ventas.Location = new System.Drawing.Point(46, 315);
+            this.Dgv_ventas.Margin = new System.Windows.Forms.Padding(2);
             this.Dgv_ventas.Name = "Dgv_ventas";
             this.Dgv_ventas.RowHeadersWidth = 51;
             this.Dgv_ventas.RowTemplate.Height = 24;
@@ -172,10 +197,10 @@ namespace Capa_Vista_Comisiones
             this.Gpb_ventas.Controls.Add(this.Dtp_fecha_inicio);
             this.Gpb_ventas.Controls.Add(this.Lbl_del);
             this.Gpb_ventas.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_ventas.Location = new System.Drawing.Point(69, 20);
-            this.Gpb_ventas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Gpb_ventas.Location = new System.Drawing.Point(69, 55);
+            this.Gpb_ventas.Margin = new System.Windows.Forms.Padding(2);
             this.Gpb_ventas.Name = "Gpb_ventas";
-            this.Gpb_ventas.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Gpb_ventas.Padding = new System.Windows.Forms.Padding(2);
             this.Gpb_ventas.Size = new System.Drawing.Size(700, 159);
             this.Gpb_ventas.TabIndex = 63;
             this.Gpb_ventas.TabStop = false;
@@ -194,7 +219,7 @@ namespace Capa_Vista_Comisiones
             // 
             this.Cbo_filtro.FormattingEnabled = true;
             this.Cbo_filtro.Location = new System.Drawing.Point(277, 74);
-            this.Cbo_filtro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cbo_filtro.Margin = new System.Windows.Forms.Padding(2);
             this.Cbo_filtro.Name = "Cbo_filtro";
             this.Cbo_filtro.Size = new System.Drawing.Size(204, 27);
             this.Cbo_filtro.TabIndex = 17;
@@ -204,7 +229,7 @@ namespace Capa_Vista_Comisiones
             this.Rdb_costo.AutoSize = true;
             this.Rdb_costo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rdb_costo.Location = new System.Drawing.Point(447, 37);
-            this.Rdb_costo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Rdb_costo.Margin = new System.Windows.Forms.Padding(2);
             this.Rdb_costo.Name = "Rdb_costo";
             this.Rdb_costo.Size = new System.Drawing.Size(131, 23);
             this.Rdb_costo.TabIndex = 16;
@@ -217,7 +242,7 @@ namespace Capa_Vista_Comisiones
             this.Rdb_lineas.AutoSize = true;
             this.Rdb_lineas.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rdb_lineas.Location = new System.Drawing.Point(380, 37);
-            this.Rdb_lineas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Rdb_lineas.Margin = new System.Windows.Forms.Padding(2);
             this.Rdb_lineas.Name = "Rdb_lineas";
             this.Rdb_lineas.Size = new System.Drawing.Size(66, 23);
             this.Rdb_lineas.TabIndex = 15;
@@ -230,7 +255,7 @@ namespace Capa_Vista_Comisiones
             this.Rdb_inventario.AutoSize = true;
             this.Rdb_inventario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rdb_inventario.Location = new System.Drawing.Point(220, 37);
-            this.Rdb_inventario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Rdb_inventario.Margin = new System.Windows.Forms.Padding(2);
             this.Rdb_inventario.Name = "Rdb_inventario";
             this.Rdb_inventario.Size = new System.Drawing.Size(87, 23);
             this.Rdb_inventario.TabIndex = 14;
@@ -243,7 +268,7 @@ namespace Capa_Vista_Comisiones
             this.Rdb_marcas.AutoSize = true;
             this.Rdb_marcas.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rdb_marcas.Location = new System.Drawing.Point(308, 37);
-            this.Rdb_marcas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Rdb_marcas.Margin = new System.Windows.Forms.Padding(2);
             this.Rdb_marcas.Name = "Rdb_marcas";
             this.Rdb_marcas.Size = new System.Drawing.Size(73, 23);
             this.Rdb_marcas.TabIndex = 13;
@@ -255,7 +280,7 @@ namespace Capa_Vista_Comisiones
             // 
             this.Dtp_fecha_fin.CalendarFont = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dtp_fecha_fin.Location = new System.Drawing.Point(408, 115);
-            this.Dtp_fecha_fin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Dtp_fecha_fin.Margin = new System.Windows.Forms.Padding(2);
             this.Dtp_fecha_fin.Name = "Dtp_fecha_fin";
             this.Dtp_fecha_fin.Size = new System.Drawing.Size(256, 26);
             this.Dtp_fecha_fin.TabIndex = 11;
@@ -286,7 +311,7 @@ namespace Capa_Vista_Comisiones
             // 
             this.Dtp_fecha_inicio.CalendarFont = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dtp_fecha_inicio.Location = new System.Drawing.Point(110, 115);
-            this.Dtp_fecha_inicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Dtp_fecha_inicio.Margin = new System.Windows.Forms.Padding(2);
             this.Dtp_fecha_inicio.Name = "Dtp_fecha_inicio";
             this.Dtp_fecha_inicio.Size = new System.Drawing.Size(258, 26);
             this.Dtp_fecha_inicio.TabIndex = 9;
@@ -310,10 +335,10 @@ namespace Capa_Vista_Comisiones
             this.Gpb_calculo.Controls.Add(this.Txt_comision);
             this.Gpb_calculo.Controls.Add(this.Lbl_total);
             this.Gpb_calculo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_calculo.Location = new System.Drawing.Point(546, 449);
-            this.Gpb_calculo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Gpb_calculo.Location = new System.Drawing.Point(546, 484);
+            this.Gpb_calculo.Margin = new System.Windows.Forms.Padding(2);
             this.Gpb_calculo.Name = "Gpb_calculo";
-            this.Gpb_calculo.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Gpb_calculo.Padding = new System.Windows.Forms.Padding(2);
             this.Gpb_calculo.Size = new System.Drawing.Size(351, 101);
             this.Gpb_calculo.TabIndex = 71;
             this.Gpb_calculo.TabStop = false;
@@ -322,7 +347,7 @@ namespace Capa_Vista_Comisiones
             // Btn_calcular
             // 
             this.Btn_calcular.Location = new System.Drawing.Point(23, 40);
-            this.Btn_calcular.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_calcular.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_calcular.Name = "Btn_calcular";
             this.Btn_calcular.Size = new System.Drawing.Size(68, 28);
             this.Btn_calcular.TabIndex = 19;
@@ -345,7 +370,7 @@ namespace Capa_Vista_Comisiones
             this.Txt_venta.Enabled = false;
             this.Txt_venta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_venta.Location = new System.Drawing.Point(215, 21);
-            this.Txt_venta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_venta.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_venta.Name = "Txt_venta";
             this.Txt_venta.Size = new System.Drawing.Size(116, 26);
             this.Txt_venta.TabIndex = 48;
@@ -355,7 +380,7 @@ namespace Capa_Vista_Comisiones
             this.Txt_comision.Enabled = false;
             this.Txt_comision.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_comision.Location = new System.Drawing.Point(215, 58);
-            this.Txt_comision.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_comision.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_comision.Name = "Txt_comision";
             this.Txt_comision.Size = new System.Drawing.Size(116, 26);
             this.Txt_comision.TabIndex = 49;
@@ -375,10 +400,10 @@ namespace Capa_Vista_Comisiones
             // 
             this.Gpb_reporte.Controls.Add(this.Btn_reporte);
             this.Gpb_reporte.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_reporte.Location = new System.Drawing.Point(51, 444);
-            this.Gpb_reporte.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Gpb_reporte.Location = new System.Drawing.Point(51, 479);
+            this.Gpb_reporte.Margin = new System.Windows.Forms.Padding(2);
             this.Gpb_reporte.Name = "Gpb_reporte";
-            this.Gpb_reporte.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Gpb_reporte.Padding = new System.Windows.Forms.Padding(2);
             this.Gpb_reporte.Size = new System.Drawing.Size(136, 106);
             this.Gpb_reporte.TabIndex = 72;
             this.Gpb_reporte.TabStop = false;
@@ -396,48 +421,35 @@ namespace Capa_Vista_Comisiones
             this.Btn_reporte.TabIndex = 52;
             this.Btn_reporte.UseVisualStyleBackColor = true;
             // 
-            // Btn_ayuda
-            // 
-            this.Btn_ayuda.FlatAppearance.BorderSize = 0;
-            this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Btn_ayuda.Image = global::Capa_Vista_Comisiones.Properties.Resources.preguntas1;
-            this.Btn_ayuda.Location = new System.Drawing.Point(35, 24);
-            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(2);
-            this.Btn_ayuda.Name = "Btn_ayuda";
-            this.Btn_ayuda.Size = new System.Drawing.Size(54, 55);
-            this.Btn_ayuda.TabIndex = 53;
-            this.Btn_ayuda.UseVisualStyleBackColor = true;
-            // 
             // Btn_buscar
             // 
             this.Btn_buscar.FlatAppearance.BorderSize = 0;
             this.Btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_buscar.Image = global::Capa_Vista_Comisiones.Properties.Resources.lista_de_verificacion;
-            this.Btn_buscar.Location = new System.Drawing.Point(346, 194);
+            this.Btn_buscar.Location = new System.Drawing.Point(346, 229);
             this.Btn_buscar.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_buscar.Name = "Btn_buscar";
             this.Btn_buscar.Size = new System.Drawing.Size(51, 55);
             this.Btn_buscar.TabIndex = 68;
             this.Btn_buscar.UseVisualStyleBackColor = true;
             // 
-            // Btn_limpiar
+            // Lbl_titulo
             // 
-            this.Btn_limpiar.FlatAppearance.BorderSize = 0;
-            this.Btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Btn_limpiar.Image = global::Capa_Vista_Comisiones.Properties.Resources.cancelar1;
-            this.Btn_limpiar.Location = new System.Drawing.Point(35, 24);
-            this.Btn_limpiar.Margin = new System.Windows.Forms.Padding(2);
-            this.Btn_limpiar.Name = "Btn_limpiar";
-            this.Btn_limpiar.Size = new System.Drawing.Size(54, 55);
-            this.Btn_limpiar.TabIndex = 53;
-            this.Btn_limpiar.UseVisualStyleBackColor = true;
+            this.Lbl_titulo.AutoSize = true;
+            this.Lbl_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_titulo.Location = new System.Drawing.Point(372, 9);
+            this.Lbl_titulo.Name = "Lbl_titulo";
+            this.Lbl_titulo.Size = new System.Drawing.Size(151, 29);
+            this.Lbl_titulo.TabIndex = 73;
+            this.Lbl_titulo.Text = "Comisiones";
             // 
             // Frm_Comisiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(950, 560);
+            this.ClientSize = new System.Drawing.Size(950, 590);
+            this.Controls.Add(this.Lbl_titulo);
             this.Controls.Add(this.Gpb_calculo);
             this.Controls.Add(this.Gpb_reporte);
             this.Controls.Add(this.Gpb_ayuda);
@@ -450,7 +462,7 @@ namespace Capa_Vista_Comisiones
             this.Controls.Add(this.Txt_nombre);
             this.Controls.Add(this.Dgv_ventas);
             this.Controls.Add(this.Gpb_ventas);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_Comisiones";
             this.Text = "Frm_Comisiones";
             this.Gpb_ayuda.ResumeLayout(false);
@@ -499,5 +511,6 @@ namespace Capa_Vista_Comisiones
         private System.Windows.Forms.Label Lbl_total;
         private System.Windows.Forms.GroupBox Gpb_reporte;
         private System.Windows.Forms.Button Btn_reporte;
+        private System.Windows.Forms.Label Lbl_titulo;
     }
 }

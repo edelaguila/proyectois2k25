@@ -424,6 +424,7 @@ namespace Capa_Vista_Logistica
 
         private void Btn_ComProc4_Click(object sender, EventArgs e)
         {
+            AbrirFormulario<Capa_Vista_Cotizacion.Frm_Cotizacion>();
             ocultaSubMenu();
         }
 
