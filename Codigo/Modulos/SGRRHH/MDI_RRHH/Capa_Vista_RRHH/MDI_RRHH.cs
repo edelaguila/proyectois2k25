@@ -184,7 +184,7 @@ namespace Capa_Vista_RRHH
 
         private void promocionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_Promociones deptos = new frm_Promociones();
+            frm_Promociones deptos = new frm_Promociones(idUsuario);
             deptos.Show();
         }
 
