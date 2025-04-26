@@ -326,9 +326,9 @@ namespace Capa_Vista_Cuentas_Corrientes
 
         private void Btn_Proceso_TransaccionC_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<CapaVista_AndresVeron.frm_transaccion_clientes>();
-            Btn_Proceso_TransaccionC.BackColor = Color.FromArgb(12, 61, 92);
-            ocultaSubMenu();
+            //AbrirFormulario<CapaVista_AndresVeron.frm_transaccion_clientes>();
+            //Btn_Proceso_TransaccionC.BackColor = Color.FromArgb(12, 61, 92);
+            //ocultaSubMenu();
         }
 
         private void btn_Clientes_Click(object sender, EventArgs e)
