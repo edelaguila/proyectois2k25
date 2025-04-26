@@ -176,6 +176,28 @@ DROP COLUMN caja_transaccion_monto;
 ALTER TABLE Tbl_caja_cliente
 ADD COLUMN Fk_id_factura INT NOT NULL;*/
 
+-- caja General
+-- Eliminar tablas antiguas
+DROP TABLE IF EXISTS Tbl_caja_cliente;
+DROP TABLE IF EXISTS Tbl_caja_proveedor;
+
+CREATE TABLE Tbl_caja_general (
+    Pk_id_caja INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_cliente INT NULL,
+    Fk_id_proveedor INT NULL,
+    Fk_id_deuda INT NOT NULL,
+    deuda_monto DECIMAL(10, 2) NOT NULL,
+    mora_monto DECIMAL(10, 2) NOT NULL,
+    transaccion_monto DECIMAL(10, 2) NOT NULL,
+    saldo_restante DECIMAL(10, 2) NOT NULL DEFAULT 0,
+    estado TINYINT NOT NULL DEFAULT 1, -- 0 = cancelado, 1 = pendiente
+    fecha_registro DATE,
+    FOREIGN KEY (Fk_id_cliente) REFERENCES Tbl_clientes (Pk_id_cliente),
+    FOREIGN KEY (Fk_id_proveedor) REFERENCES Tbl_proveedores (Pk_prov_id),
+    FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Clientes (Pk_id_deuda) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 
 -- NUEVOS ALTER DEL MODULO DE PRODUCCIÓN 03-11-2024 aprobado por Brandon Boch
 -- 2. Alter para añadir la foránea a la tabla de mantenimiento
@@ -224,8 +246,7 @@ ALTER TABLE Tbl_Transaccion_cliente
 ADD COLUMN Fk_id_factura INT NOT NULL,
 ADD CONSTRAINT fk_factura_trans_cliente FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura),
 ADD COLUMN Fk_id_transC INT NOT NULL,
-ADD CONSTRAINT fk_transC_trans_cliente FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue),
-ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
+ADD CONSTRAINT fk_transC_trans_cliente FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue);
 
 -- Eliminar llaves foráneas 
 ALTER TABLE Tbl_Transaccion_cliente 
@@ -245,14 +266,16 @@ ALTER TABLE Tbl_mora_clientes MODIFY COLUMN morafecha VARCHAR(15) NOT NULL;
 
 -- TBL_caja_clientes
 
-ALTER TABLE Tbl_caja_cliente MODIFY COLUMN caja_fecha_registro VARCHAR(15) NOT NULL;
+/*ALTER TABLE Tbl_caja_cliente MODIFY COLUMN caja_fecha_registro VARCHAR(15) NOT NULL;
 ALTER TABLE Tbl_caja_cliente ADD COLUMN Fk_id_factura INT NOT NULL;
-ALTER TABLE Tbl_caja_cliente ADD CONSTRAINT id_factura FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura);
+ALTER TABLE Tbl_caja_cliente ADD CONSTRAINT id_factura FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura); 
 
 ALTER TABLE Tbl_caja_cliente
 DROP COLUMN caja_deuda_monto, 
 DROP COLUMN caja_mora_monto, 
-DROP COLUMN caja_transaccion_monto;
+DROP COLUMN caja_transaccion_monto; */
+
+
 
 -- TBL_Deuda_Proveedores
 ALTER TABLE Tbl_Deudas_Proveedores MODIFY COLUMN deuda_fecha_inicio VARCHAR(150) NOT NULL;
@@ -275,8 +298,7 @@ DROP COLUMN Fk_id_pago;
 -- TBL_Transaccion_proveedor
 ALTER TABLE Tbl_Transaccion_proveedor
 ADD COLUMN Fk_id_transC INT NOT NULL,
-ADD CONSTRAINT fk_transC_trans_proveedor FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue),
-ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
+ADD CONSTRAINT fk_transC_trans_proveedor FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue);
 
 -- Eliminar llaves foráneas 
 ALTER TABLE Tbl_Transaccion_proveedor 
@@ -293,14 +315,14 @@ DROP COLUMN transaccion_serie;
 
 -- TBL_caja_proveedor
 
-ALTER TABLE Tbl_caja_proveedor MODIFY COLUMN caja_fecha_registro VARCHAR(150) NOT NULL;
+/*ALTER TABLE Tbl_caja_proveedor MODIFY COLUMN caja_fecha_registro VARCHAR(150) NOT NULL;
 ALTER TABLE Tbl_caja_proveedor
 ADD COLUMN Fk_id_factura INT NOT NULL,
 ADD CONSTRAINT fk_factura_caja FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura);
 
 ALTER TABLE Tbl_caja_proveedor
 DROP COLUMN caja_deuda_monto, 
-DROP COLUMN caja_transaccion_monto;
+DROP COLUMN caja_transaccion_monto; */
 
 
 -- ALTER MODULO LOGISTICA 04/11/2024
