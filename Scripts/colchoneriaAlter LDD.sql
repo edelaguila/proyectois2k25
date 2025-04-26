@@ -243,8 +243,8 @@ DROP COLUMN Fk_id_pago;
 
 -- TBL_Transaccion_clientes
 ALTER TABLE Tbl_Transaccion_cliente
-ADD COLUMN Fk_id_factura INT NOT NULL,
-ADD CONSTRAINT fk_factura_trans_cliente FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura),
+-- ADD COLUMN Fk_id_factura INT NOT NULL,
+-- ADD CONSTRAINT fk_factura_trans_cliente FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura),
 ADD COLUMN Fk_id_transC INT NOT NULL,
 ADD CONSTRAINT fk_transC_trans_cliente FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue);
 
