@@ -34,7 +34,8 @@
     <Reference Include="Capa_Controlador_Reclutamiento">
       <HintPath>..\Capa_Controlador_Reclutamiento\bin\Debug\Capa_Controlador_Reclutamiento.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Navegador">
+    <Reference Include="Capa_Vista_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
     <Reference Include="Interfac_V3">
