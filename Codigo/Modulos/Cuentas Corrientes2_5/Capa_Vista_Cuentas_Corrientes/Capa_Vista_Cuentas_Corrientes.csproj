@@ -135,6 +135,18 @@
     <Compile Include="Nav_Proveedores.Designer.cs">
       <DependentUpon>Nav_Proveedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Nav_TransaccionClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nav_TransaccionClientes.Designer.cs">
+      <DependentUpon>Nav_TransaccionClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nav_TransaccionProv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nav_TransaccionProv.Designer.cs">
+      <DependentUpon>Nav_TransaccionProv.cs</DependentUpon>
+    </Compile>
     <Compile Include="Nav_Transaccion_Cuentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +212,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Nav_Proveedores.resx">
       <DependentUpon>Nav_Proveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nav_TransaccionClientes.resx">
+      <DependentUpon>Nav_TransaccionClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nav_TransaccionProv.resx">
+      <DependentUpon>Nav_TransaccionProv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nav_Transaccion_Cuentas.resx">
       <DependentUpon>Nav_Transaccion_Cuentas.cs</DependentUpon>

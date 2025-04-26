@@ -40,7 +40,7 @@ namespace CapaVista_AndresVeron
             dgv_transaccion_cliente.Columns["transaccion_fecha"].HeaderText = "Fecha";
             dgv_transaccion_cliente.Columns["transaccion_monto"].HeaderText = "Monto";
             dgv_transaccion_cliente.Columns["transaccion_tipo_moneda"].HeaderText = "Moneda";
-            dgv_transaccion_cliente.Columns["transaccion_estado"].HeaderText = "Estado";
+            dgv_transaccion_cliente.Columns["estado"].HeaderText = "Estado";
             dgv_transaccion_cliente.Columns["Fk_id_factura"].HeaderText = "Factura ID";
             dgv_transaccion_cliente.Columns["Fk_id_transC"].HeaderText = "Trans. Cuenta ID";
             dgv_transaccion_cliente.Columns["transaccion_tipo"].HeaderText = "Tipo";
