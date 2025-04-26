@@ -351,30 +351,6 @@ namespace Capa_Vista_Logistica
             ocultaSubMenu();
         }
 
-        private void Btn_CuentMantProv1_Click_1(object sender, EventArgs e)
-        {
-            AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Nav_Proveedores>();
-            ocultaSubMenu();
-        }
-
-        private void Btn_ComMant1_Click_1(object sender, EventArgs e)
-        {
-            AbrirFormulario<Capa_Vista_CompraVenta.Frm_proveedores>();
-            ocultaSubMenu();
-        }
-
-        private void Btn_ComMant3_Click_1(object sender, EventArgs e)
-        {
-            AbrirFormulario<Capa_Vista_CompraVenta.Frm_vendedores>();
-            ocultaSubMenu();
-        }
-
-        private void Btn_ComMant4_Click_1(object sender, EventArgs e)
-        {
-            AbrirFormulario<Capa_Vista_ListaPrecios.frm_MantenimientoListas>();
-            ocultaSubMenu();
-        }
-
         private void Btn_CuentProcCl2_Click_1(object sender, EventArgs e)
         {
             AbrirFormulario<CapaVista_AndresVeron.frm_transaccion_clientes>();
@@ -439,6 +415,46 @@ namespace Capa_Vista_Logistica
             AbrirFormulario<Capa_Vista_Pedidos.Frm_Pedidos>();
             ocultaSubMenu();
         }
+
+        private void Btn_CuentMantClient5_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Nav_TransaccionClientes>();
+            ocultaSubMenu();
+        }
+
+        private void Btn_CuentMantProv1_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Nav_Proveedores>();
+            ocultaSubMenu();
+        }
+
+        private void Btn_CuentMantProv2_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Nav_TransaccionProv>();
+            ocultaSubMenu();
+        }
+
+        private void Btn_ComMant1_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Capa_Vista_CompraVenta.Frm_proveedores>();
+            ocultaSubMenu();
+
+        }
+
+        private void Btn_ComMant3_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Capa_Vista_CompraVenta.Frm_vendedores>();
+            ocultaSubMenu();
+        }
+
+        private void Btn_ComMant4_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario<Capa_Vista_ListaPrecios.frm_MantenimientoListas>();
+            ocultaSubMenu();
+
+        }
+
+
 
         #endregion
         //Metodo para abrir formularios dentro de panel contenedor
