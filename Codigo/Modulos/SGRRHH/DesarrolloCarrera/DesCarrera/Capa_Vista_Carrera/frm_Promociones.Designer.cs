@@ -37,7 +37,6 @@
             this.Lbl_SalarioNuevo = new System.Windows.Forms.Label();
             this.Lbl_Motivo = new System.Windows.Forms.Label();
             this.txt_ID = new System.Windows.Forms.TextBox();
-            this.txt_empleado = new System.Windows.Forms.TextBox();
             this.dtp_fecha = new System.Windows.Forms.DateTimePicker();
             this.txt_PuestoActual = new System.Windows.Forms.TextBox();
             this.txt_SalarioActual = new System.Windows.Forms.TextBox();
@@ -54,6 +53,7 @@
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Nuevo = new System.Windows.Forms.Button();
+            this.cmb_empleado = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_promociones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,13 +143,6 @@
             this.txt_ID.Name = "txt_ID";
             this.txt_ID.Size = new System.Drawing.Size(174, 22);
             this.txt_ID.TabIndex = 18;
-            // 
-            // txt_empleado
-            // 
-            this.txt_empleado.Location = new System.Drawing.Point(184, 181);
-            this.txt_empleado.Name = "txt_empleado";
-            this.txt_empleado.Size = new System.Drawing.Size(174, 22);
-            this.txt_empleado.TabIndex = 19;
             // 
             // dtp_fecha
             // 
@@ -296,12 +289,23 @@
             this.Btn_Nuevo.TabIndex = 0;
             this.Btn_Nuevo.UseVisualStyleBackColor = true;
             // 
+            // cmb_empleado
+            // 
+            this.cmb_empleado.AccessibleDescription = "cmo_empleado";
+            this.cmb_empleado.FormattingEnabled = true;
+            this.cmb_empleado.Location = new System.Drawing.Point(184, 182);
+            this.cmb_empleado.Name = "cmb_empleado";
+            this.cmb_empleado.Size = new System.Drawing.Size(271, 24);
+            this.cmb_empleado.TabIndex = 27;
+            this.cmb_empleado.SelectedIndexChanged += new System.EventHandler(this.cmb_empleado_SelectedIndexChanged);
+            // 
             // frm_Promociones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1072, 778);
+            this.Controls.Add(this.cmb_empleado);
             this.Controls.Add(this.dgv_promociones);
             this.Controls.Add(this.txt_Motivo);
             this.Controls.Add(this.txt_SalarioNuevo);
@@ -309,7 +313,6 @@
             this.Controls.Add(this.txt_SalarioActual);
             this.Controls.Add(this.txt_PuestoActual);
             this.Controls.Add(this.dtp_fecha);
-            this.Controls.Add(this.txt_empleado);
             this.Controls.Add(this.txt_ID);
             this.Controls.Add(this.Lbl_Motivo);
             this.Controls.Add(this.Lbl_SalarioNuevo);
@@ -331,6 +334,7 @@
             this.Name = "frm_Promociones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "12001-Promociones";
+            this.Load += new System.EventHandler(this.frm_Promociones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_promociones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -357,7 +361,6 @@
         private System.Windows.Forms.Label Lbl_SalarioNuevo;
         private System.Windows.Forms.Label Lbl_Motivo;
         private System.Windows.Forms.TextBox txt_ID;
-        private System.Windows.Forms.TextBox txt_empleado;
         private System.Windows.Forms.DateTimePicker dtp_fecha;
         private System.Windows.Forms.TextBox txt_PuestoActual;
         private System.Windows.Forms.TextBox txt_SalarioActual;
@@ -365,5 +368,6 @@
         private System.Windows.Forms.TextBox txt_SalarioNuevo;
         private System.Windows.Forms.TextBox txt_Motivo;
         private System.Windows.Forms.DataGridView dgv_promociones;
+        private System.Windows.Forms.ComboBox cmb_empleado;
     }
 }

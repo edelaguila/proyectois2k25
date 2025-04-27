@@ -31,13 +31,18 @@ namespace Capa_Vista_GD
         {
             this.Chk_sancion = new System.Windows.Forms.CheckBox();
             this.Cbo_idFalta = new System.Windows.Forms.ComboBox();
-            this.Txt_tipoSancion = new System.Windows.Forms.TextBox();
             this.Lbl_tipoSancion = new System.Windows.Forms.Label();
             this.Lbl_idFalta = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Txt_descripcionSancion = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.Lbl_fechaSancion = new System.Windows.Forms.Label();
+            this.Dtp_fechaSancion = new System.Windows.Forms.DateTimePicker();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Pnl_Usuario = new System.Windows.Forms.Panel();
+            this.lbl_nombreUsuario = new System.Windows.Forms.Label();
+            this.Lbl_Usuario = new System.Windows.Forms.Label();
+            this.Cbo_tipoSancion = new System.Windows.Forms.ComboBox();
+            this.Btn_reporte = new System.Windows.Forms.Button();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
             this.Btn_Salir = new System.Windows.Forms.Button();
             this.Btn_Buscar = new System.Windows.Forms.Button();
@@ -46,12 +51,14 @@ namespace Capa_Vista_GD
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Nuevo = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.Pnl_Usuario.SuspendLayout();
             this.SuspendLayout();
             // 
             // Chk_sancion
             // 
             this.Chk_sancion.AutoSize = true;
-            this.Chk_sancion.Location = new System.Drawing.Point(512, 124);
+            this.Chk_sancion.Location = new System.Drawing.Point(383, 131);
             this.Chk_sancion.Margin = new System.Windows.Forms.Padding(4);
             this.Chk_sancion.Name = "Chk_sancion";
             this.Chk_sancion.Size = new System.Drawing.Size(197, 26);
@@ -63,27 +70,18 @@ namespace Capa_Vista_GD
             // Cbo_idFalta
             // 
             this.Cbo_idFalta.FormattingEnabled = true;
-            this.Cbo_idFalta.Location = new System.Drawing.Point(284, 120);
+            this.Cbo_idFalta.Location = new System.Drawing.Point(215, 129);
             this.Cbo_idFalta.Margin = new System.Windows.Forms.Padding(4);
             this.Cbo_idFalta.Name = "Cbo_idFalta";
             this.Cbo_idFalta.Size = new System.Drawing.Size(148, 30);
             this.Cbo_idFalta.TabIndex = 13;
             this.Cbo_idFalta.SelectedIndexChanged += new System.EventHandler(this.Cbo_idFalta_SelectedIndexChanged);
             // 
-            // Txt_tipoSancion
-            // 
-            this.Txt_tipoSancion.Location = new System.Drawing.Point(284, 170);
-            this.Txt_tipoSancion.Margin = new System.Windows.Forms.Padding(6);
-            this.Txt_tipoSancion.Name = "Txt_tipoSancion";
-            this.Txt_tipoSancion.Size = new System.Drawing.Size(425, 30);
-            this.Txt_tipoSancion.TabIndex = 12;
-            this.Txt_tipoSancion.TextChanged += new System.EventHandler(this.Txt_tipoEvidencia_TextChanged);
-            // 
             // Lbl_tipoSancion
             // 
             this.Lbl_tipoSancion.AutoSize = true;
             this.Lbl_tipoSancion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_tipoSancion.Location = new System.Drawing.Point(77, 181);
+            this.Lbl_tipoSancion.Location = new System.Drawing.Point(83, 188);
             this.Lbl_tipoSancion.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_tipoSancion.Name = "Lbl_tipoSancion";
             this.Lbl_tipoSancion.Size = new System.Drawing.Size(142, 22);
@@ -95,7 +93,7 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_idFalta.AutoSize = true;
             this.Lbl_idFalta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_idFalta.Location = new System.Drawing.Point(77, 128);
+            this.Lbl_idFalta.Location = new System.Drawing.Point(83, 135);
             this.Lbl_idFalta.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_idFalta.Name = "Lbl_idFalta";
             this.Lbl_idFalta.Size = new System.Drawing.Size(120, 22);
@@ -103,63 +101,135 @@ namespace Capa_Vista_GD
             this.Lbl_idFalta.Text = "ID de la falta:";
             this.Lbl_idFalta.Click += new System.EventHandler(this.Lbl_idFalta_Click);
             // 
-            // textBox1
+            // Txt_descripcionSancion
             // 
-            this.textBox1.Location = new System.Drawing.Point(284, 225);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(425, 30);
-            this.textBox1.TabIndex = 16;
+            this.Txt_descripcionSancion.Location = new System.Drawing.Point(383, 232);
+            this.Txt_descripcionSancion.Margin = new System.Windows.Forms.Padding(6);
+            this.Txt_descripcionSancion.Name = "Txt_descripcionSancion";
+            this.Txt_descripcionSancion.Size = new System.Drawing.Size(425, 30);
+            this.Txt_descripcionSancion.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(77, 233);
+            this.label1.Location = new System.Drawing.Point(83, 240);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(202, 22);
             this.label1.TabIndex = 15;
             this.label1.Text = "Descripción de sanción:";
             // 
-            // label2
+            // Lbl_fechaSancion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(77, 290);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 22);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Tipo de sanción:";
+            this.Lbl_fechaSancion.AutoSize = true;
+            this.Lbl_fechaSancion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_fechaSancion.Location = new System.Drawing.Point(83, 297);
+            this.Lbl_fechaSancion.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.Lbl_fechaSancion.Name = "Lbl_fechaSancion";
+            this.Lbl_fechaSancion.Size = new System.Drawing.Size(280, 22);
+            this.Lbl_fechaSancion.TabIndex = 17;
+            this.Lbl_fechaSancion.Text = "Fecha en la que se aplica sanción:";
             // 
-            // dateTimePicker1
+            // Dtp_fechaSancion
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(284, 282);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(338, 30);
-            this.dateTimePicker1.TabIndex = 18;
+            this.Dtp_fechaSancion.Location = new System.Drawing.Point(383, 289);
+            this.Dtp_fechaSancion.Name = "Dtp_fechaSancion";
+            this.Dtp_fechaSancion.Size = new System.Drawing.Size(338, 30);
+            this.Dtp_fechaSancion.TabIndex = 18;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.Pnl_Usuario);
+            this.panel1.Location = new System.Drawing.Point(12, 375);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(860, 62);
+            this.panel1.TabIndex = 27;
+            // 
+            // Pnl_Usuario
+            // 
+            this.Pnl_Usuario.Controls.Add(this.lbl_nombreUsuario);
+            this.Pnl_Usuario.Controls.Add(this.Lbl_Usuario);
+            this.Pnl_Usuario.Location = new System.Drawing.Point(277, 4);
+            this.Pnl_Usuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Pnl_Usuario.Name = "Pnl_Usuario";
+            this.Pnl_Usuario.Size = new System.Drawing.Size(318, 50);
+            this.Pnl_Usuario.TabIndex = 1;
+            // 
+            // lbl_nombreUsuario
+            // 
+            this.lbl_nombreUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_nombreUsuario.AutoSize = true;
+            this.lbl_nombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nombreUsuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_nombreUsuario.Location = new System.Drawing.Point(141, 12);
+            this.lbl_nombreUsuario.Name = "lbl_nombreUsuario";
+            this.lbl_nombreUsuario.Size = new System.Drawing.Size(26, 25);
+            this.lbl_nombreUsuario.TabIndex = 2;
+            this.lbl_nombreUsuario.Text = "--";
+            // 
+            // Lbl_Usuario
+            // 
+            this.Lbl_Usuario.AutoSize = true;
+            this.Lbl_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Lbl_Usuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Lbl_Usuario.Location = new System.Drawing.Point(3, 12);
+            this.Lbl_Usuario.Name = "Lbl_Usuario";
+            this.Lbl_Usuario.Size = new System.Drawing.Size(132, 25);
+            this.Lbl_Usuario.TabIndex = 0;
+            this.Lbl_Usuario.Text = "Responsable:";
+            // 
+            // Cbo_tipoSancion
+            // 
+            this.Cbo_tipoSancion.FormattingEnabled = true;
+            this.Cbo_tipoSancion.Items.AddRange(new object[] {
+            "Ninguno",
+            "Amonestación verbal",
+            "Amonestación escrita",
+            "Suspension de empleo y sueldo",
+            "Traslado de Area/Departamento",
+            "Inhabilitacion para ascenso",
+            "Despido disciplinario",
+            "Multa"});
+            this.Cbo_tipoSancion.Location = new System.Drawing.Point(383, 188);
+            this.Cbo_tipoSancion.Name = "Cbo_tipoSancion";
+            this.Cbo_tipoSancion.Size = new System.Drawing.Size(425, 30);
+            this.Cbo_tipoSancion.TabIndex = 28;
+            // 
+            // Btn_reporte
+            // 
+            this.Btn_reporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_reporte.Image = global::Capa_Vista_GD.Properties.Resources.reporte;
+            this.Btn_reporte.Location = new System.Drawing.Point(590, 12);
+            this.Btn_reporte.Name = "Btn_reporte";
+            this.Btn_reporte.Size = new System.Drawing.Size(89, 77);
+            this.Btn_reporte.TabIndex = 29;
+            this.Btn_reporte.UseVisualStyleBackColor = true;
+            this.Btn_reporte.Click += new System.EventHandler(this.Btn_reporte_Click);
             // 
             // Btn_Ayuda
             // 
             this.Btn_Ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Ayuda.Image = global::Capa_Vista_GD.Properties.Resources.ayuda;
-            this.Btn_Ayuda.Location = new System.Drawing.Point(590, 12);
+            this.Btn_Ayuda.Location = new System.Drawing.Point(685, 12);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
             this.Btn_Ayuda.Size = new System.Drawing.Size(89, 77);
             this.Btn_Ayuda.TabIndex = 26;
             this.Btn_Ayuda.UseVisualStyleBackColor = true;
+            this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
             // 
             // Btn_Salir
             // 
             this.Btn_Salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Salir.Image = global::Capa_Vista_GD.Properties.Resources.cerrar_sesion;
-            this.Btn_Salir.Location = new System.Drawing.Point(685, 12);
+            this.Btn_Salir.Location = new System.Drawing.Point(780, 12);
             this.Btn_Salir.Name = "Btn_Salir";
             this.Btn_Salir.Size = new System.Drawing.Size(89, 77);
             this.Btn_Salir.TabIndex = 25;
             this.Btn_Salir.TabStop = false;
             this.Btn_Salir.UseVisualStyleBackColor = true;
+            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
             // 
             // Btn_Buscar
             // 
@@ -200,6 +270,7 @@ namespace Capa_Vista_GD
             this.Btn_Cancelar.Size = new System.Drawing.Size(90, 77);
             this.Btn_Cancelar.TabIndex = 21;
             this.Btn_Cancelar.UseVisualStyleBackColor = true;
+            this.Btn_Cancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
             // 
             // Btn_Guardar
             // 
@@ -227,7 +298,10 @@ namespace Capa_Vista_GD
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(793, 339);
+            this.ClientSize = new System.Drawing.Size(884, 440);
+            this.Controls.Add(this.Btn_reporte);
+            this.Controls.Add(this.Cbo_tipoSancion);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.Btn_Ayuda);
             this.Controls.Add(this.Btn_Salir);
             this.Controls.Add(this.Btn_Buscar);
@@ -236,13 +310,12 @@ namespace Capa_Vista_GD
             this.Controls.Add(this.Btn_Cancelar);
             this.Controls.Add(this.Btn_Guardar);
             this.Controls.Add(this.Btn_Nuevo);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Dtp_fechaSancion);
+            this.Controls.Add(this.Lbl_fechaSancion);
+            this.Controls.Add(this.Txt_descripcionSancion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Chk_sancion);
             this.Controls.Add(this.Cbo_idFalta);
-            this.Controls.Add(this.Txt_tipoSancion);
             this.Controls.Add(this.Lbl_tipoSancion);
             this.Controls.Add(this.Lbl_idFalta);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -250,6 +323,10 @@ namespace Capa_Vista_GD
             this.Name = "frm_sanciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "15003 - Registro de Sancion";
+            this.Load += new System.EventHandler(this.frm_sanciones_Load);
+            this.panel1.ResumeLayout(false);
+            this.Pnl_Usuario.ResumeLayout(false);
+            this.Pnl_Usuario.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,13 +336,12 @@ namespace Capa_Vista_GD
 
         private System.Windows.Forms.CheckBox Chk_sancion;
         private System.Windows.Forms.ComboBox Cbo_idFalta;
-        private System.Windows.Forms.TextBox Txt_tipoSancion;
         private System.Windows.Forms.Label Lbl_tipoSancion;
         private System.Windows.Forms.Label Lbl_idFalta;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Txt_descripcionSancion;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label Lbl_fechaSancion;
+        private System.Windows.Forms.DateTimePicker Dtp_fechaSancion;
         private System.Windows.Forms.Button Btn_Ayuda;
         private System.Windows.Forms.Button Btn_Salir;
         private System.Windows.Forms.Button Btn_Buscar;
@@ -274,5 +350,11 @@ namespace Capa_Vista_GD
         private System.Windows.Forms.Button Btn_Cancelar;
         private System.Windows.Forms.Button Btn_Guardar;
         private System.Windows.Forms.Button Btn_Nuevo;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox Cbo_tipoSancion;
+        private System.Windows.Forms.Panel Pnl_Usuario;
+        public System.Windows.Forms.Label lbl_nombreUsuario;
+        private System.Windows.Forms.Label Lbl_Usuario;
+        private System.Windows.Forms.Button Btn_reporte;
     }
 }
