@@ -289,13 +289,15 @@ namespace Capa_Vista_RRHH
 
         private void notasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            cierre_capacitacion asistencia = new cierre_capacitacion();
+            Capa_Vista_Capacitacion.notas_capacitación asistencia = new Capa_Vista_Capacitacion.notas_capacitación();
             asistencia.Show();
         }
 
         private void cierresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Capa_Vista_Capacitacion.notas_capacitación asistencia = new Capa_Vista_Capacitacion.notas_capacitación();
+
+
+            cierre_capacitacion asistencia = new cierre_capacitacion();
             asistencia.Show();
         }
 

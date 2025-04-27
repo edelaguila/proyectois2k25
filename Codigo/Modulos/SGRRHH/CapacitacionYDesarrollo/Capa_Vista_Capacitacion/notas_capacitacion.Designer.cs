@@ -38,7 +38,7 @@ namespace Capa_Vista_Capacitacion
             this.Btn_guardar = new System.Windows.Forms.Button();
             this.Btn_nuevo = new System.Windows.Forms.Button();
             this.cbEmpleado = new System.Windows.Forms.ComboBox();
-            this.cbCapacitación = new System.Windows.Forms.ComboBox();
+            this.cbCapacitacion = new System.Windows.Forms.ComboBox();
             this.txtNota = new System.Windows.Forms.TextBox();
             this.lblCapacitación = new System.Windows.Forms.Label();
             this.lblEmpleado = new System.Windows.Forms.Label();
@@ -57,6 +57,7 @@ namespace Capa_Vista_Capacitacion
             // 
             // Btn_eliminar
             // 
+            this.Btn_eliminar.Enabled = false;
             this.Btn_eliminar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.borrar__1___1_;
             this.Btn_eliminar.Location = new System.Drawing.Point(523, 12);
             this.Btn_eliminar.Name = "Btn_eliminar";
@@ -85,6 +86,7 @@ namespace Capa_Vista_Capacitacion
             // 
             // Btn_editar
             // 
+            this.Btn_editar.Enabled = false;
             this.Btn_editar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.convenio__1___1_;
             this.Btn_editar.Location = new System.Drawing.Point(232, 12);
             this.Btn_editar.Name = "Btn_editar";
@@ -94,6 +96,7 @@ namespace Capa_Vista_Capacitacion
             // 
             // Btn_cancelar
             // 
+            this.Btn_cancelar.Enabled = false;
             this.Btn_cancelar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.cancelar__1___1_;
             this.Btn_cancelar.Location = new System.Drawing.Point(376, 12);
             this.Btn_cancelar.Name = "Btn_cancelar";
@@ -109,15 +112,18 @@ namespace Capa_Vista_Capacitacion
             this.Btn_salir.Size = new System.Drawing.Size(66, 69);
             this.Btn_salir.TabIndex = 11;
             this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
             // Btn_guardar
             // 
+            this.Btn_guardar.Enabled = false;
             this.Btn_guardar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.ahorrar__1___1_;
             this.Btn_guardar.Location = new System.Drawing.Point(304, 12);
             this.Btn_guardar.Name = "Btn_guardar";
             this.Btn_guardar.Size = new System.Drawing.Size(66, 69);
             this.Btn_guardar.TabIndex = 10;
             this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
             // 
             // Btn_nuevo
             // 
@@ -128,25 +134,29 @@ namespace Capa_Vista_Capacitacion
             this.Btn_nuevo.Size = new System.Drawing.Size(66, 69);
             this.Btn_nuevo.TabIndex = 9;
             this.Btn_nuevo.UseVisualStyleBackColor = true;
+            this.Btn_nuevo.Click += new System.EventHandler(this.Btn_nuevo_Click);
             // 
             // cbEmpleado
             // 
+            this.cbEmpleado.Enabled = false;
             this.cbEmpleado.FormattingEnabled = true;
             this.cbEmpleado.Location = new System.Drawing.Point(124, 153);
             this.cbEmpleado.Name = "cbEmpleado";
             this.cbEmpleado.Size = new System.Drawing.Size(155, 21);
             this.cbEmpleado.TabIndex = 24;
             // 
-            // cbCapacitación
+            // cbCapacitacion
             // 
-            this.cbCapacitación.FormattingEnabled = true;
-            this.cbCapacitación.Location = new System.Drawing.Point(124, 189);
-            this.cbCapacitación.Name = "cbCapacitación";
-            this.cbCapacitación.Size = new System.Drawing.Size(155, 21);
-            this.cbCapacitación.TabIndex = 23;
+            this.cbCapacitacion.Enabled = false;
+            this.cbCapacitacion.FormattingEnabled = true;
+            this.cbCapacitacion.Location = new System.Drawing.Point(124, 189);
+            this.cbCapacitacion.Name = "cbCapacitacion";
+            this.cbCapacitacion.Size = new System.Drawing.Size(155, 21);
+            this.cbCapacitacion.TabIndex = 23;
             // 
             // txtNota
             // 
+            this.txtNota.Enabled = false;
             this.txtNota.Location = new System.Drawing.Point(124, 117);
             this.txtNota.Name = "txtNota";
             this.txtNota.Size = new System.Drawing.Size(155, 20);
@@ -186,11 +196,11 @@ namespace Capa_Vista_Capacitacion
             // 
             this.lblNivel.AutoSize = true;
             this.lblNivel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNivel.Location = new System.Drawing.Point(432, 116);
+            this.lblNivel.Location = new System.Drawing.Point(406, 118);
             this.lblNivel.Name = "lblNivel";
-            this.lblNivel.Size = new System.Drawing.Size(41, 19);
+            this.lblNivel.Size = new System.Drawing.Size(80, 19);
             this.lblNivel.TabIndex = 25;
-            this.lblNivel.Text = "Nivel";
+            this.lblNivel.Text = "Nivel Inicial";
             // 
             // lblPuntaje
             // 
@@ -204,6 +214,7 @@ namespace Capa_Vista_Capacitacion
             // 
             // cbNivel
             // 
+            this.cbNivel.Enabled = false;
             this.cbNivel.FormattingEnabled = true;
             this.cbNivel.Location = new System.Drawing.Point(501, 114);
             this.cbNivel.Name = "cbNivel";
@@ -222,20 +233,24 @@ namespace Capa_Vista_Capacitacion
             // 
             // tbPorcentaje
             // 
+            this.tbPorcentaje.Enabled = false;
             this.tbPorcentaje.Location = new System.Drawing.Point(492, 155);
+            this.tbPorcentaje.Maximum = 100;
             this.tbPorcentaje.Name = "tbPorcentaje";
             this.tbPorcentaje.Size = new System.Drawing.Size(162, 45);
             this.tbPorcentaje.TabIndex = 29;
             this.tbPorcentaje.Scroll += new System.EventHandler(this.tbPorcentaje_Scroll);
+            this.tbPorcentaje.ValueChanged += new System.EventHandler(this.tbPorcentaje_ValueChanged);
             // 
             // dtpFecha
             // 
+            this.dtpFecha.Enabled = false;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(498, 191);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(94, 20);
             this.dtpFecha.TabIndex = 32;
-            this.dtpFecha.Value = new System.DateTime(2025, 4, 2, 12, 30, 44, 0);
+            this.dtpFecha.Value = new System.DateTime(2025, 4, 27, 0, 0, 0, 0);
             // 
             // lblFecha
             // 
@@ -254,6 +269,8 @@ namespace Capa_Vista_Capacitacion
             this.dgvNotas.Name = "dgvNotas";
             this.dgvNotas.Size = new System.Drawing.Size(776, 198);
             this.dgvNotas.TabIndex = 33;
+            this.dgvNotas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNotas_CellClick);
+            this.dgvNotas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNotas_CellContentClick);
             // 
             // notas_capacitación
             // 
@@ -270,7 +287,7 @@ namespace Capa_Vista_Capacitacion
             this.Controls.Add(this.lblPuntaje);
             this.Controls.Add(this.lblNivel);
             this.Controls.Add(this.cbEmpleado);
-            this.Controls.Add(this.cbCapacitación);
+            this.Controls.Add(this.cbCapacitacion);
             this.Controls.Add(this.txtNota);
             this.Controls.Add(this.lblCapacitación);
             this.Controls.Add(this.lblEmpleado);
@@ -285,6 +302,7 @@ namespace Capa_Vista_Capacitacion
             this.Controls.Add(this.Btn_nuevo);
             this.Name = "notas_capacitación";
             this.Text = "14004 - notas_capacitacion";
+            this.Load += new System.EventHandler(this.notas_capacitación_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tbPorcentaje)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotas)).EndInit();
             this.ResumeLayout(false);
@@ -303,7 +321,7 @@ namespace Capa_Vista_Capacitacion
         private System.Windows.Forms.Button Btn_guardar;
         private System.Windows.Forms.Button Btn_nuevo;
         private System.Windows.Forms.ComboBox cbEmpleado;
-        private System.Windows.Forms.ComboBox cbCapacitación;
+        private System.Windows.Forms.ComboBox cbCapacitacion;
         private System.Windows.Forms.TextBox txtNota;
         private System.Windows.Forms.Label lblCapacitación;
         private System.Windows.Forms.Label lblEmpleado;
