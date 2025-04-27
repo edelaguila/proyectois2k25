@@ -184,7 +184,7 @@ namespace Capa_Vista_RRHH
 
         private void promocionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_Promociones deptos = new frm_Promociones();
+            frm_Promociones deptos = new frm_Promociones(idUsuario);
             deptos.Show();
         }
 
@@ -301,13 +301,13 @@ namespace Capa_Vista_RRHH
 
         private void registrarEvidenciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_evidencias GD = new frm_evidencias();
+            frm_evidencias GD = new frm_evidencias(idUsuario);
             GD.Show();
         }
 
         private void aplicarSanciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_sanciones GD = new frm_sanciones();
+            frm_sanciones GD = new frm_sanciones(idUsuario);
             GD.Show();
         }
 
