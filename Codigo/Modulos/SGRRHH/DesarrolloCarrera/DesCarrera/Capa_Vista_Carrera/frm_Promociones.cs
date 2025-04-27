@@ -115,7 +115,7 @@ namespace Capa_Vista_Carrera
                 var selectedItem = (ComboBoxItem)cmb_empleado.SelectedItem;
                 string valorSeleccionado = selectedItem.Value;
                 // Mostrar el valor en un MessageBox
-                MessageBox.Show($"Valor seleccionado: {valorSeleccionado}", "Valor Seleccionado");
+               // MessageBox.Show($"Valor seleccionado: {valorSeleccionado}", "Valor Seleccionado");
             }
         }
         /***************************************************************************************************/
