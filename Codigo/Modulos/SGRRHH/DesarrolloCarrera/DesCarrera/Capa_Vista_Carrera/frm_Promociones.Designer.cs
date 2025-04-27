@@ -141,6 +141,7 @@
             // 
             this.txt_ID.Location = new System.Drawing.Point(184, 136);
             this.txt_ID.Name = "txt_ID";
+            this.txt_ID.ReadOnly = true;
             this.txt_ID.Size = new System.Drawing.Size(174, 22);
             this.txt_ID.TabIndex = 18;
             // 
@@ -277,6 +278,7 @@
             this.Btn_Guardar.Size = new System.Drawing.Size(90, 77);
             this.Btn_Guardar.TabIndex = 1;
             this.Btn_Guardar.UseVisualStyleBackColor = true;
+            this.Btn_Guardar.Click += new System.EventHandler(this.Btn_Guardar_Click);
             // 
             // Btn_Nuevo
             // 
@@ -288,6 +290,7 @@
             this.Btn_Nuevo.Size = new System.Drawing.Size(90, 77);
             this.Btn_Nuevo.TabIndex = 0;
             this.Btn_Nuevo.UseVisualStyleBackColor = true;
+            this.Btn_Nuevo.Click += new System.EventHandler(this.Btn_Nuevo_Click);
             // 
             // cmb_empleado
             // 
