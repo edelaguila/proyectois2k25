@@ -63,40 +63,54 @@ namespace Capa_Modelo_Evaluacion
         public int InsertarEvaluacion(int fkEmpleado, int fkEvaluador, string tipoEvaluacion, decimal calificacion, string comentarios, DateTime fechaEvaluacion)
         {
             int idEvaluacion = -1;
+            OdbcConnection conn = null;
+
             try
             {
-                using (OdbcConnection conn = cn.conexion())
+                conn = cn.conexion(); // Abre la conexión explícitamente
+                if (conn.State != ConnectionState.Open)
                 {
-                    string query = @"INSERT INTO TBL_EVALUACIONES (Fk_Empleado, Fk_Evaluador, Tipo_Evaluacion, Calificacion, Comentarios, Fecha_Evaluacion)
-                             VALUES (?, ?, ?, ?, ?, ?)";
+                    conn.Open();
+                }
 
-                    using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                string query = @"INSERT INTO TBL_EVALUACIONES (Fk_Empleado, Fk_Evaluador, Tipo_Evaluacion, Calificacion, Comentarios, Fecha_Evaluacion)
+                         VALUES (?, ?, ?, ?, ?, ?)";
+
+                using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                {
+                    cmd.Parameters.Add("?", OdbcType.Int).Value = fkEmpleado;
+                    cmd.Parameters.Add("?", OdbcType.Int).Value = fkEvaluador;
+                    cmd.Parameters.Add("?", OdbcType.VarChar).Value = tipoEvaluacion;
+                    cmd.Parameters.Add("?", OdbcType.Decimal).Value = calificacion;
+                    cmd.Parameters.Add("?", OdbcType.Text).Value = comentarios;
+                    cmd.Parameters.Add("?", OdbcType.DateTime).Value = fechaEvaluacion;
+                    cmd.Parameters.Add("?", OdbcType.Int).Value = 1;  
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                // Obtener último ID insertado de forma segura
+                string getIdQuery = "SELECT LAST_INSERT_ID()";
+                using (OdbcCommand getIdCmd = new OdbcCommand(getIdQuery, conn))
+                {
+                    object result = getIdCmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
                     {
-                        cmd.Parameters.Add("?", OdbcType.Int).Value = fkEmpleado;
-                        cmd.Parameters.Add("?", OdbcType.Int).Value = fkEvaluador;
-                        cmd.Parameters.Add("?", OdbcType.VarChar).Value = tipoEvaluacion;
-                        cmd.Parameters.Add("?", OdbcType.Decimal).Value = calificacion;
-                        cmd.Parameters.Add("?", OdbcType.Text).Value = comentarios;
-                        cmd.Parameters.Add("?", OdbcType.Date).Value = fechaEvaluacion;
-
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    // Obtener último ID insertado de forma segura
-                    string getIdQuery = "SELECT MAX(Pk_Evaluacion) FROM TBL_EVALUACIONES";
-                    using (OdbcCommand getIdCmd = new OdbcCommand(getIdQuery, conn))
-                    {
-                        object result = getIdCmd.ExecuteScalar();
-                        if (result != null && result != DBNull.Value)
-                        {
-                            idEvaluacion = Convert.ToInt32(result);
-                        }
+                        idEvaluacion = Convert.ToInt32(result);
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error al insertar evaluación: " + ex.Message);
+            }
+            finally
+            {
+                // Asegurarse de que la conexión se cierre
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
 
             return idEvaluacion;
@@ -106,27 +120,40 @@ namespace Capa_Modelo_Evaluacion
         // Insertar detalles de la evaluación
         public void InsertarDetalleEvaluacion(int idEvaluacion, int idCompetencia, decimal calificacion, string comentarios)
         {
+            OdbcConnection conn = null;
+
             try
             {
-                using (OdbcConnection conn = cn.conexion())
+                conn = cn.conexion(); // Abre la conexión explícitamente
+                if (conn.State != ConnectionState.Open)
                 {
-                    string query = @"INSERT INTO tbl_detalle_evaluacion (fk_id_evaluacion, fk_id_competencia, calificacion, comentarios)
-                             VALUES (?, ?, ?, ?)";
+                    conn.Open();
+                }
 
-                    using (OdbcCommand cmd = new OdbcCommand(query, conn))
-                    {
-                        cmd.Parameters.Add("?", OdbcType.Int).Value = idEvaluacion;
-                        cmd.Parameters.Add("?", OdbcType.Int).Value = idCompetencia;
-                        cmd.Parameters.Add("?", OdbcType.Decimal).Value = calificacion;
-                        cmd.Parameters.Add("?", OdbcType.Text).Value = comentarios;
+                string query = @"INSERT INTO tbl_detalle_evaluacion (fk_id_evaluacion, fk_id_competencia, calificacion, comentarios)
+                         VALUES (?, ?, ?, ?)";
 
-                        cmd.ExecuteNonQuery();
-                    }
+                using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                {
+                    cmd.Parameters.Add("?", OdbcType.Int).Value = idEvaluacion;
+                    cmd.Parameters.Add("?", OdbcType.Int).Value = idCompetencia;
+                    cmd.Parameters.Add("?", OdbcType.Decimal).Value = calificacion;
+                    cmd.Parameters.Add("?", OdbcType.Text).Value = comentarios;
+
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error al insertar detalle de evaluación: " + ex.Message);
+            }
+            finally
+            {
+                // Asegurarse de que la conexión se cierre
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
