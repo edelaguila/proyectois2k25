@@ -111,12 +111,16 @@ CREATE TABLE IF NOT EXISTS Tbl_competencias(
 
 -- JOEL LÓPEZ -------------------------------------------------
 DROP TABLE IF EXISTS tbl_nivelcompetencia;
+-- Paso 1: Crear la tabla tbl_nivelcompetencia
 CREATE TABLE IF NOT EXISTS tbl_nivelcompetencia (
-	pk_id_nivel INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	nivel_nombre CHAR,  -- a b c d 
+    pk_id_nivel INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nivel_nombre CHAR(1) NOT NULL CHECK (nivel_nombre IN ('A', 'B', 'C', 'D')),  -- A, B, C, D
     nivel_descripcion VARCHAR(100),
     estado TINYINT(1) NOT NULL DEFAULT 1
 );
+
+
+
 
 -- Insertar registros en Tbl_cobrador
 INSERT INTO tbl_nivelcompetencia (nivel_nombre, nivel_descripcion, estado)

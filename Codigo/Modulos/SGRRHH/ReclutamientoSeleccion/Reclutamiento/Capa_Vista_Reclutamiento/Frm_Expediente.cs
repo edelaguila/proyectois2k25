@@ -19,7 +19,7 @@ namespace Capa_Vista_Reclutamiento
         {
             InitializeComponent();
             LlenarComboPostulantes();
-            Dgv_VisualizarDatos.DataSource = controlador.Pro_obtenerExpedientes();
+            //Dgv_VisualizarDatos.DataSource = controlador.Pro_obtenerExpedientes();
         }
 
         private void Btn_agregar_Click(object sender, EventArgs e)
@@ -153,6 +153,11 @@ namespace Capa_Vista_Reclutamiento
         {
              int idPostulante = (int)Cmb_Idpostulante.SelectedValue;
             controlador.VerArchivoPDF("pruebas_psicometricas", idPostulante);
+        }
+
+        private void Frm_Expediente_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
