@@ -33,6 +33,11 @@ namespace Capa_Vista_Compras
         {
            
         }
+
+        private void Pic_Ingresar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
