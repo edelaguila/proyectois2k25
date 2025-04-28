@@ -1,6 +1,45 @@
 -- use colchoneria;
 use colchoneria; 
 -- Integración a colchoneria nuevos modulos RRHH
+
+-- ----------------------------------------------- Reclutamiento Brandon Boch ---------------------------------------------
+ALTER TABLE tbl_puestos_trabajo
+ADD COLUMN requisitos VARCHAR(250);
+
+DROP TABLE IF EXISTS Tbl_postulante;
+CREATE TABLE IF NOT EXISTS Tbl_postulante(
+	Pk_id_postulante INT AUTO_INCREMENT PRIMARY KEY,
+	Fk_puesto_aplica_postulante INT NULL,
+    nombre_postulante VARCHAR(50) NOT NULL,
+    apellido_postulante VARCHAR(50) NOT NULL,
+    email_postulante VARCHAR(50) NOT NULL,
+    telefono_postulante VARCHAR(15) NOT NULL
+);
+ALTER TABLE Tbl_postulante ADD CONSTRAINT Fk_puesto_aplica_postulante FOREIGN KEY (Fk_puesto_aplica_postulante) REFERENCES tbl_puestos_trabajo(pk_id_puestos) ON DELETE SET NULL;
+
+DROP TABLE IF EXISTS Tbl_expedientes;
+CREATE TABLE IF NOT EXISTS Tbl_expedientes(
+	Pk_id_expediente INT AUTO_INCREMENT PRIMARY KEY,
+    Fk_id_postulante INT NULL,
+    curriculum LONGBLOB,
+    pruebas_psicometricas LONGBLOB,
+    pruebas_psicologicas LONGBLOB,
+    pruebas_aptitud LONGBLOB
+);
+ALTER TABLE Tbl_expedientes ADD CONSTRAINT Fk_id_postulante FOREIGN KEY (Fk_id_postulante) REFERENCES Tbl_postulante(Pk_id_postulante) ON DELETE SET NULL;
+
+DROP TABLE IF EXISTS Tbl_perfil_postulante;
+CREATE TABLE IF NOT EXISTS Tbl_perfil_postulante(
+	Pk_id_perfil_postulante INT AUTO_INCREMENT PRIMARY KEY,
+    Fk_id_puestos INT NULL,
+    nivel_academico VARCHAR(50),
+    idiomas VARCHAR(50),
+    experiencia VARCHAR(50),
+    certificaciones VARCHAR(250),
+    habilidades VARCHAR (250)
+);
+ALTER TABLE Tbl_perfil_postulante ADD CONSTRAINT Fk_id_puestos FOREIGN KEY (Fk_id_puestos) REFERENCES tbl_puestos_trabajo(pk_id_puestos) ON DELETE SET NULL;
+-- -----------------------------------------------------------------------------------------------------------------------------------
 -- --------------------------- Faltas Marco Monroy -----------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS tbl_asistencias (
     pk_id_asistencia INT NOT NULL AUTO_INCREMENT,
@@ -33,7 +72,66 @@ ALTER TABLE tbl_control_faltas
 ADD COLUMN fk_id_permiso INT DEFAULT NULL,
 ADD CONSTRAINT fk_permiso_falta FOREIGN KEY (fk_id_permiso) REFERENCES tbl_permisos(pk_id_permiso);
 -- ------------------------------------------------------------------------------------------------------------------------------------
+-- -------------------------- Capacitacion Joel ------------------------------------------------------------------------------
+ALTER TABLE tbl_departamentos 
+ADD COLUMN departamentos_competencia VARCHAR(100) NOT NULL;
 
+
+
+-- Creación de tbl_instructores
+CREATE TABLE IF NOT EXISTS tbl_instructores (
+    pk_id_instructor INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    instructores_nombre VARCHAR(50) NOT NULL,
+    instructores_apellido VARCHAR(50) NOT NULL,
+    instructores_especialidad VARCHAR(100) NOT NULL,
+    instructores_email VARCHAR(100) UNIQUE NOT NULL,
+    instructores_telefono VARCHAR(20),
+    estado TINYINT(1) NOT NULL DEFAULT 1
+);
+
+
+
+-- Creación de tbl_capacitaciones
+CREATE TABLE IF NOT EXISTS tbl_capacitaciones (
+    pk_id_capacitacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    capacitaciones_nombre VARCHAR(100) NOT NULL,
+    capacitaciones_descripcion TEXT,
+    fk_id_departamento INT NOT NULL,
+    fk_id_instructor INT NOT NULL,
+    capacitaciones_fecha DATE NOT NULL,
+    capacitaciones_hora TIME NOT NULL,
+    estado TINYINT(1) NOT NULL DEFAULT 1,
+    FOREIGN KEY (fk_id_departamento) REFERENCES tbl_departamentos (pk_id_departamento),
+    FOREIGN KEY (fk_id_instructor) REFERENCES tbl_instructores (pk_id_instructor)
+);
+
+-- Creación de tbl_cierres
+CREATE TABLE IF NOT EXISTS tbl_cierres (
+    pk_id_cierre INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    fk_id_empleado INT NOT NULL,
+    fk_id_capacitacion INT NOT NULL,
+    cierres_competencia VARCHAR(100) NOT NULL,
+    cierres_porcentaje_asistencia DECIMAL(5,2) NOT NULL CHECK (cierres_porcentaje_asistencia BETWEEN 0 AND 100),
+    cierre_fecha DATE NOT NULL,
+    estado TINYINT(1) NOT NULL DEFAULT 1,
+    FOREIGN KEY (fk_id_empleado) REFERENCES tbl_empleados (pk_clave),
+    FOREIGN KEY (fk_id_capacitacion) REFERENCES tbl_capacitaciones (pk_id_capacitacion)
+);
+
+-- Creación de tbl_notas
+CREATE TABLE IF NOT EXISTS tbl_notas (
+    pk_id_nota INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    fk_id_empleado INT NOT NULL,
+    fk_id_capacitacion INT NOT NULL,
+    fk_id_nivel INT NOT NULL,
+    notas_puntaje DECIMAL(5,2) NOT NULL CHECK (notas_puntaje BETWEEN 0 AND 100),
+    notas_fecha DATE NOT NULL,
+    estado TINYINT(1) NOT NULL DEFAULT 1,
+    FOREIGN KEY (fk_id_empleado) REFERENCES tbl_empleados (pk_clave),
+    FOREIGN KEY (fk_id_capacitacion) REFERENCES tbl_capacitaciones (pk_id_capacitacion),
+    FOREIGN KEY (fk_id_nivel) REFERENCES tbl_nivelcompetencia (pk_id_nivel)
+);
+-- ----------------------------------------------------------------------------------------------------
 -- ---------------------------------------Desempeño Jose Daniel Sierra---------------------------------------------
  CREATE TABLE tbl_evaluaciones (
     pk_id_evaluacion INT NOT NULL AUTO_INCREMENT,
