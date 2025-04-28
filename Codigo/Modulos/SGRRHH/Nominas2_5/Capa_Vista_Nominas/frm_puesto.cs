@@ -18,7 +18,7 @@ namespace Capa_Vista_Nominas
 
             string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
             /*********Prueba con la tabla inicial*********/
-            string[] alias = { "pk_id_puestos", "nombre_puesto", "descripcion", "estado", "requisitos" };
+            string[] alias = { "pk_id_puestos", "nombre_puesto", "descripcion", "estado", "requisitos", "Fk_id_perfil" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
@@ -30,7 +30,11 @@ namespace Capa_Vista_Nominas
             navegador1.AsignarNombreForm("Puesto");
             /**********************************************/
 
+            ///********Valores foraneos en Combobox************************/
 
+            //navegador1.AsignarComboConTabla("lineas", "codigo_linea", "nombre_linea", 1);
+            //navegador1.AsignarComboConTabla("marcas", "codigo_marca", "nombre_marca", 1);
+            ///**************************************************/
         }
 
         private void navegador1_Load(object sender, EventArgs e)
