@@ -148,3 +148,36 @@ BEGIN
     WHERE pk_id_control_faltas = p_id_falta;
 END $$
 DELIMITER ;
+
+-- Jose Daniel Sierra------------
+
+CREATE TABLE tbl_detalle_evaluacion (
+    pk_id_detalle INT NOT NULL AUTO_INCREMENT,
+    fk_id_evaluacion INT NOT NULL,
+    fk_id_competencia INT NOT NULL,
+    calificacion DECIMAL(5,2) NOT NULL,
+    comentarios TEXT,
+    PRIMARY KEY (pk_id_detalle),
+    FOREIGN KEY (fk_id_evaluacion) REFERENCES tbl_evaluaciones(pk_id_evaluacion),
+    FOREIGN KEY (fk_id_competencia) REFERENCES tbl_competencias(pk_id_competencia)
+);
+
+ALTER TABLE tbl_evaluaciones
+ADD COLUMN fk_evaluador INT NOT NULL AFTER fk_clave_empleado,
+ADD FOREIGN KEY (fk_evaluador) REFERENCES tbl_empleados(pk_clave);
+
+
+INSERT INTO tbl_competencias (nombre_competencia, descripcion)
+VALUES
+('Liderazgo', 'Capacidad de guiar a un equipo hacia el logro de objetivos'),
+('Trabajo en equipo', 'Capacidad para colaborar y trabajar con otros de manera efectiva'),
+('Comunicación', 'Habilidad para expresar ideas claramente y escuchar a otros'),
+('Resolución de problemas', 'Capacidad para analizar y encontrar soluciones a los problemas'),
+('Innovación y creatividad', 'Habilidad para generar ideas nuevas y creativas'),
+('Gestión de tiempo', 'Capacidad para gestionar el tiempo de manera efectiva'),
+('Adaptabilidad', 'Habilidad para adaptarse a cambios en el entorno'),
+('Productividad', 'Capacidad para completar tareas de manera eficiente'),
+('Orientación al cliente', 'Habilidad para atender y satisfacer las necesidades del cliente'),
+('Responsabilidad', 'Compromiso con las tareas y responsabilidades asignadas');
+
+select * from tbl_competencias;
