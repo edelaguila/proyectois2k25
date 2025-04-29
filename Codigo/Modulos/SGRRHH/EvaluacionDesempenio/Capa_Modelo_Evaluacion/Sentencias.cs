@@ -58,8 +58,6 @@ namespace Capa_Modelo_Evaluacion
             return dt;
         }
 
-
-        // Insertar evaluación general
         public int InsertarEvaluacion(int fkEmpleado, int fkEvaluador, string tipoEvaluacion, decimal calificacion, string comentarios, DateTime fechaEvaluacion)
         {
             int idEvaluacion = -1;
@@ -67,14 +65,15 @@ namespace Capa_Modelo_Evaluacion
 
             try
             {
-                conn = cn.conexion(); // Abre la conexión explícitamente
+                conn = cn.conexion();
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
 
-                string query = @"INSERT INTO TBL_EVALUACIONES (Fk_Empleado, Fk_Evaluador, Tipo_Evaluacion, Calificacion, Comentarios, Fecha_Evaluacion)
-                         VALUES (?, ?, ?, ?, ?, ?)";
+                string query = @"INSERT INTO TBL_EVALUACIONES 
+                        (fk_clave_empleado, fk_evaluador, tipo_evaluacion, calificacion, comentarios, fecha_evaluacion, estado)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)";
 
                 using (OdbcCommand cmd = new OdbcCommand(query, conn))
                 {
@@ -84,12 +83,14 @@ namespace Capa_Modelo_Evaluacion
                     cmd.Parameters.Add("?", OdbcType.Decimal).Value = calificacion;
                     cmd.Parameters.Add("?", OdbcType.Text).Value = comentarios;
                     cmd.Parameters.Add("?", OdbcType.DateTime).Value = fechaEvaluacion;
-                    cmd.Parameters.Add("?", OdbcType.Int).Value = 1;  
+                    cmd.Parameters.Add("?", OdbcType.TinyInt).Value = 1; // estado
+
+
 
                     cmd.ExecuteNonQuery();
                 }
 
-                // Obtener último ID insertado de forma segura
+                // Obtener el último ID insertado
                 string getIdQuery = "SELECT LAST_INSERT_ID()";
                 using (OdbcCommand getIdCmd = new OdbcCommand(getIdQuery, conn))
                 {
@@ -106,7 +107,6 @@ namespace Capa_Modelo_Evaluacion
             }
             finally
             {
-                // Asegurarse de que la conexión se cierre
                 if (conn != null && conn.State == ConnectionState.Open)
                 {
                     conn.Close();
@@ -145,7 +145,7 @@ namespace Capa_Modelo_Evaluacion
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al insertar detalle de evaluación: " + ex.Message);
+               Console.WriteLine("Error al insertar detalle de evaluación: " + ex.Message);
             }
             finally
             {
