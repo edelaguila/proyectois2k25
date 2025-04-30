@@ -158,6 +158,35 @@ namespace Capa_Modelo_Evaluacion
         }
 
 
+        public DataTable ObtenerEvaluacionesPorEmpleado(int idEmpleado)
+        {
+            DataTable dt = new DataTable();
+            OdbcConnection conn = null;
+            try
+            {
+                conn = cn.conexion();  // Establecer la conexión con la base de datos
+                string query = @"
+            SELECT e.pk_id_evaluacion, e.tipo_evaluacion, e.calificacion AS calificacion_general, e.comentarios AS comentario_general, 
+                   d.calificacion AS calificacion_detalle, c.nombre_competencia, d.comentarios AS comentario_detalle
+            FROM tbl_evaluaciones e
+            INNER JOIN tbl_detalle_evaluacion d ON e.pk_id_evaluacion = d.fk_id_evaluacion
+            INNER JOIN tbl_competencias c ON d.fk_id_competencia = c.Pk_id_competencia
+            WHERE e.fk_clave_empleado = ?";  // Filtramos por el ID del empleado
+                OdbcCommand cmd = new OdbcCommand(query, conn);
+                cmd.Parameters.AddWithValue("?", idEmpleado);  // Se agrega el parámetro del empleado
+                OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                da.Fill(dt);  // Llenamos el DataTable con los resultados
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener evaluaciones: " + ex.Message);
+            }
+            finally
+            {
+                conn?.Close();  // Cerramos la conexión
+            }
+            return dt;
+        }
 
 
     }

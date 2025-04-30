@@ -272,6 +272,7 @@ namespace Capa_Vista_Evaluacion
             this.Btn_Salir.Size = new System.Drawing.Size(91, 80);
             this.Btn_Salir.TabIndex = 19;
             this.Btn_Salir.UseVisualStyleBackColor = true;
+            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
             // 
             // Btn_guardar
             // 
@@ -674,6 +675,7 @@ namespace Capa_Vista_Evaluacion
             this.Btn_Reporte.Size = new System.Drawing.Size(87, 80);
             this.Btn_Reporte.TabIndex = 28;
             this.Btn_Reporte.UseVisualStyleBackColor = true;
+            this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
             // 
             // Frm_Evaluacion
             // 
