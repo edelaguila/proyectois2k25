@@ -618,7 +618,6 @@ ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
 
 
 -- Estructura de tabla para la tabla `ayuda`
---
 
 -- Implementación de Nominas con la base de datos general ya que fue aprobado por Brandon Boch
 -- solo se espera las dos revisiones para que sea subido al repositorio principal
@@ -1069,20 +1068,6 @@ CREATE TABLE TBL_LOCALES (
 ALTER TABLE TBL_LOCALES
 MODIFY ESTADO TINYINT NOT NULL DEFAULT 1;
 
-CREATE TABLE Tbl_movimiento_de_inventario (
-	Pk_id_movimiento INT PRIMARY KEY AUTO_INCREMENT,
-    estado TINYINT NOT NULL DEFAULT 1,
-    Fk_id_producto INT NOT NULL,
-    Fk_id_stock INT NOT NULL,
-    Fk_ID_LOCALES INT NOT NULL,
-	tipo_movimiento varchar (30) NOT NULL,
-    FOREIGN KEY (Fk_id_producto) REFERENCES Tbl_Productos(Pk_id_Producto),
-    FOREIGN KEY (Fk_id_stock) REFERENCES Tbl_TrasladoProductos(Pk_id_TrasladoProductos),
-    CONSTRAINT FK_EXISTENCIA_LOCAL FOREIGN KEY (Fk_ID_LOCALES) REFERENCES TBL_LOCALES(Pk_ID_LOCAL)
-);
-ALTER TABLE Tbl_movimiento_de_inventario
-MODIFY estado TINYINT NOT NULL DEFAULT 1;
-
 CREATE TABLE Tbl_mantenimiento (
 	Pk_id_Mantenimiento INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nombre_Solicitante varchar(20) NOT NULL,
@@ -1196,6 +1181,26 @@ CREATE TABLE IF NOT EXISTS Tbl_proveedores (
      PRIMARY KEY (Pk_prov_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE Tbl_compra (
+    Pk_id_compra INT AUTO_INCREMENT PRIMARY KEY,
+    Fk_prov_id INT NOT NULL,
+    fecha_compra DATE NOT NULL,
+    numero_factura VARCHAR(50) NOT NULL,
+    tipo_comprobante VARCHAR(50) NOT NULL,
+    forma_pago VARCHAR(30) NOT NULL,
+    subtotal DECIMAL(10,2) NOT NULL,
+    impuestos DECIMAL(10,2) NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    producto VARCHAR (50),
+    cantidad INT ,
+    precio  DECIMAL(10,2) NOT NULL,
+    descripcion VARCHAR (50),
+    estado VARCHAR(20) DEFAULT 'Registrada', -- Registrada, Anulada, etc.
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    -- Relaciones
+    FOREIGN KEY (Fk_prov_id) REFERENCES Tbl_proveedores(Pk_prov_id)
+);
 
 CREATE TABLE IF NOT EXISTS Tbl_lista_encabezado (
     Pk_id_lista_Encabezado INT(11) NOT NULL,
@@ -1803,4 +1808,5 @@ CREATE TABLE IF NOT EXISTS `tbl_historial_servicio` (
   KEY `Fk_ActivoFijo` (`Pk_Id_ActivoFijo`),
   CONSTRAINT `Fk_ActivoFijo_HistorialServicio` FOREIGN KEY (`Pk_Id_ActivoFijo`) REFERENCES `tbl_ActivoFijo` (`Pk_Id_ActivoFijo`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- FIN APROBADO POR BRANDON BOCH

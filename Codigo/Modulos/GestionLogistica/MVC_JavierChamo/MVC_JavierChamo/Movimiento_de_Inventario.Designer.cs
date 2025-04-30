@@ -31,108 +31,106 @@ namespace MVC_JavierChamo
         {
             this.components = new System.ComponentModel.Container();
             this.Dgv_Inventario = new System.Windows.Forms.DataGridView();
-            this.Cbo_idStock = new System.Windows.Forms.ComboBox();
-            this.Txt_stock = new System.Windows.Forms.Label();
-            this.Cbo_idProducto = new System.Windows.Forms.ComboBox();
-            this.Txt_idProducto = new System.Windows.Forms.Label();
-            this.Cbo_estado = new System.Windows.Forms.ComboBox();
-            this.Txt_estado = new System.Windows.Forms.Label();
+            this.Cbo_idtraslado = new System.Windows.Forms.ComboBox();
+            this.Id_traslado = new System.Windows.Forms.Label();
+            this.Txt_stockprod = new System.Windows.Forms.Label();
+            this.Cbo_idprod = new System.Windows.Forms.ComboBox();
+            this.Txt_idprod = new System.Windows.Forms.Label();
             this.txt_numMovimiento = new System.Windows.Forms.TextBox();
             this.Txt_No_movimiento = new System.Windows.Forms.Label();
-            this.Txt_local = new System.Windows.Forms.Label();
-            this.Cbo_Local = new System.Windows.Forms.ComboBox();
+            this.Txt_almacen = new System.Windows.Forms.Label();
+            this.Cbo_almacen = new System.Windows.Forms.ComboBox();
             this.Txt_titulo = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Btn_guardar = new System.Windows.Forms.Button();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.Btn_editar = new System.Windows.Forms.Button();
             this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
+            this.Btn_eliminar = new System.Windows.Forms.Button();
             this.toolTip4 = new System.Windows.Forms.ToolTip(this.components);
+            this.Btn_actualizar = new System.Windows.Forms.Button();
             this.toolTip5 = new System.Windows.Forms.ToolTip(this.components);
+            this.Btn_pdf = new System.Windows.Forms.Button();
             this.toolTip6 = new System.Windows.Forms.ToolTip(this.components);
             this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_reporte = new System.Windows.Forms.Button();
-            this.Btn_actualizar = new System.Windows.Forms.Button();
-            this.Btn_pdf = new System.Windows.Forms.Button();
-            this.Btn_eliminar = new System.Windows.Forms.Button();
-            this.Btn_editar = new System.Windows.Forms.Button();
-            this.Btn_guardar = new System.Windows.Forms.Button();
             this.Txt_tipomovimiento = new System.Windows.Forms.Label();
             this.Cbo_tipomovimiento = new System.Windows.Forms.ComboBox();
+            this.Txt_cantstock = new System.Windows.Forms.NumericUpDown();
+            this.Txt_almastock = new System.Windows.Forms.NumericUpDown();
+            this.Txt_cantalmac = new System.Windows.Forms.Label();
+            this.Cbo_idcompra = new System.Windows.Forms.ComboBox();
+            this.Txt_idcompra = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Inventario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_cantstock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_almastock)).BeginInit();
             this.SuspendLayout();
             // 
             // Dgv_Inventario
             // 
             this.Dgv_Inventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Inventario.Location = new System.Drawing.Point(16, 265);
+            this.Dgv_Inventario.Location = new System.Drawing.Point(16, 303);
             this.Dgv_Inventario.Name = "Dgv_Inventario";
-            this.Dgv_Inventario.Size = new System.Drawing.Size(618, 293);
+            this.Dgv_Inventario.Size = new System.Drawing.Size(618, 241);
             this.Dgv_Inventario.TabIndex = 42;
             this.Dgv_Inventario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgbMovimientoInventario_CellClick);
             // 
-            // Cbo_idStock
+            // Cbo_idtraslado
             // 
-            this.Cbo_idStock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbo_idStock.FormattingEnabled = true;
-            this.Cbo_idStock.Location = new System.Drawing.Point(513, 191);
-            this.Cbo_idStock.Name = "Cbo_idStock";
-            this.Cbo_idStock.Size = new System.Drawing.Size(191, 21);
-            this.Cbo_idStock.TabIndex = 41;
+            this.Cbo_idtraslado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cbo_idtraslado.FormattingEnabled = true;
+            this.Cbo_idtraslado.Location = new System.Drawing.Point(524, 190);
+            this.Cbo_idtraslado.Name = "Cbo_idtraslado";
+            this.Cbo_idtraslado.Size = new System.Drawing.Size(191, 21);
+            this.Cbo_idtraslado.TabIndex = 41;
             // 
-            // Txt_stock
+            // Id_traslado
             // 
-            this.Txt_stock.AutoSize = true;
-            this.Txt_stock.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_stock.Location = new System.Drawing.Point(379, 190);
-            this.Txt_stock.Name = "Txt_stock";
-            this.Txt_stock.Size = new System.Drawing.Size(81, 19);
-            this.Txt_stock.TabIndex = 40;
-            this.Txt_stock.Text = "Id del stock";
+            this.Id_traslado.AutoSize = true;
+            this.Id_traslado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Id_traslado.Location = new System.Drawing.Point(379, 190);
+            this.Id_traslado.Name = "Id_traslado";
+            this.Id_traslado.Size = new System.Drawing.Size(96, 19);
+            this.Id_traslado.TabIndex = 40;
+            this.Id_traslado.Text = "Id del traslado";
             // 
-            // Cbo_idProducto
+            // Txt_stockprod
             // 
-            this.Cbo_idProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbo_idProducto.FormattingEnabled = true;
-            this.Cbo_idProducto.Location = new System.Drawing.Point(149, 191);
-            this.Cbo_idProducto.Name = "Cbo_idProducto";
-            this.Cbo_idProducto.Size = new System.Drawing.Size(184, 21);
-            this.Cbo_idProducto.TabIndex = 39;
+            this.Txt_stockprod.AutoSize = true;
+            this.Txt_stockprod.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_stockprod.Location = new System.Drawing.Point(12, 190);
+            this.Txt_stockprod.Name = "Txt_stockprod";
+            this.Txt_stockprod.Size = new System.Drawing.Size(126, 19);
+            this.Txt_stockprod.TabIndex = 38;
+            this.Txt_stockprod.Text = "Stock del producto";
             // 
-            // Txt_idProducto
+            // Cbo_idprod
             // 
-            this.Txt_idProducto.AutoSize = true;
-            this.Txt_idProducto.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_idProducto.Location = new System.Drawing.Point(12, 190);
-            this.Txt_idProducto.Name = "Txt_idProducto";
-            this.Txt_idProducto.Size = new System.Drawing.Size(104, 19);
-            this.Txt_idProducto.TabIndex = 38;
-            this.Txt_idProducto.Text = "Id del Producto";
-            // 
-            // Cbo_estado
-            // 
-            this.Cbo_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbo_estado.FormattingEnabled = true;
-            this.Cbo_estado.Items.AddRange(new object[] {
+            this.Cbo_idprod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cbo_idprod.FormattingEnabled = true;
+            this.Cbo_idprod.Items.AddRange(new object[] {
             "0",
             "1"});
-            this.Cbo_estado.Location = new System.Drawing.Point(513, 159);
-            this.Cbo_estado.Name = "Cbo_estado";
-            this.Cbo_estado.Size = new System.Drawing.Size(191, 21);
-            this.Cbo_estado.TabIndex = 33;
+            this.Cbo_idprod.Location = new System.Drawing.Point(524, 159);
+            this.Cbo_idprod.Name = "Cbo_idprod";
+            this.Cbo_idprod.Size = new System.Drawing.Size(191, 21);
+            this.Cbo_idprod.TabIndex = 33;
             // 
-            // Txt_estado
+            // Txt_idprod
             // 
-            this.Txt_estado.AutoSize = true;
-            this.Txt_estado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_estado.Location = new System.Drawing.Point(379, 158);
-            this.Txt_estado.Name = "Txt_estado";
-            this.Txt_estado.Size = new System.Drawing.Size(51, 19);
-            this.Txt_estado.TabIndex = 32;
-            this.Txt_estado.Text = "Estado";
+            this.Txt_idprod.AutoSize = true;
+            this.Txt_idprod.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_idprod.Location = new System.Drawing.Point(379, 158);
+            this.Txt_idprod.Name = "Txt_idprod";
+            this.Txt_idprod.Size = new System.Drawing.Size(103, 19);
+            this.Txt_idprod.TabIndex = 32;
+            this.Txt_idprod.Text = "Id del producto";
             // 
             // txt_numMovimiento
             // 
             this.txt_numMovimiento.Location = new System.Drawing.Point(149, 159);
             this.txt_numMovimiento.Name = "txt_numMovimiento";
+            this.txt_numMovimiento.ReadOnly = true;
             this.txt_numMovimiento.Size = new System.Drawing.Size(184, 20);
             this.txt_numMovimiento.TabIndex = 31;
             // 
@@ -146,24 +144,24 @@ namespace MVC_JavierChamo
             this.Txt_No_movimiento.TabIndex = 30;
             this.Txt_No_movimiento.Text = "Núm. de movimiento";
             // 
-            // Txt_local
+            // Txt_almacen
             // 
-            this.Txt_local.AutoSize = true;
-            this.Txt_local.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_local.Location = new System.Drawing.Point(12, 223);
-            this.Txt_local.Name = "Txt_local";
-            this.Txt_local.Size = new System.Drawing.Size(82, 19);
-            this.Txt_local.TabIndex = 45;
-            this.Txt_local.Text = "Id del Local";
+            this.Txt_almacen.AutoSize = true;
+            this.Txt_almacen.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_almacen.Location = new System.Drawing.Point(12, 223);
+            this.Txt_almacen.Name = "Txt_almacen";
+            this.Txt_almacen.Size = new System.Drawing.Size(100, 19);
+            this.Txt_almacen.TabIndex = 45;
+            this.Txt_almacen.Text = "Id del Almacén";
             // 
-            // Cbo_Local
+            // Cbo_almacen
             // 
-            this.Cbo_Local.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbo_Local.FormattingEnabled = true;
-            this.Cbo_Local.Location = new System.Drawing.Point(149, 224);
-            this.Cbo_Local.Name = "Cbo_Local";
-            this.Cbo_Local.Size = new System.Drawing.Size(121, 21);
-            this.Cbo_Local.TabIndex = 46;
+            this.Cbo_almacen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cbo_almacen.FormattingEnabled = true;
+            this.Cbo_almacen.Location = new System.Drawing.Point(149, 224);
+            this.Cbo_almacen.Name = "Cbo_almacen";
+            this.Cbo_almacen.Size = new System.Drawing.Size(121, 21);
+            this.Cbo_almacen.TabIndex = 46;
             // 
             // Txt_titulo
             // 
@@ -174,6 +172,61 @@ namespace MVC_JavierChamo
             this.Txt_titulo.Size = new System.Drawing.Size(289, 37);
             this.Txt_titulo.TabIndex = 48;
             this.Txt_titulo.Text = "Movimiento de Inventario";
+            // 
+            // Btn_guardar
+            // 
+            this.Btn_guardar.Image = global::MVC_JavierChamo.Properties.Resources.agregar_archivo;
+            this.Btn_guardar.Location = new System.Drawing.Point(16, 13);
+            this.Btn_guardar.Name = "Btn_guardar";
+            this.Btn_guardar.Size = new System.Drawing.Size(107, 91);
+            this.Btn_guardar.TabIndex = 26;
+            this.toolTip1.SetToolTip(this.Btn_guardar, "Guardar Registro");
+            this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
+            // 
+            // Btn_editar
+            // 
+            this.Btn_editar.Image = global::MVC_JavierChamo.Properties.Resources.Guardar;
+            this.Btn_editar.Location = new System.Drawing.Point(143, 10);
+            this.Btn_editar.Name = "Btn_editar";
+            this.Btn_editar.Size = new System.Drawing.Size(91, 94);
+            this.Btn_editar.TabIndex = 27;
+            this.toolTip2.SetToolTip(this.Btn_editar, "Editar Registro");
+            this.Btn_editar.UseVisualStyleBackColor = true;
+            this.Btn_editar.Click += new System.EventHandler(this.btn_Editar_Click);
+            // 
+            // Btn_eliminar
+            // 
+            this.Btn_eliminar.Image = global::MVC_JavierChamo.Properties.Resources.cancelar;
+            this.Btn_eliminar.Location = new System.Drawing.Point(256, 8);
+            this.Btn_eliminar.Name = "Btn_eliminar";
+            this.Btn_eliminar.Size = new System.Drawing.Size(101, 96);
+            this.Btn_eliminar.TabIndex = 29;
+            this.toolTip3.SetToolTip(this.Btn_eliminar, "Eliminar Registro");
+            this.Btn_eliminar.UseVisualStyleBackColor = true;
+            this.Btn_eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
+            // 
+            // Btn_actualizar
+            // 
+            this.Btn_actualizar.Image = global::MVC_JavierChamo.Properties.Resources.ACTUALIZAR_V4;
+            this.Btn_actualizar.Location = new System.Drawing.Point(640, 303);
+            this.Btn_actualizar.Name = "Btn_actualizar";
+            this.Btn_actualizar.Size = new System.Drawing.Size(102, 96);
+            this.Btn_actualizar.TabIndex = 44;
+            this.toolTip4.SetToolTip(this.Btn_actualizar, "Actualizar ");
+            this.Btn_actualizar.UseVisualStyleBackColor = true;
+            this.Btn_actualizar.Click += new System.EventHandler(this.btn_Actualizar_Click);
+            // 
+            // Btn_pdf
+            // 
+            this.Btn_pdf.Image = global::MVC_JavierChamo.Properties.Resources.PDF;
+            this.Btn_pdf.Location = new System.Drawing.Point(383, 8);
+            this.Btn_pdf.Name = "Btn_pdf";
+            this.Btn_pdf.Size = new System.Drawing.Size(105, 96);
+            this.Btn_pdf.TabIndex = 43;
+            this.toolTip5.SetToolTip(this.Btn_pdf, "Generar PDF");
+            this.Btn_pdf.UseVisualStyleBackColor = true;
+            this.Btn_pdf.Click += new System.EventHandler(this.btn_GenerarPDF_Click);
             // 
             // Btn_ayuda
             // 
@@ -197,66 +250,11 @@ namespace MVC_JavierChamo
             this.Btn_reporte.UseVisualStyleBackColor = true;
             this.Btn_reporte.Click += new System.EventHandler(this.btn_Reporte_Click);
             // 
-            // Btn_actualizar
-            // 
-            this.Btn_actualizar.Image = global::MVC_JavierChamo.Properties.Resources.ACTUALIZAR_V4;
-            this.Btn_actualizar.Location = new System.Drawing.Point(640, 265);
-            this.Btn_actualizar.Name = "Btn_actualizar";
-            this.Btn_actualizar.Size = new System.Drawing.Size(102, 96);
-            this.Btn_actualizar.TabIndex = 44;
-            this.toolTip4.SetToolTip(this.Btn_actualizar, "Actualizar ");
-            this.Btn_actualizar.UseVisualStyleBackColor = true;
-            this.Btn_actualizar.Click += new System.EventHandler(this.btn_Actualizar_Click);
-            // 
-            // Btn_pdf
-            // 
-            this.Btn_pdf.Image = global::MVC_JavierChamo.Properties.Resources.PDF;
-            this.Btn_pdf.Location = new System.Drawing.Point(383, 8);
-            this.Btn_pdf.Name = "Btn_pdf";
-            this.Btn_pdf.Size = new System.Drawing.Size(105, 96);
-            this.Btn_pdf.TabIndex = 43;
-            this.toolTip5.SetToolTip(this.Btn_pdf, "Generar PDF");
-            this.Btn_pdf.UseVisualStyleBackColor = true;
-            this.Btn_pdf.Click += new System.EventHandler(this.btn_GenerarPDF_Click);
-            // 
-            // Btn_eliminar
-            // 
-            this.Btn_eliminar.Image = global::MVC_JavierChamo.Properties.Resources.cancelar;
-            this.Btn_eliminar.Location = new System.Drawing.Point(256, 8);
-            this.Btn_eliminar.Name = "Btn_eliminar";
-            this.Btn_eliminar.Size = new System.Drawing.Size(101, 96);
-            this.Btn_eliminar.TabIndex = 29;
-            this.toolTip3.SetToolTip(this.Btn_eliminar, "Eliminar Registro");
-            this.Btn_eliminar.UseVisualStyleBackColor = true;
-            this.Btn_eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
-            // 
-            // Btn_editar
-            // 
-            this.Btn_editar.Image = global::MVC_JavierChamo.Properties.Resources.Guardar;
-            this.Btn_editar.Location = new System.Drawing.Point(143, 10);
-            this.Btn_editar.Name = "Btn_editar";
-            this.Btn_editar.Size = new System.Drawing.Size(91, 94);
-            this.Btn_editar.TabIndex = 27;
-            this.toolTip2.SetToolTip(this.Btn_editar, "Editar Registro");
-            this.Btn_editar.UseVisualStyleBackColor = true;
-            this.Btn_editar.Click += new System.EventHandler(this.btn_Editar_Click);
-            // 
-            // Btn_guardar
-            // 
-            this.Btn_guardar.Image = global::MVC_JavierChamo.Properties.Resources.agregar_archivo;
-            this.Btn_guardar.Location = new System.Drawing.Point(16, 13);
-            this.Btn_guardar.Name = "Btn_guardar";
-            this.Btn_guardar.Size = new System.Drawing.Size(107, 91);
-            this.Btn_guardar.TabIndex = 26;
-            this.toolTip1.SetToolTip(this.Btn_guardar, "Guardar Registro");
-            this.Btn_guardar.UseVisualStyleBackColor = true;
-            this.Btn_guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
-            // 
             // Txt_tipomovimiento
             // 
             this.Txt_tipomovimiento.AutoSize = true;
             this.Txt_tipomovimiento.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_tipomovimiento.Location = new System.Drawing.Point(379, 223);
+            this.Txt_tipomovimiento.Location = new System.Drawing.Point(379, 257);
             this.Txt_tipomovimiento.Name = "Txt_tipomovimiento";
             this.Txt_tipomovimiento.Size = new System.Drawing.Size(128, 19);
             this.Txt_tipomovimiento.TabIndex = 50;
@@ -267,12 +265,55 @@ namespace MVC_JavierChamo
             this.Cbo_tipomovimiento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cbo_tipomovimiento.FormattingEnabled = true;
             this.Cbo_tipomovimiento.Items.AddRange(new object[] {
-            "Ingreso",
-            "Egreso"});
-            this.Cbo_tipomovimiento.Location = new System.Drawing.Point(513, 224);
+            "Positivo",
+            "Negativo"});
+            this.Cbo_tipomovimiento.Location = new System.Drawing.Point(524, 258);
             this.Cbo_tipomovimiento.Name = "Cbo_tipomovimiento";
             this.Cbo_tipomovimiento.Size = new System.Drawing.Size(191, 21);
             this.Cbo_tipomovimiento.TabIndex = 51;
+            // 
+            // Txt_cantstock
+            // 
+            this.Txt_cantstock.Location = new System.Drawing.Point(149, 192);
+            this.Txt_cantstock.Name = "Txt_cantstock";
+            this.Txt_cantstock.Size = new System.Drawing.Size(184, 20);
+            this.Txt_cantstock.TabIndex = 53;
+            // 
+            // Txt_almastock
+            // 
+            this.Txt_almastock.Location = new System.Drawing.Point(524, 224);
+            this.Txt_almastock.Name = "Txt_almastock";
+            this.Txt_almastock.Size = new System.Drawing.Size(191, 20);
+            this.Txt_almastock.TabIndex = 55;
+            // 
+            // Txt_cantalmac
+            // 
+            this.Txt_cantalmac.AutoSize = true;
+            this.Txt_cantalmac.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_cantalmac.Location = new System.Drawing.Point(379, 223);
+            this.Txt_cantalmac.Name = "Txt_cantalmac";
+            this.Txt_cantalmac.Size = new System.Drawing.Size(139, 19);
+            this.Txt_cantalmac.TabIndex = 54;
+            this.Txt_cantalmac.Text = "Cantidad del almacén";
+            // 
+            // Cbo_idcompra
+            // 
+            this.Cbo_idcompra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cbo_idcompra.FormattingEnabled = true;
+            this.Cbo_idcompra.Location = new System.Drawing.Point(149, 258);
+            this.Cbo_idcompra.Name = "Cbo_idcompra";
+            this.Cbo_idcompra.Size = new System.Drawing.Size(121, 21);
+            this.Cbo_idcompra.TabIndex = 57;
+            // 
+            // Txt_idcompra
+            // 
+            this.Txt_idcompra.AutoSize = true;
+            this.Txt_idcompra.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_idcompra.Location = new System.Drawing.Point(12, 257);
+            this.Txt_idcompra.Name = "Txt_idcompra";
+            this.Txt_idcompra.Size = new System.Drawing.Size(95, 19);
+            this.Txt_idcompra.TabIndex = 56;
+            this.Txt_idcompra.Text = "Id de Compra";
             // 
             // Movimiento_de_Inventario
             // 
@@ -280,22 +321,26 @@ namespace MVC_JavierChamo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(747, 570);
+            this.Controls.Add(this.Cbo_idcompra);
+            this.Controls.Add(this.Txt_idcompra);
+            this.Controls.Add(this.Txt_almastock);
+            this.Controls.Add(this.Txt_cantalmac);
+            this.Controls.Add(this.Txt_cantstock);
             this.Controls.Add(this.Cbo_tipomovimiento);
             this.Controls.Add(this.Txt_tipomovimiento);
             this.Controls.Add(this.Btn_ayuda);
             this.Controls.Add(this.Txt_titulo);
             this.Controls.Add(this.Btn_reporte);
-            this.Controls.Add(this.Cbo_Local);
-            this.Controls.Add(this.Txt_local);
+            this.Controls.Add(this.Cbo_almacen);
+            this.Controls.Add(this.Txt_almacen);
             this.Controls.Add(this.Btn_actualizar);
             this.Controls.Add(this.Btn_pdf);
             this.Controls.Add(this.Dgv_Inventario);
-            this.Controls.Add(this.Cbo_idStock);
-            this.Controls.Add(this.Txt_stock);
-            this.Controls.Add(this.Cbo_idProducto);
-            this.Controls.Add(this.Txt_idProducto);
-            this.Controls.Add(this.Cbo_estado);
-            this.Controls.Add(this.Txt_estado);
+            this.Controls.Add(this.Cbo_idtraslado);
+            this.Controls.Add(this.Id_traslado);
+            this.Controls.Add(this.Txt_stockprod);
+            this.Controls.Add(this.Cbo_idprod);
+            this.Controls.Add(this.Txt_idprod);
             this.Controls.Add(this.txt_numMovimiento);
             this.Controls.Add(this.Txt_No_movimiento);
             this.Controls.Add(this.Btn_eliminar);
@@ -304,6 +349,8 @@ namespace MVC_JavierChamo
             this.Name = "Movimiento_de_Inventario";
             this.Text = "Movimiento_de_Inventario";
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Inventario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_cantstock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txt_almastock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,20 +361,19 @@ namespace MVC_JavierChamo
         private System.Windows.Forms.Button Btn_actualizar;
         private System.Windows.Forms.Button Btn_pdf;
         private System.Windows.Forms.DataGridView Dgv_Inventario;
-        private System.Windows.Forms.Label Txt_stock;
-        private System.Windows.Forms.Label Txt_idProducto;
-        private System.Windows.Forms.Label Txt_estado;
+        private System.Windows.Forms.Label Id_traslado;
+        private System.Windows.Forms.Label Txt_stockprod;
+        private System.Windows.Forms.Label Txt_idprod;
         private System.Windows.Forms.TextBox txt_numMovimiento;
         private System.Windows.Forms.Label Txt_No_movimiento;
         private System.Windows.Forms.Button Btn_eliminar;
         private System.Windows.Forms.Button Btn_editar;
-        private System.Windows.Forms.Label Txt_local;
+        private System.Windows.Forms.Label Txt_almacen;
         private System.Windows.Forms.Button Btn_reporte;
         private System.Windows.Forms.Label Txt_titulo;
-        public System.Windows.Forms.ComboBox Cbo_idStock;
-        public System.Windows.Forms.ComboBox Cbo_idProducto;
-        public System.Windows.Forms.ComboBox Cbo_estado;
-        public System.Windows.Forms.ComboBox Cbo_Local;
+        public System.Windows.Forms.ComboBox Cbo_idtraslado;
+        public System.Windows.Forms.ComboBox Cbo_idprod;
+        public System.Windows.Forms.ComboBox Cbo_almacen;
         private System.Windows.Forms.Button Btn_guardar;
         private System.Windows.Forms.Button Btn_ayuda;
         private System.Windows.Forms.ToolTip toolTip2;
@@ -338,5 +384,10 @@ namespace MVC_JavierChamo
         private System.Windows.Forms.ToolTip toolTip6;
         private System.Windows.Forms.Label Txt_tipomovimiento;
         public System.Windows.Forms.ComboBox Cbo_tipomovimiento;
+        private System.Windows.Forms.NumericUpDown Txt_cantstock;
+        private System.Windows.Forms.NumericUpDown Txt_almastock;
+        private System.Windows.Forms.Label Txt_cantalmac;
+        public System.Windows.Forms.ComboBox Cbo_idcompra;
+        private System.Windows.Forms.Label Txt_idcompra;
     }
 }

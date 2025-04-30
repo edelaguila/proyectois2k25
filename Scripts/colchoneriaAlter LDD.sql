@@ -667,3 +667,19 @@ CREATE TABLE IF NOT EXISTS Tbl_ComprasRealizadas (
     FOREIGN KEY (Fk_prov_id) REFERENCES Tbl_proveedores(Pk_prov_id)
 );
 
+-- LOGISTICA 29/04/2025
+
+CREATE TABLE Tbl_movimiento_de_inventario (
+	Pk_id_movimiento INT PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_producto INT NOT NULL,
+    stock INT NOT NULL,
+    Fk_id_traslado INT,
+    Fk_ID_EXISTENCIA INT NOT NULL,
+    Cantidad_almacen INT NOT NULL,
+    Fk_id_compra INT,
+	tipo_movimiento varchar (30) NOT NULL,
+    FOREIGN KEY (Fk_id_producto) REFERENCES Tbl_Productos(Pk_id_Producto),
+    FOREIGN KEY (Fk_id_traslado) REFERENCES Tbl_TrasladoProductos(Pk_id_TrasladoProductos),
+    CONSTRAINT FK_EXISTENCIA_LOCAL FOREIGN KEY (Fk_ID_EXISTENCIA) REFERENCES TBL_EXISTENCIA_BODEGA(Pk_ID_EXISTENCIA),
+    FOREIGN KEY (Fk_id_compra) REFERENCES Tbl_compra(Pk_id_compra)
+);

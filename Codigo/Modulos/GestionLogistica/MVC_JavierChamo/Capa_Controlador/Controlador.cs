@@ -48,9 +48,9 @@ namespace Capa_Controlador
         }
 
         // Lógica del módulo de movimiento de inventario
-        public void Pro_RealizarMovimientoInventario(int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales, string s_tipoMovimiento)
+        public void Pro_RealizarMovimientoInventario(int i_fkIdProducto, int stock, int i_fkIdTraslado, int i_fkIdExistencia, int cantalmacen, int i_fkIdCompra, string s_tipoMovimiento)
         {
-            g_pSentencias.Pro_InsertarMovimientoInventario(i_estado, i_fkIdProducto, i_fkIdStock, i_fkIdLocales, s_tipoMovimiento);
+            g_pSentencias.Pro_InsertarMovimientoInventario(i_fkIdProducto, stock, i_fkIdTraslado, i_fkIdExistencia, cantalmacen, i_fkIdCompra, s_tipoMovimiento);
         }
 
         public DataTable Fun_ObtenerProductos()
@@ -58,14 +58,19 @@ namespace Capa_Controlador
             return g_pSentencias.Fun_LlenarCmb("tbl_productos", "pk_id_producto");
         }
 
-        public DataTable Fun_ObtenerStocks()
+        public DataTable Fun_ObtenerTraslados()
         {
             return g_pSentencias.Fun_LlenarCmb("Tbl_TrasladoProductos", "Pk_id_TrasladoProductos");
         }
 
-        public DataTable Fun_ObtenerLocales()
+        public DataTable Fun_ObtenerAlmacenes()
         {
-            return g_pSentencias.Fun_LlenarCmb("tbl_locales", "pk_id_local");
+            return g_pSentencias.Fun_LlenarCmb("TBL_EXISTENCIAS_BODEGA", "Pk_ID_EXISTENCIA");
+        }
+
+        public DataTable Fun_ObtenerCompras()
+        {
+            return g_pSentencias.Fun_LlenarCmb("Tbl_compra", "Pk_id_compra");
         }
 
         public DataTable Fun_MostrarMovimientosInventario()

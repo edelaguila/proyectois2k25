@@ -26,10 +26,12 @@ namespace MVC_JavierChamo
         public void btn_Guardar_Click(object sender, EventArgs e)
         {
             capa_Controlador_Logistica.Pro_RealizarMovimientoInventario(
-                Convert.ToInt32(Cbo_estado.Text),
-                Convert.ToInt32(Cbo_idProducto.SelectedValue),  // Asegúrate de usar SelectedValue
-                Convert.ToInt32(Cbo_idStock.SelectedValue),     // Cambia esto
-                Convert.ToInt32(Cbo_Local.SelectedValue),              // Cambia esto
+                Convert.ToInt32(Cbo_idprod.SelectedValue), // Asegúrate de usar SelectedValue
+                Convert.ToInt32(Txt_cantstock.Value),
+                Convert.ToInt32(Cbo_idtraslado.SelectedValue),     // Cambia esto
+                Convert.ToInt32(Cbo_almacen.SelectedValue),              // Cambia esto
+                Convert.ToInt32(Txt_almastock.Value),
+                Convert.ToInt32(Cbo_idcompra.SelectedValue),
                 Convert.ToString(Cbo_tipomovimiento.SelectedValue)
             );
             CargarSolicitudesenDatagriedView();
@@ -42,10 +44,10 @@ namespace MVC_JavierChamo
                 DataTable productos = capa_Controlador_Logistica.Fun_ObtenerProductos();
                 if (productos.Columns.Contains("Pk_id_Producto") && productos.Rows.Count > 0)
                 {
-                    Cbo_idProducto.DataSource = productos;
-                    Cbo_idProducto.DisplayMember = "Pk_id_Producto"; // Mostrar el ID
-                    Cbo_idProducto.ValueMember = "Pk_id_Producto";
-                    Cbo_idProducto.SelectedIndex = -1;
+                    Cbo_idprod.DataSource = productos;
+                    Cbo_idprod.DisplayMember = "Pk_id_Producto"; // Mostrar el ID
+                    Cbo_idprod.ValueMember = "Pk_id_Producto";
+                    Cbo_idprod.SelectedIndex = -1;
                 }
                 else
                 {
@@ -53,27 +55,45 @@ namespace MVC_JavierChamo
                 }
 
                 // Llenar ComboBox para Stock
-                DataTable stocks = capa_Controlador_Logistica.Fun_ObtenerStocks();
+                DataTable stocks = capa_Controlador_Logistica.Fun_ObtenerTraslados();
                 if (stocks.Columns.Contains("Pk_id_TrasladoProductos") && stocks.Rows.Count > 0)
                 {
-                    Cbo_idStock.DataSource = stocks;
-                    Cbo_idStock.DisplayMember = "Pk_id_TrasladoProductos"; // Mostrar el ID
-                    Cbo_idStock.ValueMember = "Pk_id_TrasladoProductos";
-                    Cbo_idStock.SelectedIndex = -1;
+                    Cbo_idtraslado.DataSource = stocks;
+                    Cbo_idtraslado.DisplayMember = "Pk_id_TrasladoProductos"; // Mostrar el ID
+                    Cbo_idtraslado.ValueMember = "Pk_id_TrasladoProductos";
+                    Cbo_idtraslado.SelectedIndex = -1;
                 }
                 else
                 {
-                    MessageBox.Show("No se encontraron stocks para mostrar.");
+                    MessageBox.Show("No se encontraron traslados para mostrar.");
+                }
+
+                // Llenar ComboBox para Almacenes
+                DataTable almacen = capa_Controlador_Logistica.Fun_ObtenerAlmacenes();
+                if (almacen.Columns.Contains("Pk_ID_EXISTENCIA") && almacen.Rows.Count > 0)
+                {
+                    Cbo_almacen.DataSource = almacen;
+                    Cbo_almacen.DisplayMember = "Pk_ID_EXISTENCIA"; // Mostrar el ID
+                    Cbo_almacen.ValueMember = "Pk_ID_EXISTENCIA";
+                    Cbo_almacen.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron existencias para mostrar.");
                 }
 
                 // Llenar ComboBox para Locales
-                DataTable locales = capa_Controlador_Logistica.Fun_ObtenerLocales();
-                if (locales.Columns.Contains("Pk_ID_LOCAL") && locales.Rows.Count > 0)
+                DataTable compras = capa_Controlador_Logistica.Fun_ObtenerCompras();
+                if (compras.Columns.Contains("Pk_id_compra") && compras.Rows.Count > 0)
                 {
-                    Cbo_Local.DataSource = locales;
-                    Cbo_Local.DisplayMember = "Pk_ID_LOCAL"; // Mostrar el ID
-                    Cbo_Local.ValueMember = "Pk_ID_LOCAL";
-                    Cbo_Local.SelectedIndex = -1;
+                    Cbo_idcompra.DataSource = compras;
+                    Cbo_idcompra.DisplayMember = "Pk_id_compra"; // Mostrar el ID
+                    Cbo_idcompra.ValueMember = "Pk_id_compra";
+                    Cbo_idcompra.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron compras para mostrar.");
                 }
             }
             catch (Exception ex)
@@ -100,14 +120,19 @@ namespace MVC_JavierChamo
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = Dgv_Inventario.Rows[e.RowIndex];
-                Cbo_estado.Text = row.Cells["estado"].Value.ToString();
-                Cbo_idProducto.Text = row.Cells["Fk_id_producto"].Value.ToString();
-                Cbo_idStock.Text = row.Cells["Fk_id_stock"].Value.ToString();
-                Cbo_Local.Text = row.Cells["Fk_ID_LOCALES"].Value.ToString();
-                
+                Cbo_idprod.Text = row.Cells["Fk_id_producto"].Value.ToString();
+                Cbo_idtraslado.Text = row.Cells["Fk_id_traslado"].Value.ToString();
+                Cbo_almacen.Text = row.Cells["Fk_ID_EXISTENCIA"].Value.ToString();
+                Cbo_idcompra.Text = row.Cells["Fk_id_compra"].Value.ToString();
+                Cbo_tipomovimiento.Text = row.Cells["tipo_movimiento"].Value.ToString();
+
 
                 int numMovimiento = Convert.ToInt32(row.Cells["Pk_id_movimiento"].Value);
                 txt_numMovimiento.Text = numMovimiento.ToString();
+                int cantStock = Convert.ToInt32(row.Cells["stock"].Value);
+                Txt_cantstock.Text = cantStock.ToString();
+                int almaStock = Convert.ToInt32(row.Cells["Cantidad_almacen"].Value);
+                Txt_almastock.Text = almaStock.ToString();
             }
         }
 
@@ -118,7 +143,7 @@ namespace MVC_JavierChamo
 
         private void btn_Editar_Click(object sender, EventArgs e)
         {
-            capa_Controlador_Logistica.Pro_ModificarMovimientoInventario(Convert.ToInt32(txt_numMovimiento.Text), Convert.ToInt32(Cbo_estado.Text), Convert.ToInt32(Cbo_idProducto.Text), Convert.ToInt32(Cbo_idStock.Text), Convert.ToInt32(Cbo_Local.Text), Convert.ToString(Cbo_tipomovimiento.Text));
+            capa_Controlador_Logistica.Pro_ModificarMovimientoInventario(Convert.ToInt32(txt_numMovimiento.Text), Convert.ToInt32(Cbo_idprod.Text), Convert.ToInt32(Cbo_idprod.Text), Convert.ToInt32(Cbo_idtraslado.Text), Convert.ToInt32(Cbo_almacen.Text), Convert.ToString(Cbo_tipomovimiento.Text));
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace Capa_Modelo
         // (métodos de mantenimiento ya estandarizados previamente)
 
         // Lógica del módulo de movimiento de inventario
-        public void Pro_InsertarMovimientoInventario(int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales, string s_tipoMovimiento)
+        public void Pro_InsertarMovimientoInventario(int i_fkIdProducto, int stock, int i_fkIdTraslado, int i_fkIdExistencia, int cantalmacen, int i_fkIdCompra, string s_tipoMovimiento)
         {
             OdbcConnection o_cn = cn.conexion();
             if (o_cn == null)
@@ -31,12 +31,14 @@ namespace Capa_Modelo
 
             try
             {
-                string s_query = "INSERT INTO tbl_movimiento_de_inventario (estado, fk_id_producto, fk_id_stock, fk_id_locales, tipo_movimiento) VALUES (?, ?, ?, ?, ?)";
+                string s_query = "INSERT INTO tbl_movimiento_de_inventario (fk_id_producto, stock, fk_id_traslado, fk_id_existencia, cantidad_almacen, fk_id_compra, tipo_movimiento) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 OdbcCommand cmd = new OdbcCommand(s_query, o_cn);
-                cmd.Parameters.AddWithValue("@estado", i_estado);
                 cmd.Parameters.AddWithValue("@fk_id_producto", i_fkIdProducto);
-                cmd.Parameters.AddWithValue("@fk_id_stock", i_fkIdStock);
-                cmd.Parameters.AddWithValue("@fk_id_locales", i_fkIdLocales);
+                cmd.Parameters.AddWithValue("@stock", stock);
+                cmd.Parameters.AddWithValue("@fk_id_traslado", i_fkIdTraslado);
+                cmd.Parameters.AddWithValue("@fk_id_existencia", i_fkIdExistencia);
+                cmd.Parameters.AddWithValue("@cantidad_almacen", cantalmacen);
+                cmd.Parameters.AddWithValue("@fk_id_compra", i_fkIdCompra);
                 cmd.Parameters.AddWithValue("@tipo_movimiento", s_tipoMovimiento);
 
                 cmd.ExecuteNonQuery();
