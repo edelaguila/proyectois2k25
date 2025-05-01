@@ -145,5 +145,25 @@ namespace Capa_Vista_Evaluacion
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void Btn_Salir_Click(object sender, EventArgs e)
+        {
+
+            DialogResult result = MessageBox.Show("¿Está seguro que desea salir?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void Btn_Reporte_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario Frm_Reporte_Evaluacion_Desempenio
+            Frm_Reporte_Evaluacion_Desempenio reporteForm = new Frm_Reporte_Evaluacion_Desempenio();
+
+            // Mostrar el formulario como una ventana modal (el usuario no podrá interactuar con el formulario actual hasta que cierre este formulario)
+            reporteForm.ShowDialog();
+        }
     }
 }

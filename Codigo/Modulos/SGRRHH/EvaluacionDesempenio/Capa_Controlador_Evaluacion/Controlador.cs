@@ -42,5 +42,10 @@ namespace Capa_Controlador_Evaluacion
             modelo.InsertarDetalleEvaluacion(idEvaluacion, idCompetencia, calificacion, comentarios);
         }
 
+        public DataTable ObtenerEvaluacionesPorEmpleado(int idEmpleado)
+        {
+            return modelo.ObtenerEvaluacionesPorEmpleado(idEmpleado);
+        }
+
     }
 }
