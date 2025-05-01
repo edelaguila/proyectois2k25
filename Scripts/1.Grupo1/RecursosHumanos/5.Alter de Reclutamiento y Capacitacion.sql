@@ -142,8 +142,8 @@ CREATE TABLE IF NOT EXISTS tbl_departamentos_competencias (
     CONSTRAINT fk_competencia FOREIGN KEY (fk_id_competencia) REFERENCES Tbl_competencias(Pk_id_competencia) ON DELETE CASCADE
 );
 
-ALTER TABLE tbl_departamentos 
-ADD COLUMN departamentos_competencia VARCHAR(100) NOT NULL;
+-- ALTER TABLE tbl_departamentos 
+-- ADD COLUMN departamentos_competencia VARCHAR(100) NOT NULL;
 
 CREATE TABLE IF NOT EXISTS tbl_instructores (
     pk_id_instructor INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -190,3 +190,6 @@ INSERT INTO tbl_instructores (instructores_nombre, instructores_apellido, instru
 INSERT INTO tbl_competencias (nombre_competencia, descripcion, estado) VALUES 
 ('Hablar en publico', 'para exposiciones y conferencias', 1);  
 
+-- Joel Lopez ----------
+ALTER TABLE tbl_departamentos
+DROP COLUMN departamentos_competencia;
