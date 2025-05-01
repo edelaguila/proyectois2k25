@@ -108,15 +108,16 @@ CREATE TABLE IF NOT EXISTS tbl_capacitaciones (
 -- Creación de tbl_cierres
 CREATE TABLE IF NOT EXISTS tbl_cierres (
     pk_id_cierre INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    fk_id_empleado INT NOT NULL,
+    fk_id_departamento INT NOT NULL,
     fk_id_capacitacion INT NOT NULL,
-    cierres_competencia VARCHAR(100) NOT NULL,
+    cierres_puntuacion DECIMAL(5,2) NOT NULL CHECK (cierres_puntuacion BETWEEN 0 AND 100),
     cierres_porcentaje_asistencia DECIMAL(5,2) NOT NULL CHECK (cierres_porcentaje_asistencia BETWEEN 0 AND 100),
     cierre_fecha DATE NOT NULL,
     estado TINYINT(1) NOT NULL DEFAULT 1,
-    FOREIGN KEY (fk_id_empleado) REFERENCES tbl_empleados (pk_clave),
+    FOREIGN KEY (fk_id_departamento) REFERENCES tbl_departamentos (pk_id_departamento),
     FOREIGN KEY (fk_id_capacitacion) REFERENCES tbl_capacitaciones (pk_id_capacitacion)
 );
+
 
 -- Creación de tbl_notas
 CREATE TABLE IF NOT EXISTS tbl_notas (

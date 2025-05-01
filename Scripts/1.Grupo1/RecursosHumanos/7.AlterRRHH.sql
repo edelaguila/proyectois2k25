@@ -181,3 +181,12 @@ VALUES
 ('Responsabilidad', 'Compromiso con las tareas y responsabilidades asignadas');
 
 select * from tbl_competencias;
+
+-- Ismar Cortez Alter
+ALTER TABLE tbl_puestos_trabajo
+ADD puestos_salario_rec DECIMAL(10,2);
+
+
+
+
+-- ----------------------

@@ -18,7 +18,7 @@ namespace Capa_Vista_Nominas
 
             string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
             /*********Prueba con la tabla inicial*********/
-            string[] alias = { "pk_id_puestos", "nombre_puesto", "descripcion", "estado", "requisitos", "Fk_id_perfil" };
+            string[] alias = { "pk_id_puestos", "nombre_puesto", "descripcion", "estado", "requisitos", "Fk_id_perfil", "Salario Reco." };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
