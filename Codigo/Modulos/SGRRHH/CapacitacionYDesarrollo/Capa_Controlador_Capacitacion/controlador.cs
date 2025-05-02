@@ -44,6 +44,11 @@ namespace Capa_Controlador_Capacitacion
             return sn.ObtenerIdCapacitacion(nombreCapacitacion);
         }
 
+        public DataTable buscarNotas(string filtro)
+        {
+            return sn.BusquedaNotas(filtro);
+        }
+
         public DataTable mostrarNotas()
         {
             return sn.ObtenerNotas();
@@ -59,6 +64,27 @@ namespace Capa_Controlador_Capacitacion
             return sn.ActualizarNota(idNota, fkEmpleado, fkCapacitacion, nivel, puntaje, fecha);
         }
 
+        public bool editarNota(int idNota, int fkEmpleado, int fkCapacitacion, int fkNivel, decimal puntaje, string fecha)
+        {
+            return sn.EditarNota(idNota, fkEmpleado, fkCapacitacion, fkNivel, puntaje, fecha);
+        }
+
+
+        public bool EliminarNota(int idNota)
+        {
+            return sn.EliminarNota(idNota);
+        }
+
+
+        //public bool NotaYaExiste(int fkEmpleado, int fkCapacitacion)
+        //{
+        //    return sn.existeNotaEmpleadoCapacitacion(fkEmpleado, fkCapacitacion);
+        //}
+
+        //public bool NotaYaExisteParaOtroID(int idNota, int fkEmpleado, int fkCapacitacion)
+        //{
+        //    return sn.existeNotaEmpleadoCapacitacionExcepto(idNota, fkEmpleado, fkCapacitacion);
+        //}
 
     }
 }
