@@ -99,6 +99,35 @@ namespace Capa_Modelo_Carrera
             return null;
         }
 
+        public DataRow ObtenerDatosPuesto(string NombrePuesto)
+        {
+            string sql = @"
+        SELECT 
+            puestos_salario_rec AS salario
+        FROM tbl_puestos_trabajo
+        WHERE puestos_nombre_puesto = ? AND estado = 1
+        LIMIT 1;
+    ";
+
+            try
+            {
+                OdbcCommand command = new OdbcCommand(sql, cn.conectar());
+                command.Parameters.AddWithValue("@puesto", NombrePuesto); // Aunque el placeholder es ?, este valor se asocia por orden
+                OdbcDataAdapter adaptador = new OdbcDataAdapter(command);
+                DataTable dt = new DataTable();
+                adaptador.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                    return dt.Rows[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al salario: " + ex.Message);
+            }
+
+            return null;
+        }
+
         public OdbcDataAdapter funcConsultaPromociones()
         {
             try
@@ -232,56 +261,239 @@ namespace Capa_Modelo_Carrera
         //    }
         //}
 
+        //public bool funcInsertarPromocion(int empleado, DateTime fecha, string puestoactual, string salarioactual, string puestonuevo, string salarionuevo, string motivo)
+        //{
+        //    string query = "INSERT INTO tbl_promociones (fk_clave_empleado, promociones_fecha, promociones_puesto_actual, promociones_salario_actual, promociones_nuevo_puesto, promociones_nuevo_salario, promociones_motivo, estado) " +
+        //                   "VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
+
+        //    try
+        //    {
+        //        using (OdbcConnection conn = cn.conectar())
+        //        {
+        //            if (conn.State != ConnectionState.Open)
+        //            {
+        //                conn.Open();
+        //            }
+
+        //            using (OdbcCommand command = new OdbcCommand(query, conn))
+        //            {
+        //                // Agregar parámetros con valores correctos
+        //                //command.Parameters.AddWithValue("@correlativoPlanilla", icorrelativoPlanilla);
+        //                //command.Parameters.AddWithValue("@fechaInicio", dfechaInicio);
+        //                //command.Parameters.AddWithValue("@fechaFinal", dfechaFinal);
+        //                //command.Parameters.AddWithValue("@totalMes", detotalMes);
+
+        //                command.Parameters.AddWithValue("@fk_clave_empleado", empleado);
+        //                command.Parameters.AddWithValue("@promociones_fecha", fecha);  // Usando DateTime directamente
+        //                command.Parameters.AddWithValue("@promociones_puesto_actual", puestoactual);
+        //                command.Parameters.AddWithValue("@promociones_salario_actual", salarioactual);
+        //                command.Parameters.AddWithValue("@promociones_nuevo_puesto",puestonuevo);
+        //                command.Parameters.AddWithValue("@promociones_nuevo_salario", salarionuevo);
+        //                command.Parameters.AddWithValue("@promociones_motivo", motivo);
+
+        //                // Ejecutar la consulta
+        //                int filasAfectadas = command.ExecuteNonQuery();
+        //                if (filasAfectadas <= 0)
+        //                {
+        //                    throw new Exception("No se pudo insertar el registro de promoción.");
+        //                }
+        //            }
+
+        //            return true; // Si todo salió bien
+        //        }
+        //    }
+        //    catch (OdbcException ex)
+        //    {
+        //        Console.WriteLine("Error al insertar promoción: " + ex.Message);
+        //        return false;  // Devolvemos false si ocurrió un error en la base de datos
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error general: " + ex.Message);
+        //        return false;  // Devolvemos false si ocurrió un error genérico
+        //    }
+        //}
+
+        //public bool funcInsertarPromocion(int empleado, DateTime fecha, string puestoactual, string salarioactual, string puestonuevo, string salarionuevo, string motivo)
+        //{
+        //    string queryPromocion = "INSERT INTO tbl_promociones (fk_clave_empleado, promociones_fecha, promociones_puesto_actual, promociones_salario_actual, promociones_nuevo_puesto, promociones_nuevo_salario, promociones_motivo, estado) " +
+        //                            "VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
+
+        //    string queryAnularContrato = "UPDATE tbl_contratos SET estado = 0 WHERE fk_clave_empleado = ? AND estado = 1";
+
+        //    string queryNuevoContrato = "INSERT INTO tbl_contratos (contratos_fecha_creacion, contratos_salario, contratos_tipo_contrato, fk_clave_empleado, estado) " +
+        //                                "VALUES (?, ?, ?, ?, 1)";
+
+        //    try
+        //    {
+        //        using (OdbcConnection conn = cn.conectar())
+        //        {
+        //            if (conn.State != ConnectionState.Open)
+        //            {
+        //                conn.Open();
+        //            }
+
+        //            using (OdbcTransaction transaccion = conn.BeginTransaction())
+        //            {
+        //                try
+        //                {
+        //                    // Insertar la promoción
+        //                    using (OdbcCommand cmdPromocion = new OdbcCommand(queryPromocion, conn, transaccion))
+        //                    {
+        //                        cmdPromocion.Parameters.AddWithValue("@fk_clave_empleado", empleado);
+        //                        cmdPromocion.Parameters.AddWithValue("@promociones_fecha", fecha);
+        //                        cmdPromocion.Parameters.AddWithValue("@promociones_puesto_actual", puestoactual);
+        //                        cmdPromocion.Parameters.AddWithValue("@promociones_salario_actual", salarioactual);
+        //                        cmdPromocion.Parameters.AddWithValue("@promociones_nuevo_puesto", puestonuevo);
+        //                        cmdPromocion.Parameters.AddWithValue("@promociones_nuevo_salario", salarionuevo);
+        //                        cmdPromocion.Parameters.AddWithValue("@promociones_motivo", motivo);
+
+        //                        if (cmdPromocion.ExecuteNonQuery() <= 0)
+        //                        {
+        //                            throw new Exception("No se pudo insertar el registro de promoción.");
+        //                        }
+        //                    }
+
+        //                    // Anular contrato anterior
+        //                    using (OdbcCommand cmdAnular = new OdbcCommand(queryAnularContrato, conn, transaccion))
+        //                    {
+        //                        cmdAnular.Parameters.AddWithValue("@fk_clave_empleado", empleado);
+        //                        cmdAnular.ExecuteNonQuery();
+        //                    }
+
+        //                    // Insertar nuevo contrato
+        //                    using (OdbcCommand cmdNuevoContrato = new OdbcCommand(queryNuevoContrato, conn, transaccion))
+        //                    {
+        //                        cmdNuevoContrato.Parameters.AddWithValue("@contratos_fecha_creacion", DateTime.Now.Date);
+        //                        cmdNuevoContrato.Parameters.AddWithValue("@contratos_salario", Convert.ToDecimal(salarionuevo));
+        //                        cmdNuevoContrato.Parameters.AddWithValue("@contratos_tipo_contrato", "Permanente");
+        //                        cmdNuevoContrato.Parameters.AddWithValue("@fk_clave_empleado", empleado);
+
+        //                        cmdNuevoContrato.ExecuteNonQuery();
+        //                    }
+
+        //                    transaccion.Commit();
+        //                    return true;
+        //                }
+        //                catch (Exception exTransaccion)
+        //                {
+        //                    transaccion.Rollback();
+        //                    Console.WriteLine("Error durante la transacción: " + exTransaccion.Message);
+        //                    return false;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (OdbcException ex)
+        //    {
+        //        Console.WriteLine("Error ODBC: " + ex.Message);
+        //        return false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error general: " + ex.Message);
+        //        return false;
+        //    }
+        //}
+
         public bool funcInsertarPromocion(int empleado, DateTime fecha, string puestoactual, string salarioactual, string puestonuevo, string salarionuevo, string motivo)
         {
-            string query = "INSERT INTO tbl_promociones (fk_clave_empleado, promociones_fecha, promociones_puesto_actual, promociones_salario_actual, promociones_nuevo_puesto, promociones_nuevo_salario, promociones_motivo, estado) " +
-                           "VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
+            string queryPromocion = "INSERT INTO tbl_promociones (fk_clave_empleado, promociones_fecha, promociones_puesto_actual, promociones_salario_actual, promociones_nuevo_puesto, promociones_nuevo_salario, promociones_motivo, estado) " +
+                                    "VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
+
+            string queryAnularContrato = "UPDATE tbl_contratos SET estado = 0 WHERE fk_clave_empleado = ? AND estado = 1";
+
+            string queryNuevoContrato = "INSERT INTO tbl_contratos (contratos_fecha_creacion, contratos_salario, contratos_tipo_contrato, fk_clave_empleado, estado) " +
+                                        "VALUES (?, ?, ?, ?, 1)";
+
+            string queryObtenerIdPuesto = "SELECT pk_id_puestos FROM tbl_puestos_trabajo WHERE puestos_nombre_puesto = ? AND estado = 1";
+
+            string queryActualizarPuesto = "UPDATE tbl_empleados SET fk_id_puestos = ? WHERE pk_clave = ?";
 
             try
             {
                 using (OdbcConnection conn = cn.conectar())
                 {
                     if (conn.State != ConnectionState.Open)
-                    {
                         conn.Open();
-                    }
 
-                    using (OdbcCommand command = new OdbcCommand(query, conn))
+                    using (OdbcTransaction transaccion = conn.BeginTransaction())
                     {
-                        // Agregar parámetros con valores correctos
-                        //command.Parameters.AddWithValue("@correlativoPlanilla", icorrelativoPlanilla);
-                        //command.Parameters.AddWithValue("@fechaInicio", dfechaInicio);
-                        //command.Parameters.AddWithValue("@fechaFinal", dfechaFinal);
-                        //command.Parameters.AddWithValue("@totalMes", detotalMes);
-
-                        command.Parameters.AddWithValue("@fk_clave_empleado", empleado);
-                        command.Parameters.AddWithValue("@promociones_fecha", fecha);  // Usando DateTime directamente
-                        command.Parameters.AddWithValue("@promociones_puesto_actual", puestoactual);
-                        command.Parameters.AddWithValue("@promociones_salario_actual", salarioactual);
-                        command.Parameters.AddWithValue("@promociones_nuevo_puesto",puestonuevo);
-                        command.Parameters.AddWithValue("@promociones_nuevo_salario", salarionuevo);
-                        command.Parameters.AddWithValue("@promociones_motivo", motivo);
-
-                        // Ejecutar la consulta
-                        int filasAfectadas = command.ExecuteNonQuery();
-                        if (filasAfectadas <= 0)
+                        try
                         {
-                            throw new Exception("No se pudo insertar el registro de promoción.");
+                            // Obtener ID del nuevo puesto por nombre
+                            int nuevoIdPuesto;
+                            using (OdbcCommand cmdGetIdPuesto = new OdbcCommand(queryObtenerIdPuesto, conn, transaccion))
+                            {
+                                cmdGetIdPuesto.Parameters.AddWithValue("@puestos_nombre", puestonuevo);
+                                object result = cmdGetIdPuesto.ExecuteScalar();
+                                if (result == null)
+                                    throw new Exception("No se encontró el puesto con nombre: " + puestonuevo);
+
+                                nuevoIdPuesto = Convert.ToInt32(result);
+                            }
+
+                            // Insertar promoción
+                            using (OdbcCommand cmdPromocion = new OdbcCommand(queryPromocion, conn, transaccion))
+                            {
+                                cmdPromocion.Parameters.AddWithValue("@fk_clave_empleado", empleado);
+                                cmdPromocion.Parameters.AddWithValue("@promociones_fecha", fecha);
+                                cmdPromocion.Parameters.AddWithValue("@promociones_puesto_actual", puestoactual);
+                                cmdPromocion.Parameters.AddWithValue("@promociones_salario_actual", salarioactual);
+                                cmdPromocion.Parameters.AddWithValue("@promociones_nuevo_puesto", puestonuevo);
+                                cmdPromocion.Parameters.AddWithValue("@promociones_nuevo_salario", salarionuevo);
+                                cmdPromocion.Parameters.AddWithValue("@promociones_motivo", motivo);
+
+                                if (cmdPromocion.ExecuteNonQuery() <= 0)
+                                    throw new Exception("No se pudo insertar el registro de promoción.");
+                            }
+
+                            // Anular contrato anterior
+                            using (OdbcCommand cmdAnular = new OdbcCommand(queryAnularContrato, conn, transaccion))
+                            {
+                                cmdAnular.Parameters.AddWithValue("@fk_clave_empleado", empleado);
+                                cmdAnular.ExecuteNonQuery();
+                            }
+
+                            // Insertar nuevo contrato
+                            using (OdbcCommand cmdNuevoContrato = new OdbcCommand(queryNuevoContrato, conn, transaccion))
+                            {
+                                cmdNuevoContrato.Parameters.AddWithValue("@contratos_fecha_creacion", DateTime.Now.Date);
+                                cmdNuevoContrato.Parameters.AddWithValue("@contratos_salario", Convert.ToDecimal(salarionuevo));
+                                cmdNuevoContrato.Parameters.AddWithValue("@contratos_tipo_contrato", "Permanente");
+                                cmdNuevoContrato.Parameters.AddWithValue("@fk_clave_empleado", empleado);
+                                cmdNuevoContrato.ExecuteNonQuery();
+                            }
+
+                            // Actualizar fk_id_puestos del empleado
+                            using (OdbcCommand cmdActualizarPuesto = new OdbcCommand(queryActualizarPuesto, conn, transaccion))
+                            {
+                                cmdActualizarPuesto.Parameters.AddWithValue("@fk_id_puestos", nuevoIdPuesto);
+                                cmdActualizarPuesto.Parameters.AddWithValue("@pk_clave", empleado);
+                                cmdActualizarPuesto.ExecuteNonQuery();
+                            }
+
+                            transaccion.Commit();
+                            return true;
+                        }
+                        catch (Exception exTransaccion)
+                        {
+                            transaccion.Rollback();
+                            Console.WriteLine("Error en transacción: " + exTransaccion.Message);
+                            return false;
                         }
                     }
-
-                    return true; // Si todo salió bien
                 }
             }
             catch (OdbcException ex)
             {
-                Console.WriteLine("Error al insertar promoción: " + ex.Message);
-                return false;  // Devolvemos false si ocurrió un error en la base de datos
+                Console.WriteLine("Error ODBC: " + ex.Message);
+                return false;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error general: " + ex.Message);
-                return false;  // Devolvemos false si ocurrió un error genérico
+                return false;
             }
         }
 
