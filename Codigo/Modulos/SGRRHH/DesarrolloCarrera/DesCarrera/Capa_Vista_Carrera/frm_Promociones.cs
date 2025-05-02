@@ -18,6 +18,8 @@ namespace Capa_Vista_Carrera
         private int excepcionActiva = 1;
         private int estadoActivo = 1;
         string valorSeleccionado;
+        string valorSeleccionado2;
+
         public frm_Promociones(String idUsuario)
         {
             InitializeComponent();
@@ -55,7 +57,7 @@ namespace Capa_Vista_Carrera
             dtp_fecha.TabIndex = 2;
             txt_PuestoActual.TabIndex = 3;
             txt_SalarioActual.TabIndex = 4;
-            txt_PuestoNuevo.TabIndex = 5;
+           cmb_PuestoNuevo.TabIndex = 5;
             txt_SalarioNuevo.TabIndex = 6;
             txt_Motivo.TabIndex = 7;
             // Inicializar ComboBox al cargar el formulario
@@ -90,10 +92,20 @@ namespace Capa_Vista_Carrera
             string campo1 = "pk_clave";
             string campo2 = "empleados_nombre";
 
-
             // Llama al método para llenar el ComboBox
             llenarseModulos(tabla, campo1, campo2);
             //llenarseApli(tablaApli, campo1Apli, campo2Apli);
+
+
+            string tablaPuesto = "tbl_puestos_trabajo";
+            string campo1Puesto = "pk_id_puestos";
+            string campo2Puesto = "puestos_nombre_puesto";
+
+            // Llama al método para llenar el ComboBox
+            llenarseModulosPuestos(tablaPuesto, campo1Puesto, campo2Puesto);
+            //llenarseApli(tablaApli, campo1Apli, campo2Apli);
+            
+
 
             // Asocia el evento SelectedIndexChanged después de poblar el ComboBox
             cmb_empleado.SelectedIndexChanged += new EventHandler(cmb_modulo_SelectedIndexChanged);
@@ -141,7 +153,8 @@ namespace Capa_Vista_Carrera
             dtp_fecha.Enabled = habilitar;
             txt_PuestoActual.Enabled = habilitar;
             txt_SalarioActual.Enabled = habilitar;
-            txt_PuestoNuevo.Enabled = habilitar;
+            //txt_PuestoNuevo.Enabled = habilitar;
+            cmb_PuestoNuevo.Enabled = habilitar;
             txt_SalarioNuevo.Enabled = habilitar;
             txt_Motivo.Enabled = habilitar;
 
@@ -179,7 +192,8 @@ namespace Capa_Vista_Carrera
             txt_PuestoActual.Text = "";
             cmb_empleado.SelectedIndex = -1;
             txt_SalarioActual.Text = "";
-            txt_PuestoNuevo.Text = "";
+            cmb_PuestoNuevo.SelectedIndex = -1;
+            //txt_PuestoNuevo.Text = "";
             txt_SalarioNuevo.Text = "";
             txt_Motivo.Text = "";
 
@@ -248,18 +262,6 @@ namespace Capa_Vista_Carrera
                MessageBox.Show($"Valor seleccionado: {valorSeleccionado}", "Valor Seleccionado");
             }
         }
-        /***************************************************************************************************/
-
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frm_Promociones_Load(object sender, EventArgs e)
-        {
-           cmb_empleado.DropDownStyle = ComboBoxStyle.DropDownList;
-        }
 
         private void cmb_empleado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -276,7 +278,7 @@ namespace Capa_Vista_Carrera
             {
                 var selectedItem = (ComboBoxItem)cmb_empleado.SelectedItem;
                 valorSeleccionado = selectedItem.Value;
-
+               // MessageBox.Show($"Valor seleccionado: {valorSeleccionado}", "Valor Seleccionado");
                 // Obtener datos del empleado
                 DataRow datos = logica2.ObtenerPuestoYSalario(valorSeleccionado);
                 if (datos != null)
@@ -296,6 +298,105 @@ namespace Capa_Vista_Carrera
 
         }
 
+        /***************************************************************************************************/
+
+        /*********************************Ismar Leonel Cortez Sanchez -0901-21-560*****************************************/
+        /**************************************Combo box inteligente 2*****************************************************/
+
+        public void llenarseModulosPuestos(string tablaPuesto, string campo1Puesto, string campo2Puesto)
+        {
+            // Obtén los datos para el ComboBox
+            var dt2 = logica2.enviar2(tablaPuesto, campo1Puesto, campo2Puesto);
+
+            // Limpia el ComboBox antes de llenarlo
+            cmb_PuestoNuevo.Items.Clear();
+
+            foreach (DataRow row in dt2.Rows)
+            {
+                // Agrega el elemento mostrando el formato "ID-Nombre"
+                cmb_PuestoNuevo.Items.Add(new ComboBoxItemPuesto
+                {
+                    ValuePuesto = row[campo1Puesto].ToString(),
+                    DisplayPuesto = row[campo2Puesto].ToString()
+                });
+            }
+
+            // Configura AutoComplete para el ComboBox con el formato deseado
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in dt2.Rows)
+            {
+                coleccion.Add(Convert.ToString(row[campo1Puesto]) + "-" + Convert.ToString(row[campo2Puesto]));
+                coleccion.Add(Convert.ToString(row[campo2Puesto]) + "-" + Convert.ToString(row[campo1Puesto]));
+            }
+
+            cmb_empleado.AutoCompleteCustomSource = coleccion;
+            cmb_empleado.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmb_empleado.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
+
+        // Clase auxiliar para almacenar Value y Display
+        public class ComboBoxItemPuesto
+        {
+            public string ValuePuesto { get; set; }
+            public string DisplayPuesto { get; set; }
+
+            // Sobrescribir el método ToString para mostrar "ID-Nombre" en el ComboBox
+            public override string ToString()
+            {
+                return $"{ValuePuesto}-{DisplayPuesto}"; // Formato "ID-Nombre"
+            }
+        }
+
+        private void cmb_PuestoNuevo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (cmb_PuestoNuevo.SelectedItem != null)
+            //{
+            //    // Obtener el valor del ValueMember seleccionado
+            //    var selectedItem = (ComboBoxItemPuesto)cmb_PuestoNuevo.SelectedItem;
+            //    string valorSeleccionado = selectedItem.ValuePuesto;
+            //    // Mostrar el valor en un MessageBox
+            //    MessageBox.Show($"Valor seleccionado: {valorSeleccionado}", "Valor Seleccionado");
+            //}
+            if (cmb_PuestoNuevo.SelectedItem != null)
+            {
+                var selectedItem = (ComboBoxItemPuesto)cmb_PuestoNuevo.SelectedItem;
+                valorSeleccionado2 = selectedItem.DisplayPuesto;
+                //MessageBox.Show($"Valor seleccionado: {valorSeleccionado2}", "Valor Seleccionado");
+
+                // Obtener datos del empleado
+                DataRow datos = logica2.ObtenerPuestoYSalario2(valorSeleccionado2);
+                if (datos != null)
+                {
+                    //txt_PuestoActual.Text = datos["puesto"].ToString();
+                    txt_SalarioNuevo.Text = datos["salario"].ToString();
+                }
+                else
+                {
+                    //txt_PuestoActual.Text = "No encontrado";
+                    txt_SalarioNuevo.Text = "No encontrado";
+                }
+            }
+        }
+        /***************************************************************************************************/
+
+
+
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frm_Promociones_Load(object sender, EventArgs e)
+        {
+           cmb_empleado.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+
+
+
+
+
         private void Btn_Nuevo_Click(object sender, EventArgs e)
         {
             // Habilitar controles cuando se presiona "Insertar"
@@ -313,7 +414,7 @@ namespace Capa_Vista_Carrera
                 // Validación de campos vacíos
                 if (string.IsNullOrEmpty(txt_PuestoActual.Text) ||
                     cmb_empleado.SelectedIndex == -1 ||  
-                    string.IsNullOrEmpty(txt_SalarioActual.Text) || string.IsNullOrEmpty(txt_PuestoNuevo.Text)
+                    string.IsNullOrEmpty(txt_SalarioActual.Text) || cmb_PuestoNuevo.SelectedIndex == -1
                     || string.IsNullOrEmpty(txt_Motivo.Text))
                 {
                     MessageBox.Show("Todos los campos son obligatorios");
@@ -330,7 +431,7 @@ namespace Capa_Vista_Carrera
                 string puestoactual = txt_PuestoActual.Text;
                 string salarioactual = txt_SalarioActual.Text;
 
-                string puestonuevo = txt_PuestoNuevo.Text;
+                string puestonuevo = valorSeleccionado2;
                 string salarionuevo = txt_SalarioNuevo.Text;
 
                 string motivo = txt_Motivo.Text;
@@ -381,6 +482,83 @@ namespace Capa_Vista_Carrera
             {
                 MessageBox.Show("Error al guardar: " + ex.Message);
             }
+        }
+
+        private void dgv_promociones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0)
+            {
+                try
+                {
+                    idSeleccionado = Convert.ToInt32(dgv_promociones.Rows[e.RowIndex].Cells["ID"].Value);
+                    txt_ID.Text = idSeleccionado.ToString(); // Añadir esta línea
+                    
+                    
+                    cmb_empleado.SelectedItem = dgv_promociones.Rows[e.RowIndex].Cells["Empleado"].Value.ToString();
+                   
+                    txt_PuestoActual.Text = dgv_promociones.Rows[e.RowIndex].Cells["PuestoActual"].Value.ToString();
+                    txt_SalarioActual.Text = dgv_promociones.Rows[e.RowIndex].Cells["SalarioActual"].Value.ToString();
+
+
+                    cmb_PuestoNuevo.SelectedItem = dgv_promociones.Rows[e.RowIndex].Cells["NuevoPuesto"].Value.ToString();
+                    txt_SalarioNuevo.Text = dgv_promociones.Rows[e.RowIndex].Cells["NuevoSalario"].Value.ToString();
+
+
+                    txt_Motivo.Text = dgv_promociones.Rows[e.RowIndex].Cells["Motivo"].Value.ToString();
+
+
+                    //Cbo_clase.SelectedItem = Dgv_perp_dec.Rows[e.RowIndex].Cells["Clase"].Value.ToString();
+
+                    //excepcionActiva = Convert.ToInt32(Dgv_perp_dec.Rows[e.RowIndex].Cells["Excepcion"].Value);
+                    //estadoActivo = Convert.ToInt32(Dgv_perp_dec.Rows[e.RowIndex].Cells["Estado"].Value);
+
+                    //ActualizarBotonExcepcion();
+                    //ActualizarBotonEstado();
+
+                    //Txt_monto.Text = Dgv_perp_dec.Rows[e.RowIndex].Cells["Monto"].Value.ToString();
+                    Btn_Editar.Enabled = true;
+                    Btn_Eliminar.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al seleccionar registro: " + ex.Message);
+                }
+            }
+
+        }
+
+        private void Btn_Editar_Click(object sender, EventArgs e)
+        {
+            if (idSeleccionado == 0)
+            {
+                MessageBox.Show("Debe seleccionar un registro para editar");
+                return;
+            }
+            //.Focus();
+            cmb_empleado.Enabled = true;
+            dtp_fecha.Enabled = true;
+            txt_PuestoActual.Enabled = true;
+            txt_SalarioActual.Enabled = true;
+            cmb_PuestoNuevo.Enabled = true;
+            txt_SalarioNuevo.Enabled = true;
+            txt_Motivo.Enabled = true;
+            Btn_Guardar.Enabled = true;
+        }
+
+        private void Btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario(); // Limpia el formulario
+            ConfigurarControles(false); // Deshabilita controles de edición
+
+            // Reiniciar estados para excepcion y estado
+           // excepcionActiva = 1;
+            // estadoActivo = 1;
+          //  ActualizarBotonExcepcion();
+          //  ActualizarBotonEstado();
+
+            // Opcionalmente, puedes volver a cargar los datos si es necesario
+            CargarDatos();
         }
     }
 }

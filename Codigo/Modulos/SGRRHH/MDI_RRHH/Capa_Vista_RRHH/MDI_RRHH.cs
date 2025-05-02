@@ -305,7 +305,7 @@ namespace Capa_Vista_RRHH
             //frm_Carrera deptos = new frm_Carrera();
             //deptos.Show();
 
-            frm_Carrera GD = new frm_Carrera();
+            frm_Carrera GD = new frm_Carrera(idUsuario);
             GD.MdiParent = this;
             CentrarFormulario(GD);
             GD.Show();
