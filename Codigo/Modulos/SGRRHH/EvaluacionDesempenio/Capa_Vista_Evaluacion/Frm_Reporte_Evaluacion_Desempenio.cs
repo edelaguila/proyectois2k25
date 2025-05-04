@@ -68,5 +68,16 @@ namespace Capa_Vista_Evaluacion
                 MessageBox.Show("Por favor, seleccione un empleado para realizar la búsqueda.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Reporte frm = new Reporte();
+            frm.Show();
+        }
     }
 }
