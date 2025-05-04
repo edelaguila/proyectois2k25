@@ -49,8 +49,9 @@ namespace Capa_Vista_Capacitacion
         private void notas_capacitación_Load(object sender, EventArgs e)
         {
             CargarNotas();
-            dtpFecha.Value = DateTime.Today;
             dtpFecha.MaxDate = DateTime.Today;
+            dtpFecha.Value = DateTime.Today;
+
             cbNivel.DataSource = cn.CargarNiveles();
             cbNivel.DisplayMember = "Value";
             cbNivel.ValueMember = "Key";
@@ -212,24 +213,16 @@ namespace Capa_Vista_Capacitacion
                 // Fecha con validación robusta
                 object celdaFecha = row.Cells["notas_fecha"].Value;
 
-                if (celdaFecha != null && celdaFecha != DBNull.Value)
+                if (celdaFecha != null && celdaFecha != DBNull.Value && DateTime.TryParse(celdaFecha.ToString(), out DateTime fecha))
                 {
-                    if (DateTime.TryParse(celdaFecha.ToString(), out DateTime fecha))
-                    {
-                        if (fecha >= dtpFecha.MinDate && fecha <= dtpFecha.MaxDate)
-                            dtpFecha.Value = fecha;
-                        else
-                            dtpFecha.Value = DateTime.Now;
-                    }
-                    else
-                    {
-                        dtpFecha.Value = DateTime.Now;
-                    }
+                    // Si la fecha es futura, forzar a hoy
+                    dtpFecha.Value = fecha > DateTime.Today ? DateTime.Today : fecha;
                 }
                 else
                 {
-                    dtpFecha.Value = DateTime.Now;
+                    dtpFecha.Value = DateTime.Today;
                 }
+
             }
         }
 
