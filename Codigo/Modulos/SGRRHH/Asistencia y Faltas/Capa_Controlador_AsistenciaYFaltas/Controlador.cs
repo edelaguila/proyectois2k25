@@ -12,11 +12,12 @@ namespace Capa_Controlador_AsistenciaYFaltas
     {
         private readonly Sentencia sn = new Sentencia();
 
+        // Inserta asistencia cruda en tabla preliminar
         public void InsertarAsistenciaPreliminar(string linea)
         {
             sn.InsertarAsistenciaPreeliminar(linea);
         }
-       
+
         // Obtener todos los empleados activos
         public List<Sentencia.Empleado> ObtenerEmpleados()
         {
@@ -41,16 +42,18 @@ namespace Capa_Controlador_AsistenciaYFaltas
             return sn.GetExcepcionesSeptimo(idEmpleado, anio);
         }
 
-        // Insertar el cálculo de nómina para un empleado
-        public void InsertarNominaEmpleado(Sentencia.NominaRecord nomina)
-        {
-            sn.InsertarNomina(nomina);
-        }
 
+        // Registrar exención de séptimo día
         public void AgregarExcepcionSeptimo(int idEmpleado, int semana, int anio)
         {
             sn.InsertarExcepcionSeptimo(idEmpleado, semana, anio);
+        }
 
+        // Insertar registro en tbl_salarios_mensuales
+        public void InsertarSalarioMensual(Sentencia.SalarioMensualRecord salario)
+        {
+            sn.InsertarSalarioMensual(salario);
         }
     }
 }
+
