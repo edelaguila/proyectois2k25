@@ -159,9 +159,9 @@ namespace Capa_Vista_Capacitacion
             this.lblCierre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCierre.Location = new System.Drawing.Point(416, 159);
             this.lblCierre.Name = "lblCierre";
-            this.lblCierre.Size = new System.Drawing.Size(47, 19);
+            this.lblCierre.Size = new System.Drawing.Size(70, 19);
             this.lblCierre.TabIndex = 12;
-            this.lblCierre.Text = "Cierre";
+            this.lblCierre.Text = "Asistencia";
             // 
             // lblPorcentaje
             // 
