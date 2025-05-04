@@ -14,65 +14,77 @@ namespace Modelo_Vista_AsistenciaYFaltas
 
         public void GenerarNomina(int mes, int anio)
         {
+            // 1) Traer empleados activos y días laborales
             var empleados = controlador.ObtenerEmpleados();
             int diasLaborales = DiasLaboralesMes(mes, anio);
 
             foreach (var emp in empleados)
             {
+                // 2) Cargar datos del periodo
                 var asistencias = controlador.ObtenerAsistenciasEmpleado(emp.Id, mes, anio);
                 var permisos = controlador.ObtenerPermisosEmpleado(emp.Id, mes, anio);
                 var excepciones = controlador.ObtenerExcepcionesSeptimo(emp.Id, anio);
 
-                // Días laborados
+                // 3) Días trabajados (Presente o Permiso CON goce)
                 int diasTrabajados = asistencias
                     .Where(a =>
                         a.Estado == "Presente" ||
-                        (a.Estado == "Permiso" &&
-                         permisos.Any(p => p.ConGoce &&
-                                          a.Fecha >= p.Inicio &&
-                                          a.Fecha <= p.Fin)))
+                        (a.Estado == "Permiso"
+                         && permisos.Any(p => p.ConGoce
+                                           && a.Fecha >= p.Inicio
+                                           && a.Fecha <= p.Fin)))
                     .Select(a => a.Fecha.Date)
                     .Distinct()
                     .Count();
 
-                // Faltas
+                // 4) Faltas (incluye Permiso SIN goce y estado "Falta")
                 var faltas = asistencias
-                    .Where(a => a.Estado == "Falta" &&
-                                !permisos.Any(p => p.ConGoce &&
-                                                  a.Fecha >= p.Inicio &&
-                                                  a.Fecha <= p.Fin))
+                    .Where(a =>
+                        !(a.Estado == "Presente"
+                       || (a.Estado == "Permiso"
+                           && permisos.Any(p => p.ConGoce
+                                             && a.Fecha >= p.Inicio
+                                             && a.Fecha <= p.Fin))))
                     .Select(a => a.Fecha.Date)
                     .Distinct()
                     .ToList();
 
-                // Horas extra
+                // 5) Horas extra (>8h diarias)
                 double totalHE = asistencias
                     .Select(a => (a.HoraSalida - a.HoraEntrada).TotalHours - 8)
                     .Where(h => h > 0)
                     .Sum();
 
-                // ¿Descontar séptimo día?
-                bool descontar7mo = faltas.Any() &&
-                    !excepciones.Any(e =>
-                        GetSemanaDelAño(faltas.First(), anio) == e.Semana && e.Exento);
+                // 6) Deducción de séptimo día por cada semana con faltas no exentas
+                var semanasConFaltas = faltas
+                    .Select(f => GetSemanaDelAño(f, anio))
+                    .Distinct();
 
-                // Cálculo de montos
+                int semanasADescuentar = semanasConFaltas
+                    .Count(sem => !excepciones.Any(e => e.Semana == sem && e.Exento));
+
+                decimal desc7mo = semanasADescuentar * (emp.SalarioBase / diasLaborales);
+
+                // 7) Montos parciales
                 decimal pagoBase = (emp.SalarioBase / diasLaborales) * diasTrabajados;
                 decimal pagoHE = (decimal)totalHE * emp.SalarioHora * 1.5m;
                 decimal descFaltas = faltas.Count * (emp.SalarioHora * 8m);
-                decimal desc7mo = descontar7mo
-                    ? (emp.SalarioBase / diasLaborales)
-                    : 0m;
 
-                // Guardar
-                controlador.InsertarNominaEmpleado(new Sentencia.NominaRecord
+                // 8) Salario total
+                decimal salarioTotal = pagoBase
+                                     + pagoHE
+                                     - (descFaltas + desc7mo);
+
+                /// Insertar en tbl_salarios_mensuales
+                controlador.InsertarSalarioMensual(new Sentencia.SalarioMensualRecord
                 {
                     IdEmpleado = emp.Id,
                     Mes = mes,
                     Anio = anio,
                     PagoBase = pagoBase,
                     PagoHorasExtra = pagoHE,
-                    Deducciones = descFaltas + desc7mo
+                    Deducciones = descFaltas + desc7mo,
+                    SalarioTotal = salarioTotal
                 });
             }
         }
@@ -83,7 +95,8 @@ namespace Modelo_Vista_AsistenciaYFaltas
             for (int d = 1; d <= total; d++)
             {
                 var day = new DateTime(anio, mes, d).DayOfWeek;
-                if (day != DayOfWeek.Saturday && day != DayOfWeek.Sunday) labor++;
+                if (day != DayOfWeek.Saturday && day != DayOfWeek.Sunday)
+                    labor++;
             }
             return labor;
         }
