@@ -36,5 +36,22 @@ namespace Capa_Vista_Capacitacion
         {
 
         }
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+
+            DialogResult resultado = MessageBox.Show(
+           "¿Seguro que desea salir?",
+             "Salir del formulario",
+          MessageBoxButtons.YesNo,
+           MessageBoxIcon.Question
+                    );
+
+            // Si el usuario confirma (presiona Sí)
+            if (resultado == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
     }
 }

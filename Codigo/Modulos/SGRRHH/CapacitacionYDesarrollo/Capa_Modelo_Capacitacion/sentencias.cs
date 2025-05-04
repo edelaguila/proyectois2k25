@@ -204,6 +204,99 @@ namespace Capa_Modelo_Capacitacion
 }
 
 
+        public DataTable BusquedaNotas(string filtro)
+        {
+            DataTable tabla = new DataTable();
+
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string query = @"
+        SELECT
+            n.pk_id_nota,
+            e.empleados_nombre AS Empleado,
+            c.capacitaciones_nombre AS Capacitacion,
+            nc.nivel_nombre AS Nivel,
+            n.notas_puntaje,
+            n.notas_fecha,
+            n.estado
+        FROM tbl_notas n
+        INNER JOIN tbl_empleados e ON n.fk_id_empleado = e.pk_clave
+        INNER JOIN tbl_capacitaciones c ON n.fk_id_capacitacion = c.pk_id_capacitacion
+        INNER JOIN tbl_nivelcompetencia nc ON n.fk_id_nivel = nc.pk_id_nivel
+        WHERE n.estado = 1 AND (
+            e.empleados_nombre LIKE ? OR
+            c.capacitaciones_nombre LIKE ? OR
+            nc.nivel_nombre LIKE ? OR
+            CAST(n.notas_puntaje AS CHAR) LIKE ? OR
+            CAST(n.notas_fecha AS CHAR) LIKE ?
+        )";
+
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    string textoBusqueda = "%" + filtro + "%";
+                    for (int i = 0; i < 5; i++)
+                        cmd.Parameters.AddWithValue("?", textoBusqueda);
+
+                    using (OdbcDataAdapter da = new OdbcDataAdapter(cmd))
+                    {
+                        da.Fill(tabla);
+                    }
+                }
+            }
+
+            return tabla;
+        }
+
+
+        //public bool existeNotaEmpleadoCapacitacion(int fkEmpleado, int fkCapacitacion)
+        //{
+        //    bool existe = false;
+        //    string consulta = "SELECT COUNT(*) FROM tbl_notas WHERE fk_id_empleado = @empleado AND fk_id_capacitacion = @capacitacion AND estado = 1";
+
+        //    using (OdbcConnection cnx = con.Conexion())
+        //    {
+        //        if (cnx != null)
+        //        {
+        //            using (OdbcCommand cmd = new OdbcCommand(consulta, cnx))
+        //            {
+        //                cmd.Parameters.AddWithValue("@empleado", fkEmpleado);
+        //                cmd.Parameters.AddWithValue("@capacitacion", fkCapacitacion);
+
+        //                int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+        //                existe = resultado > 0;
+        //            }
+
+        //            con.desconexion(cnx); // Opcional, por si quieres cerrarla explícitamente
+        //        }
+        //    }
+
+        //    return existe;
+        //}
+
+        ////PARA EL MODO EDICION
+        //public bool existeNotaEmpleadoCapacitacionExcepto(int idNota, int fkEmpleado, int fkCapacitacion)
+        //{
+        //    bool existe = false;
+        //    string consulta = "SELECT COUNT(*) FROM tbl_notas WHERE fk_id_empleado = ? AND fk_id_capacitacion = ? AND id_nota <> ? AND estado = 1";
+
+        //    using (OdbcConnection cnx = con.Conexion())
+        //    {
+        //        cnx.Open();
+
+        //        using (OdbcCommand cmd = new OdbcCommand(consulta, cnx))
+        //        {
+        //            cmd.Parameters.AddWithValue("?", fkEmpleado);
+        //            cmd.Parameters.AddWithValue("?", fkCapacitacion);
+        //            cmd.Parameters.AddWithValue("?", idNota);
+
+        //            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+        //            existe = resultado > 0;
+        //        }
+        //    }
+
+        //    return existe;
+        //}
+
 
 
         public int ObtenerSiguienteIdNota()
@@ -254,7 +347,54 @@ namespace Capa_Modelo_Capacitacion
             return resultado;
         }
 
+        public bool EditarNota(int idNota, int fkEmpleado, int fkCapacitacion, int fkNivel, decimal puntaje, string fecha)
+        {
+            bool exito = false;
 
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string query = @"
+            UPDATE tbl_notas
+            SET 
+                fk_id_empleado = ?, 
+                fk_id_capacitacion = ?, 
+                fk_id_nivel = ?, 
+                notas_puntaje = ?, 
+                notas_fecha = ?
+            WHERE pk_id_nota = ?";
+
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@fk_id_empleado", fkEmpleado);
+                    cmd.Parameters.AddWithValue("@fk_id_capacitacion", fkCapacitacion);
+                    cmd.Parameters.AddWithValue("@fk_id_nivel", fkNivel);
+                    cmd.Parameters.AddWithValue("@notas_puntaje", puntaje);
+                    cmd.Parameters.AddWithValue("@notas_fecha", fecha);
+                    cmd.Parameters.AddWithValue("@pk_id_nota", idNota);
+
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        exito = true;
+                    }
+                }
+            }
+
+            return exito;
+        }
+
+        public bool EliminarNota(int idNota)
+        {
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string query = "UPDATE tbl_notas SET estado = 0 WHERE pk_id_nota = ?";
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    cmd.Parameters.AddWithValue("?", idNota);
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    return filasAfectadas > 0;
+                }
+            }
+        }
 
 
     }
