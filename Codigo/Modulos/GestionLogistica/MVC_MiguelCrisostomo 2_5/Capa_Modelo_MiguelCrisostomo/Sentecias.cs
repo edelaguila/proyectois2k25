@@ -180,32 +180,27 @@ namespace Capa_Modelo_MiguelCrisostomo
         public int ObtenerStockProductoPorCodigo(int codigoProducto)
         {
             int stockProducto = 0;
-            OdbcConnection connection = conn.Conexion(); // Conexión a la base de datos  
-
-            try
+            using (OdbcConnection connection = conn.Conexion())
             {
-                string query = "SELECT stock FROM Tbl_Productos WHERE codigoProducto = ?";
-                OdbcCommand cmd = new OdbcCommand(query, connection);
-                cmd.Parameters.AddWithValue("codigoProducto", codigoProducto);
-
-                OdbcDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                try
                 {
-                    stockProducto = reader.GetInt32(0); // Obtiene el stock del producto  
+                    string query = "SELECT stock FROM Tbl_Productos WHERE codigoProducto = ?";
+                    using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("codigoProducto", codigoProducto);
+                        var result = cmd.ExecuteScalar();
+                        if (result != DBNull.Value)
+                        {
+                            stockProducto = Convert.ToInt32(result);
+                        }
+                    }
                 }
-
-                reader.Close();
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener stock de producto por código: " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al obtener stock de producto por código: " + ex.Message);
-            }
-            finally
-            {
-                conn.desconexion(connection); // Cierra la conexión  
-            }
-
-            return stockProducto; // Retorna el stock del producto encontrado o 0 si no se encontró  
+            return stockProducto;
         }
 
         // Método para obtener precio según el código de producto
@@ -432,7 +427,7 @@ namespace Capa_Modelo_MiguelCrisostomo
         }
 
         /// INSTRUCCIONES BOTON GUARDAR CLASE SENTECIAS.CS ******************************************************
-        public void RealizarTraslado(string documento,string fecha, int costoTotal, int costoTotalGeneral, int precioTotal, int idProducto, int idGuia, int codigoProducto)
+        public void RealizarTraslado(string documento, string fecha, int costoTotal, int costoTotalGeneral, int precioTotal, int idProducto, int idGuia, int codigoProducto, string bodegaOrigen, string bodegaDestino)
         {
             // Conexión a la base de datos
             OdbcConnection connection = conn.Conexion(); // Usar la instancia para obtener la conexión
@@ -440,8 +435,8 @@ namespace Capa_Modelo_MiguelCrisostomo
             try
             {
                 // Consulta para insertar datos en la tabla Tbl_TrasladoProductos
-                string query = "INSERT INTO Tbl_TrasladoProductos (documento, fecha, costoTotal, costoTotalGeneral, precioTotal, Fk_id_Producto, Fk_id_guia, codigoProducto) " +
-                               "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                string query = "INSERT INTO Tbl_TrasladoProductos (documento, fecha, costoTotal, costoTotalGeneral, precioTotal, Fk_id_Producto, Fk_id_guia, codigoProducto, bodega_origen, bodega_destino) " +
+                               "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 // Crear el comando Odbc y asignar los parámetros
                 OdbcCommand cmd = new OdbcCommand(query, connection);
@@ -453,25 +448,22 @@ namespace Capa_Modelo_MiguelCrisostomo
                 cmd.Parameters.AddWithValue("Fk_id_Producto", idProducto);
                 cmd.Parameters.AddWithValue("Fk_id_guia", idGuia);
                 cmd.Parameters.AddWithValue("codigoProducto", codigoProducto);
+                cmd.Parameters.AddWithValue("bodega_origen", bodegaOrigen);
+                cmd.Parameters.AddWithValue("bodega_destino", bodegaDestino);
 
                 // Ejecutar el comando de inserción
-
                 if (cmd.ExecuteNonQuery() > 0)
                 {
                     MessageBox.Show("Traslado realizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al realizar el traslado: " + ex.Message);
+                MessageBox.Show("Error al realizar el traslado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                // Cerrar la conexión
-                //conn.Desconexion(connection); // Asegúrate de que este método se llame correctamente
                 conn.desconexion(connection);
-
             }
         }
 
@@ -577,6 +569,241 @@ namespace Capa_Modelo_MiguelCrisostomo
             {
                 MessageBox.Show("Error al actualizar el stock: " + ex.Message);
             }
+        }
+
+        public List<string> ObtenerMarcasVehiculos()
+        {
+            List<string> marcas = new List<string>();
+            OdbcConnection connection = conn.Conexion();
+
+            try
+            {
+                string query = "SELECT DISTINCT marca FROM Tbl_vehiculos";
+                OdbcCommand cmd = new OdbcCommand(query, connection);
+                OdbcDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    marcas.Add(reader.GetString(0));
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener marcas de vehículos: " + ex.Message);
+            }
+            finally
+            {
+                conn.desconexion(connection);
+            }
+
+            return marcas;
+        }
+
+        public List<string> ObtenerSucursales()
+        {
+            List<string> sucursales = new List<string>();
+            OdbcConnection connection = conn.Conexion();
+
+            try
+            {
+                string query = "SELECT NOMBRE_BODEGA FROM TBL_BODEGAS WHERE estado = 1";
+                OdbcCommand cmd = new OdbcCommand(query, connection);
+                OdbcDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    sucursales.Add(reader.GetString(0));
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener sucursales: " + ex.Message);
+            }
+            finally
+            {
+                conn.desconexion(connection);
+            }
+
+            return sucursales;
+        }
+
+        public int ObtenerPesoTotalPorMarca(string marca)
+        {
+            int pesoTotal = 0;
+            OdbcConnection connection = conn.Conexion();
+
+            try
+            {
+                string query = "SELECT pesoTotal FROM Tbl_vehiculos WHERE marca = ?";
+                OdbcCommand cmd = new OdbcCommand(query, connection);
+                cmd.Parameters.AddWithValue("marca", marca);
+
+                OdbcDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    pesoTotal = reader.GetInt32(0);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el peso total por marca: " + ex.Message);
+            }
+            finally
+            {
+                conn.desconexion(connection);
+            }
+
+            return pesoTotal;
+        }
+
+        public List<string> ObtenerDestinosPorMarca(string marca)
+        {
+            List<string> destinos = new List<string>();
+            OdbcConnection connection = conn.Conexion();
+
+            try
+            {
+                string query = @"
+                    SELECT DISTINCT dp.destino 
+                    FROM Tbl_datos_pedido dp
+                    INNER JOIN Tbl_vehiculos v ON dp.Fk_id_vehiculo = v.Pk_id_vehiculo
+                    WHERE v.marca = ?";
+
+                OdbcCommand cmd = new OdbcCommand(query, connection);
+                cmd.Parameters.AddWithValue("marca", marca);
+
+                OdbcDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    destinos.Add(reader.GetString(0));
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener destinos por marca: " + ex.Message);
+            }
+            finally
+            {
+                conn.desconexion(connection);
+            }
+
+            return destinos;
+        }
+
+        public string ObtenerDestinoPorMarca(string marca)
+        {
+            string destino = "";
+            OdbcConnection connection = conn.Conexion();
+
+            try
+            {
+                string query = @"
+                    SELECT dp.destino
+                    FROM Tbl_datos_pedido dp
+                    INNER JOIN Tbl_vehiculos v ON dp.Fk_id_vehiculo = v.Pk_id_vehiculo
+                    WHERE v.marca = ?
+                    ORDER BY dp.fechaTraslado DESC
+                    LIMIT 1";
+
+                OdbcCommand cmd = new OdbcCommand(query, connection);
+                cmd.Parameters.AddWithValue("marca", marca);
+
+                OdbcDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    destino = reader.GetString(0);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el destino por marca: " + ex.Message);
+            }
+            finally
+            {
+                conn.desconexion(connection);
+            }
+
+            return destino;
+        }
+
+        public string ObtenerDestinoPorIdVehiculo(int idVehiculo)
+        {
+            string destino = "";
+            OdbcConnection connection = conn.Conexion();
+
+            try
+            {
+                string query = @"
+                    SELECT dp.destino
+                    FROM Tbl_datos_pedido dp
+                    WHERE dp.Fk_id_vehiculo = ?
+                    ORDER BY dp.fechaTraslado DESC
+                    LIMIT 1";
+
+                OdbcCommand cmd = new OdbcCommand(query, connection);
+                cmd.Parameters.AddWithValue("idVehiculo", idVehiculo);
+
+                OdbcDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    destino = reader.GetString(0);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el destino por ID de vehículo: " + ex.Message);
+            }
+            finally
+            {
+                conn.desconexion(connection);
+            }
+
+            return destino;
+        }
+
+        public int ObtenerIdVehiculoPorMarca(string marca)
+        {
+            int idVehiculo = 0;
+            OdbcConnection connection = conn.Conexion();
+
+            try
+            {
+                string query = "SELECT Pk_id_vehiculo FROM Tbl_vehiculos WHERE marca = ?";
+                OdbcCommand cmd = new OdbcCommand(query, connection);
+                cmd.Parameters.AddWithValue("marca", marca);
+
+                OdbcDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    idVehiculo = reader.GetInt32(0);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el ID de vehículo por marca: " + ex.Message);
+            }
+            finally
+            {
+                conn.desconexion(connection);
+            }
+
+            return idVehiculo;
         }
     }
 }
