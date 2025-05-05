@@ -37,10 +37,6 @@ namespace Capa_Vista_GD
             this.label1 = new System.Windows.Forms.Label();
             this.Lbl_fechaSancion = new System.Windows.Forms.Label();
             this.Dtp_fechaSancion = new System.Windows.Forms.DateTimePicker();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.Pnl_Usuario = new System.Windows.Forms.Panel();
-            this.lbl_nombreUsuario = new System.Windows.Forms.Label();
-            this.Lbl_Usuario = new System.Windows.Forms.Label();
             this.Cbo_tipoSancion = new System.Windows.Forms.ComboBox();
             this.Btn_reporte = new System.Windows.Forms.Button();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
@@ -51,8 +47,11 @@ namespace Capa_Vista_GD
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Nuevo = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            this.Pnl_Usuario.SuspendLayout();
+            this.Cbo_operador = new System.Windows.Forms.ComboBox();
+            this.Lbl_operador = new System.Windows.Forms.Label();
+            this.Dgv_sanciones = new System.Windows.Forms.DataGridView();
+            this.Btn_MostrarEliminados = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_sanciones)).BeginInit();
             this.SuspendLayout();
             // 
             // Chk_sancion
@@ -138,60 +137,10 @@ namespace Capa_Vista_GD
             this.Dtp_fechaSancion.Size = new System.Drawing.Size(338, 30);
             this.Dtp_fechaSancion.TabIndex = 18;
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.Pnl_Usuario);
-            this.panel1.Location = new System.Drawing.Point(12, 375);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(860, 62);
-            this.panel1.TabIndex = 27;
-            // 
-            // Pnl_Usuario
-            // 
-            this.Pnl_Usuario.Controls.Add(this.lbl_nombreUsuario);
-            this.Pnl_Usuario.Controls.Add(this.Lbl_Usuario);
-            this.Pnl_Usuario.Location = new System.Drawing.Point(277, 4);
-            this.Pnl_Usuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Pnl_Usuario.Name = "Pnl_Usuario";
-            this.Pnl_Usuario.Size = new System.Drawing.Size(318, 50);
-            this.Pnl_Usuario.TabIndex = 1;
-            // 
-            // lbl_nombreUsuario
-            // 
-            this.lbl_nombreUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_nombreUsuario.AutoSize = true;
-            this.lbl_nombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nombreUsuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl_nombreUsuario.Location = new System.Drawing.Point(141, 12);
-            this.lbl_nombreUsuario.Name = "lbl_nombreUsuario";
-            this.lbl_nombreUsuario.Size = new System.Drawing.Size(26, 25);
-            this.lbl_nombreUsuario.TabIndex = 2;
-            this.lbl_nombreUsuario.Text = "--";
-            // 
-            // Lbl_Usuario
-            // 
-            this.Lbl_Usuario.AutoSize = true;
-            this.Lbl_Usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Lbl_Usuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Lbl_Usuario.Location = new System.Drawing.Point(3, 12);
-            this.Lbl_Usuario.Name = "Lbl_Usuario";
-            this.Lbl_Usuario.Size = new System.Drawing.Size(132, 25);
-            this.Lbl_Usuario.TabIndex = 0;
-            this.Lbl_Usuario.Text = "Responsable:";
-            // 
             // Cbo_tipoSancion
             // 
+            this.Cbo_tipoSancion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cbo_tipoSancion.FormattingEnabled = true;
-            this.Cbo_tipoSancion.Items.AddRange(new object[] {
-            "Ninguno",
-            "Amonestación verbal",
-            "Amonestación escrita",
-            "Suspension de empleo y sueldo",
-            "Traslado de Area/Departamento",
-            "Inhabilitacion para ascenso",
-            "Despido disciplinario",
-            "Multa"});
             this.Cbo_tipoSancion.Location = new System.Drawing.Point(383, 188);
             this.Cbo_tipoSancion.Name = "Cbo_tipoSancion";
             this.Cbo_tipoSancion.Size = new System.Drawing.Size(425, 30);
@@ -240,6 +189,7 @@ namespace Capa_Vista_GD
             this.Btn_Buscar.Size = new System.Drawing.Size(89, 77);
             this.Btn_Buscar.TabIndex = 24;
             this.Btn_Buscar.UseVisualStyleBackColor = true;
+            this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
             // 
             // Btn_Eliminar
             // 
@@ -250,6 +200,7 @@ namespace Capa_Vista_GD
             this.Btn_Eliminar.Size = new System.Drawing.Size(89, 77);
             this.Btn_Eliminar.TabIndex = 23;
             this.Btn_Eliminar.UseVisualStyleBackColor = true;
+            this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
             // 
             // Btn_Editar
             // 
@@ -260,6 +211,7 @@ namespace Capa_Vista_GD
             this.Btn_Editar.Size = new System.Drawing.Size(89, 77);
             this.Btn_Editar.TabIndex = 22;
             this.Btn_Editar.UseVisualStyleBackColor = true;
+            this.Btn_Editar.Click += new System.EventHandler(this.Btn_Editar_Click);
             // 
             // Btn_Cancelar
             // 
@@ -281,6 +233,7 @@ namespace Capa_Vista_GD
             this.Btn_Guardar.Size = new System.Drawing.Size(90, 77);
             this.Btn_Guardar.TabIndex = 20;
             this.Btn_Guardar.UseVisualStyleBackColor = true;
+            this.Btn_Guardar.Click += new System.EventHandler(this.Btn_Guardar_Click);
             // 
             // Btn_Nuevo
             // 
@@ -292,16 +245,69 @@ namespace Capa_Vista_GD
             this.Btn_Nuevo.Size = new System.Drawing.Size(90, 77);
             this.Btn_Nuevo.TabIndex = 19;
             this.Btn_Nuevo.UseVisualStyleBackColor = true;
+            this.Btn_Nuevo.Click += new System.EventHandler(this.Btn_Nuevo_Click);
+            // 
+            // Cbo_operador
+            // 
+            this.Cbo_operador.FormattingEnabled = true;
+            this.Cbo_operador.Items.AddRange(new object[] {
+            "Ninguno",
+            "Amonestación verbal",
+            "Amonestación escrita",
+            "Suspension de empleo y sueldo",
+            "Traslado de Area/Departamento",
+            "Inhabilitacion para ascenso",
+            "Despido disciplinario",
+            "Multa"});
+            this.Cbo_operador.Location = new System.Drawing.Point(383, 346);
+            this.Cbo_operador.Name = "Cbo_operador";
+            this.Cbo_operador.Size = new System.Drawing.Size(425, 30);
+            this.Cbo_operador.TabIndex = 31;
+            // 
+            // Lbl_operador
+            // 
+            this.Lbl_operador.AutoSize = true;
+            this.Lbl_operador.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_operador.Location = new System.Drawing.Point(83, 346);
+            this.Lbl_operador.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.Lbl_operador.Name = "Lbl_operador";
+            this.Lbl_operador.Size = new System.Drawing.Size(92, 22);
+            this.Lbl_operador.TabIndex = 30;
+            this.Lbl_operador.Text = "Operador:";
+            // 
+            // Dgv_sanciones
+            // 
+            this.Dgv_sanciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_sanciones.Location = new System.Drawing.Point(17, 393);
+            this.Dgv_sanciones.Name = "Dgv_sanciones";
+            this.Dgv_sanciones.RowHeadersWidth = 51;
+            this.Dgv_sanciones.RowTemplate.Height = 24;
+            this.Dgv_sanciones.Size = new System.Drawing.Size(852, 150);
+            this.Dgv_sanciones.TabIndex = 32;
+            this.Dgv_sanciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_sanciones_CellClick);
+            // 
+            // Btn_MostrarEliminados
+            // 
+            this.Btn_MostrarEliminados.Location = new System.Drawing.Point(334, 549);
+            this.Btn_MostrarEliminados.Name = "Btn_MostrarEliminados";
+            this.Btn_MostrarEliminados.Size = new System.Drawing.Size(182, 36);
+            this.Btn_MostrarEliminados.TabIndex = 33;
+            this.Btn_MostrarEliminados.Text = "Mostrar Eliminados";
+            this.Btn_MostrarEliminados.UseVisualStyleBackColor = true;
+            this.Btn_MostrarEliminados.Click += new System.EventHandler(this.Btn_MostrarEliminados_Click);
             // 
             // frm_sanciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(884, 440);
+            this.ClientSize = new System.Drawing.Size(884, 592);
+            this.Controls.Add(this.Btn_MostrarEliminados);
+            this.Controls.Add(this.Dgv_sanciones);
+            this.Controls.Add(this.Cbo_operador);
+            this.Controls.Add(this.Lbl_operador);
             this.Controls.Add(this.Btn_reporte);
             this.Controls.Add(this.Cbo_tipoSancion);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.Btn_Ayuda);
             this.Controls.Add(this.Btn_Salir);
             this.Controls.Add(this.Btn_Buscar);
@@ -324,9 +330,7 @@ namespace Capa_Vista_GD
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "15003 - Registro de Sancion";
             this.Load += new System.EventHandler(this.frm_sanciones_Load);
-            this.panel1.ResumeLayout(false);
-            this.Pnl_Usuario.ResumeLayout(false);
-            this.Pnl_Usuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_sanciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,11 +354,11 @@ namespace Capa_Vista_GD
         private System.Windows.Forms.Button Btn_Cancelar;
         private System.Windows.Forms.Button Btn_Guardar;
         private System.Windows.Forms.Button Btn_Nuevo;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox Cbo_tipoSancion;
-        private System.Windows.Forms.Panel Pnl_Usuario;
-        public System.Windows.Forms.Label lbl_nombreUsuario;
-        private System.Windows.Forms.Label Lbl_Usuario;
         private System.Windows.Forms.Button Btn_reporte;
+        private System.Windows.Forms.ComboBox Cbo_operador;
+        private System.Windows.Forms.Label Lbl_operador;
+        private System.Windows.Forms.DataGridView Dgv_sanciones;
+        private System.Windows.Forms.Button Btn_MostrarEliminados;
     }
 }
