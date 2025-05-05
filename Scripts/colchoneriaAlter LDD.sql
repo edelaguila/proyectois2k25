@@ -683,3 +683,59 @@ CREATE TABLE Tbl_movimiento_de_inventario (
     CONSTRAINT FK_EXISTENCIA_LOCAL FOREIGN KEY (Fk_ID_EXISTENCIA) REFERENCES TBL_EXISTENCIA_BODEGA(Pk_ID_EXISTENCIA),
     FOREIGN KEY (Fk_id_compra) REFERENCES Tbl_compra(Pk_id_compra)
 );
+
+
+-- NUEVAS TABLAS DEL MODULO COMERCIAL
+-- Tabla de Ventas Encabezado
+CREATE TABLE IF NOT EXISTS `tbl_ventas_encabezado` (
+  `Pk_id_venta` INT(11) NOT NULL AUTO_INCREMENT,
+  `Fk_id_cliente` INT(11) NOT NULL,
+  `Fk_id_vendedor` INT(11) NOT NULL,
+  `Fk_id_factura` INT(11) NULL,
+  `venta_fecha` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `venta_subtotal` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `venta_descuento` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `venta_iva` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `venta_total` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `venta_estado` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '1=Pendiente, 2=Finalizada, 3=Anulada',
+  `venta_forma_pago` VARCHAR(50) NOT NULL COMMENT 'Efectivo, Tarjeta, Transferencia',
+  `venta_observaciones` TEXT NULL,
+  PRIMARY KEY (`Pk_id_venta`),
+  FOREIGN KEY (`Fk_id_cliente`) REFERENCES `Tbl_clientes`(`Pk_id_cliente`),
+  FOREIGN KEY (`Fk_id_vendedor`) REFERENCES `Tbl_vendedores`(`Pk_id_vendedor`),
+  FOREIGN KEY (`Fk_id_factura`) REFERENCES `Tbl_factura`(`Pk_id_factura`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Tabla de Ventas Detalle
+CREATE TABLE IF NOT EXISTS `tbl_ventas_detalle` (
+  `Pk_id_venta_detalle` INT(11) NOT NULL AUTO_INCREMENT,
+  `Fk_id_venta` INT(11) NOT NULL,
+  `Fk_id_producto` INT(11) NOT NULL,
+  `detalle_cantidad` INT(11) NOT NULL,
+  `detalle_precio_unitario` DECIMAL(12,2) NOT NULL,
+  `detalle_descuento` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `detalle_subtotal` DECIMAL(12,2) NOT NULL,
+  `detalle_iva` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `detalle_total` DECIMAL(12,2) NOT NULL,
+  `detalle_estado` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '1=Activo, 0=Anulado',
+  PRIMARY KEY (`Pk_id_venta_detalle`),
+  FOREIGN KEY (`Fk_id_venta`) REFERENCES `tbl_ventas_encabezado`(`Pk_id_venta`),
+  FOREIGN KEY (`Fk_id_producto`) REFERENCES `Tbl_Productos`(`Pk_id_Producto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Tabla de Pagos de Ventas
+CREATE TABLE IF NOT EXISTS `tbl_ventas_pagos` (
+  `Pk_id_pago` INT(11) NOT NULL AUTO_INCREMENT,
+  `Fk_id_venta` INT(11) NOT NULL,
+  `Fk_id_cuenta_bancaria` INT(11) NULL,
+  `pago_monto` DECIMAL(12,2) NOT NULL,
+  `pago_fecha` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `pago_forma` VARCHAR(50) NOT NULL COMMENT 'Efectivo, Tarjeta, Transferencia, Cheque',
+  `pago_referencia` VARCHAR(100) NULL,
+  `pago_estado` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '1=Activo, 0=Anulado',
+  PRIMARY KEY (`Pk_id_pago`),
+  FOREIGN KEY (`Fk_id_venta`) REFERENCES `tbl_ventas_encabezado`(`Pk_id_venta`),
+  FOREIGN KEY (`Fk_id_cuenta_bancaria`) REFERENCES `tbl_cuentabancaria`(`pk_cuenta_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- TERMINA LAS TABLAS CREADAS

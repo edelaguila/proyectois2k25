@@ -16,5 +16,10 @@ namespace Capa_Vista_Factura
         {
             InitializeComponent();
         }
+
+        private void Btn_insertarE_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
