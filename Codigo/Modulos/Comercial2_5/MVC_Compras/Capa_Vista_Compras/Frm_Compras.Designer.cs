@@ -31,58 +31,56 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Compras));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboTipoCompro = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboFormaPago = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dateTimeFecha = new System.Windows.Forms.DateTimePicker();
+            this.comboProveedor = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNumeroFactura = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtDesc = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboProducto = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Txt_Actualizar = new System.Windows.Forms.Label();
             this.Pic_Actualizar = new System.Windows.Forms.PictureBox();
             this.Dgv_TrasladoDProductos = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.Pic_Ayuda = new System.Windows.Forms.PictureBox();
             this.Pic_Reporte = new System.Windows.Forms.PictureBox();
             this.Pic_Guardar = new System.Windows.Forms.PictureBox();
             this.Pic_Ingresar = new System.Windows.Forms.PictureBox();
             this.Pic_Editar = new System.Windows.Forms.PictureBox();
+            this.Pic_Ayuda = new System.Windows.Forms.PictureBox();
             this.Pic_Salir = new System.Windows.Forms.PictureBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtImpuestos = new System.Windows.Forms.TextBox();
+            this.txtSubtotal = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Actualizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_TrasladoDProductos)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Ayuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Reporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Guardar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Ingresar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Editar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Ayuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Salir)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -91,22 +89,22 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(575, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 38);
+            this.label1.Size = new System.Drawing.Size(147, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Compras";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Controls.Add(this.comboTipoCompro);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.comboFormaPago);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.dateTimeFecha);
+            this.groupBox1.Controls.Add(this.comboProveedor);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtNumeroFactura);
             this.groupBox1.Location = new System.Drawing.Point(14, 215);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
@@ -115,17 +113,105 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
+            // comboTipoCompro
+            // 
+            this.comboTipoCompro.FormattingEnabled = true;
+            this.comboTipoCompro.Location = new System.Drawing.Point(217, 90);
+            this.comboTipoCompro.Name = "comboTipoCompro";
+            this.comboTipoCompro.Size = new System.Drawing.Size(121, 24);
+            this.comboTipoCompro.TabIndex = 11;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(53, 93);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(148, 19);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Tipo Comprobante";
+            // 
+            // comboFormaPago
+            // 
+            this.comboFormaPago.FormattingEnabled = true;
+            this.comboFormaPago.Location = new System.Drawing.Point(535, 85);
+            this.comboFormaPago.Name = "comboFormaPago";
+            this.comboFormaPago.Size = new System.Drawing.Size(121, 24);
+            this.comboFormaPago.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(380, 90);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(119, 19);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Forma de pago";
+            // 
+            // dateTimeFecha
+            // 
+            this.dateTimeFecha.Location = new System.Drawing.Point(316, 34);
+            this.dateTimeFecha.Name = "dateTimeFecha";
+            this.dateTimeFecha.Size = new System.Drawing.Size(200, 22);
+            this.dateTimeFecha.TabIndex = 7;
+            // 
+            // comboProveedor
+            // 
+            this.comboProveedor.FormattingEnabled = true;
+            this.comboProveedor.Location = new System.Drawing.Point(106, 34);
+            this.comboProveedor.Name = "comboProveedor";
+            this.comboProveedor.Size = new System.Drawing.Size(121, 24);
+            this.comboProveedor.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(552, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 19);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "No.Factura";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(257, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 19);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Fecha";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 19);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Proveedor";
+            // 
+            // txtNumeroFactura
+            // 
+            this.txtNumeroFactura.Location = new System.Drawing.Point(650, 34);
+            this.txtNumeroFactura.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNumeroFactura.Name = "txtNumeroFactura";
+            this.txtNumeroFactura.Size = new System.Drawing.Size(76, 22);
+            this.txtNumeroFactura.TabIndex = 2;
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.pictureBox1);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtDesc);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.comboBox4);
+            this.groupBox2.Controls.Add(this.comboProducto);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.txtPrecio);
+            this.groupBox2.Controls.Add(this.txtCantidad);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(25, 378);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -135,6 +221,32 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Agregar producto";
+            // 
+            // txtDesc
+            // 
+            this.txtDesc.Location = new System.Drawing.Point(218, 88);
+            this.txtDesc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.Size = new System.Drawing.Size(427, 27);
+            this.txtDesc.TabIndex = 14;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(103, 88);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(99, 19);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Descripción";
+            // 
+            // comboProducto
+            // 
+            this.comboProducto.FormattingEnabled = true;
+            this.comboProducto.Location = new System.Drawing.Point(107, 37);
+            this.comboProducto.Name = "comboProducto";
+            this.comboProducto.Size = new System.Drawing.Size(161, 27);
+            this.comboProducto.TabIndex = 12;
             // 
             // label5
             // 
@@ -166,21 +278,21 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Producto";
             // 
-            // textBox4
+            // txtPrecio
             // 
-            this.textBox4.Location = new System.Drawing.Point(557, 37);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(129, 27);
-            this.textBox4.TabIndex = 2;
+            this.txtPrecio.Location = new System.Drawing.Point(557, 37);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(129, 27);
+            this.txtPrecio.TabIndex = 2;
             // 
-            // textBox5
+            // txtCantidad
             // 
-            this.textBox5.Location = new System.Drawing.Point(374, 38);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(62, 27);
-            this.textBox5.TabIndex = 1;
+            this.txtCantidad.Location = new System.Drawing.Point(374, 38);
+            this.txtCantidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(62, 27);
+            this.txtCantidad.TabIndex = 1;
             // 
             // groupBox3
             // 
@@ -245,17 +357,6 @@
             this.groupBox4.TabIndex = 30;
             this.groupBox4.TabStop = false;
             // 
-            // Pic_Ayuda
-            // 
-            this.Pic_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Ayuda.Image")));
-            this.Pic_Ayuda.Location = new System.Drawing.Point(1056, 24);
-            this.Pic_Ayuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Pic_Ayuda.Name = "Pic_Ayuda";
-            this.Pic_Ayuda.Size = new System.Drawing.Size(91, 85);
-            this.Pic_Ayuda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pic_Ayuda.TabIndex = 27;
-            this.Pic_Ayuda.TabStop = false;
-            // 
             // Pic_Reporte
             // 
             this.Pic_Reporte.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Reporte.Image")));
@@ -277,6 +378,7 @@
             this.Pic_Guardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Guardar.TabIndex = 27;
             this.Pic_Guardar.TabStop = false;
+            this.Pic_Guardar.Click += new System.EventHandler(this.Pic_Guardar_Click);
             // 
             // Pic_Ingresar
             // 
@@ -300,11 +402,23 @@
             this.Pic_Editar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Editar.TabIndex = 27;
             this.Pic_Editar.TabStop = false;
+            this.Pic_Editar.Click += new System.EventHandler(this.Pic_Editar_Click);
+            // 
+            // Pic_Ayuda
+            // 
+            this.Pic_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Ayuda.Image")));
+            this.Pic_Ayuda.Location = new System.Drawing.Point(1056, 24);
+            this.Pic_Ayuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Pic_Ayuda.Name = "Pic_Ayuda";
+            this.Pic_Ayuda.Size = new System.Drawing.Size(91, 85);
+            this.Pic_Ayuda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_Ayuda.TabIndex = 27;
+            this.Pic_Ayuda.TabStop = false;
             // 
             // Pic_Salir
             // 
             this.Pic_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Salir.Image")));
-            this.Pic_Salir.Location = new System.Drawing.Point(1166, 24);
+            this.Pic_Salir.Location = new System.Drawing.Point(1166, 126);
             this.Pic_Salir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Pic_Salir.Name = "Pic_Salir";
             this.Pic_Salir.Size = new System.Drawing.Size(91, 85);
@@ -313,126 +427,11 @@
             this.Pic_Salir.TabStop = false;
             this.Pic_Salir.Click += new System.EventHandler(this.Pic_Salir_Click_1);
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(650, 34);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(76, 22);
-            this.textBox3.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 19);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Proveedor";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(257, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 19);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Fecha";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(552, 34);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 19);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "No.Factura";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(106, 34);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 6;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(316, 34);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 7;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(535, 85);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 9;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(380, 90);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(119, 19);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Forma de pago";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(217, 90);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 24);
-            this.comboBox3.TabIndex = 11;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(53, 93);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(148, 19);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "Tipo Comprobante";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(107, 37);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(161, 27);
-            this.comboBox4.TabIndex = 12;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(103, 88);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(99, 19);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Descripción";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(218, 88);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(427, 27);
-            this.textBox1.TabIndex = 14;
-            // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox7);
-            this.groupBox5.Controls.Add(this.textBox2);
-            this.groupBox5.Controls.Add(this.textBox6);
+            this.groupBox5.Controls.Add(this.txtTotal);
+            this.groupBox5.Controls.Add(this.txtImpuestos);
+            this.groupBox5.Controls.Add(this.txtSubtotal);
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.label15);
@@ -443,6 +442,40 @@
             this.groupBox5.Size = new System.Drawing.Size(199, 320);
             this.groupBox5.TabIndex = 12;
             this.groupBox5.TabStop = false;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(107, 208);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(76, 22);
+            this.txtTotal.TabIndex = 14;
+            // 
+            // txtImpuestos
+            // 
+            this.txtImpuestos.Location = new System.Drawing.Point(107, 146);
+            this.txtImpuestos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtImpuestos.Name = "txtImpuestos";
+            this.txtImpuestos.Size = new System.Drawing.Size(76, 22);
+            this.txtImpuestos.TabIndex = 12;
+            // 
+            // txtSubtotal
+            // 
+            this.txtSubtotal.Location = new System.Drawing.Point(107, 92);
+            this.txtSubtotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.Size = new System.Drawing.Size(76, 22);
+            this.txtSubtotal.TabIndex = 13;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(20, 204);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(46, 19);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Total";
             // 
             // label11
             // 
@@ -463,51 +496,6 @@
             this.label15.Size = new System.Drawing.Size(71, 19);
             this.label15.TabIndex = 3;
             this.label15.Text = "Subtotal";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(20, 204);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(46, 19);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Total";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(107, 146);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(76, 22);
-            this.textBox2.TabIndex = 12;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(107, 92);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(76, 22);
-            this.textBox6.TabIndex = 13;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(107, 208);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(76, 22);
-            this.textBox7.TabIndex = 14;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(680, 79);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(57, 57);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 29;
-            this.pictureBox1.TabStop = false;
             // 
             // Frm_Compras
             // 
@@ -535,15 +523,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Actualizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_TrasladoDProductos)).EndInit();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Ayuda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Reporte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Guardar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Ingresar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Editar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Ayuda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Salir)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -557,8 +544,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label Txt_Actualizar;
         private System.Windows.Forms.PictureBox Pic_Actualizar;
@@ -570,26 +557,25 @@
         private System.Windows.Forms.PictureBox Pic_Ingresar;
         private System.Windows.Forms.PictureBox Pic_Editar;
         private System.Windows.Forms.PictureBox Pic_Salir;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboTipoCompro;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboFormaPago;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dateTimeFecha;
+        private System.Windows.Forms.ComboBox comboProveedor;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNumeroFactura;
+        private System.Windows.Forms.ComboBox comboProducto;
+        private System.Windows.Forms.TextBox txtDesc;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.TextBox txtImpuestos;
+        private System.Windows.Forms.TextBox txtSubtotal;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
