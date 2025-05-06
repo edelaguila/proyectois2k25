@@ -32,7 +32,7 @@ namespace MVC_JavierChamo
                 Convert.ToInt32(Cbo_almacen.SelectedValue),              // Cambia esto
                 Convert.ToInt32(Txt_almastock.Value),
                 Convert.ToInt32(Cbo_idcompra.SelectedValue),
-                Convert.ToString(Cbo_tipomovimiento.SelectedValue)
+                Convert.ToString(Cbo_tipomovimiento.SelectedItem.ToString())
             );
             CargarSolicitudesenDatagriedView();
         }
@@ -70,16 +70,16 @@ namespace MVC_JavierChamo
 
                 // Llenar ComboBox para Almacenes
                 DataTable almacen = capa_Controlador_Logistica.Fun_ObtenerAlmacenes();
-                if (almacen.Columns.Contains("Pk_ID_EXISTENCIA") && almacen.Rows.Count > 0)
+                if (almacen.Columns.Contains("Pk_ID_BODEGA") && almacen.Rows.Count > 0)
                 {
                     Cbo_almacen.DataSource = almacen;
-                    Cbo_almacen.DisplayMember = "Pk_ID_EXISTENCIA"; // Mostrar el ID
-                    Cbo_almacen.ValueMember = "Pk_ID_EXISTENCIA";
+                    Cbo_almacen.DisplayMember = "Pk_ID_BODEGA"; // Mostrar el ID
+                    Cbo_almacen.ValueMember = "Pk_ID_BODEGA";
                     Cbo_almacen.SelectedIndex = -1;
                 }
                 else
                 {
-                    MessageBox.Show("No se encontraron existencias para mostrar.");
+                    MessageBox.Show("No se encontraron almacenes para mostrar.");
                 }
 
                 // Llenar ComboBox para Locales

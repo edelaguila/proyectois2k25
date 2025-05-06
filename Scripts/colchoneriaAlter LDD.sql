@@ -712,12 +712,12 @@ CREATE TABLE Tbl_movimiento_de_inventario (
     Fk_id_producto INT NOT NULL,
     stock INT NOT NULL,
     Fk_id_traslado INT,
-    Fk_ID_EXISTENCIA INT NOT NULL,
+    Fk_ID_BODEGA INT NOT NULL,
     Cantidad_almacen INT NOT NULL,
     Fk_id_compra INT,
 	tipo_movimiento varchar (30) NOT NULL,
     FOREIGN KEY (Fk_id_producto) REFERENCES Tbl_Productos(Pk_id_Producto),
-    CONSTRAINT FK_EXISTENCIA_LOCAL FOREIGN KEY (Fk_ID_EXISTENCIA) REFERENCES TBL_EXISTENCIA_BODEGA(Pk_ID_EXISTENCIA)
+    CONSTRAINT FK_EXISTENCIA_LOCAL FOREIGN KEY (Fk_ID_BODEGA) REFERENCES TBL_BODEGAS(Pk_ID_BODEGA)
 );
 
 

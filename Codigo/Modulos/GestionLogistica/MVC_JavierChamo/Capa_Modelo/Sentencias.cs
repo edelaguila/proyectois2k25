@@ -31,12 +31,12 @@ namespace Capa_Modelo
 
             try
             {
-                string s_query = "INSERT INTO tbl_movimiento_de_inventario (fk_id_producto, stock, fk_id_traslado, fk_id_existencia, cantidad_almacen, fk_id_compra, tipo_movimiento) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                string s_query = "INSERT INTO tbl_movimiento_de_inventario (fk_id_producto, stock, fk_id_traslado, fk_id_bodega, cantidad_almacen, fk_id_compra, tipo_movimiento) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 OdbcCommand cmd = new OdbcCommand(s_query, o_cn);
                 cmd.Parameters.AddWithValue("@fk_id_producto", i_fkIdProducto);
                 cmd.Parameters.AddWithValue("@stock", stock);
                 cmd.Parameters.AddWithValue("@fk_id_traslado", i_fkIdTraslado);
-                cmd.Parameters.AddWithValue("@fk_id_existencia", i_fkIdExistencia);
+                cmd.Parameters.AddWithValue("@fk_id_bodega", i_fkIdExistencia);
                 cmd.Parameters.AddWithValue("@cantidad_almacen", cantalmacen);
                 cmd.Parameters.AddWithValue("@fk_id_compra", i_fkIdCompra);
                 cmd.Parameters.AddWithValue("@tipo_movimiento", s_tipoMovimiento);

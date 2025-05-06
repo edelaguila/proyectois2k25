@@ -65,7 +65,7 @@ namespace Capa_Controlador
 
         public DataTable Fun_ObtenerAlmacenes()
         {
-            return g_pSentencias.Fun_LlenarCmb("TBL_EXISTENCIAS_BODEGA", "Pk_ID_EXISTENCIA");
+            return g_pSentencias.Fun_LlenarCmb("TBL_BODEGAS", "Pk_ID_BODEGA");
         }
 
         public DataTable Fun_ObtenerCompras()
