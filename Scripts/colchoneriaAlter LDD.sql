@@ -720,6 +720,39 @@ CREATE TABLE Tbl_movimiento_de_inventario (
     CONSTRAINT FK_EXISTENCIA_LOCAL FOREIGN KEY (Fk_ID_BODEGA) REFERENCES TBL_BODEGAS(Pk_ID_BODEGA)
 );
 
+-- ALTERs Parla la tabla Tbl_TrasladoProductos
+ALTER TABLE Tbl_TrasladoProductos
+ADD COLUMN bodega_origen VARCHAR(100),
+ADD COLUMN bodega_destino VARCHAR(100);
+
+-- Para que no se creen duplicidad de productos
+ALTER TABLE TBL_EXISTENCIAS_BODEGA
+ADD CONSTRAINT unique_bodega_producto UNIQUE (Fk_ID_BODEGA, Fk_ID_PRODUCTO);
+
+CREATE TABLE Tbl_EntradaProductos (
+    Pk_id_EntradaProductos INT PRIMARY KEY AUTO_INCREMENT,
+    documento VARCHAR(50),
+    fecha DATE,
+    costoTotal DECIMAL(10,2),
+    costoTotalGeneral DECIMAL(10,2),
+    precioTotal DECIMAL(10,2),
+    codigoProducto INT,
+    Fk_id_guia INT,
+    bodega_origen VARCHAR(100),
+    bodega_destino VARCHAR(100)
+);
+
+CREATE TABLE Tbl_DetalleTrasladoProductos (
+    Pk_id_DetalleTrasladoProductos INT AUTO_INCREMENT PRIMARY KEY,
+    Fk_id_TrasladoProductos INT,
+    codigoProducto INT,
+    cantidad INT,
+    precioUnitario DECIMAL(10,2),
+    costoTotal DECIMAL(10,2),
+    FOREIGN KEY (Fk_id_TrasladoProductos) REFERENCES Tbl_TrasladoProductos(Pk_id_TrasladoProductos),
+    FOREIGN KEY (codigoProducto) REFERENCES Tbl_Productos(codigoProducto)
+);
+
 
 -- NUEVAS TABLAS DEL MODULO COMERCIAL
 -- Tabla de Ventas Encabezado
