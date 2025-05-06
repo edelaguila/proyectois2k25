@@ -46,14 +46,19 @@ namespace Capa_Vista_GD
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Nuevo = new System.Windows.Forms.Button();
+            this.Dgv_evidencia = new System.Windows.Forms.DataGridView();
+            this.Txt_empleado = new System.Windows.Forms.TextBox();
+            this.Lbl_empleado = new System.Windows.Forms.Label();
+            this.Btn_MostrarEliminados = new System.Windows.Forms.Button();
             this.Gpb_EvidenciaValida.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_evidencia)).BeginInit();
             this.SuspendLayout();
             // 
             // Lbl_idFalta
             // 
             this.Lbl_idFalta.AutoSize = true;
             this.Lbl_idFalta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_idFalta.Location = new System.Drawing.Point(108, 157);
+            this.Lbl_idFalta.Location = new System.Drawing.Point(102, 153);
             this.Lbl_idFalta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_idFalta.Name = "Lbl_idFalta";
             this.Lbl_idFalta.Size = new System.Drawing.Size(120, 22);
@@ -65,7 +70,7 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_tipoEvidencia.AutoSize = true;
             this.Lbl_tipoEvidencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_tipoEvidencia.Location = new System.Drawing.Point(108, 205);
+            this.Lbl_tipoEvidencia.Location = new System.Drawing.Point(102, 246);
             this.Lbl_tipoEvidencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_tipoEvidencia.Name = "Lbl_tipoEvidencia";
             this.Lbl_tipoEvidencia.Size = new System.Drawing.Size(159, 22);
@@ -74,7 +79,7 @@ namespace Capa_Vista_GD
             // 
             // Txt_cargarArchivo
             // 
-            this.Txt_cargarArchivo.Location = new System.Drawing.Point(275, 248);
+            this.Txt_cargarArchivo.Location = new System.Drawing.Point(269, 289);
             this.Txt_cargarArchivo.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_cargarArchivo.Name = "Txt_cargarArchivo";
             this.Txt_cargarArchivo.Size = new System.Drawing.Size(400, 30);
@@ -85,7 +90,7 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_cargarArchivo.AutoSize = true;
             this.Lbl_cargarArchivo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_cargarArchivo.Location = new System.Drawing.Point(108, 256);
+            this.Lbl_cargarArchivo.Location = new System.Drawing.Point(102, 297);
             this.Lbl_cargarArchivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_cargarArchivo.Name = "Lbl_cargarArchivo";
             this.Lbl_cargarArchivo.Size = new System.Drawing.Size(135, 22);
@@ -95,7 +100,7 @@ namespace Capa_Vista_GD
             // Cbo_idFalta
             // 
             this.Cbo_idFalta.FormattingEnabled = true;
-            this.Cbo_idFalta.Location = new System.Drawing.Point(275, 149);
+            this.Cbo_idFalta.Location = new System.Drawing.Point(269, 145);
             this.Cbo_idFalta.Name = "Cbo_idFalta";
             this.Cbo_idFalta.Size = new System.Drawing.Size(109, 30);
             this.Cbo_idFalta.TabIndex = 8;
@@ -141,7 +146,7 @@ namespace Capa_Vista_GD
             // 
             this.Cbo_tipoEvindencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cbo_tipoEvindencia.FormattingEnabled = true;
-            this.Cbo_tipoEvindencia.Location = new System.Drawing.Point(275, 205);
+            this.Cbo_tipoEvindencia.Location = new System.Drawing.Point(269, 246);
             this.Cbo_tipoEvindencia.Name = "Cbo_tipoEvindencia";
             this.Cbo_tipoEvindencia.Size = new System.Drawing.Size(400, 30);
             this.Cbo_tipoEvindencia.TabIndex = 19;
@@ -179,6 +184,7 @@ namespace Capa_Vista_GD
             this.Btn_Buscar.Size = new System.Drawing.Size(89, 77);
             this.Btn_Buscar.TabIndex = 15;
             this.Btn_Buscar.UseVisualStyleBackColor = true;
+            this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
             // 
             // Btn_Eliminar
             // 
@@ -189,6 +195,7 @@ namespace Capa_Vista_GD
             this.Btn_Eliminar.Size = new System.Drawing.Size(89, 77);
             this.Btn_Eliminar.TabIndex = 14;
             this.Btn_Eliminar.UseVisualStyleBackColor = true;
+            this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
             // 
             // Btn_Editar
             // 
@@ -199,6 +206,7 @@ namespace Capa_Vista_GD
             this.Btn_Editar.Size = new System.Drawing.Size(89, 77);
             this.Btn_Editar.TabIndex = 13;
             this.Btn_Editar.UseVisualStyleBackColor = true;
+            this.Btn_Editar.Click += new System.EventHandler(this.Btn_Editar_Click);
             // 
             // Btn_Cancelar
             // 
@@ -234,12 +242,59 @@ namespace Capa_Vista_GD
             this.Btn_Nuevo.UseVisualStyleBackColor = true;
             this.Btn_Nuevo.Click += new System.EventHandler(this.Btn_Nuevo_Click);
             // 
+            // Dgv_evidencia
+            // 
+            this.Dgv_evidencia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Dgv_evidencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_evidencia.Location = new System.Drawing.Point(34, 339);
+            this.Dgv_evidencia.Name = "Dgv_evidencia";
+            this.Dgv_evidencia.RowHeadersWidth = 51;
+            this.Dgv_evidencia.RowTemplate.Height = 24;
+            this.Dgv_evidencia.Size = new System.Drawing.Size(706, 130);
+            this.Dgv_evidencia.TabIndex = 20;
+            this.Dgv_evidencia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_evidencia_CellContentClick);
+            this.Dgv_evidencia.SelectionChanged += new System.EventHandler(this.Dgv_evidencia_SelectionChanged);
+            // 
+            // Txt_empleado
+            // 
+            this.Txt_empleado.Enabled = false;
+            this.Txt_empleado.Location = new System.Drawing.Point(269, 200);
+            this.Txt_empleado.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_empleado.Name = "Txt_empleado";
+            this.Txt_empleado.Size = new System.Drawing.Size(400, 30);
+            this.Txt_empleado.TabIndex = 22;
+            // 
+            // Lbl_empleado
+            // 
+            this.Lbl_empleado.AutoSize = true;
+            this.Lbl_empleado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_empleado.Location = new System.Drawing.Point(102, 203);
+            this.Lbl_empleado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_empleado.Name = "Lbl_empleado";
+            this.Lbl_empleado.Size = new System.Drawing.Size(80, 22);
+            this.Lbl_empleado.TabIndex = 21;
+            this.Lbl_empleado.Text = "Falta de:";
+            // 
+            // Btn_MostrarEliminados
+            // 
+            this.Btn_MostrarEliminados.Location = new System.Drawing.Point(283, 475);
+            this.Btn_MostrarEliminados.Name = "Btn_MostrarEliminados";
+            this.Btn_MostrarEliminados.Size = new System.Drawing.Size(182, 36);
+            this.Btn_MostrarEliminados.TabIndex = 23;
+            this.Btn_MostrarEliminados.Text = "Mostrar Eliminados";
+            this.Btn_MostrarEliminados.UseVisualStyleBackColor = true;
+            this.Btn_MostrarEliminados.Click += new System.EventHandler(this.Btn_MostrarEliminados_Click);
+            // 
             // frm_evidencias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(770, 302);
+            this.ClientSize = new System.Drawing.Size(770, 513);
+            this.Controls.Add(this.Btn_MostrarEliminados);
+            this.Controls.Add(this.Txt_empleado);
+            this.Controls.Add(this.Lbl_empleado);
+            this.Controls.Add(this.Dgv_evidencia);
             this.Controls.Add(this.Cbo_tipoEvindencia);
             this.Controls.Add(this.Gpb_EvidenciaValida);
             this.Controls.Add(this.Btn_Ayuda);
@@ -263,6 +318,7 @@ namespace Capa_Vista_GD
             this.Load += new System.EventHandler(this.frm_evidencias_Load);
             this.Gpb_EvidenciaValida.ResumeLayout(false);
             this.Gpb_EvidenciaValida.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_evidencia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,5 +343,9 @@ namespace Capa_Vista_GD
         private System.Windows.Forms.RadioButton Rdb_no;
         private System.Windows.Forms.RadioButton Rdb_Si;
         private System.Windows.Forms.ComboBox Cbo_tipoEvindencia;
+        private System.Windows.Forms.DataGridView Dgv_evidencia;
+        private System.Windows.Forms.TextBox Txt_empleado;
+        private System.Windows.Forms.Label Lbl_empleado;
+        private System.Windows.Forms.Button Btn_MostrarEliminados;
     }
 }
