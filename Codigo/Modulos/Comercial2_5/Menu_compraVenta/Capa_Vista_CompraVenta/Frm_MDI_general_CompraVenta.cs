@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Controlador_CompraVenta;
-using Capa_Vista_Cotizacion;
+//using Capa_Controlador_CompraVenta;
+//using Capa_Vista_Cotizacion;
 //using Capa_Vista_Factura;
 using Interfac_V3;
 using Capa_Vista_ListaPrecios;
@@ -117,9 +117,9 @@ namespace Capa_Vista_CompraVenta
 
         private void button12_Click(object sender, EventArgs e)
         {
-            frm_cotizaciones formulario = new frm_cotizaciones();
-            formulario.MdiParent = this;
-            formulario.Show();
+            //frm_cotizaciones formulario = new frm_cotizaciones();
+           // formulario.MdiParent = this;
+          //  formulario.Show();
         }
 
         private void button11_Click(object sender, EventArgs e)
