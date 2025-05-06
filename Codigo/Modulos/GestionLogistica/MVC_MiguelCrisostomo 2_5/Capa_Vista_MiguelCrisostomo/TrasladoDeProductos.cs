@@ -31,6 +31,7 @@ namespace Capa_Vista_MiguelCrisostomo
             CargarVehiculos(); // Cargar vehículos al iniciar el formulario
             CargarSucursales(); // Cargar sucursales al iniciar el formulario
             CargarBodegasOrigen(); // Cargar bodegas de origen al iniciar el formulario
+            CargarStockBodegas(); // Cargar stock de bodegas al iniciar el formulario
 
             // Configurar el DataGridView de productos
             Dgv_Productos.Columns.Add("codigoProducto", "Código");
@@ -47,6 +48,10 @@ namespace Capa_Vista_MiguelCrisostomo
             Dgv_Productos.ReadOnly = true;
             Dgv_Productos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             Dgv_Productos.MultiSelect = false;
+
+            // Cambiar el color de fondo a blanco
+            Dgv_Productos.BackgroundColor = Color.White;
+            Dgv_Productos.DefaultCellStyle.BackColor = Color.White;
 
             // Configurar el TextBox de destino para autocompletado
             TxtDESTINO.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -111,6 +116,10 @@ namespace Capa_Vista_MiguelCrisostomo
             // Agregar evento para validar la selección de bodegas
             Cbo_BodegaOrigen.SelectedIndexChanged += Cbo_BodegaOrigen_SelectedIndexChanged;
             Cbo_Sucursal.SelectedIndexChanged += Cbo_Sucursal_SelectedIndexChanged;
+
+            Txt_BusquedaDgvEntrada.TextChanged += Txt_BusquedaDgvEntrada_TextChanged;
+
+            Txt_FiltrarBodegas.TextChanged += Txt_FiltrarBodegas_TextChanged;
         }
 
         // Evento para manejar la eliminación de filas del DataGridView
@@ -157,6 +166,7 @@ namespace Capa_Vista_MiguelCrisostomo
         {
             // Llama al método para cargar los códigos de productos en el ComboBox
             CargarCodigosProductos();
+            CargarStockBodegas();
         }
 
 
@@ -366,6 +376,12 @@ namespace Capa_Vista_MiguelCrisostomo
                 // Cambia el nombre de la columna después de establecer el DataSource  
                 Dgv_TrasladoDProductos.Columns["Fk_id_guia"].HeaderText = "Guia";
 
+                // Ocultar la columna 'Guia'
+                if (Dgv_TrasladoDProductos.Columns.Contains("Fk_id_guia"))
+                {
+                    Dgv_TrasladoDProductos.Columns["Fk_id_guia"].Visible = false;
+                }
+
                 // Cargar sugerencias de autocompletado
                 CargarSugerenciasAutocompletado(dataTable);
 
@@ -535,10 +551,25 @@ namespace Capa_Vista_MiguelCrisostomo
                     Cbo_Sucursal.SelectedItem?.ToString()
                 );
 
+                // Registrar el documento de entrada con el mismo documento
+                controlador.registrarEntradaProductos(
+                    documento, // Usar el mismo documento
+                    fecha,
+                    (int)costoTotalGeneral,
+                    (int)costoTotalGeneral,
+                    (int)primerPrecioUnitario,
+                    primerIdProducto,
+                    idGuia,
+                    Cbo_BodegaOrigen.SelectedItem?.ToString(),
+                    Cbo_Sucursal.SelectedIndex > -1 ? Cbo_Sucursal.SelectedItem.ToString() : null
+                );
+
                 // Obtener el ID del traslado recién creado
                 int idTraslado = controlador.ObtenerIdTrasladoPorDocumento(documento);
+                // Obtener el ID de la entrada recién creada
+                int idEntrada = controlador.ObtenerIdEntradaPorDocumento(documento);
 
-                // Registrar los detalles de cada producto
+                // Registrar los detalles de cada producto y actualizar el stock
                 using (OdbcConnection connection = conn.Conexion())
                 {
                     foreach (DataGridViewRow row in Dgv_Productos.Rows)
@@ -546,9 +577,10 @@ namespace Capa_Vista_MiguelCrisostomo
                         int codigoProducto = Convert.ToInt32(row.Cells["codigoProducto"].Value);
                         int cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
                         decimal precioUnitario = Convert.ToDecimal(row.Cells["precioUnitario"].Value);
-                decimal costoTotal = cantidad * precioUnitario;
+                        decimal costoTotal = cantidad * precioUnitario;
+                        int idProducto = controlador.ObteneridProductoPorCodigo(codigoProducto);
 
-                        // Registrar el detalle del producto
+                        // Registrar el detalle del producto en la tabla de traslado
                         string queryDetalle = @"
                             INSERT INTO Tbl_DetalleTrasladoProductos 
                             (Fk_id_TrasladoProductos, codigoProducto, cantidad, precioUnitario, costoTotal) 
@@ -564,19 +596,82 @@ namespace Capa_Vista_MiguelCrisostomo
                             cmd.ExecuteNonQuery();
                         }
 
-                        // Actualizar el stock del producto
-                        int stockRestante = Convert.ToInt32(row.Cells["stockRestante"].Value);
-                        controlador.ActualizarStockProducto(codigoProducto, stockRestante);
+                        // Registrar el detalle del producto en la tabla de entrada
+                        string queryDetalleEntrada = @"
+                            INSERT INTO Tbl_DetalleEntradaProductos 
+                            (Fk_id_EntradaProductos, codigoProducto, cantidad, precioUnitario, costoTotal) 
+                            VALUES (?, ?, ?, ?, ?)";
+
+                        using (OdbcCommand cmd = new OdbcCommand(queryDetalleEntrada, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@idEntrada", idEntrada);
+                            cmd.Parameters.AddWithValue("@codigoProducto", codigoProducto);
+                            cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                            cmd.Parameters.AddWithValue("@precioUnitario", (int)precioUnitario);
+                            cmd.Parameters.AddWithValue("@costoTotal", (int)costoTotal);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // Actualizar el stock en la bodega de origen
+                        string queryActualizarOrigen = @"
+                            UPDATE TBL_EXISTENCIAS_BODEGA 
+                            SET CANTIDAD_ACTUAL = CANTIDAD_ACTUAL - ? 
+                            WHERE Fk_ID_BODEGA = (SELECT Pk_ID_BODEGA FROM TBL_BODEGAS WHERE NOMBRE_BODEGA = ?) 
+                            AND Fk_ID_PRODUCTO = ?";
+
+                        using (OdbcCommand cmd = new OdbcCommand(queryActualizarOrigen, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                            cmd.Parameters.AddWithValue("@bodega", Cbo_BodegaOrigen.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@idProducto", idProducto);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // Actualizar el stock en la tabla Tbl_Productos
+                        string queryActualizarStockProducto = @"
+                            UPDATE Tbl_Productos 
+                            SET stock = stock - ? 
+                            WHERE Pk_id_Producto = ?";
+
+                        using (OdbcCommand cmd = new OdbcCommand(queryActualizarStockProducto, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                            cmd.Parameters.AddWithValue("@idProducto", idProducto);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // Actualizar o insertar el stock en la bodega de destino
+                        string queryActualizarDestino = @"
+                            INSERT INTO TBL_EXISTENCIAS_BODEGA (Fk_ID_BODEGA, Fk_ID_PRODUCTO, CANTIDAD_ACTUAL, CANTIDAD_INICIAL)
+                            SELECT 
+                                (SELECT Pk_ID_BODEGA FROM TBL_BODEGAS WHERE NOMBRE_BODEGA = ?),
+                                ?,
+                                ?,
+                                ?
+                            ON DUPLICATE KEY UPDATE
+                                CANTIDAD_ACTUAL = CANTIDAD_ACTUAL + ?";
+
+                        using (OdbcCommand cmd = new OdbcCommand(queryActualizarDestino, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@bodega", Cbo_Sucursal.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@idProducto", idProducto);
+                            cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                            cmd.Parameters.AddWithValue("@cantidadInicial", cantidad);
+                            cmd.Parameters.AddWithValue("@cantidad", cantidad);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
 
                 // Actualizar el DataGridView con los nuevos datos
                 CargarDatosTraslado();
+                CargarDatosEntrada();
+                CargarStockBodegas(); // Actualizar la vista del stock de bodegas
 
                 // Limpiar el DataGridView de productos
                 Dgv_Productos.Rows.Clear();
 
-                // Mostrar mensaje de éxito una sola vez
+                // Mostrar mensaje de éxito
                 MessageBox.Show("Traslado realizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -1328,6 +1423,160 @@ namespace Capa_Vista_MiguelCrisostomo
                 return false;
             }
             return true;
+        }
+
+        private void CargarDatosEntrada()
+        {
+            try
+            {
+                OdbcConnection connection = conn.Conexion();
+                string query = "SELECT Pk_id_EntradaProductos, documento, fecha, costoTotal, costoTotalGeneral, precioTotal, codigoProducto, Fk_id_guia, bodega_origen, bodega_destino FROM Tbl_EntradaProductos";
+
+                OdbcDataAdapter adapter = new OdbcDataAdapter(query, connection);
+
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                Dgv_EntradaDProductos.DataSource = dataTable;
+
+                // Cambia el nombre de la columna después de establecer el DataSource  
+                Dgv_EntradaDProductos.Columns["Pk_id_EntradaProductos"].HeaderText = "Entrada";
+                Dgv_EntradaDProductos.Columns["Fk_id_guia"].HeaderText = "Guía";
+
+                // Cargar sugerencias de autocompletado inteligente para el buscador de entrada
+                CargarSugerenciasAutocompletadoEntrada(dataTable);
+
+                conn.desconexion(connection);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos de entrada: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CargarSugerenciasAutocompletadoEntrada(DataTable dataTable)
+        {
+            try
+            {
+                // Limpiar las sugerencias existentes
+                Txt_BusquedaDgvEntrada.AutoCompleteCustomSource.Clear();
+
+                // Crear un HashSet para evitar duplicados
+                HashSet<string> sugerencias = new HashSet<string>();
+
+                // Recorrer todas las filas y solo la columna 'documento'
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string valor = row["documento"].ToString();
+                    if (!string.IsNullOrWhiteSpace(valor))
+                    {
+                        sugerencias.Add(valor);
+                    }
+                }
+
+                // Agregar las sugerencias al AutoCompleteCustomSource
+                foreach (string sugerencia in sugerencias)
+                {
+                    Txt_BusquedaDgvEntrada.AutoCompleteCustomSource.Add(sugerencia);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las sugerencias de autocompletado de entrada: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // MÉTODO PARA CARGAR DATOS DE STOCK DE BODEGAS (SUM(eb.CANTIDAD_INICIAL) AS CANTIDAD_INICIAL)
+        private void CargarStockBodegas()
+        {
+            try
+            {
+                OdbcConnection connection = conn.Conexion();
+                string query = @"
+                    SELECT 
+                        b.NOMBRE_BODEGA,
+                        p.nombreProducto,
+                        SUM(eb.CANTIDAD_ACTUAL) AS CANTIDAD_ACTUAL,
+                        SUM(eb.CANTIDAD_INICIAL) AS CANTIDAD_INICIAL
+                    FROM TBL_EXISTENCIAS_BODEGA eb
+                    INNER JOIN TBL_BODEGAS b ON eb.Fk_ID_BODEGA = b.Pk_ID_BODEGA
+                    INNER JOIN Tbl_Productos p ON eb.Fk_ID_PRODUCTO = p.Pk_id_Producto
+                    WHERE b.estado = 1
+                    GROUP BY b.NOMBRE_BODEGA, p.nombreProducto";
+                
+                OdbcDataAdapter adapter = new OdbcDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                Dgv_StockBodegas.DataSource = dataTable;
+                // Ocultar la columna CANTIDAD_INICIAL si existe
+                if (Dgv_StockBodegas.Columns.Contains("CANTIDAD_INICIAL"))
+                {
+                    Dgv_StockBodegas.Columns["CANTIDAD_INICIAL"].Visible = false;
+                }
+                conn.desconexion(connection);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el stock de bodegas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Txt_BusquedaDgvEntrada_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Dgv_EntradaDProductos.DataSource != null)
+                {
+                    DataTable dt = (DataTable)Dgv_EntradaDProductos.DataSource;
+                    string searchText = Txt_BusquedaDgvEntrada.Text.ToLower();
+
+                    if (string.IsNullOrWhiteSpace(searchText))
+                    {
+                        // Si el texto de búsqueda está vacío, mostrar todos los registros
+                        dt.DefaultView.RowFilter = "";
+                    }
+                    else
+                    {
+                        // Filtrar solo por la columna 'documento'
+                        dt.DefaultView.RowFilter = $"CONVERT(documento, System.String) LIKE '%{searchText}%'";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar los datos de entrada: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Txt_FiltrarBodegas_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Dgv_StockBodegas.DataSource != null)
+                {
+                    DataTable dt = (DataTable)Dgv_StockBodegas.DataSource;
+                    string searchText = Txt_FiltrarBodegas.Text.Trim();
+
+                    if (string.IsNullOrWhiteSpace(searchText))
+                    {
+                        dt.DefaultView.RowFilter = "";
+                    }
+                    else
+                    {
+                        // Filtrar solo por la columna NOMBRE_BODEGA (sensible a mayúsculas/minúsculas)
+                        dt.DefaultView.RowFilter = $"[NOMBRE_BODEGA] LIKE '%{searchText}%'";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar las bodegas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

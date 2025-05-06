@@ -102,5 +102,10 @@ namespace Capa_Vista_MiguelCrisostomo
         {
 
         }
+
+        private void Txt_BodegaOrigen_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

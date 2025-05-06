@@ -29,9 +29,12 @@ namespace Capa_Vista_MiguelCrisostomo
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoTraslado));
             this.Cbo_Sucursal = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Pic_NuevoTrasladoP = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_NuevoTrasladoP)).BeginInit();
             this.SuspendLayout();
             // 
             // Cbo_Sucursal
@@ -46,13 +49,23 @@ namespace Capa_Vista_MiguelCrisostomo
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.Cbo_Sucursal);
-            this.groupBox1.Location = new System.Drawing.Point(347, 157);
+            this.groupBox1.Location = new System.Drawing.Point(48, 459);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(247, 91);
+            this.groupBox1.Size = new System.Drawing.Size(10, 27);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "SUCURSAL";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // Pic_NuevoTrasladoP
+            // 
+            this.Pic_NuevoTrasladoP.Image = ((System.Drawing.Image)(resources.GetObject("Pic_NuevoTrasladoP.Image")));
+            this.Pic_NuevoTrasladoP.Location = new System.Drawing.Point(237, 35);
+            this.Pic_NuevoTrasladoP.Name = "Pic_NuevoTrasladoP";
+            this.Pic_NuevoTrasladoP.Size = new System.Drawing.Size(90, 85);
+            this.Pic_NuevoTrasladoP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_NuevoTrasladoP.TabIndex = 30;
+            this.Pic_NuevoTrasladoP.TabStop = false;
             // 
             // NuevoTraslado
             // 
@@ -60,10 +73,12 @@ namespace Capa_Vista_MiguelCrisostomo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1041, 524);
+            this.Controls.Add(this.Pic_NuevoTrasladoP);
             this.Controls.Add(this.groupBox1);
             this.Name = "NuevoTraslado";
             this.Text = "NuevoTraslado";
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_NuevoTrasladoP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -72,5 +87,6 @@ namespace Capa_Vista_MiguelCrisostomo
 
         private System.Windows.Forms.ComboBox Cbo_Sucursal;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox Pic_NuevoTrasladoP;
     }
 }

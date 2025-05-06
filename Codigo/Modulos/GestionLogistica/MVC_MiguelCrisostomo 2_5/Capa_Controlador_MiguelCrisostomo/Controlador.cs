@@ -280,5 +280,63 @@ namespace Capa_Controlador_MiguelCrisostomo
             }
             return dt;
         }
+
+        // MÉTODOS PARA DOCUMENTOS DE ENTRADA
+        public void registrarEntradaProductos(string documento, string fecha, int costoTotal, int costoTotalGeneral, int precioTotal, int codigoProducto, int idGuia, string bodegaOrigen, string bodegaDestino)
+        {
+            try
+            {
+                using (OdbcConnection connection = conn.Conexion())
+                {
+                    string query = @"INSERT INTO Tbl_EntradaProductos (documento, fecha, costoTotal, costoTotalGeneral, precioTotal, codigoProducto, Fk_id_guia, bodega_origen, bodega_destino)
+                                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@documento", documento);
+                        cmd.Parameters.AddWithValue("@fecha", fecha);
+                        cmd.Parameters.AddWithValue("@costoTotal", costoTotal);
+                        cmd.Parameters.AddWithValue("@costoTotalGeneral", costoTotalGeneral);
+                        cmd.Parameters.AddWithValue("@precioTotal", precioTotal);
+                        cmd.Parameters.AddWithValue("@codigoProducto", codigoProducto);
+                        cmd.Parameters.AddWithValue("@Fk_id_guia", idGuia);
+                        cmd.Parameters.AddWithValue("@bodega_origen", bodegaOrigen);
+                        cmd.Parameters.AddWithValue("@bodega_destino", bodegaDestino);
+                        cmd.ExecuteNonQuery();
+                    }
+                    conn.desconexion(connection);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar el documento de entrada: " + ex.Message);
+            }
+        }
+
+        public int ObtenerIdEntradaPorDocumento(string documento)
+        {
+            int idEntrada = -1;
+            try
+            {
+                using (OdbcConnection connection = conn.Conexion())
+                {
+                    string query = "SELECT Pk_id_EntradaProductos FROM Tbl_EntradaProductos WHERE documento = ?";
+                    using (OdbcCommand cmd = new OdbcCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@documento", documento);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int id))
+                        {
+                            idEntrada = id;
+                        }
+                    }
+                    conn.desconexion(connection);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener el ID de entrada: " + ex.Message);
+            }
+            return idEntrada;
+        }
     }
 }
