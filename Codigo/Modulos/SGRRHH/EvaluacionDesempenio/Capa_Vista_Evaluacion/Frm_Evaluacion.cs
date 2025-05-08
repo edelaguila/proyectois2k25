@@ -165,5 +165,36 @@ namespace Capa_Vista_Evaluacion
             // Mostrar el formulario como una ventana modal (el usuario no podrá interactuar con el formulario actual hasta que cierre este formulario)
             reporteForm.ShowDialog();
         }
+
+        private void Btn_limpiar_Click(object sender, EventArgs e)
+        {
+            // Limpiar observaciones generales y calificación final
+            Txt_ObservacionesGen.Text = "";
+            Txt_calificacion.Text = "";
+
+            // Reiniciar NumericUpDowns a 0 (o cualquier valor predeterminado)
+            Nud_Liderazgo.Value = 0;
+            Nud_Trabajo_equipo.Value = 0;
+            Nud_Comunicacion.Value = 0;
+            Nud_Resolucion_Problemas.Value = 0;
+            nud_Innovacion_creatividad.Value = 0;
+            Nud_Tiempo.Value = 0;
+            Nud_adaptabilidad.Value = 0;
+            Nud_productividad.Value = 0;
+            nud_orientacion_cliente.Value = 0;
+            nud_responsabilidad.Value = 0;
+
+            // Limpiar TextBox de observaciones por competencia
+            Txt_competencia1.Text = "";
+            Txt_competencia2.Text = "";
+            Txt_competencia3.Text = "";
+            Txt_competencia4.Text = "";
+            Txt_competencia5.Text = "";
+            Txt_competencia6.Text = "";
+            Txt_competencia7.Text = "";
+            Txt_competencia8.Text = "";
+            Txt_competencia9.Text = "";
+            Txt_competencia10.Text = "";
+        }
     }
 }
