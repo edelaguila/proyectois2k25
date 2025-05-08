@@ -61,7 +61,12 @@ namespace Capa_Vista_GD
 
         private void Cbo_idFalta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (Cbo_idFalta.SelectedItem != null)
+            {
+                int idFaltaSeleccionada = int.Parse(Cbo_idFalta.SelectedItem.ToString());
+                string nombreEmpleado = Ctrl.funObtenerNombreEmpleado(idFaltaSeleccionada);
+                Txt_empleado.Text = nombreEmpleado;
+            }
         }
 
         private void frm_evidencias_Load(object sender, EventArgs e)
@@ -129,6 +134,18 @@ namespace Capa_Vista_GD
                 return;
             }
 
+            //validacion para guardar solo si Rdb_si cumple las condiciones para habilitarse
+            if (Rdb_Si.Enabled == false)
+            {
+                MessageBox.Show("Debe cumplir las condiciones para poder Guardar.");
+                return;
+            }
+
+            if (Rdb_no.Checked)
+            {
+                Btn_Guardar.Enabled = true; // Habilitar el botón de guardar
+            }
+
             // Recolectar datos del formulario
             int idFalta = Convert.ToInt32(Cbo_idFalta.SelectedItem);
             string tipoEvidencia = Cbo_tipoEvindencia.SelectedItem.ToString();
@@ -140,12 +157,13 @@ namespace Capa_Vista_GD
                 Ctrl.funInsertarEvidencia(idFalta, tipoEvidencia, urlEvidencia, estado);
                 MessageBox.Show("Evidencia guardada exitosamente");
 
-                // Opcional: Limpiar formulario
-                Cbo_idFalta.SelectedIndex = -1;
-                Cbo_tipoEvindencia.SelectedIndex = 0;
-                Txt_cargarArchivo.Clear();
-                Rdb_Si.Checked = false;
-                Rdb_no.Checked = false;
+                //obtener ID recien insertado
+                int idGenerado = Ctrl.funObtenerUltimoIdEvidencia();
+                DataTable evidencia = Ctrl.funObtenerEvidenciaPorId(idGenerado);
+                Dgv_evidencia.DataSource = evidencia;
+
+                Dgv_evidencia.DataSource = Ctrl.funObtenerTodasEvidencias();
+                FormatearDataGridView();
             }
             catch (Exception ex)
             {
@@ -155,6 +173,7 @@ namespace Capa_Vista_GD
             limpiar();
             Btn_Cancelar.Enabled = false;
             Btn_Nuevo.Enabled = true;
+
         }
 
         private void Txt_cargarArchivo_TextChanged(object sender, EventArgs e)
@@ -180,15 +199,12 @@ namespace Capa_Vista_GD
         {
             if (Rdb_no.Checked)
             {
-                // Deshabilitar los controles cuando "No" está seleccionado
-                Cbo_tipoEvindencia.Enabled = false;  // Deshabilitar ComboBox de tipo de evidencia
-                Cbo_idFalta.Enabled = false;        // Deshabilitar ComboBox de ID de falta
-                Txt_cargarArchivo.Enabled = false;  // Deshabilitar TextBox de cargar archivo
-
-                // Rellenar los valores automáticamente para indicar "Ninguna"
-                Txt_cargarArchivo.Text = "Ninguna";
-                if (Cbo_tipoEvindencia.Items.Count > 0)
+                // Rellenar los valores automáticamente para indicar "Ninguna" solo si no tiene datos
+                if (Txt_cargarArchivo.Text == "")
+                {
                     Cbo_tipoEvindencia.SelectedIndex = 0; // Selecciona "Ninguna"
+                    Txt_cargarArchivo.Text = "Ninguna";
+                }
             }
             else
             {
@@ -198,7 +214,7 @@ namespace Capa_Vista_GD
                 Txt_cargarArchivo.Enabled = true;   // Habilitar TextBox de cargar archivo
             }
             CambiarColorFondo();
-            ValidarBotonGuardar(); // Verifica el estado del botón al cambiar "No"
+            //ValidarBotonGuardar(); // Verifica el estado del botón al cambiar "No"
         }
 
         private void CambiarColorFondo()
@@ -254,7 +270,7 @@ namespace Capa_Vista_GD
 
         private void Rdb_Si_CheckedChanged(object sender, EventArgs e)
         {
-            ValidarBotonGuardar(); // Verifica el estado del botón al cambiar "Sí"
+            //ValidarBotonGuardar(); // Verifica el estado del botón al cambiar "Sí"
         }
 
         // Declarar el ToolTip en el boton cancelar
@@ -265,10 +281,28 @@ namespace Capa_Vista_GD
             Cbo_idFalta.SelectedIndex = -1;
             Cbo_tipoEvindencia.SelectedIndex = -1;
             Txt_cargarArchivo.Clear();
+            Txt_empleado.Clear();
 
-            Cbo_tipoEvindencia.Enabled = true;
-            Cbo_idFalta.Enabled = true;
-            Txt_cargarArchivo.Enabled = true;
+            Cbo_tipoEvindencia.Enabled = false;
+            Cbo_idFalta.Enabled = false;
+            Txt_cargarArchivo.Enabled = false;
+
+            Btn_Guardar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
+            Btn_Editar.Enabled = false;
+            Btn_Cancelar.Enabled = false;
+            Btn_Nuevo.Enabled = true;
+
+            Rdb_Si.Checked = false;
+            Rdb_no.Checked = false;
+        }
+
+        private void limpiarDgv()
+        {
+            Cbo_idFalta.SelectedIndex = -1;
+            Cbo_tipoEvindencia.SelectedIndex = -1;
+            Txt_cargarArchivo.Clear();
+            Txt_empleado.Clear();
 
             Rdb_Si.Checked = false;
             Rdb_no.Checked = false;
@@ -279,6 +313,9 @@ namespace Capa_Vista_GD
             // Mostrar el ToolTip en el boton limpiar
             toolTip.SetToolTip(Btn_Cancelar, "Boton cancelar ");
             limpiar();
+            Dgv_evidencia.DataSource = null;
+            // Restaurar el color original de fondo del formulario (RGB: 180, 210, 240)
+            this.BackColor = Color.FromArgb(180, 210, 240); // Fondo original
         }
 
         // Declarar el ToolTip en el boton Ayuda
@@ -387,8 +424,203 @@ namespace Capa_Vista_GD
             Txt_cargarArchivo.Enabled = true;
             Rdb_Si.Enabled = true;
             Rdb_no.Enabled = true;
-            Btn_Buscar.Enabled = false;
         }
 
+        private void Btn_Buscar_Click(object sender, EventArgs e)
+        {
+            DataTable evidencias = Ctrl.funObtenerTodasEvidencias();
+            Dgv_evidencia.DataSource = evidencias;
+
+            //formatear datagridview
+            Dgv_evidencia.DataSource = Ctrl.funObtenerTodasEvidencias();
+            Btn_Nuevo.Enabled = false;
+            Btn_Guardar.Enabled = false;
+            FormatearDataGridView();
+
+            limpiarDgv();
+            LiberarControl();
+            // Restaurar el color original de fondo del formulario (RGB: 180, 210, 240)
+            this.BackColor = Color.FromArgb(180, 210, 240); // Fondo original
+        }
+
+
+        //Habilitar botones y controles
+        private void LiberarControl()
+        {
+            Cbo_idFalta.Enabled = true;
+            Cbo_tipoEvindencia.Enabled = true;
+            Txt_cargarArchivo.Enabled = true;
+            Rdb_Si.Enabled = true;
+            Rdb_no.Enabled = true;
+
+            Btn_Editar.Enabled = true;
+            Btn_Eliminar.Enabled = true;
+            Btn_Cancelar.Enabled = true;
+        }
+
+        private void Dgv_evidencia_SelectionChanged(object sender, EventArgs e)
+        {
+            if (Dgv_evidencia.SelectedRows.Count > 0)
+            {
+                DataGridViewRow fila = Dgv_evidencia.SelectedRows[0];
+
+                // Limpias controles primero
+                limpiarDgv();
+
+                //Habilitar botones y controles
+                LiberarControl();
+
+                // Asignar el id de falta (esto activará el SelectedIndexChanged del ComboBox) para rellenar el Txt_empleado
+                Cbo_idFalta.Text = fila.Cells["Falta"].Value.ToString();
+                Cbo_tipoEvindencia.Text = fila.Cells["Tipo"].Value.ToString();
+                Txt_cargarArchivo.Text = fila.Cells["Ubicacion Archivo"].Value.ToString();
+
+                string estado = fila.Cells["Estado"].Value.ToString();
+                if (estado == "1")
+                    Rdb_Si.Checked = true;
+                else if (estado == "0")
+                    Rdb_no.Checked = true;
+            }
+        }
+
+        private void FormatearDataGridView()
+        {
+            // Ajustar automáticamente todas las columnas al contenido
+            Dgv_evidencia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            // Columna 'Ubicación' con un ancho fijo
+            if (Dgv_evidencia.Columns.Contains("Ubicacion Archivo"))
+            {
+                Dgv_evidencia.Columns["Ubicacion Archivo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                Dgv_evidencia.Columns["Ubicacion Archivo"].Width = 200; // tamnaño de la celda
+            }
+
+            // Columna 'Tipo' con un ancho fijo
+            if (Dgv_evidencia.Columns.Contains("Tipo"))
+            {
+                Dgv_evidencia.Columns["Tipo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                Dgv_evidencia.Columns["Tipo"].Width = 250; // tamnaño de la celda
+            }
+
+            // Centrar texto de columnas específicas
+            Dgv_evidencia.Columns["ID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Dgv_evidencia.Columns["Falta"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Dgv_evidencia.Columns["Estado"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //Si las filas mostradas son de datos inactivos "estado = 0" colorear en rojo
+            foreach (DataGridViewRow fila in Dgv_evidencia.Rows)
+            {
+                if (fila.Cells["Estado"].Value != null && fila.Cells["Estado"].Value.ToString() == "0")
+                {
+                    fila.DefaultCellStyle.BackColor = Color.MistyRose; // rojo muy suave
+                    fila.DefaultCellStyle.ForeColor = Color.DarkRed;   // texto un poco más oscuro
+                }
+            }
+        }
+
+        private void Dgv_evidencia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Btn_Editar_Click(object sender, EventArgs e)
+        {
+            if (Dgv_evidencia.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione una fila para editar.");
+                return;
+            }
+
+            // Recolectar los datos seleccionados
+            int idEvidencia = Convert.ToInt32(Dgv_evidencia.SelectedRows[0].Cells["ID"].Value);
+            int estadoActual = Convert.ToInt32(Dgv_evidencia.SelectedRows[0].Cells["Estado"].Value); // Estado original
+
+            int idFalta = Convert.ToInt32(Cbo_idFalta.SelectedItem);
+            string tipoEvidencia = Cbo_tipoEvindencia.SelectedItem.ToString();
+            string urlEvidencia = Txt_cargarArchivo.Text;
+            int estado = Rdb_Si.Checked ? 1 : 0;
+
+            // Preguntar si está restaurando
+            if (estadoActual == 0 && estado == 1)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Este es un registro eliminado o que No era valido. ¿Está seguro que desea recuperarlo?",
+                    "Confirmar restauración",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            try
+            {
+                Ctrl.funEditarEvidencia(idEvidencia, idFalta, tipoEvidencia, urlEvidencia, estado);
+                MessageBox.Show("Evidencia actualizada correctamente.");
+
+                Dgv_evidencia.DataSource = Ctrl.funObtenerEvidenciaPorId(idEvidencia);
+                FormatearDataGridView();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar evidencia: " + ex.Message);
+            }
+
+            limpiar();
+            Btn_Editar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
+            Btn_Nuevo.Enabled = false;
+            Btn_Cancelar.Enabled = true;
+
+        }
+
+        private void Btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            if (Dgv_evidencia.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione una fila para eliminar.");
+                return;
+            }
+
+            int idEvidencia = Convert.ToInt32(Dgv_evidencia.SelectedRows[0].Cells["ID"].Value);
+
+            var confirmar = MessageBox.Show("¿Está seguro de eliminar esta evidencia?", "Confirmar eliminación", MessageBoxButtons.YesNo);
+            if (confirmar == DialogResult.Yes)
+            {
+                if (Ctrl.funEliminarEvidencia(idEvidencia))
+                {
+                    MessageBox.Show("Evidencia eliminada (lógicamente).");
+                    FormatearDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar la evidencia.");
+                }
+            }
+
+            limpiar();
+            Dgv_evidencia.DataSource = null;
+        }
+
+        private void Btn_MostrarEliminados_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Dgv_evidencia.DataSource = Ctrl.funObtenerEvidenciasEliminadas();
+                FormatearDataGridView();
+                Btn_Editar.Enabled = false;
+                Btn_Eliminar.Enabled = false;
+                MessageBox.Show("Mostrando evidencias No Validas/eliminadas.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar eliminados: " + ex.Message);
+            }
+
+            Btn_Cancelar.Enabled = true;
+            Btn_Nuevo.Enabled = false;
+        }
     }
 }
