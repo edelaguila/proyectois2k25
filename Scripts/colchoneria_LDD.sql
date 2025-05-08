@@ -1184,6 +1184,7 @@ CREATE TABLE IF NOT EXISTS Tbl_proveedores (
 CREATE TABLE Tbl_compra (
     Pk_id_compra INT AUTO_INCREMENT PRIMARY KEY,
     Fk_prov_id INT ,
+    Fk_ID_BODEGA INT ,
     fecha_compra DATE ,
     numero_factura VARCHAR(50) ,
     tipo_comprobante VARCHAR(50) ,
@@ -1198,9 +1199,10 @@ CREATE TABLE Tbl_compra (
     estado VARCHAR(20) DEFAULT 'Registrada', -- Registrada, Anulada, etc.
 
     -- Relaciones
+	FOREIGN KEY (Fk_ID_BODEGA) REFERENCES tbl_bodegas(Pk_ID_BODEGA),
     FOREIGN KEY (Fk_prov_id) REFERENCES Tbl_proveedores(Pk_prov_id)
+    
 );
-
 CREATE TABLE IF NOT EXISTS Tbl_lista_encabezado (
     Pk_id_lista_Encabezado INT(11) NOT NULL,
     ListEncabezado_nombre VARCHAR(50),

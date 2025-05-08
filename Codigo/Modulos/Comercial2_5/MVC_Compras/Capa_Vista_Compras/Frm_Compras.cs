@@ -27,8 +27,14 @@ namespace Capa_Vista_Compras
             LlenarTiposComprobante();
             LlenarFormasPago();
             CargarProd();
+            CargarSuc();
             CargarSolicitudesenDatagriedView();
-        }
+
+            CargarBodega();
+
+
+
+            }
 
         private void Pic_Salir_Click(object sender, EventArgs e)
         {
@@ -105,6 +111,29 @@ namespace Capa_Vista_Compras
             }
         }
 
+        private void CargarBodega()
+        {
+            try
+            {
+                OdbcConnection connection = conn.conexion();
+                string query = "SELECT Pk_ID_BODEGA, NOMBRE_BODEGA FROM tbl_bodegas";
+                OdbcDataAdapter adapter = new OdbcDataAdapter(query, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                comboAlma.DataSource = dt;
+                comboAlma.DisplayMember = "Pk_ID_BODEGA"; // Lo que se ve
+                comboAlma.ValueMember = "Pk_ID_BODEGA";       // Lo que se usa internamente
+
+                comboAlma.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                conn.desconexion(connection);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar proveedores: " + ex.Message);
+            }
+        }
         private void CargarProd()
         {
             try
@@ -124,6 +153,32 @@ namespace Capa_Vista_Compras
                 MessageBox.Show("Error al cargar las sucursales: " + ex.Message);
             }
         }
+
+
+
+        private void CargarSuc()
+        {
+            try
+            {
+                List<string> sucursales = controlador.ObtenerSucursales2();
+                comboAlma.Items.Clear();
+                foreach (string sucursal in sucursales)
+                {
+                    comboAlma.Items.Add(sucursal);
+                }
+
+                // Configurar el ComboBox para permitir selección pero no edición
+                comboProducto.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las sucursales: " + ex.Message);
+            }
+        }
+
+
+
+
 
         private void LlenarTiposComprobante()
         {
@@ -168,6 +223,9 @@ namespace Capa_Vista_Compras
             controlador.Pro_RegistrarCompra(
                 Convert.ToInt32(comboProveedor.SelectedValue), // Asegúrate de usar SelectedValue
                 dateTimeFecha.Value, // Pasa la fecha seleccionada
+                Convert.ToInt32(comboAlma.SelectedValue), // Asegúrate de usar SelectedValue
+
+
                 txtNumeroFactura.Text, // ← Pasa el texto tal cual, sin convertir a int
                 comboTipoCompro.SelectedItem.ToString(), // Aquí pasas la palabra seleccionada
                 comboFormaPago.SelectedItem.ToString(), // Aquí pasas la palabra seleccionada
@@ -190,49 +248,6 @@ namespace Capa_Vista_Compras
         }
 
 
-        private void ActualizarDataGridView()
-        {
-            try
-            {
-                // Conexión a la base de datos
-                OdbcConnection connection = conn.conexion();
-
-                // Consulta para obtener todas las compras registradas desde la tabla correcta
-                string query = "SELECT Pk_id_compra, Fk_prov_id, fecha_compra, numero_factura, tipo_comprobante, forma_pago, subtotal, impuestos, total, producto FROM Tbl_compra";
-
-                using (OdbcCommand cmd = new OdbcCommand(query, connection))
-                {
-                    OdbcDataReader reader = cmd.ExecuteReader();
-
-                    // Limpiar el DataGridView antes de llenarlo con los nuevos datos
-                    Dgv_compras.Rows.Clear();
-
-                    // Llenar el DataGridView con los datos obtenidos
-                    while (reader.Read())
-                    {
-                        Dgv_compras.Rows.Add(
-                            reader["Pk_id_compra"],
-                            reader["Fk_prov_id"],
-                            reader["fecha_compra"],
-                            reader["numero_factura"],
-                            reader["tipo_comprobante"],
-                            reader["forma_pago"],
-                            reader["subtotal"],
-                            reader["impuestos"],
-                            reader["total"],
-                            reader["producto"]
-                        );
-                    }
-                }
-
-                // Cerrar la conexión
-                conn.desconexion(connection);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al actualizar el DataGridView: " + ex.Message);
-            }
-        }
 
 
         public void CargarSolicitudesenDatagriedView()

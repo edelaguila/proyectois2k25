@@ -68,6 +68,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.comboAlma = new System.Windows.Forms.ComboBox();
+            this.Almacén = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -224,7 +226,7 @@
             // 
             // txtDesc
             // 
-            this.txtDesc.Location = new System.Drawing.Point(218, 88);
+            this.txtDesc.Location = new System.Drawing.Point(259, 93);
             this.txtDesc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(427, 27);
@@ -234,7 +236,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(103, 88);
+            this.label10.Location = new System.Drawing.Point(139, 96);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(99, 19);
             this.label10.TabIndex = 13;
@@ -497,12 +499,32 @@
             this.label15.TabIndex = 3;
             this.label15.Text = "Subtotal";
             // 
+            // comboAlma
+            // 
+            this.comboAlma.FormattingEnabled = true;
+            this.comboAlma.Location = new System.Drawing.Point(42, 126);
+            this.comboAlma.Name = "comboAlma";
+            this.comboAlma.Size = new System.Drawing.Size(121, 24);
+            this.comboAlma.TabIndex = 15;
+            // 
+            // Almacén
+            // 
+            this.Almacén.AutoSize = true;
+            this.Almacén.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Almacén.Location = new System.Drawing.Point(67, 89);
+            this.Almacén.Name = "Almacén";
+            this.Almacén.Size = new System.Drawing.Size(77, 20);
+            this.Almacén.TabIndex = 31;
+            this.Almacén.Text = "Almacén";
+            // 
             // Frm_Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1278, 854);
+            this.Controls.Add(this.Almacén);
+            this.Controls.Add(this.comboAlma);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.Pic_Ayuda);
             this.Controls.Add(this.groupBox4);
@@ -577,5 +599,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox comboAlma;
+        private System.Windows.Forms.Label Almacén;
     }
 }
