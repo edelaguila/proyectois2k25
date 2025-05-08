@@ -121,10 +121,10 @@ namespace MVC_JavierChamo
             {
                 DataGridViewRow row = Dgv_Inventario.Rows[e.RowIndex];
                 Cbo_idprod.Text = row.Cells["Fk_id_producto"].Value.ToString();
-                Cbo_idtraslado.Text = row.Cells["Fk_id_traslado"].Value.ToString();
-                Cbo_almacen.Text = row.Cells["Fk_ID_EXISTENCIA"].Value.ToString();
-                Cbo_idcompra.Text = row.Cells["Fk_id_compra"].Value.ToString();
-                Cbo_tipomovimiento.Text = row.Cells["tipo_movimiento"].Value.ToString();
+                Cbo_idtraslado.SelectedValue = row.Cells["Fk_id_traslado"].Value.ToString();
+                Cbo_almacen.Text = row.Cells["Fk_ID_BODEGA"].Value.ToString();
+                Cbo_idcompra.SelectedValue = row.Cells["Fk_id_compra"].Value.ToString();
+                Cbo_tipomovimiento.SelectedItem = row.Cells["tipo_movimiento"].Value.ToString();
 
 
                 int numMovimiento = Convert.ToInt32(row.Cells["Pk_id_movimiento"].Value);
@@ -143,12 +143,23 @@ namespace MVC_JavierChamo
 
         private void btn_Editar_Click(object sender, EventArgs e)
         {
-            capa_Controlador_Logistica.Pro_ModificarMovimientoInventario(Convert.ToInt32(txt_numMovimiento.Text), Convert.ToInt32(Cbo_idprod.Text), Convert.ToInt32(Cbo_idprod.Text), Convert.ToInt32(Cbo_idtraslado.Text), Convert.ToInt32(Cbo_almacen.Text), Convert.ToString(Cbo_tipomovimiento.Text));
+            capa_Controlador_Logistica.Pro_ModificarMovimientoInventario(
+                Convert.ToInt32(txt_numMovimiento.Text),
+                Convert.ToInt32(Cbo_idprod.SelectedValue), // Asegúrate de usar SelectedValue
+                Convert.ToInt32(Txt_cantstock.Value),
+                Convert.ToInt32(Cbo_idtraslado.SelectedValue),     // Cambia esto
+                Convert.ToInt32(Cbo_almacen.SelectedValue),              // Cambia esto
+                Convert.ToInt32(Txt_almastock.Value),
+                Convert.ToInt32(Cbo_idcompra.SelectedValue),
+                Convert.ToString(Cbo_tipomovimiento.SelectedItem.ToString())
+            );
+            CargarSolicitudesenDatagriedView();
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
             capa_Controlador_Logistica.Pro_EliminarMovimiento(Convert.ToInt32(txt_numMovimiento.Text));
+            CargarSolicitudesenDatagriedView();
         }
 
         private void btn_GenerarPDF_Click(object sender, EventArgs e)

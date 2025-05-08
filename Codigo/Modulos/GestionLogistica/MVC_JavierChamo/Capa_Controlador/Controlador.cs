@@ -81,9 +81,9 @@ namespace Capa_Controlador
             return dt_tablaMovimientos;
         }
 
-        public void Pro_ModificarMovimientoInventario(int i_idMovimiento, int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales, string s_tipoMovimiento)
+        public void Pro_ModificarMovimientoInventario(int i_idMovimiento, int i_fkIdProducto, int stock, int i_fkIdTraslado, int i_fkIdExistencia, int cantalmacen, int i_fkIdCompra, string s_tipoMovimiento)
         {
-            g_pSentencias.Pro_ModificarMovimientoInventario(i_idMovimiento, i_estado, i_fkIdProducto, i_fkIdStock, i_fkIdLocales, s_tipoMovimiento);
+            g_pSentencias.Pro_ModificarMovimientoInventario(i_idMovimiento, i_fkIdProducto, stock, i_fkIdTraslado, i_fkIdExistencia, cantalmacen, i_fkIdCompra, s_tipoMovimiento);
         }
 
         public void Pro_EliminarMovimiento(int i_idMovimiento)

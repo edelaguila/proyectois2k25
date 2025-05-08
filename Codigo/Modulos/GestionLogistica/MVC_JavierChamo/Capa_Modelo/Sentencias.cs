@@ -151,7 +151,7 @@ namespace Capa_Modelo
             return dataTable;
         }
 
-        public void Pro_ModificarMovimientoInventario(int i_idMovimiento, int i_estado, int i_fkIdProducto, int i_fkIdStock, int i_fkIdLocales, string s_tipoMovimiento)
+        public void Pro_ModificarMovimientoInventario(int i_idMovimiento, int i_fkIdProducto, int stock, int i_fkIdTraslado, int i_fkIdExistencia, int cantalmacen, int i_fkIdCompra, string s_tipoMovimiento)
         {
             OdbcConnection o_cn = cn.conexion();
             if (o_cn == null)
@@ -162,20 +162,22 @@ namespace Capa_Modelo
 
             try
             {
-                string s_query = "UPDATE tbl_movimiento_de_inventario SET estado = ?, fk_id_producto = ?, fk_id_stock = ?, fk_id_locales = ?, tipo_movimiento = ? WHERE pk_id_movimiento = ?";
+                string s_query = "UPDATE tbl_movimiento_de_inventario SET fk_id_producto = ?, stock = ?, fk_id_traslado = ?, fk_id_bodega = ?, cantidad_almacen = ?, fk_id_compra = ?, tipo_movimiento = ? WHERE pk_id_movimiento = ?";
                 OdbcCommand cmd = new OdbcCommand(s_query, o_cn);
-                cmd.Parameters.AddWithValue("@estado", i_estado);
-                cmd.Parameters.AddWithValue("@fk_id_producto", i_fkIdProducto);
-                cmd.Parameters.AddWithValue("@fk_id_stock", i_fkIdStock);
-                cmd.Parameters.AddWithValue("@fk_id_locales", i_fkIdLocales);
-                cmd.Parameters.AddWithValue("@tipo_movimiento", s_tipoMovimiento);
                 cmd.Parameters.AddWithValue("@pk_id_movimiento", i_idMovimiento);
+                cmd.Parameters.AddWithValue("@fk_id_producto", i_fkIdProducto);
+                cmd.Parameters.AddWithValue("@stock", stock);
+                cmd.Parameters.AddWithValue("@fk_id_traslado", i_fkIdTraslado);
+                cmd.Parameters.AddWithValue("@fk_id_bodega", i_fkIdExistencia);
+                cmd.Parameters.AddWithValue("@cantidad_almacen", cantalmacen);
+                cmd.Parameters.AddWithValue("@fk_id_compra", i_fkIdCompra);
+                cmd.Parameters.AddWithValue("@tipo_movimiento", s_tipoMovimiento);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Se ha modificado de forma exitosa la solicitud");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo en la edición del movimiento: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hubo edición en el movimiento: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
