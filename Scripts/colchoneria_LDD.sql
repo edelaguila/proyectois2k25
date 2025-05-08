@@ -1183,20 +1183,19 @@ CREATE TABLE IF NOT EXISTS Tbl_proveedores (
 
 CREATE TABLE Tbl_compra (
     Pk_id_compra INT AUTO_INCREMENT PRIMARY KEY,
-    Fk_prov_id INT NOT NULL,
-    fecha_compra DATE NOT NULL,
-    numero_factura VARCHAR(50) NOT NULL,
-    tipo_comprobante VARCHAR(50) NOT NULL,
-    forma_pago VARCHAR(30) NOT NULL,
-    subtotal DECIMAL(10,2) NOT NULL,
-    impuestos DECIMAL(10,2) NOT NULL,
-    total DECIMAL(10,2) NOT NULL,
+    Fk_prov_id INT ,
+    fecha_compra DATE ,
+    numero_factura VARCHAR(50) ,
+    tipo_comprobante VARCHAR(50) ,
+    forma_pago VARCHAR(30) ,
+    subtotal DECIMAL(10,2) ,
+    impuestos DECIMAL(10,2),
+    total DECIMAL(10,2),
     producto VARCHAR (50),
     cantidad INT ,
-    precio  DECIMAL(10,2) NOT NULL,
+    precio  DECIMAL(10,2) ,
     descripcion VARCHAR (50),
     estado VARCHAR(20) DEFAULT 'Registrada', -- Registrada, Anulada, etc.
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     -- Relaciones
     FOREIGN KEY (Fk_prov_id) REFERENCES Tbl_proveedores(Pk_prov_id)
