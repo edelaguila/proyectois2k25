@@ -27,6 +27,7 @@ namespace Capa_Vista_Compras
             LlenarTiposComprobante();
             LlenarFormasPago();
             CargarProd();
+            CargarSolicitudesenDatagriedView();
         }
 
         private void Pic_Salir_Click(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace Capa_Vista_Compras
               
 
                 // Limpiar el DataGridView de productos
-                Dgv_TrasladoDProductos.Rows.Clear();
+                Dgv_compras.Rows.Clear();
 
                 // Mostrar mensaje de éxito
                 MessageBox.Show("Campos limpiados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -164,64 +165,26 @@ namespace Capa_Vista_Compras
 
         private void Pic_Guardar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (comboProveedor.SelectedValue == null)
-                {
-                    MessageBox.Show("Seleccione un proveedor válido.");
-                    return;
-                }
+            controlador.Pro_RegistrarCompra(
+                Convert.ToInt32(comboProveedor.SelectedValue), // Asegúrate de usar SelectedValue
+                dateTimeFecha.Value, // Pasa la fecha seleccionada
+                txtNumeroFactura.Text, // ← Pasa el texto tal cual, sin convertir a int
+                comboTipoCompro.SelectedItem.ToString(), // Aquí pasas la palabra seleccionada
+                comboFormaPago.SelectedItem.ToString(), // Aquí pasas la palabra seleccionada
 
-                int idProveedor = Convert.ToInt32(comboProveedor.SelectedValue);
-                DateTime fechaCompra = dateTimeFecha.Value;
-                string numeroFactura = txtNumeroFactura.Text;
-                string tipoComprobante = comboTipoCompro.SelectedItem?.ToString();
-                string formaPago = comboFormaPago.SelectedItem?.ToString();
+                 Convert.ToDouble(txtSubtotal.Text), // Para convertir el valor del campo de texto en un double
+                Convert.ToDouble(txtImpuestos.Text), // Para convertir el valor del campo de texto en un double
+                Convert.ToDouble(txtTotal.Text), // Para convertir el valor del campo de texto en un double
 
-                decimal subtotal = decimal.Parse(txtSubtotal.Text);
-                decimal impuestos = decimal.Parse(txtImpuestos.Text);
-                decimal total = decimal.Parse(txtTotal.Text);
+                comboProducto.SelectedItem.ToString(), // Aquí pasas la palabra seleccionada
+                Convert.ToDouble(txtPrecio.Text), // Para convertir el valor del campo de texto en un double    Convert.ToDouble(txtPrecio.Text), // Para convertir el valor del campo de texto en un double
+                               txtDesc.Text // ← Pasa el texto tal cual, sin convertir a int
 
-                string producto = comboProducto.SelectedItem?.ToString();
-                int cantidad = int.Parse(txtCantidad.Text);
-                decimal precio = decimal.Parse(txtPrecio.Text);
-                string descripcion = txtDesc.Text;
 
-                string query = @"INSERT INTO compras 
-                         (Pk_prov_id, fecha_compra, numero_factura, tipo_comprobante, forma_pago, 
-                          subtotal, impuestos, total, producto, cantidad, precio, descripcion, estado, fecha_registro) 
-                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
 
-                using (OdbcConnection connection = conn.conexion())
-                using (OdbcCommand cmd = new OdbcCommand(query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@Pk_prov_id", idProveedor);
-                    cmd.Parameters.AddWithValue("@fecha_compra", fechaCompra.ToString("yyyy-MM-dd"));
-                    cmd.Parameters.AddWithValue("@numero_factura", numeroFactura);
-                    cmd.Parameters.AddWithValue("@tipo_comprobante", tipoComprobante);
-                    cmd.Parameters.AddWithValue("@forma_pago", formaPago);
-                    cmd.Parameters.AddWithValue("@subtotal", subtotal);
-                    cmd.Parameters.AddWithValue("@impuestos", impuestos);
-                    cmd.Parameters.AddWithValue("@total", total);
-                    cmd.Parameters.AddWithValue("@producto", producto);
-                    cmd.Parameters.AddWithValue("@cantidad", cantidad);
-                    cmd.Parameters.AddWithValue("@precio", precio);
-                    cmd.Parameters.AddWithValue("@descripcion", descripcion);
 
-                    cmd.ExecuteNonQuery();
-                    conn.desconexion(connection);
-                }
 
-                MessageBox.Show("Compra registrada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Verifique los valores numéricos (subtotal, impuestos, total, cantidad, precio).", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al registrar la compra: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            );
         }
 
 
@@ -232,22 +195,22 @@ namespace Capa_Vista_Compras
                 // Conexión a la base de datos
                 OdbcConnection connection = conn.conexion();
 
-                // Consulta para obtener todas las compras registradas
-                string query = "SELECT id_compra, id_proveedor, fecha_compra, numero_factura, tipo_comprobante, forma_pago, subtotal, impuestos, total, estado FROM compras";
+                // Consulta para obtener todas las compras registradas desde la tabla correcta
+                string query = "SELECT Pk_id_compra, Fk_prov_id, fecha_compra, numero_factura, tipo_comprobante, forma_pago, subtotal, impuestos, total, producto FROM Tbl_compra";
 
                 using (OdbcCommand cmd = new OdbcCommand(query, connection))
                 {
                     OdbcDataReader reader = cmd.ExecuteReader();
 
                     // Limpiar el DataGridView antes de llenarlo con los nuevos datos
-                    Dgv_TrasladoDProductos.Rows.Clear();
+                    Dgv_compras.Rows.Clear();
 
                     // Llenar el DataGridView con los datos obtenidos
                     while (reader.Read())
                     {
-                        Dgv_TrasladoDProductos.Rows.Add(
-                            reader["id_compra"],
-                            reader["id_proveedor"],
+                        Dgv_compras.Rows.Add(
+                            reader["Pk_id_compra"],
+                            reader["Fk_prov_id"],
                             reader["fecha_compra"],
                             reader["numero_factura"],
                             reader["tipo_comprobante"],
@@ -255,7 +218,7 @@ namespace Capa_Vista_Compras
                             reader["subtotal"],
                             reader["impuestos"],
                             reader["total"],
-                            reader["estado"]
+                            reader["producto"]
                         );
                     }
                 }
@@ -270,10 +233,22 @@ namespace Capa_Vista_Compras
         }
 
 
+        public void CargarSolicitudesenDatagriedView()
+        {
+            try
+            {
+                DataTable tablaMovimiento = controlador.Fun_MostrarMovimientosInventario();
+                Dgv_compras.DataSource = tablaMovimiento;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al cargar datos en el DataGridView: " + ex.Message);
+            }
+        }
+
+
+
     }
-
-
-
 
 }
 

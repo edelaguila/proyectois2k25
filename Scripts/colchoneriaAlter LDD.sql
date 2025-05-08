@@ -199,43 +199,49 @@ CREATE TABLE Tbl_caja_general (
 
 -- Datos factura Cuentas Corrientes
 
+
 CREATE TABLE IF NOT EXISTS tbl_encabezado_compras (
-    id_compra INT AUTO_INCREMENT PRIMARY KEY,
-    id_proveedor INT NOT NULL,
-    fecha_compra DATE NOT NULL,
+    id_compra INT NOT NULL AUTO_INCREMENT,
     numero_factura VARCHAR(50) NOT NULL,
     No_serial_factura VARCHAR(50) NOT NULL,
+    id_proveedor INT NOT NULL,
+    fecha_compra DATE NOT NULL,
+    PRIMARY KEY (id_compra, numero_factura, No_serial_factura),
     FOREIGN KEY (id_proveedor) REFERENCES Tbl_proveedores(Pk_prov_id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS Tbl_Factura_Proveedor (
-    Pk_id_FacturaProv INT AUTO_INCREMENT PRIMARY KEY,
-    No_serie INT NOT NULL,
-    id_compraProv INT NOT NULL,
-    numero_de_facturaCompra VARCHAR(50) NOT NULL,
-    id_proveedorFact INT NOT NULL,
+    Pk_id_FacturaProv INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Fk_id_compra INT NOT NULL,
+    Fk_numero_factura VARCHAR(50) NOT NULL,
+    Fk_No_serial_factura VARCHAR(50) NOT NULL,
+    Fk_prov_id INT,
     fecha_emision DATE NOT NULL,
     fecha_vencimiento DATE NOT NULL,
     Total_a_pagar DECIMAL(10,2) NOT NULL,
     saldo DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (id_proveedorFact) REFERENCES Tbl_proveedores(Pk_prov_id),
-    FOREIGN KEY (id_compraProv) REFERENCES tbl_encabezado_compras(id_compra)
-);
+    FOREIGN KEY (Fk_prov_id) REFERENCES Tbl_proveedores(Pk_prov_id),
+    FOREIGN KEY (Fk_id_compra, Fk_numero_factura, Fk_No_serial_factura)
+        REFERENCES tbl_encabezado_compras(id_compra, numero_factura, No_serial_factura)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 CREATE TABLE IF NOT EXISTS Tbl_Factura_Cliente (
     Pk_id_FacturaCli INT AUTO_INCREMENT PRIMARY KEY,
-    No_serie INT NOT NULL,
-    id_ventaCli INT NOT NULL,
-    numero_de_facturaVenta VARCHAR(50) NOT NULL,
+    Fk_id_venta INT NOT NULL,
+    Fk_No_serie INT NOT NULL,
+    Fk_No_de_facV INT(11) NULL,
     id_clienteFact INT(11) NOT NULL,
     fecha_emision DATE NOT NULL,
     fecha_vencimiento DATE NOT NULL,
     Total_a_pagar DECIMAL(10,2) NOT NULL,
     saldo DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (id_clienteFact) REFERENCES Tbl_clientes(Pk_id_cliente),
-    FOREIGN KEY (id_ventaCli) REFERENCES tbl_ventas_encabezado(Pk_id_venta)
+    FOREIGN KEY (Fk_No_de_facV) REFERENCES Tbl_factura(Pk_id_factura)		
+    -- FOREIGN KEY (Fk_id_venta, Fk_No_serie) REFERENCES tbl_ventas_encabezado(Pk_id_venta, Pk_No_SerieEnc)
+    -- no tiene No. de serie encabezado ventas
     -- numero_de_facturaVenta`, se puede relacionar AGREGAR; Pendiente
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- NUEVOS ALTER DEL MODULO DE PRODUCCIÓN 03-11-2024 aprobado por Brandon Boch
 -- 2. Alter para añadir la foránea a la tabla de mantenimiento
