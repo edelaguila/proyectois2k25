@@ -71,13 +71,13 @@ namespace Capa_Modelo_Compras
         }
 
 
-        public void InsertarCompra(int proveedor ,DateTime fechaCompra,string factura,string compro, string pago, double sub , double imp , double total ,string prod, double pre , string desc)
+        public void InsertarCompra(int proveedor ,DateTime fechaCompra,string factura,string compro, string pago, double sub , double imp , double total ,string prod, double cant ,double pre , string desc)
         {
             OdbcConnection o_conn = conn.conexion();
             try
             {
                 // SQL para insertar solo fecha_compra
-                string s_query = "INSERT INTO Tbl_compra (Fk_prov_id ,fecha_compra,numero_factura,tipo_comprobante,forma_pago,subtotal, impuestos, total ,producto,precio,descripcion) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                string s_query = "INSERT INTO Tbl_compra (Fk_prov_id ,fecha_compra,numero_factura,tipo_comprobante,forma_pago,subtotal, impuestos, total ,producto,cantidad,precio,descripcion) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
                 OdbcCommand cmd = new OdbcCommand(s_query, o_conn);
 
                 // Agregar el parámetro 'fecha_compra'
@@ -94,6 +94,9 @@ namespace Capa_Modelo_Compras
                 cmd.Parameters.AddWithValue("@total", total);
 
                 cmd.Parameters.AddWithValue("@producto", prod);
+                cmd.Parameters.AddWithValue("@cantidad", cant);
+
+
                 cmd.Parameters.AddWithValue("@precio", pre);
 
                 cmd.Parameters.AddWithValue("@descripcion", desc);

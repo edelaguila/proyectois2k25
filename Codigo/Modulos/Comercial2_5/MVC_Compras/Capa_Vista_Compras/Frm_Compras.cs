@@ -177,6 +177,7 @@ namespace Capa_Vista_Compras
                 Convert.ToDouble(txtTotal.Text), // Para convertir el valor del campo de texto en un double
 
                 comboProducto.SelectedItem.ToString(), // Aquí pasas la palabra seleccionada
+                Convert.ToDouble(txtCantidad.Text), // Para convertir el valor del campo de texto en un double
                 Convert.ToDouble(txtPrecio.Text), // Para convertir el valor del campo de texto en un double    Convert.ToDouble(txtPrecio.Text), // Para convertir el valor del campo de texto en un double
                                txtDesc.Text // ← Pasa el texto tal cual, sin convertir a int
 
@@ -185,6 +186,7 @@ namespace Capa_Vista_Compras
 
 
             );
+            CargarSolicitudesenDatagriedView();
         }
 
 
