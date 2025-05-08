@@ -53,7 +53,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Txt_Actualizar = new System.Windows.Forms.Label();
             this.Pic_Actualizar = new System.Windows.Forms.PictureBox();
-            this.Dgv_TrasladoDProductos = new System.Windows.Forms.DataGridView();
+            this.Dgv_compras = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.Pic_Reporte = new System.Windows.Forms.PictureBox();
             this.Pic_Guardar = new System.Windows.Forms.PictureBox();
@@ -72,7 +72,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Actualizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_TrasladoDProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_compras)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Reporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Guardar)).BeginInit();
@@ -298,7 +298,7 @@
             // 
             this.groupBox3.Controls.Add(this.Txt_Actualizar);
             this.groupBox3.Controls.Add(this.Pic_Actualizar);
-            this.groupBox3.Controls.Add(this.Dgv_TrasladoDProductos);
+            this.groupBox3.Controls.Add(this.Dgv_compras);
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(25, 555);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -331,17 +331,17 @@
             this.Pic_Actualizar.TabIndex = 27;
             this.Pic_Actualizar.TabStop = false;
             // 
-            // Dgv_TrasladoDProductos
+            // Dgv_compras
             // 
-            this.Dgv_TrasladoDProductos.BackgroundColor = System.Drawing.Color.White;
-            this.Dgv_TrasladoDProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_TrasladoDProductos.Location = new System.Drawing.Point(46, 37);
-            this.Dgv_TrasladoDProductos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Dgv_TrasladoDProductos.Name = "Dgv_TrasladoDProductos";
-            this.Dgv_TrasladoDProductos.RowHeadersWidth = 51;
-            this.Dgv_TrasladoDProductos.RowTemplate.Height = 24;
-            this.Dgv_TrasladoDProductos.Size = new System.Drawing.Size(933, 162);
-            this.Dgv_TrasladoDProductos.TabIndex = 0;
+            this.Dgv_compras.BackgroundColor = System.Drawing.Color.White;
+            this.Dgv_compras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_compras.Location = new System.Drawing.Point(46, 37);
+            this.Dgv_compras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Dgv_compras.Name = "Dgv_compras";
+            this.Dgv_compras.RowHeadersWidth = 51;
+            this.Dgv_compras.RowTemplate.Height = 24;
+            this.Dgv_compras.Size = new System.Drawing.Size(933, 162);
+            this.Dgv_compras.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -521,7 +521,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Actualizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_TrasladoDProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_compras)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Reporte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Guardar)).EndInit();
@@ -549,7 +549,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label Txt_Actualizar;
         private System.Windows.Forms.PictureBox Pic_Actualizar;
-        private System.Windows.Forms.DataGridView Dgv_TrasladoDProductos;
+        private System.Windows.Forms.DataGridView Dgv_compras;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.PictureBox Pic_Ayuda;
         private System.Windows.Forms.PictureBox Pic_Reporte;
