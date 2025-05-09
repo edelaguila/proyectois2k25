@@ -46,9 +46,7 @@
             this.Btn_Reporte = new System.Windows.Forms.Button();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
             this.Btn_Salir = new System.Windows.Forms.Button();
-            this.Btn_Buscar = new System.Windows.Forms.Button();
             this.Btn_Eliminar = new System.Windows.Forms.Button();
-            this.Btn_Editar = new System.Windows.Forms.Button();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Nuevo = new System.Windows.Forms.Button();
@@ -196,7 +194,7 @@
             // 
             this.Btn_Reporte.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.reporte__2_;
             this.Btn_Reporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Btn_Reporte.Location = new System.Drawing.Point(699, 12);
+            this.Btn_Reporte.Location = new System.Drawing.Point(508, 12);
             this.Btn_Reporte.Name = "Btn_Reporte";
             this.Btn_Reporte.Size = new System.Drawing.Size(89, 77);
             this.Btn_Reporte.TabIndex = 8;
@@ -206,7 +204,7 @@
             // 
             this.Btn_Ayuda.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.preguntas__1___1_;
             this.Btn_Ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Btn_Ayuda.Location = new System.Drawing.Point(604, 12);
+            this.Btn_Ayuda.Location = new System.Drawing.Point(413, 12);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
             this.Btn_Ayuda.Size = new System.Drawing.Size(89, 77);
             this.Btn_Ayuda.TabIndex = 7;
@@ -216,43 +214,23 @@
             // 
             this.Btn_Salir.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.cerrar_sesion__1___1_;
             this.Btn_Salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Btn_Salir.Location = new System.Drawing.Point(794, 12);
+            this.Btn_Salir.Location = new System.Drawing.Point(603, 12);
             this.Btn_Salir.Name = "Btn_Salir";
             this.Btn_Salir.Size = new System.Drawing.Size(89, 77);
             this.Btn_Salir.TabIndex = 6;
             this.Btn_Salir.TabStop = false;
             this.Btn_Salir.UseVisualStyleBackColor = true;
             // 
-            // Btn_Buscar
-            // 
-            this.Btn_Buscar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.buscar__1___1___1_;
-            this.Btn_Buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Btn_Buscar.Location = new System.Drawing.Point(509, 12);
-            this.Btn_Buscar.Name = "Btn_Buscar";
-            this.Btn_Buscar.Size = new System.Drawing.Size(89, 77);
-            this.Btn_Buscar.TabIndex = 5;
-            this.Btn_Buscar.UseVisualStyleBackColor = true;
-            // 
             // Btn_Eliminar
             // 
             this.Btn_Eliminar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.borrar__1___1_;
             this.Btn_Eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Btn_Eliminar.Location = new System.Drawing.Point(414, 12);
+            this.Btn_Eliminar.Location = new System.Drawing.Point(318, 12);
             this.Btn_Eliminar.Name = "Btn_Eliminar";
             this.Btn_Eliminar.Size = new System.Drawing.Size(89, 77);
             this.Btn_Eliminar.TabIndex = 4;
             this.Btn_Eliminar.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Editar
-            // 
-            this.Btn_Editar.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.convenio__1___1_;
-            this.Btn_Editar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Btn_Editar.Location = new System.Drawing.Point(319, 12);
-            this.Btn_Editar.Name = "Btn_Editar";
-            this.Btn_Editar.Size = new System.Drawing.Size(89, 77);
-            this.Btn_Editar.TabIndex = 3;
-            this.Btn_Editar.UseVisualStyleBackColor = true;
-            this.Btn_Editar.Click += new System.EventHandler(this.Btn_Editar_Click);
+            this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
             // 
             // Btn_Cancelar
             // 
@@ -333,9 +311,7 @@
             this.Controls.Add(this.Btn_Reporte);
             this.Controls.Add(this.Btn_Ayuda);
             this.Controls.Add(this.Btn_Salir);
-            this.Controls.Add(this.Btn_Buscar);
             this.Controls.Add(this.Btn_Eliminar);
-            this.Controls.Add(this.Btn_Editar);
             this.Controls.Add(this.Btn_Cancelar);
             this.Controls.Add(this.Btn_Guardar);
             this.Controls.Add(this.Btn_Nuevo);
@@ -354,9 +330,7 @@
         private System.Windows.Forms.Button Btn_Nuevo;
         private System.Windows.Forms.Button Btn_Guardar;
         private System.Windows.Forms.Button Btn_Cancelar;
-        private System.Windows.Forms.Button Btn_Editar;
         private System.Windows.Forms.Button Btn_Eliminar;
-        private System.Windows.Forms.Button Btn_Buscar;
         private System.Windows.Forms.Button Btn_Salir;
         private System.Windows.Forms.Button Btn_Ayuda;
         private System.Windows.Forms.Button Btn_Reporte;
