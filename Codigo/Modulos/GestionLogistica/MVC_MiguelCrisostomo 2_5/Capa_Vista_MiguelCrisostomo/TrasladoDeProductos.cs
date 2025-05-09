@@ -26,12 +26,22 @@ namespace Capa_Vista_MiguelCrisostomo
         public TrasladoDeProductos()
         {
             InitializeComponent();// Inicializa los componentes del formulario
+            
+            // Agregar los controles al formulario
+            this.Controls.Add(this.Cbo_TipoInformee);
+            //this.Controls.Add(this.Lbl_TipoInforme);
+            
             CargarDestinos(); // Cargar destinos al iniciar el formulario
             CargarCodigosProductos(); // Cargar códigos de productos  
             CargarVehiculos(); // Cargar vehículos al iniciar el formulario
             CargarSucursales(); // Cargar sucursales al iniciar el formulario
             CargarBodegasOrigen(); // Cargar bodegas de origen al iniciar el formulario
-            CargarStockBodegas(); // Cargar stock de bodegas al iniciar el formulario
+
+            // Configurar el ComboBox de selección de informe
+            Cbo_TipoInformee.Items.Add("Informe salida TDP");
+            Cbo_TipoInformee.Items.Add("Informe entrada TDP");
+            Cbo_TipoInformee.SelectedIndex = 0; // Seleccionar el primer elemento por defecto
+            Cbo_TipoInformee.SelectedIndexChanged += Cbo_TipoInformee_SelectedIndexChanged;
 
             // Configurar el DataGridView de productos
             Dgv_Productos.Columns.Add("codigoProducto", "Código");
@@ -103,6 +113,8 @@ namespace Capa_Vista_MiguelCrisostomo
             Pic_NuevoTrasladoP.MouseEnter += Pic_NuevoTrasladoP_MouseEnter;
             Pic_NuevoTrasladoP.MouseLeave += Pic_NuevoTrasladoP_MouseLeave;
             Pic_Agregar.Click += new EventHandler(Pic_Agregar_Click);
+            Pic_CanselarTDP.Click += new System.EventHandler(this.Pic_CanselarTDP_Click);
+            Pic_InformeBs.Click += new EventHandler(Pic_InformeBs_Click);
 
             // Agregar evento para manejar la eliminación de filas
             Dgv_Productos.RowsRemoved += Dgv_Productos_RowsRemoved;
@@ -116,10 +128,6 @@ namespace Capa_Vista_MiguelCrisostomo
             // Agregar evento para validar la selección de bodegas
             Cbo_BodegaOrigen.SelectedIndexChanged += Cbo_BodegaOrigen_SelectedIndexChanged;
             Cbo_Sucursal.SelectedIndexChanged += Cbo_Sucursal_SelectedIndexChanged;
-
-            Txt_BusquedaDgvEntrada.TextChanged += Txt_BusquedaDgvEntrada_TextChanged;
-
-            Txt_FiltrarBodegas.TextChanged += Txt_FiltrarBodegas_TextChanged;
         }
 
         // Evento para manejar la eliminación de filas del DataGridView
@@ -166,7 +174,6 @@ namespace Capa_Vista_MiguelCrisostomo
         {
             // Llama al método para cargar los códigos de productos en el ComboBox
             CargarCodigosProductos();
-            CargarStockBodegas();
         }
 
 
@@ -631,12 +638,12 @@ namespace Capa_Vista_MiguelCrisostomo
                         string queryActualizarStockProducto = @"
                             UPDATE Tbl_Productos 
                             SET stock = stock - ? 
-                            WHERE Pk_id_Producto = ?";
+                            WHERE codigoProducto = ?";
 
                         using (OdbcCommand cmd = new OdbcCommand(queryActualizarStockProducto, connection))
                         {
                             cmd.Parameters.AddWithValue("@cantidad", cantidad);
-                            cmd.Parameters.AddWithValue("@idProducto", idProducto);
+                            cmd.Parameters.AddWithValue("@codigoProducto", codigoProducto);
                             cmd.ExecuteNonQuery();
                         }
 
@@ -665,8 +672,6 @@ namespace Capa_Vista_MiguelCrisostomo
 
                 // Actualizar el DataGridView con los nuevos datos
                 CargarDatosTraslado();
-                CargarDatosEntrada();
-                CargarStockBodegas(); // Actualizar la vista del stock de bodegas
 
                 // Limpiar el DataGridView de productos
                 Dgv_Productos.Rows.Clear();
@@ -1288,6 +1293,14 @@ namespace Capa_Vista_MiguelCrisostomo
             {
                 if (e.RowIndex >= 0)
                 {
+                    // Verificar el tipo de informe seleccionado
+                    string tipoInforme = Cbo_TipoInformee.SelectedItem?.ToString();
+                    if (tipoInforme != "Informe salida TDP")
+                    {
+                        // Si no es 'Informe salida TDP', no abrimos el formulario de detalles
+                        return;
+                    }
+
                     // Obtener el documento del traslado seleccionado
                     string documento = Dgv_TrasladoDProductos.Rows[e.RowIndex].Cells["documento"].Value.ToString();
 
@@ -1437,11 +1450,11 @@ namespace Capa_Vista_MiguelCrisostomo
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
-                Dgv_EntradaDProductos.DataSource = dataTable;
+                Dgv_TrasladoDProductos.DataSource = dataTable;
 
                 // Cambia el nombre de la columna después de establecer el DataSource  
-                Dgv_EntradaDProductos.Columns["Pk_id_EntradaProductos"].HeaderText = "Entrada";
-                Dgv_EntradaDProductos.Columns["Fk_id_guia"].HeaderText = "Guía";
+                Dgv_TrasladoDProductos.Columns["Pk_id_EntradaProductos"].HeaderText = "Entrada";
+                Dgv_TrasladoDProductos.Columns["Fk_id_guia"].HeaderText = "Guía";
 
                 // Cargar sugerencias de autocompletado inteligente para el buscador de entrada
                 CargarSugerenciasAutocompletadoEntrada(dataTable);
@@ -1459,7 +1472,7 @@ namespace Capa_Vista_MiguelCrisostomo
             try
             {
                 // Limpiar las sugerencias existentes
-                Txt_BusquedaDgvEntrada.AutoCompleteCustomSource.Clear();
+                Txt_Busqueda.AutoCompleteCustomSource.Clear();
 
                 // Crear un HashSet para evitar duplicados
                 HashSet<string> sugerencias = new HashSet<string>();
@@ -1477,7 +1490,7 @@ namespace Capa_Vista_MiguelCrisostomo
                 // Agregar las sugerencias al AutoCompleteCustomSource
                 foreach (string sugerencia in sugerencias)
                 {
-                    Txt_BusquedaDgvEntrada.AutoCompleteCustomSource.Add(sugerencia);
+                    Txt_Busqueda.AutoCompleteCustomSource.Add(sugerencia);
                 }
             }
             catch (Exception ex)
@@ -1486,95 +1499,212 @@ namespace Capa_Vista_MiguelCrisostomo
             }
         }
 
-        // MÉTODO PARA CARGAR DATOS DE STOCK DE BODEGAS (SUM(eb.CANTIDAD_INICIAL) AS CANTIDAD_INICIAL)
-        private void CargarStockBodegas()
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cbo_TipoInformee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Cbo_TipoInformee.SelectedItem != null)
+                {
+                    string tipoInforme = Cbo_TipoInformee.SelectedItem.ToString();
+                    
+                    if (tipoInforme == "Informe salida TDP")
+                    {
+                        CargarDatosTraslado(); // Cargar datos de traslado en Dgv_TrasladoDProductos
+                    }
+                    else if (tipoInforme == "Informe entrada TDP")
+                    {
+                        CargarDatosEntradaEnTraslado(); // Cargar datos de entrada en Dgv_TrasladoDProductos
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cambiar el tipo de informe: " + ex.Message, 
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Nuevo método para cargar los datos de entrada en Dgv_TrasladoDProductos
+        private void CargarDatosEntradaEnTraslado()
         {
             try
             {
                 OdbcConnection connection = conn.Conexion();
-                string query = @"
-                    SELECT 
-                        b.NOMBRE_BODEGA,
-                        p.nombreProducto,
-                        SUM(eb.CANTIDAD_ACTUAL) AS CANTIDAD_ACTUAL,
-                        SUM(eb.CANTIDAD_INICIAL) AS CANTIDAD_INICIAL
-                    FROM TBL_EXISTENCIAS_BODEGA eb
-                    INNER JOIN TBL_BODEGAS b ON eb.Fk_ID_BODEGA = b.Pk_ID_BODEGA
-                    INNER JOIN Tbl_Productos p ON eb.Fk_ID_PRODUCTO = p.Pk_id_Producto
-                    WHERE b.estado = 1
-                    GROUP BY b.NOMBRE_BODEGA, p.nombreProducto";
-                
+                string query = "SELECT Pk_id_EntradaProductos AS 'Entrada', documento, fecha, costoTotal, costoTotalGeneral, precioTotal, codigoProducto, Fk_id_guia, bodega_origen, bodega_destino, estado FROM Tbl_EntradaProductos";
+
                 OdbcDataAdapter adapter = new OdbcDataAdapter(query, connection);
+
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                Dgv_StockBodegas.DataSource = dataTable;
-                // Ocultar la columna CANTIDAD_INICIAL si existe
-                if (Dgv_StockBodegas.Columns.Contains("CANTIDAD_INICIAL"))
-                {
-                    Dgv_StockBodegas.Columns["CANTIDAD_INICIAL"].Visible = false;
-                }
+
+                Dgv_TrasladoDProductos.DataSource = dataTable;
+
+                // Cambiar el nombre de la columna después de establecer el DataSource  
+                Dgv_TrasladoDProductos.Columns["Entrada"].HeaderText = "Entrada";
+                Dgv_TrasladoDProductos.Columns["Fk_id_guia"].HeaderText = "Guía";
+                Dgv_TrasladoDProductos.Columns["estado"].HeaderText = "Estado";
+
                 conn.desconexion(connection);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar el stock de bodegas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar los datos de entrada: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void Txt_BusquedaDgvEntrada_TextChanged(object sender, EventArgs e)
+        private void Pic_CanselarTDP_Click(object sender, EventArgs e)
         {
             try
             {
-                if (Dgv_EntradaDProductos.DataSource != null)
+                if (Dgv_TrasladoDProductos.SelectedRows.Count == 0)
                 {
-                    DataTable dt = (DataTable)Dgv_EntradaDProductos.DataSource;
-                    string searchText = Txt_BusquedaDgvEntrada.Text.ToLower();
+                    MessageBox.Show("Por favor, seleccione un traslado para cancelar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
-                    if (string.IsNullOrWhiteSpace(searchText))
+                // Obtener el documento seleccionado
+                string documento = Dgv_TrasladoDProductos.SelectedRows[0].Cells["documento"].Value.ToString();
+
+                // Confirmar con el usuario
+                DialogResult result = MessageBox.Show($"¿Está seguro que desea cancelar el traslado con documento: {documento}?\nEsta acción devolverá los productos al stock original.",
+                    "Confirmar cancelación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result != DialogResult.Yes)
+                    return;
+
+                OdbcConnection connection = conn.Conexion();
+
+                // 1. Obtener el ID de traslado y la bodega destino usando el documento
+                string queryId = "SELECT Pk_id_TrasladoProductos, bodega_destino FROM Tbl_TrasladoProductos WHERE documento = ?";
+                OdbcCommand cmdId = new OdbcCommand(queryId, connection);
+                cmdId.Parameters.AddWithValue("@documento", documento);
+                int idTraslado = 0;
+                string bodegaDestino = "";
+                using (OdbcDataReader reader = cmdId.ExecuteReader())
+                {
+                    if (reader.Read())
                     {
-                        // Si el texto de búsqueda está vacío, mostrar todos los registros
-                        dt.DefaultView.RowFilter = "";
+                        idTraslado = reader.GetInt32(0);
+                        bodegaDestino = reader.GetString(1);
                     }
-                    else
+                }
+                if (idTraslado == 0)
+                {
+                    MessageBox.Show("No se encontró el traslado para cancelar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    conn.desconexion(connection);
+                    return;
+                }
+
+                // 2. Obtener los productos y cantidades del detalle
+                string queryDetalles = "SELECT codigoProducto, cantidad FROM Tbl_DetalleTrasladoProductos WHERE Fk_id_TrasladoProductos = ?";
+                OdbcCommand cmdDetalles = new OdbcCommand(queryDetalles, connection);
+                cmdDetalles.Parameters.AddWithValue("@idTraslado", idTraslado);
+                var detalles = new List<(int codigoProducto, int cantidad)>();
+                using (OdbcDataReader reader = cmdDetalles.ExecuteReader())
+                {
+                    while (reader.Read())
                     {
-                        // Filtrar solo por la columna 'documento'
-                        dt.DefaultView.RowFilter = $"CONVERT(documento, System.String) LIKE '%{searchText}%'";
+                        int codigoProducto = reader.GetInt32(0);
+                        int cantidad = reader.GetInt32(1);
+                        // Depuración: mostrar los valores obtenidos
+                        if (cantidad <= 0 || codigoProducto <= 0)
+                        {
+                            MessageBox.Show($"Valor inesperado: código={codigoProducto}, cantidad={cantidad}", "Depuración", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        detalles.Add((codigoProducto, cantidad));
                     }
+                }
+
+                // 3. Revertir stock para cada producto
+                foreach (var detalle in detalles)
+                {
+                    // 1. Sumar al stock en tbl_productos usando codigoProducto
+                    string querySumarStock = "UPDATE Tbl_Productos SET stock = stock + ? WHERE codigoProducto = ?";
+                    OdbcCommand cmdSumar = new OdbcCommand(querySumarStock, connection);
+                    cmdSumar.Parameters.AddWithValue("@cantidad", detalle.cantidad);
+                    cmdSumar.Parameters.AddWithValue("@codigoProducto", detalle.codigoProducto);
+                    int rowsAffected = cmdSumar.ExecuteNonQuery();
+                    if (rowsAffected == 0)
+                    {
+                        MessageBox.Show($"No se actualizó el stock para el producto {detalle.codigoProducto}.", "Depuración", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    // 2. Obtener el ID interno del producto
+                    int idProducto = 0;
+                    string queryIdProducto = "SELECT Pk_id_Producto FROM Tbl_Productos WHERE codigoProducto = ?";
+                    using (OdbcCommand cmdIdProducto = new OdbcCommand(queryIdProducto, connection))
+                    {
+                        cmdIdProducto.Parameters.AddWithValue("@codigoProducto", detalle.codigoProducto);
+                        using (OdbcDataReader reader = cmdIdProducto.ExecuteReader())
+                        {
+                            if (reader.Read())
+                                idProducto = reader.GetInt32(0);
+                        }
+                    }
+                    if (idProducto == 0)
+                    {
+                        MessageBox.Show($"No se encontró el ID interno para el producto {detalle.codigoProducto}.", "Depuración", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        continue;
+                    }
+
+                    // 3. Restar en tbl_existencias_bodega usando el ID interno
+                    string queryRestarBodega = @"UPDATE TBL_EXISTENCIAS_BODEGA 
+                        SET CANTIDAD_ACTUAL = CANTIDAD_ACTUAL - ? 
+                        WHERE Fk_ID_BODEGA = (SELECT Pk_ID_BODEGA FROM TBL_BODEGAS WHERE NOMBRE_BODEGA = ?) 
+                        AND Fk_ID_PRODUCTO = ?";
+                    OdbcCommand cmdRestar = new OdbcCommand(queryRestarBodega, connection);
+                    cmdRestar.Parameters.AddWithValue("@cantidad", detalle.cantidad);
+                    cmdRestar.Parameters.AddWithValue("@bodega", bodegaDestino);
+                    cmdRestar.Parameters.AddWithValue("@idProducto", idProducto);
+                    int rowsBodega = cmdRestar.ExecuteNonQuery();
+                    if (rowsBodega == 0)
+                    {
+                        MessageBox.Show($"No se actualizó la existencia en bodega para el producto {detalle.codigoProducto}.", "Depuración", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+
+                // 4. Marcar el documento como cancelado en Tbl_EntradaProductos (si aplica)
+                string queryCancelar = "UPDATE Tbl_EntradaProductos SET estado = 'cancelado' WHERE documento = ?";
+                OdbcCommand cmdCancelar = new OdbcCommand(queryCancelar, connection);
+                cmdCancelar.Parameters.AddWithValue("@documento", documento);
+                cmdCancelar.ExecuteNonQuery();
+
+                conn.desconexion(connection);
+
+                MessageBox.Show("Traslado cancelado y stock revertido correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Refrescar la vista
+                if (Cbo_TipoInformee.SelectedItem != null && Cbo_TipoInformee.SelectedItem.ToString() == "Informe entrada TDP")
+                {
+                    CargarDatosEntradaEnTraslado();
+                }
+                else
+                {
+                    CargarDatosTraslado();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al filtrar los datos de entrada: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cancelar el traslado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void Txt_FiltrarBodegas_TextChanged(object sender, EventArgs e)
+        private void Pic_InformeBs_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (Dgv_StockBodegas.DataSource != null)
-                {
-                    DataTable dt = (DataTable)Dgv_StockBodegas.DataSource;
-                    string searchText = Txt_FiltrarBodegas.Text.Trim();
-
-                    if (string.IsNullOrWhiteSpace(searchText))
-                    {
-                        dt.DefaultView.RowFilter = "";
-                    }
-                    else
-                    {
-                        // Filtrar solo por la columna NOMBRE_BODEGA (sensible a mayúsculas/minúsculas)
-                        dt.DefaultView.RowFilter = $"[NOMBRE_BODEGA] LIKE '%{searchText}%'";
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al filtrar las bodegas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            InformacionBodegas infoBodegas = new InformacionBodegas();
+            infoBodegas.ShowDialog();
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
+        private void Cbo_BodegaOrigen_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cbo_TipoInformee_SelectedIndexChanged_2(object sender, EventArgs e)
         {
 
         }
