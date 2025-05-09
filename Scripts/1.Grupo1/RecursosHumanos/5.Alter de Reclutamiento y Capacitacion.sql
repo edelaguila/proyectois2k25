@@ -1,6 +1,5 @@
-use colchoneria; 
-ALTER TABLE tbl_puestos_trabajo
-ADD COLUMN Fk_id_perfil INT NULL;
+ use nominasPrueba; 
+
 
 -- Tabla para nivel educativo
 CREATE TABLE IF NOT EXISTS Tbl_nivel_educativo (
@@ -23,7 +22,7 @@ INSERT INTO Tbl_nivel_educativo (nivel) VALUES
 INSERT INTO Tbl_disponibilidad (disponibilidad) VALUES 
 ('Inmediata'), ('1 semana'), ('1 mes'), ('Otro');
 
-DROP TABLE IF EXISTS Tbl_postulante;
+
 CREATE TABLE IF NOT EXISTS Tbl_postulante(
     Pk_id_postulante INT AUTO_INCREMENT PRIMARY KEY,
     Fk_puesto_aplica_postulante INT NULL,
@@ -108,19 +107,6 @@ CREATE TABLE IF NOT EXISTS Tbl_competencias(
     descripcion VARCHAR(250),
     estado TINYINT(1) NOT NULL DEFAULT 1
 );
-
--- JOEL LÓPEZ -------------------------------------------------
-DROP TABLE IF EXISTS tbl_nivelcompetencia;
--- Paso 1: Crear la tabla tbl_nivelcompetencia
-CREATE TABLE IF NOT EXISTS tbl_nivelcompetencia (
-    pk_id_nivel INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nivel_nombre CHAR(1) NOT NULL CHECK (nivel_nombre IN ('A', 'B', 'C', 'D')),  -- A, B, C, D
-    nivel_descripcion VARCHAR(100),
-    estado TINYINT(1) NOT NULL DEFAULT 1
-);
-
-
-
 
 -- Insertar registros en Tbl_cobrador
 INSERT INTO tbl_nivelcompetencia (nivel_nombre, nivel_descripcion, estado)
