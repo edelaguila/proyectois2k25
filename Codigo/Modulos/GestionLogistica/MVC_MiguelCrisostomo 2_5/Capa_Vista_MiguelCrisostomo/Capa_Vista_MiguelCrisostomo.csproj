@@ -63,6 +63,12 @@
     <Compile Include="DetalleTraslado.Designer.cs">
       <DependentUpon>DetalleTraslado.cs</DependentUpon>
     </Compile>
+    <Compile Include="InformacionBodegas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformacionBodegas.Designer.cs">
+      <DependentUpon>InformacionBodegas.cs</DependentUpon>
+    </Compile>
     <Compile Include="NuevoTraslado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DetalleTraslado.resx">
       <DependentUpon>DetalleTraslado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformacionBodegas.resx">
+      <DependentUpon>InformacionBodegas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NuevoTraslado.resx">
       <DependentUpon>NuevoTraslado.cs</DependentUpon>

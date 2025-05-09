@@ -747,6 +747,9 @@ CREATE TABLE Tbl_EntradaProductos (
     bodega_origen VARCHAR(100),
     bodega_destino VARCHAR(100)
 );
+ALTER TABLE Tbl_EntradaProductos
+ADD COLUMN estado VARCHAR(20) NOT NULL DEFAULT 'activo';
+
 
 CREATE TABLE Tbl_DetalleTrasladoProductos (
     Pk_id_DetalleTrasladoProductos INT AUTO_INCREMENT PRIMARY KEY,
@@ -758,6 +761,8 @@ CREATE TABLE Tbl_DetalleTrasladoProductos (
     FOREIGN KEY (Fk_id_TrasladoProductos) REFERENCES Tbl_TrasladoProductos(Pk_id_TrasladoProductos),
     FOREIGN KEY (codigoProducto) REFERENCES Tbl_Productos(codigoProducto)
 );
+
+
 
 
 -- NUEVAS TABLAS DEL MODULO COMERCIAL
