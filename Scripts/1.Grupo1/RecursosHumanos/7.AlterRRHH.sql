@@ -1,4 +1,4 @@
-USE colchoneria;
+use colchoneria; 
 -- --------------------------------Brandon Boch --------------------------------------
 ALTER TABLE Tbl_expedientes
 DROP COLUMN pruebas_psicometricas,
@@ -66,6 +66,42 @@ FOREIGN KEY (fk_id_gravedad) REFERENCES tbl_gravedad_faltas (pk_id_gravedad);
 ALTER TABLE tbl_faltas_disciplinarias
 ADD CONSTRAINT fk_id_estado
 FOREIGN KEY (fk_id_estado) REFERENCES tbl_estados_faltas (pk_id_estado);
+
+-- Cambios nuevos 04-05-25
+
+-- agregados para tabla sanciones 
+ALTER TABLE tbl_sanciones
+ADD COLUMN sancion_operador INT NOT NULL,
+ADD CONSTRAINT fk_sancion_operador
+FOREIGN KEY (sancion_operador) REFERENCES tbl_empleados(pk_clave);
+
+-- insert de puestos dentro de RRHH que pueden aplicar sanciones disciplinarias
+    
+INSERT INTO tbl_puestos_trabajo (puestos_nombre_puesto, puestos_descripcion)
+VALUES 
+  ('Jefe de Recursos Humanos', 'Responsable del área de RRHH'),
+  ('Analista de Recursos Humanos', 'Analiza y gestiona procesos del personal'),
+  ('Coordinador de Talento Humano', 'Gestiona sanciones y desarrollo del personal');   
+
+-- insert de empleados que ocuparan los registros anteriores, el penultimo campo de "fk_id_puestos" depende 
+-- del Id en que se se insertaron en la tabla correspondiente, en mi caso pertenecen al fk_id_puestos 4, 5 y 6 respectivamente
+-- modificar si es necesario
+
+INSERT INTO tbl_empleados (
+    empleados_nombre, empleados_apellido, empleados_fecha_nacimiento, empleados_no_identificacion,
+    empleados_codigo_postal, empleados_fecha_alta, empleados_fecha_baja, empleados_causa_baja,
+    fk_id_departamento, fk_id_puestos, estado
+)
+VALUES
+('Andrea', 'Martínez', '1985-04-12', 'ID-001-A', '01001', '2020-01-15', NULL, NULL, 2, 4, 1),
+('Carlos', 'Reyes', '1990-06-23', 'ID-002-C', '01002', '2019-09-10', NULL, NULL, 2, 5, 1),
+('María', 'López', '1988-11-30', 'ID-003-M', '01003', '2021-03-22', NULL, NULL, 2, 5, 1),
+('Luis', 'Ortega', '1982-02-17', 'ID-004-L', '01004', '2018-07-05', NULL, NULL, 2, 6, 1),
+('Verónica', 'Díaz', '1993-08-09', 'ID-005-V', '01005', '2022-06-01', NULL, NULL, 2, 5, 1);
+   
+use colchoneria;
+select * from tbl_evidencias;
+select * from tbl_sanciones;
 -- --------------------------------------------------------------------------------
 
 -- -----------------------Marco Monroy -----------------------------
@@ -92,6 +128,8 @@ CREATE TABLE IF NOT EXISTS tbl_excepcion_septimo (
         ON UPDATE CASCADE
         ON DELETE RESTRICT
 );
+
+SELECT * FROM tbl_asistencias_preeliminar;
 
 -- 3. Modificación de tbl_control_faltas: vincular con excepciones
 ALTER TABLE tbl_control_faltas
@@ -148,6 +186,32 @@ BEGIN
     WHERE pk_id_control_faltas = p_id_falta;
 END $$
 DELIMITER ;
+
+CREATE TABLE IF NOT EXISTS tbl_salarios_mensuales (
+    pk_id_salario INT NOT NULL AUTO_INCREMENT,
+    fk_id_empleado INT NOT NULL,
+    mes INT NOT NULL,
+    anio INT NOT NULL,
+    pago_base DECIMAL(10,2) NOT NULL,
+    pago_horas_extra DECIMAL(10,2) NOT NULL,
+    deducciones DECIMAL(10,2) NOT NULL,
+    salario_total DECIMAL(10,2) NOT NULL,
+    fecha_generacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (pk_id_salario),
+    FOREIGN KEY (fk_id_empleado) REFERENCES tbl_empleados(pk_clave)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
+ALTER TABLE tbl_contratos ADD contratos_jornada_semanal INT NOT NULL DEFAULT 48;
+
+SELECT* FROM tbl_salarios_mensuales;
+
+select* FROM tbl_contratos;
+
+select* FROM tbl_empleados;
+
+
 
 -- Jose Daniel Sierra------------
 

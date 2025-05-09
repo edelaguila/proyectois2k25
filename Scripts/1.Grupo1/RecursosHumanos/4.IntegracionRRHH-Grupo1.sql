@@ -1,5 +1,5 @@
--- use colchoneria;
-use colchoneria; 
+ use colchoneria;
+-- use nominasPrueba; 
 -- Integración a colchoneria nuevos modulos RRHH
 
 -- ----------------------------------------------- Reclutamiento Brandon Boch ---------------------------------------------
@@ -17,15 +17,17 @@ CREATE TABLE IF NOT EXISTS Tbl_postulante(
 );
 ALTER TABLE Tbl_postulante ADD CONSTRAINT Fk_puesto_aplica_postulante FOREIGN KEY (Fk_puesto_aplica_postulante) REFERENCES tbl_puestos_trabajo(pk_id_puestos) ON DELETE SET NULL;
 
-DROP TABLE IF EXISTS Tbl_expedientes;
-CREATE TABLE IF NOT EXISTS Tbl_expedientes(
-	Pk_id_expediente INT AUTO_INCREMENT PRIMARY KEY,
-    Fk_id_postulante INT NULL,
+ DROP TABLE IF EXISTS Tbl_expedientes;
+ CREATE TABLE IF NOT EXISTS Tbl_expedientes(
+ 	Pk_id_expediente INT AUTO_INCREMENT PRIMARY KEY,
+     Fk_id_postulante INT NULL,
     curriculum LONGBLOB,
     pruebas_psicometricas LONGBLOB,
     pruebas_psicologicas LONGBLOB,
     pruebas_aptitud LONGBLOB
-);
+ );
+
+
 ALTER TABLE Tbl_expedientes ADD CONSTRAINT Fk_id_postulante FOREIGN KEY (Fk_id_postulante) REFERENCES Tbl_postulante(Pk_id_postulante) ON DELETE SET NULL;
 
 DROP TABLE IF EXISTS Tbl_perfil_postulante;
@@ -118,7 +120,14 @@ CREATE TABLE IF NOT EXISTS tbl_cierres (
     FOREIGN KEY (fk_id_capacitacion) REFERENCES tbl_capacitaciones (pk_id_capacitacion)
 );
 
-
+DROP TABLE IF EXISTS tbl_nivelcompetencia;
+-- Paso 1: Crear la tabla tbl_nivelcompetencia
+CREATE TABLE IF NOT EXISTS tbl_nivelcompetencia (
+    pk_id_nivel INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nivel_nombre CHAR(1) NOT NULL CHECK (nivel_nombre IN ('A', 'B', 'C', 'D')),  -- A, B, C, D
+    nivel_descripcion VARCHAR(100),
+    estado TINYINT(1) NOT NULL DEFAULT 1
+);
 -- Creación de tbl_notas
 CREATE TABLE IF NOT EXISTS tbl_notas (
     pk_id_nota INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
