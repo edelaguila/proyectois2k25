@@ -138,19 +138,45 @@ namespace Capa_Vista_Compras
         {
             try
             {
-                List<string> sucursales = controlador.ObtenerProductos();
+                // Obtener productos con precio
+                List<Tuple<string, double>> productos = controlador.ObtenerProductosConPrecio();
                 comboProducto.Items.Clear();
-                foreach (string sucursal in sucursales)
+
+                // Guardar los productos con precio para su uso posterior
+                foreach (var producto in productos)
                 {
-                    comboProducto.Items.Add(sucursal);
+                    comboProducto.Items.Add(producto.Item1);  // Solo agregar el nombre del producto al ComboBox
                 }
 
                 // Configurar el ComboBox para permitir selección pero no edición
                 comboProducto.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                // Evento para manejar la selección del producto y mostrar el precio
+                comboProducto.SelectedIndexChanged += (sender, e) =>
+                {
+                    try
+                    {
+                        // Obtener el nombre del producto seleccionado
+                        string productoSeleccionado = comboProducto.SelectedItem.ToString();
+
+                        // Buscar el producto en la lista de productos con precio
+                        var producto = productos.FirstOrDefault(p => p.Item1 == productoSeleccionado);
+
+                        if (producto != null)
+                        {
+                            // Llenar el campo de precio con el precio del producto
+                            txtPrecio.Text = producto.Item2.ToString("F2");  // Mostrar el precio con dos decimales
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al obtener el precio del producto: " + ex.Message);
+                    }
+                };
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar las sucursales: " + ex.Message);
+                MessageBox.Show("Error al cargar los productos: " + ex.Message);
             }
         }
 
@@ -263,7 +289,38 @@ namespace Capa_Vista_Compras
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Asegúrate de que los campos no estén vacíos
+                if (string.IsNullOrWhiteSpace(txtPrecio.Text) || string.IsNullOrWhiteSpace(txtCantidad.Text))
+                {
+                    MessageBox.Show("Por favor, ingresa la cantidad y el precio.");
+                    return;
+                }
 
+                // Convertir valores
+                double precio = Convert.ToDouble(txtPrecio.Text);
+                double cantidad = Convert.ToDouble(txtCantidad.Text);
+
+                // Calcular subtotal
+                double subtotal = precio * cantidad;
+                txtSubtotal.Text = subtotal.ToString("F2");
+
+                // Calcular impuesto del 12%
+                double impuestos = subtotal * 0.12;
+                txtImpuestos.Text = impuestos.ToString("F2");
+
+                // Calcular total
+                double total = subtotal + impuestos;
+                txtTotal.Text = total.ToString("F2");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al calcular totales: " + ex.Message);
+            }
+        }
 
     }
 

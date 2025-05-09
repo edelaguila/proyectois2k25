@@ -70,6 +70,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.comboAlma = new System.Windows.Forms.ComboBox();
             this.Almacén = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -83,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Ayuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Salir)).BeginInit();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -206,6 +208,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.txtDesc);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.comboProducto);
@@ -517,6 +520,18 @@
             this.Almacén.TabIndex = 31;
             this.Almacén.Text = "Almacén";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(692, 24);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(45, 48);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Frm_Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -553,6 +568,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Salir)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,5 +617,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboAlma;
         private System.Windows.Forms.Label Almacén;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

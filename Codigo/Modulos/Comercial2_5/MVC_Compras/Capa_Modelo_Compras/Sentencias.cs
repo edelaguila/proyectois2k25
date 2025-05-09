@@ -41,35 +41,37 @@ namespace Capa_Modelo_Compras
             return sucursales;
         }
 
-        public List<string> ObtenerProductos()
+        public List<Tuple<string, double>> ObtenerProductosConPrecio()
         {
-            List<string> sucursales = new List<string>();
+            List<Tuple<string, double>> productos = new List<Tuple<string, double>>();
             OdbcConnection connection = conn.conexion();
 
             try
             {
-                string query = "SELECT nombreProducto FROM Tbl_productos WHERE estado = 1";
+                string query = "SELECT nombreProducto, precioUnitario FROM Tbl_productos WHERE estado = 1";
                 OdbcCommand cmd = new OdbcCommand(query, connection);
                 OdbcDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    sucursales.Add(reader.GetString(0));
+                    // Agregar nombre del producto y precio a la lista
+                    productos.Add(new Tuple<string, double>(reader.GetString(0), reader.GetDouble(1)));
                 }
 
                 reader.Close();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener sucursales: " + ex.Message);
+                Console.WriteLine("Error al obtener productos: " + ex.Message);
             }
             finally
             {
                 conn.desconexion(connection);
             }
 
-            return sucursales;
+            return productos;
         }
+
 
         public List<string> ObtenerSucursal()
         {

@@ -15,9 +15,9 @@ namespace Capa_Controlador_Compras
             return _sentencias.ObtenerSucursales();
         }
 
-        public List<string> ObtenerProductos()
+        public List<Tuple<string, double>> ObtenerProductosConPrecio()
         {
-            return _sentencias.ObtenerProductos();
+            return _sentencias.ObtenerProductosConPrecio();
         }
 
 
