@@ -109,6 +109,12 @@ namespace Capa_Vista_MiguelCrisostomo
             Pic_Reporte.MouseLeave += Pic_Reporte_MouseLeave;
             Pic_Ayuda.MouseEnter += Pic_Ayuda_MouseEnter;
             Pic_Ayuda.MouseLeave += Pic_Ayuda_MouseLeave;
+            Pic_InformeBs.MouseEnter += Pic_InformeBs_MouseEnter;
+            Pic_InformeBs.MouseLeave += Pic_InformeBs_MouseLeave;
+            Pic_CanselarTDP.MouseEnter += Pic_CanselarTDP_MouseEnter;
+            Pic_CanselarTDP.MouseLeave += Pic_CanselarTDP_MouseLeave;
+            Pic_Agregar.MouseEnter += Pic_Agregar_MouseEnter;
+            Pic_Agregar.MouseLeave += Pic_Agregar_MouseLeave;
             Pic_NuevoTrasladoP.Click += new EventHandler(Pic_NuevoTrasladoP_Click);
             Pic_NuevoTrasladoP.MouseEnter += Pic_NuevoTrasladoP_MouseEnter;
             Pic_NuevoTrasladoP.MouseLeave += Pic_NuevoTrasladoP_MouseLeave;
@@ -717,6 +723,50 @@ namespace Capa_Vista_MiguelCrisostomo
             // Restaurar el color de fondo  
             Pic_Aceptar.BackColor = Color.Transparent; // Restaura el color original  
         }
+
+        //*NUEVO------------------------------------------------------------------------------------------------------------
+        
+        //BOTON INFORMES BODEGAS
+        private void Pic_InformeBs_MouseEnter(object sender, EventArgs e)
+        {
+            // Cambiar el color o agregar un efecto al pasar el mouse  
+            Pic_InformeBs.BackColor = Color.Black; // Cambia el color de fondo al entrar el mouse  
+        }
+
+        private void Pic_InformeBs_MouseLeave(object sender, EventArgs e)
+        {
+            // Cambiar el color o agregar un efecto al pasar el mouse  
+            Pic_InformeBs.BackColor = Color.Transparent; // Cambia el color de fondo al entrar el mouse  
+        }
+
+        //BOTON CANCELAR TRASLADO DE PRODUCTOS
+        private void Pic_CanselarTDP_MouseEnter(object sender, EventArgs e)
+        {
+            // Cambiar el color o agregar un efecto al pasar el mouse  
+            Pic_CanselarTDP.BackColor = Color.Black; // Cambia el color de fondo al entrar el mouse  
+        }
+
+        private void Pic_CanselarTDP_MouseLeave(object sender, EventArgs e)
+        {
+            // Cambiar el color o agregar un efecto al pasar el mouse  
+            Pic_CanselarTDP.BackColor = Color.Transparent; // Cambia el color de fondo al entrar el mouse  
+        }
+
+        //BOTON AGREGAR PRODUCTOS
+        private void Pic_Agregar_MouseEnter(object sender, EventArgs e)
+        {
+            // Cambiar el color o agregar un efecto al pasar el mouse  
+            Pic_Agregar.BackColor = Color.Black; // Cambia el color de fondo al entrar el mouse  
+        }
+
+        private void Pic_Agregar_MouseLeave(object sender, EventArgs e)
+        {
+            // Cambiar el color o agregar un efecto al pasar el mouse  
+            Pic_Agregar.BackColor = Color.Transparent; // Cambia el color de fondo al entrar el mouse  
+        }
+
+        //------------------------------------------------------------------------------------------------------------
+
 
         //BOTON INGRESAR
         private void Pic_Ingresar_MouseEnter(object sender, EventArgs e)
@@ -1705,6 +1755,16 @@ namespace Capa_Vista_MiguelCrisostomo
         }
 
         private void Cbo_TipoInformee_SelectedIndexChanged_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pic_InformeBs_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pic_CanselarTDP_Click_1(object sender, EventArgs e)
         {
 
         }
