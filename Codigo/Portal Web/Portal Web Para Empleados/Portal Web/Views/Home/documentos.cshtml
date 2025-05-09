@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+    <link rel="stylesheet" href="~/Content/styles/documentos.css"/>
+    <title>Documentos</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Mis Documentos</h2>
+                <button class="btn-purple" onclick="document.getElementById('fileInput').click()">Subir Documento</button>
+                <input type="file" id="fileInput" multiple onchange="handleFileUpload(event)" />
+            </div>
+
+            <div id="documentList">
+                <!-- Aquí se agregan los archivos subidos -->
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/1fe26c6c8c.js" crossorigin="anonymous"></script>
+    <script src="~/Scripts/js/documentos.js"></script>
+</body>
+</html>

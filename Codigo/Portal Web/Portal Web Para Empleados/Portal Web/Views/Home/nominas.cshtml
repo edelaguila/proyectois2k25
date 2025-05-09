@@ -1,0 +1,46 @@
+﻿@model Portal_Web.Models.Nominas
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+    <link rel="stylesheet"  href="~/Content/styles/nominas.css"/>
+    <title>Nominas</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Información de Nómina</h2>
+            <button class="btn-download">Descargar Recibo</button>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <strong>Salario Base</strong>
+                Q@(Model.SalarioBase.ToString("F2"))
+            </div>
+            <div class="card">
+                <strong>Bonos</strong>
+                Q@(Model.Bonos.ToString("F2"))
+            </div>
+            <div class="card">
+                <strong>Deducciones</strong>
+                Q@(Model.Deducciones.ToString("F2"))
+            </div>
+            <div class="card total">
+                <strong>Total</strong>
+                Q@((Model.SalarioBase + Model.Bonos - Model.Deducciones).ToString("F2"))
+            </div>
+        </div>
+
+
+        <div class="footer">Historial de Pagos</div>
+    </div>
+</body>
+</html>
