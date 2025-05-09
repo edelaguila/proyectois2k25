@@ -96,5 +96,7 @@ namespace Capa_Controlador_Reclutamiento
             return dt.Rows.Count > 0 ? dt.Rows[0] : null;
         }
 
+
+
     }
 }
