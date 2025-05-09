@@ -33,13 +33,14 @@
             this.Pic_Img = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Pic_CanselarTDP = new System.Windows.Forms.PictureBox();
+            this.Pic_InformeBs = new System.Windows.Forms.PictureBox();
             this.Pic_Ayuda = new System.Windows.Forms.PictureBox();
             this.Pic_Reporte = new System.Windows.Forms.PictureBox();
             this.Pic_Salir = new System.Windows.Forms.PictureBox();
-            this.Pic_Guardar = new System.Windows.Forms.PictureBox();
             this.Pic_Ingresar = new System.Windows.Forms.PictureBox();
-            this.Pic_Editar = new System.Windows.Forms.PictureBox();
             this.Pic_Aceptar = new System.Windows.Forms.PictureBox();
+            this.Pic_Guardar = new System.Windows.Forms.PictureBox();
+            this.Pic_Editar = new System.Windows.Forms.PictureBox();
             this.Pic_NuevoTrasladoP = new System.Windows.Forms.PictureBox();
             this.Pic_Agregar = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -95,19 +96,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Lbl_TipoInforme = new System.Windows.Forms.Label();
-            this.Pic_InformeBs = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Cbo_TipoInformee = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Img)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_CanselarTDP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_InformeBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Ayuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Reporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Salir)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Guardar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Ingresar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Editar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Aceptar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Guardar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Editar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_NuevoTrasladoP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Agregar)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -119,7 +120,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Productos)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_InformeBs)).BeginInit();
             this.SuspendLayout();
             // 
             // Pic_Img
@@ -127,7 +127,7 @@
             this.Pic_Img.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Img.Image")));
             this.Pic_Img.Location = new System.Drawing.Point(113, 34);
             this.Pic_Img.Name = "Pic_Img";
-            this.Pic_Img.Size = new System.Drawing.Size(298, 216);
+            this.Pic_Img.Size = new System.Drawing.Size(318, 216);
             this.Pic_Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Img.TabIndex = 26;
             this.Pic_Img.TabStop = false;
@@ -157,6 +157,18 @@
             this.Pic_CanselarTDP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_CanselarTDP.TabIndex = 41;
             this.Pic_CanselarTDP.TabStop = false;
+            this.Pic_CanselarTDP.Click += new System.EventHandler(this.Pic_CanselarTDP_Click_1);
+            // 
+            // Pic_InformeBs
+            // 
+            this.Pic_InformeBs.Image = ((System.Drawing.Image)(resources.GetObject("Pic_InformeBs.Image")));
+            this.Pic_InformeBs.Location = new System.Drawing.Point(136, 21);
+            this.Pic_InformeBs.Name = "Pic_InformeBs";
+            this.Pic_InformeBs.Size = new System.Drawing.Size(90, 85);
+            this.Pic_InformeBs.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Pic_InformeBs.TabIndex = 41;
+            this.Pic_InformeBs.TabStop = false;
+            this.Pic_InformeBs.Click += new System.EventHandler(this.Pic_InformeBs_Click_1);
             // 
             // Pic_Ayuda
             // 
@@ -194,17 +206,6 @@
             this.toolTip6.SetToolTip(this.Pic_Salir, "Salir");
             this.Pic_Salir.Click += new System.EventHandler(this.Pic_Salir_Click);
             // 
-            // Pic_Guardar
-            // 
-            this.Pic_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Guardar.Image")));
-            this.Pic_Guardar.Location = new System.Drawing.Point(1824, 1044);
-            this.Pic_Guardar.Name = "Pic_Guardar";
-            this.Pic_Guardar.Size = new System.Drawing.Size(10, 10);
-            this.Pic_Guardar.TabIndex = 27;
-            this.Pic_Guardar.TabStop = false;
-            this.toolTip3.SetToolTip(this.Pic_Guardar, "Guardar");
-            this.Pic_Guardar.Click += new System.EventHandler(this.Pic_Guardar_Click);
-            // 
             // Pic_Ingresar
             // 
             this.Pic_Ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Ingresar.Image")));
@@ -217,17 +218,6 @@
             this.toolTip1.SetToolTip(this.Pic_Ingresar, "Agregar");
             this.Pic_Ingresar.Click += new System.EventHandler(this.Pic_Ingresar_Click);
             // 
-            // Pic_Editar
-            // 
-            this.Pic_Editar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Editar.Image")));
-            this.Pic_Editar.Location = new System.Drawing.Point(1808, 1044);
-            this.Pic_Editar.Name = "Pic_Editar";
-            this.Pic_Editar.Size = new System.Drawing.Size(10, 10);
-            this.Pic_Editar.TabIndex = 27;
-            this.Pic_Editar.TabStop = false;
-            this.toolTip2.SetToolTip(this.Pic_Editar, "Modificar");
-            this.Pic_Editar.Click += new System.EventHandler(this.Pic_Editar_Click);
-            // 
             // Pic_Aceptar
             // 
             this.Pic_Aceptar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Aceptar.Image")));
@@ -239,6 +229,28 @@
             this.Pic_Aceptar.TabStop = false;
             this.toolTip7.SetToolTip(this.Pic_Aceptar, "Aceptar Traslado");
             this.Pic_Aceptar.Click += new System.EventHandler(this.Pic_Aceptar_Click);
+            // 
+            // Pic_Guardar
+            // 
+            this.Pic_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Guardar.Image")));
+            this.Pic_Guardar.Location = new System.Drawing.Point(1824, 1044);
+            this.Pic_Guardar.Name = "Pic_Guardar";
+            this.Pic_Guardar.Size = new System.Drawing.Size(10, 10);
+            this.Pic_Guardar.TabIndex = 27;
+            this.Pic_Guardar.TabStop = false;
+            this.toolTip3.SetToolTip(this.Pic_Guardar, "Guardar");
+            this.Pic_Guardar.Click += new System.EventHandler(this.Pic_Guardar_Click);
+            // 
+            // Pic_Editar
+            // 
+            this.Pic_Editar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Editar.Image")));
+            this.Pic_Editar.Location = new System.Drawing.Point(1808, 1044);
+            this.Pic_Editar.Name = "Pic_Editar";
+            this.Pic_Editar.Size = new System.Drawing.Size(10, 10);
+            this.Pic_Editar.TabIndex = 27;
+            this.Pic_Editar.TabStop = false;
+            this.toolTip2.SetToolTip(this.Pic_Editar, "Modificar");
+            this.Pic_Editar.Click += new System.EventHandler(this.Pic_Editar_Click);
             // 
             // Pic_NuevoTrasladoP
             // 
@@ -731,16 +743,6 @@
             this.Lbl_TipoInforme.TabIndex = 36;
             this.Lbl_TipoInforme.Text = "Tipo de Informe:";
             // 
-            // Pic_InformeBs
-            // 
-            this.Pic_InformeBs.Image = ((System.Drawing.Image)(resources.GetObject("Pic_InformeBs.Image")));
-            this.Pic_InformeBs.Location = new System.Drawing.Point(136, 21);
-            this.Pic_InformeBs.Name = "Pic_InformeBs";
-            this.Pic_InformeBs.Size = new System.Drawing.Size(90, 85);
-            this.Pic_InformeBs.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Pic_InformeBs.TabIndex = 41;
-            this.Pic_InformeBs.TabStop = false;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -786,13 +788,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Img)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Pic_CanselarTDP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_InformeBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Ayuda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Reporte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Salir)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Guardar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Ingresar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_Editar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Aceptar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Guardar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Pic_Editar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_NuevoTrasladoP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Agregar)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -809,7 +812,6 @@
             this.groupBox6.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Pic_InformeBs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
