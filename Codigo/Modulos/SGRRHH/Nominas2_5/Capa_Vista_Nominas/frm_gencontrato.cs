@@ -21,13 +21,14 @@ namespace Capa_Vista_Nominas
 
             // ---------------------------------- Gabriela Suc ----------------------------------
             //Utilizando navegador
-            string[] alias = { "pk_id_contrato", "contratos_fecha_creacion", "contratos_salario", "contratos_tipo_contrato", "fk_clave_empleado", "estado" };
+            string[] alias = { "pk_id_contrato", "contratos_fecha_creacion", "contratos_salario", "contratos_tipo_contrato", "fk_clave_empleado", "estado", "Jornada Semanal" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("tbl_contratos");
             navegador1.ObtenerIdAplicacion("1000");
+            navegador1.AsignarAyuda("AyudaHoras");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
             navegador1.AsignarNombreForm("Contratos");

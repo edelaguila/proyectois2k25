@@ -144,7 +144,7 @@ namespace Capa_Modelo_Carrera
                              "p.estado AS Estado " +
                              "FROM tbl_promociones p " +
                              "INNER JOIN tbl_empleados e ON p.fk_clave_empleado = e.pk_clave " +
-                             "WHERE p.estado = 1";
+                             "WHERE p.estado = 1 OR p.estado=0";
 
                 return new OdbcDataAdapter(sql, cn.conectar());
             }
@@ -497,6 +497,112 @@ namespace Capa_Modelo_Carrera
             }
         }
 
+        /*******************************************************************************/
+        public bool funcEliminarPromocion(int idPromocion)
+        {
+            string queryDatosPromocion = "SELECT fk_clave_empleado, promociones_puesto_actual FROM tbl_promociones WHERE pk_id_promocion = ? AND estado = 1";
+
+            string queryDesactivarContratoNuevo = "UPDATE tbl_contratos SET estado = 0 WHERE fk_clave_empleado = ? AND estado = 1";
+
+            string queryActivarContratoAnterior = "UPDATE tbl_contratos SET estado = 1 WHERE fk_clave_empleado = ? AND estado = 0 ORDER BY contratos_fecha_creacion DESC LIMIT 1";
+
+            string queryObtenerIdPuesto = "SELECT pk_id_puestos FROM tbl_puestos_trabajo WHERE puestos_nombre_puesto = ? AND estado = 1";
+
+            string queryActualizarPuestoEmpleado = "UPDATE tbl_empleados SET fk_id_puestos = ? WHERE pk_clave = ?";
+
+            string queryDesactivarPromocion = "UPDATE tbl_promociones SET estado = 0 WHERE pk_id_promocion = ?";
+
+            try
+            {
+                using (OdbcConnection conn = cn.conectar())
+                {
+                    if (conn.State != ConnectionState.Open)
+                        conn.Open();
+
+                    using (OdbcTransaction transaccion = conn.BeginTransaction())
+                    {
+                        try
+                        {
+                            int idEmpleado = 0;
+                            string puestoAnterior = "";
+
+                            // Obtener datos de la promoción
+                            using (OdbcCommand cmdDatos = new OdbcCommand(queryDatosPromocion, conn, transaccion))
+                            {
+                                cmdDatos.Parameters.AddWithValue("", idPromocion);
+                                using (OdbcDataReader reader = cmdDatos.ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        idEmpleado = reader.GetInt32(0);
+                                        puestoAnterior = reader.GetString(1);
+                                    }
+                                    else
+                                    {
+                                        throw new Exception("No se encontró la promoción activa con el ID proporcionado.");
+                                    }
+                                }
+                            }
+
+                            // Obtener ID del puesto anterior
+                            int idPuestoAnterior;
+                            using (OdbcCommand cmdIdPuesto = new OdbcCommand(queryObtenerIdPuesto, conn, transaccion))
+                            {
+                                cmdIdPuesto.Parameters.AddWithValue("", puestoAnterior);
+                                object result = cmdIdPuesto.ExecuteScalar();
+                                if (result == null)
+                                    throw new Exception("No se encontró el ID del puesto anterior.");
+
+                                idPuestoAnterior = Convert.ToInt32(result);
+                            }
+
+                            // Desactivar contrato actual (nuevo)
+                            using (OdbcCommand cmdDesactivar = new OdbcCommand(queryDesactivarContratoNuevo, conn, transaccion))
+                            {
+                                cmdDesactivar.Parameters.AddWithValue("", idEmpleado);
+                                cmdDesactivar.ExecuteNonQuery();
+                            }
+
+                            // Reactivar contrato anterior
+                            using (OdbcCommand cmdReactivar = new OdbcCommand(queryActivarContratoAnterior, conn, transaccion))
+                            {
+                                cmdReactivar.Parameters.AddWithValue("", idEmpleado);
+                                cmdReactivar.ExecuteNonQuery();
+                            }
+
+                            // Actualizar el puesto del empleado
+                            using (OdbcCommand cmdActualizar = new OdbcCommand(queryActualizarPuestoEmpleado, conn, transaccion))
+                            {
+                                cmdActualizar.Parameters.AddWithValue("", idPuestoAnterior);
+                                cmdActualizar.Parameters.AddWithValue("", idEmpleado);
+                                cmdActualizar.ExecuteNonQuery();
+                            }
+
+                            // Desactivar promoción
+                            using (OdbcCommand cmdDesactPromo = new OdbcCommand(queryDesactivarPromocion, conn, transaccion))
+                            {
+                                cmdDesactPromo.Parameters.AddWithValue("", idPromocion);
+                                cmdDesactPromo.ExecuteNonQuery();
+                            }
+
+                            transaccion.Commit();
+                            return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            transaccion.Rollback();
+                            Console.WriteLine("Error al revertir promoción: " + ex.Message);
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error general al eliminar promoción: " + ex.Message);
+                return false;
+            }
+        }
 
 
 

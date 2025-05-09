@@ -101,5 +101,23 @@ namespace Capa_Controlador_Carrera
         }
 
 
+        public bool funcEliminarPromocion(int empleado)
+        {
+            try
+            {
+                // Validar que el ID del empleado sea válido
+                if (empleado <= 0)
+                    throw new ArgumentException("ID de empleado inválido.");
+
+                // Llamada al modelo
+                return sn.funcEliminarPromocion(empleado);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en eliminar promoción: {ex.Message}");
+                return false;
+            }
+        }
+
     }
     }
