@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.IO;
 
 namespace Capa_Vista_Reclutamiento
 {
@@ -64,10 +65,12 @@ namespace Capa_Vista_Reclutamiento
             Txt_pruebaRazonamiento.Enabled = true;
             Txt_pruebaTecnologica.Enabled = true;
             Cmb_PruebaPersonalidad.Enabled = true;
+            LimpiarCampos();
         }
             // Función para limpiar los campos
             private void LimpiarCampos()
             {
+                Txt_idexpediente.Clear();
                 Txt_Curriculum.Clear();
                 Txt_DocEntrevista.Clear();
                 Txt_DocPruebas.Clear();
@@ -264,6 +267,8 @@ namespace Capa_Vista_Reclutamiento
             {
                 int idPostulante = Convert.ToInt32(Dgv_VisualizarDatos.Rows[e.RowIndex].Cells["Fk_id_postulante"].Value);
                 CargarDatosDelPostulante(idPostulante);
+                Btn_agregar.Enabled = false;
+                Btn_guardar.Enabled = false;
                 Btn_editar.Enabled = true;
                 Btn_cancelar.Enabled = true;
                 Btn_eliminar.Enabled = true;
@@ -329,7 +334,6 @@ namespace Capa_Vista_Reclutamiento
                 string pathEntrevista = Txt_DocEntrevista.Text;
                 string pathPruebas = Txt_DocPruebas.Text;
 
-                // Intentar parsear los valores numéricos. Si están vacíos o mal escritos, usar 0.
                 int logica = double.TryParse(Txt_pruebaLogica.Text.Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double l) ? (int)l : 0;
                 int numerica = double.TryParse(Txt_pruebaNumerica.Text.Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double n) ? (int)n : 0;
                 int verbal = double.TryParse(Txt_pruebaVerbal.Text.Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double v) ? (int)v : 0;
@@ -337,6 +341,20 @@ namespace Capa_Vista_Reclutamiento
                 int tecnologica = double.TryParse(Txt_pruebaTecnologica.Text.Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double t) ? (int)t : 0;
 
                 string personalidad = Cmb_PruebaPersonalidad.Text;
+
+                // Confirmación antes de actualizar
+                DialogResult confirm = MessageBox.Show(
+                    "¿Está seguro de que desea actualizar este expediente?",
+                    "Confirmar actualización",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (confirm == DialogResult.No)
+                {
+                    MessageBox.Show("Actualización cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
                 controlador.Pro_actualizar(
                     idExpediente,
@@ -374,6 +392,7 @@ namespace Capa_Vista_Reclutamiento
             {
                 MessageBox.Show("Error al actualizar los datos. Detalles: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
 
 
         }
@@ -426,22 +445,33 @@ namespace Capa_Vista_Reclutamiento
 
         private void Btn_cancelar_Click(object sender, EventArgs e)
         {
-            LimpiarCampos();
+            DialogResult resultado = MessageBox.Show(
+    "¿Está seguro de que desea cancelar? Se perderán los datos no guardados.",
+    "Confirmar cancelación",
+    MessageBoxButtons.YesNo,
+    MessageBoxIcon.Question
+);
 
-            Btn_guardar.Enabled = false;
-            Btn_editar.Enabled = false;
-            Btn_eliminar.Enabled = false;
-            Btn_cancelar.Enabled = false;
+            if (resultado == DialogResult.Yes)
+            {
+                LimpiarCampos();
+                Btn_agregar.Enabled = true;
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_eliminar.Enabled = false;
+                Btn_cancelar.Enabled = false;
 
-            Txt_idexpediente.Enabled = false;
-            Txt_Curriculum.Enabled = false;
-            Txt_DocEntrevista.Enabled = false;
-            Txt_pruebaLogica.Enabled = false;
-            Txt_pruebaNumerica.Enabled = false;
-            Txt_pruebaVerbal.Enabled = false;
-            Txt_pruebaRazonamiento.Enabled = false;
-            Txt_pruebaTecnologica.Enabled = false;
-            Cmb_PruebaPersonalidad.Enabled = false;
+                
+                Txt_idexpediente.Enabled = false;
+                Txt_Curriculum.Enabled = false;
+                Txt_DocEntrevista.Enabled = false;
+                Txt_pruebaLogica.Enabled = false;
+                Txt_pruebaNumerica.Enabled = false;
+                Txt_pruebaVerbal.Enabled = false;
+                Txt_pruebaRazonamiento.Enabled = false;
+                Txt_pruebaTecnologica.Enabled = false;
+                Cmb_PruebaPersonalidad.Enabled = false;
+            }
         }
 
         private void Btn_buscar_Click(object sender, EventArgs e)
@@ -450,17 +480,113 @@ namespace Capa_Vista_Reclutamiento
             {
                 int idPostulante = seleccionado.Key;
                 CargarDatosDelPostulante(idPostulante);
+
+                // Desmarcar todas las filas primero
+                foreach (DataGridViewRow fila in Dgv_VisualizarDatos.Rows)
+                {
+                    fila.Selected = false;
+                }
+
+                // Buscar y seleccionar la fila correspondiente
+                foreach (DataGridViewRow fila in Dgv_VisualizarDatos.Rows)
+                {
+                    if (fila.Cells["Fk_id_postulante"].Value != null &&
+                        int.TryParse(fila.Cells["Fk_id_postulante"].Value.ToString(), out int id) &&
+                        id == idPostulante)
+                    {
+                        fila.Selected = true;
+                        Dgv_VisualizarDatos.FirstDisplayedScrollingRowIndex = fila.Index;
+                        break;
+                    }
+                }
             }
             else
             {
                 MessageBox.Show("Seleccione un nombre válido.");
             }
+
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void Btn_reporte_Click(object sender, EventArgs e)
+        {
+            Frm_Reporte reporte = new Frm_Reporte();
+            reporte.Show();
+        }
+
+        // Declarar el ToolTip en el boton Ayuda
+        private ToolTip toolTipAyuda = new ToolTip();
+        private void Btn_ayuda_Click(object sender, EventArgs e)
+        {
+            // Mostrar el ToolTip en el boton ayuda
+            toolTipAyuda.SetToolTip(Btn_ayuda, " Documento de ayuda ");
+
+            // Obtener la ruta del directorio del ejecutable
+            string sExecutablePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Retroceder a la carpeta del proyecto
+            string sProjectPath = Path.GetFullPath(Path.Combine(sExecutablePath, @"..\..\..\..\..\..\Ayuda\"));
+            //  MessageBox.Show("1" + sProjectPath);
+
+
+            string sAyudaFolderPath = Path.Combine(sProjectPath, "Ayuda Reclutamiento");
+
+            string sPathAyuda = funFindFileInDirectory(sAyudaFolderPath, "AyudaExpedientes.chm");
+
+            // Verifica si el archivo existe antes de intentar abrirlo
+            if (!string.IsNullOrEmpty(sPathAyuda))
+            {
+                // MessageBox.Show("El archivo sí está.");
+                // Abre el archivo de ayuda .chm en la sección especificada
+                Help.ShowHelp(null, sPathAyuda, "AyudaExpedietes.html");
+            }
+            else
+            {
+                // Si el archivo no existe, muestra un mensaje de error
+                MessageBox.Show("El archivo de ayuda no se encontró.");
+            }
+
+
+        }
+
+        private string funFindFileInDirectory(string sDirectory, string sFileName)
+        {
+            try
+            {
+                // Verificamos si la carpeta existe
+                if (Directory.Exists(sDirectory))
+                {
+                    // Buscamos el archivo .chm en la carpeta
+                    string[] sFiles = Directory.GetFiles(sDirectory, "*.chm", SearchOption.TopDirectoryOnly);
+
+                    // Si encontramos el archivo, verificamos si coincide con el archivo que se busca y retornamos su ruta
+                    foreach (var file in sFiles)
+                    {
+                        if (Path.GetFileName(file).Equals(sFileName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            // MessageBox.Show("Archivo encontrado: " + file);
+                            return file;
+                        }
+                    }
+                }
+                else
+                {   //Mensaje de No se encontro la carpeta
+                    // MessageBox.Show("No se encontró la carpeta: " + sDirectory);
+                }
+            }
+            catch (Exception ex)
+            {       //Mensaje de error al buscar el archivo
+                MessageBox.Show("Error al buscar el archivo: " + ex.Message);
+            }
+
+            // Retorna null si no se encontró el archivo
+            return null;
+        }
+
     }
 }
 
