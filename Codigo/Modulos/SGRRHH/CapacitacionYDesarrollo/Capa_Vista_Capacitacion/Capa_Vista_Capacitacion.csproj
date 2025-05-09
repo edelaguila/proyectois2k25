@@ -81,6 +81,18 @@
     <Compile Include="mantenimiento_instructores.Designer.cs">
       <DependentUpon>mantenimiento_instructores.cs</DependentUpon>
     </Compile>
+    <Compile Include="notificacionSemaforo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="notificacionSemaforo.Designer.cs">
+      <DependentUpon>notificacionSemaforo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="parámetros_capacitación.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="parámetros_capacitación.Designer.cs">
+      <DependentUpon>parámetros_capacitación.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -100,6 +112,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mantenimiento_instructores.resx">
       <DependentUpon>mantenimiento_instructores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="notificacionSemaforo.resx">
+      <DependentUpon>notificacionSemaforo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="parámetros_capacitación.resx">
+      <DependentUpon>parámetros_capacitación.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

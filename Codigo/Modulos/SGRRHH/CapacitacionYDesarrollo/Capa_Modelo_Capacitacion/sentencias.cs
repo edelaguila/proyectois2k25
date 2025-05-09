@@ -44,30 +44,68 @@ namespace Capa_Modelo_Capacitacion
 
 
         // Método para obtener empleados
-        public List<KeyValuePair<int, string>> ObtenerEmpleados()
+        public List<KeyValuePair<int, string>> ObtenerEmpleadosPorDepartamento(int idDepartamento)
         {
             List<KeyValuePair<int, string>> listaEmpleados = new List<KeyValuePair<int, string>>();
-            string query = "SELECT pk_clave, empleados_nombre FROM tbl_empleados";
+            string query = @"
+        SELECT pk_clave, empleados_nombre 
+        FROM tbl_empleados 
+        WHERE fk_id_departamento = ?";  // Asumiendo que la tabla tbl_empleados tiene esta columna
 
             using (OdbcConnection conn = con.Conexion())
             {
                 if (conn != null)
                 {
-                    OdbcCommand cmd = new OdbcCommand(query, conn);
-                    OdbcDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
+                    using (OdbcCommand cmd = new OdbcCommand(query, conn))
                     {
-                        listaEmpleados.Add(new KeyValuePair<int, string>(reader.GetInt32(0), reader.GetString(1)));
+                        cmd.Parameters.AddWithValue("@idDepartamento", idDepartamento);
+
+                        using (OdbcDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                listaEmpleados.Add(new KeyValuePair<int, string>(
+                                    reader.GetInt32(0), reader.GetString(1)));
+                            }
+                        }
                     }
 
-                    reader.Close();
                     con.desconexion(conn);
                 }
             }
 
             return listaEmpleados;
         }
+
+        public int ObtenerIdDepartamentoPorCapacitacion(int idCapacitacion)
+        {
+            int idDepartamento = -1;
+            string query = "SELECT fk_id_departamento FROM tbl_capacitaciones WHERE pk_id_capacitacion = ?";
+
+            using (OdbcConnection conn = con.Conexion())
+            {
+                if (conn != null)
+                {
+                    using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idCapacitacion", idCapacitacion);
+
+                        object result = cmd.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int id))
+                        {
+                            idDepartamento = id;
+                        }
+                    }
+
+                    con.desconexion(conn);
+                }
+            }
+
+            return idDepartamento;
+        }
+
+
+
 
         // Método para obtener capacitaciones
         public List<KeyValuePair<int, string>> ObtenerCapacitaciones()
@@ -93,6 +131,89 @@ namespace Capa_Modelo_Capacitacion
             }
 
             return listaCapacitaciones;
+        }
+
+        public List<KeyValuePair<int, string>> ObtenerCapacitacionesPorDepartamento(int idDepartamento)
+        {
+            List<KeyValuePair<int, string>> lista = new List<KeyValuePair<int, string>>();
+
+            string query = @"SELECT pk_id_capacitacion, capacitaciones_nombre 
+                     FROM tbl_capacitaciones 
+                     WHERE fk_id_departamento = ?";
+
+            using (OdbcConnection conn = con.Conexion())
+            {
+                if (conn != null)
+                {
+                    using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idDepartamento", idDepartamento);
+
+                        using (OdbcDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                int id = reader.GetInt32(0);
+                                string nombre = reader.GetString(1);
+                                lista.Add(new KeyValuePair<int, string>(id, nombre));
+                            }
+                        }
+                    }
+
+                    con.desconexion(conn);
+                }
+            }
+
+            return lista;
+        }
+
+        public int ObtenerSiguienteIDCierre()
+        {
+            int nuevoID = 1;
+
+            using (OdbcConnection conn = con.Conexion())
+            {
+                string query = "SELECT MAX(pk_id_cierre) FROM tbl_cierres";
+                using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+                    if (result != DBNull.Value && result != null)
+                    {
+                        nuevoID = Convert.ToInt32(result) + 1;
+                    }
+                }
+
+                con.desconexion(conn);
+            }
+
+            return nuevoID;
+        }
+
+
+
+        public List<KeyValuePair<int, string>> ObtenerDepartamentos()
+        {
+            List<KeyValuePair<int, string>> listaDepartamentos = new List<KeyValuePair<int, string>>();
+            string query = "SELECT pk_id_departamento, departamentos_nombre_departamento FROM tbl_departamentos";
+
+            using (OdbcConnection conn = con.Conexion())
+            {
+                if (conn != null)
+                {
+                    OdbcCommand cmd = new OdbcCommand(query, conn);
+                    OdbcDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        listaDepartamentos.Add(new KeyValuePair<int, string>(reader.GetInt32(0), reader.GetString(1)));
+                    }
+
+                    reader.Close();
+                    con.desconexion(conn);
+                }
+            }
+
+            return listaDepartamentos;
         }
 
         public int InsertarNota(int fkEmpleado, int fkCapacitacion, int fknivel, decimal puntaje, string fecha)
@@ -203,6 +324,37 @@ namespace Capa_Modelo_Capacitacion
     return tabla;
 }
 
+        // PARA OBTENER EL DEPARTAMENTO DE LA CAPACITACION
+        public string ObtenerNombreDepartamentoPorCapacitacion(int idCapacitacion)
+        {
+            string nombreDepartamento = "";
+
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string query = @"
+            SELECT d.departamentos_nombre_departamento
+            FROM tbl_capacitaciones c
+            INNER JOIN tbl_departamentos d ON c.fk_id_departamento = d.pk_id_departamento
+            WHERE c.pk_id_capacitacion = ?";
+
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@idCapacitacion", idCapacitacion);
+
+                    using (OdbcDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            nombreDepartamento = reader.GetString(0);
+                        }
+                    }
+                }
+            }
+
+            return nombreDepartamento;
+        }
+
+
 
         public DataTable BusquedaNotas(string filtro)
         {
@@ -297,6 +449,69 @@ namespace Capa_Modelo_Capacitacion
         //    return existe;
         //}
 
+        //PROMEDIO NOTAS
+        public decimal promediarNotas(int idDepartamento, int idCapacitacion)
+        {
+            decimal promedio = 0;
+
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string query = @"SELECT AVG(n.notas_puntaje)
+                         FROM tbl_notas n
+                         INNER JOIN tbl_empleados e ON n.fk_id_empleado = e.pk_clave
+                         WHERE e.fk_id_departamento = ? AND n.fk_id_capacitacion = ? AND n.estado = 1 AND e.estado = 1";
+
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    cmd.Parameters.AddWithValue("?", idDepartamento);
+                    cmd.Parameters.AddWithValue("?", idCapacitacion);
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != DBNull.Value)
+                        promedio = Convert.ToDecimal(result);
+                }
+            }
+
+            return promedio;
+        }
+
+        //PROMEDIO ASISTENCIA
+        public decimal calcularAsistencia(int idDepartamento, int idCapacitacion)
+        {
+            decimal porcentaje = 0;
+
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                // Total empleados del departamento
+                string totalQuery = "SELECT COUNT(*) FROM tbl_empleados WHERE fk_id_departamento = ? AND estado = 1";
+                int totalEmpleados = 0;
+
+                using (OdbcCommand cmd = new OdbcCommand(totalQuery, cnx))
+                {
+                    cmd.Parameters.AddWithValue("?", idDepartamento);
+                    totalEmpleados = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+                // Empleados con notas para la capacitación
+                string conNotasQuery = @"SELECT COUNT(DISTINCT n.fk_id_empleado)
+                                 FROM tbl_notas n
+                                 INNER JOIN tbl_empleados e ON n.fk_id_empleado = e.pk_clave
+                                 WHERE e.fk_id_departamento = ? AND n.fk_id_capacitacion = ? AND n.estado = 1 AND e.estado = 1";
+                int empleadosConNotas = 0;
+
+                using (OdbcCommand cmd = new OdbcCommand(conNotasQuery, cnx))
+                {
+                    cmd.Parameters.AddWithValue("?", idDepartamento);
+                    cmd.Parameters.AddWithValue("?", idCapacitacion);
+                    empleadosConNotas = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+                if (totalEmpleados > 0)
+                    porcentaje = (empleadosConNotas / (decimal)totalEmpleados) * 100;
+            }
+
+            return porcentaje;
+        }
 
 
         public int ObtenerSiguienteIdNota()
@@ -395,6 +610,48 @@ namespace Capa_Modelo_Capacitacion
                 }
             }
         }
+
+
+        //CRUD DE CIERRES
+        public void InsertarCierre(int idDepartamento, int idCapacitacion, decimal puntuacion, decimal porcentajeAsistencia, DateTime fecha)
+        {
+            string query = "INSERT INTO tbl_cierres (fk_id_departamento, fk_id_capacitacion, cierres_puntuacion, cierres_porcentaje_asistencia, cierre_fecha) " +
+                           "VALUES (?, ?, ?, ?, ?)";
+            using (OdbcCommand cmd = new OdbcCommand(query, con.Conexion()))
+            {
+                cmd.Parameters.AddWithValue("@idDepartamento", idDepartamento);
+                cmd.Parameters.AddWithValue("@idCapacitacion", idCapacitacion);
+                cmd.Parameters.AddWithValue("@puntuacion", puntuacion);
+                cmd.Parameters.AddWithValue("@porcentajeAsistencia", porcentajeAsistencia);
+                cmd.Parameters.AddWithValue("@fecha", fecha);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public DataTable ObtenerCierres()
+        {
+            DataTable dt = new DataTable();
+            string query = @"
+        SELECT 
+            c.pk_id_cierre AS ID,
+            d.departamentos_nombre_departamento AS Departamento,
+            cap.capacitaciones_nombre AS Capacitacion,
+            c.cierres_puntuacion AS Puntuación,
+            c.cierres_porcentaje_asistencia AS PorcentajeAsistencia,
+            c.cierre_fecha AS Fecha
+        FROM tbl_cierres c
+        JOIN tbl_departamentos d ON c.fk_id_departamento = d.pk_id_departamento
+        JOIN tbl_capacitaciones cap ON c.fk_id_capacitacion = cap.pk_id_capacitacion
+        WHERE c.estado = 1";
+
+            using (OdbcDataAdapter da = new OdbcDataAdapter(query, con.Conexion()))
+            {
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+
 
 
     }

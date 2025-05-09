@@ -29,13 +29,6 @@ namespace Capa_Vista_Capacitacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.Btn_ayuda = new System.Windows.Forms.Button();
-            this.Btn_reporte = new System.Windows.Forms.Button();
-            this.Btn_buscar = new System.Windows.Forms.Button();
-            this.Btn_cancelar = new System.Windows.Forms.Button();
-            this.Btn_salir = new System.Windows.Forms.Button();
-            this.Btn_guardar = new System.Windows.Forms.Button();
-            this.Btn_nuevo = new System.Windows.Forms.Button();
             this.lblID = new System.Windows.Forms.Label();
             this.lblEmpleado = new System.Windows.Forms.Label();
             this.lblCapacitación = new System.Windows.Forms.Label();
@@ -51,77 +44,19 @@ namespace Capa_Vista_Capacitacion
             this.lblMostrarporcentaje = new System.Windows.Forms.Label();
             this.tbAsistencia = new System.Windows.Forms.TrackBar();
             this.lblAsistencia = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Btn_editarparámetros = new System.Windows.Forms.Button();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
+            this.Btn_reporte = new System.Windows.Forms.Button();
+            this.Btn_buscar = new System.Windows.Forms.Button();
+            this.Btn_cancelar = new System.Windows.Forms.Button();
+            this.Btn_salir = new System.Windows.Forms.Button();
+            this.Btn_guardar = new System.Windows.Forms.Button();
+            this.Btn_nuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Cierres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPorcentaje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAsistencia)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Btn_ayuda
-            // 
-            this.Btn_ayuda.Image = global::Capa_Vista_Capacitacion.Properties.Resources.preguntas__1___1_;
-            this.Btn_ayuda.Location = new System.Drawing.Point(349, 12);
-            this.Btn_ayuda.Name = "Btn_ayuda";
-            this.Btn_ayuda.Size = new System.Drawing.Size(69, 69);
-            this.Btn_ayuda.TabIndex = 7;
-            this.Btn_ayuda.UseVisualStyleBackColor = true;
-            // 
-            // Btn_reporte
-            // 
-            this.Btn_reporte.Image = global::Capa_Vista_Capacitacion.Properties.Resources.reporte__2_;
-            this.Btn_reporte.Location = new System.Drawing.Point(420, 12);
-            this.Btn_reporte.Name = "Btn_reporte";
-            this.Btn_reporte.Size = new System.Drawing.Size(69, 69);
-            this.Btn_reporte.TabIndex = 6;
-            this.Btn_reporte.UseVisualStyleBackColor = true;
-            // 
-            // Btn_buscar
-            // 
-            this.Btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Btn_buscar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.buscar__1___1_1;
-            this.Btn_buscar.Location = new System.Drawing.Point(274, 12);
-            this.Btn_buscar.Name = "Btn_buscar";
-            this.Btn_buscar.Size = new System.Drawing.Size(69, 69);
-            this.Btn_buscar.TabIndex = 5;
-            this.Btn_buscar.UseVisualStyleBackColor = true;
-            // 
-            // Btn_cancelar
-            // 
-            this.Btn_cancelar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.cancelar__1___1_;
-            this.Btn_cancelar.Location = new System.Drawing.Point(202, 12);
-            this.Btn_cancelar.Name = "Btn_cancelar";
-            this.Btn_cancelar.Size = new System.Drawing.Size(66, 69);
-            this.Btn_cancelar.TabIndex = 3;
-            this.Btn_cancelar.UseVisualStyleBackColor = true;
-            // 
-            // Btn_salir
-            // 
-            this.Btn_salir.Image = global::Capa_Vista_Capacitacion.Properties.Resources.cerrar_sesion__1___1_;
-            this.Btn_salir.Location = new System.Drawing.Point(726, 12);
-            this.Btn_salir.Name = "Btn_salir";
-            this.Btn_salir.Size = new System.Drawing.Size(66, 69);
-            this.Btn_salir.TabIndex = 2;
-            this.Btn_salir.UseVisualStyleBackColor = true;
-            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
-            // 
-            // Btn_guardar
-            // 
-            this.Btn_guardar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.ahorrar__1___1_;
-            this.Btn_guardar.Location = new System.Drawing.Point(130, 12);
-            this.Btn_guardar.Name = "Btn_guardar";
-            this.Btn_guardar.Size = new System.Drawing.Size(66, 69);
-            this.Btn_guardar.TabIndex = 1;
-            this.Btn_guardar.UseVisualStyleBackColor = true;
-            // 
-            // Btn_nuevo
-            // 
-            this.Btn_nuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Btn_nuevo.Image = global::Capa_Vista_Capacitacion.Properties.Resources.agregar_archivo__1___1___1_;
-            this.Btn_nuevo.Location = new System.Drawing.Point(58, 12);
-            this.Btn_nuevo.Name = "Btn_nuevo";
-            this.Btn_nuevo.Size = new System.Drawing.Size(66, 69);
-            this.Btn_nuevo.TabIndex = 0;
-            this.Btn_nuevo.UseVisualStyleBackColor = true;
-            this.Btn_nuevo.Click += new System.EventHandler(this.Btn_nuevo_Click);
             // 
             // lblID
             // 
@@ -185,6 +120,7 @@ namespace Capa_Vista_Capacitacion
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(130, 121);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(155, 20);
@@ -192,11 +128,13 @@ namespace Capa_Vista_Capacitacion
             // 
             // cbCapacitación
             // 
+            this.cbCapacitación.Enabled = false;
             this.cbCapacitación.FormattingEnabled = true;
             this.cbCapacitación.Location = new System.Drawing.Point(130, 194);
             this.cbCapacitación.Name = "cbCapacitación";
             this.cbCapacitación.Size = new System.Drawing.Size(155, 21);
             this.cbCapacitación.TabIndex = 17;
+            this.cbCapacitación.Text = "Seleccione un Departamento";
             // 
             // cbDepartamento
             // 
@@ -205,9 +143,11 @@ namespace Capa_Vista_Capacitacion
             this.cbDepartamento.Name = "cbDepartamento";
             this.cbDepartamento.Size = new System.Drawing.Size(155, 21);
             this.cbDepartamento.TabIndex = 18;
+            this.cbDepartamento.SelectedIndexChanged += new System.EventHandler(this.cbDepartamento_SelectedIndexChanged);
             // 
             // dtpFecha
             // 
+            this.dtpFecha.Enabled = false;
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(503, 204);
             this.dtpFecha.Name = "dtpFecha";
@@ -226,6 +166,7 @@ namespace Capa_Vista_Capacitacion
             // tbPorcentaje
             // 
             this.tbPorcentaje.Location = new System.Drawing.Point(497, 110);
+            this.tbPorcentaje.Maximum = 100;
             this.tbPorcentaje.Name = "tbPorcentaje";
             this.tbPorcentaje.Size = new System.Drawing.Size(162, 45);
             this.tbPorcentaje.TabIndex = 22;
@@ -244,6 +185,7 @@ namespace Capa_Vista_Capacitacion
             // tbAsistencia
             // 
             this.tbAsistencia.Location = new System.Drawing.Point(497, 153);
+            this.tbAsistencia.Maximum = 100;
             this.tbAsistencia.Name = "tbAsistencia";
             this.tbAsistencia.Size = new System.Drawing.Size(162, 45);
             this.tbAsistencia.TabIndex = 24;
@@ -258,12 +200,105 @@ namespace Capa_Vista_Capacitacion
             this.lblAsistencia.TabIndex = 25;
             this.lblAsistencia.Text = "%";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(701, 179);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 19);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Editar Parámetros";
+            // 
+            // Btn_editarparámetros
+            // 
+            this.Btn_editarparámetros.Image = global::Capa_Vista_Capacitacion.Properties.Resources.convenio__1___1_;
+            this.Btn_editarparámetros.Location = new System.Drawing.Point(726, 107);
+            this.Btn_editarparámetros.Name = "Btn_editarparámetros";
+            this.Btn_editarparámetros.Size = new System.Drawing.Size(66, 69);
+            this.Btn_editarparámetros.TabIndex = 26;
+            this.Btn_editarparámetros.UseVisualStyleBackColor = true;
+            this.Btn_editarparámetros.Click += new System.EventHandler(this.Btn_editarparámetros_Click);
+            // 
+            // Btn_ayuda
+            // 
+            this.Btn_ayuda.Image = global::Capa_Vista_Capacitacion.Properties.Resources.preguntas__1___1_;
+            this.Btn_ayuda.Location = new System.Drawing.Point(349, 12);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(69, 69);
+            this.Btn_ayuda.TabIndex = 7;
+            this.Btn_ayuda.UseVisualStyleBackColor = true;
+            // 
+            // Btn_reporte
+            // 
+            this.Btn_reporte.Image = global::Capa_Vista_Capacitacion.Properties.Resources.reporte__2_;
+            this.Btn_reporte.Location = new System.Drawing.Point(420, 12);
+            this.Btn_reporte.Name = "Btn_reporte";
+            this.Btn_reporte.Size = new System.Drawing.Size(69, 69);
+            this.Btn_reporte.TabIndex = 6;
+            this.Btn_reporte.UseVisualStyleBackColor = true;
+            // 
+            // Btn_buscar
+            // 
+            this.Btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Btn_buscar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.buscar__1___1_1;
+            this.Btn_buscar.Location = new System.Drawing.Point(274, 12);
+            this.Btn_buscar.Name = "Btn_buscar";
+            this.Btn_buscar.Size = new System.Drawing.Size(69, 69);
+            this.Btn_buscar.TabIndex = 5;
+            this.Btn_buscar.UseVisualStyleBackColor = true;
+            // 
+            // Btn_cancelar
+            // 
+            this.Btn_cancelar.Enabled = false;
+            this.Btn_cancelar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.cancelar__1___1_;
+            this.Btn_cancelar.Location = new System.Drawing.Point(202, 12);
+            this.Btn_cancelar.Name = "Btn_cancelar";
+            this.Btn_cancelar.Size = new System.Drawing.Size(66, 69);
+            this.Btn_cancelar.TabIndex = 3;
+            this.Btn_cancelar.UseVisualStyleBackColor = true;
+            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
+            // 
+            // Btn_salir
+            // 
+            this.Btn_salir.Image = global::Capa_Vista_Capacitacion.Properties.Resources.cerrar_sesion__1___1_;
+            this.Btn_salir.Location = new System.Drawing.Point(726, 12);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(66, 69);
+            this.Btn_salir.TabIndex = 2;
+            this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
+            // 
+            // Btn_guardar
+            // 
+            this.Btn_guardar.Enabled = false;
+            this.Btn_guardar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.ahorrar__1___1_;
+            this.Btn_guardar.Location = new System.Drawing.Point(130, 12);
+            this.Btn_guardar.Name = "Btn_guardar";
+            this.Btn_guardar.Size = new System.Drawing.Size(66, 69);
+            this.Btn_guardar.TabIndex = 1;
+            this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
+            // 
+            // Btn_nuevo
+            // 
+            this.Btn_nuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_nuevo.Image = global::Capa_Vista_Capacitacion.Properties.Resources.agregar_archivo__1___1___1_;
+            this.Btn_nuevo.Location = new System.Drawing.Point(58, 12);
+            this.Btn_nuevo.Name = "Btn_nuevo";
+            this.Btn_nuevo.Size = new System.Drawing.Size(66, 69);
+            this.Btn_nuevo.TabIndex = 0;
+            this.Btn_nuevo.UseVisualStyleBackColor = true;
+            this.Btn_nuevo.Click += new System.EventHandler(this.Btn_nuevo_Click);
+            // 
             // cierre_capacitacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(816, 545);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Btn_editarparámetros);
             this.Controls.Add(this.lblAsistencia);
             this.Controls.Add(this.tbAsistencia);
             this.Controls.Add(this.lblMostrarporcentaje);
@@ -321,5 +356,7 @@ namespace Capa_Vista_Capacitacion
         private System.Windows.Forms.Label lblMostrarporcentaje;
         private System.Windows.Forms.TrackBar tbAsistencia;
         private System.Windows.Forms.Label lblAsistencia;
+        private System.Windows.Forms.Button Btn_editarparámetros;
+        private System.Windows.Forms.Label label1;
     }
 }
