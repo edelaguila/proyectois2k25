@@ -81,9 +81,9 @@ namespace Capa_Vista_Carrera
             toolTip.SetToolTip(Btn_Nuevo, "Insertar un nuevo registro");
             toolTip.SetToolTip(Btn_Guardar, "Guardar el registro actual");
             toolTip.SetToolTip(Btn_Cancelar, "Cancelar la operacion");
-            toolTip.SetToolTip(Btn_Editar, "Editar el registro seleccionado");
+            //toolTip.SetToolTip(Btn_Editar, "Editar el registro seleccionado");
             toolTip.SetToolTip(Btn_Eliminar, "Eliminar el registro seleccionado");
-            toolTip.SetToolTip(Btn_Buscar, "Abrir consulta inteligente");
+            //toolTip.SetToolTip(Btn_Buscar, "Abrir consulta inteligente");
             toolTip.SetToolTip(Btn_Ayuda, "Ver la ayuda del formulario");
             toolTip.SetToolTip(Btn_Reporte, "Ver el reporte asociado");
             toolTip.SetToolTip(Btn_Salir, "Salir del formulario");
@@ -162,7 +162,7 @@ namespace Capa_Vista_Carrera
 
 
             Btn_Guardar.Enabled = habilitar;
-            Btn_Editar.Enabled = habilitar;
+            //Btn_Editar.Enabled = habilitar;
             Btn_Eliminar.Enabled = habilitar;
         }
 
@@ -403,7 +403,7 @@ namespace Capa_Vista_Carrera
             ConfigurarControles(true);
             LimpiarFormulario();
             //Txt_concepto.Focus();
-            Btn_Editar.Enabled = false;
+            //Btn_Editar.Enabled = false;
             Btn_Eliminar.Enabled = false;
         }
 
@@ -517,7 +517,7 @@ namespace Capa_Vista_Carrera
                     //ActualizarBotonEstado();
 
                     //Txt_monto.Text = Dgv_perp_dec.Rows[e.RowIndex].Cells["Monto"].Value.ToString();
-                    Btn_Editar.Enabled = true;
+                    //Btn_Editar.Enabled = true;
                     Btn_Eliminar.Enabled = true;
                 }
                 catch (Exception ex)
@@ -559,6 +559,33 @@ namespace Capa_Vista_Carrera
 
             // Opcionalmente, puedes volver a cargar los datos si es necesario
             CargarDatos();
+        }
+
+        private void Btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            if (idSeleccionado != 0)
+            {
+                if (MessageBox.Show("¿Está seguro de eliminar este registro?", "Confirmar eliminación",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        logica2.funcEliminarPromocion(idSeleccionado);
+                        LimpiarFormulario();
+                        CargarDatos();
+                        MessageBox.Show("Registro eliminado exitosamente");
+                        //Btn_editar.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al eliminar: " + ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un registro para eliminar");
+            }
         }
     }
 }
