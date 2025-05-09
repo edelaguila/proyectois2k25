@@ -1,6 +1,5 @@
-use colchoneria; 
-ALTER TABLE tbl_puestos_trabajo
-ADD COLUMN Fk_id_perfil INT NULL;
+ use nominasPrueba; 
+
 
 -- Tabla para nivel educativo
 CREATE TABLE IF NOT EXISTS Tbl_nivel_educativo (
@@ -23,7 +22,7 @@ INSERT INTO Tbl_nivel_educativo (nivel) VALUES
 INSERT INTO Tbl_disponibilidad (disponibilidad) VALUES 
 ('Inmediata'), ('1 semana'), ('1 mes'), ('Otro');
 
-DROP TABLE IF EXISTS Tbl_postulante;
+
 CREATE TABLE IF NOT EXISTS Tbl_postulante(
     Pk_id_postulante INT AUTO_INCREMENT PRIMARY KEY,
     Fk_puesto_aplica_postulante INT NULL,
@@ -109,15 +108,6 @@ CREATE TABLE IF NOT EXISTS Tbl_competencias(
     estado TINYINT(1) NOT NULL DEFAULT 1
 );
 
--- JOEL LÓPEZ -------------------------------------------------
-DROP TABLE IF EXISTS tbl_nivelcompetencia;
-CREATE TABLE IF NOT EXISTS tbl_nivelcompetencia (
-	pk_id_nivel INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	nivel_nombre CHAR,  -- a b c d 
-    nivel_descripcion VARCHAR(100),
-    estado TINYINT(1) NOT NULL DEFAULT 1
-);
-
 -- Insertar registros en Tbl_cobrador
 INSERT INTO tbl_nivelcompetencia (nivel_nombre, nivel_descripcion, estado)
 VALUES 
@@ -138,8 +128,8 @@ CREATE TABLE IF NOT EXISTS tbl_departamentos_competencias (
     CONSTRAINT fk_competencia FOREIGN KEY (fk_id_competencia) REFERENCES Tbl_competencias(Pk_id_competencia) ON DELETE CASCADE
 );
 
-ALTER TABLE tbl_departamentos 
-ADD COLUMN departamentos_competencia VARCHAR(100) NOT NULL;
+-- ALTER TABLE tbl_departamentos 
+-- ADD COLUMN departamentos_competencia VARCHAR(100) NOT NULL;
 
 CREATE TABLE IF NOT EXISTS tbl_instructores (
     pk_id_instructor INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -186,3 +176,6 @@ INSERT INTO tbl_instructores (instructores_nombre, instructores_apellido, instru
 INSERT INTO tbl_competencias (nombre_competencia, descripcion, estado) VALUES 
 ('Hablar en publico', 'para exposiciones y conferencias', 1);  
 
+-- Joel Lopez ----------
+ALTER TABLE tbl_departamentos
+DROP COLUMN departamentos_competencia;

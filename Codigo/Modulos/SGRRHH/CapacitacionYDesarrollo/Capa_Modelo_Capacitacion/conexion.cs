@@ -1,29 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Odbc;
 
-
-namespace Capa_Modelo_Contabilidad
+namespace Capa_Modelo_Capacitacion
 {
-    public class conexion
+    class conexion
     {
-        public OdbcConnection conectar()
+        public OdbcConnection Conexion()
         {
-            OdbcConnection conectar = new OdbcConnection("Dsn=colchoneria");
-
+            //creacion de la conexion via ODBC
+            OdbcConnection conn = new OdbcConnection("Dsn=colchoneria");
             try
             {
-                conectar.Open();
-                return conectar;
+                conn.Open();
             }
-            catch (OdbcException ex)
+            catch (OdbcException)
             {
+                Console.WriteLine("No Conectó");
+            }
+            return conn;
+        }
 
-                Console.WriteLine("No conecto la Base de Datos ", ex);
-                return null;
+        //metodo para cerrar la conexion
+        public void desconexion(OdbcConnection conn)
+        {
+            try
+            {
+                conn.Close();
+            }
+            catch (OdbcException)
+            {
+                Console.WriteLine("No Conectó");
             }
         }
     }

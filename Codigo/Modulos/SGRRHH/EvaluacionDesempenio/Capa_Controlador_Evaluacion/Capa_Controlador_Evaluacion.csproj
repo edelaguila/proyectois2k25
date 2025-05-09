@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Modelo_Evaluacion">
+    <Reference Include="Capa_Modelo_Evaluacion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Capa_Modelo_Evaluacion\bin\Debug\Capa_Modelo_Evaluacion.dll</HintPath>
     </Reference>
     <Reference Include="System" />

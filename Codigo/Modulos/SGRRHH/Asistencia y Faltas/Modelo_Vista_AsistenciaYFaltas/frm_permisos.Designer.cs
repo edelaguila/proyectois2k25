@@ -51,7 +51,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.Controls.Add(this.navegador1);
             this.Name = "frm_permisos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "16001-Mantenimiento Permisos";
+            this.Text = "frm_permisos";
             this.ResumeLayout(false);
 
         }

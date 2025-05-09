@@ -29,11 +29,9 @@ namespace Capa_Vista_Capacitacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.Btn_eliminar = new System.Windows.Forms.Button();
             this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_reporte = new System.Windows.Forms.Button();
             this.Btn_buscar = new System.Windows.Forms.Button();
-            this.Btn_editar = new System.Windows.Forms.Button();
             this.Btn_cancelar = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
             this.Btn_guardar = new System.Windows.Forms.Button();
@@ -45,30 +43,23 @@ namespace Capa_Vista_Capacitacion
             this.lblPorcentaje = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
-            this.txtCierre = new System.Windows.Forms.TextBox();
             this.cbCapacitación = new System.Windows.Forms.ComboBox();
-            this.cbEmpleado = new System.Windows.Forms.ComboBox();
+            this.cbDepartamento = new System.Windows.Forms.ComboBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.dgv_Cierres = new System.Windows.Forms.DataGridView();
             this.tbPorcentaje = new System.Windows.Forms.TrackBar();
             this.lblMostrarporcentaje = new System.Windows.Forms.Label();
+            this.tbAsistencia = new System.Windows.Forms.TrackBar();
+            this.lblAsistencia = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Cierres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPorcentaje)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbAsistencia)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Btn_eliminar
-            // 
-            this.Btn_eliminar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.borrar__1___1_;
-            this.Btn_eliminar.Location = new System.Drawing.Point(375, 12);
-            this.Btn_eliminar.Name = "Btn_eliminar";
-            this.Btn_eliminar.Size = new System.Drawing.Size(69, 69);
-            this.Btn_eliminar.TabIndex = 8;
-            this.Btn_eliminar.UseVisualStyleBackColor = true;
             // 
             // Btn_ayuda
             // 
             this.Btn_ayuda.Image = global::Capa_Vista_Capacitacion.Properties.Resources.preguntas__1___1_;
-            this.Btn_ayuda.Location = new System.Drawing.Point(450, 12);
+            this.Btn_ayuda.Location = new System.Drawing.Point(349, 12);
             this.Btn_ayuda.Name = "Btn_ayuda";
             this.Btn_ayuda.Size = new System.Drawing.Size(69, 69);
             this.Btn_ayuda.TabIndex = 7;
@@ -77,7 +68,7 @@ namespace Capa_Vista_Capacitacion
             // Btn_reporte
             // 
             this.Btn_reporte.Image = global::Capa_Vista_Capacitacion.Properties.Resources.reporte__2_;
-            this.Btn_reporte.Location = new System.Drawing.Point(651, 12);
+            this.Btn_reporte.Location = new System.Drawing.Point(420, 12);
             this.Btn_reporte.Name = "Btn_reporte";
             this.Btn_reporte.Size = new System.Drawing.Size(69, 69);
             this.Btn_reporte.TabIndex = 6;
@@ -87,25 +78,16 @@ namespace Capa_Vista_Capacitacion
             // 
             this.Btn_buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Btn_buscar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.buscar__1___1_1;
-            this.Btn_buscar.Location = new System.Drawing.Point(300, 12);
+            this.Btn_buscar.Location = new System.Drawing.Point(274, 12);
             this.Btn_buscar.Name = "Btn_buscar";
             this.Btn_buscar.Size = new System.Drawing.Size(69, 69);
             this.Btn_buscar.TabIndex = 5;
             this.Btn_buscar.UseVisualStyleBackColor = true;
             // 
-            // Btn_editar
-            // 
-            this.Btn_editar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.convenio__1___1_;
-            this.Btn_editar.Location = new System.Drawing.Point(84, 12);
-            this.Btn_editar.Name = "Btn_editar";
-            this.Btn_editar.Size = new System.Drawing.Size(66, 69);
-            this.Btn_editar.TabIndex = 4;
-            this.Btn_editar.UseVisualStyleBackColor = true;
-            // 
             // Btn_cancelar
             // 
             this.Btn_cancelar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.cancelar__1___1_;
-            this.Btn_cancelar.Location = new System.Drawing.Point(228, 12);
+            this.Btn_cancelar.Location = new System.Drawing.Point(202, 12);
             this.Btn_cancelar.Name = "Btn_cancelar";
             this.Btn_cancelar.Size = new System.Drawing.Size(66, 69);
             this.Btn_cancelar.TabIndex = 3;
@@ -119,11 +101,12 @@ namespace Capa_Vista_Capacitacion
             this.Btn_salir.Size = new System.Drawing.Size(66, 69);
             this.Btn_salir.TabIndex = 2;
             this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
             // Btn_guardar
             // 
             this.Btn_guardar.Image = global::Capa_Vista_Capacitacion.Properties.Resources.ahorrar__1___1_;
-            this.Btn_guardar.Location = new System.Drawing.Point(156, 12);
+            this.Btn_guardar.Location = new System.Drawing.Point(130, 12);
             this.Btn_guardar.Name = "Btn_guardar";
             this.Btn_guardar.Size = new System.Drawing.Size(66, 69);
             this.Btn_guardar.TabIndex = 1;
@@ -133,7 +116,7 @@ namespace Capa_Vista_Capacitacion
             // 
             this.Btn_nuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_nuevo.Image = global::Capa_Vista_Capacitacion.Properties.Resources.agregar_archivo__1___1___1_;
-            this.Btn_nuevo.Location = new System.Drawing.Point(12, 12);
+            this.Btn_nuevo.Location = new System.Drawing.Point(58, 12);
             this.Btn_nuevo.Name = "Btn_nuevo";
             this.Btn_nuevo.Size = new System.Drawing.Size(66, 69);
             this.Btn_nuevo.TabIndex = 0;
@@ -156,9 +139,9 @@ namespace Capa_Vista_Capacitacion
             this.lblEmpleado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmpleado.Location = new System.Drawing.Point(29, 160);
             this.lblEmpleado.Name = "lblEmpleado";
-            this.lblEmpleado.Size = new System.Drawing.Size(70, 19);
+            this.lblEmpleado.Size = new System.Drawing.Size(95, 19);
             this.lblEmpleado.TabIndex = 10;
-            this.lblEmpleado.Text = "Empleado";
+            this.lblEmpleado.Text = "Departamento";
             // 
             // lblCapacitación
             // 
@@ -176,9 +159,9 @@ namespace Capa_Vista_Capacitacion
             this.lblCierre.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCierre.Location = new System.Drawing.Point(416, 159);
             this.lblCierre.Name = "lblCierre";
-            this.lblCierre.Size = new System.Drawing.Size(47, 19);
+            this.lblCierre.Size = new System.Drawing.Size(70, 19);
             this.lblCierre.TabIndex = 12;
-            this.lblCierre.Text = "Cierre";
+            this.lblCierre.Text = "Asistencia";
             // 
             // lblPorcentaje
             // 
@@ -186,9 +169,9 @@ namespace Capa_Vista_Capacitacion
             this.lblPorcentaje.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPorcentaje.Location = new System.Drawing.Point(417, 112);
             this.lblPorcentaje.Name = "lblPorcentaje";
-            this.lblPorcentaje.Size = new System.Drawing.Size(74, 19);
+            this.lblPorcentaje.Size = new System.Drawing.Size(75, 19);
             this.lblPorcentaje.TabIndex = 13;
-            this.lblPorcentaje.Text = "Porcentaje";
+            this.lblPorcentaje.Text = "Puntuación";
             // 
             // lblFecha
             // 
@@ -202,33 +185,26 @@ namespace Capa_Vista_Capacitacion
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(122, 122);
+            this.txtID.Location = new System.Drawing.Point(130, 121);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(155, 20);
             this.txtID.TabIndex = 15;
             // 
-            // txtCierre
-            // 
-            this.txtCierre.Location = new System.Drawing.Point(503, 158);
-            this.txtCierre.Name = "txtCierre";
-            this.txtCierre.Size = new System.Drawing.Size(155, 20);
-            this.txtCierre.TabIndex = 16;
-            // 
             // cbCapacitación
             // 
             this.cbCapacitación.FormattingEnabled = true;
-            this.cbCapacitación.Location = new System.Drawing.Point(122, 194);
+            this.cbCapacitación.Location = new System.Drawing.Point(130, 194);
             this.cbCapacitación.Name = "cbCapacitación";
             this.cbCapacitación.Size = new System.Drawing.Size(155, 21);
             this.cbCapacitación.TabIndex = 17;
             // 
-            // cbEmpleado
+            // cbDepartamento
             // 
-            this.cbEmpleado.FormattingEnabled = true;
-            this.cbEmpleado.Location = new System.Drawing.Point(122, 158);
-            this.cbEmpleado.Name = "cbEmpleado";
-            this.cbEmpleado.Size = new System.Drawing.Size(155, 21);
-            this.cbEmpleado.TabIndex = 18;
+            this.cbDepartamento.FormattingEnabled = true;
+            this.cbDepartamento.Location = new System.Drawing.Point(130, 157);
+            this.cbDepartamento.Name = "cbDepartamento";
+            this.cbDepartamento.Size = new System.Drawing.Size(155, 21);
+            this.cbDepartamento.TabIndex = 18;
             // 
             // dtpFecha
             // 
@@ -237,7 +213,7 @@ namespace Capa_Vista_Capacitacion
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(94, 20);
             this.dtpFecha.TabIndex = 19;
-            this.dtpFecha.Value = new System.DateTime(2025, 4, 2, 12, 30, 44, 0);
+            this.dtpFecha.Value = new System.DateTime(2025, 4, 29, 0, 0, 0, 0);
             // 
             // dgv_Cierres
             // 
@@ -265,19 +241,37 @@ namespace Capa_Vista_Capacitacion
             this.lblMostrarporcentaje.TabIndex = 23;
             this.lblMostrarporcentaje.Text = "%";
             // 
+            // tbAsistencia
+            // 
+            this.tbAsistencia.Location = new System.Drawing.Point(497, 153);
+            this.tbAsistencia.Name = "tbAsistencia";
+            this.tbAsistencia.Size = new System.Drawing.Size(162, 45);
+            this.tbAsistencia.TabIndex = 24;
+            // 
+            // lblAsistencia
+            // 
+            this.lblAsistencia.AutoSize = true;
+            this.lblAsistencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsistencia.Location = new System.Drawing.Point(665, 153);
+            this.lblAsistencia.Name = "lblAsistencia";
+            this.lblAsistencia.Size = new System.Drawing.Size(22, 19);
+            this.lblAsistencia.TabIndex = 25;
+            this.lblAsistencia.Text = "%";
+            // 
             // cierre_capacitacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(816, 545);
+            this.Controls.Add(this.lblAsistencia);
+            this.Controls.Add(this.tbAsistencia);
             this.Controls.Add(this.lblMostrarporcentaje);
             this.Controls.Add(this.tbPorcentaje);
             this.Controls.Add(this.dgv_Cierres);
             this.Controls.Add(this.dtpFecha);
-            this.Controls.Add(this.cbEmpleado);
+            this.Controls.Add(this.cbDepartamento);
             this.Controls.Add(this.cbCapacitación);
-            this.Controls.Add(this.txtCierre);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblPorcentaje);
@@ -285,11 +279,9 @@ namespace Capa_Vista_Capacitacion
             this.Controls.Add(this.lblCapacitación);
             this.Controls.Add(this.lblEmpleado);
             this.Controls.Add(this.lblID);
-            this.Controls.Add(this.Btn_eliminar);
             this.Controls.Add(this.Btn_ayuda);
             this.Controls.Add(this.Btn_reporte);
             this.Controls.Add(this.Btn_buscar);
-            this.Controls.Add(this.Btn_editar);
             this.Controls.Add(this.Btn_cancelar);
             this.Controls.Add(this.Btn_salir);
             this.Controls.Add(this.Btn_guardar);
@@ -299,6 +291,7 @@ namespace Capa_Vista_Capacitacion
             this.Load += new System.EventHandler(this.cierre_capacitacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Cierres)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPorcentaje)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbAsistencia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,11 +303,9 @@ namespace Capa_Vista_Capacitacion
         private System.Windows.Forms.Button Btn_guardar;
         private System.Windows.Forms.Button Btn_salir;
         private System.Windows.Forms.Button Btn_cancelar;
-        private System.Windows.Forms.Button Btn_editar;
         private System.Windows.Forms.Button Btn_buscar;
         private System.Windows.Forms.Button Btn_reporte;
         private System.Windows.Forms.Button Btn_ayuda;
-        private System.Windows.Forms.Button Btn_eliminar;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblEmpleado;
         private System.Windows.Forms.Label lblCapacitación;
@@ -322,12 +313,13 @@ namespace Capa_Vista_Capacitacion
         private System.Windows.Forms.Label lblPorcentaje;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.TextBox txtCierre;
         private System.Windows.Forms.ComboBox cbCapacitación;
-        private System.Windows.Forms.ComboBox cbEmpleado;
+        private System.Windows.Forms.ComboBox cbDepartamento;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.DataGridView dgv_Cierres;
         private System.Windows.Forms.TrackBar tbPorcentaje;
         private System.Windows.Forms.Label lblMostrarporcentaje;
+        private System.Windows.Forms.TrackBar tbAsistencia;
+        private System.Windows.Forms.Label lblAsistencia;
     }
 }

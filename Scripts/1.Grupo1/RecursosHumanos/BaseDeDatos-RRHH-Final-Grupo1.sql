@@ -1,7 +1,7 @@
 -- create database nominasPrueba; 
 -- use nominasPrueba; 
 -- DROP DATABASE nominasPrueba; 
--- use colchoneria; 
+ use colchoneria; 
 
 DROP TABLE IF EXISTS tbl_planilla_Detalle; 
 DROP TABLE IF EXISTS tbl_planilla_Encabezado; 
@@ -12,15 +12,15 @@ DROP TABLE IF EXISTS tbl_control_faltas;
 DROP TABLE IF EXISTS tbl_Liquidacion_Trabajadores; 
 DROP TABLE IF EXISTS tbl_dedu_perp_emp; 
 DROP TABLE IF EXISTS tbl_asignacion_vacaciones;  
-DROP TABLE IF EXISTS tbl_empleados; 
-DROP TABLE IF EXISTS tbl_puestos_trabajo; 
-DROP TABLE IF EXISTS tbl_departamentos; 
+-- DROP TABLE IF EXISTS tbl_empleados; 
+-- DROP TABLE IF EXISTS tbl_puestos_trabajo; 
+-- DROP TABLE IF EXISTS tbl_departamentos; 
 DROP TABLE IF EXISTS tbl_dedu_perp; 
 DROP TABLE IF EXISTS tbl_empresas; 
 DROP TABLE IF EXISTS tbl_polizas; 
  
  
-CREATE TABLE tbl_puestos_trabajo ( 
+CREATE TABLE IF NOT EXISTS tbl_puestos_trabajo ( 
  pk_id_puestos INT NOT NULL AUTO_INCREMENT, 
     puestos_nombre_puesto VARCHAR(50), 
     puestos_descripcion  VARCHAR(50), 
@@ -28,7 +28,7 @@ CREATE TABLE tbl_puestos_trabajo (
     estado TINYINT(1) NOT NULL DEFAULT 1 
 ); 
  
-CREATE TABLE  tbl_departamentos (  
+CREATE TABLE IF NOT EXISTS tbl_departamentos (  
  pk_id_departamento  INT NOT NULL AUTO_INCREMENT, 
     departamentos_nombre_departamento VARCHAR(50), 
     departamentos_descripcion  VARCHAR(50) NOT NULL, 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS tbl_empleados (
     estado TINYINT(1) NOT NULL DEFAULT 1 
 ); 
  
-CREATE TABLE  tbl_asignacion_vacaciones ( 
+CREATE TABLE IF NOT EXISTS  tbl_asignacion_vacaciones ( 
  pk_registro_vaciones int auto_increment not null, 
     asignacion_vacaciones_descripcion varchar(25), 
     asignacion_vacaciones_fecha_inicio date, 
@@ -66,7 +66,7 @@ CREATE TABLE  tbl_asignacion_vacaciones (
     primary key (`pk_registro_vaciones`) 
 ); 
  
-CREATE TABLE  tbl_contratos ( 
+CREATE TABLE IF NOT EXISTS  tbl_contratos ( 
  pk_id_contrato INT NOT NULL AUTO_INCREMENT, 
     contratos_fecha_creacion date NOT NULL, 
     contratos_salario  decimal(10,2) NOT NULL, 
@@ -77,7 +77,7 @@ CREATE TABLE  tbl_contratos (
     estado TINYINT(1) NOT NULL DEFAULT 1 
 ); 
  
-CREATE TABLE  tbl_horas_extra ( 
+CREATE TABLE IF NOT EXISTS  tbl_horas_extra ( 
  pk_registro_horas INT NOT NULL AUTO_INCREMENT, 
     horas_mes varchar(25), 
     horas_cantidad_horas decimal(10,2), 
@@ -87,7 +87,7 @@ CREATE TABLE  tbl_horas_extra (
     estado TINYINT(1) NOT NULL DEFAULT 1 
 ); 
  
-CREATE TABLE  tbl_control_anticipos ( 
+CREATE TABLE IF NOT EXISTS tbl_control_anticipos ( 
  pk_registro_anticipos INT NOT NULL AUTO_INCREMENT, 
     anticipos_cantidad decimal(10,2), 
     anticipos_descripcion varchar(50), 
@@ -98,7 +98,7 @@ CREATE TABLE  tbl_control_anticipos (
     estado TINYINT(1) NOT NULL DEFAULT 1 
 ); 
 
-CREATE TABLE  tbl_control_faltas ( 
+CREATE TABLE IF NOT EXISTS tbl_control_faltas ( 
  pk_registro_faltas INT NOT NULL AUTO_INCREMENT, 
     faltas_fecha_falta date, 
     faltas_mes varchar(25), 
@@ -109,7 +109,7 @@ CREATE TABLE  tbl_control_faltas (
     estado TINYINT(1) NOT NULL DEFAULT 1 
 ); 
  
-CREATE TABLE tbl_Liquidacion_Trabajadores ( 
+CREATE TABLE IF NOT EXISTS tbl_Liquidacion_Trabajadores ( 
  pk_registro_liquidacion INT NOT NULL AUTO_INCREMENT, 
     liquidacion_aguinaldo decimal (10,2) not null, 
     liquidacion_bono_14 decimal (10,2) not null, 
@@ -121,7 +121,7 @@ CREATE TABLE tbl_Liquidacion_Trabajadores (
     estado TINYINT(1) NOT NULL DEFAULT 1 
 ); 
  
-CREATE TABLE  tbl_planilla_Encabezado ( 
+CREATE TABLE IF NOT EXISTS  tbl_planilla_Encabezado ( 
  pk_registro_planilla_Encabezado INT NOT NULL AUTO_INCREMENT, 
     encabezado_correlativo_planilla int not null,  
     encabezado_fecha_inicio date, 
@@ -131,7 +131,7 @@ CREATE TABLE  tbl_planilla_Encabezado (
     estado TINYINT(1) NOT NULL DEFAULT 1 
 ); 
  
-CREATE TABLE  tbl_planilla_Detalle ( 
+CREATE TABLE IF NOT EXISTS  tbl_planilla_Detalle ( 
  pk_registro_planilla_Detalle INT NOT NULL AUTO_INCREMENT, 
     detalle_total_Percepciones decimal (10,2), 
     detalle_total_Deducciones decimal(10,2), 
@@ -148,7 +148,7 @@ CREATE TABLE  tbl_planilla_Detalle (
     estado TINYINT(1) NOT NULL DEFAULT 1 
 ); 
   
-CREATE TABLE tbl_dedu_perp ( 
+CREATE TABLE IF NOT EXISTS tbl_dedu_perp ( 
     pk_dedu_perp INT NOT NULL AUTO_INCREMENT, 
     dedu_perp_clase varchar(25), 
     dedu_perp_concepto VARCHAR(25), -- IGSS, Vacaciones, Bonificacion Incentivo 
@@ -160,7 +160,7 @@ CREATE TABLE tbl_dedu_perp (
     PRIMARY KEY ( pk_dedu_perp) 
 ); 
  
-CREATE TABLE tbl_dedu_perp_emp ( 
+CREATE TABLE IF NOT EXISTS tbl_dedu_perp_emp ( 
     pk_dedu_perp_emp INT NOT NULL AUTO_INCREMENT, 
     Fk_clave_empleado INT NOT NULL, 
     Fk_dedu_perp INT NOT NULL, 
@@ -170,8 +170,8 @@ CREATE TABLE tbl_dedu_perp_emp (
     FOREIGN KEY (Fk_dedu_perp ) REFERENCES tbl_dedu_perp (pk_dedu_perp), 
     PRIMARY KEY (pk_dedu_perp_emp) 
 ); 
- 
-CREATE TABLE tbl_empresas ( 
+
+CREATE TABLE IF NOT EXISTS tbl_empresas ( 
     empresa_id INT AUTO_INCREMENT PRIMARY KEY,  -- Llave primaria autoincremental 
     empresas_nombre VARCHAR(255) NOT NULL,       -- Nombre de la empresa 
     empresas_logo LONGBLOB,                              -- Campo para almacenar la foto (logo) en 
@@ -329,16 +329,17 @@ CREATE TABLE IF NOT EXISTS tbl_notas (
     pk_id_nota INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     fk_id_empleado INT NOT NULL,
     fk_id_capacitacion INT NOT NULL,
-    notas_nivel CHAR(1) NOT NULL CHECK (notas_nivel IN ('D', 'C', 'B', 'A')),
+    fk_id_nivel INT NOT NULL,
     notas_puntaje DECIMAL(5,2) NOT NULL CHECK (notas_puntaje BETWEEN 0 AND 100),
     notas_fecha DATE NOT NULL,
     estado TINYINT(1) NOT NULL DEFAULT 1,
     FOREIGN KEY (fk_id_empleado) REFERENCES tbl_empleados (pk_clave),
-    FOREIGN KEY (fk_id_capacitacion) REFERENCES tbl_capacitaciones (pk_id_capacitacion)
+    FOREIGN KEY (fk_id_capacitacion) REFERENCES tbl_capacitaciones (pk_id_capacitacion),
+    FOREIGN KEY (fk_id_nivel) REFERENCES tbl_nivelcompetencia (pk_id_nivel)
 );
 -- ----------------------------------------------------------------------------------------------------
 -- ---------------------------------------Desempeño Jose Daniel Sierra---------------------------------------------
- CREATE TABLE tbl_evaluaciones (
+ CREATE TABLE IF NOT EXISTS tbl_evaluaciones (
     pk_id_evaluacion INT NOT NULL AUTO_INCREMENT,
     fk_clave_empleado INT NOT NULL,
     tipo_evaluacion VARCHAR(50) NOT NULL,
@@ -350,7 +351,7 @@ CREATE TABLE IF NOT EXISTS tbl_notas (
     FOREIGN KEY (fk_clave_empleado) REFERENCES tbl_empleados(pk_clave)
 );
 -- Creación de tbl_resultados_evaluacion
-CREATE TABLE tbl_resultados_evaluacion (
+CREATE TABLE IF NOT EXISTS tbl_resultados_evaluacion (
     pk_id_resultado INT NOT NULL AUTO_INCREMENT,
     fk_clave_empleado INT NOT NULL,
     calificacion_final DECIMAL(5, 2) NOT NULL,
@@ -360,7 +361,7 @@ CREATE TABLE tbl_resultados_evaluacion (
     FOREIGN KEY (fk_clave_empleado) REFERENCES tbl_empleados(pk_clave)
 );
 -- Creación de tbl_bonos_promociones
-CREATE TABLE tbl_bonos_promociones (
+CREATE TABLE IF NOT EXISTS tbl_bonos_promociones (
     pk_id_bono_promocion INT NOT NULL AUTO_INCREMENT,
     fk_id_resultado INT NOT NULL,
     tipo VARCHAR(50) NOT NULL,
@@ -372,7 +373,7 @@ CREATE TABLE tbl_bonos_promociones (
 );
 -- ---------------------------------------------------------------------------------------------------------------
 -- --------------------------------------Desarrollo de carrera - Ismar Cortez----------------------------------------
-CREATE TABLE tbl_promociones (
+CREATE TABLE IF NOT EXISTS tbl_promociones (
     pk_id_promocion INT NOT NULL AUTO_INCREMENT,
     fk_clave_empleado INT NOT NULL,
     promociones_fecha DATE NOT NULL,
@@ -390,7 +391,7 @@ CREATE TABLE tbl_promociones (
 -- -------------------------------------Gestion Disciplinaria - Kevin Hamilton--------------------------------------------------------
 
 -- Creación de la tabla de faltas disciplinarias
-CREATE TABLE tbl_faltas_disciplinarias (
+CREATE TABLE IF NOT EXISTS tbl_faltas_disciplinarias (
     pk_id_falta INT NOT NULL AUTO_INCREMENT,
     fk_clave_empleado INT NOT NULL,
     falta_fecha DATE NOT NULL,
@@ -402,7 +403,7 @@ CREATE TABLE tbl_faltas_disciplinarias (
 );
 
 -- Creación de la tabla de evidencias asociadas a una falta disciplinaria
-CREATE TABLE tbl_evidencias (
+CREATE TABLE IF NOT EXISTS tbl_evidencias (
     pk_id_evidencia INT NOT NULL AUTO_INCREMENT,
     fk_id_falta INT NOT NULL,
     evidencia_tipo VARCHAR(50) NOT NULL,  -- Ejemplo: Imagen, Video, Documento
@@ -413,7 +414,7 @@ CREATE TABLE tbl_evidencias (
 );
 
 -- Creación de la tabla de sanciones asociadas a una falta disciplinaria
-CREATE TABLE tbl_sanciones (
+CREATE TABLE IF NOT EXISTS tbl_sanciones (
     pk_id_sancion INT NOT NULL AUTO_INCREMENT,
     fk_id_falta INT NOT NULL,
     sancion_tipo VARCHAR(50) NOT NULL,  -- Ejemplo: Amonestación, Suspensión, Despido

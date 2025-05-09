@@ -43,13 +43,13 @@ namespace Modelo_Vista_AsistenciaYFaltas
             // 
             this.dgvAsistencias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvAsistencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAsistencias.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvAsistencias.Location = new System.Drawing.Point(0, 285);
             this.dgvAsistencias.Name = "dgvAsistencias";
             this.dgvAsistencias.RowHeadersWidth = 51;
             this.dgvAsistencias.RowTemplate.Height = 24;
             this.dgvAsistencias.Size = new System.Drawing.Size(819, 209);
             this.dgvAsistencias.TabIndex = 1;
+            this.dgvAsistencias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsistencias_CellContentClick);
             // 
             // Txt_importar
             // 
@@ -100,6 +100,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.btn_importar.Size = new System.Drawing.Size(88, 79);
             this.btn_importar.TabIndex = 5;
             this.btn_importar.UseVisualStyleBackColor = true;
+            this.btn_importar.Click += new System.EventHandler(this.btn_importar_Click);
             // 
             // btn_examinar
             // 
@@ -111,6 +112,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.btn_examinar.Size = new System.Drawing.Size(90, 79);
             this.btn_examinar.TabIndex = 2;
             this.btn_examinar.UseVisualStyleBackColor = true;
+            this.btn_examinar.Click += new System.EventHandler(this.btn_examinar_Click);
             // 
             // frm_importar_asistencia
             // 
@@ -127,7 +129,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.Controls.Add(this.dgvAsistencias);
             this.Name = "frm_importar_asistencia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "16002-Importar Asistencia";
+            this.Text = "16002-Importar Asitencia";
             this.Load += new System.EventHandler(this.frm_importar_asistencia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistencias)).EndInit();
             this.ResumeLayout(false);

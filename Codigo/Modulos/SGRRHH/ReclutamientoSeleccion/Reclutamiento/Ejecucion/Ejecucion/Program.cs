@@ -16,7 +16,7 @@ namespace Ejecucion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Capa_Vista_Reclutamiento.Frm_Expediente());
+            Application.Run(new Capa_Vista_Reclutamiento.Frm_Postulante());
         }
     }
 }

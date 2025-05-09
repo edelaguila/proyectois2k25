@@ -48,15 +48,10 @@ namespace Capa_Vista_Reclutamiento
             this.Txt_Curriculum = new System.Windows.Forms.TextBox();
             this.Btn_seleccionarCV = new System.Windows.Forms.Button();
             this.Lbl_PruebaLogica = new System.Windows.Forms.Label();
-            this.Cmb_PruebaLogica = new System.Windows.Forms.ComboBox();
             this.Lbl_PruebaNumerica = new System.Windows.Forms.Label();
-            this.Cmb_PruebaNumerica = new System.Windows.Forms.ComboBox();
             this.Lbl_PruebaVerbal = new System.Windows.Forms.Label();
-            this.Cmb_PruebaVerbal = new System.Windows.Forms.ComboBox();
             this.Lbl_PruebaRazonamiento = new System.Windows.Forms.Label();
-            this.Cmb_Razonamiento = new System.Windows.Forms.ComboBox();
             this.Lbl_PruebaConcentración = new System.Windows.Forms.Label();
-            this.Cmb_PruebaConcentracion = new System.Windows.Forms.ComboBox();
             this.Lbl_PruebaPersonalidad = new System.Windows.Forms.Label();
             this.Cmb_PruebaPersonalidad = new System.Windows.Forms.ComboBox();
             this.Lbl_PruebasPsicometricas = new System.Windows.Forms.Label();
@@ -67,6 +62,14 @@ namespace Capa_Vista_Reclutamiento
             this.Lbl_DocEntrevista = new System.Windows.Forms.Label();
             this.Lbl_Titulo = new System.Windows.Forms.Label();
             this.Dgv_VisualizarDatos = new System.Windows.Forms.DataGridView();
+            this.Txt_pruebaLogica = new System.Windows.Forms.TextBox();
+            this.Txt_pruebaNumerica = new System.Windows.Forms.TextBox();
+            this.Txt_pruebaVerbal = new System.Windows.Forms.TextBox();
+            this.Txt_pruebaRazonamiento = new System.Windows.Forms.TextBox();
+            this.Txt_pruebaTecnologica = new System.Windows.Forms.TextBox();
+            this.Btn_VerCv = new System.Windows.Forms.Button();
+            this.Btn_DocEntrevista = new System.Windows.Forms.Button();
+            this.Btn_DocPruebas = new System.Windows.Forms.Button();
             this.Pnl_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_VisualizarDatos)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +99,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_salir.Size = new System.Drawing.Size(62, 64);
             this.Btn_salir.TabIndex = 8;
             this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
             // Btn_ayuda
             // 
@@ -126,6 +130,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_buscar.Size = new System.Drawing.Size(62, 64);
             this.Btn_buscar.TabIndex = 5;
             this.Btn_buscar.UseVisualStyleBackColor = true;
+            this.Btn_buscar.Click += new System.EventHandler(this.Btn_buscar_Click);
             // 
             // Btn_eliminar
             // 
@@ -136,6 +141,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_eliminar.Size = new System.Drawing.Size(62, 64);
             this.Btn_eliminar.TabIndex = 4;
             this.Btn_eliminar.UseVisualStyleBackColor = true;
+            this.Btn_eliminar.Click += new System.EventHandler(this.Btn_eliminar_Click);
             // 
             // Btn_cancelar
             // 
@@ -146,6 +152,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_cancelar.Size = new System.Drawing.Size(62, 64);
             this.Btn_cancelar.TabIndex = 3;
             this.Btn_cancelar.UseVisualStyleBackColor = true;
+            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
             // 
             // Btn_guardar
             // 
@@ -156,6 +163,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_guardar.Size = new System.Drawing.Size(62, 64);
             this.Btn_guardar.TabIndex = 2;
             this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
             // 
             // Btn_editar
             // 
@@ -166,6 +174,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_editar.Size = new System.Drawing.Size(62, 64);
             this.Btn_editar.TabIndex = 1;
             this.Btn_editar.UseVisualStyleBackColor = true;
+            this.Btn_editar.Click += new System.EventHandler(this.Btn_editar_Click);
             // 
             // Btn_agregar
             // 
@@ -176,6 +185,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_agregar.Size = new System.Drawing.Size(62, 64);
             this.Btn_agregar.TabIndex = 0;
             this.Btn_agregar.UseVisualStyleBackColor = true;
+            this.Btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
             // 
             // Lbl_IdExpediente
             // 
@@ -238,6 +248,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_seleccionarCV.TabIndex = 7;
             this.Btn_seleccionarCV.Text = "Seleccionar";
             this.Btn_seleccionarCV.UseVisualStyleBackColor = true;
+            this.Btn_seleccionarCV.Click += new System.EventHandler(this.Btn_seleccionarCV_Click);
             // 
             // Lbl_PruebaLogica
             // 
@@ -249,25 +260,6 @@ namespace Capa_Vista_Reclutamiento
             this.Lbl_PruebaLogica.TabIndex = 8;
             this.Lbl_PruebaLogica.Text = "Prueba Lógica";
             // 
-            // Cmb_PruebaLogica
-            // 
-            this.Cmb_PruebaLogica.FormattingEnabled = true;
-            this.Cmb_PruebaLogica.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.Cmb_PruebaLogica.Location = new System.Drawing.Point(171, 276);
-            this.Cmb_PruebaLogica.Name = "Cmb_PruebaLogica";
-            this.Cmb_PruebaLogica.Size = new System.Drawing.Size(149, 21);
-            this.Cmb_PruebaLogica.TabIndex = 9;
-            // 
             // Lbl_PruebaNumerica
             // 
             this.Lbl_PruebaNumerica.AutoSize = true;
@@ -277,25 +269,6 @@ namespace Capa_Vista_Reclutamiento
             this.Lbl_PruebaNumerica.Size = new System.Drawing.Size(115, 19);
             this.Lbl_PruebaNumerica.TabIndex = 10;
             this.Lbl_PruebaNumerica.Text = "Prueba Numérica";
-            // 
-            // Cmb_PruebaNumerica
-            // 
-            this.Cmb_PruebaNumerica.FormattingEnabled = true;
-            this.Cmb_PruebaNumerica.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.Cmb_PruebaNumerica.Location = new System.Drawing.Point(171, 314);
-            this.Cmb_PruebaNumerica.Name = "Cmb_PruebaNumerica";
-            this.Cmb_PruebaNumerica.Size = new System.Drawing.Size(149, 21);
-            this.Cmb_PruebaNumerica.TabIndex = 11;
             // 
             // Lbl_PruebaVerbal
             // 
@@ -307,25 +280,6 @@ namespace Capa_Vista_Reclutamiento
             this.Lbl_PruebaVerbal.TabIndex = 12;
             this.Lbl_PruebaVerbal.Text = "Prueba Verbal";
             // 
-            // Cmb_PruebaVerbal
-            // 
-            this.Cmb_PruebaVerbal.FormattingEnabled = true;
-            this.Cmb_PruebaVerbal.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.Cmb_PruebaVerbal.Location = new System.Drawing.Point(171, 352);
-            this.Cmb_PruebaVerbal.Name = "Cmb_PruebaVerbal";
-            this.Cmb_PruebaVerbal.Size = new System.Drawing.Size(149, 21);
-            this.Cmb_PruebaVerbal.TabIndex = 13;
-            // 
             // Lbl_PruebaRazonamiento
             // 
             this.Lbl_PruebaRazonamiento.AutoSize = true;
@@ -336,53 +290,15 @@ namespace Capa_Vista_Reclutamiento
             this.Lbl_PruebaRazonamiento.TabIndex = 14;
             this.Lbl_PruebaRazonamiento.Text = "Prueba Razonamiento";
             // 
-            // Cmb_Razonamiento
-            // 
-            this.Cmb_Razonamiento.FormattingEnabled = true;
-            this.Cmb_Razonamiento.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.Cmb_Razonamiento.Location = new System.Drawing.Point(621, 276);
-            this.Cmb_Razonamiento.Name = "Cmb_Razonamiento";
-            this.Cmb_Razonamiento.Size = new System.Drawing.Size(149, 21);
-            this.Cmb_Razonamiento.TabIndex = 15;
-            // 
             // Lbl_PruebaConcentración
             // 
             this.Lbl_PruebaConcentración.AutoSize = true;
             this.Lbl_PruebaConcentración.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_PruebaConcentración.Location = new System.Drawing.Point(456, 313);
             this.Lbl_PruebaConcentración.Name = "Lbl_PruebaConcentración";
-            this.Lbl_PruebaConcentración.Size = new System.Drawing.Size(144, 19);
+            this.Lbl_PruebaConcentración.Size = new System.Drawing.Size(128, 19);
             this.Lbl_PruebaConcentración.TabIndex = 16;
-            this.Lbl_PruebaConcentración.Text = "Prueba Concentración";
-            // 
-            // Cmb_PruebaConcentracion
-            // 
-            this.Cmb_PruebaConcentracion.FormattingEnabled = true;
-            this.Cmb_PruebaConcentracion.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.Cmb_PruebaConcentracion.Location = new System.Drawing.Point(621, 314);
-            this.Cmb_PruebaConcentracion.Name = "Cmb_PruebaConcentracion";
-            this.Cmb_PruebaConcentracion.Size = new System.Drawing.Size(149, 21);
-            this.Cmb_PruebaConcentracion.TabIndex = 17;
+            this.Lbl_PruebaConcentración.Text = "Prueba Tecnológica";
             // 
             // Lbl_PruebaPersonalidad
             // 
@@ -445,6 +361,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_SeleccionarPruebas.TabIndex = 22;
             this.Btn_SeleccionarPruebas.Text = "Seleccionar";
             this.Btn_SeleccionarPruebas.UseVisualStyleBackColor = true;
+            this.Btn_SeleccionarPruebas.Click += new System.EventHandler(this.Btn_SeleccionarPruebas_Click);
             // 
             // Btn_SeleccionarEntrevista
             // 
@@ -455,6 +372,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_SeleccionarEntrevista.TabIndex = 25;
             this.Btn_SeleccionarEntrevista.Text = "Seleccionar";
             this.Btn_SeleccionarEntrevista.UseVisualStyleBackColor = true;
+            this.Btn_SeleccionarEntrevista.Click += new System.EventHandler(this.Btn_SeleccionarEntrevista_Click);
             // 
             // Txt_DocEntrevista
             // 
@@ -477,7 +395,7 @@ namespace Capa_Vista_Reclutamiento
             // 
             this.Lbl_Titulo.AutoSize = true;
             this.Lbl_Titulo.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Titulo.Location = new System.Drawing.Point(293, 223);
+            this.Lbl_Titulo.Location = new System.Drawing.Point(12, 226);
             this.Lbl_Titulo.Name = "Lbl_Titulo";
             this.Lbl_Titulo.Size = new System.Drawing.Size(244, 26);
             this.Lbl_Titulo.TabIndex = 26;
@@ -488,15 +406,90 @@ namespace Capa_Vista_Reclutamiento
             this.Dgv_VisualizarDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_VisualizarDatos.Location = new System.Drawing.Point(14, 432);
             this.Dgv_VisualizarDatos.Name = "Dgv_VisualizarDatos";
+            this.Dgv_VisualizarDatos.RowHeadersWidth = 51;
             this.Dgv_VisualizarDatos.Size = new System.Drawing.Size(756, 164);
             this.Dgv_VisualizarDatos.TabIndex = 27;
+            this.Dgv_VisualizarDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_VisualizarDatos_CellClick);
+            // 
+            // Txt_pruebaLogica
+            // 
+            this.Txt_pruebaLogica.Location = new System.Drawing.Point(171, 276);
+            this.Txt_pruebaLogica.Name = "Txt_pruebaLogica";
+            this.Txt_pruebaLogica.Size = new System.Drawing.Size(149, 20);
+            this.Txt_pruebaLogica.TabIndex = 28;
+            // 
+            // Txt_pruebaNumerica
+            // 
+            this.Txt_pruebaNumerica.Location = new System.Drawing.Point(171, 314);
+            this.Txt_pruebaNumerica.Name = "Txt_pruebaNumerica";
+            this.Txt_pruebaNumerica.Size = new System.Drawing.Size(149, 20);
+            this.Txt_pruebaNumerica.TabIndex = 29;
+            // 
+            // Txt_pruebaVerbal
+            // 
+            this.Txt_pruebaVerbal.Location = new System.Drawing.Point(171, 352);
+            this.Txt_pruebaVerbal.Name = "Txt_pruebaVerbal";
+            this.Txt_pruebaVerbal.Size = new System.Drawing.Size(149, 20);
+            this.Txt_pruebaVerbal.TabIndex = 30;
+            // 
+            // Txt_pruebaRazonamiento
+            // 
+            this.Txt_pruebaRazonamiento.Location = new System.Drawing.Point(621, 275);
+            this.Txt_pruebaRazonamiento.Name = "Txt_pruebaRazonamiento";
+            this.Txt_pruebaRazonamiento.Size = new System.Drawing.Size(149, 20);
+            this.Txt_pruebaRazonamiento.TabIndex = 31;
+            // 
+            // Txt_pruebaTecnologica
+            // 
+            this.Txt_pruebaTecnologica.Location = new System.Drawing.Point(621, 314);
+            this.Txt_pruebaTecnologica.Name = "Txt_pruebaTecnologica";
+            this.Txt_pruebaTecnologica.Size = new System.Drawing.Size(149, 20);
+            this.Txt_pruebaTecnologica.TabIndex = 32;
+            // 
+            // Btn_VerCv
+            // 
+            this.Btn_VerCv.Location = new System.Drawing.Point(274, 229);
+            this.Btn_VerCv.Name = "Btn_VerCv";
+            this.Btn_VerCv.Size = new System.Drawing.Size(75, 23);
+            this.Btn_VerCv.TabIndex = 33;
+            this.Btn_VerCv.Text = "Curriculum";
+            this.Btn_VerCv.UseVisualStyleBackColor = true;
+            this.Btn_VerCv.Click += new System.EventHandler(this.Btn_VerCv_Click);
+            // 
+            // Btn_DocEntrevista
+            // 
+            this.Btn_DocEntrevista.Location = new System.Drawing.Point(376, 229);
+            this.Btn_DocEntrevista.Name = "Btn_DocEntrevista";
+            this.Btn_DocEntrevista.Size = new System.Drawing.Size(75, 23);
+            this.Btn_DocEntrevista.TabIndex = 34;
+            this.Btn_DocEntrevista.Text = "Entrevista";
+            this.Btn_DocEntrevista.UseVisualStyleBackColor = true;
+            this.Btn_DocEntrevista.Click += new System.EventHandler(this.Btn_DocEntrevista_Click);
+            // 
+            // Btn_DocPruebas
+            // 
+            this.Btn_DocPruebas.Location = new System.Drawing.Point(480, 229);
+            this.Btn_DocPruebas.Name = "Btn_DocPruebas";
+            this.Btn_DocPruebas.Size = new System.Drawing.Size(75, 23);
+            this.Btn_DocPruebas.TabIndex = 35;
+            this.Btn_DocPruebas.Text = "Pruebas";
+            this.Btn_DocPruebas.UseVisualStyleBackColor = true;
+            this.Btn_DocPruebas.Click += new System.EventHandler(this.Btn_DocPruebas_Click);
             // 
             // Frm_Expediente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(800, 618);
+            this.ClientSize = new System.Drawing.Size(800, 609);
+            this.Controls.Add(this.Btn_DocPruebas);
+            this.Controls.Add(this.Btn_DocEntrevista);
+            this.Controls.Add(this.Btn_VerCv);
+            this.Controls.Add(this.Txt_pruebaTecnologica);
+            this.Controls.Add(this.Txt_pruebaRazonamiento);
+            this.Controls.Add(this.Txt_pruebaVerbal);
+            this.Controls.Add(this.Txt_pruebaNumerica);
+            this.Controls.Add(this.Txt_pruebaLogica);
             this.Controls.Add(this.Dgv_VisualizarDatos);
             this.Controls.Add(this.Lbl_Titulo);
             this.Controls.Add(this.Btn_SeleccionarEntrevista);
@@ -507,15 +500,10 @@ namespace Capa_Vista_Reclutamiento
             this.Controls.Add(this.Lbl_PruebasPsicometricas);
             this.Controls.Add(this.Cmb_PruebaPersonalidad);
             this.Controls.Add(this.Lbl_PruebaPersonalidad);
-            this.Controls.Add(this.Cmb_PruebaConcentracion);
             this.Controls.Add(this.Lbl_PruebaConcentración);
-            this.Controls.Add(this.Cmb_Razonamiento);
             this.Controls.Add(this.Lbl_PruebaRazonamiento);
-            this.Controls.Add(this.Cmb_PruebaVerbal);
             this.Controls.Add(this.Lbl_PruebaVerbal);
-            this.Controls.Add(this.Cmb_PruebaNumerica);
             this.Controls.Add(this.Lbl_PruebaNumerica);
-            this.Controls.Add(this.Cmb_PruebaLogica);
             this.Controls.Add(this.Lbl_PruebaLogica);
             this.Controls.Add(this.Btn_seleccionarCV);
             this.Controls.Add(this.Txt_Curriculum);
@@ -527,6 +515,7 @@ namespace Capa_Vista_Reclutamiento
             this.Controls.Add(this.Pnl_menu);
             this.Name = "Frm_Expediente";
             this.Text = "13005 - Mantenimiento_Expedientes";
+            this.Load += new System.EventHandler(this.Frm_Expediente_Load);
             this.Pnl_menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_VisualizarDatos)).EndInit();
             this.ResumeLayout(false);
@@ -554,15 +543,10 @@ namespace Capa_Vista_Reclutamiento
         private System.Windows.Forms.TextBox Txt_Curriculum;
         private System.Windows.Forms.Button Btn_seleccionarCV;
         private System.Windows.Forms.Label Lbl_PruebaLogica;
-        private System.Windows.Forms.ComboBox Cmb_PruebaLogica;
         private System.Windows.Forms.Label Lbl_PruebaNumerica;
-        private System.Windows.Forms.ComboBox Cmb_PruebaNumerica;
         private System.Windows.Forms.Label Lbl_PruebaVerbal;
-        private System.Windows.Forms.ComboBox Cmb_PruebaVerbal;
         private System.Windows.Forms.Label Lbl_PruebaRazonamiento;
-        private System.Windows.Forms.ComboBox Cmb_Razonamiento;
         private System.Windows.Forms.Label Lbl_PruebaConcentración;
-        private System.Windows.Forms.ComboBox Cmb_PruebaConcentracion;
         private System.Windows.Forms.Label Lbl_PruebaPersonalidad;
         private System.Windows.Forms.ComboBox Cmb_PruebaPersonalidad;
         private System.Windows.Forms.Label Lbl_PruebasPsicometricas;
@@ -573,5 +557,13 @@ namespace Capa_Vista_Reclutamiento
         private System.Windows.Forms.Label Lbl_DocEntrevista;
         private System.Windows.Forms.Label Lbl_Titulo;
         private System.Windows.Forms.DataGridView Dgv_VisualizarDatos;
+        private System.Windows.Forms.TextBox Txt_pruebaLogica;
+        private System.Windows.Forms.TextBox Txt_pruebaNumerica;
+        private System.Windows.Forms.TextBox Txt_pruebaVerbal;
+        private System.Windows.Forms.TextBox Txt_pruebaRazonamiento;
+        private System.Windows.Forms.TextBox Txt_pruebaTecnologica;
+        private System.Windows.Forms.Button Btn_VerCv;
+        private System.Windows.Forms.Button Btn_DocEntrevista;
+        private System.Windows.Forms.Button Btn_DocPruebas;
     }
 }

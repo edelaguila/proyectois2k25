@@ -30,32 +30,28 @@ namespace Capa_Vista_Evaluacion
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.Cmb_Evaluador = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Cmb_Tipo_Ev = new System.Windows.Forms.ComboBox();
+            this.Cmb_Empleado = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.Txt_ObservacionesGen = new System.Windows.Forms.TextBox();
+            this.Txt_calificacion = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.Nud_Liderazgo = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -63,54 +59,58 @@ namespace Capa_Vista_Evaluacion
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Txt_monto = new System.Windows.Forms.TextBox();
+            this.Txt_competencia10 = new System.Windows.Forms.TextBox();
+            this.Txt_competencia9 = new System.Windows.Forms.TextBox();
+            this.Txt_competencia8 = new System.Windows.Forms.TextBox();
+            this.Txt_competencia7 = new System.Windows.Forms.TextBox();
+            this.Txt_competencia6 = new System.Windows.Forms.TextBox();
+            this.Txt_competencia5 = new System.Windows.Forms.TextBox();
+            this.Txt_competencia4 = new System.Windows.Forms.TextBox();
+            this.Txt_competencia3 = new System.Windows.Forms.TextBox();
+            this.Txt_competencia2 = new System.Windows.Forms.TextBox();
+            this.Txt_competencia1 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.button5 = new System.Windows.Forms.Button();
+            this.nud_responsabilidad = new System.Windows.Forms.NumericUpDown();
+            this.nud_orientacion_cliente = new System.Windows.Forms.NumericUpDown();
+            this.Nud_productividad = new System.Windows.Forms.NumericUpDown();
+            this.Nud_adaptabilidad = new System.Windows.Forms.NumericUpDown();
+            this.Nud_Tiempo = new System.Windows.Forms.NumericUpDown();
+            this.nud_Innovacion_creatividad = new System.Windows.Forms.NumericUpDown();
+            this.Nud_Resolucion_Problemas = new System.Windows.Forms.NumericUpDown();
+            this.Nud_Comunicacion = new System.Windows.Forms.NumericUpDown();
+            this.Nud_Trabajo_equipo = new System.Windows.Forms.NumericUpDown();
+            this.Btn_limpiar = new System.Windows.Forms.Button();
+            this.Btn_Reporte = new System.Windows.Forms.Button();
+            this.Btn_Salir = new System.Windows.Forms.Button();
+            this.Btn_guardar = new System.Windows.Forms.Button();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_Liderazgo)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_responsabilidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_orientacion_cliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_productividad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_adaptabilidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_Tiempo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_Innovacion_creatividad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_Resolucion_Problemas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_Comunicacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_Trabajo_equipo)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Controls.Add(this.Cmb_Evaluador);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.Cmb_Tipo_Ev);
+            this.groupBox1.Controls.Add(this.Cmb_Empleado);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(20, 138);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -121,15 +121,15 @@ namespace Capa_Vista_Evaluacion
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Empleado y Evaluador";
             // 
-            // comboBox3
+            // Cmb_Evaluador
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(208, 94);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(262, 27);
-            this.comboBox3.TabIndex = 9;
+            this.Cmb_Evaluador.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cmb_Evaluador.FormattingEnabled = true;
+            this.Cmb_Evaluador.Location = new System.Drawing.Point(208, 94);
+            this.Cmb_Evaluador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cmb_Evaluador.Name = "Cmb_Evaluador";
+            this.Cmb_Evaluador.Size = new System.Drawing.Size(262, 27);
+            this.Cmb_Evaluador.TabIndex = 9;
             // 
             // label5
             // 
@@ -143,11 +143,13 @@ namespace Capa_Vista_Evaluacion
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(208, 139);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(262, 26);
             this.dateTimePicker1.TabIndex = 7;
+            this.dateTimePicker1.Value = new System.DateTime(2025, 4, 29, 9, 12, 51, 0);
             // 
             // label4
             // 
@@ -188,30 +190,30 @@ namespace Capa_Vista_Evaluacion
             this.label1.TabIndex = 2;
             this.label1.Text = "Empleado:";
             // 
-            // comboBox2
+            // Cmb_Tipo_Ev
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(208, 175);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(262, 27);
-            this.comboBox2.TabIndex = 1;
+            this.Cmb_Tipo_Ev.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cmb_Tipo_Ev.FormattingEnabled = true;
+            this.Cmb_Tipo_Ev.Location = new System.Drawing.Point(208, 175);
+            this.Cmb_Tipo_Ev.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cmb_Tipo_Ev.Name = "Cmb_Tipo_Ev";
+            this.Cmb_Tipo_Ev.Size = new System.Drawing.Size(262, 27);
+            this.Cmb_Tipo_Ev.TabIndex = 1;
             // 
-            // comboBox1
+            // Cmb_Empleado
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(208, 55);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(262, 27);
-            this.comboBox1.TabIndex = 0;
+            this.Cmb_Empleado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cmb_Empleado.FormattingEnabled = true;
+            this.Cmb_Empleado.Location = new System.Drawing.Point(208, 55);
+            this.Cmb_Empleado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cmb_Empleado.Name = "Cmb_Empleado";
+            this.Cmb_Empleado.Size = new System.Drawing.Size(262, 27);
+            this.Cmb_Empleado.TabIndex = 0;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox11);
-            this.groupBox3.Controls.Add(this.textBox10);
+            this.groupBox3.Controls.Add(this.Txt_ObservacionesGen);
+            this.groupBox3.Controls.Add(this.Txt_calificacion);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label21);
@@ -225,21 +227,21 @@ namespace Capa_Vista_Evaluacion
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Evaluación General";
             // 
-            // textBox11
+            // Txt_ObservacionesGen
             // 
-            this.textBox11.Location = new System.Drawing.Point(198, 54);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(272, 26);
-            this.textBox11.TabIndex = 41;
+            this.Txt_ObservacionesGen.Location = new System.Drawing.Point(198, 58);
+            this.Txt_ObservacionesGen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_ObservacionesGen.Name = "Txt_ObservacionesGen";
+            this.Txt_ObservacionesGen.Size = new System.Drawing.Size(272, 26);
+            this.Txt_ObservacionesGen.TabIndex = 41;
             // 
-            // textBox10
+            // Txt_calificacion
             // 
-            this.textBox10.Location = new System.Drawing.Point(198, 96);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(272, 26);
-            this.textBox10.TabIndex = 40;
+            this.Txt_calificacion.Location = new System.Drawing.Point(198, 96);
+            this.Txt_calificacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_calificacion.Name = "Txt_calificacion";
+            this.Txt_calificacion.Size = new System.Drawing.Size(272, 26);
+            this.Txt_calificacion.TabIndex = 40;
             // 
             // label17
             // 
@@ -269,46 +271,6 @@ namespace Capa_Vista_Evaluacion
             this.label21.Size = new System.Drawing.Size(113, 19);
             this.label21.TabIndex = 2;
             this.label21.Text = "Observaciones:";
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.cerrar_sesion;
-            this.button4.Location = new System.Drawing.Point(344, 49);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(68, 65);
-            this.button4.TabIndex = 19;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.ahorrar;
-            this.button3.Location = new System.Drawing.Point(106, 49);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 65);
-            this.button3.TabIndex = 18;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.preguntas;
-            this.button1.Location = new System.Drawing.Point(262, 49);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 65);
-            this.button1.TabIndex = 17;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.buscar;
-            this.button2.Location = new System.Drawing.Point(20, 49);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(69, 65);
-            this.button2.TabIndex = 16;
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -359,13 +321,18 @@ namespace Capa_Vista_Evaluacion
             this.label6.TabIndex = 8;
             this.label6.Text = "Trabajo en Equipo:\t";
             // 
-            // numericUpDown1
+            // Nud_Liderazgo
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(256, 51);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(66, 26);
-            this.numericUpDown1.TabIndex = 9;
+            this.Nud_Liderazgo.Location = new System.Drawing.Point(256, 51);
+            this.Nud_Liderazgo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Nud_Liderazgo.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.Nud_Liderazgo.Name = "Nud_Liderazgo";
+            this.Nud_Liderazgo.Size = new System.Drawing.Size(66, 26);
+            this.Nud_Liderazgo.TabIndex = 9;
             // 
             // label11
             // 
@@ -429,34 +396,34 @@ namespace Capa_Vista_Evaluacion
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox9);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.Txt_monto);
+            this.groupBox2.Controls.Add(this.Txt_competencia10);
+            this.groupBox2.Controls.Add(this.Txt_competencia9);
+            this.groupBox2.Controls.Add(this.Txt_competencia8);
+            this.groupBox2.Controls.Add(this.Txt_competencia7);
+            this.groupBox2.Controls.Add(this.Txt_competencia6);
+            this.groupBox2.Controls.Add(this.Txt_competencia5);
+            this.groupBox2.Controls.Add(this.Txt_competencia4);
+            this.groupBox2.Controls.Add(this.Txt_competencia3);
+            this.groupBox2.Controls.Add(this.Txt_competencia2);
+            this.groupBox2.Controls.Add(this.Txt_competencia1);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.numericUpDown10);
-            this.groupBox2.Controls.Add(this.numericUpDown9);
-            this.groupBox2.Controls.Add(this.numericUpDown8);
-            this.groupBox2.Controls.Add(this.numericUpDown7);
-            this.groupBox2.Controls.Add(this.numericUpDown6);
-            this.groupBox2.Controls.Add(this.numericUpDown5);
-            this.groupBox2.Controls.Add(this.numericUpDown4);
-            this.groupBox2.Controls.Add(this.numericUpDown3);
-            this.groupBox2.Controls.Add(this.numericUpDown2);
+            this.groupBox2.Controls.Add(this.nud_responsabilidad);
+            this.groupBox2.Controls.Add(this.nud_orientacion_cliente);
+            this.groupBox2.Controls.Add(this.Nud_productividad);
+            this.groupBox2.Controls.Add(this.Nud_adaptabilidad);
+            this.groupBox2.Controls.Add(this.Nud_Tiempo);
+            this.groupBox2.Controls.Add(this.nud_Innovacion_creatividad);
+            this.groupBox2.Controls.Add(this.Nud_Resolucion_Problemas);
+            this.groupBox2.Controls.Add(this.Nud_Comunicacion);
+            this.groupBox2.Controls.Add(this.Nud_Trabajo_equipo);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.numericUpDown1);
+            this.groupBox2.Controls.Add(this.Nud_Liderazgo);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label8);
@@ -472,85 +439,85 @@ namespace Capa_Vista_Evaluacion
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Evaluación de empleado";
             // 
-            // textBox9
+            // Txt_competencia10
             // 
-            this.textBox9.Location = new System.Drawing.Point(382, 420);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(168, 26);
-            this.textBox9.TabIndex = 48;
+            this.Txt_competencia10.Location = new System.Drawing.Point(382, 420);
+            this.Txt_competencia10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_competencia10.Name = "Txt_competencia10";
+            this.Txt_competencia10.Size = new System.Drawing.Size(168, 26);
+            this.Txt_competencia10.TabIndex = 48;
             // 
-            // textBox8
+            // Txt_competencia9
             // 
-            this.textBox8.Location = new System.Drawing.Point(382, 376);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(168, 26);
-            this.textBox8.TabIndex = 47;
+            this.Txt_competencia9.Location = new System.Drawing.Point(382, 376);
+            this.Txt_competencia9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_competencia9.Name = "Txt_competencia9";
+            this.Txt_competencia9.Size = new System.Drawing.Size(168, 26);
+            this.Txt_competencia9.TabIndex = 47;
             // 
-            // textBox7
+            // Txt_competencia8
             // 
-            this.textBox7.Location = new System.Drawing.Point(382, 341);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(168, 26);
-            this.textBox7.TabIndex = 46;
+            this.Txt_competencia8.Location = new System.Drawing.Point(382, 341);
+            this.Txt_competencia8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_competencia8.Name = "Txt_competencia8";
+            this.Txt_competencia8.Size = new System.Drawing.Size(168, 26);
+            this.Txt_competencia8.TabIndex = 46;
             // 
-            // textBox6
+            // Txt_competencia7
             // 
-            this.textBox6.Location = new System.Drawing.Point(382, 299);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(168, 26);
-            this.textBox6.TabIndex = 45;
+            this.Txt_competencia7.Location = new System.Drawing.Point(382, 299);
+            this.Txt_competencia7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_competencia7.Name = "Txt_competencia7";
+            this.Txt_competencia7.Size = new System.Drawing.Size(168, 26);
+            this.Txt_competencia7.TabIndex = 45;
             // 
-            // textBox5
+            // Txt_competencia6
             // 
-            this.textBox5.Location = new System.Drawing.Point(382, 258);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(168, 26);
-            this.textBox5.TabIndex = 44;
+            this.Txt_competencia6.Location = new System.Drawing.Point(382, 258);
+            this.Txt_competencia6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_competencia6.Name = "Txt_competencia6";
+            this.Txt_competencia6.Size = new System.Drawing.Size(168, 26);
+            this.Txt_competencia6.TabIndex = 44;
             // 
-            // textBox4
+            // Txt_competencia5
             // 
-            this.textBox4.Location = new System.Drawing.Point(382, 222);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(168, 26);
-            this.textBox4.TabIndex = 43;
+            this.Txt_competencia5.Location = new System.Drawing.Point(382, 222);
+            this.Txt_competencia5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_competencia5.Name = "Txt_competencia5";
+            this.Txt_competencia5.Size = new System.Drawing.Size(168, 26);
+            this.Txt_competencia5.TabIndex = 43;
             // 
-            // textBox3
+            // Txt_competencia4
             // 
-            this.textBox3.Location = new System.Drawing.Point(382, 180);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(168, 26);
-            this.textBox3.TabIndex = 42;
+            this.Txt_competencia4.Location = new System.Drawing.Point(382, 180);
+            this.Txt_competencia4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_competencia4.Name = "Txt_competencia4";
+            this.Txt_competencia4.Size = new System.Drawing.Size(168, 26);
+            this.Txt_competencia4.TabIndex = 42;
             // 
-            // textBox2
+            // Txt_competencia3
             // 
-            this.textBox2.Location = new System.Drawing.Point(382, 142);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(168, 26);
-            this.textBox2.TabIndex = 41;
+            this.Txt_competencia3.Location = new System.Drawing.Point(382, 142);
+            this.Txt_competencia3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_competencia3.Name = "Txt_competencia3";
+            this.Txt_competencia3.Size = new System.Drawing.Size(168, 26);
+            this.Txt_competencia3.TabIndex = 41;
             // 
-            // textBox1
+            // Txt_competencia2
             // 
-            this.textBox1.Location = new System.Drawing.Point(382, 96);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(168, 26);
-            this.textBox1.TabIndex = 40;
+            this.Txt_competencia2.Location = new System.Drawing.Point(382, 96);
+            this.Txt_competencia2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_competencia2.Name = "Txt_competencia2";
+            this.Txt_competencia2.Size = new System.Drawing.Size(168, 26);
+            this.Txt_competencia2.TabIndex = 40;
             // 
-            // Txt_monto
+            // Txt_competencia1
             // 
-            this.Txt_monto.Location = new System.Drawing.Point(382, 50);
-            this.Txt_monto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Txt_monto.Name = "Txt_monto";
-            this.Txt_monto.Size = new System.Drawing.Size(168, 26);
-            this.Txt_monto.TabIndex = 39;
+            this.Txt_competencia1.Location = new System.Drawing.Point(382, 50);
+            this.Txt_competencia1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_competencia1.Name = "Txt_competencia1";
+            this.Txt_competencia1.Size = new System.Drawing.Size(168, 26);
+            this.Txt_competencia1.TabIndex = 39;
             // 
             // label22
             // 
@@ -572,99 +539,188 @@ namespace Capa_Vista_Evaluacion
             this.label20.TabIndex = 37;
             this.label20.Text = "Calificación";
             // 
-            // numericUpDown10
+            // nud_responsabilidad
             // 
-            this.numericUpDown10.Location = new System.Drawing.Point(256, 421);
-            this.numericUpDown10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown10.Name = "numericUpDown10";
-            this.numericUpDown10.Size = new System.Drawing.Size(66, 26);
-            this.numericUpDown10.TabIndex = 36;
+            this.nud_responsabilidad.Location = new System.Drawing.Point(256, 421);
+            this.nud_responsabilidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nud_responsabilidad.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nud_responsabilidad.Name = "nud_responsabilidad";
+            this.nud_responsabilidad.Size = new System.Drawing.Size(66, 26);
+            this.nud_responsabilidad.TabIndex = 36;
             // 
-            // numericUpDown9
+            // nud_orientacion_cliente
             // 
-            this.numericUpDown9.Location = new System.Drawing.Point(256, 377);
-            this.numericUpDown9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown9.Name = "numericUpDown9";
-            this.numericUpDown9.Size = new System.Drawing.Size(66, 26);
-            this.numericUpDown9.TabIndex = 35;
+            this.nud_orientacion_cliente.Location = new System.Drawing.Point(256, 377);
+            this.nud_orientacion_cliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nud_orientacion_cliente.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nud_orientacion_cliente.Name = "nud_orientacion_cliente";
+            this.nud_orientacion_cliente.Size = new System.Drawing.Size(66, 26);
+            this.nud_orientacion_cliente.TabIndex = 35;
             // 
-            // numericUpDown8
+            // Nud_productividad
             // 
-            this.numericUpDown8.Location = new System.Drawing.Point(256, 340);
-            this.numericUpDown8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(66, 26);
-            this.numericUpDown8.TabIndex = 34;
+            this.Nud_productividad.Location = new System.Drawing.Point(256, 340);
+            this.Nud_productividad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Nud_productividad.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.Nud_productividad.Name = "Nud_productividad";
+            this.Nud_productividad.Size = new System.Drawing.Size(66, 26);
+            this.Nud_productividad.TabIndex = 34;
             // 
-            // numericUpDown7
+            // Nud_adaptabilidad
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(256, 293);
-            this.numericUpDown7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(66, 26);
-            this.numericUpDown7.TabIndex = 33;
+            this.Nud_adaptabilidad.Location = new System.Drawing.Point(256, 293);
+            this.Nud_adaptabilidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Nud_adaptabilidad.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.Nud_adaptabilidad.Name = "Nud_adaptabilidad";
+            this.Nud_adaptabilidad.Size = new System.Drawing.Size(66, 26);
+            this.Nud_adaptabilidad.TabIndex = 33;
             // 
-            // numericUpDown6
+            // Nud_Tiempo
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(256, 254);
-            this.numericUpDown6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(66, 26);
-            this.numericUpDown6.TabIndex = 32;
+            this.Nud_Tiempo.Location = new System.Drawing.Point(256, 254);
+            this.Nud_Tiempo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Nud_Tiempo.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.Nud_Tiempo.Name = "Nud_Tiempo";
+            this.Nud_Tiempo.Size = new System.Drawing.Size(66, 26);
+            this.Nud_Tiempo.TabIndex = 32;
             // 
-            // numericUpDown5
+            // nud_Innovacion_creatividad
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(256, 220);
-            this.numericUpDown5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(66, 26);
-            this.numericUpDown5.TabIndex = 31;
+            this.nud_Innovacion_creatividad.Location = new System.Drawing.Point(256, 220);
+            this.nud_Innovacion_creatividad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nud_Innovacion_creatividad.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nud_Innovacion_creatividad.Name = "nud_Innovacion_creatividad";
+            this.nud_Innovacion_creatividad.Size = new System.Drawing.Size(66, 26);
+            this.nud_Innovacion_creatividad.TabIndex = 31;
             // 
-            // numericUpDown4
+            // Nud_Resolucion_Problemas
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(256, 180);
-            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(66, 26);
-            this.numericUpDown4.TabIndex = 30;
+            this.Nud_Resolucion_Problemas.Location = new System.Drawing.Point(256, 180);
+            this.Nud_Resolucion_Problemas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Nud_Resolucion_Problemas.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.Nud_Resolucion_Problemas.Name = "Nud_Resolucion_Problemas";
+            this.Nud_Resolucion_Problemas.Size = new System.Drawing.Size(66, 26);
+            this.Nud_Resolucion_Problemas.TabIndex = 30;
             // 
-            // numericUpDown3
+            // Nud_Comunicacion
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(256, 142);
-            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(66, 26);
-            this.numericUpDown3.TabIndex = 29;
+            this.Nud_Comunicacion.Location = new System.Drawing.Point(256, 142);
+            this.Nud_Comunicacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Nud_Comunicacion.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.Nud_Comunicacion.Name = "Nud_Comunicacion";
+            this.Nud_Comunicacion.Size = new System.Drawing.Size(66, 26);
+            this.Nud_Comunicacion.TabIndex = 29;
             // 
-            // numericUpDown2
+            // Nud_Trabajo_equipo
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(256, 96);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(66, 26);
-            this.numericUpDown2.TabIndex = 28;
+            this.Nud_Trabajo_equipo.Location = new System.Drawing.Point(256, 96);
+            this.Nud_Trabajo_equipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Nud_Trabajo_equipo.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.Nud_Trabajo_equipo.Name = "Nud_Trabajo_equipo";
+            this.Nud_Trabajo_equipo.Size = new System.Drawing.Size(66, 26);
+            this.Nud_Trabajo_equipo.TabIndex = 28;
             // 
-            // button5
+            // Btn_limpiar
             // 
-            this.button5.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.reporte__1_;
-            this.button5.Location = new System.Drawing.Point(180, 49);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(65, 65);
-            this.button5.TabIndex = 28;
-            this.button5.UseVisualStyleBackColor = true;
+            this.Btn_limpiar.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.cancelar__1_;
+            this.Btn_limpiar.Location = new System.Drawing.Point(121, 49);
+            this.Btn_limpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_limpiar.Name = "Btn_limpiar";
+            this.Btn_limpiar.Size = new System.Drawing.Size(65, 65);
+            this.Btn_limpiar.TabIndex = 29;
+            this.Btn_limpiar.UseVisualStyleBackColor = true;
+            this.Btn_limpiar.Click += new System.EventHandler(this.Btn_limpiar_Click);
+            // 
+            // Btn_Reporte
+            // 
+            this.Btn_Reporte.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.reporte__1_;
+            this.Btn_Reporte.Location = new System.Drawing.Point(190, 49);
+            this.Btn_Reporte.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_Reporte.Name = "Btn_Reporte";
+            this.Btn_Reporte.Size = new System.Drawing.Size(65, 65);
+            this.Btn_Reporte.TabIndex = 28;
+            this.Btn_Reporte.UseVisualStyleBackColor = true;
+            this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
+            // 
+            // Btn_Salir
+            // 
+            this.Btn_Salir.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.cerrar_sesion;
+            this.Btn_Salir.Location = new System.Drawing.Point(327, 49);
+            this.Btn_Salir.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_Salir.Name = "Btn_Salir";
+            this.Btn_Salir.Size = new System.Drawing.Size(68, 65);
+            this.Btn_Salir.TabIndex = 19;
+            this.Btn_Salir.UseVisualStyleBackColor = true;
+            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
+            // 
+            // Btn_guardar
+            // 
+            this.Btn_guardar.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.ahorrar;
+            this.Btn_guardar.Location = new System.Drawing.Point(57, 49);
+            this.Btn_guardar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_guardar.Name = "Btn_guardar";
+            this.Btn_guardar.Size = new System.Drawing.Size(60, 65);
+            this.Btn_guardar.TabIndex = 18;
+            this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
+            // 
+            // Btn_ayuda
+            // 
+            this.Btn_ayuda.BackgroundImage = global::Capa_Vista_Evaluacion.Properties.Resources.preguntas;
+            this.Btn_ayuda.Location = new System.Drawing.Point(259, 49);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(64, 65);
+            this.Btn_ayuda.TabIndex = 17;
+            this.Btn_ayuda.UseVisualStyleBackColor = true;
             // 
             // Frm_Evaluacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(1199, 631);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(1155, 631);
+            this.Controls.Add(this.Btn_limpiar);
+            this.Controls.Add(this.Btn_Reporte);
+            this.Controls.Add(this.Btn_Salir);
+            this.Controls.Add(this.Btn_guardar);
+            this.Controls.Add(this.Btn_ayuda);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -676,18 +732,18 @@ namespace Capa_Vista_Evaluacion
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_Liderazgo)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_responsabilidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_orientacion_cliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_productividad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_adaptabilidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_Tiempo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_Innovacion_creatividad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_Resolucion_Problemas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_Comunicacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Nud_Trabajo_equipo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -695,30 +751,29 @@ namespace Capa_Vista_Evaluacion
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox Cmb_Evaluador;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Cmb_Tipo_Ev;
+        private System.Windows.Forms.ComboBox Cmb_Empleado;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button Btn_ayuda;
+        private System.Windows.Forms.Button Btn_guardar;
+        private System.Windows.Forms.Button Btn_Salir;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown Nud_Liderazgo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
@@ -728,27 +783,28 @@ namespace Capa_Vista_Evaluacion
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.NumericUpDown numericUpDown10;
-        private System.Windows.Forms.NumericUpDown numericUpDown9;
-        private System.Windows.Forms.NumericUpDown numericUpDown8;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox Txt_monto;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.NumericUpDown nud_responsabilidad;
+        private System.Windows.Forms.NumericUpDown nud_orientacion_cliente;
+        private System.Windows.Forms.NumericUpDown Nud_productividad;
+        private System.Windows.Forms.NumericUpDown Nud_adaptabilidad;
+        private System.Windows.Forms.NumericUpDown Nud_Tiempo;
+        private System.Windows.Forms.NumericUpDown nud_Innovacion_creatividad;
+        private System.Windows.Forms.NumericUpDown Nud_Resolucion_Problemas;
+        private System.Windows.Forms.NumericUpDown Nud_Comunicacion;
+        private System.Windows.Forms.NumericUpDown Nud_Trabajo_equipo;
+        private System.Windows.Forms.Button Btn_Reporte;
+        private System.Windows.Forms.TextBox Txt_competencia10;
+        private System.Windows.Forms.TextBox Txt_competencia9;
+        private System.Windows.Forms.TextBox Txt_competencia8;
+        private System.Windows.Forms.TextBox Txt_competencia7;
+        private System.Windows.Forms.TextBox Txt_competencia6;
+        private System.Windows.Forms.TextBox Txt_competencia5;
+        private System.Windows.Forms.TextBox Txt_competencia4;
+        private System.Windows.Forms.TextBox Txt_competencia3;
+        private System.Windows.Forms.TextBox Txt_competencia2;
+        private System.Windows.Forms.TextBox Txt_competencia1;
+        private System.Windows.Forms.TextBox Txt_ObservacionesGen;
+        private System.Windows.Forms.TextBox Txt_calificacion;
+        private System.Windows.Forms.Button Btn_limpiar;
     }
 }

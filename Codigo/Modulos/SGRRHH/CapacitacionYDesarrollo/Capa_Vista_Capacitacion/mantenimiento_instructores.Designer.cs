@@ -37,7 +37,7 @@ namespace Capa_Vista_Capacitacion
             this.navegador1.BackColor = System.Drawing.Color.White;
             this.navegador1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navegador1.Location = new System.Drawing.Point(0, 0);
-            this.navegador1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.navegador1.Margin = new System.Windows.Forms.Padding(4);
             this.navegador1.Name = "navegador1";
             this.navegador1.Size = new System.Drawing.Size(800, 450);
             this.navegador1.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace Capa_Vista_Capacitacion
             this.Controls.Add(this.navegador1);
             this.Name = "mantenimiento_instructores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "14002 - mantenimiento_capacitaciones";
+            this.Text = "14002 - mantenimiento_instructores";
             this.Load += new System.EventHandler(this.mantenimiento_instructores_Load);
             this.ResumeLayout(false);
 
