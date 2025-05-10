@@ -762,7 +762,15 @@ CREATE TABLE Tbl_DetalleTrasladoProductos (
     FOREIGN KEY (codigoProducto) REFERENCES Tbl_Productos(codigoProducto)
 );
 
-
+select * from Tbl_DetalleEntradaProductos;
+CREATE TABLE Tbl_DetalleEntradaProductos (
+    Pk_id_DetalleEntrada INT PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_EntradaProductos INT,
+    codigoProducto INT,
+    cantidad INT,
+    precioUnitario DECIMAL(10,2),
+    costoTotal DECIMAL(10,2)
+);
 
 
 -- NUEVAS TABLAS DEL MODULO COMERCIAL
