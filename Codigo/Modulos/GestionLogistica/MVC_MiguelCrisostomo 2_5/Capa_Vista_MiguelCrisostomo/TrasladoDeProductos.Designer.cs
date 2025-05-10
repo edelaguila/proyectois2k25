@@ -233,7 +233,7 @@
             // Pic_Guardar
             // 
             this.Pic_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Guardar.Image")));
-            this.Pic_Guardar.Location = new System.Drawing.Point(1824, 1044);
+            this.Pic_Guardar.Location = new System.Drawing.Point(986, 49);
             this.Pic_Guardar.Name = "Pic_Guardar";
             this.Pic_Guardar.Size = new System.Drawing.Size(10, 10);
             this.Pic_Guardar.TabIndex = 27;
@@ -244,7 +244,7 @@
             // Pic_Editar
             // 
             this.Pic_Editar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Editar.Image")));
-            this.Pic_Editar.Location = new System.Drawing.Point(1808, 1044);
+            this.Pic_Editar.Location = new System.Drawing.Point(970, 49);
             this.Pic_Editar.Name = "Pic_Editar";
             this.Pic_Editar.Size = new System.Drawing.Size(10, 10);
             this.Pic_Editar.TabIndex = 27;
@@ -255,7 +255,7 @@
             // Pic_NuevoTrasladoP
             // 
             this.Pic_NuevoTrasladoP.Image = ((System.Drawing.Image)(resources.GetObject("Pic_NuevoTrasladoP.Image")));
-            this.Pic_NuevoTrasladoP.Location = new System.Drawing.Point(1840, 1044);
+            this.Pic_NuevoTrasladoP.Location = new System.Drawing.Point(1002, 49);
             this.Pic_NuevoTrasladoP.Name = "Pic_NuevoTrasladoP";
             this.Pic_NuevoTrasladoP.Size = new System.Drawing.Size(10, 10);
             this.Pic_NuevoTrasladoP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -276,11 +276,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Dgv_TrasladoDProductos);
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.Txt_Busqueda);
+            this.groupBox2.Controls.Add(this.Pic_NuevoTrasladoP);
             this.groupBox2.Controls.Add(this.Txt_Actualizar);
+            this.groupBox2.Controls.Add(this.Pic_Editar);
+            this.groupBox2.Controls.Add(this.Pic_Guardar);
             this.groupBox2.Controls.Add(this.Pic_Actualizar);
-            this.groupBox2.Controls.Add(this.Dgv_TrasladoDProductos);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(401, 694);
             this.groupBox2.Name = "groupBox2";
@@ -771,9 +774,6 @@
             this.ClientSize = new System.Drawing.Size(1875, 1055);
             this.Controls.Add(this.Cbo_TipoInformee);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.Pic_NuevoTrasladoP);
-            this.Controls.Add(this.Pic_Editar);
-            this.Controls.Add(this.Pic_Guardar);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.Txt_Datos);
             this.Controls.Add(this.groupBox4);
