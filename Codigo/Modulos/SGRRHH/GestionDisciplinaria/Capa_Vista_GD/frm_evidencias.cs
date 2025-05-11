@@ -9,12 +9,96 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_GD;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Net;
+using System.Net.Http;
 
 namespace Capa_Vista_GD
 {
     public partial class frm_evidencias : Form
     {
         Controlador Ctrl;
+
+        //formulario de notificacion
+        public class NotificacionFlotante : Form
+        {
+            private Label lblMensaje;
+            private PictureBox picIcono;
+            private Timer timerDesvanecer;
+
+            public NotificacionFlotante(string mensaje, bool esExito = true)
+            {
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.StartPosition = FormStartPosition.Manual;
+                this.TopMost = true;
+                this.Opacity = 0;
+                this.Width = 350;
+                this.Height = 80;
+                this.ShowInTaskbar = false;
+                this.DoubleBuffered = true;
+
+                // Colores
+                this.BackColor = esExito ? Color.FromArgb(173, 232, 244) : Color.FromArgb(255, 200, 200);
+
+                // Icono
+                picIcono = new PictureBox();
+                picIcono.Size = new Size(40, 40);
+                picIcono.Location = new Point(20, 20);
+                picIcono.SizeMode = PictureBoxSizeMode.StretchImage;
+                picIcono.Image = esExito
+                    ? SystemIcons.Shield.ToBitmap() // Más parecido a un check
+                    : SystemIcons.Error.ToBitmap();
+                this.Controls.Add(picIcono);
+
+                // Texto
+                lblMensaje = new Label();
+                lblMensaje.Text = mensaje;
+                lblMensaje.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                lblMensaje.ForeColor = Color.Black;
+                lblMensaje.AutoSize = false;
+                lblMensaje.Location = new Point(70, 20);
+                lblMensaje.Size = new Size(this.Width - 90, 40);
+                this.Controls.Add(lblMensaje);
+
+                // Timer para fade-out
+                timerDesvanecer = new Timer();
+                timerDesvanecer.Interval = 50;
+                timerDesvanecer.Tick += (s, e) =>
+                {
+                    this.Opacity -= 0.05;
+                    if (this.Opacity <= 0)
+                    {
+                        timerDesvanecer.Stop();
+                        this.Close();
+                    }
+                };
+            }
+
+            public async void Mostrar(Form formularioPadre)
+            {
+                // Centrado respecto al formulario hijo (incluso si es MDI)
+                Point ubicacion = formularioPadre.PointToScreen(Point.Empty);
+                int x = ubicacion.X + (formularioPadre.Width - this.Width) / 2;
+                int y = ubicacion.Y + 100;
+                this.Location = new Point(x, y);
+
+                this.Show();
+
+                // Fade-in
+                for (double op = 0; op <= 1.0; op += 0.05)
+                {
+                    this.Opacity = op;
+                    await Task.Delay(10);
+                }
+
+                await Task.Delay(2500); // Tiempo visible
+
+                // Fade-out
+                timerDesvanecer.Start();
+            }
+
+        }
+        //Fin formulario de notificacion
 
         public frm_evidencias(string sidUsuario)
         {
@@ -30,6 +114,8 @@ namespace Capa_Vista_GD
             Txt_cargarArchivo.Enabled = false;
             Rdb_Si.Enabled = false;
             Rdb_no.Enabled = false;
+            Btn_cargarArchivo.Enabled = false;
+            Btn_probarUrl.Enabled = false;
         }
 
         private void CargarFaltas()
@@ -121,6 +207,16 @@ namespace Capa_Vista_GD
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
+            //validacion de ruta valida
+            string ruta = Txt_cargarArchivo.Text.Trim();
+
+            if (!EsRutaOUrlValida(ruta))
+            {
+                MessageBox.Show("La ruta ingresada no es válida. Por favor, verifique que sea una ruta local o URL correctamente escrita.", "Ruta inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Fin validacion de ruta valida
+
             // Validación de campos vacíos
             if (Cbo_idFalta.SelectedIndex == -1 || Cbo_tipoEvindencia.SelectedIndex == -1 || string.IsNullOrWhiteSpace(Txt_cargarArchivo.Text))
             {
@@ -156,13 +252,13 @@ namespace Capa_Vista_GD
             {
                 Ctrl.funInsertarEvidencia(idFalta, tipoEvidencia, urlEvidencia, estado);
                 MessageBox.Show("Evidencia guardada exitosamente");
+                limpiar();
 
                 //obtener ID recien insertado
                 int idGenerado = Ctrl.funObtenerUltimoIdEvidencia();
                 DataTable evidencia = Ctrl.funObtenerEvidenciaPorId(idGenerado);
-                Dgv_evidencia.DataSource = evidencia;
 
-                Dgv_evidencia.DataSource = Ctrl.funObtenerTodasEvidencias();
+                Dgv_evidencia.DataSource = evidencia;
                 FormatearDataGridView();
             }
             catch (Exception ex)
@@ -170,14 +266,24 @@ namespace Capa_Vista_GD
                 MessageBox.Show("Error al guardar la evidencia: " + ex.Message);
             }
 
-            limpiar();
-            Btn_Cancelar.Enabled = false;
-            Btn_Nuevo.Enabled = true;
-
         }
 
         private void Txt_cargarArchivo_TextChanged(object sender, EventArgs e)
         {
+            string direccion = Txt_cargarArchivo.Text.Trim();
+
+
+            if (EsRutaLocal(direccion))
+            {
+                // Si es una ruta local, desactivamos el botón "Probar URL"
+                Btn_probarUrl.Enabled = false;
+            }
+            else
+            {
+                // Si no es una ruta local (es una URL), activamos el botón "Probar URL"
+                Btn_probarUrl.Enabled = true;
+            }
+
             string texto = Txt_cargarArchivo.Text.Trim().ToLower();
 
             // Validar que no esté vacío ni contenga "ninguna" o "ninguno"
@@ -291,10 +397,14 @@ namespace Capa_Vista_GD
             Btn_Eliminar.Enabled = false;
             Btn_Editar.Enabled = false;
             Btn_Cancelar.Enabled = false;
+            Btn_cargarArchivo.Enabled = false;
+            Btn_probarUrl.Enabled = false;
             Btn_Nuevo.Enabled = true;
 
             Rdb_Si.Checked = false;
             Rdb_no.Checked = false;
+            Rdb_Si.Enabled = false;
+            Rdb_no.Enabled = false;
         }
 
         private void limpiarDgv()
@@ -323,7 +433,7 @@ namespace Capa_Vista_GD
         private void Btn_Ayuda_Click(object sender, EventArgs e)
         {
             // Busca la carpeta raíz del proyecto llamada proyectois2k25 a partir de la ruta del ejecutable.
-            // Si encuentra la carpeta, busca el archivo AyudaNavegador.chm dentro de ella y sus subcarpetas.
+            // Si encuentra la carpeta, busca el archivo .chm dentro de ella y sus subcarpetas.
             //Si el archivo es encontrado, intenta abrirlo usando Help.ShowHelp().Si falla, lo abre directamente con el proceso del sistema.
 
 
@@ -343,7 +453,7 @@ namespace Capa_Vista_GD
             }
 
             // Buscar el archivo AyudaNavegador.chm en la carpeta raíz y subcarpetas
-            string sPathAyuda = sfunFindFileInDirectory(sProjectPath, "AyudaNavegador.chm");//cambiar aca
+            string sPathAyuda = sfunFindFileInDirectory(sProjectPath, "AyudaEvidencias.chm");
 
             // Si el archivo fue encontrado, abrirlo
             if (!string.IsNullOrEmpty(sPathAyuda))
@@ -360,7 +470,7 @@ namespace Capa_Vista_GD
             }
             else
             {
-                MessageBox.Show("❌ ERROR: No se encontró el archivo AyudaNavegador.chm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); //mensaje de error
+                MessageBox.Show("❌ ERROR: No se encontró el archivo AyudaEvidencias.chm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); //mensaje de error
             }
         }
 
@@ -381,7 +491,7 @@ namespace Capa_Vista_GD
             return null; // Retorna null si no encuentra la carpeta
         }
 
-        //Busca el archivo (AyudaNavegador.chm) dentro de un directorio y sus subcarpetas.
+        //Busca el archivo (.chm) dentro de un directorio y sus subcarpetas.
         private string sfunFindFileInDirectory(string sDirectory, string sFileName)
         {
             try
@@ -424,6 +534,9 @@ namespace Capa_Vista_GD
             Txt_cargarArchivo.Enabled = true;
             Rdb_Si.Enabled = true;
             Rdb_no.Enabled = true;
+            Btn_cargarArchivo.Enabled = true;
+            Dgv_evidencia.DataSource = null;
+            Btn_probarUrl.Enabled = true;
         }
 
         private void Btn_Buscar_Click(object sender, EventArgs e)
@@ -439,6 +552,7 @@ namespace Capa_Vista_GD
 
             limpiarDgv();
             LiberarControl();
+            Btn_cargarArchivo.Enabled = true;
             // Restaurar el color original de fondo del formulario (RGB: 180, 210, 240)
             this.BackColor = Color.FromArgb(180, 210, 240); // Fondo original
         }
@@ -525,6 +639,17 @@ namespace Capa_Vista_GD
 
         private void Btn_Editar_Click(object sender, EventArgs e)
         {
+            //validacion de ruta valida
+            string ruta = Txt_cargarArchivo.Text.Trim();
+
+            if (!EsRutaOUrlValida(ruta))
+            {
+                MessageBox.Show("La ruta ingresada no es válida. Por favor, verifique que sea una ruta local o URL correctamente escrita.", "Ruta inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Fin validacion de ruta valida
+
+
             if (Dgv_evidencia.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Seleccione una fila para editar.");
@@ -618,9 +743,182 @@ namespace Capa_Vista_GD
             {
                 MessageBox.Show("Error al mostrar eliminados: " + ex.Message);
             }
-
+            Btn_cargarArchivo.Enabled = true;
             Btn_Cancelar.Enabled = true;
             Btn_Nuevo.Enabled = false;
+        }
+
+        private void Btn_reporte_Click(object sender, EventArgs e)
+        {
+            Form Reporte = new frm_reporteEvidencias();
+            Reporte.Show();
+        }
+
+        private void Btn_cargarArchivo_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Title = "Seleccionar archivo";
+                ofd.Filter = "Todos los archivos (*.*)|*.*"; // Se puede restringir por tipo de archivo aqui ( Ejemplo "Imágenes (*.jpg;*.png)|*.jpg;*.png | Todos los archivos (*.*)|*.*" )
+                ofd.Multiselect = false;
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    Txt_cargarArchivo.Text = ofd.FileName; // Ruta completa del archivo
+                }
+            }
+        }
+
+        //Validacion para Url validas o path local
+        private bool EsRutaOUrlValida(string texto)
+        {
+            // 1. Validar formato de ruta local (ej: C:\carpeta\archivo.txt)
+            if (Regex.IsMatch(texto, @"^[a-zA-Z]:\\"))
+            {
+                return true;
+            }
+
+            // 2. Validar formato de URL flexible
+            string patronUrl = @"^(https?:\/\/)?([\w\-]+\.)+[\w\-]+(\/[\w\-./?%&=]*)?$";//expresion regular para formato de url variadas incluso si no tienen http, https o www.
+            if (Regex.IsMatch(texto, patronUrl, RegexOptions.IgnoreCase))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        //validacion de url
+        private bool EsEstructuraUrlValida(string texto)
+        {
+            // Validar que la estructura de la URL sea válida
+            if (!texto.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+                !texto.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                texto = "http://" + texto;
+            }
+
+            Uri uriResult;
+            bool esValida = Uri.TryCreate(texto, UriKind.Absolute, out uriResult) &&
+                            (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+
+            return esValida;
+        }
+
+        private async Task<string> ObtenerUrlConProtocoloValidoAsync(string url)
+        {
+            // Normalizamos la URL para agregar protocolo si es necesario
+            if (EsDireccionIP(url))
+            {
+                url = "http://" + url;
+            }
+            else if (url.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
+            {
+                url = "http://" + url;
+            }
+            else if (!url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
+                     !url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                url = "https://" + url;
+            }
+
+            if (await EsUrlAccesibleAsync(url))
+            {
+                return url;
+            }
+
+            // Si falló con https://, intentamos con http://
+            if (url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                string urlHttp = url.Replace("https://", "http://");
+                if (await EsUrlAccesibleAsync(urlHttp))
+                {
+                    return urlHttp;
+                }
+            }
+
+            return null;
+        }
+
+        private bool EsDireccionIP(string url)
+        {
+            // Expresión regular para verificar si la URL es una dirección IP
+            string ipPattern = @"^(\d{1,3}\.){3}\d{1,3}$";
+            return Regex.IsMatch(url, ipPattern);
+        }
+
+        private async Task<bool> EsUrlAccesibleAsync(string url)
+        {
+            try
+            {
+                using (var cliente = new HttpClient())
+                {
+                    var respuesta = await cliente.GetAsync(url);
+                    return respuesta.IsSuccessStatusCode;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //fin validacion de url
+
+        private bool EsRutaLocal(string direccion)
+        {
+            // Verificamos si la dirección tiene el formato de ruta local (ejemplo: C:\carpeta\archivo)
+            return direccion.Contains("\\") || Regex.IsMatch(direccion, @"^[a-zA-Z]:\\");
+        }
+
+        private async void Btn_probarUrl_Click(object sender, EventArgs e)
+        {
+
+            string direccion = Txt_cargarArchivo.Text.Trim();
+
+            //desactivar temporalmente boton para evitar multiples clics
+            Btn_probarUrl.Enabled = false;
+
+            try { 
+
+                if (EsRutaLocal(direccion))
+                {
+                    var notiLocal = new NotificacionFlotante("Es una ruta local, no se puede verificar como URL.", false);
+                    notiLocal.Mostrar(this);
+                    return;
+                }
+
+                if (!EsEstructuraUrlValida(direccion))
+                {
+                    var notiInvalida = new NotificacionFlotante("No es una URL web válida.", false);
+                    notiInvalida.Mostrar(this);
+                    return;
+                }
+
+                // Mostrar notificación temporal de "Verificando..."
+                var notiVerificando = new NotificacionFlotante("Verificando URL, por favor espere...", true);
+                notiVerificando.Mostrar(this);
+
+
+                string urlFinal = await ObtenerUrlConProtocoloValidoAsync(direccion);
+
+                // Esperamos un breve momento para que no se superpongan visualmente
+                await Task.Delay(500);
+
+                if (urlFinal == null)
+                {
+                    var notiError = new NotificacionFlotante("No se pudo acceder a la URL.", false);
+                    notiError.Mostrar(this);
+                }
+                else
+                {
+                    var notiOk = new NotificacionFlotante("La URL es accesible correctamente.", true);
+                    notiOk.Mostrar(this);
+                }
+            }
+            finally
+            {
+                Btn_probarUrl.Enabled = true;
+            }
         }
     }
 }
