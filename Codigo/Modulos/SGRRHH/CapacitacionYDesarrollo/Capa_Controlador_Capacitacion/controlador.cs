@@ -9,6 +9,13 @@ using Capa_Modelo_Capacitacion;
 
 namespace Capa_Controlador_Capacitacion
 {
+
+    public static class ParametrosGlobales
+    {
+        public static decimal LimiteVerde = 80;
+        public static decimal LimiteAmarillo = 40;
+    }
+
     public class controlador
     {
         sentencias sn = new sentencias();
@@ -18,9 +25,9 @@ namespace Capa_Controlador_Capacitacion
             return sn.ObtenerNiveles();
         }
 
-        public List<KeyValuePair<int, string>> CargarEmpleados()
+        public List<KeyValuePair<int, string>> CargarEmpleados(int idDepartamento)
         {
-            return sn.ObtenerEmpleados();
+            return sn.ObtenerEmpleadosPorDepartamento(idDepartamento);
         }
 
         public List<KeyValuePair<int, string>> CargarCapacitaciones()
@@ -28,15 +35,41 @@ namespace Capa_Controlador_Capacitacion
             return sn.ObtenerCapacitaciones();
         }
 
+        public List<KeyValuePair<int, string>> CargarDepartamentos()
+        {
+            return sn.ObtenerDepartamentos();
+        }
+
         public int insertarNota(int fkEmpleado, int fkCapacitacion, int fknivel, decimal puntaje, string fecha)
         {
             return sn.InsertarNota(fkEmpleado, fkCapacitacion, fknivel, puntaje, fecha);
         }
 
+        public void InsertarCierre(int idDepartamento, int idCapacitacion, decimal puntuacion, decimal porcentajeAsistencia, DateTime fecha)
+        {
+             sn.InsertarCierre(idDepartamento, idCapacitacion, puntuacion, porcentajeAsistencia, fecha);
+        }
+
+        public DataTable ObtenerCierres()
+        {
+            return sn.ObtenerCierres();
+        }
+
+
 
         public int obtenerIdEmpleado(string nombreEmpleado)
         {
             return sn.ObtenerIdEmpleado(nombreEmpleado);
+        }
+
+        public int obtenerIdDepartamento(int idDepartamento)
+        {
+            return sn.ObtenerIdDepartamentoPorCapacitacion(idDepartamento);
+        }
+
+        public string ObtenerDepartamentoNombre(int idCapacitacion)
+        {
+            return sn.ObtenerNombreDepartamentoPorCapacitacion(idCapacitacion);
         }
 
         public int obtenerIdCapacitacion(string nombreCapacitacion)
@@ -52,6 +85,16 @@ namespace Capa_Controlador_Capacitacion
         public DataTable mostrarNotas()
         {
             return sn.ObtenerNotas();
+        }
+
+        public List<KeyValuePair<int, string>> CargarCapacitacionesPorDepartamento(int idDepartamento)
+        {
+            return sn.ObtenerCapacitacionesPorDepartamento(idDepartamento);
+        }
+
+        public int ObtenerSiguienteCierre()
+        {
+            return sn.ObtenerSiguienteIDCierre();
         }
 
         public int obtenerSiguienteNota()
@@ -75,16 +118,28 @@ namespace Capa_Controlador_Capacitacion
             return sn.EliminarNota(idNota);
         }
 
+        //METODOS PARA PROMEDIOS
+        public decimal ObtenerPromedioNotas(int idDepartamento, int idCapacitacion)
+        {
+            return sn.promediarNotas(idDepartamento, idCapacitacion);
+        }
 
-        //public bool NotaYaExiste(int fkEmpleado, int fkCapacitacion)
-        //{
-        //    return sn.existeNotaEmpleadoCapacitacion(fkEmpleado, fkCapacitacion);
-        //}
+        public decimal CalcularPorcentajeAsistencia(int idDepartamento, int idCapacitacion)
+        {
+            return sn.calcularAsistencia(idDepartamento, idCapacitacion);
+        }
 
-        //public bool NotaYaExisteParaOtroID(int idNota, int fkEmpleado, int fkCapacitacion)
-        //{
-        //    return sn.existeNotaEmpleadoCapacitacionExcepto(idNota, fkEmpleado, fkCapacitacion);
-        //}
 
-    }
+
+            //public bool NotaYaExiste(int fkEmpleado, int fkCapacitacion)
+            //{
+            //    return sn.existeNotaEmpleadoCapacitacion(fkEmpleado, fkCapacitacion);
+            //}
+
+            //public bool NotaYaExisteParaOtroID(int idNota, int fkEmpleado, int fkCapacitacion)
+            //{
+            //    return sn.existeNotaEmpleadoCapacitacionExcepto(idNota, fkEmpleado, fkCapacitacion);
+            //}
+
+        }
 }

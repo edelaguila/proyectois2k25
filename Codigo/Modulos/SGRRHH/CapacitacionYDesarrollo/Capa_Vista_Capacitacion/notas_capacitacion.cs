@@ -58,9 +58,9 @@ namespace Capa_Vista_Capacitacion
 
 
             // ComboBox Empleado
-            cbEmpleado.DataSource = cn.CargarEmpleados();
-            cbEmpleado.DisplayMember = "Value";
-            cbEmpleado.ValueMember = "Key";
+            //cbEmpleado.DataSource = cn.CargarEmpleados();
+           // cbEmpleado.DisplayMember = "Value";
+           // cbEmpleado.ValueMember = "Key";
 
             // ComboBox Capacitación
             cbCapacitacion.DataSource = cn.CargarCapacitaciones();
@@ -142,6 +142,7 @@ namespace Capa_Vista_Capacitacion
             Btn_cancelar.Enabled = false;
             dgvNotas.Enabled = true;
             modoEdicion = false; // Volver al modo normal
+            Btn_nuevo.Enabled = true;
         }
 
 
@@ -187,11 +188,13 @@ namespace Capa_Vista_Capacitacion
                 // Mostrar ID en TextBox
                 txtNota.Text = row.Cells["pk_id_nota"].Value?.ToString();
 
-                // Empleado
-                cbEmpleado.Text = row.Cells["Empleado"].Value?.ToString();
-
                 // Capacitacion
                 cbCapacitacion.Text = row.Cells["Capacitacion"].Value?.ToString();
+
+                ActualizarDepartamentoDesdeCapacitacion(filtrarEmpleados: false);
+
+                // Empleado
+                cbEmpleado.Text = row.Cells["Empleado"].Value?.ToString();
 
                 // Nivel
                 cbNivel.Text = row.Cells["Nivel"].Value?.ToString();
@@ -279,7 +282,8 @@ namespace Capa_Vista_Capacitacion
                     CargarNotas();
                     dgvNotas.Enabled = true;
                 }
-                
+
+                Btn_nuevo.Enabled = true; 
                 
             }
 
@@ -293,6 +297,7 @@ namespace Capa_Vista_Capacitacion
             cbCapacitacion.SelectedIndex = -1;
             cbNivel.SelectedIndex = -1;
             tbPorcentaje.Value = 0;
+            txtDepartamento.Text = "";
             lblMostrarporcentaje.Text = "0%";
             dtpFecha.MaxDate = DateTime.Today;
 
@@ -391,5 +396,44 @@ namespace Capa_Vista_Capacitacion
         {
 
         }
+
+        private void dgvNotas_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cbCapacitacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Solo cuando se agrega un nuevo registro
+            ActualizarDepartamentoDesdeCapacitacion(filtrarEmpleados: true);
+
+        }
+
+        private void ActualizarDepartamentoDesdeCapacitacion(bool filtrarEmpleados)
+        {
+            if (cbCapacitacion.SelectedValue != null)
+            {
+                if (int.TryParse(cbCapacitacion.SelectedValue.ToString(), out int idCapacitacion))
+                {
+                    // Obtener nombre del departamento y mostrarlo
+                    string departamento = cn.ObtenerDepartamentoNombre(idCapacitacion);
+                    txtDepartamento.Text = departamento;
+
+                    // Solo filtrar empleados si se indicó
+                    if (filtrarEmpleados)
+                    {
+                        // Obtener ID del departamento
+                        int idDepartamento = cn.obtenerIdDepartamento(idCapacitacion);
+
+                        // Obtener empleados de ese departamento
+                        List<KeyValuePair<int, string>> empleados = cn.CargarEmpleados(idDepartamento);
+                        cbEmpleado.DataSource = empleados;
+                        cbEmpleado.DisplayMember = "Value";
+                        cbEmpleado.ValueMember = "Key";
+                    }
+                }
+            }
+        }
+
     }
 }
