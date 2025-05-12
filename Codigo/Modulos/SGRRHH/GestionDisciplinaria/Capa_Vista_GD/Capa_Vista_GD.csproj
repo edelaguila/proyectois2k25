@@ -31,15 +31,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Capa_Controlador_GD">
       <HintPath>..\Capa_Controlador_GD\bin\Debug\Capa_Controlador_GD.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,6 +68,18 @@
     <Compile Include="frm_registrodisciplinario.Designer.cs">
       <DependentUpon>frm_registrodisciplinario.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_reporteEvidencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_reporteEvidencias.Designer.cs">
+      <DependentUpon>frm_reporteEvidencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_reporteSancion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_reporteSancion.Designer.cs">
+      <DependentUpon>Frm_reporteSancion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_sanciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +92,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Rpt_evidencias.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_evidencias.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt_informe.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_informe.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt_sanciones.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_sanciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frm_evidencias.resx">
@@ -81,12 +118,30 @@
     <EmbeddedResource Include="frm_registrodisciplinario.resx">
       <DependentUpon>frm_registrodisciplinario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_reporteEvidencias.resx">
+      <DependentUpon>frm_reporteEvidencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_reporteSancion.resx">
+      <DependentUpon>Frm_reporteSancion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_sanciones.resx">
       <DependentUpon>frm_sanciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_evidencias.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_evidencias.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_informe.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_informe.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_sanciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_sanciones.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +170,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\reporte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

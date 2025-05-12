@@ -50,6 +50,9 @@ namespace Capa_Vista_GD
             this.Txt_empleado = new System.Windows.Forms.TextBox();
             this.Lbl_empleado = new System.Windows.Forms.Label();
             this.Btn_MostrarEliminados = new System.Windows.Forms.Button();
+            this.Btn_reporte = new System.Windows.Forms.Button();
+            this.Btn_cargarArchivo = new System.Windows.Forms.Button();
+            this.Btn_probarUrl = new System.Windows.Forms.Button();
             this.Gpb_EvidenciaValida.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_evidencia)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +61,8 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_idFalta.AutoSize = true;
             this.Lbl_idFalta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_idFalta.Location = new System.Drawing.Point(102, 153);
+            this.Lbl_idFalta.ForeColor = System.Drawing.Color.Black;
+            this.Lbl_idFalta.Location = new System.Drawing.Point(89, 156);
             this.Lbl_idFalta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_idFalta.Name = "Lbl_idFalta";
             this.Lbl_idFalta.Size = new System.Drawing.Size(120, 22);
@@ -70,7 +74,8 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_tipoEvidencia.AutoSize = true;
             this.Lbl_tipoEvidencia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_tipoEvidencia.Location = new System.Drawing.Point(102, 246);
+            this.Lbl_tipoEvidencia.ForeColor = System.Drawing.Color.Black;
+            this.Lbl_tipoEvidencia.Location = new System.Drawing.Point(89, 249);
             this.Lbl_tipoEvidencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_tipoEvidencia.Name = "Lbl_tipoEvidencia";
             this.Lbl_tipoEvidencia.Size = new System.Drawing.Size(159, 22);
@@ -79,7 +84,7 @@ namespace Capa_Vista_GD
             // 
             // Txt_cargarArchivo
             // 
-            this.Txt_cargarArchivo.Location = new System.Drawing.Point(269, 289);
+            this.Txt_cargarArchivo.Location = new System.Drawing.Point(256, 292);
             this.Txt_cargarArchivo.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_cargarArchivo.Name = "Txt_cargarArchivo";
             this.Txt_cargarArchivo.Size = new System.Drawing.Size(400, 30);
@@ -90,7 +95,8 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_cargarArchivo.AutoSize = true;
             this.Lbl_cargarArchivo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_cargarArchivo.Location = new System.Drawing.Point(102, 297);
+            this.Lbl_cargarArchivo.ForeColor = System.Drawing.Color.Black;
+            this.Lbl_cargarArchivo.Location = new System.Drawing.Point(89, 300);
             this.Lbl_cargarArchivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_cargarArchivo.Name = "Lbl_cargarArchivo";
             this.Lbl_cargarArchivo.Size = new System.Drawing.Size(135, 22);
@@ -100,7 +106,7 @@ namespace Capa_Vista_GD
             // Cbo_idFalta
             // 
             this.Cbo_idFalta.FormattingEnabled = true;
-            this.Cbo_idFalta.Location = new System.Drawing.Point(269, 145);
+            this.Cbo_idFalta.Location = new System.Drawing.Point(256, 148);
             this.Cbo_idFalta.Name = "Cbo_idFalta";
             this.Cbo_idFalta.Size = new System.Drawing.Size(109, 30);
             this.Cbo_idFalta.TabIndex = 8;
@@ -110,7 +116,8 @@ namespace Capa_Vista_GD
             // 
             this.Gpb_EvidenciaValida.Controls.Add(this.Rdb_no);
             this.Gpb_EvidenciaValida.Controls.Add(this.Rdb_Si);
-            this.Gpb_EvidenciaValida.Location = new System.Drawing.Point(400, 120);
+            this.Gpb_EvidenciaValida.ForeColor = System.Drawing.Color.Black;
+            this.Gpb_EvidenciaValida.Location = new System.Drawing.Point(387, 123);
             this.Gpb_EvidenciaValida.Name = "Gpb_EvidenciaValida";
             this.Gpb_EvidenciaValida.Size = new System.Drawing.Size(275, 70);
             this.Gpb_EvidenciaValida.TabIndex = 18;
@@ -121,6 +128,7 @@ namespace Capa_Vista_GD
             // Rdb_no
             // 
             this.Rdb_no.AutoSize = true;
+            this.Rdb_no.ForeColor = System.Drawing.Color.Black;
             this.Rdb_no.Location = new System.Drawing.Point(138, 29);
             this.Rdb_no.Name = "Rdb_no";
             this.Rdb_no.Size = new System.Drawing.Size(55, 26);
@@ -133,6 +141,7 @@ namespace Capa_Vista_GD
             // Rdb_Si
             // 
             this.Rdb_Si.AutoSize = true;
+            this.Rdb_Si.ForeColor = System.Drawing.Color.Black;
             this.Rdb_Si.Location = new System.Drawing.Point(73, 29);
             this.Rdb_Si.Name = "Rdb_Si";
             this.Rdb_Si.Size = new System.Drawing.Size(48, 26);
@@ -146,7 +155,7 @@ namespace Capa_Vista_GD
             // 
             this.Cbo_tipoEvindencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cbo_tipoEvindencia.FormattingEnabled = true;
-            this.Cbo_tipoEvindencia.Location = new System.Drawing.Point(269, 246);
+            this.Cbo_tipoEvindencia.Location = new System.Drawing.Point(256, 249);
             this.Cbo_tipoEvindencia.Name = "Cbo_tipoEvindencia";
             this.Cbo_tipoEvindencia.Size = new System.Drawing.Size(400, 30);
             this.Cbo_tipoEvindencia.TabIndex = 19;
@@ -156,7 +165,7 @@ namespace Capa_Vista_GD
             // 
             this.Btn_Ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Ayuda.Image = global::Capa_Vista_GD.Properties.Resources.ayuda;
-            this.Btn_Ayuda.Location = new System.Drawing.Point(580, 27);
+            this.Btn_Ayuda.Location = new System.Drawing.Point(675, 27);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
             this.Btn_Ayuda.Size = new System.Drawing.Size(89, 77);
             this.Btn_Ayuda.TabIndex = 17;
@@ -167,7 +176,7 @@ namespace Capa_Vista_GD
             // 
             this.Btn_Salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Salir.Image = global::Capa_Vista_GD.Properties.Resources.cerrar_sesion;
-            this.Btn_Salir.Location = new System.Drawing.Point(675, 27);
+            this.Btn_Salir.Location = new System.Drawing.Point(770, 27);
             this.Btn_Salir.Name = "Btn_Salir";
             this.Btn_Salir.Size = new System.Drawing.Size(89, 77);
             this.Btn_Salir.TabIndex = 16;
@@ -246,7 +255,7 @@ namespace Capa_Vista_GD
             // 
             this.Dgv_evidencia.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Dgv_evidencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_evidencia.Location = new System.Drawing.Point(34, 339);
+            this.Dgv_evidencia.Location = new System.Drawing.Point(88, 363);
             this.Dgv_evidencia.Name = "Dgv_evidencia";
             this.Dgv_evidencia.RowHeadersWidth = 51;
             this.Dgv_evidencia.RowTemplate.Height = 24;
@@ -258,7 +267,7 @@ namespace Capa_Vista_GD
             // Txt_empleado
             // 
             this.Txt_empleado.Enabled = false;
-            this.Txt_empleado.Location = new System.Drawing.Point(269, 200);
+            this.Txt_empleado.Location = new System.Drawing.Point(256, 203);
             this.Txt_empleado.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_empleado.Name = "Txt_empleado";
             this.Txt_empleado.Size = new System.Drawing.Size(400, 30);
@@ -268,7 +277,8 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_empleado.AutoSize = true;
             this.Lbl_empleado.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_empleado.Location = new System.Drawing.Point(102, 203);
+            this.Lbl_empleado.ForeColor = System.Drawing.Color.Black;
+            this.Lbl_empleado.Location = new System.Drawing.Point(89, 206);
             this.Lbl_empleado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_empleado.Name = "Lbl_empleado";
             this.Lbl_empleado.Size = new System.Drawing.Size(80, 22);
@@ -277,7 +287,9 @@ namespace Capa_Vista_GD
             // 
             // Btn_MostrarEliminados
             // 
-            this.Btn_MostrarEliminados.Location = new System.Drawing.Point(283, 475);
+            this.Btn_MostrarEliminados.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_MostrarEliminados.ForeColor = System.Drawing.Color.Black;
+            this.Btn_MostrarEliminados.Location = new System.Drawing.Point(339, 499);
             this.Btn_MostrarEliminados.Name = "Btn_MostrarEliminados";
             this.Btn_MostrarEliminados.Size = new System.Drawing.Size(182, 36);
             this.Btn_MostrarEliminados.TabIndex = 23;
@@ -285,12 +297,51 @@ namespace Capa_Vista_GD
             this.Btn_MostrarEliminados.UseVisualStyleBackColor = true;
             this.Btn_MostrarEliminados.Click += new System.EventHandler(this.Btn_MostrarEliminados_Click);
             // 
+            // Btn_reporte
+            // 
+            this.Btn_reporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_reporte.Image = global::Capa_Vista_GD.Properties.Resources.reporte;
+            this.Btn_reporte.Location = new System.Drawing.Point(580, 27);
+            this.Btn_reporte.Name = "Btn_reporte";
+            this.Btn_reporte.Size = new System.Drawing.Size(89, 77);
+            this.Btn_reporte.TabIndex = 30;
+            this.Btn_reporte.UseVisualStyleBackColor = true;
+            this.Btn_reporte.Click += new System.EventHandler(this.Btn_reporte_Click);
+            // 
+            // Btn_cargarArchivo
+            // 
+            this.Btn_cargarArchivo.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_cargarArchivo.ForeColor = System.Drawing.Color.Black;
+            this.Btn_cargarArchivo.Location = new System.Drawing.Point(662, 279);
+            this.Btn_cargarArchivo.Name = "Btn_cargarArchivo";
+            this.Btn_cargarArchivo.Size = new System.Drawing.Size(132, 54);
+            this.Btn_cargarArchivo.TabIndex = 31;
+            this.Btn_cargarArchivo.Text = "Cargar Archivo Local";
+            this.Btn_cargarArchivo.UseVisualStyleBackColor = true;
+            this.Btn_cargarArchivo.Click += new System.EventHandler(this.Btn_cargarArchivo_Click);
+            // 
+            // Btn_probarUrl
+            // 
+            this.Btn_probarUrl.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Btn_probarUrl.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_probarUrl.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.Btn_probarUrl.Location = new System.Drawing.Point(357, 329);
+            this.Btn_probarUrl.Name = "Btn_probarUrl";
+            this.Btn_probarUrl.Size = new System.Drawing.Size(151, 27);
+            this.Btn_probarUrl.TabIndex = 32;
+            this.Btn_probarUrl.Text = "Probar URL";
+            this.Btn_probarUrl.UseVisualStyleBackColor = false;
+            this.Btn_probarUrl.Click += new System.EventHandler(this.Btn_probarUrl_Click);
+            // 
             // frm_evidencias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(770, 513);
+            this.ClientSize = new System.Drawing.Size(868, 535);
+            this.Controls.Add(this.Btn_probarUrl);
+            this.Controls.Add(this.Btn_cargarArchivo);
+            this.Controls.Add(this.Btn_reporte);
             this.Controls.Add(this.Btn_MostrarEliminados);
             this.Controls.Add(this.Txt_empleado);
             this.Controls.Add(this.Lbl_empleado);
@@ -347,5 +398,8 @@ namespace Capa_Vista_GD
         private System.Windows.Forms.TextBox Txt_empleado;
         private System.Windows.Forms.Label Lbl_empleado;
         private System.Windows.Forms.Button Btn_MostrarEliminados;
+        private System.Windows.Forms.Button Btn_reporte;
+        private System.Windows.Forms.Button Btn_cargarArchivo;
+        private System.Windows.Forms.Button Btn_probarUrl;
     }
 }
