@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaEvaluacionYDesempenio.chm
+Contents file=AyudaEvaluacionDesempenio.hhc
+Default Window=AyudaEvaluacion
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaEvaluacion="Evaluacion de Empleado","AyudaEvaluacionDesempenio.hhc",,"AyudaEvaluacionYDesempenio.html",,,,,,0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+AyudaEvaluacionYDesempenio.html
+
+[INFOTYPES]
+
