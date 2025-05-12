@@ -38,12 +38,10 @@ namespace Capa_Vista_AmmyCatun
             string sDestino = Txt_Destino.Text;
             DateTime dFechaEmision = dtp_Fecha_Emision.Value;
             DateTime dFechaTraslado = dtp_Fecha_Emision.Value;
-            int iIdRemitente = Convert.ToInt32(Txt_ID_1.Text);
-            int iIdDestinatario = Convert.ToInt32(Txt_ID_2.Text);
             int iIdvehiculo = Convert.ToInt32(Txt_id_Vehiculo.Text);
 
             ControladorPedido controlador = new ControladorPedido();
-            controlador.guardarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdRemitente, iIdDestinatario, iIdvehiculo);
+            controlador.guardarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdvehiculo);
 
             CargarDatosGrid();
         }
@@ -78,26 +76,12 @@ namespace Capa_Vista_AmmyCatun
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de Form2
-            Remitente remitenteForm = new Remitente();
-
-            // Mostrar Form2
-            remitenteForm.Show();
-
-            // (Opcional) Si quieres ocultar Form1 al abrir Form2
-            // this.Hide();
+          
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de Form2
-            Destinatario destinatarioForm = new Destinatario();
-
-            // Mostrar Form2
-            destinatarioForm.Show();
-
-            // (Opcional) Si quieres ocultar Form1 al abrir Form2
-            // this.Hide();
+          
         }
 
         private void Btn_Eliminar_Click(object sender, EventArgs e)
@@ -138,13 +122,11 @@ namespace Capa_Vista_AmmyCatun
             string sDestino = Txt_Destino.Text;
             DateTime dFechaEmision = dtp_Fecha_Emision.Value;
             DateTime dFechaTraslado = dtp_Fecha_Emision.Value;
-            int iIdRemitente = Convert.ToInt32(Txt_ID_1.Text);
-            int iIdDestinatario = Convert.ToInt32(Txt_ID_2.Text);
             int iIdvehiculo = Convert.ToInt32(Txt_id_Vehiculo.Text);
             int iIdGuia = Convert.ToInt32(Txt_Guia.Text);
 
             ControladorPedido controlador = new ControladorPedido();
-            controlador.modificarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdRemitente, iIdDestinatario, iIdvehiculo, iIdGuia);
+            controlador.modificarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdvehiculo, iIdGuia);
 
             CargarDatosGrid();
         }

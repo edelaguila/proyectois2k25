@@ -44,7 +44,7 @@ namespace Capa_Controlador_AmmyCatun
         }
 
         // Método para guardar un datos pedido Realizado por Ammy Patricia Catun Lopez 0901-21-4857
-        public int guardarPedido(string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, ComboBox cmbFormaPago, string sDestino, DateTime dFechaEmision, DateTime dFechaTraslado, int iIdRemitente, int iIdDestinatario, int iIdvehiculo)
+        public int guardarPedido(string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, ComboBox cmbFormaPago, string sDestino, DateTime dFechaEmision, DateTime dFechaTraslado, int iIdvehiculo)
         {
 
             string sFormaPago = cmbFormaPago.SelectedItem?.ToString();
@@ -57,7 +57,7 @@ namespace Capa_Controlador_AmmyCatun
             }
             else
             {
-                sentencias.registrarPedido(dFechaEmision, dFechaTraslado, sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, sFormaPago, sDestino, iIdRemitente, iIdDestinatario, iIdvehiculo);
+                sentencias.registrarPedido(dFechaEmision, dFechaTraslado, sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, sFormaPago, sDestino, iIdvehiculo);
                 MessageBox.Show("Pedido ingresado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return 1;
             }
@@ -75,7 +75,7 @@ namespace Capa_Controlador_AmmyCatun
             }
         }
         // Método para modificar datos pedido Realizado por Ammy Patricia Catun Lopez 0901-21-4857
-        public int modificarPedido(string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, ComboBox cmbFormaPago, string sDestino, DateTime dFechaEmision, DateTime dFechaTraslado, int iIdRemitente, int iIdDestinatario, int iIdvehiculo, int iIdGuia)
+        public int modificarPedido(string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, ComboBox cmbFormaPago, string sDestino, DateTime dFechaEmision, DateTime dFechaTraslado, int iIdvehiculo, int iIdGuia)
         {
 
             string sFormaPago = cmbFormaPago.SelectedItem?.ToString();
@@ -88,7 +88,7 @@ namespace Capa_Controlador_AmmyCatun
             }
             else
             {
-                sentencias.modificarPedido(dFechaEmision, dFechaTraslado, sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, sFormaPago, sDestino, iIdRemitente, iIdDestinatario, iIdvehiculo, iIdGuia);
+                sentencias.modificarPedido(iIdGuia, dFechaEmision, dFechaTraslado, sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, sFormaPago, sDestino, iIdvehiculo);
                 MessageBox.Show("Pedido modificado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return 1;
             }

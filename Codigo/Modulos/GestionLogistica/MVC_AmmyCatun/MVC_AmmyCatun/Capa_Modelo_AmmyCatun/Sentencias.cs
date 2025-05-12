@@ -19,12 +19,12 @@ namespace Capa_Modelo_AmmyCatun
         private Conexion cn = new Conexion();
 
         // Método para Registrar-Ingresar Pedidos Realizado por Ammy Patricia Catun Lopez 0901-21-4857
-        public void registrarPedido(DateTime dFechaEmision, DateTime dFechaTraslado, string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, string sFormaPago, string sDestino, int iIdRemitente, int iIdDestinatario, int iIdvehiculo)
+        public void registrarPedido(DateTime dFechaEmision, DateTime dFechaTraslado, string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, string sFormaPago, string sDestino, int iIdvehiculo)
         {
             try
             {
-                string sSql = "INSERT INTO " + sTabla_datos_pedido + " (fechaEmision, fechaTraslado, direccionPartida, direccionLlegada, numeroOrdenRecojo, formaPago, destino, fk_id_Remitente, fk_id_Destinatario, fk_id_vehiculo) " +
-                              "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                string sSql = "INSERT INTO " + sTabla_datos_pedido + " (fechaEmision, fechaTraslado, direccionPartida, direccionLlegada, numeroOrdenRecojo, formaPago, destino, fk_id_vehiculo) " +
+                              "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
                 using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
                 {
@@ -35,8 +35,6 @@ namespace Capa_Modelo_AmmyCatun
                     cmd.Parameters.AddWithValue("@numeroOrdenRecojo", sNumeroOrdenRecojo);
                     cmd.Parameters.AddWithValue("@formaPago", sFormaPago);
                     cmd.Parameters.AddWithValue("@destino", sDestino);
-                    cmd.Parameters.AddWithValue("@fk_id_Remitente", iIdRemitente);
-                    cmd.Parameters.AddWithValue("@fk_id_Destinatario", iIdDestinatario);
                     cmd.Parameters.AddWithValue("@fk_id_vehiculo", iIdvehiculo);
 
                     int iIngreso = cmd.ExecuteNonQuery();
@@ -88,11 +86,11 @@ namespace Capa_Modelo_AmmyCatun
         }
 
         // Método para Modifcar Pedidos Realizado por Ammy Patricia Catun Lopez 0901-21-4857
-        public void modificarPedido(int iIdGuia, DateTime dFechaEmision, DateTime dFechaTraslado, string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, string sFormaPago, string sDestino, int iIdRemitente, int iIdDestinatario, int iIdVehiculo)
+        public void modificarPedido(int iIdGuia, DateTime dFechaEmision, DateTime dFechaTraslado, string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, string sFormaPago, string sDestino, int iIdvehiculo)
         {
             try
             {
-                string sSql = "UPDATE Tbl_datos_pedido SET fechaEmision = ?, fechaTraslado = ?, direccionPartida = ?, direccionLlegada = ?, numeroOrdenRecojo = ?, formaPago = ?, destino = ?, Fk_id_remitente = ?, Fk_id_destinatario = ?, Fk_id_vehiculo = ? WHERE Pk_id_guia = ?;";
+                string sSql = "UPDATE Tbl_datos_pedido SET fechaEmision = ?, fechaTraslado = ?, direccionPartida = ?, direccionLlegada = ?, numeroOrdenRecojo = ?, formaPago = ?, destino = ?, Fk_id_vehiculo = ? WHERE Pk_id_guia = ?;";
 
                 using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
                 {
@@ -103,9 +101,7 @@ namespace Capa_Modelo_AmmyCatun
                     cmd.Parameters.AddWithValue("@numeroOrdenRecojo", sNumeroOrdenRecojo);
                     cmd.Parameters.AddWithValue("@formaPago", sFormaPago);
                     cmd.Parameters.AddWithValue("@destino", sDestino);
-                    cmd.Parameters.AddWithValue("@Fk_id_remitente", iIdRemitente);
-                    cmd.Parameters.AddWithValue("@Fk_id_destinatario", iIdDestinatario);
-                    cmd.Parameters.AddWithValue("@Fk_id_vehiculo", iIdVehiculo);
+                    cmd.Parameters.AddWithValue("@Fk_id_vehiculo", iIdvehiculo);
                     cmd.Parameters.AddWithValue("@Pk_id_guia", iIdGuia);
 
                     int iresultado = cmd.ExecuteNonQuery();

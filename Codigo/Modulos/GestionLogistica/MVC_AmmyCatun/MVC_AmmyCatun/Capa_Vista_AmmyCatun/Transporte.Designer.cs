@@ -35,7 +35,9 @@ namespace Capa_Vista_AmmyCatun
             this.Gpb_Detalle = new System.Windows.Forms.GroupBox();
             this.Dgv_Vehiculo = new System.Windows.Forms.DataGridView();
             this.Gpb_Mantenimiento = new System.Windows.Forms.GroupBox();
+            this.Btn_Ingresar = new System.Windows.Forms.Button();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
+            this.Btn_Reporte = new System.Windows.Forms.Button();
             this.Btn_Modificar = new System.Windows.Forms.Button();
             this.Btn_Eliminar = new System.Windows.Forms.Button();
             this.Txt_Datos = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@ namespace Capa_Vista_AmmyCatun
             this.Txt_Plac = new System.Windows.Forms.Label();
             this.Txt_IdChof = new System.Windows.Forms.Label();
             this.Pic_Transporte = new System.Windows.Forms.PictureBox();
-            this.Btn_Reporte = new System.Windows.Forms.Button();
-            this.Btn_Ingresar = new System.Windows.Forms.Button();
             this.Gpb_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Vehiculo)).BeginInit();
             this.Gpb_Mantenimiento.SuspendLayout();
@@ -114,6 +114,18 @@ namespace Capa_Vista_AmmyCatun
             this.Gpb_Mantenimiento.TabStop = false;
             this.Gpb_Mantenimiento.Text = "MANTENIMIENTO";
             // 
+            // Btn_Ingresar
+            // 
+            this.Btn_Ingresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
+            this.Btn_Ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ingresar.Image")));
+            this.Btn_Ingresar.Location = new System.Drawing.Point(18, 50);
+            this.Btn_Ingresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Ingresar.Name = "Btn_Ingresar";
+            this.Btn_Ingresar.Size = new System.Drawing.Size(83, 74);
+            this.Btn_Ingresar.TabIndex = 0;
+            this.Btn_Ingresar.UseVisualStyleBackColor = false;
+            this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
+            // 
             // Btn_Ayuda
             // 
             this.Btn_Ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
@@ -125,6 +137,18 @@ namespace Capa_Vista_AmmyCatun
             this.Btn_Ayuda.TabIndex = 5;
             this.Btn_Ayuda.UseVisualStyleBackColor = false;
             this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
+            // 
+            // Btn_Reporte
+            // 
+            this.Btn_Reporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
+            this.Btn_Reporte.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.reporte;
+            this.Btn_Reporte.Location = new System.Drawing.Point(291, 47);
+            this.Btn_Reporte.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Reporte.Name = "Btn_Reporte";
+            this.Btn_Reporte.Size = new System.Drawing.Size(87, 71);
+            this.Btn_Reporte.TabIndex = 4;
+            this.Btn_Reporte.UseVisualStyleBackColor = false;
+            this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
             // 
             // Btn_Modificar
             // 
@@ -366,30 +390,6 @@ namespace Capa_Vista_AmmyCatun
             this.Pic_Transporte.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Transporte.TabIndex = 34;
             this.Pic_Transporte.TabStop = false;
-            // 
-            // Btn_Reporte
-            // 
-            this.Btn_Reporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Reporte.Image = global::Capa_Vista_AmmyCatun.Properties.Resources.reporte;
-            this.Btn_Reporte.Location = new System.Drawing.Point(291, 47);
-            this.Btn_Reporte.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Reporte.Name = "Btn_Reporte";
-            this.Btn_Reporte.Size = new System.Drawing.Size(87, 71);
-            this.Btn_Reporte.TabIndex = 4;
-            this.Btn_Reporte.UseVisualStyleBackColor = false;
-            this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
-            // 
-            // Btn_Ingresar
-            // 
-            this.Btn_Ingresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_Ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ingresar.Image")));
-            this.Btn_Ingresar.Location = new System.Drawing.Point(18, 50);
-            this.Btn_Ingresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Ingresar.Name = "Btn_Ingresar";
-            this.Btn_Ingresar.Size = new System.Drawing.Size(83, 74);
-            this.Btn_Ingresar.TabIndex = 0;
-            this.Btn_Ingresar.UseVisualStyleBackColor = false;
-            this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
             // 
             // Transporte
             // 
