@@ -321,6 +321,5 @@ namespace Capa_Modelo_Reclutamiento
             }
         }
 
-
     }
 }

@@ -110,6 +110,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_ayuda.Size = new System.Drawing.Size(62, 64);
             this.Btn_ayuda.TabIndex = 7;
             this.Btn_ayuda.UseVisualStyleBackColor = true;
+            this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
             // Btn_reporte
             // 
@@ -120,6 +121,7 @@ namespace Capa_Vista_Reclutamiento
             this.Btn_reporte.Size = new System.Drawing.Size(62, 64);
             this.Btn_reporte.TabIndex = 6;
             this.Btn_reporte.UseVisualStyleBackColor = true;
+            this.Btn_reporte.Click += new System.EventHandler(this.Btn_reporte_Click);
             // 
             // Btn_buscar
             // 
