@@ -67,6 +67,7 @@
             this.Btn_Buscar.Size = new System.Drawing.Size(67, 62);
             this.Btn_Buscar.TabIndex = 22;
             this.Btn_Buscar.UseVisualStyleBackColor = true;
+            this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
             // 
             // dgv_nominas
             // 

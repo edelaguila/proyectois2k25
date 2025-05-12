@@ -32,6 +32,111 @@ namespace Capa_Vista_Carrera
             llenarseModulos(tabla, campo1, campo2);
         }
 
+        private void CargarDatosNominas(int idEmpleado)
+        {
+            try
+            {
+                DataTable dt = logica2.funcConsultarNomina(idEmpleado);
+                if (dt != null)
+                {
+                    dgv_nominas.DataSource = dt;
+
+                    // Aquí podrías hacer lo del ID si necesitas
+                }
+                else
+                {
+                    MessageBox.Show("Error al cargar los datos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar datos: " + ex.Message);
+            }
+        }
+
+
+        private void CargarDatosReclutamiento(int idEmpleado)
+        {
+            try
+            {
+                DataTable dt = logica2.funcConsultarReclutamiento(idEmpleado);
+                if (dt != null)
+                {
+                    dgv_Reclutamiento.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Error al cargar los datos de reclutamiento.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar datos de reclutamiento: " + ex.Message);
+            }
+        }
+        private void CargarDatosCapacitaciones(int idEmpleado)
+        {
+            try
+            {
+                DataTable dt = logica2.funcConsultarCapacitaciones(idEmpleado);
+                if (dt != null)
+                {
+                    dgv_Capacitaciones.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Error al cargar los datos de capacitaciones.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar datos de capacitaciones: " + ex.Message);
+            }
+        }
+
+        private void CargarDatosDesempeno(int idEmpleado)
+        {
+            try
+            {
+                DataTable dt = logica2.funcConsultarDesempeno(idEmpleado);
+                if (dt != null)
+                {
+                    dgv_desempenio.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Error al cargar los datos de desempeño.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar datos de desempeño: " + ex.Message);
+            }
+        }
+
+        private void CargarDatosDisciplinaria(int idEmpleado)
+        {
+            try
+            {
+                DataTable dt = logica2.funcConsultarDisciplinaria(idEmpleado);
+                if (dt != null)
+                {
+                    dgv_disciplina.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Error al cargar los datos disciplinarios.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar datos disciplinarios: " + ex.Message);
+            }
+        }
+
+
+
+
         /*********************************Ismar Leonel Cortez Sanchez -0901-21-560*****************************************/
         /**************************************Combo box inteligente 1*****************************************************/
 
@@ -167,6 +272,16 @@ namespace Capa_Vista_Carrera
                 //    txt_SalarioActual.Text = "No encontrado";
                 //}
             }
+        }
+
+        private void Btn_Buscar_Click(object sender, EventArgs e)
+        {
+            int idEmpleado = Convert.ToInt32(valorSeleccionado); // o de donde obtengas el ID
+            CargarDatosNominas(idEmpleado);
+            CargarDatosReclutamiento(idEmpleado);
+            CargarDatosCapacitaciones(idEmpleado);
+            CargarDatosDesempeno(idEmpleado);
+            CargarDatosDisciplinaria(idEmpleado);
         }
     }
 }
