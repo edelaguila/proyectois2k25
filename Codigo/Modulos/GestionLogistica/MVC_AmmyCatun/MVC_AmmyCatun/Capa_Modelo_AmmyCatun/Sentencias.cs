@@ -19,12 +19,12 @@ namespace Capa_Modelo_AmmyCatun
         private Conexion cn = new Conexion();
 
         // Método para Registrar-Ingresar Pedidos Realizado por Ammy Patricia Catun Lopez 0901-21-4857
-        public void registrarPedido(DateTime dFechaEmision, DateTime dFechaTraslado, string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, string sFormaPago, string sDestino, int iIdRemitente, int iIdDestinatario, int iIdvehiculo)
+        public void registrarPedido(DateTime dFechaEmision, DateTime dFechaTraslado, string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, string sFormaPago, string sDestino, int iIdcliente,int iIdvehiculo)
         {
             try
             {
-                string sSql = "INSERT INTO " + sTabla_datos_pedido + " (fechaEmision, fechaTraslado, direccionPartida, direccionLlegada, numeroOrdenRecojo, formaPago, destino, fk_id_Remitente, fk_id_Destinatario, fk_id_vehiculo) " +
-                              "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                string sSql = "INSERT INTO " + sTabla_datos_pedido + " (fechaEmision, fechaTraslado, direccionPartida, direccionLlegada, numeroOrdenRecojo, formaPago, destino,fk_id_cliente, fk_id_vehiculo) " +
+                              "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
                 using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
                 {
@@ -35,9 +35,9 @@ namespace Capa_Modelo_AmmyCatun
                     cmd.Parameters.AddWithValue("@numeroOrdenRecojo", sNumeroOrdenRecojo);
                     cmd.Parameters.AddWithValue("@formaPago", sFormaPago);
                     cmd.Parameters.AddWithValue("@destino", sDestino);
-                    cmd.Parameters.AddWithValue("@fk_id_Remitente", iIdRemitente);
-                    cmd.Parameters.AddWithValue("@fk_id_Destinatario", iIdDestinatario);
                     cmd.Parameters.AddWithValue("@fk_id_vehiculo", iIdvehiculo);
+                    cmd.Parameters.AddWithValue("@fk_id_cliente", iIdcliente);
+
 
                     int iIngreso = cmd.ExecuteNonQuery();
                     MessageBox.Show(iIngreso > 0 ? "Pedido registrado correctamente." : "No se pudo registrar el pedido.");
@@ -88,11 +88,11 @@ namespace Capa_Modelo_AmmyCatun
         }
 
         // Método para Modifcar Pedidos Realizado por Ammy Patricia Catun Lopez 0901-21-4857
-        public void modificarPedido(int iIdGuia, DateTime dFechaEmision, DateTime dFechaTraslado, string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, string sFormaPago, string sDestino, int iIdRemitente, int iIdDestinatario, int iIdVehiculo)
+        public void modificarPedido(int iIdGuia, DateTime dFechaEmision, DateTime dFechaTraslado, string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, string sFormaPago, string sDestino, int iIdvehiculo)
         {
             try
             {
-                string sSql = "UPDATE Tbl_datos_pedido SET fechaEmision = ?, fechaTraslado = ?, direccionPartida = ?, direccionLlegada = ?, numeroOrdenRecojo = ?, formaPago = ?, destino = ?, Fk_id_remitente = ?, Fk_id_destinatario = ?, Fk_id_vehiculo = ? WHERE Pk_id_guia = ?;";
+                string sSql = "UPDATE Tbl_datos_pedido SET fechaEmision = ?, fechaTraslado = ?, direccionPartida = ?, direccionLlegada = ?, numeroOrdenRecojo = ?, formaPago = ?, destino = ?, Fk_id_vehiculo = ? WHERE Pk_id_guia = ?;";
 
                 using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
                 {
@@ -103,9 +103,7 @@ namespace Capa_Modelo_AmmyCatun
                     cmd.Parameters.AddWithValue("@numeroOrdenRecojo", sNumeroOrdenRecojo);
                     cmd.Parameters.AddWithValue("@formaPago", sFormaPago);
                     cmd.Parameters.AddWithValue("@destino", sDestino);
-                    cmd.Parameters.AddWithValue("@Fk_id_remitente", iIdRemitente);
-                    cmd.Parameters.AddWithValue("@Fk_id_destinatario", iIdDestinatario);
-                    cmd.Parameters.AddWithValue("@Fk_id_vehiculo", iIdVehiculo);
+                    cmd.Parameters.AddWithValue("@Fk_id_vehiculo", iIdvehiculo);
                     cmd.Parameters.AddWithValue("@Pk_id_guia", iIdGuia);
 
                     int iresultado = cmd.ExecuteNonQuery();
@@ -119,34 +117,44 @@ namespace Capa_Modelo_AmmyCatun
 
         }
         // Método para Registrar-Ingresar Vehiculos Realizado por Ammy Patricia Catun Lopez 0901-21-4857
+
         public void registrarVehiculo(string sNumeroPlaca, string sMarca, string sColor, string sDescripcion, string sHoraLlegada, string sHoraSalida, double doPesoTotal, int iIdChofer)
         {
-            try
-            {
-                string sSql = "INSERT INTO " + sTabla_Vehiculos + "(numeroPlaca, marca, color, descripcion, horaLlegada, horaSalida, pesoTotal, Fk_id_chofer)" +
-                              "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-
-                using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@numeroPlaca", sNumeroPlaca);
-                    cmd.Parameters.AddWithValue("@marca", sMarca);
-                    cmd.Parameters.AddWithValue("@color", sColor);
-                    cmd.Parameters.AddWithValue("@descripcion", sDescripcion);
-                    cmd.Parameters.AddWithValue("@horaLlegada", sHoraLlegada);
-                    cmd.Parameters.AddWithValue("@horaSalida", sHoraSalida);
-                    cmd.Parameters.AddWithValue("@pesoTotal", doPesoTotal);
-                    cmd.Parameters.AddWithValue("@Fk_id_chofer", iIdChofer);
+                    string sSql = "INSERT INTO " + sTabla_Vehiculos + " (numeroPlaca, marca, color, descripcion, horaLlegada, horaSalida, pesoTotal, Fk_id_chofer) " +
+                                  "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
+                    using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
+                    {
+                        cmd.Parameters.AddWithValue("@numeroPlaca", sNumeroPlaca);
+                        cmd.Parameters.AddWithValue("@marca", sMarca);
+                        cmd.Parameters.AddWithValue("@color", sColor);
+                        cmd.Parameters.AddWithValue("@descripcion", sDescripcion);
+                        cmd.Parameters.AddWithValue("@horaLlegada", sHoraLlegada);
+                        cmd.Parameters.AddWithValue("@horaSalida", sHoraSalida);
+                        cmd.Parameters.AddWithValue("@pesoTotal", doPesoTotal);
+                        cmd.Parameters.AddWithValue("@Fk_id_chofer", iIdChofer);
 
-                    int iIngreso = cmd.ExecuteNonQuery();
-                    MessageBox.Show(iIngreso > 0 ? "Vehículo registrado correctamente." : "No se pudo registrar el vehículo.");
+                        int iIngreso = cmd.ExecuteNonQuery();
+                        if (iIngreso > 0)
+                        {
+                            MessageBox.Show("Vehículo registrado correctamente.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo registrar el vehículo.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + " \nNo se pudo guardar el registro en la tabla Tbl_vehiculos.");
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + " \nNo se pudo guardar el registro en la tabla Tbl_vehiculos.");
-            }
-        }
+
+     
+
         public int getMaxIdVehiculo()
         {
             int iIdRegistro = 0;
@@ -304,7 +312,29 @@ namespace Capa_Modelo_AmmyCatun
             return sRuta;
         }
 
-        public string ModIndice(string iIdAyuda)
+        public DataTable obtenerVehiculos()
+        {
+            DataTable tabla = new DataTable();
+            try
+            {
+                string sSql = "SELECT numeroPlaca, marca, color, descripcion, horaLlegada, horaSalida, pesoTotal, Fk_id_chofer FROM Tbl_vehiculos;";
+                using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
+                {
+                    using (OdbcDataAdapter da = new OdbcDataAdapter(cmd))
+                    {
+                        da.Fill(tabla);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al leer: " + ex.Message);
+            }
+
+            return tabla;
+        }
+    
+    public string ModIndice(string iIdAyuda)
         {
             string sIndice = "";
             string sSql = "SELECT indice FROM ayuda WHERE id_ayuda = ?"; // Parámetro seguro

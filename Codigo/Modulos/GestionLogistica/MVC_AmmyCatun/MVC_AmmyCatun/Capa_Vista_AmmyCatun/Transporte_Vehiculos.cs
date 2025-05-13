@@ -1,8 +1,10 @@
 ﻿using Capa_Controlador_AmmyCatun;
+using Capa_Modelo_AmmyCatun;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Odbc;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,18 +17,21 @@ namespace Capa_Vista_AmmyCatun
     public partial class Transporte_Vehiculos : Form
     {
         Capa_Controlador_AmmyCatun.ControladorPedido controlador = new ControladorPedido();
+        private Conexion conn = new Conexion();
 
         public Transporte_Vehiculos()
         {
             InitializeComponent();
             CargarComboBoxForma();
+            CargarDatosGrid();
+            CargarCliente();
+
             getId();
         }
         void getId()
         {
             Txt_Guia.Text = controlador.getNextId().ToString();
         }
-
 
 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
@@ -38,16 +43,16 @@ namespace Capa_Vista_AmmyCatun
             string sDestino = Txt_Destino.Text;
             DateTime dFechaEmision = dtp_Fecha_Emision.Value;
             DateTime dFechaTraslado = dtp_Fecha_Emision.Value;
-            int iIdRemitente = Convert.ToInt32(Txt_ID_1.Text);
-            int iIdDestinatario = Convert.ToInt32(Txt_ID_2.Text);
             int iIdvehiculo = Convert.ToInt32(Txt_id_Vehiculo.Text);
+            int iIdcliente = Convert.ToInt32(Cmb_Clientes.SelectedValue);
 
             ControladorPedido controlador = new ControladorPedido();
-            controlador.guardarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdRemitente, iIdDestinatario, iIdvehiculo);
+            controlador.guardarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdcliente, iIdvehiculo);
 
             CargarDatosGrid();
         }
-
+    
+        
 
         private void CargarDatosGrid()
         {
@@ -56,6 +61,37 @@ namespace Capa_Vista_AmmyCatun
 
             Dgv_Cliente.DataSource = dtPedidos;
         }
+        
+
+private void CargarCliente()
+        {
+            try
+            {
+                OdbcConnection connection = conn.conexion();
+                string query = "SELECT Pk_id_cliente, Clientes_nombre FROM Tbl_clientes";
+                OdbcDataAdapter adapter = new OdbcDataAdapter(query, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                Cmb_Clientes.DataSource = dt;
+                Cmb_Clientes.DisplayMember = "Clientes_nombre"; // Lo que se ve
+                Cmb_Clientes.ValueMember = "Pk_id_cliente";       // Lo que se usa internamente
+
+                Cmb_Clientes.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                conn.desconexion(connection);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los clientes: " + ex.Message);
+            }
+        }
+
+
+
+
+
+
 
 
 
@@ -78,26 +114,12 @@ namespace Capa_Vista_AmmyCatun
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de Form2
-            Remitente remitenteForm = new Remitente();
-
-            // Mostrar Form2
-            remitenteForm.Show();
-
-            // (Opcional) Si quieres ocultar Form1 al abrir Form2
-            // this.Hide();
+          
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Crear una instancia de Form2
-            Destinatario destinatarioForm = new Destinatario();
-
-            // Mostrar Form2
-            destinatarioForm.Show();
-
-            // (Opcional) Si quieres ocultar Form1 al abrir Form2
-            // this.Hide();
+          
         }
 
         private void Btn_Eliminar_Click(object sender, EventArgs e)
@@ -138,13 +160,11 @@ namespace Capa_Vista_AmmyCatun
             string sDestino = Txt_Destino.Text;
             DateTime dFechaEmision = dtp_Fecha_Emision.Value;
             DateTime dFechaTraslado = dtp_Fecha_Emision.Value;
-            int iIdRemitente = Convert.ToInt32(Txt_ID_1.Text);
-            int iIdDestinatario = Convert.ToInt32(Txt_ID_2.Text);
             int iIdvehiculo = Convert.ToInt32(Txt_id_Vehiculo.Text);
             int iIdGuia = Convert.ToInt32(Txt_Guia.Text);
 
             ControladorPedido controlador = new ControladorPedido();
-            controlador.modificarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdRemitente, iIdDestinatario, iIdvehiculo, iIdGuia);
+            controlador.modificarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdvehiculo, iIdGuia);
 
             CargarDatosGrid();
         }
@@ -179,6 +199,26 @@ namespace Capa_Vista_AmmyCatun
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Actualizar_Click_1(object sender, EventArgs e)
+        {
+            CargarDatosGrid(); // Reload data in the DataGridView
+        }
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dgv_Cliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Cmb_Clientes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

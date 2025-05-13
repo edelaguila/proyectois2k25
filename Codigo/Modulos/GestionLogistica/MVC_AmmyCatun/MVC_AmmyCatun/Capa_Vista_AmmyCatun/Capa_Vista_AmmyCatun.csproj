@@ -45,6 +45,10 @@
     <Reference Include="Capa_Controlador_Seguridad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\..\Componentes\Seguridad2_5\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Modelo_AmmyCatun, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Capa_Modelo_AmmyCatun\bin\Debug\Capa_Modelo_AmmyCatun.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Consulta, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\..\Componentes\Consultas2_5\Capa_Vista_Consulta\bin\Debug\Capa_Vista_Consulta.dll</HintPath>
     </Reference>
@@ -76,12 +80,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Destinatario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Destinatario.Designer.cs">
-      <DependentUpon>Destinatario.cs</DependentUpon>
-    </Compile>
     <Compile Include="frm_Chofer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,12 +91,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Remitente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Remitente.Designer.cs">
-      <DependentUpon>Remitente.cs</DependentUpon>
     </Compile>
     <Compile Include="ReporteTransporte.cs">
       <AutoGen>True</AutoGen>
@@ -138,18 +130,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Destinatario.resx">
-      <DependentUpon>Destinatario.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frm_Chofer.resx">
       <DependentUpon>frm_Chofer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Remitente.resx">
-      <DependentUpon>Remitente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteTransporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

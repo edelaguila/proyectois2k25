@@ -38,10 +38,6 @@ namespace Capa_Vista_AmmyCatun
             this.Btn_Modificar = new System.Windows.Forms.Button();
             this.Btn_Eliminar = new System.Windows.Forms.Button();
             this.Btn_Ingresar = new System.Windows.Forms.Button();
-            this.Gpb_Destinatario = new System.Windows.Forms.GroupBox();
-            this.Btn_FrmD = new System.Windows.Forms.Button();
-            this.Txt_ID_2 = new System.Windows.Forms.TextBox();
-            this.Txt_IdDestinatario = new System.Windows.Forms.Label();
             this.Gpb_Metodos = new System.Windows.Forms.GroupBox();
             this.Txt_Destino = new System.Windows.Forms.TextBox();
             this.Txt_FormaPago = new System.Windows.Forms.Label();
@@ -62,18 +58,14 @@ namespace Capa_Vista_AmmyCatun
             this.label8 = new System.Windows.Forms.Label();
             this.Txt_FechaTraslado = new System.Windows.Forms.Label();
             this.Txt_Fechaemision = new System.Windows.Forms.Label();
-            this.Gpb_Remitente = new System.Windows.Forms.GroupBox();
-            this.Txt_ID_1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Txt_IdRemitente = new System.Windows.Forms.Label();
             this.Txt_Datos = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.Dgv_Cliente = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Cmb_Clientes = new System.Windows.Forms.ComboBox();
             this.Gpb_Mantenimiento.SuspendLayout();
-            this.Gpb_Destinatario.SuspendLayout();
             this.Gpb_Metodos.SuspendLayout();
             this.Gpb_Pedido.SuspendLayout();
-            this.Gpb_Remitente.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Cliente)).BeginInit();
             this.SuspendLayout();
@@ -86,7 +78,7 @@ namespace Capa_Vista_AmmyCatun
             this.Gpb_Mantenimiento.Controls.Add(this.Btn_Eliminar);
             this.Gpb_Mantenimiento.Controls.Add(this.Btn_Ingresar);
             this.Gpb_Mantenimiento.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Mantenimiento.Location = new System.Drawing.Point(110, 91);
+            this.Gpb_Mantenimiento.Location = new System.Drawing.Point(233, 92);
             this.Gpb_Mantenimiento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Gpb_Mantenimiento.Name = "Gpb_Mantenimiento";
             this.Gpb_Mantenimiento.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -154,50 +146,6 @@ namespace Capa_Vista_AmmyCatun
             this.Btn_Ingresar.TabIndex = 0;
             this.Btn_Ingresar.UseVisualStyleBackColor = false;
             this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
-            // 
-            // Gpb_Destinatario
-            // 
-            this.Gpb_Destinatario.Controls.Add(this.Btn_FrmD);
-            this.Gpb_Destinatario.Controls.Add(this.Txt_ID_2);
-            this.Gpb_Destinatario.Controls.Add(this.Txt_IdDestinatario);
-            this.Gpb_Destinatario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Destinatario.Location = new System.Drawing.Point(1041, 91);
-            this.Gpb_Destinatario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Gpb_Destinatario.Name = "Gpb_Destinatario";
-            this.Gpb_Destinatario.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Gpb_Destinatario.Size = new System.Drawing.Size(345, 143);
-            this.Gpb_Destinatario.TabIndex = 29;
-            this.Gpb_Destinatario.TabStop = false;
-            this.Gpb_Destinatario.Text = "DESTINATARIO";
-            // 
-            // Btn_FrmD
-            // 
-            this.Btn_FrmD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.Btn_FrmD.Location = new System.Drawing.Point(45, 89);
-            this.Btn_FrmD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_FrmD.Name = "Btn_FrmD";
-            this.Btn_FrmD.Size = new System.Drawing.Size(255, 32);
-            this.Btn_FrmD.TabIndex = 29;
-            this.Btn_FrmD.Text = "Formulario Destinatario";
-            this.Btn_FrmD.UseVisualStyleBackColor = false;
-            this.Btn_FrmD.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // Txt_ID_2
-            // 
-            this.Txt_ID_2.Location = new System.Drawing.Point(187, 37);
-            this.Txt_ID_2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Txt_ID_2.Name = "Txt_ID_2";
-            this.Txt_ID_2.Size = new System.Drawing.Size(38, 30);
-            this.Txt_ID_2.TabIndex = 27;
-            // 
-            // Txt_IdDestinatario
-            // 
-            this.Txt_IdDestinatario.AutoSize = true;
-            this.Txt_IdDestinatario.Location = new System.Drawing.Point(139, 30);
-            this.Txt_IdDestinatario.Name = "Txt_IdDestinatario";
-            this.Txt_IdDestinatario.Size = new System.Drawing.Size(38, 23);
-            this.Txt_IdDestinatario.TabIndex = 11;
-            this.Txt_IdDestinatario.Text = "ID:";
             // 
             // Gpb_Metodos
             // 
@@ -396,50 +344,6 @@ namespace Capa_Vista_AmmyCatun
             this.Txt_Fechaemision.TabIndex = 1;
             this.Txt_Fechaemision.Text = "FECHA DE EMISIÓN: ";
             // 
-            // Gpb_Remitente
-            // 
-            this.Gpb_Remitente.Controls.Add(this.Txt_ID_1);
-            this.Gpb_Remitente.Controls.Add(this.button1);
-            this.Gpb_Remitente.Controls.Add(this.Txt_IdRemitente);
-            this.Gpb_Remitente.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gpb_Remitente.Location = new System.Drawing.Point(628, 91);
-            this.Gpb_Remitente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Gpb_Remitente.Name = "Gpb_Remitente";
-            this.Gpb_Remitente.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Gpb_Remitente.Size = new System.Drawing.Size(336, 143);
-            this.Gpb_Remitente.TabIndex = 28;
-            this.Gpb_Remitente.TabStop = false;
-            this.Gpb_Remitente.Text = "REMITENTE";
-            // 
-            // Txt_ID_1
-            // 
-            this.Txt_ID_1.Location = new System.Drawing.Point(183, 27);
-            this.Txt_ID_1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Txt_ID_1.Name = "Txt_ID_1";
-            this.Txt_ID_1.Size = new System.Drawing.Size(32, 30);
-            this.Txt_ID_1.TabIndex = 27;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
-            this.button1.Location = new System.Drawing.Point(52, 89);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(228, 32);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Formulario Remitente";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Txt_IdRemitente
-            // 
-            this.Txt_IdRemitente.AutoSize = true;
-            this.Txt_IdRemitente.Location = new System.Drawing.Point(139, 30);
-            this.Txt_IdRemitente.Name = "Txt_IdRemitente";
-            this.Txt_IdRemitente.Size = new System.Drawing.Size(38, 23);
-            this.Txt_IdRemitente.TabIndex = 11;
-            this.Txt_IdRemitente.Text = "ID:";
-            // 
             // Txt_Datos
             // 
             this.Txt_Datos.AutoSize = true;
@@ -462,6 +366,7 @@ namespace Capa_Vista_AmmyCatun
             this.groupBox6.TabIndex = 33;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Vista Cliente";
+            this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
             // 
             // Dgv_Cliente
             // 
@@ -471,8 +376,29 @@ namespace Capa_Vista_AmmyCatun
             this.Dgv_Cliente.Name = "Dgv_Cliente";
             this.Dgv_Cliente.RowHeadersWidth = 51;
             this.Dgv_Cliente.RowTemplate.Height = 24;
-            this.Dgv_Cliente.Size = new System.Drawing.Size(1671, 384);
+            this.Dgv_Cliente.Size = new System.Drawing.Size(1481, 384);
             this.Dgv_Cliente.TabIndex = 17;
+            this.Dgv_Cliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Cliente_CellContentClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(760, 159);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 23);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "CLIENTES";
+            // 
+            // Cmb_Clientes
+            // 
+            this.Cmb_Clientes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cmb_Clientes.FormattingEnabled = true;
+            this.Cmb_Clientes.Location = new System.Drawing.Point(876, 156);
+            this.Cmb_Clientes.Name = "Cmb_Clientes";
+            this.Cmb_Clientes.Size = new System.Drawing.Size(169, 31);
+            this.Cmb_Clientes.TabIndex = 39;
+            this.Cmb_Clientes.SelectedIndexChanged += new System.EventHandler(this.Cmb_Clientes_SelectedIndexChanged);
             // 
             // Transporte_Vehiculos
             // 
@@ -480,24 +406,20 @@ namespace Capa_Vista_AmmyCatun
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1710, 840);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Cmb_Clientes);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.Gpb_Mantenimiento);
-            this.Controls.Add(this.Gpb_Destinatario);
             this.Controls.Add(this.Gpb_Metodos);
             this.Controls.Add(this.Gpb_Pedido);
-            this.Controls.Add(this.Gpb_Remitente);
             this.Controls.Add(this.Txt_Datos);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Transporte_Vehiculos";
             this.Gpb_Mantenimiento.ResumeLayout(false);
-            this.Gpb_Destinatario.ResumeLayout(false);
-            this.Gpb_Destinatario.PerformLayout();
             this.Gpb_Metodos.ResumeLayout(false);
             this.Gpb_Metodos.PerformLayout();
             this.Gpb_Pedido.ResumeLayout(false);
             this.Gpb_Pedido.PerformLayout();
-            this.Gpb_Remitente.ResumeLayout(false);
-            this.Gpb_Remitente.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Cliente)).EndInit();
             this.ResumeLayout(false);
@@ -514,9 +436,6 @@ namespace Capa_Vista_AmmyCatun
         private System.Windows.Forms.Button Btn_Modificar;
         private System.Windows.Forms.Button Btn_Eliminar;
         private System.Windows.Forms.Button Btn_Ingresar;
-        private System.Windows.Forms.GroupBox Gpb_Destinatario;
-        private System.Windows.Forms.TextBox Txt_ID_2;
-        private System.Windows.Forms.Label Txt_IdDestinatario;
         private System.Windows.Forms.GroupBox Gpb_Metodos;
         private System.Windows.Forms.TextBox Txt_Destino;
         private System.Windows.Forms.Label Txt_FormaPago;
@@ -533,18 +452,15 @@ namespace Capa_Vista_AmmyCatun
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label Txt_FechaTraslado;
         private System.Windows.Forms.Label Txt_Fechaemision;
-        private System.Windows.Forms.GroupBox Gpb_Remitente;
-        private System.Windows.Forms.TextBox Txt_ID_1;
-        private System.Windows.Forms.Label Txt_IdRemitente;
         private System.Windows.Forms.Label Txt_Datos;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView Dgv_Cliente;
-        private System.Windows.Forms.TextBox Txt_id_Vehiculo;
         private System.Windows.Forms.Label Txt_IdVehiculo;
-        private System.Windows.Forms.Button Btn_FrmD;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label Txt_IdGuia;
         private System.Windows.Forms.TextBox Txt_Guia;
         private System.Windows.Forms.Button Btn_Ayuda;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox Cmb_Clientes;
+        private System.Windows.Forms.TextBox Txt_id_Vehiculo;
     }
 }

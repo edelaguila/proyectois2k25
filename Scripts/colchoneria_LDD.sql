@@ -990,22 +990,20 @@ CREATE TABLE Tbl_vehiculos (
 ALTER TABLE Tbl_vehiculos
 MODIFY Estado TINYINT NOT NULL DEFAULT 1;
 
-CREATE TABLE Tbl_remitente (
-    Pk_id_remitente INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    numeroIdentificacion VARCHAR(20) NOT NULL,
-    telefono VARCHAR(15) NOT NULL,
-    correoElectronico VARCHAR(100)
+CREATE TABLE IF NOT EXISTS Tbl_clientes(
+    Pk_id_cliente int(11) NOT NULL,
+    Clientes_nombre VARCHAR(100) NOT NULL,
+    Clientes_apellido VARCHAR(100) NOT NULL,
+    Clientes_nit VARCHAR(20) NOT NULL,
+    Clientes_telefon VARCHAR(20) NOT NULL ,
+    Clientes_direccion VARCHAR(255) NOT NULL,
+    Clientes_No_Cuenta VARCHAR(255) NOT NULL,
+    Clientes_estado tinyint(1) DEFAULT 1,
+    PRIMARY KEY (Pk_id_cliente)
 );
 
-CREATE TABLE Tbl_destinatario (
-    Pk_id_destinatario INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    numeroIdentificacion VARCHAR(20) NOT NULL,
-    telefono VARCHAR(15) NOT NULL,
-    correoElectronico VARCHAR(100)
-);
- 
+
+
 CREATE TABLE Tbl_datos_pedido (
     Pk_id_guia INT AUTO_INCREMENT PRIMARY KEY,
     fechaEmision DATE NOT NULL,
@@ -1015,11 +1013,9 @@ CREATE TABLE Tbl_datos_pedido (
     numeroOrdenRecojo VARCHAR(20),
     formaPago VARCHAR(50) NOT NULL,
     destino VARCHAR(255) NOT NULL,
-    Fk_id_remitente INT NOT NULL,
-    Fk_id_destinatario INT NOT NULL,
+    Fk_id_cliente INT NOT NULL,
     Fk_id_vehiculo INT NOT NULL,
-    FOREIGN KEY (Fk_id_remitente) REFERENCES Tbl_remitente(Pk_id_remitente),  
-    FOREIGN KEY (Fk_id_destinatario) REFERENCES Tbl_destinatario(Pk_id_destinatario),
+	foreign key (Fk_id_cliente) REFERENCES Tbl_clientes (Pk_id_cliente),
     FOREIGN KEY (Fk_id_vehiculo) REFERENCES Tbl_vehiculos(Pk_id_vehiculo)
 );
 
@@ -1141,17 +1137,6 @@ MODIFY estado TINYINT NOT NULL DEFAULT 1;
 
 -- modulo comercial inicio
  -- Tabla Clientes
-CREATE TABLE IF NOT EXISTS Tbl_clientes(
-    Pk_id_cliente int(11) NOT NULL,
-    Clientes_nombre VARCHAR(100) NOT NULL,
-    Clientes_apellido VARCHAR(100) NOT NULL,
-    Clientes_nit VARCHAR(20) NOT NULL,
-    Clientes_telefon VARCHAR(20) NOT NULL ,
-    Clientes_direccion VARCHAR(255) NOT NULL,
-    Clientes_No_Cuenta VARCHAR(255) NOT NULL,
-    Clientes_estado tinyint(1) DEFAULT 1,
-    PRIMARY KEY (Pk_id_cliente)
-);
 
 -- Tabla Vendedores
 CREATE TABLE IF NOT EXISTS Tbl_vendedores (
