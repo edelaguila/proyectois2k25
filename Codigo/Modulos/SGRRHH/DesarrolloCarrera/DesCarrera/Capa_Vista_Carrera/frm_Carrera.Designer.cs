@@ -41,6 +41,7 @@
             this.Lbl_Disciplina = new System.Windows.Forms.Label();
             this.Lbl_Desempenio = new System.Windows.Forms.Label();
             this.cmb_empleado = new System.Windows.Forms.ComboBox();
+            this.Btn_Ayuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_nominas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Reclutamiento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Capacitaciones)).BeginInit();
@@ -178,6 +179,17 @@
             this.cmb_empleado.TabIndex = 34;
             this.cmb_empleado.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // Btn_Ayuda
+            // 
+            this.Btn_Ayuda.BackgroundImage = global::Capa_Vista_Carrera.Properties.Resources.preguntas__1___1_;
+            this.Btn_Ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_Ayuda.Location = new System.Drawing.Point(463, 42);
+            this.Btn_Ayuda.Name = "Btn_Ayuda";
+            this.Btn_Ayuda.Size = new System.Drawing.Size(67, 62);
+            this.Btn_Ayuda.TabIndex = 35;
+            this.Btn_Ayuda.UseVisualStyleBackColor = true;
+            this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
+            // 
             // frm_Carrera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -185,6 +197,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1174, 1055);
+            this.Controls.Add(this.Btn_Ayuda);
             this.Controls.Add(this.cmb_empleado);
             this.Controls.Add(this.dgv_disciplina);
             this.Controls.Add(this.Lbl_Desempenio);
@@ -226,5 +239,6 @@
         private System.Windows.Forms.Label Lbl_Disciplina;
         private System.Windows.Forms.Label Lbl_Desempenio;
         private System.Windows.Forms.ComboBox cmb_empleado;
+        private System.Windows.Forms.Button Btn_Ayuda;
     }
 }

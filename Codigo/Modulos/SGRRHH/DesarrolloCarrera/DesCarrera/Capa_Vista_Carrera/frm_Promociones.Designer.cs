@@ -199,6 +199,7 @@
             this.Btn_Reporte.Size = new System.Drawing.Size(89, 77);
             this.Btn_Reporte.TabIndex = 8;
             this.Btn_Reporte.UseVisualStyleBackColor = true;
+            this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
             // 
             // Btn_Ayuda
             // 
@@ -209,6 +210,7 @@
             this.Btn_Ayuda.Size = new System.Drawing.Size(89, 77);
             this.Btn_Ayuda.TabIndex = 7;
             this.Btn_Ayuda.UseVisualStyleBackColor = true;
+            this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
             // 
             // Btn_Salir
             // 
