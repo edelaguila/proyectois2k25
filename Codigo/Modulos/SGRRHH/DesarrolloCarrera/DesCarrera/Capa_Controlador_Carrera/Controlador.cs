@@ -119,5 +119,89 @@ namespace Capa_Controlador_Carrera
             }
         }
 
+        public DataTable funcConsultarNomina(int idEmpleado)
+        {
+            try
+            {
+                OdbcDataAdapter dt = sn.funcConsultaNomina(idEmpleado);
+                DataTable table = new DataTable();
+                dt.Fill(table);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultarNomina: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable funcConsultarReclutamiento(int idEmpleado)
+        {
+            try
+            {
+                OdbcDataAdapter dt = sn.funcConsultaReclutamiento(idEmpleado);
+                DataTable table = new DataTable();
+                dt.Fill(table);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultarReclutamiento: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable funcConsultarCapacitaciones(int idEmpleado)
+        {
+            try
+            {
+                OdbcDataAdapter dt = sn.funcConsultaCapacitaciones(idEmpleado);
+                DataTable table = new DataTable();
+                dt.Fill(table);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultarCapacitaciones: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable funcConsultarDesempeno(int idEmpleado)
+        {
+            try
+            {
+                OdbcDataAdapter dt = sn.funcConsultaDesempeno(idEmpleado);
+                DataTable table = new DataTable();
+                dt.Fill(table);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultarDesempeno: " + ex.Message);
+                return null;
+            }
+        }
+
+        public DataTable funcConsultarDisciplinaria(int idEmpleado)
+        {
+            try
+            {
+                OdbcDataAdapter dt = sn.funcConsultaDisciplinaria(idEmpleado);
+                DataTable table = new DataTable();
+                dt.Fill(table);
+                return table;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultarDisciplinaria: " + ex.Message);
+                return null;
+            }
+        }
+
+
+
+
+
     }
-    }
+}

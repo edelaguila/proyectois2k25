@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaPromociones.chm
+Contents file=AyudaPromociones.hhc
+Default Window=AyudaPromociones
+Display compile progress=No
+Language=0x80a Español (México)
+
+[WINDOWS]
+AyudaPromociones="Promociones","AyudaPromociones.hhc",,"AyudaPromociones.html","AyudaPromociones.html","AyudaPromociones.html",,"AyudaPromociones.html",,0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+AyudaPromociones.html
+
+[INFOTYPES]
+

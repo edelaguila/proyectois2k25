@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
+    <link rel="stylesheet" href="~/Content/styles/login.css" />
+    <link rel="stylesheet" href="~/Content/styles/normalize.css"/>
+    <title>Login</title>
+</head>
+<body>
+        <div class="login-design">
+            <div class="waves">
+                <img src="~/img/loginPerson.png" alt="" />
+            </div>
+            <div class="login">
+                <div class="login-data">
+                    <img src="~/img/collab.png" alt="" />
+                    <h1>Inicio de Sesión</h1>
+                    @using (Html.BeginForm("login", "Auth", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken() if (ViewBag.Error != null)
+                        {
+                            <div class="alert alert-danger">@ViewBag.Error</div> }
+
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-user"></i>
+                                <input type="text" name="username_usuario" placeholder=" " required />
+                                <span class="input-label">Nombre de Usuario</span>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" name="password_usuario" placeholder=" " required />
+                                <span class="input-label">Contraseña</span>
+                            </div>
+                        </div>
+
+                        <a href="@Url.Action("registro", "Auth")">¿Necesitas una Cuenta?</a>
+                        <input type="submit" value="Iniciar Sesión" class="btn-login" />}
+                </div>
+            </div>
+        </div>
+</body>
+</html>

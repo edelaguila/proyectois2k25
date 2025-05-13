@@ -57,6 +57,7 @@ namespace Capa_Vista_GD
             // Chk_sancion
             // 
             this.Chk_sancion.AutoSize = true;
+            this.Chk_sancion.ForeColor = System.Drawing.Color.Black;
             this.Chk_sancion.Location = new System.Drawing.Point(383, 131);
             this.Chk_sancion.Margin = new System.Windows.Forms.Padding(4);
             this.Chk_sancion.Name = "Chk_sancion";
@@ -80,6 +81,7 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_tipoSancion.AutoSize = true;
             this.Lbl_tipoSancion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_tipoSancion.ForeColor = System.Drawing.Color.Black;
             this.Lbl_tipoSancion.Location = new System.Drawing.Point(83, 188);
             this.Lbl_tipoSancion.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_tipoSancion.Name = "Lbl_tipoSancion";
@@ -92,6 +94,7 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_idFalta.AutoSize = true;
             this.Lbl_idFalta.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_idFalta.ForeColor = System.Drawing.Color.Black;
             this.Lbl_idFalta.Location = new System.Drawing.Point(83, 135);
             this.Lbl_idFalta.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_idFalta.Name = "Lbl_idFalta";
@@ -112,6 +115,7 @@ namespace Capa_Vista_GD
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(83, 240);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
@@ -123,6 +127,7 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_fechaSancion.AutoSize = true;
             this.Lbl_fechaSancion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_fechaSancion.ForeColor = System.Drawing.Color.Black;
             this.Lbl_fechaSancion.Location = new System.Drawing.Point(83, 297);
             this.Lbl_fechaSancion.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_fechaSancion.Name = "Lbl_fechaSancion";
@@ -249,6 +254,7 @@ namespace Capa_Vista_GD
             // 
             // Cbo_operador
             // 
+            this.Cbo_operador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cbo_operador.FormattingEnabled = true;
             this.Cbo_operador.Items.AddRange(new object[] {
             "Ninguno",
@@ -268,6 +274,7 @@ namespace Capa_Vista_GD
             // 
             this.Lbl_operador.AutoSize = true;
             this.Lbl_operador.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_operador.ForeColor = System.Drawing.Color.Black;
             this.Lbl_operador.Location = new System.Drawing.Point(83, 346);
             this.Lbl_operador.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Lbl_operador.Name = "Lbl_operador";
@@ -288,6 +295,8 @@ namespace Capa_Vista_GD
             // 
             // Btn_MostrarEliminados
             // 
+            this.Btn_MostrarEliminados.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_MostrarEliminados.ForeColor = System.Drawing.Color.Black;
             this.Btn_MostrarEliminados.Location = new System.Drawing.Point(334, 549);
             this.Btn_MostrarEliminados.Name = "Btn_MostrarEliminados";
             this.Btn_MostrarEliminados.Size = new System.Drawing.Size(182, 36);

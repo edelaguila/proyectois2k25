@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaEvidencias.chm
+Contents file=AyudaEvidencias.hhc
+Default Window=ayudaEvidencias
+Display compile progress=No
+Language=0xc0a Español (España, internacional)
+
+[WINDOWS]
+ayudaEvidencias="Ingreso de evidencias","AyudaEvidencias.hhc",,"Ayuda - Ingreso de evidencias.html","Ayuda - Ingreso de evidencias.html",,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+Ayuda - Ingreso de evidencias.html
+
+[INFOTYPES]
+

@@ -155,6 +155,127 @@ namespace Capa_Modelo_Carrera
             }
         }
 
+        public OdbcDataAdapter funcConsultaNomina(int idEmpleado)
+        {
+            try
+            {
+                string sql = "SELECT pd.*, pe.encabezado_fecha_inicio, pe.encabezado_fecha_final " +
+                             "FROM tbl_planilla_detalle pd " +
+                             "JOIN tbl_planilla_encabezado pe ON pd.fk_id_registro_planilla_Encabezado = pe.pk_registro_planilla_Encabezado " +
+                             "WHERE pd.fk_clave_empleado = ? AND pd.estado = 1";
+
+                OdbcCommand cmd = new OdbcCommand(sql, cn.conectar());
+                cmd.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+                return new OdbcDataAdapter(cmd);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultaNomina: " + ex.Message);
+                return null;
+            }
+        }
+
+        public OdbcDataAdapter funcConsultaReclutamiento(int idEmpleado)
+        {
+            try
+            {
+                string sql = "SELECT " +
+                             "ats.*, " +
+                             "p.nombre_postulante, " +
+                             "p.apellido_postulante, " +
+                             "s.nombre_status " +
+                             "FROM tbl_empleados e " +
+                             "JOIN tbl_puestos_trabajo pt ON e.fk_id_puestos = pt.pk_id_puestos " +
+                             "JOIN tbl_postulante p ON p.Fk_puesto_aplica_postulante = pt.pk_id_puestos " +
+                             "JOIN tbl_ats ats ON ats.Fk_id_postulantes = p.Pk_id_postulante " +
+                             "JOIN tbl_status_ats s ON ats.Fk_id_status = s.Pk_id_status " +
+                             "WHERE e.pk_clave = ? AND ats.estado = 1";
+
+                OdbcCommand cmd = new OdbcCommand(sql, cn.conectar());
+                cmd.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+                return new OdbcDataAdapter(cmd);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultaReclutamiento: " + ex.Message);
+                return null;
+            }
+        }
+
+        public OdbcDataAdapter funcConsultaCapacitaciones(int idEmpleado)
+        {
+            try
+            {
+                string sql = "SELECT " +
+                             "c.capacitaciones_nombre, " +
+                             "c.capacitaciones_fecha, " +
+                             "n.notas_puntaje " +
+                             "FROM tbl_notas n " +
+                             "JOIN tbl_capacitaciones c ON n.fk_id_capacitacion = c.pk_id_capacitacion " +
+                             "WHERE n.fk_id_empleado = ? AND n.estado = 1";
+
+                OdbcCommand cmd = new OdbcCommand(sql, cn.conectar());
+                cmd.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+                return new OdbcDataAdapter(cmd);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultaCapacitaciones: " + ex.Message);
+                return null;
+            }
+        }
+
+        public OdbcDataAdapter funcConsultaDesempeno(int idEmpleado)
+        {
+            try
+            {
+                string sql = "SELECT " +
+                             "e.*, " +
+                             "d.calificacion AS calificacion_por_competencia, " +
+                             "comp.nombre_competencia " +
+                             "FROM tbl_evaluaciones e " +
+                             "LEFT JOIN tbl_detalle_evaluacion d ON e.pk_id_evaluacion = d.fk_id_evaluacion " +
+                             "LEFT JOIN tbl_competencias comp ON d.fk_id_competencia = comp.Pk_id_competencia " +
+                             "WHERE e.fk_clave_empleado = ? AND e.estado = 1";
+
+                OdbcCommand cmd = new OdbcCommand(sql, cn.conectar());
+                cmd.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+                return new OdbcDataAdapter(cmd);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultaDesempeno: " + ex.Message);
+                return null;
+            }
+        }
+
+        public OdbcDataAdapter funcConsultaDisciplinaria(int idEmpleado)
+        {
+            try
+            {
+                string sql = "SELECT " +
+                             "s.*, " +
+                             "f.falta_fecha, " +
+                             "f.falta_descripcion, " +
+                             "g.gravedad " +
+                             "FROM tbl_sanciones s " +
+                             "JOIN tbl_faltas_disciplinarias f ON s.fk_id_falta = f.pk_id_falta " +
+                             "JOIN tbl_gravedad_faltas g ON f.fk_id_gravedad = g.pk_id_gravedad " +
+                             "WHERE f.fk_clave_empleado = ? AND s.estado = 1";
+
+                OdbcCommand cmd = new OdbcCommand(sql, cn.conectar());
+                cmd.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+                return new OdbcDataAdapter(cmd);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en funcConsultaDisciplinaria: " + ex.Message);
+                return null;
+            }
+        }
+
+
+
 
         //public void funcInsertarPromocion(string empleado, string fecha, string puestoactual, string salarioactual, string puestonuevo, string salarionuevo, string motivo)
         //{

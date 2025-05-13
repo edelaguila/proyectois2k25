@@ -1,0 +1,66 @@
+﻿@model Portal_Web.Models.Asistencia
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+    <link rel="stylesheet" href="~/Content/styles/normalize.css" />
+    <link rel="stylesheet" href="~/Content/styles/asistencia.css"
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Registrar Asistencia</h2>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.fecha)
+                @Html.TextBoxFor(model => model.fecha, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.hora_entrada)
+                @Html.TextBoxFor(model => model.hora_entrada, "{0:hh\\:mm}", new { @class = "form-control", type = "time" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.hora_salida)
+                @Html.TextBoxFor(model => model.hora_salida, "{0:hh\\:mm}", new { @class = "form-control", type = "time" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.estado_asistencia)
+                @Html.DropDownListFor(model => model.estado_asistencia, new SelectList(new[] {
+                    "Presente", "Ausente", "Tarde", "Justificada"
+                }), "Seleccione estado", new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.observaciones)
+                @Html.TextAreaFor(model => model.observaciones, new { @class = "form-control", rows = 3 })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.fk_clave_empleado, "Empleado")
+                @Html.DropDownListFor(model => model.fk_clave_empleado, (SelectList)ViewBag.Empleados, "Seleccione un empleado", new { @class = "form-control" })
+            </div>
+
+            <div class="footer">
+                <button type="submit" class="btn">Guardar</button>
+                @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn" })
+            </div>
+        }
+    </div>
+</body>
+</html>

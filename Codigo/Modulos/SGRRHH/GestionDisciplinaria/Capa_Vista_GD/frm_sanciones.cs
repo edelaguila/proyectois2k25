@@ -88,15 +88,10 @@ namespace Capa_Vista_GD
         }
 
         //**Para visualizar el reporte**
-        public void meAbrirFormulario<T>() where T : Form, new()
-        {
-            //Form formulario = new T();
-            //formulario.Show();
-        }
-
         private void Btn_reporte_Click(object sender, EventArgs e)
         {
-            // meAbrirFormulario<Frm_visualizar_reporte>();
+            Form Reporte = new Frm_reporteSancion();
+            Reporte.Show();
         }
 
         private void Btn_Salir_Click(object sender, EventArgs e)
@@ -115,7 +110,7 @@ namespace Capa_Vista_GD
         private void Btn_Ayuda_Click(object sender, EventArgs e)
         {
             // Busca la carpeta raíz del proyecto llamada proyectois2k25 a partir de la ruta del ejecutable.
-            // Si encuentra la carpeta, busca el archivo AyudaNavegador.chm dentro de ella y sus subcarpetas.
+            // Si encuentra la carpeta, busca el archivo .chm dentro de ella y sus subcarpetas.
             //Si el archivo es encontrado, intenta abrirlo usando Help.ShowHelp().Si falla, lo abre directamente con el proceso del sistema.
 
 
@@ -134,8 +129,8 @@ namespace Capa_Vista_GD
                 return;
             }
 
-            // Buscar el archivo AyudaNavegador.chm en la carpeta raíz y subcarpetas
-            string sPathAyuda = sfunFindFileInDirectory(sProjectPath, "AyudaNavegador.chm");//cambiar aca
+            // Buscar el archivo .chm en la carpeta raíz y subcarpetas
+            string sPathAyuda = sfunFindFileInDirectory(sProjectPath, "AyudaSanciones.chm");
 
             // Si el archivo fue encontrado, abrirlo
             if (!string.IsNullOrEmpty(sPathAyuda))
@@ -152,7 +147,7 @@ namespace Capa_Vista_GD
             }
             else
             {
-                MessageBox.Show("❌ ERROR: No se encontró el archivo AyudaNavegador.chm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); //mensaje de error
+                MessageBox.Show("❌ ERROR: No se encontró el archivo AyudaSanciones.chm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); //mensaje de error
             }
         }
 
@@ -173,7 +168,7 @@ namespace Capa_Vista_GD
             return null; // Retorna null si no encuentra la carpeta
         }
 
-        //Busca el archivo (AyudaNavegador.chm) dentro de un directorio y sus subcarpetas.
+        //Busca el archivo (.chm) dentro de un directorio y sus subcarpetas.
         private string sfunFindFileInDirectory(string sDirectory, string sFileName)
         {
             try
@@ -286,6 +281,7 @@ namespace Capa_Vista_GD
                     // Mostrar en DataGridView solo la sanción recién insertada
                     DataTable sancionReciente = Controlador.funObtenerUltimaSancion();
                     Dgv_sanciones.DataSource = sancionReciente;
+                    FormatearDataGridView();
                 }
                 else
                 {
@@ -298,9 +294,6 @@ namespace Capa_Vista_GD
                 MessageBox.Show("Ocurrió un error:\n" + ex.ToString());
                 Console.WriteLine("ERROR: " + ex.ToString());
             }
-            Btn_Nuevo.Enabled = true;
-            Btn_Cancelar.Enabled = true;
-            Btn_Guardar.Enabled = false;
         }
 
         private void Btn_Buscar_Click(object sender, EventArgs e)
@@ -437,6 +430,7 @@ namespace Capa_Vista_GD
             Txt_descripcionSancion.Enabled = true;
             Dtp_fechaSancion.Enabled = true;
             Chk_sancion.Enabled = true;
+            Dgv_sanciones.DataSource = null;
         }
 
         private void liberarcontrol()

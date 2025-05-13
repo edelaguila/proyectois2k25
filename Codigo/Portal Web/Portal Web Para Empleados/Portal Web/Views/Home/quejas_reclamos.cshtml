@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Quejas y Reclamos</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+    <link rel="stylesheet" href="~/Content/styles/normalize.css" />
+    <link rel="stylesheet" href="~/Content/styles/quejas_reclamos.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Formulario de Quejas o Reclamos</h2>
+        </div>
+        <form action="/enviar-reclamo" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="idEmpleado">ID de Empleado</label>
+                <input type="text" id="idEmpleado" name="idEmpleado" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="departamento">Departamento</label>
+                <input type="text" id="departamento" name="departamento" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="correo" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tipo">Tipo de queja o reclamo</label>
+                <select id="tipo" name="tipo" class="form-control" required>
+                    <option value="">Seleccione una opción</option>
+                    <option>Problemas con el salario</option>
+                    <option>Acoso laboral</option>
+                    <option>Problemas con el supervisor</option>
+                    <option>Condiciones laborales</option>
+                    <option>Falta de insumos o herramientas</option>
+                    <option>Otro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción detallada</label>
+                <textarea id="descripcion" name="descripcion" class="form-control" rows="5" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="adjunto">Archivos adjuntos (opcional)</label>
+                <input type="file" id="adjunto" name="adjunto" class="form-control" multiple>
+            </div>
+
+            <div class="form-group">
+                <label for="urgencia">Nivel de urgencia</label>
+                <select id="urgencia" name="urgencia" class="form-control">
+                    <option value="baja">Baja</option>
+                    <option value="media">Media</option>
+                    <option value="alta">Alta</option>
+                </select>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="confidencial" name="confidencial">
+                <label for="confidencial">Deseo que este reclamo sea tratado de manera confidencial</label>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos">Acepto los términos y condiciones de la política de quejas</label>
+            </div>
+
+            <div class="footer">
+                <button type="reset" class="btn">Limpiar</button>
+                <button type="submit" class="btn">Enviar Reclamo</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

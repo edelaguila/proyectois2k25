@@ -33,7 +33,7 @@ namespace Capa_Vista_Nominas
 
                 "Codigo postal","Fecha_alta","Fecha_baja","Causa_baja"
 
-                ,"ID Depto","ID Puesto","Estado" };
+                ,"ID Puesto","ID Depto","Estado" };
 
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
