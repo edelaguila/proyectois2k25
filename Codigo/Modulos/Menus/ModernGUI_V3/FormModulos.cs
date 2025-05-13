@@ -20,7 +20,7 @@ using System.Windows.Forms;
 //using Capa_Vista_Carrera;
 
 
-//using Capa_Vista_RRHH;
+using Capa_Vista_RRHH;
 
 namespace Interfac_V3
 {
@@ -197,8 +197,8 @@ namespace Interfac_V3
             //frm_Promociones promociones = new frm_Promociones(UsuarioSesion.GetIdUsuario());
             // promociones.Show();
 
-          //  MDI_RRHH Recursos = new MDI_RRHH(UsuarioSesion.GetIdUsuario());
-          //  Recursos.Show();
+            MDI_RRHH Recursos = new MDI_RRHH(UsuarioSesion.GetIdUsuario());
+            Recursos.Show();
 
 
         }
