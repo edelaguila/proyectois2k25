@@ -826,3 +826,9 @@ CREATE TABLE IF NOT EXISTS `tbl_ventas_pagos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- TERMINA LAS TABLAS CREADAS
+
+
+-- Agregar campos de comisión a Tbl_Productos
+ALTER TABLE Tbl_Productos
+ADD COLUMN comisionInventario DECIMAL(5,2) DEFAULT 0,
+ADD COLUMN comisionCosto DECIMAL(5,2) DEFAULT 0;
