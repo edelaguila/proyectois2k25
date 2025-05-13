@@ -18,6 +18,7 @@ namespace Capa_Controlador_AmmyCatun
 
         public ControladorPedido(Sentencias @object)
         {
+
         }
 
         public ControladorPedido()
@@ -44,7 +45,7 @@ namespace Capa_Controlador_AmmyCatun
         }
 
         // Método para guardar un datos pedido Realizado por Ammy Patricia Catun Lopez 0901-21-4857
-        public int guardarPedido(string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, ComboBox cmbFormaPago, string sDestino, DateTime dFechaEmision, DateTime dFechaTraslado, int iIdvehiculo)
+        public int guardarPedido(string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, ComboBox cmbFormaPago, string sDestino, DateTime dFechaEmision, DateTime dFechaTraslado,int iIdcliente,int iIdvehiculo)
         {
 
             string sFormaPago = cmbFormaPago.SelectedItem?.ToString();
@@ -57,7 +58,7 @@ namespace Capa_Controlador_AmmyCatun
             }
             else
             {
-                sentencias.registrarPedido(dFechaEmision, dFechaTraslado, sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, sFormaPago, sDestino, iIdvehiculo);
+                sentencias.registrarPedido(dFechaEmision, dFechaTraslado, sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, sFormaPago, sDestino,iIdcliente, iIdvehiculo);
                 MessageBox.Show("Pedido ingresado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return 1;
             }
@@ -122,6 +123,19 @@ namespace Capa_Controlador_AmmyCatun
         {
         }
 
+        public DataTable CargarPedidos()
+        {
+            return sentencias.cargarPedidos();
+        }
+
+        public void registrarVehiculo(string sNumeroPlaca, string sMarca, string sColor, string sDescripcion, string sHoraLlegada, string sHoraSalida, double doPesoTotal, int iIdChofer)
+        {
+            sentencias.registrarVehiculo(sNumeroPlaca, sMarca, sColor, sDescripcion, sHoraLlegada, sHoraSalida, doPesoTotal, iIdChofer);
+        }
+
+
+
+
         public DataTable CargarVehiculos()
         {
             return sentencias.cargarVehiculos();
@@ -148,6 +162,17 @@ namespace Capa_Controlador_AmmyCatun
                 return 1;
             }
         }
+
+        public DataTable obtenerVehiculos()
+        {
+            return sentencias.obtenerVehiculos();
+
+        }
+
+
+
+
+
         // Método para modificar vehiculos Realizado por Ammy Patricia Catun Lopez 0901-21-4857
         public int modificarVehiculo(int iIdVehiculo, string sNumeroPlaca, string sMarca, string sColor, string sDescripcion, string sHoraLlegada, string sHoraSalida, double doPesoTotal, int iIdChofer)
         {

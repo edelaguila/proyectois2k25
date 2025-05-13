@@ -60,11 +60,9 @@ namespace Capa_Vista_AmmyCatun
             this.Txt_Fechaemision = new System.Windows.Forms.Label();
             this.Txt_Datos = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Dgv_Cliente = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.Cmb_Clientes = new System.Windows.Forms.ComboBox();
             this.Gpb_Mantenimiento.SuspendLayout();
             this.Gpb_Metodos.SuspendLayout();
             this.Gpb_Pedido.SuspendLayout();
@@ -358,8 +356,6 @@ namespace Capa_Vista_AmmyCatun
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.label1);
-            this.groupBox6.Controls.Add(this.comboBox1);
             this.groupBox6.Controls.Add(this.Dgv_Cliente);
             this.groupBox6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(11, 601);
@@ -370,25 +366,7 @@ namespace Capa_Vista_AmmyCatun
             this.groupBox6.TabIndex = 33;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Vista Cliente";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(728, 222);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 23);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "CLIENTES";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(844, 219);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 31);
-            this.comboBox1.TabIndex = 39;
+            this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
             // 
             // Dgv_Cliente
             // 
@@ -398,8 +376,9 @@ namespace Capa_Vista_AmmyCatun
             this.Dgv_Cliente.Name = "Dgv_Cliente";
             this.Dgv_Cliente.RowHeadersWidth = 51;
             this.Dgv_Cliente.RowTemplate.Height = 24;
-            this.Dgv_Cliente.Size = new System.Drawing.Size(1671, 384);
+            this.Dgv_Cliente.Size = new System.Drawing.Size(1481, 384);
             this.Dgv_Cliente.TabIndex = 17;
+            this.Dgv_Cliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Cliente_CellContentClick);
             // 
             // label2
             // 
@@ -411,14 +390,15 @@ namespace Capa_Vista_AmmyCatun
             this.label2.TabIndex = 40;
             this.label2.Text = "CLIENTES";
             // 
-            // comboBox2
+            // Cmb_Clientes
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(876, 156);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(169, 31);
-            this.comboBox2.TabIndex = 39;
+            this.Cmb_Clientes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cmb_Clientes.FormattingEnabled = true;
+            this.Cmb_Clientes.Location = new System.Drawing.Point(876, 156);
+            this.Cmb_Clientes.Name = "Cmb_Clientes";
+            this.Cmb_Clientes.Size = new System.Drawing.Size(169, 31);
+            this.Cmb_Clientes.TabIndex = 39;
+            this.Cmb_Clientes.SelectedIndexChanged += new System.EventHandler(this.Cmb_Clientes_SelectedIndexChanged);
             // 
             // Transporte_Vehiculos
             // 
@@ -427,7 +407,7 @@ namespace Capa_Vista_AmmyCatun
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1710, 840);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.Cmb_Clientes);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.Gpb_Mantenimiento);
             this.Controls.Add(this.Gpb_Metodos);
@@ -435,14 +415,12 @@ namespace Capa_Vista_AmmyCatun
             this.Controls.Add(this.Txt_Datos);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Transporte_Vehiculos";
-            this.Text = "2";
             this.Gpb_Mantenimiento.ResumeLayout(false);
             this.Gpb_Metodos.ResumeLayout(false);
             this.Gpb_Metodos.PerformLayout();
             this.Gpb_Pedido.ResumeLayout(false);
             this.Gpb_Pedido.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Cliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -477,14 +455,12 @@ namespace Capa_Vista_AmmyCatun
         private System.Windows.Forms.Label Txt_Datos;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView Dgv_Cliente;
-        private System.Windows.Forms.TextBox Txt_id_Vehiculo;
         private System.Windows.Forms.Label Txt_IdVehiculo;
         private System.Windows.Forms.Label Txt_IdGuia;
         private System.Windows.Forms.TextBox Txt_Guia;
         private System.Windows.Forms.Button Btn_Ayuda;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox Cmb_Clientes;
+        private System.Windows.Forms.TextBox Txt_id_Vehiculo;
     }
 }

@@ -88,7 +88,7 @@ namespace Capa_Vista_AmmyCatun
             // 
             this.Dgv_Vehiculo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Dgv_Vehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Vehiculo.Location = new System.Drawing.Point(19, 47);
+            this.Dgv_Vehiculo.Location = new System.Drawing.Point(17, 50);
             this.Dgv_Vehiculo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dgv_Vehiculo.Name = "Dgv_Vehiculo";
             this.Dgv_Vehiculo.RowHeadersWidth = 51;

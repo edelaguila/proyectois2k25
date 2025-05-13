@@ -93,49 +93,55 @@ namespace Capa_Vista_AmmyCatun
         }
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
+                // Crear una instancia del controlador
+                ControladorVehiculo controlador = new ControladorVehiculo();
 
-            ControladorVehiculo controladorVehiculo = new ControladorVehiculo();
+                // Obtener los datos ingresados en los controles del formulario
+                string sNumeroPlaca = Txt_Placa.Text.Trim();
+                string sMarca = Txt_Marca.Text.Trim();
+                string sColor = Txt_Color.Text.Trim();
+                string sDescripcion = Txt_Desc.Text.Trim();
+                string sHoraLlegada = Txt_HLL.Text.Trim();
+                string sHoraSalida = Txt_HS.Text.Trim();
+                double doPesoTotal;
+                int iIdChofer;
 
-            // Recopila los datos ingresados en los controles del formulario
-            string sNumeroPlaca = Txt_Placa.Text;
-            string sMarca = Txt_Marca.Text;
-            string sColor = Txt_Color.Text;
-            string sDescripcion = Txt_Desc.Text;
-            string sHoraLlegada = Txt_HLL.Text; // Asumiendo formato "HH:mm"
-            string sHoraSalida = Txt_HS.Text; // Asumiendo formato "HH:mm"
-            double doPesoTotal;
-            int iIdChofer;
+                // Validar los datos ingresados
+                if (!double.TryParse(Txt_Total.Text, out doPesoTotal) || doPesoTotal <= 0)
+                {
+                    MessageBox.Show("Peso inválido.");
+                    return;
+                }
 
-            // Validación de los datos ingresados
-            if (!double.TryParse(Txt_Total.Text, out doPesoTotal) || doPesoTotal <= 0)
-            {
-                MessageBox.Show("Por favor, ingresa un peso total válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (!int.TryParse(Txt_ID.Text, out iIdChofer) || iIdChofer <= 0)
+                {
+                    MessageBox.Show("ID de chofer inválido.");
+                    return;
+                }
+
+                // Validar el formato de las horas
+                if (!TimeSpan.TryParse(sHoraLlegada, out _) || !TimeSpan.TryParse(sHoraSalida, out _))
+                {
+                    MessageBox.Show("Formato de hora inválido. Usa HH:mm.");
+                    return;
+                }
+
+                // Llamar al método del controlador para registrar el vehículo
+                controlador.registrarVehiculo(sNumeroPlaca, sMarca, sColor, sDescripcion, sHoraLlegada, sHoraSalida, doPesoTotal, iIdChofer);
+
+                // Actualizar el DataGridView para mostrar los vehículos
+                cargarVehiculos();
             }
 
-            if (!int.TryParse(Txt_ID.Text, out iIdChofer) || iIdChofer <= 0)
+            // Método para cargar los vehículos en el DataGridView
+            private void cargarVehiculos()
             {
-                MessageBox.Show("Por favor, ingresa un ID de chofer válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                ControladorVehiculo controlador = new ControladorVehiculo();
+                DataTable dtVehiculos = controlador.obtenerVehiculos();
+                Dgv_Vehiculo.DataSource = dtVehiculos;  // Asignar los datos al DataGridView
             }
 
-            // Validación del formato de hora
-            if (!TimeSpan.TryParse(sHoraLlegada, out _) || !TimeSpan.TryParse(sHoraSalida, out _))
-            {
-                MessageBox.Show("Por favor, ingresa un formato de hora válido (HH:mm).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Llama al método para guardar el vehículo
-            controladorVehiculo.guardarVehiculo(sNumeroPlaca, sMarca, sColor, sDescripcion,
-                                                                 sHoraLlegada, sHoraSalida, doPesoTotal, iIdChofer);
-
-
-
-        }
-
-
-        private void Btn_Eliminar_Click(object sender, EventArgs e)
+            private void Btn_Eliminar_Click(object sender, EventArgs e)
         {
             {
                 string sIdVehiculo = Txt_IDVeh.Text;

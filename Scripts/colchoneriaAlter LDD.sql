@@ -151,10 +151,7 @@ ADD COLUMN codigoProducto INT NOT NULL;
 
 ALTER TABLE Tbl_chofer
 ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
-ALTER TABLE Tbl_remitente
-ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
-ALTER TABLE Tbl_destinatario
-ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
+
 
 ALTER TABLE Tbl_Productos
 ADD COLUMN comisionInventario DOUBLE NOT NULL;
@@ -762,7 +759,6 @@ CREATE TABLE Tbl_DetalleTrasladoProductos (
     FOREIGN KEY (codigoProducto) REFERENCES Tbl_Productos(codigoProducto)
 );
 
-select * from Tbl_DetalleEntradaProductos;
 CREATE TABLE Tbl_DetalleEntradaProductos (
     Pk_id_DetalleEntrada INT PRIMARY KEY AUTO_INCREMENT,
     Fk_id_EntradaProductos INT,

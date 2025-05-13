@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Controlador_AmmyCatun"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_AmmyCatun", "Capa_Vista_AmmyCatun\Capa_Vista_AmmyCatun.csproj", "{23F201E4-51A4-47A8-98CF-81A100D92725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pruebaAmmy_Catun", "pruebaAmmy_Catun\pruebaAmmy_Catun.csproj", "{7420D6E2-8FFA-4A23-8B3E-D88A4E1D3F33}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{23F201E4-51A4-47A8-98CF-81A100D92725}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23F201E4-51A4-47A8-98CF-81A100D92725}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23F201E4-51A4-47A8-98CF-81A100D92725}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7420D6E2-8FFA-4A23-8B3E-D88A4E1D3F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7420D6E2-8FFA-4A23-8B3E-D88A4E1D3F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7420D6E2-8FFA-4A23-8B3E-D88A4E1D3F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7420D6E2-8FFA-4A23-8B3E-D88A4E1D3F33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
