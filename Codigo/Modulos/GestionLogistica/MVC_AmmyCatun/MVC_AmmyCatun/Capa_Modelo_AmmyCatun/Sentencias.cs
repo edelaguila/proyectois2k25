@@ -122,7 +122,7 @@ namespace Capa_Modelo_AmmyCatun
         {
                 try
                 {
-                    string sSql = "INSERT INTO Tbl_vehiculos (numeroPlaca, marca, color, descripcion, horaLlegada, horaSalida, pesoTotal, Fk_id_chofer) " +
+                    string sSql = "INSERT INTO " + sTabla_Vehiculos + " (numeroPlaca, marca, color, descripcion, horaLlegada, horaSalida, pesoTotal, Fk_id_chofer) " +
                                   "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
                     using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
