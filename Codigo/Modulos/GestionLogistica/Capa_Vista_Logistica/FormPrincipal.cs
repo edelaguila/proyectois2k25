@@ -394,7 +394,7 @@ namespace Capa_Vista_Logistica
 
         private void Btn_ComProc3_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<Capa_Vista_Comisiones.Frm_Comisiones>();
+            AbrirFormulario<Capa_Vista.Frm_comisiones>();
             ocultaSubMenu();
         }
 
