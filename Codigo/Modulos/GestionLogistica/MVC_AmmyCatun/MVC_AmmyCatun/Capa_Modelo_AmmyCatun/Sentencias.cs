@@ -19,11 +19,12 @@ namespace Capa_Modelo_AmmyCatun
         private Conexion cn = new Conexion();
 
         // Método para Registrar-Ingresar Pedidos Realizado por Ammy Patricia Catun Lopez 0901-21-4857
-        public void registrarPedido(DateTime dFechaEmision, DateTime dFechaTraslado, string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, string sFormaPago, string sDestino, int iIdcliente,int iIdvehiculo)
+        public void registrarPedido(DateTime dFechaEmision, DateTime dFechaTraslado, string sDireccionPartida, string sDireccionLlegada,
+                             string sNumeroOrdenRecojo, string sFormaPago, string sDestino, int iIdcliente, int iIdvehiculo)
         {
             try
             {
-                string sSql = "INSERT INTO " + sTabla_datos_pedido + " (fechaEmision, fechaTraslado, direccionPartida, direccionLlegada, numeroOrdenRecojo, formaPago, destino,fk_id_cliente, fk_id_vehiculo) " +
+                string sSql = "INSERT INTO " + sTabla_datos_pedido + " (fechaEmision, fechaTraslado, direccionPartida, direccionLlegada, numeroOrdenRecojo, formaPago, destino, fk_id_cliente, fk_id_vehiculo) " +
                               "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
                 using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
@@ -35,9 +36,8 @@ namespace Capa_Modelo_AmmyCatun
                     cmd.Parameters.AddWithValue("@numeroOrdenRecojo", sNumeroOrdenRecojo);
                     cmd.Parameters.AddWithValue("@formaPago", sFormaPago);
                     cmd.Parameters.AddWithValue("@destino", sDestino);
+                    cmd.Parameters.AddWithValue("@fk_id_cliente", iIdcliente); // ✅ Agregado
                     cmd.Parameters.AddWithValue("@fk_id_vehiculo", iIdvehiculo);
-                    cmd.Parameters.AddWithValue("@fk_id_cliente", iIdcliente);
-
 
                     int iIngreso = cmd.ExecuteNonQuery();
                     MessageBox.Show(iIngreso > 0 ? "Pedido registrado correctamente." : "No se pudo registrar el pedido.");
@@ -45,9 +45,12 @@ namespace Capa_Modelo_AmmyCatun
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message + " \nNo se pudo guardar el registro en la tabla Tbl_datos_pedido.");
+                MessageBox.Show("Error al guardar el pedido: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
 
         public int getMaxIdPedido()
         {
@@ -117,43 +120,54 @@ namespace Capa_Modelo_AmmyCatun
 
         }
         // Método para Registrar-Ingresar Vehiculos Realizado por Ammy Patricia Catun Lopez 0901-21-4857
-
         public void registrarVehiculo(string sNumeroPlaca, string sMarca, string sColor, string sDescripcion, string sHoraLlegada, string sHoraSalida, double doPesoTotal, int iIdChofer)
         {
-                try
-                {
-                    string sSql = "INSERT INTO " + sTabla_Vehiculos + " (numeroPlaca, marca, color, descripcion, horaLlegada, horaSalida, pesoTotal, Fk_id_chofer) " +
-                                  "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            try
+            {
+                string sSql = "INSERT INTO " + sTabla_Vehiculos + "(numeroPlaca, marca, color, descripcion, horaLlegada, horaSalida, pesoTotal, Fk_id_chofer)" +
+                              "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
-                    using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
-                    {
-                        cmd.Parameters.AddWithValue("@numeroPlaca", sNumeroPlaca);
-                        cmd.Parameters.AddWithValue("@marca", sMarca);
-                        cmd.Parameters.AddWithValue("@color", sColor);
-                        cmd.Parameters.AddWithValue("@descripcion", sDescripcion);
-                        cmd.Parameters.AddWithValue("@horaLlegada", sHoraLlegada);
-                        cmd.Parameters.AddWithValue("@horaSalida", sHoraSalida);
-                        cmd.Parameters.AddWithValue("@pesoTotal", doPesoTotal);
-                        cmd.Parameters.AddWithValue("@Fk_id_chofer", iIdChofer);
-
-                        int iIngreso = cmd.ExecuteNonQuery();
-                        if (iIngreso > 0)
-                        {
-                            MessageBox.Show("Vehículo registrado correctamente.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo registrar el vehículo.");
-                        }
-                    }
-                }
-                catch (Exception ex)
+                using (OdbcCommand cmd = new OdbcCommand(sSql, cn.conexion()))
                 {
-                    Console.WriteLine(ex.Message + " \nNo se pudo guardar el registro en la tabla Tbl_vehiculos.");
+                    cmd.Parameters.AddWithValue("@numeroPlaca", sNumeroPlaca);
+                    cmd.Parameters.AddWithValue("@marca", sMarca);
+                    cmd.Parameters.AddWithValue("@color", sColor);
+                    cmd.Parameters.AddWithValue("@descripcion", sDescripcion);
+                    cmd.Parameters.AddWithValue("@horaLlegada", sHoraLlegada);
+                    cmd.Parameters.AddWithValue("@horaSalida", sHoraSalida);
+                    cmd.Parameters.AddWithValue("@pesoTotal", doPesoTotal);
+                    cmd.Parameters.AddWithValue("@Fk_id_chofer", iIdChofer);
+
+
+                    int iIngreso = cmd.ExecuteNonQuery();
+                    MessageBox.Show(iIngreso > 0 ? "Vehículo registrado correctamente." : "No se pudo registrar el vehículo.");
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + " \nNo se pudo guardar el registro en la tabla Tbl_vehiculos.");
+            }
+        }
 
-     
+
+        public DataTable ObtenerTodosLosVehiculos()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                string query = "SELECT * FROM tbl_vehiculos;";
+                using (OdbcCommand cmd = new OdbcCommand(query, cn.conexion()))
+                {
+                    OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener los vehículos: " + ex.Message);
+            }
+            return dt;
+        }
 
         public int getMaxIdVehiculo()
         {
@@ -194,7 +208,9 @@ namespace Capa_Modelo_AmmyCatun
 
             return dtVehiculos;
         }
+
         // Método para Modificar Vehiculos Realizado por Ammy Patricia Catun Lopez 0901-21-4857
+        
         public void modificarVehiculo(int iIdVehiculo, string sNumeroPlaca, string sMarca, string sColor, string sDescripcion, string sHoraLlegada, string sHoraSalida, double doPesoTotal, int iIdChofer)
         {
             try
@@ -224,7 +240,10 @@ namespace Capa_Modelo_AmmyCatun
             }
         }
 
+
+
         // Método para Eliminar Vehiculo Realizado por Ammy Patricia Catun Lopez 0901-21-4857
+       
         public void eliminarVehiculo(string iIdVehiculo)
         {
             try

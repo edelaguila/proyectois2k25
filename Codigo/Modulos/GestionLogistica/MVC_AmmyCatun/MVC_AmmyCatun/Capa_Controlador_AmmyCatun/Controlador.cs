@@ -45,24 +45,25 @@ namespace Capa_Controlador_AmmyCatun
         }
 
         // Método para guardar un datos pedido Realizado por Ammy Patricia Catun Lopez 0901-21-4857
-        public int guardarPedido(string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, ComboBox cmbFormaPago, string sDestino, DateTime dFechaEmision, DateTime dFechaTraslado,int iIdcliente,int iIdvehiculo)
+        public void guardarPedido(string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo,
+                          ComboBox cmbFormaPago, string sDestino, DateTime dFechaEmision, DateTime dFechaTraslado,
+                          int iIdvehiculo, int iIdcliente)
         {
-
             string sFormaPago = cmbFormaPago.SelectedItem?.ToString();
 
-            if (string.IsNullOrEmpty(sDireccionPartida) || string.IsNullOrEmpty(sDireccionLlegada) || string.IsNullOrEmpty(sFormaPago) || string.IsNullOrEmpty(sDestino))
-
+            if (string.IsNullOrEmpty(sDireccionPartida) || string.IsNullOrEmpty(sDireccionLlegada) ||
+                string.IsNullOrEmpty(sFormaPago) || string.IsNullOrEmpty(sDestino))
             {
                 MessageBox.Show("Existen campos vacíos, revise y vuelva a intentarlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 0;
             }
             else
             {
-                sentencias.registrarPedido(dFechaEmision, dFechaTraslado, sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, sFormaPago, sDestino,iIdcliente, iIdvehiculo);
+                sentencias.registrarPedido(dFechaEmision, dFechaTraslado, sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo,
+                                           sFormaPago, sDestino, iIdcliente, iIdvehiculo);
                 MessageBox.Show("Pedido ingresado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return 1;
             }
         }
+
         // Método para eliminar  datos pedido Realizado por Ammy Patricia Catun Lopez 0901-21-4857
         public void eliminarPedido(string idGuia)
         {
@@ -75,6 +76,8 @@ namespace Capa_Controlador_AmmyCatun
                 sentencias.eliminarPedido(idGuia);
             }
         }
+
+
         // Método para modificar datos pedido Realizado por Ammy Patricia Catun Lopez 0901-21-4857
         public int modificarPedido(string sDireccionPartida, string sDireccionLlegada, string sNumeroOrdenRecojo, ComboBox cmbFormaPago, string sDestino, DateTime dFechaEmision, DateTime dFechaTraslado, int iIdvehiculo, int iIdGuia)
         {
@@ -128,26 +131,6 @@ namespace Capa_Controlador_AmmyCatun
             return sentencias.cargarPedidos();
         }
 
-        public void registrarVehiculo(string sNumeroPlaca, string sMarca, string sColor, string sDescripcion, string sHoraLlegada, string sHoraSalida, double doPesoTotal, int iIdChofer)
-        {
-            sentencias.registrarVehiculo(sNumeroPlaca, sMarca, sColor, sDescripcion, sHoraLlegada, sHoraSalida, doPesoTotal, iIdChofer);
-        }
-
-
-
-
-        public DataTable CargarVehiculos()
-        {
-            return sentencias.cargarVehiculos();
-        }
-
-        public object getNextId()
-        {
-            int nextId = sentencias.getMaxIdVehiculo();
-            nextId++;
-            return nextId.ToString();
-        }
-
         public int guardarVehiculo(string sNumeroPlaca, string sMarca, string sColor, string sDescripcion, string sHoraLlegada, string sHoraSalida, double doPesoTotal, int iIdChofer)
         {
             if (string.IsNullOrEmpty(sNumeroPlaca) || string.IsNullOrEmpty(sMarca) || string.IsNullOrEmpty(sColor) ||
@@ -163,15 +146,24 @@ namespace Capa_Controlador_AmmyCatun
             }
         }
 
-        public DataTable obtenerVehiculos()
-        {
-            return sentencias.obtenerVehiculos();
 
+
+        public DataTable CargarVehiculos()
+        {
+            return sentencias.cargarVehiculos();
         }
 
+        public object getNextId()
+        {
+            int nextId = sentencias.getMaxIdVehiculo();
+            nextId++;
+            return nextId.ToString();
+        }
 
-
-
+        public DataTable obtenerVehiculos()
+        {
+            return sentencias.ObtenerTodosLosVehiculos();
+        }
 
         // Método para modificar vehiculos Realizado por Ammy Patricia Catun Lopez 0901-21-4857
         public int modificarVehiculo(int iIdVehiculo, string sNumeroPlaca, string sMarca, string sColor, string sDescripcion, string sHoraLlegada, string sHoraSalida, double doPesoTotal, int iIdChofer)

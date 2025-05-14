@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ejecucion_MVC_Ammy
+namespace EjecucionMiguelCrisostomo
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Ejecucion_MVC_Ammy
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Capa_Vista_AmmyCatun.Transporte_Vehiculos());
+            Application.Run(new Capa_Vista_Compras.Form1());
         }
     }
 }

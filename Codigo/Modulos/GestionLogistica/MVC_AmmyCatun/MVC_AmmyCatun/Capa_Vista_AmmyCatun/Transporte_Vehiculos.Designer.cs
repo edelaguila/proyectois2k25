@@ -394,7 +394,7 @@ namespace Capa_Vista_AmmyCatun
             // 
             this.Cmb_Clientes.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cmb_Clientes.FormattingEnabled = true;
-            this.Cmb_Clientes.Location = new System.Drawing.Point(876, 156);
+            this.Cmb_Clientes.Location = new System.Drawing.Point(874, 163);
             this.Cmb_Clientes.Name = "Cmb_Clientes";
             this.Cmb_Clientes.Size = new System.Drawing.Size(169, 31);
             this.Cmb_Clientes.TabIndex = 39;

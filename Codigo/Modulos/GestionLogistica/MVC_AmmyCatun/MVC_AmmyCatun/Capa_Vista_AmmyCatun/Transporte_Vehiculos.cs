@@ -21,49 +21,133 @@ namespace Capa_Vista_AmmyCatun
 
         public Transporte_Vehiculos()
         {
-            InitializeComponent();
-            CargarComboBoxForma();
-            CargarDatosGrid();
-            CargarCliente();
+                InitializeComponent();
+                CargarComboBoxForma();
+                CargarDatosGrid();
+                 CargarClientes();
+                getId();
+            }
+            void getId()
+            {
+                Txt_IdGuia.Text = controlador.getNextId().ToString();
+            }
 
-            getId();
-        }
-        void getId()
-        {
-            Txt_Guia.Text = controlador.getNextId().ToString();
-        }
 
 
-        private void Btn_Ingresar_Click(object sender, EventArgs e)
-        {
-            string sDireccionPartida = Txt_Partida.Text;
-            string sDireccionLlegada = Txt_LLegada.Text;
-            string sNumeroOrdenRecojo = Txt_Recojo.Text;
-            ComboBox cmbFormaPago = Cbo_Forma;
-            string sDestino = Txt_Destino.Text;
-            DateTime dFechaEmision = dtp_Fecha_Emision.Value;
-            DateTime dFechaTraslado = dtp_Fecha_Emision.Value;
-            int iIdvehiculo = Convert.ToInt32(Txt_id_Vehiculo.Text);
-            int iIdcliente = Convert.ToInt32(Cmb_Clientes.SelectedValue);
+            private void Btn_Ingresar_Click(object sender, EventArgs e)
+            {
+                string sDireccionPartida = Txt_Partida.Text;
+                string sDireccionLlegada = Txt_LLegada.Text;
+                string sNumeroOrdenRecojo = Txt_Recojo.Text;
+                ComboBox cmbFormaPago = Cbo_Forma;
+                string sDestino = Txt_Destino.Text;
+                DateTime dFechaEmision = dtp_Fecha_Emision.Value;
+                DateTime dFechaTraslado = dtp_Fecha_Emision.Value;
+                int iIdvehiculo = Convert.ToInt32(Txt_id_Vehiculo.Text);
 
-            ControladorPedido controlador = new ControladorPedido();
-            controlador.guardarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdcliente, iIdvehiculo);
+                // 🚨 NUEVO: Obtener el ID del cliente desde el ComboBox
+                if (Cmb_Clientes.SelectedValue == null)
+                {
+                    MessageBox.Show("Debe seleccionar un cliente.");
+                    return;
+                }
 
-            CargarDatosGrid();
-        }
-    
-        
+                int iIdcliente = Convert.ToInt32(Cmb_Clientes.SelectedValue);
 
-        private void CargarDatosGrid()
-        {
-            ControladorPedido controlador = new ControladorPedido();
-            DataTable dtPedidos = controlador.CargarPedidos();
+                // Llamar al controlador con todos los datos
+                ControladorPedido controlador = new ControladorPedido();
+                controlador.guardarPedido(
+                    sDireccionPartida,
+                    sDireccionLlegada,
+                    sNumeroOrdenRecojo,
+                    cmbFormaPago,
+                    sDestino,
+                    dFechaEmision,
+                    dFechaTraslado,
+                    iIdvehiculo,
+                    iIdcliente  // 👈 AÑADIDO ESTE PARÁMETRO
+                );
 
-            Dgv_Cliente.DataSource = dtPedidos;
-        }
-        
+                CargarDatosGrid();
+            }
 
-private void CargarCliente()
+
+
+            private void CargarDatosGrid()
+            {
+                ControladorPedido controlador = new ControladorPedido();
+                DataTable dtPedidos = controlador.CargarPedidos();
+
+                Dgv_Cliente.DataSource = dtPedidos;
+            }
+
+
+            private void CargarComboBoxForma()
+            {
+                // Agregar opciones de forma de pago
+                Cbo_Forma.Items.Add("Efectivo");
+                Cbo_Forma.Items.Add("Tarjeta de Crédito");
+                Cbo_Forma.Items.Add("Tarjeta de Débito");
+                Cbo_Forma.Items.Add("Transferencia Bancaria");
+                Cbo_Forma.Items.Add("Cheque");
+
+                // Establecer la selección predeterminada a nulo
+                Cbo_Forma.SelectedIndex = -1;
+
+                // Cargar los datos en el DataGridView
+                CargarDatosGrid();
+            }
+
+
+
+            private void Btn_Eliminar_Click(object sender, EventArgs e)
+            {
+                {
+                    string sIdGuia = Txt_Guia.Text;
+
+                    if (string.IsNullOrWhiteSpace(sIdGuia))
+                    {
+                        MessageBox.Show("Por favor, ingrese un ID de pedido para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    var confirmResult = MessageBox.Show("¿Está seguro de que desea eliminar el pedido con ID " + sIdGuia + "?",
+                                                         "Confirmar eliminación",
+                                                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        controlador.eliminarPedido(sIdGuia);
+                        getId(); // Actualiza el ID después de eliminar
+                        CargarDatosGrid(); // Reload data in the DataGridView
+                    }
+                }
+            }
+
+            private void Btn_Actualizar_Click(object sender, EventArgs e)
+            {
+                CargarDatosGrid(); // Reload data in the DataGridView
+            }
+
+            private void Btn_Modificar_Click(object sender, EventArgs e)
+            {
+                string sDireccionPartida = Txt_Partida.Text;
+                string sDireccionLlegada = Txt_LLegada.Text;
+                string sNumeroOrdenRecojo = Txt_Recojo.Text;
+                ComboBox cmbFormaPago = Cbo_Forma;
+                string sDestino = Txt_Destino.Text;
+                DateTime dFechaEmision = dtp_Fecha_Emision.Value;
+                DateTime dFechaTraslado = dtp_Fecha_Emision.Value;
+                int iIdvehiculo = Convert.ToInt32(Txt_id_Vehiculo.Text);
+                int iIdGuia = Convert.ToInt32(Txt_Guia.Text);
+
+                ControladorPedido controlador = new ControladorPedido();
+                controlador.modificarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdvehiculo, iIdGuia);
+
+                CargarDatosGrid();
+            }
+
+        private void CargarClientes()
         {
             try
             {
@@ -83,101 +167,22 @@ private void CargarCliente()
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los clientes: " + ex.Message);
+                MessageBox.Show("Error al cargar clientes: " + ex.Message);
             }
         }
 
-
-
-
-
-
-
-
-
-
-        private void CargarComboBoxForma()
-        {
-            // Agregar opciones de forma de pago
-            Cbo_Forma.Items.Add("Efectivo");
-            Cbo_Forma.Items.Add("Tarjeta de Crédito");
-            Cbo_Forma.Items.Add("Tarjeta de Débito");
-            Cbo_Forma.Items.Add("Transferencia Bancaria");
-            Cbo_Forma.Items.Add("Cheque");
-
-            // Establecer la selección predeterminada a nulo
-            Cbo_Forma.SelectedIndex = -1;
-
-            // Cargar los datos en el DataGridView
-            CargarDatosGrid();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void Btn_Eliminar_Click(object sender, EventArgs e)
-        {
-            {
-                string sIdGuia = Txt_Guia.Text;
-
-                if (string.IsNullOrWhiteSpace(sIdGuia))
-                {
-                    MessageBox.Show("Por favor, ingrese un ID de pedido para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                var confirmResult = MessageBox.Show("¿Está seguro de que desea eliminar el pedido con ID " + sIdGuia + "?",
-                                                     "Confirmar eliminación",
-                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (confirmResult == DialogResult.Yes)
-                {
-                    controlador.eliminarPedido(sIdGuia);
-                    getId(); // Actualiza el ID después de eliminar
-                    CargarDatosGrid(); // Reload data in the DataGridView
-                }
-            }
-        }
-
-        private void Btn_Actualizar_Click(object sender, EventArgs e)
-        {
-            CargarDatosGrid(); // Reload data in the DataGridView
-        }
-
-        private void Btn_Modificar_Click(object sender, EventArgs e)
-        {
-            string sDireccionPartida = Txt_Partida.Text;
-            string sDireccionLlegada = Txt_LLegada.Text;
-            string sNumeroOrdenRecojo = Txt_Recojo.Text;
-            ComboBox cmbFormaPago = Cbo_Forma;
-            string sDestino = Txt_Destino.Text;
-            DateTime dFechaEmision = dtp_Fecha_Emision.Value;
-            DateTime dFechaTraslado = dtp_Fecha_Emision.Value;
-            int iIdvehiculo = Convert.ToInt32(Txt_id_Vehiculo.Text);
-            int iIdGuia = Convert.ToInt32(Txt_Guia.Text);
-
-            ControladorPedido controlador = new ControladorPedido();
-            controlador.modificarPedido(sDireccionPartida, sDireccionLlegada, sNumeroOrdenRecojo, cmbFormaPago, sDestino, dFechaEmision, dFechaTraslado, iIdvehiculo, iIdGuia);
-
-            CargarDatosGrid();
-        }
 
         private void Btn_Reporte_Click(object sender, EventArgs e)
-        {
-            //Abrir Formulario
+            {
+                //Abrir Formulario
 
-            /*nombre del formulario*/
-            Reporte_Pedidos reporte = new Reporte_Pedidos();
-            reporte.Show();
-        }
-    
+                /*nombre del formulario*/
+                Reporte_Pedidos reporte = new Reporte_Pedidos();
+                reporte.Show();
+            }
+
+        
+
         private void Btn_Ayuda_Click(object sender, EventArgs e)
         {
             string idayuda = "2";
@@ -197,6 +202,20 @@ private void CargarCliente()
                 MessageBox.Show("La Ruta o el índice de la ayuda están vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+
+        
+        
 
         private void groupBox3_Enter(object sender, EventArgs e)
         {
