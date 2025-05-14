@@ -154,9 +154,9 @@ ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
 
 
 ALTER TABLE Tbl_Productos
-ADD COLUMN comisionInventario DOUBLE NOT NULL;
+ADD COLUMN comisionInventario DOUBLE NOT NULL DEFAULT 0;
 ALTER TABLE Tbl_Productos
-ADD COLUMN comisionCosto DOUBLE NOT NULL;
+ADD COLUMN comisionCosto DOUBLE NOT NULL DEFAULT 0;
 ALTER TABLE Tbl_Marca
 ADD COLUMN comision DOUBLE NOT NULL;
 ALTER TABLE Tbl_Linea
@@ -823,9 +823,3 @@ CREATE TABLE IF NOT EXISTS `tbl_ventas_pagos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- TERMINA LAS TABLAS CREADAS
-
-
--- Agregar campos de comisión a Tbl_Productos
-ALTER TABLE Tbl_Productos
-ADD COLUMN comisionInventario DECIMAL(5,2) DEFAULT 0,
-ADD COLUMN comisionCosto DECIMAL(5,2) DEFAULT 0;
