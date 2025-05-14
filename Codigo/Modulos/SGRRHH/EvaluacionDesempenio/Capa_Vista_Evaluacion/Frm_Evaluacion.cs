@@ -82,8 +82,16 @@ namespace Capa_Vista_Evaluacion
 
             foreach (var comp in competencias)
             {
-                controlador.InsertarDetalleEvaluacion(idEvaluacion, comp.idCompetencia, comp.calificacion, comp.comentarios);
+                try
+                {
+                    controlador.InsertarDetalleEvaluacion(idEvaluacion, comp.idCompetencia, comp.calificacion, comp.comentarios);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al guardar competencia {comp.idCompetencia}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
         }
 
 
@@ -91,49 +99,72 @@ namespace Capa_Vista_Evaluacion
         {
             try
             {
-                // Validar que se ha seleccionado un empleado y un evaluador
+                // Validar selección de empleado y evaluador
                 if (Cmb_Empleado.SelectedValue == null || Cmb_Evaluador.SelectedValue == null)
                 {
                     MessageBox.Show("Por favor, selecciona un empleado y un evaluador.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;  // Detener la ejecución si los valores no son válidos
-                }
-
-                // Obtener datos desde los controles
-                int idEmpleado = Convert.ToInt32(Cmb_Empleado.SelectedValue);  // Obtener el ID del empleado seleccionado
-                int idEvaluador = Convert.ToInt32(Cmb_Evaluador.SelectedValue);  // Obtener el ID del evaluador seleccionado
-
-                // Validar que se ha seleccionado un tipo de evaluación
-                if (Cmb_Tipo_Ev.SelectedItem == null)
-                {
-                    MessageBox.Show("Por favor, selecciona el tipo de evaluación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;  // Detener la ejecución si no se seleccionó un tipo de evaluación
-                }
-
-                string tipoEvaluacion = Cmb_Tipo_Ev.SelectedItem.ToString();  // Obtener el tipo de evaluación
-                decimal calificacionPromedio = 0;
-
-                // Validar que la calificación sea un valor numérico válido
-                if (!decimal.TryParse(Txt_calificacion.Text, out calificacionPromedio))
-                {
-                    MessageBox.Show("La calificación promedio no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                string comentariosGenerales = Txt_ObservacionesGen.Text;  // Obtener los comentarios generales
-                DateTime fechaEvaluacion = dateTimePicker1.Value;  // Obtener la fecha de evaluación
+                int idEmpleado, idEvaluador;
+                try
+                {
+                    idEmpleado = Convert.ToInt32(Cmb_Empleado.SelectedValue);
+                    idEvaluador = Convert.ToInt32(Cmb_Evaluador.SelectedValue);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Los valores seleccionados no son válidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                // Insertar evaluación general y obtener ID generado
-                int idEvaluacion = controlador.InsertarEvaluacion(
-                    idEmpleado, idEvaluador, tipoEvaluacion, calificacionPromedio, comentariosGenerales, fechaEvaluacion
-                );
+                // Validar tipo de evaluación
+                if (Cmb_Tipo_Ev.SelectedItem == null)
+                {
+                    MessageBox.Show("Por favor, selecciona el tipo de evaluación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Cmb_Tipo_Ev.Focus();
+                    return;
+                }
 
-                // Verificar si la evaluación fue insertada correctamente
+                string tipoEvaluacion = Cmb_Tipo_Ev.SelectedItem.ToString();
+
+                // Validar calificación promedio
+                if (!decimal.TryParse(Txt_calificacion.Text, out decimal calificacionPromedio))
+                {
+                    MessageBox.Show("La calificación promedio no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Txt_calificacion.Focus();
+                    return;
+                }
+
+                string comentariosGenerales = Txt_ObservacionesGen.Text;
+                DateTime fechaEvaluacion = dateTimePicker1.Value;
+
+                int idEvaluacion = 0;
+
+                try
+                {
+                    // Insertar evaluación
+                    idEvaluacion = controlador.InsertarEvaluacion(
+                        idEmpleado, idEvaluador, tipoEvaluacion, calificacionPromedio, comentariosGenerales, fechaEvaluacion
+                    );
+                }
+                catch (Exception exEval)
+                {
+                    MessageBox.Show("Error al guardar la evaluación general: " + exEval.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 if (idEvaluacion > 0)
                 {
-                    // Insertar detalles de evaluación (competencias)
-                    InsertarDetallesEvaluacion(idEvaluacion);
-
-                    MessageBox.Show("¡Evaluación guardada correctamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    try
+                    {
+                        InsertarDetallesEvaluacion(idEvaluacion);
+                        MessageBox.Show("¡Evaluación guardada correctamente!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception exDetalles)
+                    {
+                        MessageBox.Show("La evaluación general fue guardada, pero ocurrió un error al guardar los detalles: " + exDetalles.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
@@ -142,10 +173,14 @@ namespace Capa_Vista_Evaluacion
             }
             catch (Exception ex)
             {
-                // Capturar cualquier excepción no manejada
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Captura general de errores no anticipados
+                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Opcional: escribir en log de errores
+                // File.AppendAllText("log_errores.txt", $"{DateTime.Now} - {ex.ToString()}{Environment.NewLine}");
             }
         }
+
 
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
