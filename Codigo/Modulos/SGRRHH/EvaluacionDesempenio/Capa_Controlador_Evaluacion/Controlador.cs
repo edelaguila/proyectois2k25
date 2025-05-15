@@ -47,5 +47,12 @@ namespace Capa_Controlador_Evaluacion
             return modelo.ObtenerEvaluacionesPorEmpleado(idEmpleado);
         }
 
+
+        // Obtener competencias activas para la vista
+        public DataTable ObtenerCompetenciasActivas()
+        {
+            return modelo.ObtenerCompetenciasActivas();
+        }
+
     }
 }

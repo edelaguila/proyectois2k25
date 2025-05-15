@@ -188,6 +188,28 @@ namespace Capa_Modelo_Evaluacion
             return dt;
         }
 
+        // Obtener competencias activas
+        public DataTable ObtenerCompetenciasActivas()
+        {
+            DataTable dt = new DataTable();
+            OdbcConnection conn = null;
+            try
+            {
+                conn = cn.conexion();
+                string query = "SELECT Pk_id_competencia, nombre_competencia, descripcion FROM tbl_competencias WHERE estado = 1";
+                OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
+                da.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener competencias: " + ex.Message);
+            }
+            finally
+            {
+                conn?.Close();
+            }
+            return dt;
+        }
 
     }
 }
