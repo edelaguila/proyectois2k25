@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Modelo_Evaluacion", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_Evaluacion", "Capa_Vista_Evaluacion\Capa_Vista_Evaluacion.csproj", "{5A8E3A57-2070-4ACF-BDB6-695F81DEC9A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prueba_Evaluacion", "Prueba_Evaluacion\Prueba_Evaluacion.csproj", "{D79815D9-122B-4D96-AAFE-85804E839106}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5A8E3A57-2070-4ACF-BDB6-695F81DEC9A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A8E3A57-2070-4ACF-BDB6-695F81DEC9A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A8E3A57-2070-4ACF-BDB6-695F81DEC9A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D79815D9-122B-4D96-AAFE-85804E839106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D79815D9-122B-4D96-AAFE-85804E839106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D79815D9-122B-4D96-AAFE-85804E839106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D79815D9-122B-4D96-AAFE-85804E839106}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
