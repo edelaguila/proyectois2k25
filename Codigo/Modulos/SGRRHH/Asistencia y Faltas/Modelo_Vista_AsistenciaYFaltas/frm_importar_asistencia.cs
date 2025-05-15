@@ -22,6 +22,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
         private Controlador controlador = new Controlador();
 
 
+
         private void frm_importar_asistencia_Load(object sender, EventArgs e)
         {
             dgvAsistencias.Rows.Clear();
@@ -113,27 +114,30 @@ namespace Modelo_Vista_AsistenciaYFaltas
 
         private void btn_importar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txt_RutaArchivo.Text))
+            if (string.IsNullOrEmpty(txt_RutaArchivo.Text))
             {
-                MessageBox.Show("Seleccione un archivo antes de importar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione un archivo antes de importar.",
+                                "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                foreach (var linea in File.ReadAllLines(txt_RutaArchivo.Text).Where(l => !string.IsNullOrWhiteSpace(l)))
-                {
+                // 1) Insertar cada línea en la tabla preliminar
+                foreach (var linea in File.ReadAllLines(txt_RutaArchivo.Text))
                     controlador.InsertarAsistenciaPreliminar(linea);
-                }
 
+                // 2) Procesar el staging para volcar en tbl_asistencias
+                //controlador.ProcesarAsistenciasPreliminar();
+
+                // 3) Abrir el formulario de validación
                 using (var frmValida = new frm_validar_asistencia())
-                {
                     frmValida.ShowDialog();
-                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al procesar el archivo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al procesar el archivo: {ex.Message}",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

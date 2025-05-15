@@ -18,7 +18,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
             /// Marco Alejandro Monroy*/
             /*Prueba con navegador*/
-            string[] alias = { "pk_id_permiso", "fk_id_empleado", "fecha_inicio", "fecha_fin", " tipo_permiso", " aprobado", " estado" };
+            string[] alias = { "pk_id_permiso", "fk_id_empleado", "fecha_inicio", "fecha_fin", " tipo_permiso", " aprobado", " estado", "con_goce_sueldo" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));

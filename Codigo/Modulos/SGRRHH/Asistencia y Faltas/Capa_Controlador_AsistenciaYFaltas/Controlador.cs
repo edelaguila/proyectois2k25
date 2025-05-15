@@ -11,49 +11,72 @@ namespace Capa_Controlador_AsistenciaYFaltas
     public class Controlador
     {
         private readonly Sentencia sn = new Sentencia();
-
-        // Inserta asistencia cruda en tabla preliminar
+        // 1) Inserta cada línea cruda en tbl_asistencias_preeliminar
         public void InsertarAsistenciaPreliminar(string linea)
         {
             sn.InsertarAsistenciaPreeliminar(linea);
         }
 
-        // Obtener todos los empleados activos
+        
+
+        // 3) Inserta las filas pendientes desde staging a tbl_asistencias (SP)
+        //public void ProcesarAsistenciasPreliminar()
+        //{
+        //    sn.ProcesarAsistenciasPreeliminarTodas();
+        //}
+
+        // 4) Opcional: limpia el staging tras procesar
+        public void LimpiarStaging()
+        {
+            sn.LimpiarStaging();
+        }
+
+        // 5) Devuelve todos los empleados activos (con salario, hora y jornada)
         public List<Sentencia.Empleado> ObtenerEmpleados()
         {
             return sn.ObtenerEmpleadosActivos();
         }
 
-        // Obtener asistencias de un empleado en un mes y año
-        public List<Sentencia.AsistenciaInfo> ObtenerAsistenciasEmpleado(int idEmpleado, int mes, int anio)
-        {
-            return sn.GetAsistencias(idEmpleado, mes, anio);
-        }
-
-        // Obtener permisos de un empleado en un mes y año
+        // 6) Obtiene permisos aprobados para un empleado en mes/año
         public List<Sentencia.PermisoInfo> ObtenerPermisosEmpleado(int idEmpleado, int mes, int anio)
         {
             return sn.GetPermisos(idEmpleado, mes, anio);
         }
 
-        // Obtener excepciones de séptimo día de un empleado
+        // 7) Obtiene exenciones de séptimo día de un empleado para un año
         public List<Sentencia.ExcepcionInfo> ObtenerExcepcionesSeptimo(int idEmpleado, int anio)
         {
             return sn.GetExcepcionesSeptimo(idEmpleado, anio);
         }
 
-
-        // Registrar exención de séptimo día
+        // 8) Registra una exención de séptimo día
         public void AgregarExcepcionSeptimo(int idEmpleado, int semana, int anio)
         {
             sn.InsertarExcepcionSeptimo(idEmpleado, semana, anio);
         }
 
-        // Insertar registro en tbl_salarios_mensuales
+        // 9) Inserta el registro calculado de salario mensual
         public void InsertarSalarioMensual(Sentencia.SalarioMensualRecord salario)
         {
             sn.InsertarSalarioMensual(salario);
         }
+        // 10
+        public List<Sentencia.AsistenciaInfo> ObtenerAsistenciasEmpleado(int idEmpleado, int mes, int anio)
+        {
+            return sn.GetAsistencias(idEmpleado, mes, anio);
+        }
+
+
+
+        public List<Sentencia.AsistenciaInfo> ObtenerAsistenciasPreeliminarInfo()
+{
+            return sn.GetAsistenciasPreeliminarInfo();
+        }
+
+
+        public void InsertarAsistenciaProcesada(int idEmpleado, DateTime fecha, TimeSpan horaEntrada, TimeSpan horaSalida, string estado)
+        {
+            sn.InsertarAsistenciaProcesada(idEmpleado, fecha, horaEntrada, horaSalida, estado);
+        }
     }
 }
-

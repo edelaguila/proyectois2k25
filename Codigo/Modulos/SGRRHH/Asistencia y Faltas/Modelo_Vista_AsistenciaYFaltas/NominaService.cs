@@ -5,61 +5,63 @@ using System.Text;
 using System.Threading.Tasks;
 using Capa_Controlador_AsistenciaYFaltas;
 using Capa_Modelo_AsistenciaYFaltas;
-
+using System.Globalization;
+using System.IO;
+using System.Windows.Forms;
 namespace Modelo_Vista_AsistenciaYFaltas
+
 {
     public class NominaService
     {
-        private Controlador controlador = new Controlador();
 
+        private Controlador controlador = new Controlador();
         public void GenerarNomina(int mes, int anio)
         {
-            // 1) Traer empleados activos y días laborales
+            // 1) Traer empleados (con SalarioBase, SalarioHora, JornadaSemanal)
             var empleados = controlador.ObtenerEmpleados();
             int diasLaborales = DiasLaboralesMes(mes, anio);
 
             foreach (var emp in empleados)
             {
-                // 2) Cargar datos del periodo
-                var asistencias = controlador.ObtenerAsistenciasEmpleado(emp.Id, mes, anio);
+                // 2) Leer asistencias ya volcadas en tbl_asistencias
+                var asistencias = controlador.ObtenerAsistenciasPreeliminarInfo()
+     .Where(a => a.IdEmpleado == emp.Id
+              && a.Fecha.Month == mes
+              && a.Fecha.Year == anio)
+     .ToList();
                 var permisos = controlador.ObtenerPermisosEmpleado(emp.Id, mes, anio);
                 var excepciones = controlador.ObtenerExcepcionesSeptimo(emp.Id, anio);
 
-                // 3) Días trabajados (Presente o Permiso CON goce)
+                // 3) Contar días trabajados (Presente o Permiso con goce)
                 int diasTrabajados = asistencias
-                    .Where(a =>
-                        a.Estado == "Presente" ||
-                        (a.Estado == "Permiso"
-                         && permisos.Any(p => p.ConGoce
-                                           && a.Fecha >= p.Inicio
-                                           && a.Fecha <= p.Fin)))
-                    .Select(a => a.Fecha.Date)
-                    .Distinct()
-                    .Count();
+             .Where(a => a.Estado == "Presente" || a.Estado == "Permiso")
+             .Select(a => a.Fecha.Date)
+             .Distinct()
+             .Count();
 
-                // 4) Faltas (incluye Permiso SIN goce y estado "Falta")
+                // 4) Identificar faltas (incluye Permiso sin goce)
                 var faltas = asistencias
                     .Where(a =>
                         !(a.Estado == "Presente"
                        || (a.Estado == "Permiso"
-                           && permisos.Any(p => p.ConGoce
-                                             && a.Fecha >= p.Inicio
-                                             && a.Fecha <= p.Fin))))
+                           && permisos.Any(p =>
+                                p.ConGoce
+                             && a.Fecha >= p.Inicio
+                             && a.Fecha <= p.Fin))))
                     .Select(a => a.Fecha.Date)
                     .Distinct()
                     .ToList();
 
-                // 5) Horas extra (>8h diarias)
+                // 5) Horas extra: excedentes de 8h diarias
                 double totalHE = asistencias
                     .Select(a => (a.HoraSalida - a.HoraEntrada).TotalHours - 8)
                     .Where(h => h > 0)
                     .Sum();
 
-                // 6) Deducción de séptimo día por cada semana con faltas no exentas
+                // 6) Semanas con faltas no exentas para séptimo día
                 var semanasConFaltas = faltas
                     .Select(f => GetSemanaDelAño(f, anio))
                     .Distinct();
-
                 int semanasADescuentar = semanasConFaltas
                     .Count(sem => !excepciones.Any(e => e.Semana == sem && e.Exento));
 
@@ -75,7 +77,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
                                      + pagoHE
                                      - (descFaltas + desc7mo);
 
-                /// Insertar en tbl_salarios_mensuales
+                // 9) Persistir en tbl_salarios_mensuales
                 controlador.InsertarSalarioMensual(new Sentencia.SalarioMensualRecord
                 {
                     IdEmpleado = emp.Id,
@@ -89,6 +91,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             }
         }
 
+        // Días laborales en mes (sin sábados/domingos)
         private int DiasLaboralesMes(int mes, int anio)
         {
             int total = DateTime.DaysInMonth(anio, mes), labor = 0;
@@ -101,12 +104,12 @@ namespace Modelo_Vista_AsistenciaYFaltas
             return labor;
         }
 
+        // Semana ISO de una fecha
         private int GetSemanaDelAño(DateTime fecha, int anio)
         {
-            var ci = System.Globalization.CultureInfo.CurrentCulture;
-            return ci.Calendar.GetWeekOfYear(
+            return CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
                 fecha,
-                System.Globalization.CalendarWeekRule.FirstDay,
+                CalendarWeekRule.FirstDay,
                 DayOfWeek.Monday);
         }
     }

@@ -43,7 +43,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             // cboMes
             // 
             this.cboMes.FormattingEnabled = true;
-            this.cboMes.Location = new System.Drawing.Point(54, 75);
+            this.cboMes.Location = new System.Drawing.Point(210, 90);
             this.cboMes.Name = "cboMes";
             this.cboMes.Size = new System.Drawing.Size(121, 24);
             this.cboMes.TabIndex = 0;
@@ -51,18 +51,18 @@ namespace Modelo_Vista_AsistenciaYFaltas
             // cboAnio
             // 
             this.cboAnio.FormattingEnabled = true;
-            this.cboAnio.Location = new System.Drawing.Point(275, 75);
+            this.cboAnio.Location = new System.Drawing.Point(431, 90);
             this.cboAnio.Name = "cboAnio";
             this.cboAnio.Size = new System.Drawing.Size(121, 24);
             this.cboAnio.TabIndex = 1;
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(226, 163);
+            this.btnCargar.Image = global::Modelo_Vista_AsistenciaYFaltas.Properties.Resources.icon__1_;
+            this.btnCargar.Location = new System.Drawing.Point(204, 159);
             this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(75, 29);
+            this.btnCargar.Size = new System.Drawing.Size(85, 73);
             this.btnCargar.TabIndex = 2;
-            this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click_1);
             // 
@@ -80,28 +80,28 @@ namespace Modelo_Vista_AsistenciaYFaltas
             // 
             // btnNoDescontarSeptimo
             // 
-            this.btnNoDescontarSeptimo.Location = new System.Drawing.Point(355, 163);
+            this.btnNoDescontarSeptimo.Location = new System.Drawing.Point(345, 162);
             this.btnNoDescontarSeptimo.Name = "btnNoDescontarSeptimo";
-            this.btnNoDescontarSeptimo.Size = new System.Drawing.Size(75, 29);
+            this.btnNoDescontarSeptimo.Size = new System.Drawing.Size(101, 70);
             this.btnNoDescontarSeptimo.TabIndex = 4;
-            this.btnNoDescontarSeptimo.Text = "7mo";
+            this.btnNoDescontarSeptimo.Text = "No Descontar el Septimo";
             this.btnNoDescontarSeptimo.UseVisualStyleBackColor = true;
             this.btnNoDescontarSeptimo.Click += new System.EventHandler(this.btnNoDescontarSeptimo_Click);
             // 
             // btnInsertar
             // 
-            this.btnInsertar.Location = new System.Drawing.Point(469, 163);
+            this.btnInsertar.Image = global::Modelo_Vista_AsistenciaYFaltas.Properties.Resources.icon__8_;
+            this.btnInsertar.Location = new System.Drawing.Point(503, 159);
             this.btnInsertar.Name = "btnInsertar";
-            this.btnInsertar.Size = new System.Drawing.Size(75, 29);
+            this.btnInsertar.Size = new System.Drawing.Size(92, 73);
             this.btnInsertar.TabIndex = 5;
-            this.btnInsertar.Text = "Insertar";
             this.btnInsertar.UseVisualStyleBackColor = true;
             this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 37);
+            this.label1.Location = new System.Drawing.Point(210, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 17);
             this.label1.TabIndex = 6;
@@ -110,7 +110,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(275, 37);
+            this.label2.Location = new System.Drawing.Point(431, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 17);
             this.label2.TabIndex = 7;
@@ -131,7 +131,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.Controls.Add(this.cboAnio);
             this.Controls.Add(this.cboMes);
             this.Name = "frm_validar_asistencia";
-            this.Text = "frm_validar_asistencia";
+            this.Text = "16002-ImportarAsistencia";
             this.Load += new System.EventHandler(this.frm_validar_asistencia_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvValidacion)).EndInit();
             this.ResumeLayout(false);

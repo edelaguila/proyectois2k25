@@ -16,125 +16,166 @@ namespace Modelo_Vista_AsistenciaYFaltas
     public partial class frm_validar_asistencia : Form
     {
         private Controlador controlador = new Controlador();
+        private List<EmpleadoAsistencia> listaAsistencias = new List<EmpleadoAsistencia>();
+        private List<AsistenciaProcesada> asistenciasProcesadas = new List<AsistenciaProcesada>();
         private int mes, anio;
         public frm_validar_asistencia()
         {
             InitializeComponent();
         }
-        private void frm_validar_asistencia_Load(object sender, EventArgs e)
-        {
-            cboMes.Items.AddRange(Enumerable.Range(1, 12).Cast<object>().ToArray());
-            cboAnio.Items.AddRange(Enumerable.Range(DateTime.Now.Year - 2, 3).Cast<object>().ToArray());
-
-            // Configurar las columnas del DataGridView
-            dgvValidacion.Columns.Clear();
-            dgvValidacion.Columns.Add("ID", "ID Empleado");
-            dgvValidacion.Columns.Add("DiasTrabajados", "Días Trabajados");
-        }
-
-        private void btnCargar_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void btnNoDescontar7mo_Click(object sender, EventArgs e)
-        {
-           
-        }
+     
 
         private void btnCargar_Click_1(object sender, EventArgs e)
         {
+            // 1) Leemos los objetos AsistenciaInfo desde staging (ya parseados)
+            var crudas = controlador.ObtenerAsistenciasPreeliminarInfo();
+            //MessageBox.Show($"DEBUG: Asistencias preliminares cargadas: {crudas.Count}", "DEBUG");
+
+            // 2) Validamos mes/año
             if (!int.TryParse(cboMes.Text, out mes) ||
-                            !int.TryParse(cboAnio.Text, out anio))
+                !int.TryParse(cboAnio.Text, out anio))
             {
                 MessageBox.Show("Seleccione mes y año válidos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Asegurar columnas antes de añadir filas
-            if (dgvValidacion.Columns.Count == 0)
-            {
-                dgvValidacion.Columns.Add("ID", "ID Empleado");
-                dgvValidacion.Columns.Add("DiasTrabajados", "Días Trabajados");
-            }
-
+            // 3) Limpiamos pantallas y lista
             dgvValidacion.Rows.Clear();
-            var empleados = controlador.ObtenerEmpleados();
+            asistenciasProcesadas.Clear();
 
-            foreach (var emp in empleados)
+            if (crudas.Count == 0)
             {
-                var asistencias = controlador.ObtenerAsistenciasEmpleado(emp.Id, mes, anio);
-                var permisos = controlador.ObtenerPermisosEmpleado(emp.Id, mes, anio);
-
-                int diasTrabajados = asistencias
-                    .Where(a =>
-                        a.Estado == "Presente"
-                     || (a.Estado == "Permiso"
-                         && permisos.Any(p => p.ConGoce
-                                           && a.Fecha >= p.Inicio
-                                           && a.Fecha <= p.Fin)))
-                    .Select(a => a.Fecha.Date)
-                    .Distinct()
-                    .Count();
-
-                dgvValidacion.Rows.Add(emp.Id, diasTrabajados);
+                MessageBox.Show("No hay asistencias preeliminares por procesar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-        }
 
-        private void btnNoDescontarSeptimo_Click(object sender, EventArgs e)
-        {
-            if(dgvValidacion.CurrentRow == null) return;
+            // 4) Filtramos por mes/año y construimos la lista procesada
+            foreach (var a in crudas)
+            {
+                //MessageBox.Show($"DEBUG: Registro → Emp={a.IdEmpleado}, Fecha={a.Fecha:dd-MM-yyyy}, Estado={a.Estado}", "DEBUG");
 
-            int idEmp = Convert.ToInt32(dgvValidacion.CurrentRow.Cells["ID"].Value);
+                //if (a.Fecha.Month != mes || a.Fecha.Year != anio)
+                //{
+                //    MessageBox.Show($"DEBUG: Saltado {a.Fecha:dd-MM-yyyy} (no en {mes}/{anio})", "DEBUG");
+                //    continue;
+                //}
 
-            var faltas = controlador.ObtenerAsistenciasEmpleado(idEmp, mes, anio)
-                .Where(a => a.Estado == "Falta")
-                .Select(a => a.Fecha.Date)
-                .Distinct()
+                // Estado ya viene en a.Estado ("Presente" o "Falta")
+                asistenciasProcesadas.Add(new AsistenciaProcesada
+                {
+                    IdEmpleado = a.IdEmpleado,
+                    Fecha = a.Fecha,
+                    HoraEntrada = a.HoraEntrada,
+                    HoraSalida = a.HoraSalida,
+                    Estado = a.Estado
+                });
+            }
+
+            // 5) Agrupamos y contamos días “Presente”
+            var resumen = asistenciasProcesadas
+                .GroupBy(x => x.IdEmpleado)
+                .Select(g => new
+                {
+                    IdEmpleado = g.Key,
+                    DiasTrabajados = g
+                        .Where(x => x.Estado == "Presente")
+                        .Select(x => x.Fecha.Date)
+                        .Distinct()
+                        .Count()
+                })
                 .ToList();
 
-            int semana = faltas.Any()
-                ? CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
-                      faltas.First(),
-                      CalendarWeekRule.FirstDay,
-                      DayOfWeek.Monday)
-                : 1;
+            // 6) Pintamos el Grid
+            foreach (var eEmp in resumen)
+            {
+                //MessageBox.Show($"DEBUG: Empleado {eEmp.IdEmpleado} → Días Trabajados = {eEmp.DiasTrabajados}", "DEBUG");
+                dgvValidacion.Rows.Add(eEmp.IdEmpleado, eEmp.DiasTrabajados);
+            }
 
-            controlador.AgregarExcepcionSeptimo(idEmp, semana, anio);
-
-            MessageBox.Show(
-                $"Exención de séptimo día registrada para empleado {idEmp}, semana {semana}.",
-                "Exención",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            MessageBox.Show($"Procesadas {asistenciasProcesadas.Count} asistencias correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-    
 
-    private void btnInsertar_Click(object sender, EventArgs e)
+        private EmpleadoAsistencia ProcesarLineaAsistencia(string linea)
         {
-            var nominaSvc = new NominaService();
-            nominaSvc.GenerarNomina(mes, anio);
+            var partes = linea.Split(']');
+            if (partes.Length < 2) throw new Exception("Formato incorrecto.");
 
-            MessageBox.Show(
-                "Datos de nómina insertados correctamente.",
-                "Éxito",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string fechaTexto = partes[0].Trim('[', ']');
+            string[] horarioEmpleado = partes[1].Split(',');
+            string[] horas = horarioEmpleado[0].Split('-');
+            string idEmpleado = horarioEmpleado[1].Trim('.');
 
-            this.Close();
+            DateTime fecha = DateTime.ParseExact(fechaTexto, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+            TimeSpan horaEntrada = TimeSpan.Parse(horas[0]);
+            TimeSpan horaSalida = TimeSpan.Parse(horas[1]);
+
+            return new EmpleadoAsistencia
+            {
+                Fecha = fecha,
+                HoraEntrada = horaEntrada,
+                HoraSalida = horaSalida,
+                IdEmpleado = int.Parse(idEmpleado),
+                Estado = (horaEntrada == TimeSpan.Zero && horaSalida == TimeSpan.Zero) ? "Falta" : "Presente"
+            };
         }
-    
 
+
+        public class EmpleadoAsistencia
+    {
+        public int IdEmpleado { get; set; }
+        public DateTime Fecha { get; set; }
+        public TimeSpan HoraEntrada { get; set; }
+        public TimeSpan HoraSalida { get; set; }
+        public string Estado { get; set; }
+    }
+
+    private void btnNoDescontarSeptimo_Click(object sender, EventArgs e)
+        {
+            if (dgvValidacion.CurrentRow == null)
+                return;
+
+            int idEmp = Convert.ToInt32(dgvValidacion.CurrentRow.Cells["ID"].Value);
+            controlador.AgregarExcepcionSeptimo(idEmp, mes, anio);
+            MessageBox.Show($"Exención de séptimo día registrada para empleado {idEmp}.", "Exención registrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            if (asistenciasProcesadas.Count == 0)
+            {
+                MessageBox.Show("No hay asistencias procesadas para insertar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Crear una instancia de NominaService
+            var nominaService = new NominaService();
+            nominaService.GenerarNomina(mes, anio);
+
+            MessageBox.Show("Nómina generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private class AsistenciaProcesada
+        {
+            public int IdEmpleado { get; set; }
+            public DateTime Fecha { get; set; }
+            public TimeSpan HoraEntrada { get; set; }
+            public TimeSpan HoraSalida { get; set; }
+            public string Estado { get; set; }
+        }
 
         private void frm_validar_asistencia_Load_1(object sender, EventArgs e)
         {
             cboMes.Items.AddRange(Enumerable.Range(1, 12).Cast<object>().ToArray());
             cboAnio.Items.AddRange(Enumerable.Range(DateTime.Now.Year - 2, 3).Cast<object>().ToArray());
+
+            // Configurar columnas
+            dgvValidacion.Columns.Clear();
+            dgvValidacion.Columns.Add("ID", "ID Empleado");
+            dgvValidacion.Columns.Add("DiasTrabajados", "Días Trabajados");
+            dgvValidacion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void btnInsertarDatos_Click(object sender, EventArgs e)
-        {
-            
-        }
+        
     }
 }
