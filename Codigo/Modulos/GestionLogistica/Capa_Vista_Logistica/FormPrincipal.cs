@@ -382,7 +382,7 @@ namespace Capa_Vista_Logistica
 
         private void Btn_CuentProcProv1_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<Capa_Vista_Cuentas_Corrientes.DeudaProveedores>();
+            AbrirFormulario<Capa_Vista_DeudasProveedores.Deudas_Proveedores>();
             ocultaSubMenu();
         }
 
