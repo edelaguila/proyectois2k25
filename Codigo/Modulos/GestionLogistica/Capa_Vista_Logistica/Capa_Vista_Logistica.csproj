@@ -64,6 +64,9 @@
     <Reference Include="Capa_Vista_Cuentas_Corrientes">
       <HintPath>..\..\Cuentas Corrientes2_5\Capa_Vista_Cuentas_Corrientes\bin\Debug\Capa_Vista_Cuentas_Corrientes.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_DeudasProveedores">
+      <HintPath>..\..\Cuentas Corrientes2_5\MVC_DeudasProveedores\Capa_Vista_DeudasProveedores\bin\Debug\Capa_Vista_DeudasProveedores.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Factura">
       <HintPath>..\..\Comercial2_5\MVC_Factura\Capa_Vista_Factura\bin\Debug\Capa_Vista_Factura.dll</HintPath>
     </Reference>
