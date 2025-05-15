@@ -58,6 +58,64 @@ namespace Capa_Modelo_Evaluacion
             return dt;
         }
 
+        //public int InsertarEvaluacion(int fkEmpleado, int fkEvaluador, string tipoEvaluacion, decimal calificacion, string comentarios, DateTime fechaEvaluacion)
+        //{
+        //    int idEvaluacion = -1;
+        //    OdbcConnection conn = null;
+
+        //    try
+        //    {
+        //        conn = cn.conexion();
+        //        if (conn.State != ConnectionState.Open)
+        //        {
+        //            conn.Open();
+        //        }
+
+        //        string query = @"INSERT INTO TBL_EVALUACIONES 
+        //                (fk_clave_empleado, fk_evaluador, tipo_evaluacion, calificacion, comentarios, fecha_evaluacion, estado)
+        //                VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        //        using (OdbcCommand cmd = new OdbcCommand(query, conn))
+        //        {
+        //            cmd.Parameters.Add("?", OdbcType.Int).Value = fkEmpleado;
+        //            cmd.Parameters.Add("?", OdbcType.Int).Value = fkEvaluador;
+        //            cmd.Parameters.Add("?", OdbcType.VarChar).Value = tipoEvaluacion;
+        //            cmd.Parameters.Add("?", OdbcType.Decimal).Value = calificacion;
+        //            cmd.Parameters.Add("?", OdbcType.Text).Value = comentarios;
+        //            cmd.Parameters.Add("?", OdbcType.DateTime).Value = fechaEvaluacion;
+        //            cmd.Parameters.Add("?", OdbcType.TinyInt).Value = 1; // estado
+
+
+
+        //            cmd.ExecuteNonQuery();
+        //        }
+
+        //        // Obtener el último ID insertado
+        //        string getIdQuery = "SELECT LAST_INSERT_ID()";
+        //        using (OdbcCommand getIdCmd = new OdbcCommand(getIdQuery, conn))
+        //        {
+        //            object result = getIdCmd.ExecuteScalar();
+        //            if (result != null && result != DBNull.Value)
+        //            {
+        //                idEvaluacion = Convert.ToInt32(result);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error al insertar evaluación: " + ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        if (conn != null && conn.State == ConnectionState.Open)
+        //        {
+        //            conn.Close();
+        //        }
+        //    }
+
+        //    return idEvaluacion;
+        //}
+
         public int InsertarEvaluacion(int fkEmpleado, int fkEvaluador, string tipoEvaluacion, decimal calificacion, string comentarios, DateTime fechaEvaluacion)
         {
             int idEvaluacion = -1;
@@ -72,25 +130,34 @@ namespace Capa_Modelo_Evaluacion
                 }
 
                 string query = @"INSERT INTO TBL_EVALUACIONES 
-                        (fk_clave_empleado, fk_evaluador, tipo_evaluacion, calificacion, comentarios, fecha_evaluacion, estado)
-                        VALUES (?, ?, ?, ?, ?, ?, ?)";
+                (fk_clave_empleado, fk_evaluador, tipo_evaluacion, calificacion, comentarios, fecha_evaluacion, estado)
+                VALUES (?, ?, ?, ?, ?, ?, ?)";
 
                 using (OdbcCommand cmd = new OdbcCommand(query, conn))
                 {
+                    // Validaciones básicas
+                    if (string.IsNullOrEmpty(comentarios))
+                        comentarios = "";
+
+                    if (fechaEvaluacion == DateTime.MinValue)
+                        fechaEvaluacion = DateTime.Now;
+
+                    // Parámetros
                     cmd.Parameters.Add("?", OdbcType.Int).Value = fkEmpleado;
                     cmd.Parameters.Add("?", OdbcType.Int).Value = fkEvaluador;
                     cmd.Parameters.Add("?", OdbcType.VarChar).Value = tipoEvaluacion;
-                    cmd.Parameters.Add("?", OdbcType.Decimal).Value = calificacion;
+                    cmd.Parameters.Add("?", OdbcType.Double).Value = Convert.ToDouble(calificacion);
                     cmd.Parameters.Add("?", OdbcType.Text).Value = comentarios;
                     cmd.Parameters.Add("?", OdbcType.DateTime).Value = fechaEvaluacion;
-                    cmd.Parameters.Add("?", OdbcType.TinyInt).Value = 1; // estado
+                    cmd.Parameters.Add("?", OdbcType.TinyInt).Value = 1;
 
-
+                    // Log
+                    Console.WriteLine("📝 Ejecutando inserción...");
 
                     cmd.ExecuteNonQuery();
                 }
 
-                // Obtener el último ID insertado
+                // Obtener ID
                 string getIdQuery = "SELECT LAST_INSERT_ID()";
                 using (OdbcCommand getIdCmd = new OdbcCommand(getIdQuery, conn))
                 {
@@ -101,9 +168,19 @@ namespace Capa_Modelo_Evaluacion
                     }
                 }
             }
+            catch (OdbcException ex)
+            {
+                Console.WriteLine("❌ ODBC Exception al insertar evaluación:");
+                foreach (OdbcError error in ex.Errors)
+                {
+                    Console.WriteLine($"-> {error.Message} (SQL State: {error.SQLState})");
+                }
+            }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al insertar evaluación: " + ex.Message);
+                Console.WriteLine("❌ Excepción general al insertar evaluación:");
+                Console.WriteLine($"Mensaje: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
             }
             finally
             {
