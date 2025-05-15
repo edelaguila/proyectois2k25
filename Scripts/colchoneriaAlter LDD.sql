@@ -460,9 +460,8 @@ CREATE TABLE IF NOT EXISTS Tbl_vendedores (
     vendedores_sueldo DECIMAL(10,2)NOT NULL ,
     vendedores_direccion VARCHAR(255)NOT NULL ,
     vendedores_telefono VARCHAR(20)NOT NULL ,
-	Fk_id_empleado INT NOT NULL,
+	Fk_id_empleado INT,
     estado tinyint(1) DEFAULT 1,
-    FOREIGN KEY (Fk_id_empleado) REFERENCES tbl_empleados(pk_clave),
     PRIMARY KEY (Pk_id_vendedor)
 );
 ALTER TABLE Tbl_clientes 

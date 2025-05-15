@@ -351,18 +351,6 @@ namespace Capa_Vista_Logistica
             ocultaSubMenu();
         }
 
-        private void Btn_CuentProcCl2_Click_1(object sender, EventArgs e)
-        {
-            AbrirFormulario<CapaVista_AndresVeron.frm_transaccion_clientes>();
-            ocultaSubMenu();
-        }
-
-        private void Btn_CuentProcProv2_Click_1(object sender, EventArgs e)
-        {
-            AbrirFormulario<Capa_Vista_CPP.Transacc_proveedores>();
-            ocultaSubMenu();
-        }
-
         private void Btn_ComProcC1_Click(object sender, EventArgs e)
         {
             AbrirFormulario<Capa_Vista_Compras.Frm_Compras>();
@@ -388,13 +376,13 @@ namespace Capa_Vista_Logistica
 
         private void Btn_Cuentas_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Caja>();
+            AbrirFormulario<CapaVista_CajaCC.frm_CajaCC>();
             ocultaSubMenu();
         }
 
         private void Btn_ComProc3_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<Capa_Vista.Frm_comisiones>();
+            //AbrirFormulario<Capa_Vista.Frm_comisiones>();
             ocultaSubMenu();
         }
 
@@ -451,7 +439,6 @@ namespace Capa_Vista_Logistica
         {
             AbrirFormulario<Capa_Vista_ListaPrecios.frm_MantenimientoListas>();
             ocultaSubMenu();
-
         }
 
 
