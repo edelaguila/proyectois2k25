@@ -8,9 +8,9 @@ namespace Portal_Web.Models
     public class Nominas
     {
         public decimal SalarioBase { get; set; }
-        public decimal Bonos { get; set; }
+        public decimal Percepciones { get; set; } 
         public decimal Deducciones { get; set; }
 
-        public decimal Total => SalarioBase + Bonos - Deducciones;
+        public decimal Total => SalarioBase + Percepciones - Deducciones;
     }
 }

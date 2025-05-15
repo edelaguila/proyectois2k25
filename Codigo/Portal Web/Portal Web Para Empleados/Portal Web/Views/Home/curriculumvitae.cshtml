@@ -1,0 +1,108 @@
+﻿@model Portal_Web.Models.Postulante
+
+@{
+    ViewBag.Title = "Formulario de Postulación";
+}
+
+<div class="container">
+    <div class="header">
+        <h2>Formulario de Postulación</h2>
+    </div>
+    <link rel="stylesheet" href="~/Content/styles/curriculumvitae.css"/>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.nombre_postulante)
+            @Html.TextBoxFor(m => m.nombre_postulante, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.nombre_postulante)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.apellido_postulante)
+            @Html.TextBoxFor(m => m.apellido_postulante, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.apellido_postulante)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.email_postulante)
+            @Html.TextBoxFor(m => m.email_postulante, new { @class = "form-control", type = "email" })
+            @Html.ValidationMessageFor(m => m.email_postulante)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.telefono_postulante)
+            @Html.TextBoxFor(m => m.telefono_postulante, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.telefono_postulante)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.anios_experiencia)
+            @Html.TextBoxFor(m => m.anios_experiencia, new { @class = "form-control", type = "number", min = "0" })
+            @Html.ValidationMessageFor(m => m.anios_experiencia)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.trabajo_anterior)
+            @Html.TextBoxFor(m => m.trabajo_anterior, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.trabajo_anterior)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.puesto_anterior)
+            @Html.TextBoxFor(m => m.puesto_anterior, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.apellido_postulante)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Fk_nivel_educativo)
+            @Html.DropDownListFor(m => m.Fk_nivel_educativo,
+                (SelectList)ViewBag.Nivel_Educativo,
+                "Seleccione nivel educativo",
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Fk_nivel_educativo)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.titulo_obtenido)
+            @Html.TextBoxFor(m => m.titulo_obtenido, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.titulo_obtenido)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Fk_disponibilidad)
+            @Html.DropDownListFor(m => m.Fk_disponibilidad,
+                (SelectList)ViewBag.Disponibilidad,
+                "Seleccione disponibilidad",
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Fk_disponibilidad)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.salario_pretendido)
+            @Html.TextBoxFor(m => m.salario_pretendido, new { @class = "form-control", type = "number", step = "0.01" })
+            @Html.ValidationMessageFor(m => m.salario_pretendido)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Fk_puesto_aplica_postulante)
+            @Html.DropDownListFor(m => m.Fk_puesto_aplica_postulante,
+                (SelectList)ViewBag.Puestos,
+                "Seleccione puesto",
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Fk_puesto_aplica_postulante)
+        </div>
+
+        <button type="submit" class="btn">Enviar</button>
+    }
+
+    <div class="footer">
+        <p>Gracias por tu interés en postular.</p>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

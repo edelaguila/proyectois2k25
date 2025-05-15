@@ -83,6 +83,7 @@ namespace Portal_Web.Controllers
                 {
                     // Autenticación exitosa
                     Session["UserId"] = usuario.Pk_id_usuario;
+                    Session["Username"] = usuario.nombre_usuario;
                     usuario.ultima_conexion_usuario = DateTime.Now;
                     db.SaveChanges();
                     return RedirectToAction("index", "Home");
