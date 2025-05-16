@@ -51,14 +51,14 @@ namespace Capa_Modelo_DeudasProveedores
                 {
                     conn.Open();
 
-                    // Insertar la deuda
-                    string queryInsert = @"INSERT INTO tbl_deudas_proveedores 
-                                   (Pk_id_deuda, Fk_id_proveedor, deuda_monto, deuda_fecha_inicio, 
-                                    deuda_fecha_vencimiento, deuda_descripcion, deuda_estado, 
-                                    transaccion_tipo, Fk_id_factura) 
-                                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-                    using (OdbcCommand cmd = new OdbcCommand(queryInsert, conn))
+                    // 1) Insertar la deuda
+                    string queryInsert = @"
+                INSERT INTO tbl_deudas_proveedores 
+                (Pk_id_deuda, Fk_id_proveedor, deuda_monto, deuda_fecha_inicio, 
+                 deuda_fecha_vencimiento, deuda_descripcion, deuda_estado, 
+                 transaccion_tipo, Fk_id_factura) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    using (var cmd = new OdbcCommand(queryInsert, conn))
                     {
                         cmd.Parameters.AddWithValue("@id", idDeuda);
                         cmd.Parameters.AddWithValue("@idProveedor", idProveedor);
@@ -68,65 +68,63 @@ namespace Capa_Modelo_DeudasProveedores
                         cmd.Parameters.AddWithValue("@descripcion", descripcion);
                         cmd.Parameters.AddWithValue("@estado", estado);
                         cmd.Parameters.AddWithValue("@tipoTransaccion", tipoTransaccion);
-
                         if (string.IsNullOrEmpty(idFactura) || idFactura == "0")
                             cmd.Parameters.AddWithValue("@idFactura", DBNull.Value);
                         else
                             cmd.Parameters.AddWithValue("@idFactura", idFactura);
-
                         cmd.ExecuteNonQuery();
                     }
 
-                    // Si hay una factura relacionada, actualizar el saldo
+                    // 2) Si hay factura, ajustar su saldo según el efecto ('+' o '-')
                     if (!string.IsNullOrEmpty(idFactura) && idFactura != "0")
                     {
-                        // Consultar el efecto de la transacción (desde tbl_transaccion_cuentas)
+                        // 2a) Obtener el símbolo de efecto: '+' o '-'
                         string efecto = "";
-                        string queryEfecto = "SELECT tran_efecto FROM tbl_transaccion_cuentas WHERE tran_nombre = ?";
-                        using (OdbcCommand cmdEfecto = new OdbcCommand(queryEfecto, conn))
+                        string sqlEfecto = "SELECT tran_efecto FROM tbl_transaccion_cuentas WHERE tran_nombre = ?";
+                        using (var cmdE = new OdbcCommand(sqlEfecto, conn))
                         {
-                            cmdEfecto.Parameters.AddWithValue("@nombre", tipoTransaccion);
-                            object result = cmdEfecto.ExecuteScalar();
-                            if (result != null)
-                                efecto = result.ToString();
+                            cmdE.Parameters.AddWithValue("@nombre", tipoTransaccion);
+                            var r = cmdE.ExecuteScalar();
+                            if (r != null) efecto = r.ToString();
                         }
 
-                        // Actualizar el saldo según el efecto
-                        string queryUpdateSaldo = @"UPDATE tbl_factura_proveedor 
-                                            SET saldo = saldo " + (efecto == "Crédito" ? "+" : "-") + @" ? 
-                                            WHERE Pk_id_FacturaProv = ?";
-
-                        using (OdbcCommand cmdSaldo = new OdbcCommand(queryUpdateSaldo, conn))
+                        // 2b) Construir y ejecutar el UPDATE usando directamente '+' o '-'
+                        string sqlUpdate = $@"
+                    UPDATE tbl_factura_proveedor
+                    SET saldo = saldo {efecto} ?
+                    WHERE Pk_id_FacturaProv = ?";
+                        using (var cmdU = new OdbcCommand(sqlUpdate, conn))
                         {
-                            cmdSaldo.Parameters.AddWithValue("@monto", Convert.ToDecimal(monto));
-                            cmdSaldo.Parameters.AddWithValue("@idFactura", idFactura);
-                            cmdSaldo.ExecuteNonQuery();
+                            cmdU.Parameters.AddWithValue("@monto", Convert.ToDecimal(monto));
+                            cmdU.Parameters.AddWithValue("@idFactura", idFactura);
+                            cmdU.ExecuteNonQuery();
                         }
 
-                        // Consultar el nuevo saldo
+                        // 2c) Leer el nuevo saldo para, si es cero o menos, marcar la deuda como inactiva
+                        string sqlSaldo = "SELECT saldo FROM tbl_factura_proveedor WHERE Pk_id_FacturaProv = ?";
                         decimal nuevoSaldo = 0;
-                        string querySaldo = "SELECT saldo FROM tbl_factura_proveedor WHERE Pk_id_FacturaProv = ?";
-                        using (OdbcCommand cmdConsultaSaldo = new OdbcCommand(querySaldo, conn))
+                        using (var cmdS = new OdbcCommand(sqlSaldo, conn))
                         {
-                            cmdConsultaSaldo.Parameters.AddWithValue("@idFactura", idFactura);
-                            object result = cmdConsultaSaldo.ExecuteScalar();
-                            if (result != null)
-                                nuevoSaldo = Convert.ToDecimal(result);
+                            cmdS.Parameters.AddWithValue("@idFactura", idFactura);
+                            var r2 = cmdS.ExecuteScalar();
+                            if (r2 != null) nuevoSaldo = Convert.ToDecimal(r2);
                         }
 
-                        // Si saldo es 0, actualizar estado de la deuda a 0
                         if (nuevoSaldo <= 0)
                         {
-                            string updateEstado = "UPDATE tbl_deudas_proveedores SET deuda_estado = 0 WHERE Pk_id_deuda = ?";
-                            using (OdbcCommand cmdEstado = new OdbcCommand(updateEstado, conn))
+                            string sqlEstado = @"
+                        UPDATE tbl_deudas_proveedores
+                        SET deuda_estado = 0
+                        WHERE Pk_id_deuda = ?";
+                            using (var cmdE2 = new OdbcCommand(sqlEstado, conn))
                             {
-                                cmdEstado.Parameters.AddWithValue("@idDeuda", idDeuda);
-                                cmdEstado.ExecuteNonQuery();
+                                cmdE2.Parameters.AddWithValue("@idDeuda", idDeuda);
+                                cmdE2.ExecuteNonQuery();
                             }
                         }
                     }
 
-                    return 1; // Se insertó correctamente
+                    return 1;
                 }
             }
             catch (Exception ex)
@@ -188,8 +186,8 @@ namespace Capa_Modelo_DeudasProveedores
 
 
         public int ActualizarDeuda(string idDeuda, string idProveedor, string monto,
-                            string fechaInicio, string fechaVencimiento, string descripcion,
-                            string estado, string tipoTransaccion, string idFactura)
+                           string fechaInicio, string fechaVencimiento, string descripcion,
+                           string estado, string tipoTransaccion, string idFactura)
         {
             try
             {
@@ -197,10 +195,9 @@ namespace Capa_Modelo_DeudasProveedores
                 {
                     conn.Open();
 
-                    // Obtener el monto anterior (y el idFactura anterior si lo deseas comparar)
+                    // Obtener el monto anterior de la deuda
                     string queryAnterior = "SELECT deuda_monto FROM tbl_deudas_proveedores WHERE Pk_id_deuda = ?";
                     decimal montoAnterior = 0;
-
                     using (OdbcCommand cmdAnterior = new OdbcCommand(queryAnterior, conn))
                     {
                         cmdAnterior.Parameters.AddWithValue("@idDeuda", idDeuda);
@@ -209,18 +206,17 @@ namespace Capa_Modelo_DeudasProveedores
                             montoAnterior = Convert.ToDecimal(result);
                     }
 
-                    // Actualizar la deuda
+                    // Actualizar la deuda en la tabla
                     string query = @"UPDATE tbl_deudas_proveedores 
-                           SET Fk_id_proveedor = ?, 
-                               deuda_monto = ?, 
-                               deuda_fecha_inicio = ?, 
-                               deuda_fecha_vencimiento = ?, 
-                               deuda_descripcion = ?, 
-                               deuda_estado = ?, 
-                               transaccion_tipo = ?, 
-                               Fk_id_factura = ? 
-                           WHERE Pk_id_deuda = ?";
-
+                             SET Fk_id_proveedor = ?, 
+                                 deuda_monto = ?, 
+                                 deuda_fecha_inicio = ?, 
+                                 deuda_fecha_vencimiento = ?, 
+                                 deuda_descripcion = ?, 
+                                 deuda_estado = ?, 
+                                 transaccion_tipo = ?, 
+                                 Fk_id_factura = ? 
+                             WHERE Pk_id_deuda = ?";
                     using (OdbcCommand cmd = new OdbcCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@idProveedor", idProveedor);
@@ -235,14 +231,13 @@ namespace Capa_Modelo_DeudasProveedores
                         else
                             cmd.Parameters.AddWithValue("@idFactura", idFactura);
                         cmd.Parameters.AddWithValue("@id", idDeuda);
-
                         cmd.ExecuteNonQuery();
                     }
 
-                    // Si hay una factura relacionada, ajustar el saldo
+                    // Ajustar saldo de la factura relacionada si existe
                     if (!string.IsNullOrEmpty(idFactura) && idFactura != "0")
                     {
-                        // Obtener efecto del tipo de transacción
+                        // Obtener el efecto real desde la tabla (esperado '+' o '-')
                         string efecto = "";
                         string queryEfecto = "SELECT tran_efecto FROM tbl_transaccion_cuentas WHERE tran_nombre = ?";
                         using (OdbcCommand cmdEfecto = new OdbcCommand(queryEfecto, conn))
@@ -250,28 +245,33 @@ namespace Capa_Modelo_DeudasProveedores
                             cmdEfecto.Parameters.AddWithValue("@nombre", tipoTransaccion);
                             object result = cmdEfecto.ExecuteScalar();
                             if (result != null)
-                                efecto = result.ToString();
+                                efecto = result.ToString();  // '+' o '-'
                         }
 
+                        // Calcular diferencia de monto (nuevo - anterior)
                         decimal nuevoMonto = Convert.ToDecimal(monto);
                         decimal diferencia = nuevoMonto - montoAnterior;
 
-                        string signo = (efecto == "Crédito") ? "+" : "-";
-                        if (diferencia < 0)
-                            signo = (efecto == "Crédito") ? "-" : "+";
-
-                        string queryUpdateSaldo = $@"UPDATE tbl_factura_proveedor 
-                                        SET saldo = saldo {signo} ? 
-                                        WHERE Pk_id_FacturaProv = ?";
-
-                        using (OdbcCommand cmdSaldo = new OdbcCommand(queryUpdateSaldo, conn))
+                        // Si no hay diferencia, no actualices nada
+                        if (diferencia != 0)
                         {
-                            cmdSaldo.Parameters.AddWithValue("@diferencia", Math.Abs(diferencia));
-                            cmdSaldo.Parameters.AddWithValue("@idFactura", idFactura);
-                            cmdSaldo.ExecuteNonQuery();
+                            // Determinar signo real a aplicar
+                            string signo = efecto;
+                            if (diferencia < 0)
+                                signo = (efecto == "+") ? "-" : "+";
+
+                            string queryUpdateSaldo = $@"UPDATE tbl_factura_proveedor 
+                                                 SET saldo = saldo {signo} ? 
+                                                 WHERE Pk_id_FacturaProv = ?";
+                            using (OdbcCommand cmdSaldo = new OdbcCommand(queryUpdateSaldo, conn))
+                            {
+                                cmdSaldo.Parameters.AddWithValue("@diferencia", Math.Abs(diferencia));
+                                cmdSaldo.Parameters.AddWithValue("@idFactura", idFactura);
+                                cmdSaldo.ExecuteNonQuery();
+                            }
                         }
 
-                        // Verificar nuevo saldo para cambiar estado si llega a 0
+                        // Consultar el nuevo saldo para verificar si es 0
                         string querySaldo = "SELECT saldo FROM tbl_factura_proveedor WHERE Pk_id_FacturaProv = ?";
                         using (OdbcCommand cmdConsultaSaldo = new OdbcCommand(querySaldo, conn))
                         {
@@ -302,19 +302,68 @@ namespace Capa_Modelo_DeudasProveedores
         {
             try
             {
-                string query = "DELETE FROM tbl_deudas_proveedores WHERE Pk_id_deuda = ?";
-
                 using (OdbcConnection conn = new OdbcConnection(connectionString))
-                using (OdbcCommand cmd = new OdbcCommand(query, conn))
                 {
                     conn.Open();
-                    cmd.Parameters.AddWithValue("@id", idDeuda);
-                    return cmd.ExecuteNonQuery();
+
+                    // 1. Obtener info de la deuda
+                    string queryInfo = @"SELECT deuda_monto, transaccion_tipo, Fk_id_factura 
+                                 FROM tbl_deudas_proveedores 
+                                 WHERE Pk_id_deuda = ?";
+                    decimal monto = 0;
+                    string tipoTrans = "";
+                    string idFactura = "";
+
+                    using (OdbcCommand cmd = new OdbcCommand(queryInfo, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idDeuda", idDeuda);
+                        using (OdbcDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                monto = Convert.ToDecimal(reader["deuda_monto"]);
+                                tipoTrans = reader["transaccion_tipo"].ToString();
+                                idFactura = reader["Fk_id_factura"].ToString();
+                            }
+                        }
+                    }
+
+                    // 2. Obtener el efecto de la transacción (esperado '+' o '-')
+                    string efecto = "";
+                    string queryEfecto = "SELECT tran_efecto FROM tbl_transaccion_cuentas WHERE tran_nombre = ?";
+                    using (OdbcCommand cmd = new OdbcCommand(queryEfecto, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@tipoTrans", tipoTrans);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                            efecto = result.ToString(); // '+' o '-'
+                    }
+
+                    // 3. Revertir el saldo si hay factura asociada
+                    if (!string.IsNullOrEmpty(idFactura))
+                    {
+                        string signoReverso = (efecto == "+") ? "-" : "+";
+                        string updateSaldo = $"UPDATE tbl_factura_proveedor SET saldo = saldo {signoReverso} ? WHERE Pk_id_FacturaProv = ?";
+                        using (OdbcCommand cmd = new OdbcCommand(updateSaldo, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@monto", monto);
+                            cmd.Parameters.AddWithValue("@idFactura", idFactura);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    // 4. Eliminar la deuda
+                    string deleteQuery = "DELETE FROM tbl_deudas_proveedores WHERE Pk_id_deuda = ?";
+                    using (OdbcCommand cmd = new OdbcCommand(deleteQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@idDeuda", idDeuda);
+                        return cmd.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error al eliminar deuda: {ex.Message}");
+                throw new Exception($"Error al eliminar deuda y ajustar saldo: {ex.Message}");
             }
         }
 
