@@ -208,9 +208,16 @@ namespace Capa_Vista_GD
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
             //validacion de ruta valida
-            string ruta = Txt_cargarArchivo.Text.Trim();
+            //validación especial para cuando el ComboBox tiene "Ninguna" y el texto también
+            string tipoEvidencia = Cbo_tipoEvindencia.SelectedItem?.ToString().Trim().ToLower();
+            string ruta = Txt_cargarArchivo.Text.Trim().ToLower();
 
-            if (!EsRutaOUrlValida(ruta))
+            // permitir continuar si ambos dicen "ninguna", "ninguno", etc.
+            bool esExcepcionNinguna = (tipoEvidencia == "ninguna") &&
+                                      (ruta == "ninguna" || ruta == "ninguno");
+
+            // si no es la excepción, validar la ruta
+            if (!esExcepcionNinguna && !EsRutaOUrlValida(ruta))
             {
                 MessageBox.Show("La ruta ingresada no es válida. Por favor, verifique que sea una ruta local o URL correctamente escrita.", "Ruta inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -231,7 +238,7 @@ namespace Capa_Vista_GD
             }
 
             //validacion para guardar solo si Rdb_si cumple las condiciones para habilitarse
-            if (Rdb_Si.Enabled == false)
+            if (!esExcepcionNinguna && Rdb_Si.Enabled == false)
             {
                 MessageBox.Show("Debe cumplir las condiciones para poder Guardar.");
                 return;
@@ -244,7 +251,7 @@ namespace Capa_Vista_GD
 
             // Recolectar datos del formulario
             int idFalta = Convert.ToInt32(Cbo_idFalta.SelectedItem);
-            string tipoEvidencia = Cbo_tipoEvindencia.SelectedItem.ToString();
+            //string tipoEvidencia = Cbo_tipoEvindencia.SelectedItem.ToString();
             string urlEvidencia = Txt_cargarArchivo.Text;
             int estado = Rdb_Si.Checked ? 1 : 0; // <--- Aquí obtenemos el estado basado en los RadioButtons
 
