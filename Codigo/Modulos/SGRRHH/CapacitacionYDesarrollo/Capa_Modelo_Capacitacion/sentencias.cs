@@ -10,6 +10,12 @@ using System.Threading.Tasks;
 
 namespace Capa_Modelo_Capacitacion
 {
+
+    public class Parametros
+    {
+        public decimal LimiteVerde { get; set; }
+        public decimal LimiteAmarillo { get; set; }
+    }
     public class sentencias
     {
         conexion con = new conexion();
@@ -111,7 +117,7 @@ namespace Capa_Modelo_Capacitacion
         public List<KeyValuePair<int, string>> ObtenerCapacitaciones()
         {
             List<KeyValuePair<int, string>> listaCapacitaciones = new List<KeyValuePair<int, string>>();
-            string query = "SELECT pk_id_capacitacion, capacitaciones_nombre FROM tbl_capacitaciones";
+            string query = "SELECT pk_id_capacitacion, capacitaciones_nombre FROM tbl_capacitaciones WHERE estado = 1";
 
             using (OdbcConnection conn = con.Conexion())
             {
@@ -137,9 +143,13 @@ namespace Capa_Modelo_Capacitacion
         {
             List<KeyValuePair<int, string>> lista = new List<KeyValuePair<int, string>>();
 
-            string query = @"SELECT pk_id_capacitacion, capacitaciones_nombre 
-                     FROM tbl_capacitaciones 
-                     WHERE fk_id_departamento = ?";
+            string query = @"
+        SELECT c.pk_id_capacitacion, c.capacitaciones_nombre 
+        FROM tbl_capacitaciones c
+        WHERE c.fk_id_departamento = ?
+        AND c.pk_id_capacitacion NOT IN (
+            SELECT fk_id_capacitacion FROM tbl_cierres WHERE estado = 1
+        );";
 
             using (OdbcConnection conn = con.Conexion())
             {
@@ -189,6 +199,20 @@ namespace Capa_Modelo_Capacitacion
             return nuevoID;
         }
 
+        public bool CambiarEstadoCapacitacion(int idCapacitacion, int nuevoEstado)
+        {
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string query = "UPDATE tbl_capacitaciones SET estado = ? WHERE pk_id_capacitacion = ?";
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    cmd.Parameters.AddWithValue("?", nuevoEstado);
+                    cmd.Parameters.AddWithValue("?", idCapacitacion);
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    return filasAfectadas > 0;
+                }
+            }
+        }
 
 
         public List<KeyValuePair<int, string>> ObtenerDepartamentos()
@@ -399,6 +423,31 @@ namespace Capa_Modelo_Capacitacion
             return tabla;
         }
 
+
+        public Parametros ObtenerParametros()
+        {
+            Parametros parametros = new Parametros();
+
+            string query = "SELECT LimiteVerde, LimiteAmarillo FROM tbl_parametros WHERE Pk_id_parametro = 1"; // o la lógica adecuada
+
+            using (OdbcConnection conn = con.Conexion())
+            {
+                using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                {
+                    using (OdbcDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            parametros.LimiteVerde = reader.GetDecimal(0);
+                            parametros.LimiteAmarillo = reader.GetDecimal(1);
+                        }
+                    }
+                }
+                con.desconexion(conn);
+            }
+
+            return parametros;
+        }
 
         //public bool existeNotaEmpleadoCapacitacion(int fkEmpleado, int fkCapacitacion)
         //{
@@ -652,6 +701,174 @@ namespace Capa_Modelo_Capacitacion
         }
 
 
+        public bool InsertarParametros(decimal limiteVerde, decimal limiteAmarillo)
+        {
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string query = "INSERT INTO tbl_parametros (LimiteVerde, LimiteAmarillo) VALUES (?, ?)";
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    cmd.Parameters.AddWithValue("?", limiteVerde);
+                    cmd.Parameters.AddWithValue("?", limiteAmarillo);
+
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    return filasAfectadas > 0;
+                }
+            }
+        }
+
+        public void ActualizarNivelCompetencia(int idCapacitacion, string colorSemaforo)
+        {
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                // 1. Obtener el departamento, competencia y nivel final desde tbl_capacitaciones
+                string query1 = "SELECT fk_id_departamento, fk_id_competencia, fk_id_capacitaciones_nivelfinal FROM tbl_capacitaciones WHERE pk_id_capacitacion = ?";
+                int idDepartamento = 0, idCompetencia = 0;
+                string nivelFinal = "D";
+
+                using (OdbcCommand cmd = new OdbcCommand(query1, cnx))
+                {
+                    cmd.Parameters.AddWithValue("?", idCapacitacion);
+                    using (OdbcDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            idDepartamento = reader.GetInt32(0);
+                            idCompetencia = reader.GetInt32(1);
+                            nivelFinal = reader.GetString(2);
+                        }
+                        else return; // No se encontró la capacitación
+                    }
+                }
+
+                // 2. Verificar si ya existe un registro en tbl_departamentos_competencia
+                string queryCheck = "SELECT nivelactual FROM tbl_departamentos_competencias WHERE fk_id_departamento = ? AND fk_id_competencia = ?";
+                string nivelActual = null;
+
+                using (OdbcCommand cmd = new OdbcCommand(queryCheck, cnx))
+                {
+                    cmd.Parameters.AddWithValue("?", idDepartamento);
+                    cmd.Parameters.AddWithValue("?", idCompetencia);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null)
+                        nivelActual = result.ToString();
+                }
+
+                // 3. Si ya existe: actualizar nivel según el color del semáforo
+                if (nivelActual != null)
+                {
+                    List<string> niveles = new List<string> { "A", "B", "C", "D" };
+                    int index = niveles.IndexOf(nivelActual.ToUpper());
+                    int nuevoIndex = index;
+
+                    if (colorSemaforo == "verde" && index > 0)
+                        nuevoIndex = index - 1; // subir
+                    else if (colorSemaforo == "rojo" && index < niveles.Count - 1)
+                        nuevoIndex = index + 1; // bajar
+                    else
+                        return; // sin cambio
+
+                    string queryUpdate = "UPDATE tbl_departamentos_competencias SET nivelactual = ?, estado = 1 WHERE fk_id_departamento = ? AND fk_id_competencia = ?";
+                    using (OdbcCommand cmd = new OdbcCommand(queryUpdate, cnx))
+                    {
+                        cmd.Parameters.AddWithValue("?", niveles[nuevoIndex]);
+                        cmd.Parameters.AddWithValue("?", idDepartamento);
+                        cmd.Parameters.AddWithValue("?", idCompetencia);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    // 4. No existe: insertar nuevo registro
+                    string nuevoNivel = (colorSemaforo == "verde") ? nivelFinal : "D";
+                    string queryInsert = "INSERT INTO tbl_departamentos_competencias (fk_id_departamento, fk_id_competencia, nivelactual, estado) VALUES (?, ?, ?, 1)";
+                    using (OdbcCommand cmd = new OdbcCommand(queryInsert, cnx))
+                    {
+                        cmd.Parameters.AddWithValue("?", idDepartamento);
+                        cmd.Parameters.AddWithValue("?", idCompetencia);
+                        cmd.Parameters.AddWithValue("?", nuevoNivel);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
+
+        public bool ActualizarParametros(decimal nuevoVerde, decimal nuevoAmarillo)
+        {
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string query = "UPDATE tbl_parametros SET LimiteVerde = ?, LimiteAmarillo = ? WHERE Pk_id_parametro = 1";
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    cmd.Parameters.AddWithValue("?", nuevoVerde);
+                    cmd.Parameters.AddWithValue("?", nuevoAmarillo);
+
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    return filasAfectadas > 0;
+                }
+            }
+        }
+
+        //CONSEGUIR IDs
+        public int ObtenerIdCompetenciaDesdeCapacitacion(int idCompetencia)
+        {
+            int idC = -1;
+            using (OdbcConnection cnx = con.Conexion())
+            { 
+                string query = "SELECT fk_id_competencia FROM tbl_capacitaciones WHERE pk_id_capacitacion = @id";
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@id", idC);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null)
+                        idCompetencia = Convert.ToInt32(result);
+                }
+            }
+
+            return idCompetencia;
+        }
+
+        public string ObtenerNivelActual(int idDepartamento, int idCompetencia)
+        {
+            string nivel = "No definido";
+
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string query = @"SELECT nivelactual 
+                         FROM tbl_departamentos_competencias 
+                         WHERE fk_id_departamento = @idDepto AND fk_id_competencia = @idComp";
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@idDepto", idDepartamento);
+                    cmd.Parameters.AddWithValue("@idComp", idCompetencia);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null)
+                        nivel = result.ToString();
+                }
+            }
+
+            return nivel;
+        }
+
+        public string ObtenerNombreCompetencia(int idCompetencia)
+        {
+            string nombre = "Desconocida";
+
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string query = "SELECT nombre_competencia FROM tbl_competencias WHERE Pk_id_competencia = @id";
+                using (OdbcCommand cmd = new OdbcCommand(query, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@id", idCompetencia);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null)
+                        nombre = result.ToString();
+                }
+            }
+
+            return nombre;
+        }
 
 
     }

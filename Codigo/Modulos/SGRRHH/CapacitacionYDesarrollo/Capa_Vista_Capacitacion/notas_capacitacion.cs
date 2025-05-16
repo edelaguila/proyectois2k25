@@ -407,6 +407,9 @@ namespace Capa_Vista_Capacitacion
             // Solo cuando se agrega un nuevo registro
             ActualizarDepartamentoDesdeCapacitacion(filtrarEmpleados: true);
 
+
+
+
         }
 
         private void ActualizarDepartamentoDesdeCapacitacion(bool filtrarEmpleados)

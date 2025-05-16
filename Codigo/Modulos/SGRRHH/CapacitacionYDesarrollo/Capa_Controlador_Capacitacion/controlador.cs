@@ -9,12 +9,13 @@ using Capa_Modelo_Capacitacion;
 
 namespace Capa_Controlador_Capacitacion
 {
-
-    public static class ParametrosGlobales
+    public class ParametrosDTO
     {
-        public static decimal LimiteVerde = 80;
-        public static decimal LimiteAmarillo = 40;
+        public decimal LimiteVerde { get; set; }
+        public decimal LimiteAmarillo { get; set; }
     }
+
+
 
     public class controlador
     {
@@ -97,6 +98,21 @@ namespace Capa_Controlador_Capacitacion
             return sn.ObtenerSiguienteIDCierre();
         }
 
+
+
+        public bool CambiarEstadoCapacitacion(int idCapacitacion, int nuevoEstado)
+        {
+            return sn.CambiarEstadoCapacitacion(idCapacitacion, nuevoEstado);
+        }
+
+        public void ActualizarNivelCompetencia(int idCapacitacion, string colorSemaforo)
+        {
+            sn.ActualizarNivelCompetencia(idCapacitacion, colorSemaforo);
+        }
+
+
+
+
         public int obtenerSiguienteNota()
         {
             return sn.ObtenerSiguienteIdNota();
@@ -129,17 +145,42 @@ namespace Capa_Controlador_Capacitacion
             return sn.calcularAsistencia(idDepartamento, idCapacitacion);
         }
 
-
-
-            //public bool NotaYaExiste(int fkEmpleado, int fkCapacitacion)
-            //{
-            //    return sn.existeNotaEmpleadoCapacitacion(fkEmpleado, fkCapacitacion);
-            //}
-
-            //public bool NotaYaExisteParaOtroID(int idNota, int fkEmpleado, int fkCapacitacion)
-            //{
-            //    return sn.existeNotaEmpleadoCapacitacionExcepto(idNota, fkEmpleado, fkCapacitacion);
-            //}
-
+        // controlador.cs
+        public bool InsertarParametros(decimal limiteVerde, decimal limiteAmarillo)
+        {
+            return sn.InsertarParametros(limiteVerde, limiteAmarillo);
         }
+
+        public bool ActualizarParametros(decimal nuevoVerde, decimal nuevoAmarillo)
+        {
+            return sn.ActualizarParametros(nuevoVerde, nuevoAmarillo);
+        }
+
+        public ParametrosDTO ObtenerParametros()
+        {
+            Parametros p = sn.ObtenerParametros(); // Devuelve la clase del modelo
+            return new ParametrosDTO
+            {
+                LimiteVerde = p.LimiteVerde,
+                LimiteAmarillo = p.LimiteAmarillo
+            };
+        }
+
+        public int ObtenerIdCompetenciaDesdeCapacitacion(int idCapacitacion)
+        {
+            return sn.ObtenerIdCompetenciaDesdeCapacitacion(idCapacitacion);
+        }
+
+        public string ObtenerNivelActual(int idDepartamento, int idCompetencia)
+        {
+            return sn.ObtenerNivelActual(idDepartamento, idCompetencia);
+        }
+
+        public string ObtenerNombreCompetencia(int idCompetencia)
+        {
+            return sn.ObtenerNombreCompetencia(idCompetencia);
+        }
+
+
+    }
 }

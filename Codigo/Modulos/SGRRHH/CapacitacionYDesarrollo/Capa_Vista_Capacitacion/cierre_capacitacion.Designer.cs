@@ -135,6 +135,7 @@ namespace Capa_Vista_Capacitacion
             this.cbCapacitación.Size = new System.Drawing.Size(155, 21);
             this.cbCapacitación.TabIndex = 17;
             this.cbCapacitación.Text = "Seleccione un Departamento";
+            this.cbCapacitación.SelectedIndexChanged += new System.EventHandler(this.cbCapacitación_SelectedIndexChanged);
             // 
             // cbDepartamento
             // 

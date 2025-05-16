@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
 using Capa_Controlador_Capacitacion;
 
@@ -118,17 +119,43 @@ namespace Capa_Vista_Capacitacion
 
             int idDepartamento = Convert.ToInt32(cbDepartamento.SelectedValue);
             int idCapacitacion = Convert.ToInt32(cbCapacitación.SelectedValue);
-            decimal puntuacion = decimal.Parse(lblMostrarporcentaje.Text.Replace("%", "").Trim());
-            decimal porcentajeAsistencia = decimal.Parse(lblAsistencia.Text.Replace("%", "").Trim());
+            string textoPuntuacion = lblMostrarporcentaje.Text.Replace("%", "").Trim();
+
+            if (!decimal.TryParse(textoPuntuacion, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal puntuacion))
+            {
+                MessageBox.Show("El valor de la puntuación no es válido. Asegúrate de que sea un número.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string textoAsistencia = lblAsistencia.Text.Replace("%", "").Trim();
+
+            if (!decimal.TryParse(textoAsistencia, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal porcentajeAsistencia))
+            {
+                MessageBox.Show("El valor de la asistencia no es válido. Asegúrate de que sea un número.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             DateTime fecha = DateTime.Now;
 
             try
             {
                 cn.InsertarCierre(idDepartamento, idCapacitacion, puntuacion, porcentajeAsistencia, fecha);
+                // Cambiar estado de la capacitación a 0
+                cn.CambiarEstadoCapacitacion(idCapacitacion, 0);
                 MessageBox.Show("Datos guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarCierres(); // para refrescar el DataGridView
-                notificacionSemaforo noti = new notificacionSemaforo(puntuacion, porcentajeAsistencia);
+                                 // Obtener ID de competencia a partir de la capacitación
+                int idCompetencia = cn.ObtenerIdCompetenciaDesdeCapacitacion(idCapacitacion);
+
+                // Obtener nivel actual desde tbl_departamentos_competencia
+                string nivelActual = cn.ObtenerNivelActual(idDepartamento, idCompetencia);
+
+                // Obtener nombre de la competencia (opcional, si no lo tienes en el comboBox)
+                string nombreCompetencia = cn.ObtenerNombreCompetencia(idCompetencia);
+
+                // Mostrar notificación semáforo con datos
+                notificacionSemaforo noti = new notificacionSemaforo(puntuacion, porcentajeAsistencia, nivelActual, nombreCompetencia);
                 noti.ShowDialog();
+
+
             }
             catch (Exception ex)
             {
@@ -195,6 +222,11 @@ namespace Capa_Vista_Capacitacion
         {
             parámetros_capacitación pr = new parámetros_capacitación();
             pr.Show();
+        }
+
+        private void cbCapacitación_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

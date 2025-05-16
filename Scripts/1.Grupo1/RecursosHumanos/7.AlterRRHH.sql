@@ -254,3 +254,10 @@ ADD puestos_salario_rec DECIMAL(10,2);
 
 
 -- ----------------------
+
+
+CREATE TABLE tbl_parametros (
+    Pk_id_parametro INT AUTO_INCREMENT PRIMARY KEY,
+    LimiteVerde DECIMAL(5,2),
+    LimiteAmarillo DECIMAL(5,2)
+);

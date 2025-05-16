@@ -18,7 +18,7 @@ namespace Ejecucion_EvaluacionDesempenio
             //Application.Run(new Capa_Vista_Evaluacion.Frm_Resultados_Evaluacion());
            //Application.Run(new Capa_Vista_Evaluacion.Frm_Bonos_Promociones());
             Application.Run(new Capa_Vista_Evaluacion.Frm_Evaluacion());
-            Application.Run(new Capa_Vista_Evaluacion.Frm_Reporte_Evaluacion_Desempenio());
+           // Application.Run(new Capa_Vista_Evaluacion.Frm_Reporte_Evaluacion_Desempenio());
         }
     }
 }
