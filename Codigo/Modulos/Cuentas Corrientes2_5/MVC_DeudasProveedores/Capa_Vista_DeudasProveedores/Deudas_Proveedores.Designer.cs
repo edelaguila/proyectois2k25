@@ -31,6 +31,10 @@ namespace Capa_Vista_DeudasProveedores
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Deudas_Proveedores));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Txt_saldoInicial = new System.Windows.Forms.TextBox();
+            this.Lbl_saldoInicial = new System.Windows.Forms.Label();
+            this.Txt_saldo_restante = new System.Windows.Forms.TextBox();
+            this.Lbl_saldo_restante = new System.Windows.Forms.Label();
             this.Dtp_Vencimiento = new System.Windows.Forms.DateTimePicker();
             this.Dtp_Inicio = new System.Windows.Forms.DateTimePicker();
             this.Cbo_idfactura = new System.Windows.Forms.ComboBox();
@@ -61,10 +65,6 @@ namespace Capa_Vista_DeudasProveedores
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Dgv_deudas = new System.Windows.Forms.DataGridView();
-            this.Lbl_saldo_restante = new System.Windows.Forms.Label();
-            this.Txt_saldo_restante = new System.Windows.Forms.TextBox();
-            this.Lbl_saldoInicial = new System.Windows.Forms.Label();
-            this.Txt_saldoInicial = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_deudas)).BeginInit();
@@ -101,6 +101,50 @@ namespace Capa_Vista_DeudasProveedores
             this.groupBox2.Size = new System.Drawing.Size(1109, 293);
             this.groupBox2.TabIndex = 125;
             this.groupBox2.TabStop = false;
+            // 
+            // Txt_saldoInicial
+            // 
+            this.Txt_saldoInicial.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_saldoInicial.Location = new System.Drawing.Point(819, 188);
+            this.Txt_saldoInicial.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_saldoInicial.Multiline = true;
+            this.Txt_saldoInicial.Name = "Txt_saldoInicial";
+            this.Txt_saldoInicial.ReadOnly = true;
+            this.Txt_saldoInicial.Size = new System.Drawing.Size(268, 29);
+            this.Txt_saldoInicial.TabIndex = 131;
+            // 
+            // Lbl_saldoInicial
+            // 
+            this.Lbl_saldoInicial.AutoSize = true;
+            this.Lbl_saldoInicial.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_saldoInicial.Location = new System.Drawing.Point(566, 187);
+            this.Lbl_saldoInicial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_saldoInicial.Name = "Lbl_saldoInicial";
+            this.Lbl_saldoInicial.Size = new System.Drawing.Size(118, 22);
+            this.Lbl_saldoInicial.TabIndex = 130;
+            this.Lbl_saldoInicial.Text = "Saldo inicial:";
+            // 
+            // Txt_saldo_restante
+            // 
+            this.Txt_saldo_restante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_saldo_restante.Location = new System.Drawing.Point(601, 242);
+            this.Txt_saldo_restante.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_saldo_restante.Multiline = true;
+            this.Txt_saldo_restante.Name = "Txt_saldo_restante";
+            this.Txt_saldo_restante.ReadOnly = true;
+            this.Txt_saldo_restante.Size = new System.Drawing.Size(268, 29);
+            this.Txt_saldo_restante.TabIndex = 129;
+            // 
+            // Lbl_saldo_restante
+            // 
+            this.Lbl_saldo_restante.AutoSize = true;
+            this.Lbl_saldo_restante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_saldo_restante.Location = new System.Drawing.Point(452, 245);
+            this.Lbl_saldo_restante.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_saldo_restante.Name = "Lbl_saldo_restante";
+            this.Lbl_saldo_restante.Size = new System.Drawing.Size(128, 22);
+            this.Lbl_saldo_restante.TabIndex = 128;
+            this.Lbl_saldo_restante.Text = "Saldo restante:";
             // 
             // Dtp_Vencimiento
             // 
@@ -251,9 +295,9 @@ namespace Capa_Vista_DeudasProveedores
             this.Lbl_id_deuda.Location = new System.Drawing.Point(20, 18);
             this.Lbl_id_deuda.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_id_deuda.Name = "Lbl_id_deuda";
-            this.Lbl_id_deuda.Size = new System.Drawing.Size(88, 22);
+            this.Lbl_id_deuda.Size = new System.Drawing.Size(133, 22);
             this.Lbl_id_deuda.TabIndex = 85;
-            this.Lbl_id_deuda.Text = "Id Deuda:";
+            this.Lbl_id_deuda.Text = "Id Movimiento:";
             // 
             // Lbl_inicio_deuda
             // 
@@ -284,9 +328,9 @@ namespace Capa_Vista_DeudasProveedores
             this.Lbl_id_DeudaP.Location = new System.Drawing.Point(20, 58);
             this.Lbl_id_DeudaP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_id_DeudaP.Name = "Lbl_id_DeudaP";
-            this.Lbl_id_DeudaP.Size = new System.Drawing.Size(138, 22);
+            this.Lbl_id_DeudaP.Size = new System.Drawing.Size(104, 22);
             this.Lbl_id_DeudaP.TabIndex = 81;
-            this.Lbl_id_DeudaP.Text = "No. Proveedor: ";
+            this.Lbl_id_DeudaP.Text = "Proveedor: ";
             // 
             // groupBox1
             // 
@@ -439,50 +483,6 @@ namespace Capa_Vista_DeudasProveedores
             this.Dgv_deudas.TabIndex = 122;
             this.Dgv_deudas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_deudas_CellContentClick);
             this.Dgv_deudas.SelectionChanged += new System.EventHandler(this.Dgv_deudas_SelectionChanged);
-            // 
-            // Lbl_saldo_restante
-            // 
-            this.Lbl_saldo_restante.AutoSize = true;
-            this.Lbl_saldo_restante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_saldo_restante.Location = new System.Drawing.Point(566, 184);
-            this.Lbl_saldo_restante.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_saldo_restante.Name = "Lbl_saldo_restante";
-            this.Lbl_saldo_restante.Size = new System.Drawing.Size(128, 22);
-            this.Lbl_saldo_restante.TabIndex = 128;
-            this.Lbl_saldo_restante.Text = "Saldo restante:";
-            // 
-            // Txt_saldo_restante
-            // 
-            this.Txt_saldo_restante.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_saldo_restante.Location = new System.Drawing.Point(819, 184);
-            this.Txt_saldo_restante.Margin = new System.Windows.Forms.Padding(4);
-            this.Txt_saldo_restante.Multiline = true;
-            this.Txt_saldo_restante.Name = "Txt_saldo_restante";
-            this.Txt_saldo_restante.ReadOnly = true;
-            this.Txt_saldo_restante.Size = new System.Drawing.Size(268, 29);
-            this.Txt_saldo_restante.TabIndex = 129;
-            // 
-            // Lbl_saldoInicial
-            // 
-            this.Lbl_saldoInicial.AutoSize = true;
-            this.Lbl_saldoInicial.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_saldoInicial.Location = new System.Drawing.Point(397, 242);
-            this.Lbl_saldoInicial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Lbl_saldoInicial.Name = "Lbl_saldoInicial";
-            this.Lbl_saldoInicial.Size = new System.Drawing.Size(118, 22);
-            this.Lbl_saldoInicial.TabIndex = 130;
-            this.Lbl_saldoInicial.Text = "Saldo inicial:";
-            // 
-            // Txt_saldoInicial
-            // 
-            this.Txt_saldoInicial.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_saldoInicial.Location = new System.Drawing.Point(533, 242);
-            this.Txt_saldoInicial.Margin = new System.Windows.Forms.Padding(4);
-            this.Txt_saldoInicial.Multiline = true;
-            this.Txt_saldoInicial.Name = "Txt_saldoInicial";
-            this.Txt_saldoInicial.ReadOnly = true;
-            this.Txt_saldoInicial.Size = new System.Drawing.Size(268, 29);
-            this.Txt_saldoInicial.TabIndex = 131;
             // 
             // Deudas_Proveedores
             // 
