@@ -795,3 +795,33 @@ INSERT INTO tbl_contratos (contratos_fecha_creacion, contratos_salario, contrato
 ('2022-01-10', 3500.00, 'Indefinido', 1, 1),
 ('2021-05-15', 2500.00, 'Temporal', 2, 1),
 ('2020-03-20', 4000.00, 'Indefinido', 3, 1);
+
+-- --------------------------------------------------------------------------------------------------------------
+-- Insertar datos en tbl_proveedores
+INSERT INTO tbl_proveedores 
+(Pk_prov_id, Prov_nombre, Prov_direccion, Prov_telefono, Prov_email, Prov_fechaRegistro, estado, Proveedor_deuda)
+VALUES
+(1, 'Distribuidora El Sol', 'Calle 123, Zona 1', '5555-1234', 'contacto@elsol.com', '2024-01-10', 1, 0.00),
+(2, 'TechImport S.A.', 'Av. Reforma 45, Zona 9', '5555-5678', 'ventas@techimport.com', '2024-02-15', 1, 0.00),
+(3, 'Insumos Médicos XYZ', 'Boulevard Vista Hermosa, Zona 15', '5555-8910', 'ventas@insumosxyz.com', '2024-03-20', 1, 0.00);
+
+-- Insertar datos en tbl_facturas de proveedores
+INSERT INTO tbl_factura_proveedor 
+(Pk_id_FacturaProv, Fk_id_compra, Fk_numero_factura, Fk_No_serial_factura, Fk_prov_id, fecha_emision, fecha_vencimiento, Total_a_pagar, saldo)
+VALUES
+(5001, 1001, 'FAC-001', 'SRL-001', 1, '2024-03-01', '2024-04-01', 1500.00, 1500.00),  -- Proveedor 1
+(5002, 1002, 'FAC-002', 'SRL-002', 2, '2024-03-05', '2024-04-05', 2000.00, 2000.00),  -- Proveedor 2
+(5003, 1003, 'FAC-003', 'SRL-003', 2, '2024-03-10', '2024-04-10', 1800.00, 1800.00),  -- Proveedor 2
+(5004, 1004, 'FAC-004', 'SRL-004', 3, '2024-03-15', '2024-04-15', 2200.00, 2200.00),  -- Proveedor 3
+(5005, 1005, 'FAC-005', 'SRL-005', 3, '2024-03-20', '2024-04-20', 2500.00, 2500.00);  -- Proveedor 3
+
+
+-- Insertar datos en tbl_encabezado de compras
+INSERT INTO tbl_encabezado_compras 
+(id_compra, numero_factura, No_serial_factura, id_proveedor, fecha_compra)
+VALUES
+(1001, 'FAC-001', 'SRL-001', 1, '2024-03-01'),  -- Proveedor 1
+(1002, 'FAC-002', 'SRL-002', 2, '2024-03-05'),  -- Proveedor 2
+(1003, 'FAC-003', 'SRL-003', 2, '2024-03-10'),  -- Proveedor 2
+(1004, 'FAC-004', 'SRL-004', 3, '2024-03-15'),  -- Proveedor 3
+(1005, 'FAC-005', 'SRL-005', 3, '2024-03-20');  -- Proveedor 3

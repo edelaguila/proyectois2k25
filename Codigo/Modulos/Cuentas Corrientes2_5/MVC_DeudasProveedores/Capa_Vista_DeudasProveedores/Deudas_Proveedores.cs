@@ -58,6 +58,7 @@ namespace Capa_Vista_DeudasProveedores
             limpiarCampos();
 
             // Habilitar botones para un nuevo registro
+            HabilitarCampos(true);
             Btn_guardar.Enabled = true;
             Txt_id_deuda.ReadOnly = false;
 
@@ -260,6 +261,7 @@ namespace Capa_Vista_DeudasProveedores
             CargarProveedores();
             CargarTiposTransaccion();
             limpiarCampos();
+            HabilitarCampos(false);
             // Deshabilitar botones al iniciar
             Btn_guardar.Enabled = false;
         }
@@ -479,5 +481,19 @@ namespace Capa_Vista_DeudasProveedores
                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void HabilitarCampos(bool habilitar)
+        {
+            Txt_id_deuda.Enabled = habilitar;
+            Txt_montoDeuda.Enabled = habilitar;
+            Txt_Descripcion.Enabled = habilitar;
+            Dtp_Inicio.Enabled = habilitar;
+            Dtp_Vencimiento.Enabled = habilitar;
+            Cbo_estado.Enabled = habilitar;
+            Cbo_Tipotrans.Enabled = habilitar;
+            Cbo_id_proveedor.Enabled = habilitar;
+            Cbo_idfactura.Enabled = habilitar;
+        }
+
     }
 }

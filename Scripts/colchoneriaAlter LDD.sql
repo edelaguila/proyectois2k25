@@ -336,6 +336,22 @@ DROP FOREIGN KEY tbl_deudas_proveedores_ibfk_2;
 ALTER TABLE Tbl_Deudas_Proveedores
 DROP COLUMN Fk_id_pago;
 
+-- ----------------------------------------------------------
+
+ALTER TABLE Tbl_Deudas_Proveedores
+  MODIFY COLUMN Fk_id_factura INT NULL;
+  
+  ALTER TABLE Tbl_Deudas_Proveedores
+  DROP FOREIGN KEY fk_id_factura2;
+  
+  
+  ALTER TABLE Tbl_Deudas_Proveedores
+  ADD CONSTRAINT fk_id_factura2
+    FOREIGN KEY (Fk_id_factura)
+    REFERENCES Tbl_factura_proveedor (Pk_id_FacturaProv)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL;
+
 -- TBL_Transaccion_proveedor
 ALTER TABLE Tbl_Transaccion_proveedor
 ADD COLUMN Fk_id_transC INT NOT NULL,
@@ -460,9 +476,8 @@ CREATE TABLE IF NOT EXISTS Tbl_vendedores (
     vendedores_sueldo DECIMAL(10,2)NOT NULL ,
     vendedores_direccion VARCHAR(255)NOT NULL ,
     vendedores_telefono VARCHAR(20)NOT NULL ,
-	Fk_id_empleado INT NOT NULL,
+	Fk_id_empleado INT,
     estado tinyint(1) DEFAULT 1,
-    FOREIGN KEY (Fk_id_empleado) REFERENCES tbl_empleados(pk_clave),
     PRIMARY KEY (Pk_id_vendedor)
 );
 ALTER TABLE Tbl_clientes 
