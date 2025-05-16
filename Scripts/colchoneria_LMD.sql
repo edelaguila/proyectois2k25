@@ -829,3 +829,29 @@ VALUES
 (1003, 'FAC-003', 'SRL-003', 2, '2024-03-10'),  -- Proveedor 2
 (1004, 'FAC-004', 'SRL-004', 3, '2024-03-15'),  -- Proveedor 3
 (1005, 'FAC-005', 'SRL-005', 3, '2024-03-20');  -- Proveedor 3
+
+-- 1. Insertar proveedor
+INSERT INTO Tbl_proveedores (Pk_prov_id, Prov_nombre, Prov_direccion, Prov_telefono, Prov_email, Prov_fechaRegistro)
+VALUES (4, 'Proveedor X', 'Dirección X', '123456789', 'proveedorx@mail.com', '2024-01-01'),
+(5, 'Proveedor y', 'Dirección y', '987654321', 'proveedory@mail.com', '2024-01-01');
+
+-- 2. Insertar encabezado de compra
+INSERT INTO tbl_encabezado_compras (id_compra, numero_factura, No_serial_factura, id_proveedor, fecha_compra)
+VALUES (100, 'FAC-001', 'SER-001', 1, '2024-01-15');
+
+-- 3. Insertar factura proveedor
+INSERT INTO Tbl_Factura_Proveedor (Fk_id_compra, Fk_numero_factura, Fk_No_serial_factura, Fk_prov_id, fecha_emision, fecha_vencimiento, Total_a_pagar, saldo)
+VALUES (100, 'FAC-001', 'SER-001', 1, '2024-01-15', '2024-03-15', 1000.00, 1000.00);
+
+-- IMPORTANTE: Obtener el ID de la factura recién creada:
+-- Supongamos que es el 1 (Pk_id_FacturaProv = 1)
+
+-- 4. Insertar deudas de proveedor (varias fechas)
+INSERT INTO Tbl_Deudas_Proveedores (Fk_id_proveedor, deuda_monto, deuda_fecha_inicio, deuda_fecha_vencimiento, deuda_descripcion, deuda_estado, transaccion_tipo, Efecto_trans, Fk_id_factura)
+VALUES 
+(1, 500.00, '2024-01-20', '2024-03-20', 'Deuda 1', 1, 'Compra', 'Negativo', 1),
+(1, 250.00, '2024-02-10', '2024-04-10', 'Deuda 2', 1, 'Compra', 'Negativo', 1),
+(2, 500.00, '2025-01-20', '2024-03-20', 'Deuda 1', 1, 'Compra', 'Negativo', 1),
+(2, 250.00, '2025-02-10', '2024-04-10', 'Deuda 2', 1, 'Compra', 'Negativo', 1),
+(5, 750.00, '2024-03-01', '2024-05-01', 'Deuda 3', 1, 'Compra', 'Negativo', 1),
+(4, 750.00, '2024-03-01', '2024-05-01', 'Deuda 3', 1, 'Compra', 'Negativo', 1);

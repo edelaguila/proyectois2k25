@@ -361,6 +361,7 @@ namespace Capa_Vista_DeudasProveedores
             this.Btn_reportes.Size = new System.Drawing.Size(65, 59);
             this.Btn_reportes.TabIndex = 114;
             this.Btn_reportes.UseVisualStyleBackColor = false;
+            this.Btn_reportes.Click += new System.EventHandler(this.Btn_reportes_Click);
             // 
             // Btn_Ayudas
             // 

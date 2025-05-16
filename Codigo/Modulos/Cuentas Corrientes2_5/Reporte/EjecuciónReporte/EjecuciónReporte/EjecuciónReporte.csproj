@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1A5C98E7-FF26-4209-984A-529ECE29294C}</ProjectGuid>
+    <ProjectGuid>{04402C6E-B2B6-46A8-9936-B6AA11D8290D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Ejecucion_Deudas_Proveedores</RootNamespace>
-    <AssemblyName>Ejecucion_Deudas_Proveedores</AssemblyName>
+    <RootNamespace>EjecuciónReporte</RootNamespace>
+    <AssemblyName>EjecuciónReporte</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Vista_DeudasProveedores">
-      <HintPath>..\..\Capa_Vista_DeudasProveedores\bin\Debug\Capa_Vista_DeudasProveedores.dll</HintPath>
+    <Reference Include="Capa_Vista_Reporte">
+      <HintPath>..\..\Capa_Vista_Reporte\bin\Debug\Capa_Vista_Reporte.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

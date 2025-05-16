@@ -536,5 +536,10 @@ namespace Capa_Vista_DeudasProveedores
             Cbo_idfactura.Enabled = habilitar;
         }
 
+        private void Btn_reportes_Click(object sender, EventArgs e)
+        {
+            Capa_Vista_Reporte.ReporteProv ReporProv = new Capa_Vista_Reporte.ReporteProv();
+            ReporProv.Show();
+        }
     }
 }
