@@ -60,6 +60,9 @@ namespace Capa_Vista_DeudasProveedores
             // Habilitar botones para un nuevo registro
             HabilitarCampos(true);
             Btn_guardar.Enabled = true;
+            Btn_eliminar.Enabled = false;
+            Btn_editar.Enabled = false;
+            Btn_Buscar.Enabled = true;
             Txt_id_deuda.ReadOnly = false;
 
             // Establecer que no estamos en modo edición
@@ -75,7 +78,7 @@ namespace Capa_Vista_DeudasProveedores
             // Validaciones básicas
             if (string.IsNullOrEmpty(Txt_id_deuda.Text))
             {
-                MessageBox.Show("Debe ingresar un ID de deuda.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe ingresar un ID de movimiento.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Txt_id_deuda.Focus();
                 return;
             }
@@ -89,7 +92,7 @@ namespace Capa_Vista_DeudasProveedores
 
             if (string.IsNullOrEmpty(Txt_montoDeuda.Text))
             {
-                MessageBox.Show("Debe ingresar un monto para la deuda.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe ingresar un monto para el movimiento.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Txt_montoDeuda.Focus();
                 return;
             }
@@ -105,7 +108,7 @@ namespace Capa_Vista_DeudasProveedores
             // Si no es una edición, verificar que el ID no exista ya
             if (!controlador.esEdicion && ExisteDeuda(Txt_id_deuda.Text))
             {
-                MessageBox.Show("Ya existe una deuda con este ID. Ingrese un ID diferente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ya existe un movimiento con este ID. Ingrese un ID diferente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Txt_id_deuda.Focus();
                 return;
             }
@@ -138,10 +141,14 @@ namespace Capa_Vista_DeudasProveedores
 
             if (resultado == 1)
             {
+                HabilitarCampos(false);
                 CargarDatos();
                 limpiarCampos();
                 // Deshabilitar nuevamente después de guardar
                 Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_eliminar.Enabled = false;
+                Btn_Buscar.Enabled = false;
             }
         }
 
@@ -167,44 +174,66 @@ namespace Capa_Vista_DeudasProveedores
             controlador.idDeudaSeleccionada = Txt_id_deuda.Text;
             controlador.esEdicion = true;
 
-            int resultado = controlador.GuardarDeuda(Txt_id_deuda.Text, idProveedor.ToString(), Txt_montoDeuda.Text, Dtp_Inicio.Value.ToString("yyyy-MM-dd"),
-                                                       Dtp_Vencimiento.Value.ToString("yyyy-MM-dd"), Txt_Descripcion.Text,
-                                                      Cbo_estado.Text, Cbo_Tipotrans.Text,
-                                                      Cbo_idfactura.Text);
+            string idFactura = "0";
+            if (Cbo_idfactura.SelectedItem != null)
+            {
+                idFactura = ((ComboBoxItem)Cbo_idfactura.SelectedItem).Value;
+            }
+
+            int resultado = controlador.GuardarDeuda(
+                Txt_id_deuda.Text,
+                idProveedor.ToString(),
+                Txt_montoDeuda.Text,
+                Dtp_Inicio.Value.ToString("yyyy-MM-dd"),
+                Dtp_Vencimiento.Value.ToString("yyyy-MM-dd"),
+                Txt_Descripcion.Text,
+                Cbo_estado.Text,
+                Cbo_Tipotrans.Text,
+                idFactura);
 
             if (resultado == 1)
             {
+                HabilitarCampos(false);
                 CargarDatos();
                 limpiarCampos();
+                Btn_editar.Enabled = false;
+                Btn_eliminar.Enabled = false;
                 MessageBox.Show("Registro editado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void Btn_eliminar_Click(object sender, EventArgs e)
         {
-            if (Dgv_deudas.SelectedRows.Count > 0)
-            {
-                string idDeuda = Dgv_deudas.CurrentRow.Cells["Pk_id_deuda"].Value.ToString();
-
-                var confirmResult = MessageBox.Show("¿Estás seguro de que deseas eliminar este registro?",
-                                                    "Confirmar eliminación",
-                                                    MessageBoxButtons.YesNo,
-                                                    MessageBoxIcon.Warning);
-
-                if (confirmResult == DialogResult.Yes)
-                {
-                    controlador.EliminarDeuda(idDeuda);
-                    MessageBox.Show("Registro eliminado correctamente.", "Éxito",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Actualizar DataGridView
-                    CargarDatos();
-                }
-            }
-            else
+            if (Dgv_deudas.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Seleccione un registro para eliminar.",
                                 "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string idDeuda = Dgv_deudas.CurrentRow.Cells["Pk_id_deuda"].Value.ToString();
+            var confirmResult = MessageBox.Show("¿Estás seguro de que deseas eliminar este registro?",
+                                                "Confirmar eliminación",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Warning);
+            if (confirmResult != DialogResult.Yes)
+                return;
+
+            int result = controlador.EliminarDeuda(idDeuda);
+            if (result > 0)
+            {
+                MessageBox.Show("Registro eliminado correctamente.", "Éxito",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarDatos();
+                limpiarCampos();
+                HabilitarCampos(false);   // <--- Aquí bloqueas todo de nuevo
+                Btn_eliminar.Enabled = false;
+                Btn_editar.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("No se eliminó ningún registro.", "Información",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -221,6 +250,10 @@ namespace Capa_Vista_DeudasProveedores
             {
                 Dgv_deudas.DataSource = dt; // Muestra resultados en el DataGridView
                 limpiarCampos();
+                Btn_guardar.Enabled = false;
+                Btn_editar.Enabled = false;
+                Btn_eliminar.Enabled = false;
+                Btn_Buscar.Enabled = false;
                 MessageBox.Show("Resultados encontrados.");
 
             }
@@ -264,6 +297,9 @@ namespace Capa_Vista_DeudasProveedores
             HabilitarCampos(false);
             // Deshabilitar botones al iniciar
             Btn_guardar.Enabled = false;
+            Btn_editar.Enabled = false;
+            Btn_eliminar.Enabled = false;
+            Btn_Buscar.Enabled = false;
         }
 
         private void CargarProveedores()
@@ -296,10 +332,15 @@ namespace Capa_Vista_DeudasProveedores
             {
                 try
                 {
+                    HabilitarCampos(true);
+
                     var filaSeleccionada = Dgv_deudas.SelectedRows[0];
 
                     // Habilitar el botón de editar cuando se selecciona un registro
-                    Btn_guardar.Enabled = true;
+                    Btn_guardar.Enabled = false;
+                    Btn_editar.Enabled = true;
+                    Btn_eliminar.Enabled = true;
+                    Btn_Buscar.Enabled = false;
 
                     // Llenar los campos con la información del registro seleccionado
                     Txt_id_deuda.Text = filaSeleccionada.Cells["Pk_id_deuda"].Value.ToString();

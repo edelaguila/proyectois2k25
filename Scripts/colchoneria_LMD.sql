@@ -765,10 +765,14 @@ VALUES
 -- Insertar registros en Tbl_transaccion_cuentas
 INSERT INTO Tbl_transaccion_cuentas (tran_nombre, tran_efecto, estado)
 VALUES 
-('Depósito', 'Crédito', 1),
-('Pago con Tarjeta de Credito', 'Débito', 1),
-('Transferencia Bancaria', 'Débito', 1),
-('Pago con Tarjeta de Débito', 'Débito', 1);
+('Pago en Efectivo', '-', 1),
+('Pago con Tarjeta de Credito', '-', 1),
+('Transferencia Bancaria', '-', 1),
+('Pago con Tarjeta de Débito', '-', 1),
+('Pago con cheque', '-', 1),
+('Factura', '+', 1),
+('Nota de Crédito', '-', 1),
+('Nota de Débito', '+', 1);
 
 
 -- LMD DE NOMINAS 09-11-2024

@@ -30,11 +30,16 @@ namespace Capa_Controlador_DeudasProveedores
 
         // Guardar o actualizar deuda
         public int GuardarDeuda(string id_deuda, string id_proveedor, string monto, string Txt_fecha_ini, string Txt_fecha_venci,
-                                string descripcion, string estado, string transaccionTipo, string id_factura)
+                        string descripcion, string estado, string transaccionTipo, string id_factura)
         {
-            if (string.IsNullOrEmpty(id_deuda) || string.IsNullOrEmpty(id_proveedor) || string.IsNullOrEmpty(monto) ||
-                string.IsNullOrEmpty(Txt_fecha_ini) || string.IsNullOrEmpty(Txt_fecha_venci) ||
-                string.IsNullOrEmpty(descripcion) || string.IsNullOrEmpty(estado) ||
+            // 1) Validaciones básicas...
+            if (string.IsNullOrEmpty(id_deuda) ||
+                string.IsNullOrEmpty(id_proveedor) ||
+                string.IsNullOrEmpty(monto) ||
+                string.IsNullOrEmpty(Txt_fecha_ini) ||
+                string.IsNullOrEmpty(Txt_fecha_venci) ||
+                string.IsNullOrEmpty(descripcion) ||
+                string.IsNullOrEmpty(estado) ||
                 string.IsNullOrEmpty(transaccionTipo))
             {
                 MessageBox.Show("Existen campos vacíos, revise y vuelva a intentarlo", "Error",
@@ -42,15 +47,32 @@ namespace Capa_Controlador_DeudasProveedores
                 return 0;
             }
 
-            // Verificar que el monto sea un valor numérico
-            if (!decimal.TryParse(monto, out _))
+            // 2) Verificar que el monto sea numérico
+            if (!decimal.TryParse(monto, out decimal montoDecimal))
             {
                 MessageBox.Show("El monto debe ser un valor numérico válido.", "Advertencia",
                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return 0;
             }
 
-            // Si no es una edición, verificar que el ID no exista ya
+            // 3) Validación contra saldo de factura
+            if (!string.IsNullOrEmpty(id_factura) && id_factura != "0")
+            {
+                // Llamamos al método que devuelve un DataTable con columnas "totalPagar" y "saldo"
+                DataTable dtFactura = sentencias.ObtenerDatosFactura(id_factura);
+                if (dtFactura.Rows.Count > 0)
+                {
+                    decimal saldoFactura = Convert.ToDecimal(dtFactura.Rows[0]["saldo"]);
+                    if (montoDecimal > saldoFactura)
+                    {
+                        MessageBox.Show($"El monto de la deuda ({montoDecimal:C}) no puede ser mayor al saldo restante de la factura ({saldoFactura:C}).",
+                                        "Monto inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return 0;
+                    }
+                }
+            }
+
+            // 4) Verificar duplicados si no es edición
             if (!esEdicion && ExisteDeuda(id_deuda))
             {
                 MessageBox.Show("Ya existe una deuda con este ID. Ingrese un ID diferente.", "Advertencia",
@@ -58,6 +80,7 @@ namespace Capa_Controlador_DeudasProveedores
                 return 0;
             }
 
+            // 5) Insertar o actualizar
             try
             {
                 if (esEdicion)
@@ -72,6 +95,8 @@ namespace Capa_Controlador_DeudasProveedores
                 {
                     sentencias.InsertarDeuda(id_deuda, id_proveedor, monto, Txt_fecha_ini, Txt_fecha_venci,
                                               descripcion, estado, transaccionTipo, id_factura);
+                    MessageBox.Show("Registro guardado correctamente", "Éxito",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 return 1;
             }
@@ -84,25 +109,26 @@ namespace Capa_Controlador_DeudasProveedores
         }
 
         // Método para eliminar una deuda
-        public void EliminarDeuda(string idDeuda)
+        public int EliminarDeuda(string idDeuda)
         {
-            if (!string.IsNullOrEmpty(idDeuda))
-            {
-                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar esta deuda?",
-                                                     "Confirmar eliminación",
-                                                     MessageBoxButtons.YesNo,
-                                                     MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    sentencias.EliminarDeuda(idDeuda);
-                    MessageBox.Show("Registro eliminado correctamente", "Éxito",
-                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
+            if (string.IsNullOrEmpty(idDeuda))
             {
                 MessageBox.Show("No se pudo eliminar el registro. El ID es nulo o vacío.",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+
+            try
+            {
+                // Llama al método mejorado que revierte el saldo y luego elimina
+                int filas = sentencias.EliminarDeuda(idDeuda);
+                return filas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar deuda: {ex.Message}",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
         }
 
