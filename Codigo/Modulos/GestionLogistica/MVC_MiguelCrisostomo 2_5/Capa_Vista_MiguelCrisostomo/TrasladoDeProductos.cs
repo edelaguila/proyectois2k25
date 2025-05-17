@@ -568,9 +568,12 @@ namespace Capa_Vista_MiguelCrisostomo
                 controlador.registrarEntradaProductos(
                     documento, // Usar el mismo documento
                     fecha,
-                    (int)costoTotalGeneral,
-                    (int)costoTotalGeneral,
-                    (int)primerPrecioUnitario,
+                    //(int)costoTotalGeneral,
+                    //(int)costoTotalGeneral,
+                    //(int)primerPrecioUnitario,
+                    (int)costoTotalGeneral,      // costoTotal
+                    (int)costoTotalGeneral,      // costoTotalGeneral
+                    (int)primerPrecioUnitario,   // precioTotal
                     primerIdProducto,
                     idGuia,
                     Cbo_BodegaOrigen.SelectedItem?.ToString(),
@@ -1765,6 +1768,16 @@ namespace Capa_Vista_MiguelCrisostomo
         }
 
         private void Pic_CanselarTDP_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolTip8_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
 
         }
