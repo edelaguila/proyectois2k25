@@ -44,11 +44,11 @@
             this.Pic_NuevoTrasladoP = new System.Windows.Forms.PictureBox();
             this.Pic_Agregar = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Dgv_TrasladoDProductos = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Txt_Busqueda = new System.Windows.Forms.TextBox();
             this.Txt_Actualizar = new System.Windows.Forms.Label();
             this.Pic_Actualizar = new System.Windows.Forms.PictureBox();
-            this.Dgv_TrasladoDProductos = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Lbl_PesoV = new System.Windows.Forms.Label();
             this.Txt_PV = new System.Windows.Forms.Label();
@@ -98,6 +98,8 @@
             this.Lbl_TipoInforme = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Cbo_TipoInformee = new System.Windows.Forms.ComboBox();
+            this.toolTip9 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip10 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Img)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_CanselarTDP)).BeginInit();
@@ -112,9 +114,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pic_NuevoTrasladoP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Agregar)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_TrasladoDProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Actualizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_TrasladoDProductos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Productos)).BeginInit();
@@ -125,9 +127,9 @@
             // Pic_Img
             // 
             this.Pic_Img.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Img.Image")));
-            this.Pic_Img.Location = new System.Drawing.Point(113, 34);
+            this.Pic_Img.Location = new System.Drawing.Point(74, 27);
             this.Pic_Img.Name = "Pic_Img";
-            this.Pic_Img.Size = new System.Drawing.Size(318, 216);
+            this.Pic_Img.Size = new System.Drawing.Size(357, 223);
             this.Pic_Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Img.TabIndex = 26;
             this.Pic_Img.TabStop = false;
@@ -138,12 +140,11 @@
             this.groupBox3.Controls.Add(this.Pic_InformeBs);
             this.groupBox3.Controls.Add(this.Pic_Ayuda);
             this.groupBox3.Controls.Add(this.Pic_Reporte);
-            this.groupBox3.Controls.Add(this.Pic_Salir);
             this.groupBox3.Controls.Add(this.Pic_Ingresar);
             this.groupBox3.Controls.Add(this.Pic_Aceptar);
-            this.groupBox3.Location = new System.Drawing.Point(594, 82);
+            this.groupBox3.Location = new System.Drawing.Point(643, 82);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(787, 118);
+            this.groupBox3.Size = new System.Drawing.Size(662, 118);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
@@ -151,29 +152,31 @@
             // Pic_CanselarTDP
             // 
             this.Pic_CanselarTDP.Image = ((System.Drawing.Image)(resources.GetObject("Pic_CanselarTDP.Image")));
-            this.Pic_CanselarTDP.Location = new System.Drawing.Point(558, 21);
+            this.Pic_CanselarTDP.Location = new System.Drawing.Point(442, 21);
             this.Pic_CanselarTDP.Name = "Pic_CanselarTDP";
             this.Pic_CanselarTDP.Size = new System.Drawing.Size(90, 85);
             this.Pic_CanselarTDP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_CanselarTDP.TabIndex = 41;
             this.Pic_CanselarTDP.TabStop = false;
+            this.toolTip10.SetToolTip(this.Pic_CanselarTDP, "Cancelar Traslado");
             this.Pic_CanselarTDP.Click += new System.EventHandler(this.Pic_CanselarTDP_Click_1);
             // 
             // Pic_InformeBs
             // 
             this.Pic_InformeBs.Image = ((System.Drawing.Image)(resources.GetObject("Pic_InformeBs.Image")));
-            this.Pic_InformeBs.Location = new System.Drawing.Point(136, 21);
+            this.Pic_InformeBs.Location = new System.Drawing.Point(349, 21);
             this.Pic_InformeBs.Name = "Pic_InformeBs";
             this.Pic_InformeBs.Size = new System.Drawing.Size(90, 85);
             this.Pic_InformeBs.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_InformeBs.TabIndex = 41;
             this.Pic_InformeBs.TabStop = false;
+            this.toolTip9.SetToolTip(this.Pic_InformeBs, "Productos Disponibles En Bodegas");
             this.Pic_InformeBs.Click += new System.EventHandler(this.Pic_InformeBs_Click_1);
             // 
             // Pic_Ayuda
             // 
             this.Pic_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Ayuda.Image")));
-            this.Pic_Ayuda.Location = new System.Drawing.Point(328, 21);
+            this.Pic_Ayuda.Location = new System.Drawing.Point(234, 21);
             this.Pic_Ayuda.Name = "Pic_Ayuda";
             this.Pic_Ayuda.Size = new System.Drawing.Size(90, 85);
             this.Pic_Ayuda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -185,7 +188,7 @@
             // Pic_Reporte
             // 
             this.Pic_Reporte.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Reporte.Image")));
-            this.Pic_Reporte.Location = new System.Drawing.Point(232, 21);
+            this.Pic_Reporte.Location = new System.Drawing.Point(138, 21);
             this.Pic_Reporte.Name = "Pic_Reporte";
             this.Pic_Reporte.Size = new System.Drawing.Size(90, 85);
             this.Pic_Reporte.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -197,9 +200,9 @@
             // Pic_Salir
             // 
             this.Pic_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Salir.Image")));
-            this.Pic_Salir.Location = new System.Drawing.Point(668, 21);
+            this.Pic_Salir.Location = new System.Drawing.Point(1000, 134);
             this.Pic_Salir.Name = "Pic_Salir";
-            this.Pic_Salir.Size = new System.Drawing.Size(90, 85);
+            this.Pic_Salir.Size = new System.Drawing.Size(10, 10);
             this.Pic_Salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Salir.TabIndex = 27;
             this.Pic_Salir.TabStop = false;
@@ -221,7 +224,7 @@
             // Pic_Aceptar
             // 
             this.Pic_Aceptar.Image = ((System.Drawing.Image)(resources.GetObject("Pic_Aceptar.Image")));
-            this.Pic_Aceptar.Location = new System.Drawing.Point(443, 21);
+            this.Pic_Aceptar.Location = new System.Drawing.Point(552, 21);
             this.Pic_Aceptar.Name = "Pic_Aceptar";
             this.Pic_Aceptar.Size = new System.Drawing.Size(90, 85);
             this.Pic_Aceptar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -272,7 +275,7 @@
             this.Pic_Agregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Agregar.TabIndex = 34;
             this.Pic_Agregar.TabStop = false;
-            this.toolTip7.SetToolTip(this.Pic_Agregar, "Aceptar Traslado");
+            this.toolTip7.SetToolTip(this.Pic_Agregar, "Agregar Productos");
             // 
             // groupBox2
             // 
@@ -285,12 +288,24 @@
             this.groupBox2.Controls.Add(this.Pic_Guardar);
             this.groupBox2.Controls.Add(this.Pic_Actualizar);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(401, 694);
+            this.groupBox2.Location = new System.Drawing.Point(401, 661);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1172, 334);
+            this.groupBox2.Size = new System.Drawing.Size(1172, 287);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle De Movimientos Salida / Entrada";
+            // 
+            // Dgv_TrasladoDProductos
+            // 
+            this.Dgv_TrasladoDProductos.BackgroundColor = System.Drawing.Color.White;
+            this.Dgv_TrasladoDProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_TrasladoDProductos.Location = new System.Drawing.Point(17, 65);
+            this.Dgv_TrasladoDProductos.Name = "Dgv_TrasladoDProductos";
+            this.Dgv_TrasladoDProductos.RowHeadersWidth = 51;
+            this.Dgv_TrasladoDProductos.RowTemplate.Height = 24;
+            this.Dgv_TrasladoDProductos.Size = new System.Drawing.Size(1034, 208);
+            this.Dgv_TrasladoDProductos.TabIndex = 0;
+            this.Dgv_TrasladoDProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_TrasladoDProductos_CellContentClick);
             // 
             // pictureBox1
             // 
@@ -313,9 +328,10 @@
             // Txt_Actualizar
             // 
             this.Txt_Actualizar.AutoSize = true;
-            this.Txt_Actualizar.Location = new System.Drawing.Point(1064, 214);
+            this.Txt_Actualizar.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_Actualizar.Location = new System.Drawing.Point(1073, 214);
             this.Txt_Actualizar.Name = "Txt_Actualizar";
-            this.Txt_Actualizar.Size = new System.Drawing.Size(98, 23);
+            this.Txt_Actualizar.Size = new System.Drawing.Size(85, 19);
             this.Txt_Actualizar.TabIndex = 28;
             this.Txt_Actualizar.Text = "Actualizar";
             // 
@@ -332,18 +348,6 @@
             this.toolTip8.SetToolTip(this.Pic_Actualizar, "Actualizar");
             this.Pic_Actualizar.Click += new System.EventHandler(this.Pic_Actualizar_Click);
             // 
-            // Dgv_TrasladoDProductos
-            // 
-            this.Dgv_TrasladoDProductos.BackgroundColor = System.Drawing.Color.White;
-            this.Dgv_TrasladoDProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_TrasladoDProductos.Location = new System.Drawing.Point(17, 65);
-            this.Dgv_TrasladoDProductos.Name = "Dgv_TrasladoDProductos";
-            this.Dgv_TrasladoDProductos.RowHeadersWidth = 51;
-            this.Dgv_TrasladoDProductos.RowTemplate.Height = 24;
-            this.Dgv_TrasladoDProductos.Size = new System.Drawing.Size(1034, 249);
-            this.Dgv_TrasladoDProductos.TabIndex = 0;
-            this.Dgv_TrasladoDProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_TrasladoDProductos_CellContentClick);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.Lbl_PesoV);
@@ -354,7 +358,7 @@
             this.groupBox1.Controls.Add(this.Txt_FechaT);
             this.groupBox1.Controls.Add(this.Txt_Veh);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(451, 236);
+            this.groupBox1.Location = new System.Drawing.Point(458, 206);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1069, 118);
             this.groupBox1.TabIndex = 19;
@@ -490,8 +494,9 @@
             this.groupBox4.Controls.Add(this.Txt_Cant);
             this.groupBox4.Controls.Add(this.Txt_PrecioU);
             this.groupBox4.Controls.Add(this.Txt_Cantidad);
+            this.groupBox4.Controls.Add(this.Pic_Salir);
             this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(451, 360);
+            this.groupBox4.Location = new System.Drawing.Point(458, 330);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1069, 292);
             this.groupBox4.TabIndex = 27;
@@ -659,6 +664,14 @@
             this.Txt_Cantidad.Size = new System.Drawing.Size(99, 30);
             this.Txt_Cantidad.TabIndex = 1;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
+            // toolTip8
+            // 
+            this.toolTip8.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip8_Popup);
+            // 
             // Cbo_Sucursal
             // 
             this.Cbo_Sucursal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -697,7 +710,7 @@
             // 
             this.Cbo_BodegaOrigen.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cbo_BodegaOrigen.FormattingEnabled = true;
-            this.Cbo_BodegaOrigen.Location = new System.Drawing.Point(14, 133);
+            this.Cbo_BodegaOrigen.Location = new System.Drawing.Point(14, 125);
             this.Cbo_BodegaOrigen.Name = "Cbo_BodegaOrigen";
             this.Cbo_BodegaOrigen.Size = new System.Drawing.Size(203, 31);
             this.Cbo_BodegaOrigen.TabIndex = 3;
@@ -712,7 +725,7 @@
             this.groupBox8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(135, 284);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(241, 190);
+            this.groupBox8.Size = new System.Drawing.Size(241, 174);
             this.groupBox8.TabIndex = 38;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Bodegas";
@@ -750,7 +763,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1093, 669);
+            this.label3.Location = new System.Drawing.Point(1093, 636);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(134, 19);
             this.label3.TabIndex = 41;
@@ -760,7 +773,7 @@
             // 
             this.Cbo_TipoInformee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cbo_TipoInformee.FormattingEnabled = true;
-            this.Cbo_TipoInformee.Location = new System.Drawing.Point(1252, 664);
+            this.Cbo_TipoInformee.Location = new System.Drawing.Point(1252, 631);
             this.Cbo_TipoInformee.Name = "Cbo_TipoInformee";
             this.Cbo_TipoInformee.Size = new System.Drawing.Size(200, 24);
             this.Cbo_TipoInformee.TabIndex = 41;
@@ -800,9 +813,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Agregar)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_TrasladoDProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Actualizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_TrasladoDProductos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -887,5 +900,7 @@
         private System.Windows.Forms.PictureBox Pic_InformeBs;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox Cbo_TipoInformee;
+        private System.Windows.Forms.ToolTip toolTip9;
+        private System.Windows.Forms.ToolTip toolTip10;
     }
 }

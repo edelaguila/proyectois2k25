@@ -537,11 +537,13 @@ namespace Capa_Vista_MiguelCrisostomo
 
                 // Calcular el costo total general de todos los productos
                 decimal costoTotalGeneral = 0;
+                decimal sumaPreciosUnitarios = 0; // Nueva variable para la suma de precios unitarios
                 foreach (DataGridViewRow row in Dgv_Productos.Rows)
                 {
                     int cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
                     decimal precioUnitario = Convert.ToDecimal(row.Cells["precioUnitario"].Value);
                     costoTotalGeneral += cantidad * precioUnitario;
+                    sumaPreciosUnitarios += precioUnitario; // Sumar el precio unitario de cada producto
                 }
 
                 // Obtener el primer producto para el registro principal
@@ -556,7 +558,7 @@ namespace Capa_Vista_MiguelCrisostomo
                     fecha,
                     (int)costoTotalGeneral,
                     (int)costoTotalGeneral,
-                    (int)primerPrecioUnitario,
+                    (int)sumaPreciosUnitarios, // Usar la suma de precios unitarios como precioTotal
                     primerIdProducto,
                     idGuia,
                     primerCodigoProducto,
@@ -570,7 +572,7 @@ namespace Capa_Vista_MiguelCrisostomo
                     fecha,
                     (int)costoTotalGeneral,
                     (int)costoTotalGeneral,
-                    (int)primerPrecioUnitario,
+                    (int)sumaPreciosUnitarios, // Usar la suma de precios unitarios como precioTotal
                     primerIdProducto,
                     idGuia,
                     Cbo_BodegaOrigen.SelectedItem?.ToString(),
@@ -1586,6 +1588,7 @@ namespace Capa_Vista_MiguelCrisostomo
             {
                 OdbcConnection connection = conn.Conexion();
                 string query = "SELECT Pk_id_EntradaProductos AS 'Entrada', documento, fecha, costoTotal, costoTotalGeneral, precioTotal, codigoProducto, Fk_id_guia, bodega_origen, bodega_destino, estado FROM Tbl_EntradaProductos";
+                //string query = "SELECT Pk_id_EntradaProductos AS 'Entrada', documento, fecha, costoTotal, costoTotalGeneral, precioTotal, Fk_id_guia, bodega_origen, bodega_destino, estado FROM Tbl_EntradaProductos";
 
                 OdbcDataAdapter adapter = new OdbcDataAdapter(query, connection);
 
@@ -1765,6 +1768,16 @@ namespace Capa_Vista_MiguelCrisostomo
         }
 
         private void Pic_CanselarTDP_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolTip8_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
 
         }

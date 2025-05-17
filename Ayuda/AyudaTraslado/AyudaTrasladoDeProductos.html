@@ -82,11 +82,6 @@
             width: 600px !important;
             height: auto;
         }
-	.img-DetalleEntradaActivoCancelado {
-            max-width: 700px !important;
-            width: 700px !important;
-            height: auto;
-        }
 	.img-DetalleEntrada {
             max-width: 700px !important;
             width: 700px !important;
@@ -142,9 +137,9 @@
             <span style="font-weight:bold; font-size:20px; color:#AA885B;">3. Agrega Productos al Traslado:</span>
             <ul>
                 <li>Selecciona el <b>código</b> del producto.<br>
-                <i>El sistema mostrará: El <b>ID</b>, <b>Nombre</b>, <b>Peso</b>, <b>stock</b>, y <b>CostoU</b> disponible del producto.</i><br>
-                Al ingresa la <b>cantidad</b> del producto a trasladar.<br> 
-		<i>El sistema calculará el <b>Costo Total</b>.</i></br>
+                <i>El sistema mostrará: El <b>ID</b>, <b>Nombre</b>, <b>Peso</b> y <b>stock disponible del producto</b>.</i><br>
+                Al ingresa la <b>cantidad</b> de producto a trasladar.<br> 
+		<i>El sistema mostrara el: <b>costo unitario</b> (CostoU) de cada producto. Y calculará el <b>Costo Total</b>.</i></br>
 		<span style="color:#d2691e; font-style:italic;"><br> Al Haser clic en el botón <b>Agregar</b> (<img src="Btn_Agregar.png" alt="Agregar" style="width:24px;vertical-align:middle;">).<br> 
 		los productos se añadirán a la lista de productos a trasladar y se mostrarán en el <b>DataGridView</b>.<li></span>
             </ul>
@@ -170,7 +165,6 @@
             de que se trata de un informe de entrada. En él se puede visualizar de dónde salió el producto y el estado en el<br>
             que se encuentra. Dicho estado cambiará de <b>'Activo'</b> a <b>'Cancelado'</b> en caso de que el traslado sea cancelado.<br>
 	    <img src="DetalleEntrada.png" alt="DetalleEntrada" class="img-DetalleEntrada">
-	    <img src="DetalleEntradaActivoCancelado.png" alt="DetalleEntradaActivoCancelado" class="img-DetalleEntradaActivoCancelado">
 	    <br>
         <div>
 ------------------------------------------------
@@ -186,15 +180,15 @@
             <b>5. Cancelar Traslado:</b> Este botón permite anular un traslado y retornar los productos a la bodega desde la que fueron enviados.<br>
             <b>6. Aceptar Traslado:</b> Por último, este botón permite confirmar o aceptar un traslado.</li>
         </ul>
-------------------------------------------------
+
         <h2>Advertencias y Buenas Prácticas</h2>
         <ul>
-            <li>- Verifica siempre el <b>stock disponible</b> antes de ingresar la cantidad a trasladar.<br>
-            - El <b>peso total</b> de los productos no debe superar la capacidad del vehículo.<br>
-            - Completa todos los campos obligatorios para evitar errores de validación.<br>
-            - Utiliza el botón <b>Actualizar</b> para ver los últimos movimientos registrados.</li>
+            <li>Verifica siempre el <b>stock disponible</b> antes de ingresar la cantidad a trasladar.<br>
+            El <b>peso total</b> de los productos no debe superar la capacidad del vehículo.<br>
+            Completa todos los campos obligatorios para evitar errores de validación.<br>
+            Utiliza el botón <b>Actualizar</b> para ver los últimos movimientos registrados.</li>
         </ul>
-------------------------------------------------
+
         <div class="faq">
             <h2>Preguntas Frecuentes</h2>
             <ul>
@@ -204,14 +198,14 @@
                 <b>¿Qué significa "Stock Restante"?</b> Es la cantidad de producto que quedará disponible en la bodega de salida después del traslado.</li>
             </ul>
         </div>
-------------------------------------------------
+
         <h2>Ejemplo Completo de Uso</h2>
         <ol>
-            1. Selecciona las <b>"Bodegas"</b> entrada y salida.<br>
-            2. Elige el "Vehiculo" y Selecciona la fecha en la que se realizará el traslado "16/05/2024".<br>
-            </br>3. Selecciona el codigo del producto ejemplo: <b>"101"</b>, En caso de no contar con el stock necesario para el traslado, se mostrará una advertencia, ingresa una cantidad ejemplo:<b>"10"</b> Esta cantidad puede variar dependiendo del número de productos que se desee trasladar.<br>
-            </br>4. Haz clic en el botón <b>Agregar</b>. Para seguir añadiendo más productos al traslado.<br>
-            5. Verifica la lista, luego haz clic en <b>Aceptar Traslado</b>.<br>
+            1. Selecciona "Bodega Central" como entrada y "Bodega Norte" como salida.<br>
+            2. Elige "Camión 1", ingresa peso vacío "3500" y fecha "16/05/2024".<br>
+            3. Selecciona producto "PRD001", verifica stock, ingresa cantidad "10" y costo unitario "15.50".<br>
+            4. Haz clic en <b>Agregar</b>. Repite para otros productos si es necesario.<br>
+            5. Verifica la lista, luego haz clic en <b>Aceptar Traslado De Productos</b>.<br>
             6. Si todo es correcto, el sistema confirmará el traslado y actualizará los stocks.</li>
         </ol>
     </div>
