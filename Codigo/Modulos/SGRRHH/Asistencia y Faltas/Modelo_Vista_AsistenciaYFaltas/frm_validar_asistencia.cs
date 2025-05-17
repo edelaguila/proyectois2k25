@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_AsistenciaYFaltas;
 using System.Globalization;
+using Capa_Controlador_Seguridad;
 
 
 namespace Modelo_Vista_AsistenciaYFaltas
@@ -19,6 +20,13 @@ namespace Modelo_Vista_AsistenciaYFaltas
         private List<EmpleadoAsistencia> listaAsistencias = new List<EmpleadoAsistencia>();
         private List<AsistenciaProcesada> asistenciasProcesadas = new List<AsistenciaProcesada>();
         private int mes, anio;
+
+        logica logicaSeg = new logica();
+
+
+
+
+        public string idUsuario { get; set; }
         public frm_validar_asistencia()
         {
             InitializeComponent();
@@ -153,6 +161,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             nominaService.GenerarNomina(mes, anio);
 
             MessageBox.Show("Nómina generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            logicaSeg.funinsertarabitacora(idUsuario, "se calculo la asistencia del mes", "tbl_salarios_mensuales", "16002");
         }
 
         private class AsistenciaProcesada
