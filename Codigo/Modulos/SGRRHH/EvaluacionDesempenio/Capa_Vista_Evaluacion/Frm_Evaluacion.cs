@@ -28,6 +28,8 @@ namespace Capa_Vista_Evaluacion
             CargarEmpleados();
             CargarEvaluadores();
             CargarTiposEvaluacion();
+            ConfigurarDataGridView();
+            CargarCompetencias();
         }
 
         // Método para cargar los empleados en el ComboBox
@@ -63,36 +65,94 @@ namespace Capa_Vista_Evaluacion
         }
 
 
-        // Método para insertar los detalles de la evaluación
+        private void ConfigurarDataGridView()
+        {
+            Dgv_competencias.Columns.Clear();
+            Dgv_competencias.AutoGenerateColumns = false;
+
+            // Columna de selección
+            Dgv_competencias.Columns.Add(new DataGridViewCheckBoxColumn
+            {
+                Name = "Seleccionar",
+                HeaderText = "Seleccionar",
+                Width = 70
+            });
+
+            Dgv_competencias.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "IdCompetencia",
+                HeaderText = "ID",
+                DataPropertyName = "Pk_id_competencia",
+                Visible = false
+            });
+
+            Dgv_competencias.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "NombreCompetencia",
+                HeaderText = "Competencia",
+                DataPropertyName = "nombre_competencia",
+                ReadOnly = true
+            });
+
+            Dgv_competencias.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Descripcion",
+                HeaderText = "Descripción",
+                DataPropertyName = "descripcion",
+                ReadOnly = true,
+                Width = 200
+            });
+
+            Dgv_competencias.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Calificacion",
+                HeaderText = "Calificación",
+                ValueType = typeof(decimal)
+            });
+
+            Dgv_competencias.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Observacion",
+                HeaderText = "Observación",
+                ValueType = typeof(string),
+                Width = 200
+            });
+        }
+
+
+        private void CargarCompetencias()
+        {
+            DataTable competencias = controlador.ObtenerCompetenciasActivas();
+            Dgv_competencias.DataSource = competencias;
+        }
+
+
         private void InsertarDetallesEvaluacion(int idEvaluacion)
         {
-            var competencias = new List<(int idCompetencia, decimal calificacion, string comentarios)>
-    {
-        (1, Nud_Liderazgo.Value, Txt_competencia1.Text),
-        (2, Nud_Trabajo_equipo.Value, Txt_competencia2.Text),
-        (3, Nud_Comunicacion.Value, Txt_competencia3.Text),
-        (4, Nud_Resolucion_Problemas.Value, Txt_competencia4.Text),
-        (5, nud_Innovacion_creatividad.Value, Txt_competencia5.Text),
-        (6, Nud_Tiempo.Value, Txt_competencia6.Text),
-        (7, Nud_adaptabilidad.Value, Txt_competencia7.Text),
-        (8, Nud_productividad.Value, Txt_competencia8.Text),
-        (9, nud_orientacion_cliente.Value, Txt_competencia9.Text),
-        (10, nud_responsabilidad.Value, Txt_competencia10.Text)
-    };
-
-            foreach (var comp in competencias)
+            foreach (DataGridViewRow row in Dgv_competencias.Rows)
             {
-                try
-                {
-                    controlador.InsertarDetalleEvaluacion(idEvaluacion, comp.idCompetencia, comp.calificacion, comp.comentarios);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al guardar competencia {comp.idCompetencia}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+                if (row.IsNewRow) continue;
 
+                bool seleccionada = Convert.ToBoolean(row.Cells["Seleccionar"].Value ?? false);
+
+                if (!seleccionada)
+                    continue; // Solo evaluamos las seleccionadas
+
+                object calificacionObj = row.Cells["Calificacion"].Value;
+
+                if (calificacionObj == null || string.IsNullOrWhiteSpace(calificacionObj.ToString()))
+                    continue;
+
+                if (!decimal.TryParse(calificacionObj.ToString(), out decimal calificacion))
+                    continue;
+
+                int idCompetencia = Convert.ToInt32(row.Cells["IdCompetencia"].Value);
+                string observacion = row.Cells["Observacion"].Value?.ToString() ?? "";
+
+                controlador.InsertarDetalleEvaluacion(idEvaluacion, idCompetencia, calificacion, observacion);
+            }
         }
+
 
 
         private void Btn_guardar_Click(object sender, EventArgs e)
@@ -208,29 +268,18 @@ namespace Capa_Vista_Evaluacion
             Txt_ObservacionesGen.Text = "";
             Txt_calificacion.Text = "";
 
-            // Reiniciar NumericUpDowns a 0 (o cualquier valor predeterminado)
-            Nud_Liderazgo.Value = 0;
-            Nud_Trabajo_equipo.Value = 0;
-            Nud_Comunicacion.Value = 0;
-            Nud_Resolucion_Problemas.Value = 0;
-            nud_Innovacion_creatividad.Value = 0;
-            Nud_Tiempo.Value = 0;
-            Nud_adaptabilidad.Value = 0;
-            Nud_productividad.Value = 0;
-            nud_orientacion_cliente.Value = 0;
-            nud_responsabilidad.Value = 0;
+            // Limpiar las columnas de calificación y observación en el DataGridView
+            foreach (DataGridViewRow row in Dgv_competencias.Rows)
+            {
+                if (row.IsNewRow) continue;
 
-            // Limpiar TextBox de observaciones por competencia
-            Txt_competencia1.Text = "";
-            Txt_competencia2.Text = "";
-            Txt_competencia3.Text = "";
-            Txt_competencia4.Text = "";
-            Txt_competencia5.Text = "";
-            Txt_competencia6.Text = "";
-            Txt_competencia7.Text = "";
-            Txt_competencia8.Text = "";
-            Txt_competencia9.Text = "";
-            Txt_competencia10.Text = "";
+                // Limpiar campos específicos
+                row.Cells["Calificacion"].Value = null;
+                row.Cells["Observacion"].Value = null;
+
+                // (Opcional) también puedes desmarcar la casilla "Seleccionar"
+                row.Cells["Seleccionar"].Value = false;
+            }
         }
 
         // Declarar el ToolTip en el boton Ayuda
