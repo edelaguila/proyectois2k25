@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Capa_Controlador_Capacitacion">
       <HintPath>..\Capa_Controlador_Capacitacion\bin\Debug\Capa_Controlador_Capacitacion.dll</HintPath>
     </Reference>
@@ -41,6 +42,10 @@
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Interfac_V3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
@@ -48,6 +53,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotasReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotasReporte.Designer.cs">
+      <DependentUpon>NotasReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="notas_capacitacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,8 +112,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReporteCierre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteCierre.Designer.cs">
+      <DependentUpon>ReporteCierre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteCierreCapacitacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteCierreCapacitacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReporteNotas1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteNotas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="NotasReporte.resx">
+      <DependentUpon>NotasReporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="notas_capacitacion.resx">
       <DependentUpon>notas_capacitacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +156,17 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteCierre.resx">
+      <DependentUpon>ReporteCierre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteCierreCapacitacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteCierreCapacitacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteNotas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteNotas1.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\borrar %281%29 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

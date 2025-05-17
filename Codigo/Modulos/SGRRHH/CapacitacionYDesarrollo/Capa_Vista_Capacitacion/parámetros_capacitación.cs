@@ -8,11 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Capacitacion;
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Vista_Capacitacion
 {
     public partial class parámetros_capacitación : Form
     {
+        private ToolTip toolTipAyuda = new ToolTip();
+
+        public string sIdUsuario { get; set; }
+        logica LogicaSeg = new logica();
+
         controlador cn = new controlador();
         public parámetros_capacitación()
         {
@@ -32,6 +38,8 @@ namespace Capa_Vista_Capacitacion
 
         private void Btn_guardar_Click(object sender, EventArgs e)
         {
+            toolTipAyuda.SetToolTip(Btn_guardar, "Botón para guardar los nuevos parámetros");
+
             decimal valorVerde = nudAumento.Value;
             decimal valorAmarillo = nudNeutro.Value;
 
@@ -58,6 +66,8 @@ namespace Capa_Vista_Capacitacion
             {
                 MessageBox.Show("Error al guardar los parámetros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            LogicaSeg.funinsertarabitacora(sIdUsuario, $"Se guardaron nuevos parámetros", "parámetros_capacitación", "14000");
+
         }
     }
 }
