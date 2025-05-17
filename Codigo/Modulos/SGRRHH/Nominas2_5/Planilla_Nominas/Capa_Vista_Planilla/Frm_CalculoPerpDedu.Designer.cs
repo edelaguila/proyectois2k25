@@ -49,6 +49,7 @@
             this.Btn_guardar = new System.Windows.Forms.Button();
             this.Btn_editar = new System.Windows.Forms.Button();
             this.Btn_insertar = new System.Windows.Forms.Button();
+            this.Btn_Comisiones = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_deduPerp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_totalmes)).BeginInit();
             this.SuspendLayout();
@@ -251,12 +252,23 @@
             this.Btn_insertar.UseVisualStyleBackColor = true;
             this.Btn_insertar.Click += new System.EventHandler(this.Btn_insertar_Click);
             // 
+            // Btn_Comisiones
+            // 
+            this.Btn_Comisiones.Location = new System.Drawing.Point(752, 26);
+            this.Btn_Comisiones.Name = "Btn_Comisiones";
+            this.Btn_Comisiones.Size = new System.Drawing.Size(207, 71);
+            this.Btn_Comisiones.TabIndex = 102;
+            this.Btn_Comisiones.Text = "Calcular Comisiones";
+            this.Btn_Comisiones.UseVisualStyleBackColor = true;
+            this.Btn_Comisiones.Click += new System.EventHandler(this.Btn_Comisiones_Click);
+            // 
             // Frm_CalculoPerpDedu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1235, 592);
+            this.Controls.Add(this.Btn_Comisiones);
             this.Controls.Add(this.Lbl_Totales);
             this.Controls.Add(this.Btn_salir);
             this.Controls.Add(this.dgv_totalmes);
@@ -309,5 +321,6 @@
         private System.Windows.Forms.DataGridView dgv_totalmes;
         private System.Windows.Forms.Button Btn_salir;
         private System.Windows.Forms.Label Lbl_Totales;
+        private System.Windows.Forms.Button Btn_Comisiones;
     }
 }

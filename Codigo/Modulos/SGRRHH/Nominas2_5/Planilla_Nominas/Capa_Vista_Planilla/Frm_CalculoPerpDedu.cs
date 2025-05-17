@@ -526,5 +526,32 @@ namespace Capa_Vista_Planilla
         {
 
         }
+
+        private async void Btn_Comisiones_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    ComisionesControlador controlador = new ComisionesControlador();
+            //    await controlador.ProcesarComisionesDesdeAPI();
+            //    MessageBox.Show("Comisiones procesadas correctamente.");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Error: {ex.Message}");
+            //}
+            //proCargarEncabezado();
+            try
+            {
+                ComisionesControlador controlador = new ComisionesControlador();
+                await controlador.ProcesarComisionesDesdeAPI();
+                MessageBox.Show("Comisiones procesadas correctamente.");
+                proCargarEncabezado(); // si usas este método para refrescar la vista
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+            proCargarEncabezado();
+        }
     }
 }
