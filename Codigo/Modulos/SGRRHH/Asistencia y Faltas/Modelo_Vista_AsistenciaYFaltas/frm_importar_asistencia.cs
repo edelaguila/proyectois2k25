@@ -9,17 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_AsistenciaYFaltas;
 using System.IO;
+using Capa_Controlador_Seguridad;
 
 namespace Modelo_Vista_AsistenciaYFaltas
 {
     public partial class frm_importar_asistencia : Form
     {
-        public frm_importar_asistencia()
-        {
-            InitializeComponent();
-        }
+        logica logicaSeg = new logica();
+        
 
         private Controlador controlador = new Controlador();
+
+       
+        public string idUsuario { get; set; }
 
 
 
@@ -110,6 +112,8 @@ namespace Modelo_Vista_AsistenciaYFaltas
                     CargarDatosEnGrid(dlg.FileName);
                 }
             }
+
+            logicaSeg.funinsertarabitacora(idUsuario, "se cargo asistencia", "tbl_asistencia_preeliminar", "16002");
         }
 
         private void btn_importar_Click(object sender, EventArgs e)
