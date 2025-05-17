@@ -127,6 +127,16 @@ namespace Portal_Web.Controllers
                     else
                     {
                         byte[] fileData;
+                        var rutaFisica = @"C:\Users\oscar\OneDrive\Escritorio\Ing. De Software\proyectois2k25\Archivos de Reclutamiento";
+                        var nombreArchivo = Path.GetFileName(model.Curriculum.FileName);
+
+                        if (!Directory.Exists(rutaFisica))
+                        {
+                            Directory.CreateDirectory(rutaFisica);
+                        }
+                        var rutaCompleta = Path.Combine(rutaFisica, nombreArchivo);
+                        model.Curriculum.SaveAs(rutaCompleta);
+                        
                         using (var binaryReader = new BinaryReader(model.Curriculum.InputStream))
                         {
                             fileData = binaryReader.ReadBytes(model.Curriculum.ContentLength);
