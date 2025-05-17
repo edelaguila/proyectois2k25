@@ -32,7 +32,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.dgvAsistencias = new System.Windows.Forms.DataGridView();
             this.Txt_importar = new System.Windows.Forms.TextBox();
             this.txt_RutaArchivo = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Btn_reportes = new System.Windows.Forms.Button();
             this.btn_ayuda = new System.Windows.Forms.Button();
             this.btn_importar = new System.Windows.Forms.Button();
             this.btn_examinar = new System.Windows.Forms.Button();
@@ -72,14 +72,15 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.txt_RutaArchivo.TabIndex = 4;
             this.txt_RutaArchivo.Text = "Importar";
             // 
-            // button1
+            // Btn_reportes
             // 
-            this.button1.Image = global::Modelo_Vista_AsistenciaYFaltas.Properties.Resources.icon__3_;
-            this.button1.Location = new System.Drawing.Point(662, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 77);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = true;
+            this.Btn_reportes.Image = global::Modelo_Vista_AsistenciaYFaltas.Properties.Resources.icon__3_;
+            this.Btn_reportes.Location = new System.Drawing.Point(662, 12);
+            this.Btn_reportes.Name = "Btn_reportes";
+            this.Btn_reportes.Size = new System.Drawing.Size(75, 77);
+            this.Btn_reportes.TabIndex = 7;
+            this.Btn_reportes.UseVisualStyleBackColor = true;
+            this.Btn_reportes.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_ayuda
             // 
@@ -89,6 +90,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.btn_ayuda.Size = new System.Drawing.Size(75, 77);
             this.btn_ayuda.TabIndex = 6;
             this.btn_ayuda.UseVisualStyleBackColor = true;
+            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click);
             // 
             // btn_importar
             // 
@@ -120,7 +122,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(819, 494);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Btn_reportes);
             this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.btn_importar);
             this.Controls.Add(this.txt_RutaArchivo);
@@ -144,6 +146,6 @@ namespace Modelo_Vista_AsistenciaYFaltas
         private System.Windows.Forms.Label txt_RutaArchivo;
         private System.Windows.Forms.Button btn_importar;
         private System.Windows.Forms.Button btn_ayuda;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_reportes;
     }
 }
