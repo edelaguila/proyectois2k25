@@ -13,16 +13,20 @@ namespace Capa_Vista_Capacitacion
 {
     public partial class notificacionSemaforo : Form
     {
+        controlador cn = new controlador();
+
         public notificacionSemaforo(decimal promedioPuntuacion, decimal porcentajeAsistencia)
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
             EvaluarResultado(promedioPuntuacion, porcentajeAsistencia);
         }
 
         private void EvaluarResultado(decimal promedio, decimal asistencia)
         {
-            decimal verde = ParametrosGlobales.LimiteVerde;
-            decimal amarillo = ParametrosGlobales.LimiteAmarillo;
+            var parametros = cn.ObtenerParametros();
+            decimal verde = parametros.LimiteVerde;
+            decimal amarillo = parametros.LimiteAmarillo;
 
             if (promedio >= verde && asistencia >= 80)
             {
@@ -46,7 +50,6 @@ namespace Capa_Vista_Capacitacion
 
         private void notificacionSemaforo_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

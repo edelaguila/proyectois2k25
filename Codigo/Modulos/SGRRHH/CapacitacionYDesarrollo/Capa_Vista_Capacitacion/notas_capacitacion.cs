@@ -7,20 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 using Capa_Controlador_Capacitacion;
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Vista_Capacitacion
 {
     public partial class notas_capacitación : Form
     {
+        public string idUsuario { get; set; }
+        logica LogicaSeg = new logica();
+
         controlador cn = new controlador();
         private bool modoEdicion = false; // False = Nuevo, True = Editar
+        private ToolTip toolTipAyuda = new ToolTip();
 
         public notas_capacitación()
         {
             InitializeComponent();
 
-           
+            ToolTip toolTip = new ToolTip();
+            // Configuración de ToolTips para los botones
+            toolTip.SetToolTip(Btn_nuevo, "Insertar un nuevo registro");
+            toolTip.SetToolTip(Btn_guardar, "Guardar el registro actual");
+            toolTip.SetToolTip(Btn_cancelar, "Cancelar la operacion");
+            toolTip.SetToolTip(Btn_eliminar, "Eliminar el registro seleccionado");
+
+            toolTip.SetToolTip(Btn_editar, "Editar el registro seleccionado");
+            toolTip.SetToolTip(Btn_buscar, "Consultar un registro específico");
+            toolTip.SetToolTip(Btn_ayuda, "Ver la ayuda del formulario");
+            toolTip.SetToolTip(Btn_reporte, "Ver el reporte asociado");
+            toolTip.SetToolTip(Btn_salir, "Salir del formulario");
+
         }
 
         private void tbPorcentaje_Scroll(object sender, EventArgs e)
@@ -30,6 +49,8 @@ namespace Capa_Vista_Capacitacion
 
         private void Btn_salir_Click(object sender, EventArgs e)
         {
+
+
             txtBuscar.Visible = false;
 
             DialogResult resultado = MessageBox.Show(
@@ -44,6 +65,8 @@ namespace Capa_Vista_Capacitacion
             {
                 this.Close();
             }
+            LogicaSeg.funinsertarabitacora(idUsuario, $"Se cerró el formulario", "notas_capacitacion", "14004");
+
         }
 
         private void notas_capacitación_Load(object sender, EventArgs e)
@@ -70,6 +93,8 @@ namespace Capa_Vista_Capacitacion
 
         private void Btn_nuevo_Click(object sender, EventArgs e)
         {
+
+
             txtBuscar.Visible = false;
 
             dgvNotas.Enabled = false;
@@ -83,10 +108,14 @@ namespace Capa_Vista_Capacitacion
             Btn_editar.Enabled = false;
             Btn_eliminar.Enabled = false;
 
+            LogicaSeg.funinsertarabitacora(idUsuario, $"Se genéró una nueva nota", "notas_capacitacion", "14004");
+
         }
 
         private void Btn_guardar_Click(object sender, EventArgs e)
         {
+
+
             txtBuscar.Visible = false;
 
             // Validar que todos los campos estén llenos
@@ -143,6 +172,9 @@ namespace Capa_Vista_Capacitacion
             dgvNotas.Enabled = true;
             modoEdicion = false; // Volver al modo normal
             Btn_nuevo.Enabled = true;
+
+            LogicaSeg.funinsertarabitacora(idUsuario, $"Se guardó una nueva nota", "notas_capacitacion", "14004");
+
         }
 
 
@@ -248,6 +280,8 @@ namespace Capa_Vista_Capacitacion
 
         private void Btn_cancelar_Click(object sender, EventArgs e)
         {
+
+
             txtBuscar.Visible = false;
 
             DialogResult resultado = MessageBox.Show(
@@ -287,6 +321,7 @@ namespace Capa_Vista_Capacitacion
                 
             }
 
+            LogicaSeg.funinsertarabitacora(idUsuario, $"Se canceló la operación", "notas_capacitacion", "14004");
 
         }
 
@@ -305,6 +340,8 @@ namespace Capa_Vista_Capacitacion
 
         private void Btn_editar_Click(object sender, EventArgs e)
         {
+
+
             txtBuscar.Visible = false;
 
             Btn_nuevo.Enabled = false;
@@ -323,10 +360,14 @@ namespace Capa_Vista_Capacitacion
             // Activar botón Guardar
             Btn_guardar.Enabled = true;
             Btn_cancelar.Enabled = true;
+
+            LogicaSeg.funinsertarabitacora(idUsuario, $"Se presionó el botón editar", "notas_capacitacion", "14004");
+
         }
 
         private void Btn_eliminar_Click(object sender, EventArgs e)
         {
+
             txtBuscar.Visible = false;
             if (dgvNotas.SelectedRows.Count > 0)
             {
@@ -360,23 +401,101 @@ namespace Capa_Vista_Capacitacion
             {
                 MessageBox.Show("Selecciona una fila para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            LogicaSeg.funinsertarabitacora(idUsuario, $"Se eliminó una nota", "notas_capacitacion", "14004");
+
         }
 
         private void Btn_buscar_Click(object sender, EventArgs e)
         {
+
             txtBuscar.Visible = true;
             Btn_cancelar.Enabled = true;
             Btn_editar.Enabled = false;
             Btn_eliminar.Enabled = false;
             Btn_guardar.Enabled = false;
 
+            LogicaSeg.funinsertarabitacora(idUsuario, $"Se presionó el botón buscar", "notas_capacitacion", "14004");
 
         }
 
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
+
             txtBuscar.Visible = false;
+            // Obtener la ruta del ejecutable
+            string sExecutablePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Buscar la carpeta raíz "proyectois2k25" desde el ejecutable
+            string sProjectPath = sFindProjectRootDirectory(sExecutablePath, "proyectois2k25");
+
+            if (string.IsNullOrEmpty(sProjectPath))
+            {
+                MessageBox.Show("❌ ERROR: No se encontró la carpeta 'proyectois2k25'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Buscar el archivo .chm en la carpeta raíz y subcarpetas
+            string sPathAyuda = sfunFindFileInDirectory(sProjectPath, "AyudaNotasCapacitacion.chm");
+
+            // Si el archivo fue encontrado, abrirlo
+            if (!string.IsNullOrEmpty(sPathAyuda))
+            {
+                try
+                {
+                    Help.ShowHelp(null, sPathAyuda); //para abrir archivo si es encontrado 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("⚠️ Error al abrir el archivo con Help.ShowHelp(): " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Diagnostics.Process.Start(sPathAyuda);
+                }
+            }
+            else
+            {
+                MessageBox.Show("❌ ERROR: No se encontró el archivo AyudaSanciones.chm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); //mensaje de error
+            }
+            LogicaSeg.funinsertarabitacora(idUsuario, $"Se presionó el botón ayuda", "notas_capacitacion", "14004");
+
         }
+
+        private string sFindProjectRootDirectory(string startPath, string stargetFolder)
+        {
+            DirectoryInfo dir = new DirectoryInfo(startPath);
+            // aca estara subiendo niveles o  la jerarquía de directorios hasta encontrar la carpeta "proyectois2k25"
+            while (dir != null)
+            {
+                if (dir.Name.Equals(stargetFolder, StringComparison.OrdinalIgnoreCase))
+                {
+                    return dir.FullName; // Retorna la ruta de la carpeta raíz
+                }
+                dir = dir.Parent; // Subir un nivel en la jerarquía
+            }
+            return null; // Retorna null si no encuentra la carpeta
+        }
+
+        private string sfunFindFileInDirectory(string sDirectory, string sFileName)
+        {
+            try
+            {
+                if (Directory.Exists(sDirectory))
+
+
+                {
+                    // Buscar todos los archivos .chm dentro de la carpeta y subcarpetas
+                    string[] sFiles = Directory.GetFiles(sDirectory, "*.chm", SearchOption.AllDirectories);
+                    // Retornar el archivo que coincida con el nombre buscado
+                    return sFiles.FirstOrDefault(file => Path.GetFileName(file).Equals(sFileName, StringComparison.OrdinalIgnoreCase));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("⚠️ Error al buscar el archivo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // mensaje de error
+            }
+
+            return null; //retorna a null
+        } //  **FIN AYUDA**
+
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -407,6 +526,9 @@ namespace Capa_Vista_Capacitacion
             // Solo cuando se agrega un nuevo registro
             ActualizarDepartamentoDesdeCapacitacion(filtrarEmpleados: true);
 
+
+
+
         }
 
         private void ActualizarDepartamentoDesdeCapacitacion(bool filtrarEmpleados)
@@ -435,5 +557,11 @@ namespace Capa_Vista_Capacitacion
             }
         }
 
+        private void Btn_reporte_Click(object sender, EventArgs e)
+        {
+            NotasReporte frm = new NotasReporte();
+            frm.Show();
+            LogicaSeg.funinsertarabitacora(idUsuario, $"Se presionó el botón reporte", "notas_capacitacion", "14004");
+        }
     }
 }

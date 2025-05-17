@@ -36,7 +36,7 @@ namespace Capa_Vista_Capacitacion
             // 
             this.lblMensaje.AutoSize = true;
             this.lblMensaje.Font = new System.Drawing.Font("Times New Roman", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensaje.Location = new System.Drawing.Point(30, 84);
+            this.lblMensaje.Location = new System.Drawing.Point(12, 57);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(84, 31);
             this.lblMensaje.TabIndex = 0;
