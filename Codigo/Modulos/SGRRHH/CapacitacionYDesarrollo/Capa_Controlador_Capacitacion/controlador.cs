@@ -181,6 +181,10 @@ namespace Capa_Controlador_Capacitacion
             return sn.ObtenerNombreCompetencia(idCompetencia);
         }
 
+        public void ActualizarONivelarCompetencia(int idDepartamento, int idCompetencia, string nuevoNivel)
+        {
+            sn.ActualizarONivelarCompetencia(idDepartamento, idCompetencia, nuevoNivel);
+        }
 
     }
 }

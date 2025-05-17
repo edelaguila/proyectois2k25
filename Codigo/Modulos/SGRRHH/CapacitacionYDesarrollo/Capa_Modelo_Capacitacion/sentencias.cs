@@ -811,21 +811,20 @@ namespace Capa_Modelo_Capacitacion
         }
 
         //CONSEGUIR IDs
-        public int ObtenerIdCompetenciaDesdeCapacitacion(int idCompetencia)
+        public int ObtenerIdCompetenciaDesdeCapacitacion(int idCapacitacion)
         {
-            int idC = -1;
+            int idCompetencia = -1;
             using (OdbcConnection cnx = con.Conexion())
-            { 
+            {
                 string query = "SELECT fk_id_competencia FROM tbl_capacitaciones WHERE pk_id_capacitacion = @id";
                 using (OdbcCommand cmd = new OdbcCommand(query, cnx))
                 {
-                    cmd.Parameters.AddWithValue("@id", idC);
+                    cmd.Parameters.AddWithValue("@id", idCapacitacion); // Aquí estaba el error
                     var result = cmd.ExecuteScalar();
                     if (result != null)
                         idCompetencia = Convert.ToInt32(result);
                 }
             }
-
             return idCompetencia;
         }
 
@@ -868,6 +867,110 @@ namespace Capa_Modelo_Capacitacion
             }
 
             return nombre;
+        }
+
+        public void ActualizarONivelarCompetencia(int idDepartamento, int idCompetencia, string nuevoNivel)
+        {
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                string queryExiste = @"SELECT COUNT(*) 
+                               FROM tbl_departamentos_competencias 
+                               WHERE fk_id_departamento = @idDepto AND fk_id_competencia = @idComp";
+
+                using (OdbcCommand cmd = new OdbcCommand(queryExiste, cnx))
+                {
+                    cmd.Parameters.AddWithValue("@idDepto", idDepartamento);
+                    cmd.Parameters.AddWithValue("@idComp", idCompetencia);
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        // Ya existe, entonces se actualiza
+                        string update = @"UPDATE tbl_departamentos_competencias 
+                                  SET nivelactual = @nivel 
+                                  WHERE fk_id_departamento = @idDepto AND fk_id_competencia = @idComp";
+                        using (OdbcCommand updateCmd = new OdbcCommand(update, cnx))
+                        {
+                            updateCmd.Parameters.AddWithValue("@nivel", nuevoNivel);
+                            updateCmd.Parameters.AddWithValue("@idDepto", idDepartamento);
+                            updateCmd.Parameters.AddWithValue("@idComp", idCompetencia);
+                            updateCmd.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        // No existe, entonces se inserta
+                        string insert = @"INSERT INTO tbl_departamentos_competencias 
+                                  (fk_id_departamento, fk_id_competencia, nivelactual) 
+                                  VALUES (@idDepto, @idComp, @nivel)";
+                        using (OdbcCommand insertCmd = new OdbcCommand(insert, cnx))
+                        {
+                            insertCmd.Parameters.AddWithValue("@idDepto", idDepartamento);
+                            insertCmd.Parameters.AddWithValue("@idComp", idCompetencia);
+                            insertCmd.Parameters.AddWithValue("@nivel", nuevoNivel);
+                            insertCmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+        }
+
+        public void InsertarONivelarCompetenciaDesdeUI(int idDepartamento, int idCompetencia, string nivelFinal, string colorSemaforo)
+        {
+            using (OdbcConnection cnx = con.Conexion())
+            {
+                // 1. Verificar si ya existe
+                string queryCheck = "SELECT nivelactual FROM tbl_departamentos_competencias WHERE fk_id_departamento = ? AND fk_id_competencia = ?";
+                string nivelActual = null;
+
+                using (OdbcCommand cmd = new OdbcCommand(queryCheck, cnx))
+                {
+                    cmd.Parameters.AddWithValue("?", idDepartamento);
+                    cmd.Parameters.AddWithValue("?", idCompetencia);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null)
+                        nivelActual = result.ToString();
+                }
+
+                List<string> niveles = new List<string> { "A", "B", "C", "D" };
+
+                // 2. Si ya existe, actualizar el nivel
+                if (nivelActual != null)
+                {
+                    int index = niveles.IndexOf(nivelActual.ToUpper());
+                    int nuevoIndex = index;
+
+                    if (colorSemaforo == "verde" && index > 0)
+                        nuevoIndex = index + 1;
+                    else if (colorSemaforo == "rojo" && index < niveles.Count - 1)
+                        nuevoIndex = index - 1;
+                    else
+                        return; // sin cambio
+
+                    string queryUpdate = "UPDATE tbl_departamentos_competencias SET nivelactual = ?, estado = 1 WHERE fk_id_departamento = ? AND fk_id_competencia = ?";
+                    using (OdbcCommand cmd = new OdbcCommand(queryUpdate, cnx))
+                    {
+                        cmd.Parameters.AddWithValue("?", niveles[nuevoIndex]);
+                        cmd.Parameters.AddWithValue("?", idDepartamento);
+                        cmd.Parameters.AddWithValue("?", idCompetencia);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    // 3. No existe: insertar nuevo
+                    string nuevoNivel = (colorSemaforo == "verde") ? nivelFinal : "D";
+                    string queryInsert = "INSERT INTO tbl_departamentos_competencias (fk_id_departamento, fk_id_competencia, nivelactual, estado) VALUES (?, ?, ?, 1)";
+                    using (OdbcCommand cmd = new OdbcCommand(queryInsert, cnx))
+                    {
+                        cmd.Parameters.AddWithValue("?", idDepartamento);
+                        cmd.Parameters.AddWithValue("?", idCompetencia);
+                        cmd.Parameters.AddWithValue("?", nuevoNivel);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
         }
 
 

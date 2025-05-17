@@ -152,7 +152,7 @@ namespace Capa_Vista_Capacitacion
                 string nombreCompetencia = cn.ObtenerNombreCompetencia(idCompetencia);
 
                 // Mostrar notificación semáforo con datos
-                notificacionSemaforo noti = new notificacionSemaforo(puntuacion, porcentajeAsistencia, nivelActual, nombreCompetencia);
+                notificacionSemaforo noti = new notificacionSemaforo(puntuacion, porcentajeAsistencia);
                 noti.ShowDialog();
 
 
