@@ -46,6 +46,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MVC_AmmyCatun\MVC_AmmyCatun\Capa_Vista_AmmyCatun\bin\Debug\Capa_Vista_AmmyCatun.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Comisiones">
+      <HintPath>..\..\Comercial2_5\MVC_Comisiones\Capa_Vista_Comisiones\bin\Debug\Capa_Vista_Comisiones.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Compras, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Comercial2_5\MVC_Compras\Capa_Vista_Compras\bin\Debug\Capa_Vista_Compras.dll</HintPath>
