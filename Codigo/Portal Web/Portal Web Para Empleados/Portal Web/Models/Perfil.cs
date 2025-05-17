@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Portal_Web.Models
 {    public class Perfil
@@ -11,5 +11,7 @@ namespace Portal_Web.Models
         public string email_usuario { get; set; }
         public DateTime? ultima_conexion_usuario { get; set; }
         public bool estado_usuario { get; set; }
+        [NotMapped]
+        public string ruta_foto { get; set; }
     }
 }

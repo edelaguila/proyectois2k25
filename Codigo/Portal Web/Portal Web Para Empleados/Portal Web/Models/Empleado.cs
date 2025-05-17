@@ -12,7 +12,6 @@ namespace Portal_Web.Models
     {
         [Key]
         public int pk_clave { get; set; }
-
         public string empleados_nombre { get; set; }
         public string empleados_apellido { get; set; }
         public DateTime? empleados_fecha_nacimiento { get; set; }
