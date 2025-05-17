@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_login));
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblLogin = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.pcb_logo = new System.Windows.Forms.PictureBox();
             this.Btn_cancelar = new System.Windows.Forms.Button();
             this.Cb_ver_password = new System.Windows.Forms.CheckBox();
             this.Txt_clave = new System.Windows.Forms.TextBox();
@@ -43,10 +43,17 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnAyuda = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pcb_logo = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_logo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -63,7 +70,7 @@
             this.lblLogin.Font = new System.Drawing.Font("Haettenschweiler", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogin.Location = new System.Drawing.Point(748, 99);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(91, 44);
+            this.lblLogin.Size = new System.Drawing.Size(92, 44);
             this.lblLogin.TabIndex = 285;
             this.lblLogin.Text = "LOGIN";
             // 
@@ -78,6 +85,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(177)))), ((int)(((byte)(252)))));
+            this.panel1.Controls.Add(this.pictureBox5);
+            this.panel1.Controls.Add(this.pictureBox4);
+            this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.lblTitulo);
             this.panel1.Controls.Add(this.pcb_logo);
             this.panel1.Location = new System.Drawing.Point(1, -2);
@@ -97,18 +107,6 @@
             this.lblTitulo.TabIndex = 210;
             this.lblTitulo.Text = "Colchoneria \r\nLas Cobijas S.A.\r\n";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pcb_logo
-            // 
-            this.pcb_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pcb_logo.Image = global::Capa_Vista_Seguridad.Properties.Resources.logotipo;
-            this.pcb_logo.Location = new System.Drawing.Point(164, 225);
-            this.pcb_logo.Margin = new System.Windows.Forms.Padding(4);
-            this.pcb_logo.Name = "pcb_logo";
-            this.pcb_logo.Size = new System.Drawing.Size(194, 176);
-            this.pcb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcb_logo.TabIndex = 253;
-            this.pcb_logo.TabStop = false;
             // 
             // Btn_cancelar
             // 
@@ -239,6 +237,46 @@
             this.pictureBox1.TabIndex = 288;
             this.pictureBox1.TabStop = false;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(-9, 62);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(567, 456);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 254;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pcb_logo
+            // 
+            this.pcb_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pcb_logo.Image = global::Capa_Vista_Seguridad.Properties.Resources.logotipo;
+            this.pcb_logo.Location = new System.Drawing.Point(164, 225);
+            this.pcb_logo.Margin = new System.Windows.Forms.Padding(4);
+            this.pcb_logo.Name = "pcb_logo";
+            this.pcb_logo.Size = new System.Drawing.Size(194, 176);
+            this.pcb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcb_logo.TabIndex = 253;
+            this.pcb_logo.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(0, 481);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(546, 50);
+            this.pictureBox4.TabIndex = 291;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(-9, -3);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(546, 69);
+            this.pictureBox5.TabIndex = 292;
+            this.pictureBox5.TabStop = false;
+            // 
             // frm_login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -270,9 +308,12 @@
             this.Load += new System.EventHandler(this.frm_login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_logo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,5 +336,8 @@
         public System.Windows.Forms.TextBox Txt_usuario;
         private System.Windows.Forms.Button Btn_entrar;
         private System.Windows.Forms.Button Btn_olvidocontrasenia;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
