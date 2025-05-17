@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Interfac_V3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\proyectois2k25\Codigo\Modulos\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
+      <HintPath>..\..\..\Modulos\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
