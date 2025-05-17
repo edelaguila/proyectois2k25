@@ -27,6 +27,21 @@
                 <p><strong>Última conexión:</strong> @(Model.ultima_conexion_usuario?.ToString("dd/MM/yyyy HH:mm") ?? "Nunca")</p>
                 <p><strong>Estado:</strong> @(Model.estado_usuario ? "Activo" : "Inactivo")</p>
             </div>
+            @if (!string.IsNullOrEmpty(Model.ruta_foto))
+            {
+                <img src="@Model.ruta_foto" alt="Foto de perfil" style="max-width:150px; max-height:150px;" />
+            }
+            else
+            {
+                <p>No tienes foto de perfil.</p>
+            }
+
+            @using (Html.BeginForm("SubirFoto", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @style = "text-align:center;margin-top:2rem;" }))
+            {
+                <label for="foto"><strong>Actualizar foto de perfil:</strong></label><br />
+                <input type="file" name="foto" id="foto" accept="image/*" style="margin-top:0.5rem;" /><br />
+                <button type="submit" class="btn-login" style="margin-top:1rem;">Subir Foto</button>
+            }
             <div class="acciones" style="text-align:center;margin-top:2rem;">
                 <a href="@Url.Action("CambiarContraseña", "Cuenta")" class="btn-login">Cambiar Contraseña</a>
             </div>

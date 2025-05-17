@@ -49,8 +49,10 @@ namespace Portal_Web.Models
 
         [Required(ErrorMessage = "Agregue su id")]
         public int fk_empleado { get; set; }
-
+        [NotMapped]
+        public string ruta_foto { get; set; }
     }
+    
 
     [Table("Roles")]
     public class Rol

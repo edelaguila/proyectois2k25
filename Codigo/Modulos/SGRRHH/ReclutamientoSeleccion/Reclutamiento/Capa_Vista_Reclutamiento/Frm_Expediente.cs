@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.IO;
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Vista_Reclutamiento
 {
@@ -17,6 +18,9 @@ namespace Capa_Vista_Reclutamiento
     {
        
         Controlador controlador = new Controlador();
+        logica logicaSeg = new logica();
+
+        public string idUsuario { get; set; }
         public Frm_Expediente()
         {
             InitializeComponent();
@@ -66,6 +70,8 @@ namespace Capa_Vista_Reclutamiento
             Txt_pruebaTecnologica.Enabled = true;
             Cmb_PruebaPersonalidad.Enabled = true;
             LimpiarCampos();
+
+            logicaSeg.funinsertarabitacora(idUsuario, "Se inicio un nuevo registro en expedientes", "tbl_expedientes", "13005");
         }
             // Función para limpiar los campos
             private void LimpiarCampos()
@@ -233,6 +239,7 @@ namespace Capa_Vista_Reclutamiento
 
                 Dgv_VisualizarDatos.DataSource = controlador.Pro_obtenerExpedientes();
                 LimpiarCampos();
+                logicaSeg.funinsertarabitacora(idUsuario, "Se guardo un nuevo registro", "tbl_expedientes", "13005");
 
                 Btn_guardar.Enabled = false;
                 Btn_editar.Enabled = false;
@@ -353,6 +360,7 @@ namespace Capa_Vista_Reclutamiento
                 if (confirm == DialogResult.No)
                 {
                     MessageBox.Show("Actualización cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logicaSeg.funinsertarabitacora(idUsuario, "Se modificó un registro", "tbl_expedientes", "13005");
                     return;
                 }
 
@@ -373,6 +381,7 @@ namespace Capa_Vista_Reclutamiento
                 Dgv_VisualizarDatos.DataSource = controlador.Pro_obtenerExpedientes();
                 LimpiarCampos();
 
+                Btn_agregar.Enabled = true;
                 Btn_guardar.Enabled = false;
                 Btn_editar.Enabled = false;
                 Btn_eliminar.Enabled = false;
@@ -421,6 +430,7 @@ namespace Capa_Vista_Reclutamiento
                 Dgv_VisualizarDatos.DataSource = controlador.Pro_obtenerExpedientes(); // refrescar vista
                 LimpiarCampos();
 
+                Btn_agregar.Enabled = true;
                 Btn_guardar.Enabled = false;
                 Btn_editar.Enabled = false;
                 Btn_eliminar.Enabled = false;
@@ -435,6 +445,7 @@ namespace Capa_Vista_Reclutamiento
                 Txt_pruebaRazonamiento.Enabled = false;
                 Txt_pruebaTecnologica.Enabled = false;
                 Cmb_PruebaPersonalidad.Enabled = false;
+                logicaSeg.funinsertarabitacora(idUsuario, "Se eliminó un registro", "tbl_expedientes", "13005");
             }
             catch (Exception ex)
             {
@@ -471,6 +482,8 @@ namespace Capa_Vista_Reclutamiento
                 Txt_pruebaRazonamiento.Enabled = false;
                 Txt_pruebaTecnologica.Enabled = false;
                 Cmb_PruebaPersonalidad.Enabled = false;
+
+                logicaSeg.funinsertarabitacora(idUsuario, "Se cancelo una operación", "tbl_expedientes", "13005");
             }
         }
 
@@ -499,6 +512,7 @@ namespace Capa_Vista_Reclutamiento
                         break;
                     }
                 }
+                logicaSeg.funinsertarabitacora(idUsuario, "Se hizó una busqueda de registro", "tbl_expedientes", "13005");
             }
             else
             {
@@ -510,12 +524,14 @@ namespace Capa_Vista_Reclutamiento
         private void Btn_salir_Click(object sender, EventArgs e)
         {
             this.Close();
+            logicaSeg.funinsertarabitacora(idUsuario, "Se cerró el formulario", "tbl_expedientes", "13005");
         }
 
         private void Btn_reporte_Click(object sender, EventArgs e)
         {
             Frm_Reporte reporte = new Frm_Reporte();
             reporte.Show();
+            logicaSeg.funinsertarabitacora(idUsuario, "Se consultó el reporte", "tbl_expedientes", "13005");
         }
 
         // Declarar el ToolTip en el boton Ayuda
@@ -543,6 +559,7 @@ namespace Capa_Vista_Reclutamiento
                 // MessageBox.Show("El archivo sí está.");
                 // Abre el archivo de ayuda .chm en la sección especificada
                 Help.ShowHelp(null, sPathAyuda, "AyudaExpedietes.html");
+                logicaSeg.funinsertarabitacora(idUsuario, "Se consultó la ayuda", "tbl_expedientes", "13005");
             }
             else
             {

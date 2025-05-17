@@ -63,3 +63,16 @@ label {
     font-weight: 600;
     text-align: center;
 }
+/* Estado con error (como Bootstrap) */
+.input-validation-error {
+    border-color: #e74c3c;
+    background-color: #fff5f5;
+}
+
+/* Texto de validación */
+.field-validation-error {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+}
