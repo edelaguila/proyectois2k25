@@ -18,7 +18,16 @@ namespace Capa_Vista_Evaluacion
 
             string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
 
-            string[] alias = { "ID Bono", "ID Resultado", "Tipo", "Monto", "Fecha Recomendación", "Estado" };
+            string[] alias = {
+    "ID Bono",
+    "ID Evaluación",
+    "ID Empleado",
+    "Tipo",
+    "Monto",
+    "Fecha Recomendación",
+    "Estado"
+};
+
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#B4D2F0"));
@@ -29,7 +38,7 @@ namespace Capa_Vista_Evaluacion
             navegador1.AsignarTabla("tbl_bonos_promociones");
 
             navegador1.AsignarNombreForm("BONOS Y PROMOCIONES");
-            
+
         }
     }
 }
