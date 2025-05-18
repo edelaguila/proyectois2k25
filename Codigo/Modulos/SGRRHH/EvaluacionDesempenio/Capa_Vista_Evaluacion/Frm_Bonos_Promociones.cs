@@ -22,7 +22,7 @@ namespace Capa_Vista_Evaluacion
     "ID Bono",
     "ID Evaluación",
     "ID Empleado",
-    "Tipo",
+    "Descripción",
     "Monto",
     "Fecha Recomendación",
     "Estado"
