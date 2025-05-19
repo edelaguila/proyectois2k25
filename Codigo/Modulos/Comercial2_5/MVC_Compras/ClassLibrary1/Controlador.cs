@@ -43,6 +43,17 @@ namespace Capa_Controlador_Compras
         }
 
 
+        public void Pro_EliminarCompra(int idCompra)
+        {
+            _sentencias.EliminarCompra(idCompra);
+        }
+
+
+        public void Pro_EditarCompra(int idCompra, int proveedor, DateTime fechaCompra, int bod, string factura, string compro, string pago, double sub, double imp, double total, string prod, double cant, double pre, string desc)
+        {
+            // Llamada al método EditarCompra con los parámetros que recibe el controlador
+            _sentencias.ActualizarCompra(idCompra, proveedor, fechaCompra, bod, factura, compro, pago, sub, imp, total, prod, cant, pre, desc);
+        }
 
 
     }
