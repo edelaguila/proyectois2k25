@@ -49,16 +49,18 @@ namespace Capa_Vista_Compras
 
         private void Pic_Salir_Click_1(object sender, EventArgs e)
         {
-           
+            this.Close();
         }
 
         private void Pic_Ingresar_Click(object sender, EventArgs e)
         {
+            // Cambiar el color o agregar un efecto al pasar el mouse  
+            Pic_Ingresar.BackColor = Color.Black; // Cambia el color de fondo al entrar el mouse  
             try
             {
                 // Limpiar campos de productos
                 comboProveedor.SelectedIndex = -1;
-                dateTimeFecha.Value = DateTime.MinValue;
+                dateTimeFecha.Value = DateTime.Now; // Mejor que DateTime.MinValue
                 txtNumeroFactura.Clear();
                 comboTipoCompro.SelectedIndex = -1;
                 comboFormaPago.SelectedIndex = -1;
@@ -67,24 +69,30 @@ namespace Capa_Vista_Compras
                 txtPrecio.Text = "0.00";
                 txtDesc.Clear();
                 txtSubtotal.Clear();
-                txtTotal.Clear();   
-                txtImpuestos.Clear();   
+                txtTotal.Clear();
+                txtImpuestos.Clear();
 
-              
+                // Activar (habilitar) campos
+                comboProveedor.Enabled = true;
+                dateTimeFecha.Enabled = true;
+                txtNumeroFactura.Enabled = true;
+                comboTipoCompro.Enabled = true;
+                comboFormaPago.Enabled = true;
+                comboProducto.Enabled = true;
+                txtCantidad.Enabled = true;
+                txtDesc.Enabled = true;
+               
 
-                // Limpiar el DataGridView de productos
-                Dgv_compras.Rows.Clear();
+          
 
                 // Mostrar mensaje de éxito
-                MessageBox.Show("Campos limpiados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Campos limpiados y activados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al limpiar los campos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
 
         private void CargarSucursales()
@@ -239,9 +247,37 @@ namespace Capa_Vista_Compras
 
         private void Pic_Editar_Click(object sender, EventArgs e)
         {
+            // Valida que haya una fila seleccionada, para evitar errores
+            if (Dgv_compras.SelectedRows.Count > 0)
+            {
+                // Obtén el ID o clave primaria del registro seleccionado, que debería estar en alguna columna
+                int idCompra = Convert.ToInt32(Dgv_compras.SelectedRows[0].Cells["Pk_ID_Compra"].Value);
 
+                // Llama al controlador con los valores actuales de los controles (los editados)
+                controlador.Pro_EditarCompra(
+                    idCompra,
+                    Convert.ToInt32(comboProveedor.SelectedValue),
+                    dateTimeFecha.Value,
+                    Convert.ToInt32(comboAlma.SelectedValue),
+                    txtNumeroFactura.Text,
+                    comboTipoCompro.SelectedItem.ToString(),
+                    comboFormaPago.SelectedItem.ToString(),
+                    Convert.ToDouble(txtSubtotal.Text),
+                    Convert.ToDouble(txtImpuestos.Text),
+                    Convert.ToDouble(txtTotal.Text),
+                    comboProducto.SelectedItem.ToString(),
+                    Convert.ToDouble(txtCantidad.Text),
+                    Convert.ToDouble(txtPrecio.Text),
+                    txtDesc.Text
+                );
 
-
+                // Refresca el DataGridView para que muestre los cambios
+                CargarSolicitudesenDatagriedView();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila para editar.");
+            }
         }
 
         private void Pic_Guardar_Click(object sender, EventArgs e)
@@ -322,6 +358,145 @@ namespace Capa_Vista_Compras
             }
         }
 
+        private void Pic_Ingresar_MouseEnter(object sender, EventArgs e)
+        {
+            Pic_Ingresar.Size = new Size(Pic_Ingresar.Width + 5, Pic_Ingresar.Height + 5);
+            Pic_Ingresar.Cursor = Cursors.Hand;
+            Pic_Ingresar.BackColor = Color.Black;
+
+        }
+
+        private void Pic_Ingresar_MouseLeave(object sender, EventArgs e)
+        {
+            Pic_Ingresar.Size = new Size(Pic_Ingresar.Width - 5, Pic_Ingresar.Height - 5);
+            Pic_Ingresar.BackColor = Color.Transparent; // O el color original que usabas
+
+        }
+
+        private void Pic_Guardar_MouseEnter(object sender, EventArgs e)
+        {
+            Pic_Guardar.Size = new Size(Pic_Ingresar.Width + 5, Pic_Ingresar.Height + 5);
+            Pic_Guardar.Cursor = Cursors.Hand;
+            Pic_Guardar.BackColor = Color.Black;
+        }
+
+        private void Pic_Guardar_MouseLeave(object sender, EventArgs e)
+        {
+            Pic_Guardar.Size = new Size(Pic_Ingresar.Width - 5, Pic_Ingresar.Height - 5);
+            Pic_Guardar.BackColor = Color.Transparent; // O el color original que usabas
+        }
+
+        private void Pic_Editar_MouseEnter(object sender, EventArgs e)
+        {
+            Pic_Editar.Size = new Size(Pic_Ingresar.Width + 5, Pic_Ingresar.Height + 5);
+            Pic_Editar.Cursor = Cursors.Hand;
+            Pic_Editar.BackColor = Color.Black;
+
+        }
+
+        private void Pic_Editar_MouseLeave(object sender, EventArgs e)
+        {
+            Pic_Editar.Size = new Size(Pic_Ingresar.Width - 5, Pic_Ingresar.Height - 5);
+            Pic_Editar.BackColor = Color.Transparent; // O el color original que usabas
+        }
+
+        private void Pic_Ayuda_MouseEnter(object sender, EventArgs e)
+        {
+            Pic_Ayuda.Size = new Size(Pic_Ingresar.Width + 5, Pic_Ingresar.Height + 5);
+            Pic_Ayuda.Cursor = Cursors.Hand;
+            Pic_Ayuda.BackColor = Color.Black;
+        }
+
+        private void Pic_Ayuda_MouseLeave(object sender, EventArgs e)
+        {
+            Pic_Ayuda.Size = new Size(Pic_Ingresar.Width - 5, Pic_Ingresar.Height - 5);
+            Pic_Ayuda.BackColor = Color.Transparent; // O el color original que usabas
+        }
+
+        private void Pic_Salir_MouseEnter(object sender, EventArgs e)
+        {
+            Pic_Salir.Size = new Size(Pic_Ingresar.Width + 5, Pic_Ingresar.Height + 5);
+            Pic_Salir.Cursor = Cursors.Hand;
+            Pic_Salir.BackColor = Color.Black;
+
+        }
+
+        private void Pic_Salir_MouseLeave(object sender, EventArgs e)
+        {
+            Pic_Salir.Size = new Size(Pic_Ingresar.Width - 5, Pic_Ingresar.Height - 5);
+            Pic_Salir.BackColor = Color.Transparent; // O el color original que usabas
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.Size = new Size(Pic_Ingresar.Width + 5, Pic_Ingresar.Height + 5);
+            pictureBox1.Cursor = Cursors.Hand;
+            pictureBox1.BackColor = Color.Black;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Size = new Size(Pic_Ingresar.Width - 5, Pic_Ingresar.Height - 5);
+            pictureBox1.BackColor = Color.Transparent; // O el color original que usabas
+        }
+
+        private void Btn_Eliminar_MouseEnter(object sender, EventArgs e)
+        {
+            Btn_Eliminar.Size = new Size(Pic_Ingresar.Width + 5, Pic_Ingresar.Height + 5);
+            Btn_Eliminar.Cursor = Cursors.Hand;
+            Btn_Eliminar.BackColor = Color.Black;
+        }
+
+        private void Btn_Eliminar_MouseLeave(object sender, EventArgs e)
+        {
+            Btn_Eliminar.Size = new Size(Pic_Ingresar.Width - 5, Pic_Ingresar.Height - 5);
+            Btn_Eliminar.BackColor = Color.Transparent; // O el color original que usabas
+        }
+
+        private void Btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Dgv_compras.SelectedRows.Count > 0)
+                {
+                    int idCompra = Convert.ToInt32(Dgv_compras.SelectedRows[0].Cells["Pk_ID_Compra"].Value);
+                    controlador.Pro_EliminarCompra(idCompra);
+                    MessageBox.Show("Compra eliminada correctamente.");
+                    CargarSolicitudesenDatagriedView();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor seleccione una compra para eliminar.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar la compra: " + ex.Message);
+            }
+        }
+
+        private void Dgv_compras_SelectionChanged(object sender, EventArgs e)
+        {
+            if (Dgv_compras.SelectedRows.Count > 0)
+            {
+                DataGridViewRow fila = Dgv_compras.SelectedRows[0];
+
+                // Asumiendo que el orden de columnas es igual a tus controles
+                comboProveedor.SelectedValue = Convert.ToInt32(fila.Cells["Fk_prov_id"].Value);
+                dateTimeFecha.Value = Convert.ToDateTime(fila.Cells["fecha_compra"].Value);
+                comboAlma.SelectedValue = Convert.ToInt32(fila.Cells["Fk_ID_BODEGA"].Value);
+                txtNumeroFactura.Text = fila.Cells["numero_factura"].Value.ToString();
+                comboTipoCompro.SelectedItem = fila.Cells["tipo_comprobante"].Value.ToString();
+                comboFormaPago.SelectedItem = fila.Cells["forma_pago"].Value.ToString();
+                txtSubtotal.Text = fila.Cells["subtotal"].Value.ToString();
+                txtImpuestos.Text = fila.Cells["impuestos"].Value.ToString();
+                txtTotal.Text = fila.Cells["total"].Value.ToString();
+                comboProducto.SelectedItem = fila.Cells["producto"].Value.ToString();
+                txtCantidad.Text = fila.Cells["cantidad"].Value.ToString();
+                txtPrecio.Text = fila.Cells["precio"].Value.ToString();
+                txtDesc.Text = fila.Cells["descripcion"].Value.ToString();
+            }
+        }
     }
 
 }
