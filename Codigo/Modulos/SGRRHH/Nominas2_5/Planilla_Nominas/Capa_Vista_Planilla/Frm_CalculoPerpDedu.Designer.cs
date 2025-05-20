@@ -41,6 +41,7 @@
             this.Lbl_mes = new System.Windows.Forms.Label();
             this.dgv_totalmes = new System.Windows.Forms.DataGridView();
             this.Lbl_Totales = new System.Windows.Forms.Label();
+            this.Btn_Comisiones = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
             this.Btn_Reportes = new System.Windows.Forms.Button();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
             this.Btn_guardar = new System.Windows.Forms.Button();
             this.Btn_editar = new System.Windows.Forms.Button();
             this.Btn_insertar = new System.Windows.Forms.Button();
-            this.Btn_Comisiones = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_deduPerp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_totalmes)).BeginInit();
             this.SuspendLayout();
@@ -172,86 +172,6 @@
             this.Lbl_Totales.TabIndex = 101;
             this.Lbl_Totales.Text = "Totales Deducciones/Percepciones";
             // 
-            // Btn_salir
-            // 
-            this.Btn_salir.Image = global::Capa_Vista_Planilla.Properties.Resources.icono_salir_64px1;
-            this.Btn_salir.Location = new System.Drawing.Point(1151, 26);
-            this.Btn_salir.Name = "Btn_salir";
-            this.Btn_salir.Size = new System.Drawing.Size(75, 71);
-            this.Btn_salir.TabIndex = 100;
-            this.Btn_salir.UseVisualStyleBackColor = true;
-            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
-            // 
-            // Btn_Reportes
-            // 
-            this.Btn_Reportes.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Reportes.Image")));
-            this.Btn_Reportes.Location = new System.Drawing.Point(1070, 26);
-            this.Btn_Reportes.Name = "Btn_Reportes";
-            this.Btn_Reportes.Size = new System.Drawing.Size(75, 71);
-            this.Btn_Reportes.TabIndex = 98;
-            this.Btn_Reportes.UseVisualStyleBackColor = true;
-            this.Btn_Reportes.Click += new System.EventHandler(this.Btn_Reportes_Click);
-            // 
-            // Btn_Ayuda
-            // 
-            this.Btn_Ayuda.Image = global::Capa_Vista_Planilla.Properties.Resources.icono_ayuda_64px;
-            this.Btn_Ayuda.Location = new System.Drawing.Point(992, 26);
-            this.Btn_Ayuda.Name = "Btn_Ayuda";
-            this.Btn_Ayuda.Size = new System.Drawing.Size(75, 71);
-            this.Btn_Ayuda.TabIndex = 97;
-            this.Btn_Ayuda.UseVisualStyleBackColor = true;
-            this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
-            // 
-            // Btn_eliminar
-            // 
-            this.Btn_eliminar.Image = global::Capa_Vista_Planilla.Properties.Resources.borrar;
-            this.Btn_eliminar.Location = new System.Drawing.Point(309, 12);
-            this.Btn_eliminar.Name = "Btn_eliminar";
-            this.Btn_eliminar.Size = new System.Drawing.Size(75, 71);
-            this.Btn_eliminar.TabIndex = 91;
-            this.Btn_eliminar.UseVisualStyleBackColor = true;
-            this.Btn_eliminar.Click += new System.EventHandler(this.Btn_eliminar_Click);
-            // 
-            // Btn_cancelar
-            // 
-            this.Btn_cancelar.Image = global::Capa_Vista_Planilla.Properties.Resources.icono_cancelar_64px;
-            this.Btn_cancelar.Location = new System.Drawing.Point(236, 12);
-            this.Btn_cancelar.Name = "Btn_cancelar";
-            this.Btn_cancelar.Size = new System.Drawing.Size(75, 71);
-            this.Btn_cancelar.TabIndex = 86;
-            this.Btn_cancelar.UseVisualStyleBackColor = true;
-            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
-            // 
-            // Btn_guardar
-            // 
-            this.Btn_guardar.Image = global::Capa_Vista_Planilla.Properties.Resources.icono_guardar_64px;
-            this.Btn_guardar.Location = new System.Drawing.Point(162, 12);
-            this.Btn_guardar.Name = "Btn_guardar";
-            this.Btn_guardar.Size = new System.Drawing.Size(75, 71);
-            this.Btn_guardar.TabIndex = 81;
-            this.Btn_guardar.UseVisualStyleBackColor = true;
-            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
-            // 
-            // Btn_editar
-            // 
-            this.Btn_editar.Image = global::Capa_Vista_Planilla.Properties.Resources.convenio;
-            this.Btn_editar.Location = new System.Drawing.Point(88, 12);
-            this.Btn_editar.Name = "Btn_editar";
-            this.Btn_editar.Size = new System.Drawing.Size(75, 71);
-            this.Btn_editar.TabIndex = 80;
-            this.Btn_editar.UseVisualStyleBackColor = true;
-            this.Btn_editar.Click += new System.EventHandler(this.Btn_editar_Click);
-            // 
-            // Btn_insertar
-            // 
-            this.Btn_insertar.Image = global::Capa_Vista_Planilla.Properties.Resources.agregar_archivo;
-            this.Btn_insertar.Location = new System.Drawing.Point(18, 12);
-            this.Btn_insertar.Name = "Btn_insertar";
-            this.Btn_insertar.Size = new System.Drawing.Size(75, 71);
-            this.Btn_insertar.TabIndex = 79;
-            this.Btn_insertar.UseVisualStyleBackColor = true;
-            this.Btn_insertar.Click += new System.EventHandler(this.Btn_insertar_Click);
-            // 
             // Btn_Comisiones
             // 
             this.Btn_Comisiones.Location = new System.Drawing.Point(752, 26);
@@ -261,6 +181,94 @@
             this.Btn_Comisiones.Text = "Calcular Comisiones";
             this.Btn_Comisiones.UseVisualStyleBackColor = true;
             this.Btn_Comisiones.Click += new System.EventHandler(this.Btn_Comisiones_Click);
+            // 
+            // Btn_salir
+            // 
+            this.Btn_salir.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.cerrar_sesion;
+            this.Btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_salir.Location = new System.Drawing.Point(1151, 26);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(75, 71);
+            this.Btn_salir.TabIndex = 100;
+            this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
+            // 
+            // Btn_Reportes
+            // 
+            this.Btn_Reportes.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.reporte;
+            this.Btn_Reportes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_Reportes.Location = new System.Drawing.Point(1070, 26);
+            this.Btn_Reportes.Name = "Btn_Reportes";
+            this.Btn_Reportes.Size = new System.Drawing.Size(75, 71);
+            this.Btn_Reportes.TabIndex = 98;
+            this.Btn_Reportes.UseVisualStyleBackColor = true;
+            this.Btn_Reportes.Click += new System.EventHandler(this.Btn_Reportes_Click);
+            // 
+            // Btn_Ayuda
+            // 
+            this.Btn_Ayuda.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.buscar;
+            this.Btn_Ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_Ayuda.Location = new System.Drawing.Point(992, 26);
+            this.Btn_Ayuda.Name = "Btn_Ayuda";
+            this.Btn_Ayuda.Size = new System.Drawing.Size(75, 71);
+            this.Btn_Ayuda.TabIndex = 97;
+            this.Btn_Ayuda.UseVisualStyleBackColor = true;
+            this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
+            // 
+            // Btn_eliminar
+            // 
+            this.Btn_eliminar.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.borrar2;
+            this.Btn_eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_eliminar.Location = new System.Drawing.Point(349, 17);
+            this.Btn_eliminar.Name = "Btn_eliminar";
+            this.Btn_eliminar.Size = new System.Drawing.Size(75, 71);
+            this.Btn_eliminar.TabIndex = 91;
+            this.Btn_eliminar.UseVisualStyleBackColor = true;
+            this.Btn_eliminar.Click += new System.EventHandler(this.Btn_eliminar_Click);
+            // 
+            // Btn_cancelar
+            // 
+            this.Btn_cancelar.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.cancelar1;
+            this.Btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_cancelar.Location = new System.Drawing.Point(268, 17);
+            this.Btn_cancelar.Name = "Btn_cancelar";
+            this.Btn_cancelar.Size = new System.Drawing.Size(75, 71);
+            this.Btn_cancelar.TabIndex = 86;
+            this.Btn_cancelar.UseVisualStyleBackColor = true;
+            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
+            // 
+            // Btn_guardar
+            // 
+            this.Btn_guardar.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.ahorrar;
+            this.Btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_guardar.Location = new System.Drawing.Point(183, 17);
+            this.Btn_guardar.Name = "Btn_guardar";
+            this.Btn_guardar.Size = new System.Drawing.Size(75, 71);
+            this.Btn_guardar.TabIndex = 81;
+            this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
+            // 
+            // Btn_editar
+            // 
+            this.Btn_editar.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.convenio2;
+            this.Btn_editar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_editar.Location = new System.Drawing.Point(102, 17);
+            this.Btn_editar.Name = "Btn_editar";
+            this.Btn_editar.Size = new System.Drawing.Size(75, 71);
+            this.Btn_editar.TabIndex = 80;
+            this.Btn_editar.UseVisualStyleBackColor = true;
+            this.Btn_editar.Click += new System.EventHandler(this.Btn_editar_Click);
+            // 
+            // Btn_insertar
+            // 
+            this.Btn_insertar.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.agregar_archivo3;
+            this.Btn_insertar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_insertar.Location = new System.Drawing.Point(18, 17);
+            this.Btn_insertar.Name = "Btn_insertar";
+            this.Btn_insertar.Size = new System.Drawing.Size(76, 71);
+            this.Btn_insertar.TabIndex = 79;
+            this.Btn_insertar.UseVisualStyleBackColor = true;
+            this.Btn_insertar.Click += new System.EventHandler(this.Btn_insertar_Click);
             // 
             // Frm_CalculoPerpDedu
             // 
@@ -293,6 +301,7 @@
             this.Name = "Frm_CalculoPerpDedu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formulario Calculo Deducciones/Percepciones";
+            this.Load += new System.EventHandler(this.Frm_CalculoPerpDedu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_deduPerp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_totalmes)).EndInit();
             this.ResumeLayout(false);

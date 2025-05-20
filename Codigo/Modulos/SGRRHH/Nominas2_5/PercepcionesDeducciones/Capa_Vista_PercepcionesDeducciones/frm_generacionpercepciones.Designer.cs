@@ -31,8 +31,8 @@ namespace Capa_Vista_PercepcionesDeducciones
         {
             this.Lbl_percepciones = new System.Windows.Forms.Label();
             this.Dgv_genpercepciones = new System.Windows.Forms.DataGridView();
-            this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_reportes = new System.Windows.Forms.Button();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_genpercepciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,25 +56,10 @@ namespace Capa_Vista_PercepcionesDeducciones
             this.Dgv_genpercepciones.Size = new System.Drawing.Size(1128, 411);
             this.Dgv_genpercepciones.TabIndex = 1;
             // 
-            // Btn_ayuda
-            // 
-            this.Btn_ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(161)))), ((int)(((byte)(214)))));
-            this.Btn_ayuda.BackgroundImage = global::Capa_Vista_PercepcionesDeducciones.Properties.Resources.preguntas__1_;
-            this.Btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Btn_ayuda.FlatAppearance.BorderSize = 0;
-            this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_ayuda.Location = new System.Drawing.Point(1081, 17);
-            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
-            this.Btn_ayuda.Name = "Btn_ayuda";
-            this.Btn_ayuda.Size = new System.Drawing.Size(71, 65);
-            this.Btn_ayuda.TabIndex = 285;
-            this.Btn_ayuda.UseVisualStyleBackColor = false;
-            this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
-            // 
             // Btn_reportes
             // 
-            this.Btn_reportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(161)))), ((int)(((byte)(214)))));
-            this.Btn_reportes.BackgroundImage = global::Capa_Vista_PercepcionesDeducciones.Properties.Resources.reporte;
+            this.Btn_reportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
+            this.Btn_reportes.BackgroundImage = global::Capa_Vista_PercepcionesDeducciones.Properties.Resources.reporte2;
             this.Btn_reportes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_reportes.FlatAppearance.BorderSize = 0;
             this.Btn_reportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -85,6 +70,21 @@ namespace Capa_Vista_PercepcionesDeducciones
             this.Btn_reportes.TabIndex = 287;
             this.Btn_reportes.UseVisualStyleBackColor = false;
             this.Btn_reportes.Click += new System.EventHandler(this.Btn_reportes_Click);
+            // 
+            // Btn_ayuda
+            // 
+            this.Btn_ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
+            this.Btn_ayuda.BackgroundImage = global::Capa_Vista_PercepcionesDeducciones.Properties.Resources.preguntas2;
+            this.Btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_ayuda.FlatAppearance.BorderSize = 0;
+            this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ayuda.Location = new System.Drawing.Point(1081, 17);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(71, 65);
+            this.Btn_ayuda.TabIndex = 285;
+            this.Btn_ayuda.UseVisualStyleBackColor = false;
+            this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
             // frm_generacionpercepciones
             // 

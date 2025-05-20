@@ -150,9 +150,9 @@
             // 
             // Btn_Dedu_Per
             // 
-            this.Btn_Dedu_Per.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(161)))), ((int)(((byte)(214)))));
+            this.Btn_Dedu_Per.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.Btn_Dedu_Per.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Dedu_Per.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
+            this.Btn_Dedu_Per.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(90)))), ((int)(((byte)(150)))));
             this.Btn_Dedu_Per.Location = new System.Drawing.Point(464, 35);
             this.Btn_Dedu_Per.Name = "Btn_Dedu_Per";
             this.Btn_Dedu_Per.Size = new System.Drawing.Size(247, 39);
@@ -193,7 +193,8 @@
             // 
             // Btn_salir
             // 
-            this.Btn_salir.Image = global::Capa_Vista_Planilla.Properties.Resources.icono_salir_64px;
+            this.Btn_salir.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.cerrar_sesion1;
+            this.Btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_salir.Location = new System.Drawing.Point(1287, 3);
             this.Btn_salir.Name = "Btn_salir";
             this.Btn_salir.Size = new System.Drawing.Size(75, 71);
@@ -203,7 +204,8 @@
             // 
             // Btn_Reportes
             // 
-            this.Btn_Reportes.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Reportes.Image")));
+            this.Btn_Reportes.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.reporte1;
+            this.Btn_Reportes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Reportes.Location = new System.Drawing.Point(1206, 3);
             this.Btn_Reportes.Name = "Btn_Reportes";
             this.Btn_Reportes.Size = new System.Drawing.Size(75, 71);
@@ -213,7 +215,8 @@
             // 
             // Btn_Ayuda
             // 
-            this.Btn_Ayuda.Image = global::Capa_Vista_Planilla.Properties.Resources.icono_ayuda_64px1;
+            this.Btn_Ayuda.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.preguntas;
+            this.Btn_Ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Ayuda.Location = new System.Drawing.Point(1128, 3);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
             this.Btn_Ayuda.Size = new System.Drawing.Size(75, 71);
@@ -223,7 +226,8 @@
             // 
             // Btn_impresora
             // 
-            this.Btn_impresora.Image = global::Capa_Vista_Planilla.Properties.Resources.printer;
+            this.Btn_impresora.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.imprimir;
+            this.Btn_impresora.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_impresora.Location = new System.Drawing.Point(383, 12);
             this.Btn_impresora.Name = "Btn_impresora";
             this.Btn_impresora.Size = new System.Drawing.Size(75, 71);
@@ -233,7 +237,8 @@
             // 
             // Btn_eliminar
             // 
-            this.Btn_eliminar.Image = global::Capa_Vista_Planilla.Properties.Resources.borrar1;
+            this.Btn_eliminar.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.borrar3;
+            this.Btn_eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_eliminar.Location = new System.Drawing.Point(311, 12);
             this.Btn_eliminar.Name = "Btn_eliminar";
             this.Btn_eliminar.Size = new System.Drawing.Size(75, 71);
@@ -243,7 +248,8 @@
             // 
             // Btn_cancelar
             // 
-            this.Btn_cancelar.Image = global::Capa_Vista_Planilla.Properties.Resources.icono_cancelar_64px1;
+            this.Btn_cancelar.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.cancelar2;
+            this.Btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_cancelar.Location = new System.Drawing.Point(238, 12);
             this.Btn_cancelar.Name = "Btn_cancelar";
             this.Btn_cancelar.Size = new System.Drawing.Size(75, 71);
@@ -253,7 +259,8 @@
             // 
             // Btn_guardar
             // 
-            this.Btn_guardar.Image = global::Capa_Vista_Planilla.Properties.Resources.icono_guardar_64px1;
+            this.Btn_guardar.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.ahorrar1;
+            this.Btn_guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_guardar.Location = new System.Drawing.Point(164, 12);
             this.Btn_guardar.Name = "Btn_guardar";
             this.Btn_guardar.Size = new System.Drawing.Size(75, 71);
@@ -263,7 +270,8 @@
             // 
             // Btn_editar
             // 
-            this.Btn_editar.Image = global::Capa_Vista_Planilla.Properties.Resources.convenio1;
+            this.Btn_editar.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.agregar_archivo5;
+            this.Btn_editar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_editar.Location = new System.Drawing.Point(90, 12);
             this.Btn_editar.Name = "Btn_editar";
             this.Btn_editar.Size = new System.Drawing.Size(75, 71);
@@ -273,7 +281,8 @@
             // 
             // Btn_insertar
             // 
-            this.Btn_insertar.Image = global::Capa_Vista_Planilla.Properties.Resources.agregar_archivo1;
+            this.Btn_insertar.BackgroundImage = global::Capa_Vista_Planilla.Properties.Resources.agregar_archivo4;
+            this.Btn_insertar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_insertar.Location = new System.Drawing.Point(20, 12);
             this.Btn_insertar.Name = "Btn_insertar";
             this.Btn_insertar.Size = new System.Drawing.Size(75, 71);

@@ -55,7 +55,7 @@ namespace Capa_Vista_Anticipos
             "NOVIEMBRE",
             "DICIEMBRE"});
             this.cmb_meses_anticipos.Location = new System.Drawing.Point(797, 146);
-            this.cmb_meses_anticipos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_meses_anticipos.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_meses_anticipos.Name = "cmb_meses_anticipos";
             this.cmb_meses_anticipos.Size = new System.Drawing.Size(195, 24);
             this.cmb_meses_anticipos.TabIndex = 0;
@@ -65,7 +65,7 @@ namespace Capa_Vista_Anticipos
             this.Btn_anticipo_nominas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Btn_anticipo_nominas.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_anticipo_nominas.Location = new System.Drawing.Point(797, 192);
-            this.Btn_anticipo_nominas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_anticipo_nominas.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_anticipo_nominas.Name = "Btn_anticipo_nominas";
             this.Btn_anticipo_nominas.Size = new System.Drawing.Size(196, 48);
             this.Btn_anticipo_nominas.TabIndex = 1;
@@ -101,12 +101,13 @@ namespace Capa_Vista_Anticipos
             // Btn_reporte_anticipo
             // 
             this.Btn_reporte_anticipo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Btn_reporte_anticipo.BackgroundImage = global::Capa_Vista_Anticipos.Properties.Resources.reporte2;
+            this.Btn_reporte_anticipo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_reporte_anticipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Btn_reporte_anticipo.Image = global::Capa_Vista_Anticipos.Properties.Resources.reporte__1_;
             this.Btn_reporte_anticipo.Location = new System.Drawing.Point(1357, 15);
-            this.Btn_reporte_anticipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_reporte_anticipo.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_reporte_anticipo.Name = "Btn_reporte_anticipo";
-            this.Btn_reporte_anticipo.Size = new System.Drawing.Size(95, 75);
+            this.Btn_reporte_anticipo.Size = new System.Drawing.Size(95, 88);
             this.Btn_reporte_anticipo.TabIndex = 5;
             this.Btn_reporte_anticipo.UseVisualStyleBackColor = true;
             this.Btn_reporte_anticipo.Click += new System.EventHandler(this.Btn_reporte_anticipo_Click);
@@ -114,12 +115,13 @@ namespace Capa_Vista_Anticipos
             // Btn_ayuda
             // 
             this.Btn_ayuda.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Btn_ayuda.BackgroundImage = global::Capa_Vista_Anticipos.Properties.Resources.preguntas2;
+            this.Btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Btn_ayuda.Image = global::Capa_Vista_Anticipos.Properties.Resources.preguntas;
             this.Btn_ayuda.Location = new System.Drawing.Point(1460, 15);
-            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_ayuda.Name = "Btn_ayuda";
-            this.Btn_ayuda.Size = new System.Drawing.Size(95, 75);
+            this.Btn_ayuda.Size = new System.Drawing.Size(95, 88);
             this.Btn_ayuda.TabIndex = 4;
             this.Btn_ayuda.UseVisualStyleBackColor = true;
             this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
@@ -136,7 +138,7 @@ namespace Capa_Vista_Anticipos
             this.Controls.Add(this.Lbl_mes_anticipo);
             this.Controls.Add(this.Btn_anticipo_nominas);
             this.Controls.Add(this.cmb_meses_anticipos);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_anticipos";
             this.Text = "frm_anticipos";
             this.ResumeLayout(false);

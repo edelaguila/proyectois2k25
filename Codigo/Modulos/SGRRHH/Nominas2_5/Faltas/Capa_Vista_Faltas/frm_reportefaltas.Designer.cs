@@ -51,7 +51,7 @@ namespace Capa_Vista_Faltas
             // 
             // Btn_generar
             // 
-            this.Btn_generar.BackgroundImage = global::Capa_Vista_Faltas.Properties.Resources.reporte_falta;
+            this.Btn_generar.BackgroundImage = global::Capa_Vista_Faltas.Properties.Resources.reporte1;
             this.Btn_generar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_generar.FlatAppearance.BorderSize = 0;
             this.Btn_generar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

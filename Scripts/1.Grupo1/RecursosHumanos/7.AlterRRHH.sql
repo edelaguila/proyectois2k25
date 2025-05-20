@@ -2,7 +2,7 @@ use colchoneria;
 -- --------------------------------Brandon Boch --------------------------------------
 ALTER TABLE Tbl_expedientes
 DROP COLUMN pruebas_psicometricas,
-DROP COLUMN pruebas_psicologicas,
+-- DROP COLUMN pruebas_psicologicas,
 DROP COLUMN pruebas_aptitud,
 DROP COLUMN estado;
 
@@ -187,6 +187,7 @@ BEGIN
 END $$
 DELIMITER ;
 
+-- A partir de aqui wtf 13/5/25
 CREATE TABLE IF NOT EXISTS tbl_salarios_mensuales (
     pk_id_salario INT NOT NULL AUTO_INCREMENT,
     fk_id_empleado INT NOT NULL,
@@ -250,14 +251,52 @@ select * from tbl_competencias;
 ALTER TABLE tbl_puestos_trabajo
 ADD puestos_salario_rec DECIMAL(10,2);
 
-
-
-
 -- ----------------------
-
 
 CREATE TABLE tbl_parametros (
     Pk_id_parametro INT AUTO_INCREMENT PRIMARY KEY,
     LimiteVerde DECIMAL(5,2),
     LimiteAmarillo DECIMAL(5,2)
 );
+
+INSERT INTO tbl_parametros (LimiteVerde, LimiteAmarillo)
+VALUES (80.00, 40.00);
+
+ SELECT e.pk_id_evaluacion, e.tipo_evaluacion, e.calificacion AS calificacion_general, e.comentarios AS comentario_general, 
+        d.calificacion AS calificacion_detalle, c.nombre_competencia, d.comentarios AS comentario_detalle
+ FROM tbl_evaluaciones e
+ INNER JOIN tbl_detalle_evaluacion d ON e.pk_id_evaluacion = d.fk_id_evaluacion
+ INNER JOIN tbl_competencias c ON d.fk_id_competencia = c.Pk_id_competencia
+ WHERE e.fk_clave_empleado = 2;
+ 
+ select* from tbl_evaluaciones;
+ 
+ -- Jose Daniel Sierra -------------------
+ -- 17/5/25
+ -- 1. Eliminar la clave foránea actual (nombre exacto puede variar)
+ALTER TABLE tbl_bonos_promociones
+DROP FOREIGN KEY tbl_bonos_promociones_ibfk_1;
+
+-- 2. Eliminar la columna fk_id_resultado
+ALTER TABLE tbl_bonos_promociones
+DROP COLUMN fk_id_resultado;
+
+-- 3. Agregar columna fk_id_evaluacion
+ALTER TABLE tbl_bonos_promociones
+ADD COLUMN fk_id_evaluacion INT NOT NULL AFTER pk_id_bono_promocion;
+
+-- 4. Agregar columna fk_clave_empleado
+ALTER TABLE tbl_bonos_promociones
+ADD COLUMN fk_clave_empleado INT NOT NULL AFTER fk_id_evaluacion;
+
+-- 5. Crear clave foránea hacia tbl_evaluaciones
+ALTER TABLE tbl_bonos_promociones
+ADD CONSTRAINT fk_bono_evaluacion
+FOREIGN KEY (fk_id_evaluacion) REFERENCES tbl_evaluaciones(pk_id_evaluacion)
+ON DELETE CASCADE;
+
+-- 6. Crear clave foránea hacia tbl_empleados (con columna pk_clave)
+ALTER TABLE tbl_bonos_promociones
+ADD CONSTRAINT fk_bono_empleado
+FOREIGN KEY (fk_clave_empleado) REFERENCES tbl_empleados(pk_clave)
+ON DELETE CASCADE;

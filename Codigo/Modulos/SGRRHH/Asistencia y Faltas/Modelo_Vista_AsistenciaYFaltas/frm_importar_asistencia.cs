@@ -24,9 +24,13 @@ namespace Modelo_Vista_AsistenciaYFaltas
         public string idUsuario { get; set; }
 
 
-
+        public frm_importar_asistencia()
+        {
+            InitializeComponent(); // Aquí sí es correcto
+        }
         private void frm_importar_asistencia_Load(object sender, EventArgs e)
         {
+
             dgvAsistencias.Rows.Clear();
         }
 

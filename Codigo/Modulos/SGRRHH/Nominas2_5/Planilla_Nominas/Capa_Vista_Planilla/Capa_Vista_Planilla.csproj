@@ -158,5 +158,62 @@
   <ItemGroup>
     <None Include="Resources\printer.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-archivo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-archivo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\convenio1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ahorrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\borrar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reporte.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar-sesion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-archivo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar-archivo4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ahorrar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\borrar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imprimir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preguntas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reporte1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar-sesion1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

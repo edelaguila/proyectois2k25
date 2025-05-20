@@ -553,5 +553,10 @@ namespace Capa_Vista_Planilla
             }
             proCargarEncabezado();
         }
+
+        private void Frm_CalculoPerpDedu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

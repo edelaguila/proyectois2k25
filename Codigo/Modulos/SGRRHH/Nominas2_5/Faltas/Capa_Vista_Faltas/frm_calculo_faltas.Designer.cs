@@ -114,7 +114,7 @@ namespace Capa_Vista_Faltas
             // 
             // Btn_Reportes
             // 
-            this.Btn_Reportes.BackgroundImage = global::Capa_Vista_Faltas.Properties.Resources.reporte_falta;
+            this.Btn_Reportes.BackgroundImage = global::Capa_Vista_Faltas.Properties.Resources.reporte;
             this.Btn_Reportes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_Reportes.Location = new System.Drawing.Point(898, 12);
             this.Btn_Reportes.Name = "Btn_Reportes";
@@ -125,7 +125,7 @@ namespace Capa_Vista_Faltas
             // 
             // Btn_Ayudas
             // 
-            this.Btn_Ayudas.BackgroundImage = global::Capa_Vista_Faltas.Properties.Resources.icon_ayuda1;
+            this.Btn_Ayudas.BackgroundImage = global::Capa_Vista_Faltas.Properties.Resources.preguntas;
             this.Btn_Ayudas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_Ayudas.Location = new System.Drawing.Point(963, 12);
             this.Btn_Ayudas.Name = "Btn_Ayudas";
