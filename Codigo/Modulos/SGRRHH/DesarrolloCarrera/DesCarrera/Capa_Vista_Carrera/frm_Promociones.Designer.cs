@@ -222,6 +222,7 @@
             this.Btn_Salir.TabIndex = 6;
             this.Btn_Salir.TabStop = false;
             this.Btn_Salir.UseVisualStyleBackColor = true;
+            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
             // 
             // Btn_Eliminar
             // 

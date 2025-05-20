@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Carrera;
+using Capa_Controlador_Seguridad;
 using static Capa_Vista_Carrera.frm_Promociones;
 
 namespace Capa_Vista_Carrera
@@ -21,6 +22,9 @@ namespace Capa_Vista_Carrera
         private int estadoActivo = 1;
         string valorSeleccionado;
         string valorSeleccionado2;
+
+        logica logicaSeg = new logica();
+        public string idUsuario { get; set; }
         public frm_Carrera(String idUsuario)
         {
             InitializeComponent();
@@ -283,11 +287,13 @@ namespace Capa_Vista_Carrera
             CargarDatosCapacitaciones(idEmpleado);
             CargarDatosDesempeno(idEmpleado);
             CargarDatosDisciplinaria(idEmpleado);
+            logicaSeg.funinsertarabitacora(idUsuario, "Se consulto carrera", "Varias", "12002");
         }
         // Declarar el ToolTip en el boton Ayuda
         private ToolTip toolTipAyuda = new ToolTip();
         private void Btn_Ayuda_Click(object sender, EventArgs e)
         {
+            logicaSeg.funinsertarabitacora(idUsuario, "Se vio ayuda", "Varias", "12002");
             // Busca la carpeta raíz del proyecto llamada proyectois2k25 a partir de la ruta del ejecutable.
             // Si encuentra la carpeta, busca el archivo .chm dentro de ella y sus subcarpetas.
             //Si el archivo es encontrado, intenta abrirlo usando Help.ShowHelp().Si falla, lo abre directamente con el proceso del sistema.

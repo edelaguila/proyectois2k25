@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Carrera;
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Vista_Carrera
 {
@@ -21,6 +22,8 @@ namespace Capa_Vista_Carrera
         string valorSeleccionado;
         string valorSeleccionado2;
 
+        logica logicaSeg = new logica();
+        public string idUsuario { get; set; }
         public frm_Promociones(String idUsuario)
         {
             InitializeComponent();
@@ -459,6 +462,7 @@ namespace Capa_Vista_Carrera
                     // Insertar nuevo registro
                     logica2.funcInsertarPromocion(empleado, fecha, puestoactual, salarioactual, puestonuevo, salarionuevo, motivo);
                     MessageBox.Show("Registro insertado exitosamente");
+                    logicaSeg.funinsertarabitacora(idUsuario, "Ingreso una promocion", "Tbl_promociones", "12001");
                     CargarDatos();
 
                     // Inicializar los botones de excepción y estado como activos
@@ -575,6 +579,7 @@ namespace Capa_Vista_Carrera
                         LimpiarFormulario();
                         CargarDatos();
                         MessageBox.Show("Registro eliminado exitosamente");
+                        logicaSeg.funinsertarabitacora(idUsuario, "Se elimino una promocion", "Tbl_promociones", "12001");
                         //Btn_editar.Enabled = false;
                     }
                     catch (Exception ex)
@@ -593,6 +598,7 @@ namespace Capa_Vista_Carrera
         {
             frm_Reporte reporte = new frm_Reporte();
             reporte.Show();
+            logicaSeg.funinsertarabitacora(idUsuario, "Se vio el reporte", "Tbl_promociones", "12001");
         }
         // Declarar el ToolTip en el boton Ayuda
         private ToolTip toolTipAyuda = new ToolTip();
@@ -602,7 +608,7 @@ namespace Capa_Vista_Carrera
             // Si encuentra la carpeta, busca el archivo .chm dentro de ella y sus subcarpetas.
             //Si el archivo es encontrado, intenta abrirlo usando Help.ShowHelp().Si falla, lo abre directamente con el proceso del sistema.
 
-
+            logicaSeg.funinsertarabitacora(idUsuario, "Se consulto Ayuda", "Tbl_promociones", "12001");
             // Mostrar el ToolTip en el botón de ayuda
             toolTipAyuda.SetToolTip(Btn_Ayuda, "Documento de ayuda");
 
@@ -681,6 +687,15 @@ namespace Capa_Vista_Carrera
             return null; //retorna a null
         } //  **FIN AYUDA**
 
+        private void Btn_Salir_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Está seguro que desea salir?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            logicaSeg.funinsertarabitacora(idUsuario, "Se salio de promociones", "Tbl_promociones", "12001");
+        }
     }
 }
