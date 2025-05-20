@@ -1,5 +1,6 @@
- use nominasPrueba; 
-
+use colchoneria;
+ALTER TABLE tbl_puestos_trabajo
+ADD COLUMN Fk_id_perfil INT NULL;
 
 -- Tabla para nivel educativo
 CREATE TABLE IF NOT EXISTS Tbl_nivel_educativo (
@@ -22,7 +23,7 @@ INSERT INTO Tbl_nivel_educativo (nivel) VALUES
 INSERT INTO Tbl_disponibilidad (disponibilidad) VALUES 
 ('Inmediata'), ('1 semana'), ('1 mes'), ('Otro');
 
-
+DROP TABLE IF EXISTS Tbl_postulante;
 CREATE TABLE IF NOT EXISTS Tbl_postulante(
     Pk_id_postulante INT AUTO_INCREMENT PRIMARY KEY,
     Fk_puesto_aplica_postulante INT NULL,

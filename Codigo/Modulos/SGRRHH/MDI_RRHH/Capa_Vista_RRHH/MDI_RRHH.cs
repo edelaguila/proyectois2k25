@@ -243,7 +243,7 @@ namespace Capa_Vista_RRHH
             //frm_horasextra deptos = new frm_horasextra();
             //deptos.Show();
 
-            frm_horasextra GD = new frm_horasextra();
+            Capa_Vista_HorasExtras.frm_horasextra GD = new Capa_Vista_HorasExtras.frm_horasextra();
             GD.MdiParent = this;
             CentrarFormulario(GD);
             GD.Show();
@@ -460,7 +460,7 @@ namespace Capa_Vista_RRHH
 
             frm_importar_asistencia GD = new frm_importar_asistencia();
             GD.MdiParent = this;
-            CentrarFormulario(GD);
+            GD.StartPosition = FormStartPosition.CenterScreen; // O CenterParent
             GD.Show();
         }
 

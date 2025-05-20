@@ -48,13 +48,13 @@ namespace Capa_Vista_Liquidaciones
             this.Txt_salario = new System.Windows.Forms.TextBox();
             this.Lbl_dias_laborados = new System.Windows.Forms.Label();
             this.Txt_dias_laborados = new System.Windows.Forms.TextBox();
+            this.Dgv_liquidaciones = new System.Windows.Forms.DataGridView();
             this.Btn_enlace_contabilidad = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
             this.Btn_cancelar = new System.Windows.Forms.Button();
             this.Btn_ayuda_liquidaciones = new System.Windows.Forms.Button();
             this.Btn_reporte_liquidaciones = new System.Windows.Forms.Button();
             this.Btn_calculo_liquidaciones = new System.Windows.Forms.Button();
-            this.Dgv_liquidaciones = new System.Windows.Forms.DataGridView();
             this.Gpb_pago_liquidacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_liquidaciones)).BeginInit();
             this.SuspendLayout();
@@ -235,67 +235,6 @@ namespace Capa_Vista_Liquidaciones
             this.Txt_dias_laborados.Size = new System.Drawing.Size(204, 30);
             this.Txt_dias_laborados.TabIndex = 16;
             // 
-            // Btn_enlace_contabilidad
-            // 
-            this.Btn_enlace_contabilidad.Image = global::Capa_Vista_Liquidaciones.Properties.Resources.icono_contabilidad_64px;
-            this.Btn_enlace_contabilidad.Location = new System.Drawing.Point(925, 776);
-            this.Btn_enlace_contabilidad.Name = "Btn_enlace_contabilidad";
-            this.Btn_enlace_contabilidad.Size = new System.Drawing.Size(73, 73);
-            this.Btn_enlace_contabilidad.TabIndex = 7;
-            this.Btn_enlace_contabilidad.UseVisualStyleBackColor = true;
-            this.Btn_enlace_contabilidad.Click += new System.EventHandler(this.Btn_enlace_contabilidad_Click);
-            // 
-            // Btn_salir
-            // 
-            this.Btn_salir.Image = global::Capa_Vista_Liquidaciones.Properties.Resources.icono_salir_64px;
-            this.Btn_salir.Location = new System.Drawing.Point(925, 23);
-            this.Btn_salir.Name = "Btn_salir";
-            this.Btn_salir.Size = new System.Drawing.Size(73, 73);
-            this.Btn_salir.TabIndex = 6;
-            this.Btn_salir.UseVisualStyleBackColor = true;
-            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
-            // 
-            // Btn_cancelar
-            // 
-            this.Btn_cancelar.Image = global::Capa_Vista_Liquidaciones.Properties.Resources.icono_cancelar_64px;
-            this.Btn_cancelar.Location = new System.Drawing.Point(836, 22);
-            this.Btn_cancelar.Name = "Btn_cancelar";
-            this.Btn_cancelar.Size = new System.Drawing.Size(73, 74);
-            this.Btn_cancelar.TabIndex = 5;
-            this.Btn_cancelar.UseVisualStyleBackColor = true;
-            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
-            // 
-            // Btn_ayuda_liquidaciones
-            // 
-            this.Btn_ayuda_liquidaciones.Image = global::Capa_Vista_Liquidaciones.Properties.Resources.icono_ayuda_64px;
-            this.Btn_ayuda_liquidaciones.Location = new System.Drawing.Point(748, 22);
-            this.Btn_ayuda_liquidaciones.Name = "Btn_ayuda_liquidaciones";
-            this.Btn_ayuda_liquidaciones.Size = new System.Drawing.Size(73, 73);
-            this.Btn_ayuda_liquidaciones.TabIndex = 4;
-            this.Btn_ayuda_liquidaciones.UseVisualStyleBackColor = true;
-            this.Btn_ayuda_liquidaciones.Click += new System.EventHandler(this.Btn_ayuda_liquidaciones_Click);
-            // 
-            // Btn_reporte_liquidaciones
-            // 
-            this.Btn_reporte_liquidaciones.Image = global::Capa_Vista_Liquidaciones.Properties.Resources.icono_reporte_64px;
-            this.Btn_reporte_liquidaciones.Location = new System.Drawing.Point(659, 22);
-            this.Btn_reporte_liquidaciones.Name = "Btn_reporte_liquidaciones";
-            this.Btn_reporte_liquidaciones.Size = new System.Drawing.Size(73, 73);
-            this.Btn_reporte_liquidaciones.TabIndex = 3;
-            this.Btn_reporte_liquidaciones.UseVisualStyleBackColor = true;
-            this.Btn_reporte_liquidaciones.Click += new System.EventHandler(this.Btn_reporte_liquidaciones_Click);
-            // 
-            // Btn_calculo_liquidaciones
-            // 
-            this.Btn_calculo_liquidaciones.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_calculo_liquidaciones.Image = global::Capa_Vista_Liquidaciones.Properties.Resources.icono_guardar_64px;
-            this.Btn_calculo_liquidaciones.Location = new System.Drawing.Point(574, 21);
-            this.Btn_calculo_liquidaciones.Name = "Btn_calculo_liquidaciones";
-            this.Btn_calculo_liquidaciones.Size = new System.Drawing.Size(70, 73);
-            this.Btn_calculo_liquidaciones.TabIndex = 2;
-            this.Btn_calculo_liquidaciones.UseVisualStyleBackColor = true;
-            this.Btn_calculo_liquidaciones.Click += new System.EventHandler(this.Btn_calculo_liquidaciones_Click);
-            // 
             // Dgv_liquidaciones
             // 
             this.Dgv_liquidaciones.AllowUserToAddRows = false;
@@ -308,6 +247,73 @@ namespace Capa_Vista_Liquidaciones
             this.Dgv_liquidaciones.RowTemplate.Height = 24;
             this.Dgv_liquidaciones.Size = new System.Drawing.Size(958, 216);
             this.Dgv_liquidaciones.TabIndex = 20;
+            // 
+            // Btn_enlace_contabilidad
+            // 
+            this.Btn_enlace_contabilidad.BackgroundImage = global::Capa_Vista_Liquidaciones.Properties.Resources.caja_registradora;
+            this.Btn_enlace_contabilidad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_enlace_contabilidad.Location = new System.Drawing.Point(925, 776);
+            this.Btn_enlace_contabilidad.Name = "Btn_enlace_contabilidad";
+            this.Btn_enlace_contabilidad.Size = new System.Drawing.Size(73, 73);
+            this.Btn_enlace_contabilidad.TabIndex = 7;
+            this.Btn_enlace_contabilidad.UseVisualStyleBackColor = true;
+            this.Btn_enlace_contabilidad.Click += new System.EventHandler(this.Btn_enlace_contabilidad_Click);
+            // 
+            // Btn_salir
+            // 
+            this.Btn_salir.BackgroundImage = global::Capa_Vista_Liquidaciones.Properties.Resources.cerrar_sesion1;
+            this.Btn_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_salir.Location = new System.Drawing.Point(912, 16);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(82, 86);
+            this.Btn_salir.TabIndex = 6;
+            this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
+            // 
+            // Btn_cancelar
+            // 
+            this.Btn_cancelar.BackgroundImage = global::Capa_Vista_Liquidaciones.Properties.Resources.cancelar1;
+            this.Btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_cancelar.Location = new System.Drawing.Point(824, 16);
+            this.Btn_cancelar.Name = "Btn_cancelar";
+            this.Btn_cancelar.Size = new System.Drawing.Size(82, 86);
+            this.Btn_cancelar.TabIndex = 5;
+            this.Btn_cancelar.UseVisualStyleBackColor = true;
+            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
+            // 
+            // Btn_ayuda_liquidaciones
+            // 
+            this.Btn_ayuda_liquidaciones.BackgroundImage = global::Capa_Vista_Liquidaciones.Properties.Resources.preguntas1;
+            this.Btn_ayuda_liquidaciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_ayuda_liquidaciones.Location = new System.Drawing.Point(736, 15);
+            this.Btn_ayuda_liquidaciones.Name = "Btn_ayuda_liquidaciones";
+            this.Btn_ayuda_liquidaciones.Size = new System.Drawing.Size(82, 87);
+            this.Btn_ayuda_liquidaciones.TabIndex = 4;
+            this.Btn_ayuda_liquidaciones.UseVisualStyleBackColor = true;
+            this.Btn_ayuda_liquidaciones.Click += new System.EventHandler(this.Btn_ayuda_liquidaciones_Click);
+            // 
+            // Btn_reporte_liquidaciones
+            // 
+            this.Btn_reporte_liquidaciones.BackgroundImage = global::Capa_Vista_Liquidaciones.Properties.Resources.reporte1;
+            this.Btn_reporte_liquidaciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_reporte_liquidaciones.Location = new System.Drawing.Point(647, 16);
+            this.Btn_reporte_liquidaciones.Name = "Btn_reporte_liquidaciones";
+            this.Btn_reporte_liquidaciones.Size = new System.Drawing.Size(83, 86);
+            this.Btn_reporte_liquidaciones.TabIndex = 3;
+            this.Btn_reporte_liquidaciones.UseVisualStyleBackColor = true;
+            this.Btn_reporte_liquidaciones.Click += new System.EventHandler(this.Btn_reporte_liquidaciones_Click);
+            // 
+            // Btn_calculo_liquidaciones
+            // 
+            this.Btn_calculo_liquidaciones.BackgroundImage = global::Capa_Vista_Liquidaciones.Properties.Resources.ahorrar1;
+            this.Btn_calculo_liquidaciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_calculo_liquidaciones.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_calculo_liquidaciones.Location = new System.Drawing.Point(560, 15);
+            this.Btn_calculo_liquidaciones.Name = "Btn_calculo_liquidaciones";
+            this.Btn_calculo_liquidaciones.Size = new System.Drawing.Size(81, 87);
+            this.Btn_calculo_liquidaciones.TabIndex = 2;
+            this.Btn_calculo_liquidaciones.UseVisualStyleBackColor = true;
+            this.Btn_calculo_liquidaciones.Click += new System.EventHandler(this.Btn_calculo_liquidaciones_Click);
             // 
             // Frm_calcular_liquidacion
             // 

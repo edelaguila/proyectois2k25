@@ -36,9 +36,9 @@ namespace Capa_Vista_HorasExtras
             this.Lbl_titulo = new System.Windows.Forms.Label();
             this.Lbl_empleado = new System.Windows.Forms.Label();
             this.Cbo_empleado = new System.Windows.Forms.ComboBox();
+            this.Btn_limpiar = new System.Windows.Forms.Button();
             this.Btn_reportes = new System.Windows.Forms.Button();
             this.Btn_ayuda = new System.Windows.Forms.Button();
-            this.Btn_limpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Lbl_mes
@@ -56,7 +56,7 @@ namespace Capa_Vista_HorasExtras
             // 
             this.Cbo_mes.FormattingEnabled = true;
             this.Cbo_mes.Location = new System.Drawing.Point(342, 159);
-            this.Cbo_mes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cbo_mes.Margin = new System.Windows.Forms.Padding(2);
             this.Cbo_mes.Name = "Cbo_mes";
             this.Cbo_mes.Size = new System.Drawing.Size(158, 24);
             this.Cbo_mes.TabIndex = 1;
@@ -65,7 +65,7 @@ namespace Capa_Vista_HorasExtras
             // Txt_calculohoras
             // 
             this.Txt_calculohoras.Location = new System.Drawing.Point(342, 217);
-            this.Txt_calculohoras.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Txt_calculohoras.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_calculohoras.Name = "Txt_calculohoras";
             this.Txt_calculohoras.Size = new System.Drawing.Size(158, 22);
             this.Txt_calculohoras.TabIndex = 2;
@@ -110,49 +110,52 @@ namespace Capa_Vista_HorasExtras
             // 
             this.Cbo_empleado.FormattingEnabled = true;
             this.Cbo_empleado.Location = new System.Drawing.Point(342, 103);
-            this.Cbo_empleado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cbo_empleado.Margin = new System.Windows.Forms.Padding(2);
             this.Cbo_empleado.Name = "Cbo_empleado";
             this.Cbo_empleado.Size = new System.Drawing.Size(157, 24);
             this.Cbo_empleado.TabIndex = 6;
             this.Cbo_empleado.SelectedIndexChanged += new System.EventHandler(this.proCbo_empleado_SelectedIndexChanged);
             // 
+            // Btn_limpiar
+            // 
+            this.Btn_limpiar.BackgroundImage = global::Capa_Vista_HorasExtras.Properties.Resources.cancelar2;
+            this.Btn_limpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_limpiar.Location = new System.Drawing.Point(575, 103);
+            this.Btn_limpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_limpiar.Name = "Btn_limpiar";
+            this.Btn_limpiar.Size = new System.Drawing.Size(64, 67);
+            this.Btn_limpiar.TabIndex = 11;
+            this.Btn_limpiar.UseVisualStyleBackColor = true;
+            this.Btn_limpiar.Click += new System.EventHandler(this.Btn_limpiar_Click_1);
+            // 
             // Btn_reportes
             // 
+            this.Btn_reportes.BackgroundImage = global::Capa_Vista_HorasExtras.Properties.Resources.reporte2;
+            this.Btn_reportes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_reportes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Btn_reportes.Image = global::Capa_Vista_HorasExtras.Properties.Resources.reporte;
-            this.Btn_reportes.Location = new System.Drawing.Point(136, 285);
-            this.Btn_reportes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_reportes.Location = new System.Drawing.Point(112, 285);
+            this.Btn_reportes.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_reportes.Name = "Btn_reportes";
-            this.Btn_reportes.Size = new System.Drawing.Size(62, 57);
+            this.Btn_reportes.Size = new System.Drawing.Size(64, 67);
             this.Btn_reportes.TabIndex = 8;
             this.Btn_reportes.UseVisualStyleBackColor = true;
             this.Btn_reportes.Click += new System.EventHandler(this.Btn_reportes_Click);
             // 
             // Btn_ayuda
             // 
+            this.Btn_ayuda.BackgroundImage = global::Capa_Vista_HorasExtras.Properties.Resources.preguntas3;
+            this.Btn_ayuda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_ayuda.FlatAppearance.BorderSize = 0;
             this.Btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_ayuda.ForeColor = System.Drawing.SystemColors.Control;
-            this.Btn_ayuda.Image = global::Capa_Vista_HorasExtras.Properties.Resources.preguntas1;
-            this.Btn_ayuda.Location = new System.Drawing.Point(52, 285);
-            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_ayuda.Location = new System.Drawing.Point(37, 285);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_ayuda.Name = "Btn_ayuda";
-            this.Btn_ayuda.Size = new System.Drawing.Size(62, 57);
+            this.Btn_ayuda.Size = new System.Drawing.Size(64, 67);
             this.Btn_ayuda.TabIndex = 7;
             this.Btn_ayuda.UseVisualStyleBackColor = true;
             this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
-            // 
-            // Btn_limpiar
-            // 
-            this.Btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Btn_limpiar.Image = global::Capa_Vista_HorasExtras.Properties.Resources.cancelar;
-            this.Btn_limpiar.Location = new System.Drawing.Point(556, 87);
-            this.Btn_limpiar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Btn_limpiar.Name = "Btn_limpiar";
-            this.Btn_limpiar.Size = new System.Drawing.Size(71, 52);
-            this.Btn_limpiar.TabIndex = 11;
-            this.Btn_limpiar.UseVisualStyleBackColor = true;
-            this.Btn_limpiar.Click += new System.EventHandler(this.Btn_limpiar_Click_1);
             // 
             // frm_horasextra
             // 
@@ -170,7 +173,7 @@ namespace Capa_Vista_HorasExtras
             this.Controls.Add(this.Txt_calculohoras);
             this.Controls.Add(this.Cbo_mes);
             this.Controls.Add(this.Lbl_mes);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frm_horasextra";
             this.Text = "Horas Extras";
             this.Load += new System.EventHandler(this.frm_horasextra_Load);
