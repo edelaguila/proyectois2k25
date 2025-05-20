@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Capa_Vista_Reporte
 {
-    public partial class RprteProv : Form
+    public partial class ReporteClienteCR : Form
     {
-        public RprteProv()
+        public ReporteClienteCR()
         {
             InitializeComponent();
         }

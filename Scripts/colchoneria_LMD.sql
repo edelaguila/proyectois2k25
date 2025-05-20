@@ -855,3 +855,106 @@ VALUES
 (2, 250.00, '2025-02-10', '2024-04-10', 'Deuda 2', 1, 'Compra', 'Negativo', 1),
 (5, 750.00, '2024-03-01', '2024-05-01', 'Deuda 3', 1, 'Compra', 'Negativo', 1),
 (4, 750.00, '2024-03-01', '2024-05-01', 'Deuda 3', 1, 'Compra', 'Negativo', 1);
+
+INSERT INTO tbl_empleados (
+    empleados_nombre, empleados_apellido, empleados_fecha_nacimiento,
+    empleados_no_identificacion, empleados_codigo_postal, empleados_fecha_alta,
+    empleados_fecha_baja, empleados_causa_baja, fk_id_departamento, fk_id_puestos, estado
+) VALUES (
+    'Luis', 'García', '1990-03-15',
+    'DPI-123456789', '01010', '2023-01-01',
+    NULL, NULL, 1, 1, 1
+);
+
+INSERT INTO Tbl_cobrador (
+    Fk_id_empleado, cobrador_nombre, cobrador_direccion,
+    cobrador_telefono, cobrador_depto, estado
+) VALUES (
+    1, 'Luis García', 'Zona 10, Ciudad', 55551234, 'Guatemala', 1
+);
+
+INSERT INTO Tbl_clientes (
+    Pk_id_cliente, Clientes_nombre, Clientes_apellido, Clientes_nit,
+    Clientes_telefon, Clientes_direccion, Clientes_No_Cuenta,
+    Cliente_email, Cliente_Tipo, Cliente_lim_credito,
+    Cliente_dias_credito, Fecha_Registro
+) VALUES (
+    6, 'Ana', 'Lopez', '1234567-8',
+    '5555-1234', 'Colonia Centro', 'CT-001',
+    'ana@example.com', 'Crédito', 5000.00,
+    30, '2024-06-01'
+);
+
+INSERT INTO Tbl_clientes (
+    Pk_id_cliente,
+    Clientes_nombre,
+    Clientes_apellido,
+    Clientes_nit,
+    Clientes_telefon,
+    Clientes_direccion,
+    Clientes_No_Cuenta,
+    estado,
+    Cliente_email,
+    Cliente_Tipo,
+    Cliente_lim_credito,
+    Cliente_dias_credito,
+    Fecha_Registro
+)
+VALUES (
+    7,
+    'Andrea',
+    'Gómez',
+    '9876543-2',
+    '4498765432',
+    'Zona 5, Guatemala',
+    'CTA-002',
+    1,
+    'andrea.gomez@example.com',
+    'Crédito',
+    5000.00,
+    30,
+    '2025-05-20'
+);
+
+
+INSERT INTO Tbl_Factura_Cliente (
+    Fk_id_venta, Fk_No_serie, Fk_No_de_facV,
+    id_clienteFact, fecha_emision, fecha_vencimiento,
+    Total_a_pagar, saldo
+) VALUES (
+    101, 'SER001', NULL,
+    1, '2024-06-10', '2024-07-10',
+    1500.00, 1500.00
+);
+
+INSERT INTO Tbl_Deudas_Clientes (
+    Fk_id_cliente, Fk_id_cobrador, Fk_id_factura,
+    deuda_monto, deuda_fecha_inicio_deuda, deuda_fecha_vencimiento_deuda,
+    deuda_descripcion_deuda, deuda_estado
+) VALUES (
+    6, 1, 1,
+    1500.00, '2024-06-10', '2024-07-10',
+    'Compra de productos varios a crédito', 1
+);
+
+INSERT INTO Tbl_Deudas_Clientes (
+    Fk_id_cliente,
+    Fk_id_cobrador,
+    Fk_id_factura,
+    deuda_monto,
+    deuda_fecha_inicio_deuda,
+    deuda_fecha_vencimiento_deuda,
+    deuda_descripcion_deuda,
+    deuda_estado
+)
+VALUES (
+    7,                      
+    1,                      
+    1,                      
+    1500.75,                
+    '2025-05-01',           
+    '2025-06-01',           
+    'Pago pendiente por servicios prestados', 
+    1                       
+);
+

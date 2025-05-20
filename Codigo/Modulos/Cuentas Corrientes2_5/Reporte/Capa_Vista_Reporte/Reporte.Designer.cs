@@ -29,12 +29,14 @@ namespace Capa_Vista_Reporte
         /// </summary>
         private void InitializeComponent()
         {
-            this.ReporteProveedor1 = new Capa_Vista_Reporte.ReporteProveedor();
-            this.ReporteProveedor2 = new Capa_Vista_Reporte.ReporteProveedor();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.crystalReportViewer2 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.crystalReportViewer3 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.ReporteProveedor3 = new Capa_Vista_Reporte.ReporteProveedor();
+            this.ReportesProv1 = new Capa_Vista_Reporte.ReportesProv();
+            //this.ReporteProveedor3 = new Capa_Vista_Reporte.ReporteProveedor();
+            //this.ReporteProveedor1 = new Capa_Vista_Reporte.ReporteProveedor();
+            //this.ReporteProveedor2 = new Capa_Vista_Reporte.ReporteProveedor();
+            this.ReportesProv2 = new Capa_Vista_Reporte.ReportesProv();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -50,12 +52,13 @@ namespace Capa_Vista_Reporte
             // 
             // crystalReportViewer2
             // 
-            this.crystalReportViewer2.ActiveViewIndex = -1;
+            this.crystalReportViewer2.ActiveViewIndex = 0;
             this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer2.Name = "crystalReportViewer2";
+            this.crystalReportViewer2.ReportSource = this.ReportesProv2;
             this.crystalReportViewer2.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer2.TabIndex = 1;
             // 
@@ -67,7 +70,7 @@ namespace Capa_Vista_Reporte
             this.crystalReportViewer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer3.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer3.Name = "crystalReportViewer3";
-            this.crystalReportViewer3.ReportSource = this.ReporteProveedor3;
+            this.crystalReportViewer3.ReportSource = this.ReportesProv1;
             this.crystalReportViewer3.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer3.TabIndex = 2;
             // 
@@ -86,17 +89,19 @@ namespace Capa_Vista_Reporte
         }
 
         #endregion
-        private ReporteProveedor ReporteProveedor1;
+        //private ReporteProveedor ReporteProveedor1;
         //private CrystalReport2 CrystalReport22;
         //private CrystalReport4 CrystalReport41;
         //private CrystalReport4 CrystalReport42;
         //private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private ReporteProveedor ReporteProveedor2;
+        //private ReporteProveedor ReporteProveedor2;
         //private CrystalReport4 CrystalReport43;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer2;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer3;
-        private ReporteProveedor ReporteProveedor3;
+        //private ReporteProveedor ReporteProveedor3;
+        private ReportesProv ReportesProv1;
+        private ReportesProv ReportesProv2;
         //private CrystalReport4 CrystalReport44;
         // private Prueba Prueba1;
     }
