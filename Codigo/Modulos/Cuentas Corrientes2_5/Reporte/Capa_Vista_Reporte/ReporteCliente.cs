@@ -21,15 +21,29 @@ namespace Capa_Vista_Reporte
 
         private void Btn_Buscar_Click(object sender, EventArgs e)
         {
-            //mostramos todos los reportes que hay en la base de datos según lo introducido en el textbox y la desplegamos
-            
-            DataTable data = controlador.queryDeudaC(textBox1);
+            string idCliente = textBox1.Text.Trim();
+            DateTime fechaInicio = dateTimePicker1.Value.Date;
+            DateTime fechaFin = dateTimePicker2.Value.Date;
+
+            if (fechaInicio > fechaFin)
+            {
+                MessageBox.Show("La fecha de inicio no puede ser mayor que la fecha final.");
+                return;
+            }
+
+            DataTable data = controlador.queryDeudaCConFecha(idCliente, fechaInicio, fechaFin);
             dataGridView1.DataSource = data;
+
+            if (data.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontraron resultados en ese rango de fechas.");
+            }
         }
 
         private void Btn_reportes_Click(object sender, EventArgs e)
         {
-
+            ReporteClienteCR RprtFrmCli = new ReporteClienteCR();
+            RprtFrmCli.Show();
         }
     }
 }

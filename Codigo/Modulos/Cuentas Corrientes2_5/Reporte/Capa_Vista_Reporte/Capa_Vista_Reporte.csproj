@@ -60,6 +60,12 @@
       <DependentUpon>MenuReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteClienteCR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteClienteCR.Designer.cs">
+      <DependentUpon>ReporteClienteCR.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReporteProv.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,22 +84,25 @@
     <Compile Include="ReporteCliente.Designer.cs">
       <DependentUpon>ReporteCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReporteProveedor1.cs">
+    <Compile Include="ReportesProv.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteProveedor.rpt</DependentUpon>
+      <DependentUpon>ReportesProv.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="RprteProv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RprteProv.Designer.cs">
-      <DependentUpon>RprteProv.cs</DependentUpon>
+    <Compile Include="RprteClnts.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RprteClnts.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MenuReporte.resx">
       <DependentUpon>MenuReporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteClienteCR.resx">
+      <DependentUpon>ReporteClienteCR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteProv.resx">
       <DependentUpon>ReporteProv.cs</DependentUpon>
@@ -104,12 +113,13 @@
     <EmbeddedResource Include="ReporteCliente.resx">
       <DependentUpon>ReporteCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteProveedor.rpt">
+    <EmbeddedResource Include="ReportesProv.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteProveedor1.cs</LastGenOutput>
+      <LastGenOutput>ReportesProv.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RprteProv.resx">
-      <DependentUpon>RprteProv.cs</DependentUpon>
+    <EmbeddedResource Include="RprteClnts.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RprteClnts.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

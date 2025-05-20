@@ -16,14 +16,14 @@ namespace Capa_Vista_Reporte {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteProveedor : ReportClass {
+    public class RprteClnts : ReportClass {
         
-        public ReporteProveedor() {
+        public RprteClnts() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteProveedor.rpt";
+                return "RprteClnts.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Capa_Vista_Reporte {
         
         public override string FullResourceName {
             get {
-                return "Capa_Vista_Reporte.ReporteProveedor.rpt";
+                return "Capa_Vista_Reporte.RprteClnts.rpt";
             }
             set {
                 // Do nothing
@@ -106,9 +106,9 @@ namespace Capa_Vista_Reporte {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteProveedor : Component, ICachedReport {
+    public class CachedRprteClnts : Component, ICachedReport {
         
-        public CachedReporteProveedor() {
+        public CachedRprteClnts() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace Capa_Vista_Reporte {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteProveedor rpt = new ReporteProveedor();
+            RprteClnts rpt = new RprteClnts();
             rpt.Site = this.Site;
             return rpt;
         }
