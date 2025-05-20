@@ -306,6 +306,43 @@ namespace Capa_Modelo_AsistenciaYFaltas
             }
         }
 
+        public void InsertarFalta(FaltaRecord falta)
+        {
+            string sql = @"INSERT INTO tbl_control_faltas
+        (faltas_fecha_falta, faltas_mes, faltas_justificacion,
+         fk_clave_empleado, estado, justificada, fk_id_permiso, fk_id_excepcion)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+            using (var cmd = new OdbcCommand(sql, cn.conexion()))
+            {
+                cmd.Parameters.AddWithValue("?", falta.Fecha);
+                cmd.Parameters.AddWithValue("?", falta.MesTexto);
+                cmd.Parameters.AddWithValue("?", falta.Justificacion);
+                cmd.Parameters.AddWithValue("?", falta.IdEmpleado);
+                cmd.Parameters.AddWithValue("?", falta.Estado);
+                cmd.Parameters.AddWithValue("?", falta.Justificada);
+                cmd.Parameters.AddWithValue("?", (object)falta.IdPermiso ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("?", (object)falta.IdExcepcion ?? DBNull.Value);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void InsertarHorasExtra(HorasExtraRecord horas)
+        {
+            string sql = @"INSERT INTO tbl_horas_extra
+        (horas_mes, horas_cantidad_horas, fk_clave_empleado, estado)
+        VALUES (?, ?, ?, ?)";
+
+            using (var cmd = new OdbcCommand(sql, cn.conexion()))
+            {
+                cmd.Parameters.AddWithValue("?", horas.MesTexto);
+                cmd.Parameters.AddWithValue("?", horas.CantidadHoras);
+                cmd.Parameters.AddWithValue("?", horas.IdEmpleado);
+                cmd.Parameters.AddWithValue("?", horas.Estado);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
 
 
         public class AsistenciaInfo
@@ -324,7 +361,24 @@ namespace Capa_Modelo_AsistenciaYFaltas
             public bool Aprobado { get; set; }
             public bool ConGoce { get; set; }
         }
-
+        public class FaltaRecord
+        {
+            public DateTime Fecha { get; set; }
+            public string MesTexto { get; set; }
+            public string Justificacion { get; set; }
+            public int IdEmpleado { get; set; }
+            public int Estado { get; set; }
+            public int Justificada { get; set; }
+            public int? IdPermiso { get; set; }
+            public int? IdExcepcion { get; set; }
+        }
+        public class HorasExtraRecord
+        {
+            public string MesTexto { get; set; }
+            public int CantidadHoras { get; set; }
+            public int IdEmpleado { get; set; }
+            public int Estado { get; set; }
+        }
         public class ExcepcionInfo
         {
             public int Semana { get; set; }

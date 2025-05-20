@@ -51,12 +51,40 @@ namespace Modelo_Vista_AsistenciaYFaltas
                     .Select(a => a.Fecha.Date)
                     .Distinct()
                     .ToList();
+                foreach (var fechaFalta in faltas)
+                {
+                    var permiso = permisos.FirstOrDefault(p =>
+                        fechaFalta >= p.Inicio &&
+                        fechaFalta <= p.Fin);
+
+                    controlador.InsertarFalta(new Sentencia.FaltaRecord
+                    {
+                        Fecha = fechaFalta,
+                        MesTexto = new DateTime(anio, mes, 1).ToString("MMMM", CultureInfo.InvariantCulture),
+                        Justificacion = permiso != null ? "Permiso" : "Sin justificar",
+                        IdEmpleado = emp.Id,
+                        Estado = 1,
+                        Justificada = permiso != null ? 1 : 0,
+                        IdPermiso = permiso != null ? (int?)permisos.IndexOf(permiso) + 1 : null,
+                        IdExcepcion = null
+                    });
+                }
 
                 // 5) Horas extra: excedentes de 8h diarias
                 double totalHE = asistencias
                     .Select(a => (a.HoraSalida - a.HoraEntrada).TotalHours - 8)
                     .Where(h => h > 0)
                     .Sum();
+                if (totalHE > 0)
+                {
+                    controlador.InsertarHorasExtra(new Sentencia.HorasExtraRecord
+                    {
+                        MesTexto = new DateTime(anio, mes, 1).ToString("MMMM", CultureInfo.InvariantCulture),
+                        CantidadHoras = (int)Math.Round(totalHE),
+                        IdEmpleado = emp.Id,
+                        Estado = 1
+                    });
+                }
 
                 // 6) Semanas con faltas no exentas para séptimo día
                 var semanasConFaltas = faltas

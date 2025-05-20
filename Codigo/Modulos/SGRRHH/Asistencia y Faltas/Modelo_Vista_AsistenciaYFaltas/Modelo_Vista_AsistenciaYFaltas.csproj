@@ -67,6 +67,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsisRep.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AsisRep.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AsistenciReporte.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AsistenciReporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="frm_importar_asistencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +118,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AsisRep.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AsisRep.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AsistenciReporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AsistenciReporte.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_importar_asistencia.resx">
       <DependentUpon>frm_importar_asistencia.cs</DependentUpon>
     </EmbeddedResource>

@@ -73,7 +73,16 @@ namespace Capa_Controlador_AsistenciaYFaltas
             return sn.GetAsistenciasPreeliminarInfo();
         }
 
+        // 12) Insertar horas extra detectadas
+        public void InsertarHorasExtra(Sentencia.HorasExtraRecord horas)
+        {
+            sn.InsertarHorasExtra(horas);
+        }
 
+        public void InsertarFalta(Sentencia.FaltaRecord falta)
+        {
+            sn.InsertarFalta(falta);
+        }
         public void InsertarAsistenciaProcesada(int idEmpleado, DateTime fecha, TimeSpan horaEntrada, TimeSpan horaSalida, string estado)
         {
             sn.InsertarAsistenciaProcesada(idEmpleado, fecha, horaEntrada, horaSalida, estado);
