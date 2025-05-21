@@ -87,5 +87,18 @@ namespace Capa_Controlador_AsistenciaYFaltas
         {
             sn.InsertarAsistenciaProcesada(idEmpleado, fecha, horaEntrada, horaSalida, estado);
         }
+
+        
+        public List<Sentencia.FaltaRecord> ObtenerFaltasPorEmpleado(int idEmpleado, int mes, int anio)
+        {
+            return sn.ObtenerFaltasEmpleado(idEmpleado, mes, anio);
+        }
+
+     
+        public List<Sentencia.HorasExtraRecord> ObtenerHorasExtraPorEmpleado(int idEmpleado, int mes, int anio)
+        {
+            return sn.ObtenerHorasExtraEmpleado(idEmpleado, mes, anio);
+        }
+
     }
 }

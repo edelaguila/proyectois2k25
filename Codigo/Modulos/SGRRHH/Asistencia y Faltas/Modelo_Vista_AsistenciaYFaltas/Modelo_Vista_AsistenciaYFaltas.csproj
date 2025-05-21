@@ -79,6 +79,12 @@
       <DependentUpon>AsistenciReporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="frm_detalle_asistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_detalle_asistencia.Designer.cs">
+      <DependentUpon>frm_detalle_asistencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_importar_asistencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>AsistenciReporte.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_detalle_asistencia.resx">
+      <DependentUpon>frm_detalle_asistencia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_importar_asistencia.resx">
       <DependentUpon>frm_importar_asistencia.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon %283%291.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

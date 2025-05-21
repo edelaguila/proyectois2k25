@@ -35,6 +35,7 @@ namespace Modelo_Vista_AsistenciaYFaltas
 
         private void btnCargar_Click_1(object sender, EventArgs e)
         {
+           
             // 1) Leemos los objetos AsistenciaInfo desde staging (ya parseados)
             var crudas = controlador.ObtenerAsistenciasPreeliminarInfo();
             //MessageBox.Show($"DEBUG: Asistencias preliminares cargadas: {crudas.Count}", "DEBUG");
@@ -171,6 +172,18 @@ namespace Modelo_Vista_AsistenciaYFaltas
             public TimeSpan HoraEntrada { get; set; }
             public TimeSpan HoraSalida { get; set; }
             public string Estado { get; set; }
+        }
+
+        private void Btn_Buscar_Click(object sender, EventArgs e)
+        {
+            if (dgvValidacion.CurrentRow == null) return;
+
+            int idEmp = Convert.ToInt32(dgvValidacion.CurrentRow.Cells["ID"].Value);
+
+            using (var frm = new frm_detalle_asistencia(idEmp, mes, anio))
+            {
+                frm.ShowDialog();
+            }
         }
 
         private void frm_validar_asistencia_Load_1(object sender, EventArgs e)

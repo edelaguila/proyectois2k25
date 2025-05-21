@@ -343,6 +343,90 @@ namespace Capa_Modelo_AsistenciaYFaltas
             }
         }
 
+        // 10) Obtener faltas de un empleado en un mes/año
+        public List<FaltaRecord> ObtenerFaltasEmpleado(int idEmpleado, int mes, int anio)
+        {
+            var lista = new List<FaltaRecord>();
+            string sql = @"
+        SELECT faltas_fecha_falta, faltas_mes, faltas_justificacion,
+               fk_clave_empleado, estado, justificada,
+               fk_id_permiso, fk_id_excepcion
+          FROM tbl_control_faltas
+         WHERE fk_clave_empleado = ?
+           AND MONTH(faltas_fecha_falta) = ?
+           AND YEAR(faltas_fecha_falta) = ?;";
+
+            using (var cmd = new OdbcCommand(sql, cn.conexion()))
+            {
+                cmd.Parameters.AddWithValue("?", idEmpleado);
+                cmd.Parameters.AddWithValue("?", mes);
+                cmd.Parameters.AddWithValue("?", anio);
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        lista.Add(new FaltaRecord
+                        {
+                            Fecha = dr.GetDateTime(0),
+                            MesTexto = dr.GetString(1),
+                            Justificacion = dr.GetString(2),
+                            IdEmpleado = dr.GetInt32(3),
+                            Estado = dr.GetInt32(4),
+                            Justificada = dr.GetInt32(5),
+                            IdPermiso = dr.IsDBNull(6) ? (int?)null : dr.GetInt32(6),
+                            IdExcepcion = dr.IsDBNull(7) ? (int?)null : dr.GetInt32(7)
+                        });
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        // 11) Obtener horas extra de un empleado en un mes/año
+        public List<HorasExtraRecord> ObtenerHorasExtraEmpleado(int idEmpleado, int mes, int anio)
+        {
+            var lista = new List<HorasExtraRecord>();
+            // Asumo que 'horas_mes' es el nombre del mes, y no hay año en la tabla;
+            // filtramos por empleado y mes-calculado en C#
+            string sql = @"
+        SELECT horas_mes, horas_cantidad_horas, fk_clave_empleado, estado
+          FROM tbl_horas_extra
+         WHERE fk_clave_empleado = ?;";
+
+            using (var cmd = new OdbcCommand(sql, cn.conexion()))
+            {
+                cmd.Parameters.AddWithValue("?", idEmpleado);
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        var mesTexto = dr.GetString(0);
+                        // Convertir mesTexto+anio a fecha para filtrar
+                        if (DateTime.TryParseExact(
+                                $"01-{mesTexto}-{anio}",
+                                "dd-MMMM-yyyy",
+                                CultureInfo.InvariantCulture,
+                                DateTimeStyles.None,
+                                out var fecha))
+                        {
+                            if (fecha.Month == mes)
+                            {
+                                lista.Add(new HorasExtraRecord
+                                {
+                                    MesTexto = mesTexto,
+                                    CantidadHoras = dr.GetInt32(1),
+                                    IdEmpleado = dr.GetInt32(2),
+                                    Estado = dr.GetInt32(3)
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
 
 
         public class AsistenciaInfo
