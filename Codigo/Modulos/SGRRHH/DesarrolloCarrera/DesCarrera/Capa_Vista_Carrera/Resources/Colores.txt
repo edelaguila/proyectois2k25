@@ -1,0 +1,10 @@
+Colores
+
+Color principal (Azul corporativo, profesional y confiable)
+HEX: #1E5A96 -- Objetos en si
+
+Color más suave (Azul claro, para fondos o elementos secundarios)
+HEX: #B4D2F0 -- Fondo  
+
+#B4D2F0
+#1E5A96

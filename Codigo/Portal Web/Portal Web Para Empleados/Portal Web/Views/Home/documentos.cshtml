@@ -1,0 +1,34 @@
+﻿@model Portal_Web.Models.ExpedienteViewModel
+@{
+    Layout = null;
+}
+
+<h2>Subir Currículum PDF</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div style="color: green; font-weight: bold;">@TempData["Mensaje"]</div>
+}
+
+@using (Html.BeginForm("documentos", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label for="Fk_id_postulante">Selecciona Postulante:</label>
+        @Html.DropDownListFor(m => m.Fk_id_postulante, (SelectList)ViewBag.Fk_id_postulante, "--Seleccione--")
+        @Html.ValidationMessageFor(m => m.Fk_id_postulante)
+    </div>
+
+    <div>
+        <label for="Curriculum">Archivo PDF del Currículum:</label>
+        <input type="file" name="Curriculum" id="Curriculum" accept="application/pdf" />
+        @Html.ValidationMessageFor(m => m.Curriculum)
+    </div>
+
+    <button type="submit">Subir</button>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//using Capa_Vista_Migracion;
+using Capa_Vista_Migracion;
 
 
 namespace Interfac_V3
@@ -115,7 +115,7 @@ namespace Interfac_V3
                     // Abrir MDI_Seguridad solo si el login fue exitoso
                     MDI_Seguridad formMDI = new MDI_Seguridad(idUsuario);
                     formMDI.Show();
-                    this.Hide(); // Ocultar el formulario de inicio*/
+                    this.Hide();  // Ocultar el formulario de inicio*/
 
                 }
                 else
@@ -168,8 +168,8 @@ namespace Interfac_V3
             Aqui debe de agregarse la referencia a nominas
             */
 
-            //frm_principal_migracion nominas = new frm_principal_migracion(UsuarioSesion.GetIdUsuario());
-            //nominas.Show();
+            frm_principal_migracion nominas = new frm_principal_migracion(UsuarioSesion.GetIdUsuario());
+            nominas.Show();
 
 
         }

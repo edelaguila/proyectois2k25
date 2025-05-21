@@ -14,10 +14,13 @@ using System.Windows.Forms;
 
 //using Capa_Vista_Banco;
 //using Capa_Vista_Contabilidad;
-//using Capa_Vista_Produccion;
-//using Capa_Vista_Banco;
+////using Capa_Vista_Produccion;
+////using Capa_Vista_Banco;
 //using Capa_Vista_CompraVenta;
+//using Capa_Vista_Carrera;
 
+
+using Capa_Vista_RRHH;
 
 namespace Interfac_V3
 {
@@ -191,6 +194,12 @@ namespace Interfac_V3
             //frm_principal_nominas nominas = new frm_principal_nominas(UsuarioSesion.GetIdUsuario());
             //nominas.Show();
 
+            //frm_Promociones promociones = new frm_Promociones(UsuarioSesion.GetIdUsuario());
+            // promociones.Show();
+
+            MDI_RRHH Recursos = new MDI_RRHH(UsuarioSesion.GetIdUsuario());
+            Recursos.Show();
+
 
         }
 
@@ -205,8 +214,8 @@ namespace Interfac_V3
 
         private void Btn_Logistica_Click(object sender, EventArgs e)
         {
-            Capa_Vista_Logistica.FormPrincipal logistica = new Capa_Vista_Logistica.FormPrincipal(UsuarioSesion.GetIdUsuario());
-            logistica.Show();
+            //Capa_Vista_Logistica.FormPrincipal logistica = new Capa_Vista_Logistica.FormPrincipal(UsuarioSesion.GetIdUsuario());
+            //logistica.Show();
         }
 
         private void Btn_Logistica_MouseEnter(object sender, EventArgs e)

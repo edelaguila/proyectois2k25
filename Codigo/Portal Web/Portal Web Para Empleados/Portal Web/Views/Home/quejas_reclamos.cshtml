@@ -1,0 +1,104 @@
+﻿@model Portal_Web.Models.QuejasReclamos
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Quejas y Reclamos</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+    <link rel="stylesheet" href="~/Content/styles/normalize.css" />
+    <link rel="stylesheet" href="~/Content/styles/quejas_reclamos.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Formulario de Quejas o Reclamos</h2>
+        </div>
+
+        @using (Html.BeginForm("quejas_reclamos", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "field-validation-error text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Nombre)
+                @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.IdEmpleado)
+                @Html.TextBoxFor(m => m.IdEmpleado, new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.IdEmpleado, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Departamento)
+                @Html.TextBoxFor(m => m.Departamento, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Departamento, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Correo)
+                @Html.TextBoxFor(m => m.Correo, new { @class = "form-control", type = "email", required = "required" })
+                @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Tipo)
+                @Html.DropDownListFor(m => m.Tipo, new SelectList(new[] {
+                    "Seleccione una opción",
+                    "Problemas con el salario",
+                    "Acoso laboral",
+                    "Problemas con el supervisor",
+                    "Condiciones laborales",
+                    "Falta de insumos o herramientas",
+                    "Otro"
+                }), new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Descripcion)
+                @Html.TextAreaFor(m => m.Descripcion, new { @class = "form-control", rows = 5, required = "required" })
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Archivos adjuntos (opcional)")
+                <input type="file" name="adjunto" class="form-control" multiple />
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Urgencia)
+                @Html.DropDownListFor(m => m.Urgencia, new SelectList(new[] {
+                    "baja", "media", "alta"
+                }), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Urgencia, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group checkbox-group">
+                @Html.CheckBoxFor(m => m.Confidencial)
+                @Html.LabelFor(m => m.Confidencial, "Deseo que este reclamo sea tratado de manera confidencial")
+                @Html.ValidationMessageFor(model => model.Confidencial, "", new { @class = "field-validation-error text-danger" })
+            </div>
+            <div class="form-group checkbox-group">
+                @Html.CheckBox("terminos", false, new { required = "required" })
+                @Html.ValidationMessageFor(model => model.Terminos, "", new { @class = "field-validation-error text-danger" })
+                <label for="terminos">Acepto los términos y condiciones de la política de quejas</label>
+            </div>
+            <div class="footer">
+                <button type="reset" class="btn">Limpiar</button>
+                <button type="submit" class="btn">Enviar Reclamo</button>
+            </div>
+        }
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

@@ -1,0 +1,120 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Portal Web</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+    <link rel="stylesheet" href="~/Content/styles/normalize.css" />
+    <link rel="stylesheet" href="~/Content/styles/index.css" />
+</head>
+<body>
+    <main>
+        <div class="sidebar">
+            <div>
+                <h2>Portal<br>Empleados</h2>
+                <div class="user-info">
+                    <div class="avatar">
+                        <img src="@Url.Content(Session["FotoPerfil"] != null
+                             ? "~/Uploads/Fotos/" + Session["FotoPerfil"]
+                             : "~/img/default-avatar.png")"
+                             alt=""
+                             style="width:60px; height:60px; border-radius:50%; object-fit:cover;" />
+                    </div>
+                    <div class="name">@Session["Username"]</div>
+                </div>
+                <nav>
+                    <a href="@Url.Action("index", "Home")" class="active"><i class="fa-solid fa-house-user"></i> Dashboard</a>
+                    <a href="@Url.Action("asistencia", "Home")"><i class="fa-solid fa-clipboard-user"></i> Asistencia</a>
+                    <a href="@Url.Action("vacaciones", "Home")"><i class="fa-solid fa-sleigh"></i> Vacaciones</a>
+                    <a href="@Url.Action("nominas", "Home")"><i class="fa-solid fa-money-bill"></i> Nóminas</a>
+                    <a href="@Url.Action("quejas_reclamos", "Home")"><i class="fa-solid fa-circle-exclamation"></i> Quejas o Reclamos</a>
+                    <a href="@Url.Action("documentos", "Home")"><i class="fa-solid fa-file-pdf"></i>Documentos</a>
+                    <a href="@Url.Action("curriculumvitae", "Home")"><i class="fa-solid fa-landmark"></i>Curriculum Vitae</a>
+                </nav>
+            </div>
+        </div>
+        <div class="main">
+            <div class="header">
+                <div class="search">
+                    <input type="text" id="searchInput" placeholder="Buscar..." onkeyup="filtrarMenu()" />
+                </div>
+                <div class="user-menu">
+                    <div class="dropdown">
+                        <button id="userDropdownBtn" class="dropdown-toggle">
+                            <i class="fa-solid fa-user"></i>
+                        </button>
+
+                        <!-- Menú desplegable -->
+                        <div id="userDropdownMenu" class="dropdown-menu">
+                            <a href="@Url.Action("perfil", "Home")">Mi Perfil</a>
+                            <a href="@Url.Action("login", "Auth")">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-title">Bienvenido, @Session["Username"]</div>
+            <div class="dashboard-subtitle">Aquí está el resumen de tu actividad</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">⏰</div>
+                    <div class="label">Horas Trabajadas</div>
+                    <div class="value">164h</div>
+                    <div class="label">Este mes</div>
+                </div>
+                <div class="card">
+                    <div class="icon">📅</div>
+                    <div class="label">Días Disponibles</div>
+                    <div class="value">15</div>
+                    <div class="label">Vacaciones</div>
+                </div>
+                <div class="card">
+                    <div class="icon">📝</div>
+                    <div class="label">Proyectos</div>
+                    <div class="value">4</div>
+                    <div class="label">Activos</div>
+                </div>
+                <div class="card">
+                    <div class="icon">📄</div>
+                    <div class="label">Documentos</div>
+                    <div class="value">3</div>
+                    <div class="label">Pendientes</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/1fe26c6c8c.js" crossorigin="anonymous"></script>
+    <script src="~/Scripts/js/menu-desplegable.js"></script>
+    <script>
+        function filtrarMenu() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const enlaces = document.querySelectorAll(".sidebar nav a");
+
+            enlaces.forEach(link => {
+                const texto = link.textContent.toLowerCase();
+                if (texto.includes(input)) {
+                    link.style.display = "block";
+                } else {
+                    link.style.display = "none";
+                }
+            });
+        }
+
+        document.getElementById("searchInput").addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                const enlacesVisibles = Array.from(document.querySelectorAll(".sidebar nav a"))
+                    .filter(link => link.style.display !== "none");
+
+                if (enlacesVisibles.length === 1) {
+                    window.location.href = enlacesVisibles[0].href;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

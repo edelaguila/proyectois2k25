@@ -1,0 +1,78 @@
+﻿@model Portal_Web.Models.Asistencia
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+    <link rel="stylesheet" href="~/Content/styles/normalize.css" />
+    <link rel="stylesheet" href="~/Content/styles/asistencia.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Registrar Asistencia</h2>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "field-validation-error text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.fecha)
+                @Html.TextBoxFor(model => model.fecha, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.hora_entrada)
+                @Html.TextBoxFor(model => model.hora_entrada, "{0:hh\\:mm}", new { @class = "form-control", type = "time" })
+                @Html.ValidationMessageFor(model => model.hora_entrada, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.hora_salida)
+                @Html.TextBoxFor(model => model.hora_salida, "{0:hh\\:mm}", new { @class = "form-control", type = "time" })
+                @Html.ValidationMessageFor(model => model.hora_salida, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.estado_asistencia)
+                @Html.DropDownListFor(model => model.estado_asistencia, new SelectList(new[] {
+                    "Presente", "Ausente", "Tarde", "Justificada"
+                }), "Seleccione estado", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.estado_asistencia, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.observaciones)
+                @Html.TextAreaFor(model => model.observaciones, new { @class = "form-control", rows = 3 })
+                @Html.ValidationMessageFor(model => model.observaciones, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.fk_clave_empleado, "Empleado")
+                @Html.DropDownListFor(model => model.fk_clave_empleado, (SelectList)ViewBag.Empleados, "Seleccione un empleado", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.fk_clave_empleado, "", new { @class = "field-validation-error text-danger" })
+            </div>
+
+            <div class="footer">
+                <button type="submit" class="btn">Guardar</button>
+                @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn" })
+            </div>
+        }
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

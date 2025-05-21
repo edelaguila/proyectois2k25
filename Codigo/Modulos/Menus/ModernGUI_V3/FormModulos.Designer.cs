@@ -63,7 +63,7 @@ namespace Interfac_V3
             this.panelBarraSuperior.Location = new System.Drawing.Point(0, 0);
             this.panelBarraSuperior.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelBarraSuperior.Name = "panelBarraSuperior";
-            this.panelBarraSuperior.Size = new System.Drawing.Size(280, 25);
+            this.panelBarraSuperior.Size = new System.Drawing.Size(280, 21);
             this.panelBarraSuperior.TabIndex = 0;
             this.panelBarraSuperior.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelBarraSuperior_MouseMove);
             // 
@@ -95,10 +95,10 @@ namespace Interfac_V3
             // 
             this.panelLogo.Controls.Add(this.pictureBox1);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 25);
+            this.panelLogo.Location = new System.Drawing.Point(0, 21);
             this.panelLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(280, 68);
+            this.panelLogo.Size = new System.Drawing.Size(280, 52);
             this.panelLogo.TabIndex = 1;
             // 
             // pictureBox1
@@ -107,7 +107,7 @@ namespace Interfac_V3
             this.pictureBox1.Location = new System.Drawing.Point(4, 5);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(273, 59);
+            this.pictureBox1.Size = new System.Drawing.Size(273, 48);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -124,11 +124,11 @@ namespace Interfac_V3
             this.panelContenedor.Controls.Add(this.Btn_Logistica);
             this.panelContenedor.Controls.Add(this.btnSalir);
             this.panelContenedor.Controls.Add(this.btnSeguridad);
-            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelContenedor.Location = new System.Drawing.Point(0, 93);
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenedor.Location = new System.Drawing.Point(0, 73);
             this.panelContenedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(280, 590);
+            this.panelContenedor.Size = new System.Drawing.Size(280, 567);
             this.panelContenedor.TabIndex = 2;
             // 
             // Btn_Empresa
@@ -140,7 +140,7 @@ namespace Interfac_V3
             this.Btn_Empresa.Location = new System.Drawing.Point(2, 471);
             this.Btn_Empresa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Btn_Empresa.Name = "Btn_Empresa";
-            this.Btn_Empresa.Size = new System.Drawing.Size(275, 55);
+            this.Btn_Empresa.Size = new System.Drawing.Size(275, 44);
             this.Btn_Empresa.TabIndex = 9;
             this.Btn_Empresa.Text = "Registro Empresa";
             this.Btn_Empresa.UseVisualStyleBackColor = true;
@@ -186,7 +186,7 @@ namespace Interfac_V3
             this.Btn_Nominas.Name = "Btn_Nominas";
             this.Btn_Nominas.Size = new System.Drawing.Size(275, 55);
             this.Btn_Nominas.TabIndex = 6;
-            this.Btn_Nominas.Text = "Modulo Nominas";
+            this.Btn_Nominas.Text = "Modulo Recursos Humanos";
             this.Btn_Nominas.UseVisualStyleBackColor = true;
             this.Btn_Nominas.Click += new System.EventHandler(this.Btn_Nominas_Click);
             // 
@@ -257,10 +257,10 @@ namespace Interfac_V3
             this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(2, 530);
+            this.btnSalir.Location = new System.Drawing.Point(2, 518);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(275, 55);
+            this.btnSalir.Size = new System.Drawing.Size(275, 41);
             this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "Salir del Sistema";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -272,7 +272,7 @@ namespace Interfac_V3
             this.btnSeguridad.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSeguridad.Image = ((System.Drawing.Image)(resources.GetObject("btnSeguridad.Image")));
             this.btnSeguridad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSeguridad.Location = new System.Drawing.Point(2, 0);
+            this.btnSeguridad.Location = new System.Drawing.Point(3, 0);
             this.btnSeguridad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSeguridad.Name = "btnSeguridad";
             this.btnSeguridad.Size = new System.Drawing.Size(275, 55);
@@ -285,7 +285,7 @@ namespace Interfac_V3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 683);
+            this.ClientSize = new System.Drawing.Size(280, 640);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.panelLogo);
             this.Controls.Add(this.panelBarraSuperior);

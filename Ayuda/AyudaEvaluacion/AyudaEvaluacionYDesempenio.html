@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Evaluación - Vault Tech</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f4ef;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        img {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #AA885B;
+            margin: 0;
+        }
+
+        p {
+            font-size: 20px;
+            color: #AA885B;
+            margin-bottom: 40px;
+        }
+
+        .content {
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: left;
+        }
+
+            .content h2 {
+                font-size: 24px;
+                color: #AA885B;
+                margin-bottom: 20px;
+            }
+
+            .content ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .content li {
+                font-size: 18px;
+                color: #555;
+                margin-bottom: 15px;
+                line-height: 1.6;
+            }
+
+                .content li strong {
+                    color: #AA885B;
+                }
+
+        .faq {
+            margin-top: 30px;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #AA885B;
+        }
+    </style>
+</head>
+<body>
+    <img src="Logo.png" alt="Vault Tech Logo">
+    <h1>Evaluación y Desempeño - Vault Tech</h1>
+    <p>Protegiendo tu mundo digital, asegurando tu futuro</p>
+
+
+    <div class="content">
+        <h2>Formulario de Evaluación de Empleados</h2>
+        <ul>
+            <li>
+                <strong>Datos del Empleado y Evaluador:</strong>
+                <ul>
+                    <li><b>Empleado a Evaluar:</b> ComboBox para seleccionar al empleado que recibirá la evaluación.</li>
+                    <li><b>Evaluador:</b> ComboBox para seleccionar al evaluador responsable.</li>
+                    <li><b>Fecha:</b> Selector de fecha para registrar el día de la evaluación.</li>
+                    <li>
+                        <b>Tipo de Evaluación:</b> ComboBox con opciones:
+                        <ul>
+                            <li>Autoevaluación</li>
+                            <li>Evaluación de Compañero</li>
+                            <li>Evaluación de subordinado</li>
+                            <li>Evaluación de jefe de área</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Evaluación de Competencias:</strong>
+                <ul>
+                    <li>Lista de competencias con sus respectivos campos:</li>
+                    <li><b>Nota:</b> NumericUpDown para calificar cada competencia (0 a 10).</li>
+                    <li><b>Observaciones:</b> TextBox opcional para comentarios.</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Evaluación General:</strong>
+                <ul>
+                    <li><b>Observaciones Generales:</b> TextBox (opcional).</li>
+                    <li><b>Calificación General:</b> TextBox (obligatorio, del 0 al 10).</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Botones Funcionales:</strong>
+                <ul>
+                    <li><b>Guardar:</b> Verifica que todos los campos obligatorios estén llenos antes de guardar.</li>
+                    <li><b>Limpiar:</b> Borra todos los campos para una nueva evaluación.</li>
+                    <li><b>Reportes:</b> Abre el formulario de reportes.</li>
+                    <li><b>Ayuda:</b> Muestra este documento.</li>
+                    <li><b>Cerrar:</b> Cierra el formulario actual.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Formulario de Reportes de Evaluación</h2>
+        <ul>
+            <li>
+                <strong>Visualización de Evaluaciones:</strong>
+                <ul>
+                    <li><b>ComboBox de Empleados:</b> Permite seleccionar un empleado para ver sus evaluaciones.</li>
+                    <li><b>DataGridView:</b> Muestra los resultados de las evaluaciones filtradas.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Opciones Adicionales:</strong>
+                <ul>
+                    <li><b>Buscar:</b> Filtra evaluaciones por empleado seleccionado.</li>
+                    <li><b>Reporte:</b> Genera reporte de Crystal Reports para el empleado seleccionado.</li>
+                    <li><b>Ayuda:</b> Muestra este archivo.</li>
+                    <li><b>Salir:</b> Cierra el formulario.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="faq">
+            <h2>Preguntas Frecuentes</h2>
+            <ul>
+                <li><strong><b>¿Qué pasa si olvido llenar un campo obligatorio?</b></strong> El sistema no permitirá guardar la evaluación hasta completar todos los campos obligatorios.</li>
+                <li><strong><b>¿Puedo modificar una evaluación guardada?</b></strong> No, por seguridad y trazabilidad, las evaluaciones no pueden ser modificadas una vez guardadas.</li>
+                <li><strong><b>¿Cómo genero un reporte?</b></strong> Selecciona al empleado en el ComboBox del formulario de reportes y pulsa el botón "Reporte".</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Vault Tech - Todos los derechos reservados.
+    </footer>
+</body>
+</html>

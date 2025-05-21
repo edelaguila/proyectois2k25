@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaExpedientes.chm
+Contents file=AyudaExpedientes.hhc
+Default Window=AyudaExpedientes
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaExpedientes="Ayuda Expedientes","AyudaExpedientes.hhc",,"AyudaExpedientes.html","AyudaExpedientes.html","AyudaExpedientes.html","AyudaExpediente","AyudaExpedientes.html","AyudaExpediente",0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+AyudaExpedientes.html
+
+[INFOTYPES]
+
