@@ -795,6 +795,10 @@ CREATE TABLE Tbl_DetalleEntradaProductos (
     costoTotal DECIMAL(10,2)
 );
 
+-- Se agrego el campo FK_ID_LOCAL a la tabla tbl_bodegas para realizar el insert ala tabla tbl_movimiento_de_inventario
+ALTER TABLE tbl_bodegas
+ADD COLUMN Fk_ID_LOCAL INT(11) NOT NULL;
+
 
 -- NUEVAS TABLAS DEL MODULO COMERCIAL
 -- Tabla de Ventas Encabezado
