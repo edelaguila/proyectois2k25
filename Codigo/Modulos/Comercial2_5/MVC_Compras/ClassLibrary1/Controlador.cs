@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Data;
 using Capa_Modelo_Compras;
+using System.Reflection;
 
 namespace Capa_Controlador_Compras
 {
@@ -42,6 +43,13 @@ namespace Capa_Controlador_Compras
             return dt_tablaMovimientos;
         }
 
+        public DataTable Fun_MostrarMovimientosInventario2()
+        {
+            OdbcDataAdapter o_dataAdapter = _sentencias.Fun_DisplayMovimientos2();
+            DataTable dt_tablaMovimientos = new DataTable();
+            o_dataAdapter.Fill(dt_tablaMovimientos);
+            return dt_tablaMovimientos;
+        }
 
         public void Pro_EliminarCompra(int idCompra)
         {
@@ -53,6 +61,18 @@ namespace Capa_Controlador_Compras
         {
             // Llamada al método EditarCompra con los parámetros que recibe el controlador
             _sentencias.ActualizarCompra(idCompra, proveedor, fechaCompra, bod, factura, compro, pago, sub, imp, total, prod, cant, pre, desc);
+        }
+
+        public void Pro_InsertarVendedor(int idVendedor, string nombre, string apellido, double sueldo, string direccion, string telefono, int fkEmpleado)
+        {
+            // Llama al método del modelo para insertar el vendedor
+            _sentencias.InsertarVendedor(idVendedor, nombre, apellido, sueldo, direccion, telefono, fkEmpleado);
+        }
+
+
+        public void Pro_EliminarVendedor(int idVendedor)
+        {
+            _sentencias.EliminarVendedor(idVendedor);
         }
 
 

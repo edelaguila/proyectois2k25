@@ -497,6 +497,11 @@ namespace Capa_Vista_Compras
                 txtDesc.Text = fila.Cells["descripcion"].Value.ToString();
             }
         }
+
+        private void Dgv_compras_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 }
