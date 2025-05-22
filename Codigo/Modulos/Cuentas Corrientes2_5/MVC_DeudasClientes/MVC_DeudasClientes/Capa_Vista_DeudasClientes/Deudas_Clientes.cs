@@ -663,5 +663,11 @@ namespace Capa_Vista_DeudasClientes
             // Retorna null si no se encontró el archivo
             return null;
         }
+
+        private void Btn_reportes_Click(object sender, EventArgs e)
+        {
+            Capa_Vista_Reporte.ReporteCliente frm_reporte = new Capa_Vista_Reporte.ReporteCliente();
+            frm_reporte.Show();
+        }
     }
 }

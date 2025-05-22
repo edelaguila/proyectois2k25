@@ -34,6 +34,9 @@
     <Reference Include="Capa_Controlador_DeudasClientes">
       <HintPath>..\Capa_Controlador_DeudasClientes\bin\Debug\Capa_Controlador_DeudasClientes.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Reporte">
+      <HintPath>..\..\..\Reporte\Capa_Vista_Reporte\bin\Debug\Capa_Vista_Reporte.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />

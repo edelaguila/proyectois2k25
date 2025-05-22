@@ -164,6 +164,19 @@ ADD COLUMN comision DOUBLE NOT NULL;
 ALTER TABLE Tbl_Productos
 ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
 
+ALTER TABLE Tbl_Productos
+ADD COLUMN fk_id_marca INT,
+ADD COLUMN fk_id_linea INT;
+
+-- Luego agregar las constraints de clave foránea
+ALTER TABLE Tbl_Productos
+ADD CONSTRAINT fk_producto_marca 
+FOREIGN KEY (fk_id_marca) REFERENCES Tbl_Marca(Pk_id_Marca);
+
+ALTER TABLE Tbl_Productos
+ADD CONSTRAINT fk_producto_linea 
+FOREIGN KEY (fk_id_linea) REFERENCES Tbl_Linea(Pk_id_linea);
+
 -- ALTERS DEL MODULO DE CUENTAS CORRIENTES 31-10-2024
 
 /*ALTER TABLE Tbl_caja_cliente
@@ -487,10 +500,9 @@ CREATE TABLE IF NOT EXISTS Tbl_vendedores (
     vendedores_sueldo DECIMAL(10,2)NOT NULL ,
     vendedores_direccion VARCHAR(255)NOT NULL ,
     vendedores_telefono VARCHAR(20)NOT NULL ,
-	Fk_id_empleado INT NOT NULL,
+	Fk_id_empleado INT,
     estado tinyint(1) DEFAULT 1,
-    PRIMARY KEY (Pk_id_vendedor),
-    FOREIGN KEY (Fk_id_empleado) REFERENCES Tbl_empleado(pk_clave)
+    PRIMARY KEY (Pk_id_vendedor)
 );
 ALTER TABLE Tbl_clientes 
 CHANGE Clientes_estado estado TINYINT(1) DEFAULT 1;
@@ -889,12 +901,6 @@ ADD CONSTRAINT fk_deudascli_facturacli
 ALTER TABLE tbl_deudas_clientes
 ADD COLUMN Fk_id_pago VARCHAR(150) NOT NULL;
 
--- 3.1 Crear FK a tbl_transaccion_cuentas
-ALTER TABLE tbl_deudas_clientes
-ADD CONSTRAINT fk_deudascli_transcuentas
-  FOREIGN KEY (Fk_id_pago)
-  REFERENCES tbl_transaccion_cuentas(Pk_id_tran_cue);
-
 ALTER TABLE tbl_deudas_clientes
 DROP COLUMN deuda_mora;
 ALTER TABLE tbl_clientes
@@ -902,8 +908,5 @@ MODIFY COLUMN Cliente_email VARCHAR(50);
 
 ALTER TABLE tbl_factura_cliente
 MODIFY COLUMN Fk_No_serie VARCHAR(20);
-
-ALTER TABLE tbl_deudas_clientes
-DROP FOREIGN KEY fk_deudascli_transcuentas;
 
 SELECT *FROM tbl_deudas_proveedores;

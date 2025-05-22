@@ -457,13 +457,13 @@ INSERT INTO `venta` (`id_venta`, `monto`, `nombre_cliente`, `nombre_empleado`, `
 
 
 -- LMD DE LOGISTICA INICIO
-INSERT INTO Tbl_Productos (codigoProducto, nombreProducto, pesoProducto, precioUnitario, clasificacion, stock, empaque, comisionInventario, comisionCosto, estado)
+INSERT INTO Tbl_Productos (codigoProducto, nombreProducto, pesoProducto, precioUnitario, clasificacion, stock, empaque, comisionInventario, comisionCosto, estado, fk_id_marca, fk_id_linea)
 VALUES
-(1001, 'Colchón Queen', '20 kg', 250.00, 'Dormitorio', 100, 'Caja', 0.10, 0.20, 1),
-(1002, 'Colchón King', '25 kg', 350.00, 'Dormitorio', 50, 'Caja', 0.15, 0.20, 1),
-(1003, 'Sofá 3 Plazas', '80 kg', 500.00, 'Sala', 30, 'Desarmado', 0.10, 0.20, 1),
-(1004, 'Almohada Visc.', '1 kg', 30.00, 'Accesorios', 200, 'Bolsa', 0.15, 0.30, 1),
-(1005, 'Mesa de Centro', '25 kg', 120.00, 'Sala', 60, 'Desarmado', 0.10, 0.25, 1);
+(1001, 'Colchón Queen', '20 kg', 250.00, 'Dormitorio', 100, 'Caja', 0.10, 0.20, 1, 1, 2),
+(1002, 'Colchón King', '25 kg', 350.00, 'Dormitorio', 50, 'Caja', 0.15, 0.20, 1, 3, 1),
+(1003, 'Sofá 3 Plazas', '80 kg', 500.00, 'Sala', 30, 'Desarmado', 0.10, 0.20, 1, 2, 3),
+(1004, 'Almohada Visc.', '1 kg', 30.00, 'Accesorios', 200, 'Bolsa', 0.15, 0.30, 1, 1, 2),
+(1005, 'Mesa de Centro', '25 kg', 120.00, 'Sala', 60, 'Desarmado', 0.10, 0.25, 1, 2, 3);
 
 INSERT INTO TBL_BODEGAS (NOMBRE_BODEGA, UBICACION, CAPACIDAD, FECHA_REGISTRO, estado) 
 VALUES 
@@ -747,13 +747,6 @@ WHERE Pk_id_cuenta = 8;
 
 -- cuentas corrientes 07/11/2024
 
--- Insertar registros en Tbl_factura
-INSERT INTO Tbl_factura (Pk_id_factura, Fk_id_cliente, Fk_id_pedidoEnc, factura_fecha, factura_formPago, factura_subtotal, factura_iva, factura_total)
-VALUES 
-(1, 1, 1, '2024-10-01', 'Tarjeta de Crédito', 500.00, 75.00, 575.00),
-(2, 2, 2, '2024-10-05', 'Efectivo', 300.00, 45.00, 345.00),
-(3, 3, 3, '2024-10-10', 'Transferencia', 150.00, 22.50, 172.50);
-
 -- Insertar registros en Tbl_cobrador
 INSERT INTO Tbl_cobrador (Fk_id_empleado, cobrador_nombre, cobrador_direccion, cobrador_telefono, cobrador_depto, estado)
 VALUES 
@@ -958,62 +951,15 @@ VALUES (
     1                       
 );
 
-
-insert into tbl_pedido_detalle values (1, 1, 1, 200, 35, 7000);
-insert into tbl_pedido_detalle values (2, 2, 2, 100, 20, 2000);
-insert into tbl_pedido_detalle values (3, 3, 3, 50, 30, 700);
-
-insert into tbl_cotizacion_encabezado values (1, 1, 1, '2025-05-10', 3500);
-insert into tbl_cotizacion_encabezado values (2, 1, 2, '2025-05-25', 2000);
-insert into tbl_cotizacion_encabezado values (3, 2, 3, '2025-05-20', 3000);
-
-insert into tbl_recetas values (1, 1, 'Prueba', 30, 'Prueba', 'Prueba', 1, 20, 10);
-
-
-
-ALTER TABLE Tbl_Productos
-ADD COLUMN fk_id_marca INT,
-ADD COLUMN fk_id_linea INT;
-
--- Luego agregar las constraints de clave foránea
-ALTER TABLE Tbl_Productos
-ADD CONSTRAINT fk_producto_marca 
-FOREIGN KEY (fk_id_marca) REFERENCES Tbl_Marca(Pk_id_Marca);
-
-ALTER TABLE Tbl_Productos
-ADD CONSTRAINT fk_producto_linea 
-FOREIGN KEY (fk_id_linea) REFERENCES Tbl_Linea(Pk_id_linea);
-
-SELECT 
-    Tbl_factura.Pk_id_factura AS IdVenta,
-    Tbl_factura.factura_fecha AS FechaVenta,
-    Tbl_Productos.nombreProducto AS Producto,
-    Tbl_Marca.nombre_Marca AS Marca,
-    Tbl_Linea.nombre_linea AS Linea,
-    Tbl_pedido_detalle.PedidoDet_cantidad AS CantidadVendida,
-    Tbl_factura.factura_total AS Total,
-    Tbl_Productos.comisionInventario AS Comision
-FROM Tbl_factura
-JOIN Tbl_pedido_encabezado ON Tbl_factura.Fk_id_pedidoEnc = Tbl_pedido_encabezado.Pk_id_PedidoEnc
-JOIN Tbl_pedido_detalle ON Tbl_pedido_encabezado.Pk_id_PedidoEnc = Tbl_pedido_detalle.Fk_id_pedidoEnc
-JOIN Tbl_Productos ON Tbl_pedido_detalle.Fk_id_producto = Tbl_Productos.Pk_id_Producto
-JOIN Tbl_Marca ON Tbl_Productos.fk_id_marca = Tbl_Marca.Pk_id_Marca
-JOIN Tbl_Linea ON Tbl_Productos.fk_id_linea = Tbl_Linea.Pk_id_linea
-WHERE Tbl_factura.factura_fecha BETWEEN '2025-01-01' AND '2025-05-19' ;
-
 INSERT INTO tbl_vendedores (
-	Pk_id_vendedor,
-    vendedores_nombre, 
-    vendedores_apellido, 
-    vendedores_sueldo, 
-    vendedores_direccion, 
-    vendedores_telefono, 
-    Fk_id_empleado, 
-    estado
-) VALUES 
-(1,'Juan', 'Gomez', 4500.00, 'Zona 1, Ciudad', '5555-1234', 1, 1),
-(2,'Ana', 'Lopez', 4500.00, 'Zona 2, Ciudad', '5555-5678', 2, 1),
-(3,'Luis', 'Prez', 4500.00, 'Zona 3, Ciudad', '5555-9012', 3, 1);
+    Pk_id_vendedor, vendedores_nombre, vendedores_apellido, 
+    vendedores_sueldo, vendedores_direccion, vendedores_telefono, 
+    Fk_id_empleado, estado
+) VALUES
+(1, 'Carlos', 'Ramírez', 850.50, 'Ciudad', '55345678', 1, 1),
+(2, 'Lucía', 'Gómez', 920.00, 'Ciudad', '55345789', 1, 1),
+(3, 'Marco', 'López', 880.75, 'Ciudad', '55456890', 2, 1),
+(4, 'Ana', 'Pérez', 910.25, 'Ciudad', '55567891', 3, 1);
 select* from tbl_vendedores;
 -- Insertar varias comisiones para el primer vendedor (Carlos)
 INSERT INTO tbl_comisiones_encabezado (
@@ -1026,12 +972,46 @@ INSERT INTO tbl_comisiones_encabezado (
 (1,1, '2025-01-01', 10000.00, 1000.00),
 (2,1, '2025-01-08', 15000.00, 1500.00),
 (3,1, '2025-01-15', 12000.00, 1200.00),
-(4,2, '2025-01-15', 12000.00, 1000.00),
-(5,2, '2025-01-15', 12000.00, 1000.00),
-(6,2, '2025-01-15', 12000.00, 1000.00),
-(7,3, '2025-01-15', 12000.00, 100.00),
-(8,3, '2025-01-15', 12000.00, 100.00),
-(9,3, '2025-01-15', 12000.00, 100.00);
+(4,2, '2025-01-15', 12000.00, 1000.00);
+
+INSERT INTO tbl_factura (
+    Pk_id_factura, Fk_id_cliente, Fk_id_pedidoEnc, 
+    factura_fecha, factura_formPago, 
+    factura_subtotal, factura_iva, factura_total
+) VALUES
+(1, 1, 2, '2025-03-03', 'Transferencia', 600.00, 90.00, 690.00),
+(2, 2, 1, '2025-02-03', 'Efectivo', 450.00, 67.50, 517.50),
+(3, 1, 3, '2025-04-03', 'Tarjeta de Crédito', 700.00, 105.00, 805.00),
+(4, 2, 1, '2025-01-03', 'Tarjeta de Crédito', 300.00, 205.00, 505.00);
+
+INSERT INTO tbl_pedido_encabezado (
+    Pk_id_PedidoEnc, Fk_id_cliente, Fk_id_vendedor, 
+    PedidoEncfecha, PedidoEnc_total
+) VALUES
+(1, 1, 1, '2025-02-15', 5000.00),
+(2, 2, 2, '2025-03-15', 3200.00),
+(3, 3, 3, '2025-01-15', 7500.00),
+(4, 2, 3, '2025-02-15', 8500.00);
+
+
+INSERT INTO tbl_pedido_detalle (
+    Fk_id_pedidoEnc, Fk_id_producto, Fk_id_cotizacionEnc,
+    PedidoDet_cantidad, PedidoEnc_precio, PedidoEnc_total
+) VALUES
+(1, 1, 1, 200, 35.00, 7000.00),
+(2, 2, 2, 150, 40.00, 6000.00),
+(3, 3, 3, 100, 55.00, 5500.00),
+(4, 2, 3, 200, 35.00, 4500.00);
+
+
+INSERT INTO tbl_recetas (
+    Pk_id_receta, Fk_id_producto, descripcion, cantidad, 
+    area, cama, estado, dias, horas
+) VALUES
+(1, 1, 'Antibiótico A', 30, 'Pediatría', 'Cama 1', 1, 10, 8.00),
+(2, 2, 'Analgésico B', 20, 'Urgencias', 'Cama 2', 1, 5, 6.00),
+(3, 3, 'Suero C', 15, 'Medicina Interna', 'Cama 3', 1, 3, 4.00),
+(4, 2, 'Suero A', 15, 'Medicina Interna', 'Cama 4', 1, 4, 5.00);
 
 
 INSERT INTO tbl_factura_cliente 
@@ -1054,3 +1034,20 @@ VALUES
 (4, 'Ana', 'Hernández', '4567890-1', '5555-4444', 'Zona 9, Ciudad', '10004', 1, 'ana.hernandez@mail.com', 'Contado', 0.00, 0, '2024-04-05'),
 (5, 'Luis', 'López', '5678901-2', '5555-5555', 'Zona 11, Ciudad', '10005', 1, 'luis.lopez@mail.com', 'Crédito', 6000.00, 60, '2024-05-01');
 
+
+SELECT 
+    Tbl_factura.Pk_id_factura AS IdVenta,
+    Tbl_factura.factura_fecha AS FechaVenta,
+    Tbl_Productos.nombreProducto AS Producto,
+    Tbl_Marca.nombre_Marca AS Marca,
+    Tbl_Linea.nombre_linea AS Linea,
+    Tbl_pedido_detalle.PedidoDet_cantidad AS CantidadVendida,
+    Tbl_factura.factura_total AS Total,
+    Tbl_Productos.comisionInventario AS Comision
+FROM Tbl_factura
+JOIN Tbl_pedido_encabezado ON Tbl_factura.Fk_id_pedidoEnc = Tbl_pedido_encabezado.Pk_id_PedidoEnc
+JOIN Tbl_pedido_detalle ON Tbl_pedido_encabezado.Pk_id_PedidoEnc = Tbl_pedido_detalle.Fk_id_pedidoEnc
+JOIN Tbl_Productos ON Tbl_pedido_detalle.Fk_id_producto = Tbl_Productos.Pk_id_Producto
+JOIN Tbl_Marca ON Tbl_Productos.fk_id_marca = Tbl_Marca.Pk_id_Marca
+JOIN Tbl_Linea ON Tbl_Productos.fk_id_linea = Tbl_Linea.Pk_id_linea
+WHERE Tbl_factura.factura_fecha BETWEEN '2025-01-01' AND '2025-05-19' ;
