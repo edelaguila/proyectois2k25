@@ -750,9 +750,9 @@ WHERE Pk_id_cuenta = 8;
 -- Insertar registros en Tbl_factura
 INSERT INTO Tbl_factura (Pk_id_factura, Fk_id_cliente, Fk_id_pedidoEnc, factura_fecha, factura_formPago, factura_subtotal, factura_iva, factura_total)
 VALUES 
-(1, 1, 1001, '2024-10-01', 'Tarjeta de Crédito', 500.00, 75.00, 575.00),
-(2, 2, 1002, '2024-10-05', 'Efectivo', 300.00, 45.00, 345.00),
-(3, 3, 1003, '2024-10-10', 'Transferencia', 150.00, 22.50, 172.50);
+(1, 1, 1, '2024-10-01', 'Tarjeta de Crédito', 500.00, 75.00, 575.00),
+(2, 2, 2, '2024-10-05', 'Efectivo', 300.00, 45.00, 345.00),
+(3, 3, 3, '2024-10-10', 'Transferencia', 150.00, 22.50, 172.50);
 
 -- Insertar registros en Tbl_cobrador
 INSERT INTO Tbl_cobrador (Fk_id_empleado, cobrador_nombre, cobrador_direccion, cobrador_telefono, cobrador_depto, estado)
@@ -829,6 +829,209 @@ VALUES
 (1003, 'FAC-003', 'SRL-003', 2, '2024-03-10'),  -- Proveedor 2
 (1004, 'FAC-004', 'SRL-004', 3, '2024-03-15'),  -- Proveedor 3
 (1005, 'FAC-005', 'SRL-005', 3, '2024-03-20');  -- Proveedor 3
+
+-- 1. Insertar proveedor
+INSERT INTO Tbl_proveedores (Pk_prov_id, Prov_nombre, Prov_direccion, Prov_telefono, Prov_email, Prov_fechaRegistro)
+VALUES (4, 'Proveedor X', 'Dirección X', '123456789', 'proveedorx@mail.com', '2024-01-01'),
+(5, 'Proveedor y', 'Dirección y', '987654321', 'proveedory@mail.com', '2024-01-01');
+
+-- 2. Insertar encabezado de compra
+INSERT INTO tbl_encabezado_compras (id_compra, numero_factura, No_serial_factura, id_proveedor, fecha_compra)
+VALUES (100, 'FAC-001', 'SER-001', 1, '2024-01-15');
+
+-- 3. Insertar factura proveedor
+INSERT INTO Tbl_Factura_Proveedor (Fk_id_compra, Fk_numero_factura, Fk_No_serial_factura, Fk_prov_id, fecha_emision, fecha_vencimiento, Total_a_pagar, saldo)
+VALUES (100, 'FAC-001', 'SER-001', 1, '2024-01-15', '2024-03-15', 1000.00, 1000.00);
+
+-- IMPORTANTE: Obtener el ID de la factura recién creada:
+-- Supongamos que es el 1 (Pk_id_FacturaProv = 1)
+
+-- 4. Insertar deudas de proveedor (varias fechas)
+INSERT INTO Tbl_Deudas_Proveedores (Fk_id_proveedor, deuda_monto, deuda_fecha_inicio, deuda_fecha_vencimiento, deuda_descripcion, deuda_estado, transaccion_tipo, Efecto_trans, Fk_id_factura)
+VALUES 
+(1, 500.00, '2024-01-20', '2024-03-20', 'Deuda 1', 1, 'Compra', 'Negativo', 1),
+(1, 250.00, '2024-02-10', '2024-04-10', 'Deuda 2', 1, 'Compra', 'Negativo', 1),
+(2, 500.00, '2025-01-20', '2024-03-20', 'Deuda 1', 1, 'Compra', 'Negativo', 1),
+(2, 250.00, '2025-02-10', '2024-04-10', 'Deuda 2', 1, 'Compra', 'Negativo', 1),
+(5, 750.00, '2024-03-01', '2024-05-01', 'Deuda 3', 1, 'Compra', 'Negativo', 1),
+(4, 750.00, '2024-03-01', '2024-05-01', 'Deuda 3', 1, 'Compra', 'Negativo', 1);
+
+INSERT INTO tbl_empleados (
+    empleados_nombre, empleados_apellido, empleados_fecha_nacimiento,
+    empleados_no_identificacion, empleados_codigo_postal, empleados_fecha_alta,
+    empleados_fecha_baja, empleados_causa_baja, fk_id_departamento, fk_id_puestos, estado
+) VALUES (
+    'Luis', 'García', '1990-03-15',
+    'DPI-123456789', '01010', '2023-01-01',
+    NULL, NULL, 1, 1, 1
+);
+
+INSERT INTO Tbl_cobrador (
+    Fk_id_empleado, cobrador_nombre, cobrador_direccion,
+    cobrador_telefono, cobrador_depto, estado
+) VALUES (
+    1, 'Luis García', 'Zona 10, Ciudad', 55551234, 'Guatemala', 1
+);
+
+INSERT INTO Tbl_clientes (
+    Pk_id_cliente, Clientes_nombre, Clientes_apellido, Clientes_nit,
+    Clientes_telefon, Clientes_direccion, Clientes_No_Cuenta,
+    Cliente_email, Cliente_Tipo, Cliente_lim_credito,
+    Cliente_dias_credito, Fecha_Registro
+) VALUES (
+    6, 'Ana', 'Lopez', '1234567-8',
+    '5555-1234', 'Colonia Centro', 'CT-001',
+    'ana@example.com', 'Crédito', 5000.00,
+    30, '2024-06-01'
+);
+
+INSERT INTO Tbl_clientes (
+    Pk_id_cliente,
+    Clientes_nombre,
+    Clientes_apellido,
+    Clientes_nit,
+    Clientes_telefon,
+    Clientes_direccion,
+    Clientes_No_Cuenta,
+    estado,
+    Cliente_email,
+    Cliente_Tipo,
+    Cliente_lim_credito,
+    Cliente_dias_credito,
+    Fecha_Registro
+)
+VALUES (
+    7,
+    'Andrea',
+    'Gómez',
+    '9876543-2',
+    '4498765432',
+    'Zona 5, Guatemala',
+    'CTA-002',
+    1,
+    'andrea.gomez@example.com',
+    'Crédito',
+    5000.00,
+    30,
+    '2025-05-20'
+);
+
+
+INSERT INTO Tbl_Factura_Cliente (
+    Fk_id_venta, Fk_No_serie, Fk_No_de_facV,
+    id_clienteFact, fecha_emision, fecha_vencimiento,
+    Total_a_pagar, saldo
+) VALUES (
+    101, 'SER001', NULL,
+    1, '2024-06-10', '2024-07-10',
+    1500.00, 1500.00
+);
+
+INSERT INTO Tbl_Deudas_Clientes (
+    Fk_id_cliente, Fk_id_cobrador, Fk_id_factura,
+    deuda_monto, deuda_fecha_inicio_deuda, deuda_fecha_vencimiento_deuda,
+    deuda_descripcion_deuda, deuda_estado
+) VALUES (
+    6, 1, 1,
+    1500.00, '2024-06-10', '2024-07-10',
+    'Compra de productos varios a crédito', 1
+);
+
+INSERT INTO Tbl_Deudas_Clientes (
+    Fk_id_cliente,
+    Fk_id_cobrador,
+    Fk_id_factura,
+    deuda_monto,
+    deuda_fecha_inicio_deuda,
+    deuda_fecha_vencimiento_deuda,
+    deuda_descripcion_deuda,
+    deuda_estado
+)
+VALUES (
+    7,                      
+    1,                      
+    1,                      
+    1500.75,                
+    '2025-05-01',           
+    '2025-06-01',           
+    'Pago pendiente por servicios prestados', 
+    1                       
+);
+
+
+insert into tbl_pedido_detalle values (1, 1, 1, 200, 35, 7000);
+insert into tbl_pedido_detalle values (2, 2, 2, 100, 20, 2000);
+insert into tbl_pedido_detalle values (3, 3, 3, 50, 30, 700);
+
+insert into tbl_cotizacion_encabezado values (1, 1, 1, '2025-05-10', 3500);
+insert into tbl_cotizacion_encabezado values (2, 1, 2, '2025-05-25', 2000);
+insert into tbl_cotizacion_encabezado values (3, 2, 3, '2025-05-20', 3000);
+
+insert into tbl_recetas values (1, 1, 'Prueba', 30, 'Prueba', 'Prueba', 1, 20, 10);
+
+
+
+ALTER TABLE Tbl_Productos
+ADD COLUMN fk_id_marca INT,
+ADD COLUMN fk_id_linea INT;
+
+-- Luego agregar las constraints de clave foránea
+ALTER TABLE Tbl_Productos
+ADD CONSTRAINT fk_producto_marca 
+FOREIGN KEY (fk_id_marca) REFERENCES Tbl_Marca(Pk_id_Marca);
+
+ALTER TABLE Tbl_Productos
+ADD CONSTRAINT fk_producto_linea 
+FOREIGN KEY (fk_id_linea) REFERENCES Tbl_Linea(Pk_id_linea);
+
+SELECT 
+    Tbl_factura.Pk_id_factura AS IdVenta,
+    Tbl_factura.factura_fecha AS FechaVenta,
+    Tbl_Productos.nombreProducto AS Producto,
+    Tbl_Marca.nombre_Marca AS Marca,
+    Tbl_Linea.nombre_linea AS Linea,
+    Tbl_pedido_detalle.PedidoDet_cantidad AS CantidadVendida,
+    Tbl_factura.factura_total AS Total,
+    Tbl_Productos.comisionInventario AS Comision
+FROM Tbl_factura
+JOIN Tbl_pedido_encabezado ON Tbl_factura.Fk_id_pedidoEnc = Tbl_pedido_encabezado.Pk_id_PedidoEnc
+JOIN Tbl_pedido_detalle ON Tbl_pedido_encabezado.Pk_id_PedidoEnc = Tbl_pedido_detalle.Fk_id_pedidoEnc
+JOIN Tbl_Productos ON Tbl_pedido_detalle.Fk_id_producto = Tbl_Productos.Pk_id_Producto
+JOIN Tbl_Marca ON Tbl_Productos.fk_id_marca = Tbl_Marca.Pk_id_Marca
+JOIN Tbl_Linea ON Tbl_Productos.fk_id_linea = Tbl_Linea.Pk_id_linea
+WHERE Tbl_factura.factura_fecha BETWEEN '2025-01-01' AND '2025-05-19' ;
+
+INSERT INTO tbl_vendedores (
+	Pk_id_vendedor,
+    vendedores_nombre, 
+    vendedores_apellido, 
+    vendedores_sueldo, 
+    vendedores_direccion, 
+    vendedores_telefono, 
+    Fk_id_empleado, 
+    estado
+) VALUES 
+(1,'Juan', 'Gomez', 4500.00, 'Zona 1, Ciudad', '5555-1234', 1, 1),
+(2,'Ana', 'Lopez', 4500.00, 'Zona 2, Ciudad', '5555-5678', 2, 1),
+(3,'Luis', 'Prez', 4500.00, 'Zona 3, Ciudad', '5555-9012', 3, 1);
+select* from tbl_vendedores;
+-- Insertar varias comisiones para el primer vendedor (Carlos)
+INSERT INTO tbl_comisiones_encabezado (
+    Pk_id_comisionEnc,
+    Fk_id_vendedor, 
+    Comisiones_fecha_, 
+    Comisiones_total_venta, 
+    Comisiones_total_comision
+) VALUES 
+(1,1, '2025-01-01', 10000.00, 1000.00),
+(2,1, '2025-01-08', 15000.00, 1500.00),
+(3,1, '2025-01-15', 12000.00, 1200.00),
+(4,2, '2025-01-15', 12000.00, 1000.00),
+(5,2, '2025-01-15', 12000.00, 1000.00),
+(6,2, '2025-01-15', 12000.00, 1000.00),
+(7,3, '2025-01-15', 12000.00, 100.00),
+(8,3, '2025-01-15', 12000.00, 100.00),
+(9,3, '2025-01-15', 12000.00, 100.00);
 
 INSERT INTO tbl_factura_cliente 
 (Fk_id_venta, Fk_No_serie, Fk_No_de_facV, id_clienteFact, fecha_emision, fecha_vencimiento, Total_a_pagar, saldo)
