@@ -250,6 +250,23 @@ namespace Capa_Modelo_Compras
             return dataTable;
         }
 
+        public OdbcDataAdapter Fun_DisplayMovimientos2()
+        {
+            string s_tablaMovimientoInventario = "tbl_vendedores";
+            string s_sql = "SELECT * FROM " + s_tablaMovimientoInventario;
+            OdbcDataAdapter dataTable = new OdbcDataAdapter();
+            try
+            {
+                dataTable = new OdbcDataAdapter(s_sql, conn.conexion());
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString() + " \nNo se pudo consultar la tabla " + s_tablaMovimientoInventario);
+            }
+            return dataTable;
+        }
+
 
         public void EliminarCompra(int idCompra)
         {
@@ -512,8 +529,67 @@ namespace Capa_Modelo_Compras
 
 
 
+        public void InsertarVendedor(int idVendedor, string nombre, string apellido, double sueldo, string direccion, string telefono, int fkEmpleado)
+        {
+            OdbcConnection o_conn = conn.conexion();
+            try
+            {
+                string s_query = "INSERT INTO Tbl_vendedores " +
+                                 "(Pk_id_vendedor, vendedores_nombre, vendedores_apellido, vendedores_sueldo, vendedores_direccion, vendedores_telefono, Fk_id_empleado, estado) " +
+                                 "VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
+
+                OdbcCommand cmd = new OdbcCommand(s_query, o_conn);
+                cmd.Parameters.AddWithValue("@Pk_id_vendedor", idVendedor);
+                cmd.Parameters.AddWithValue("@vendedores_nombre", nombre);
+                cmd.Parameters.AddWithValue("@vendedores_apellido", apellido);
+                cmd.Parameters.AddWithValue("@vendedores_sueldo", sueldo);
+                cmd.Parameters.AddWithValue("@vendedores_direccion", direccion);
+                cmd.Parameters.AddWithValue("@vendedores_telefono", telefono);
+                cmd.Parameters.AddWithValue("@Fk_id_empleado", fkEmpleado);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Vendedor insertado correctamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al insertar vendedor: " + ex.Message);
+            }
+            finally
+            {
+                if (o_conn != null && o_conn.State == ConnectionState.Open)
+                {
+                    o_conn.Close();
+                }
+            }
+        }
 
 
+        public void EliminarVendedor(int idVendedor)
+        {
+            OdbcConnection o_conn = conn.conexion();
+            try
+            {
+                string s_query = "DELETE FROM Tbl_vendedores WHERE Pk_id_vendedor = ?";
+                OdbcCommand cmd = new OdbcCommand(s_query, o_conn);
+                cmd.Parameters.AddWithValue("@Pk_id_vendedor", idVendedor);
+
+                int filasAfectadas = cmd.ExecuteNonQuery();
+
+                if (filasAfectadas > 0)
+                    MessageBox.Show("Vendedor eliminado correctamente.");
+                else
+                    MessageBox.Show("No se encontró el vendedor para eliminar.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar vendedor: " + ex.Message);
+            }
+            finally
+            {
+                if (o_conn != null && o_conn.State == ConnectionState.Open)
+                    o_conn.Close();
+            }
+        }
 
 
 

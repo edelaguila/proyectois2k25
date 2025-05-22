@@ -374,6 +374,7 @@
             this.Dgv_compras.RowTemplate.Height = 24;
             this.Dgv_compras.Size = new System.Drawing.Size(933, 162);
             this.Dgv_compras.TabIndex = 0;
+            this.Dgv_compras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_compras_CellContentClick);
             this.Dgv_compras.SelectionChanged += new System.EventHandler(this.Dgv_compras_SelectionChanged);
             // 
             // groupBox4
