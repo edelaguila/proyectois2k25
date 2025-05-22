@@ -17,8 +17,8 @@ namespace Capa_Modelo
         public string sIdUsuario { get; set; }
 
 
-    // Método para obtener el listado de vendedores
-    public OdbcDataAdapter funObtenerVendedores()
+        // Método para obtener el listado de vendedores
+        public OdbcDataAdapter funObtenerVendedores()
         {
             try
             {
@@ -35,8 +35,8 @@ namespace Capa_Modelo
             }
         }
 
-    // Método para obtener ventas de un vendedor según filtros
-    public OdbcDataAdapter FunObtenerVentasPorVendedor(int iIdVendedor, string sFiltro, DateTime dFechaInicio, DateTime dFechaFin, string sValorFiltro)
+        // Método para obtener ventas de un vendedor según filtros
+        public OdbcDataAdapter FunObtenerVentasPorVendedor(int iIdVendedor, string sFiltro, DateTime dFechaInicio, DateTime dFechaFin, string sValorFiltro)
         {
             try
             {
@@ -94,7 +94,7 @@ namespace Capa_Modelo
                 Console.WriteLine($"Consulta SQL generada:\n{query}\n\nParámetros:\nVendedor: {iIdVendedor}\nFechaInicio: {dFechaInicio}\nFechaFin: {dFechaFin}\nValorFiltro: {sValorFiltro}");
 
                 OdbcCommand command = new OdbcCommand(query, cn.conectar());
-                
+
                 // Agregar parámetros en el orden correcto
                 command.Parameters.AddWithValue("?", dFechaInicio);
                 command.Parameters.AddWithValue("?", dFechaFin);
@@ -120,7 +120,7 @@ namespace Capa_Modelo
             {
                 Console.WriteLine("Error al obtener las ventas filtradas: " + ex.Message);
                 return null;
-            }  
+            }
         }
 
 
@@ -147,7 +147,7 @@ namespace Capa_Modelo
             catch (Exception ex)
             {
                 Console.WriteLine("Error al insertar en la tabla Comisiones encabezado: " + ex.Message);
-            }    
+            }
         }
 
         // Método para insertar un detalle de comisión
@@ -210,7 +210,7 @@ namespace Capa_Modelo
                 Console.WriteLine("Error al insertar en la tabla Comisiones encabezado: " + ex.Message);
                 return 0;
             }
-            
+
         }
 
         // Método para insertar en Tbl_detalle_comisiones
@@ -243,7 +243,7 @@ namespace Capa_Modelo
                 Console.WriteLine("Error al insertar en la tabla detalle comision: " + ex.Message);
             }
 
-            
+
         }
 
         // Método para obtener el siguiente Pk_id_comisionEnc
@@ -268,7 +268,7 @@ namespace Capa_Modelo
             {
                 Console.WriteLine("Error al obtener los vendedores: " + ex.Message);
                 return 0;
-            }    
+            }
         }
 
         public int funObtenerProximoIdDetalleComision()
@@ -295,7 +295,7 @@ namespace Capa_Modelo
             {
                 Console.WriteLine("Error al obtener los vendedores: " + ex.Message);
                 return 0;
-            }  
+            }
         }
 
         public DataTable funObtenerMarcas()
@@ -352,3 +352,5 @@ namespace Capa_Modelo
 
     }
 }
+
+

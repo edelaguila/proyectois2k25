@@ -16,7 +16,7 @@ namespace EjecucionComisiones
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Capa_Vista.Frm_comisiones());
+            Application.Run(new Capa_Vista_Comisiones.Frm_Comisiones());
         }
     }
 }

@@ -13,10 +13,11 @@ using System.IO;
 
 namespace Capa_Vista_Comisiones
 {
-    public partial class Frm_comisiones : Form
+    public partial class Frm_Comisiones : Form
     {
+
         Logica logica = new Logica();
-       
+
 
         // Variable para almacenar el porcentaje de comisión
         private decimal dePorcentajeComision;
@@ -25,7 +26,8 @@ namespace Capa_Vista_Comisiones
         private string filtroActual = "";
         private string valorFiltroActual = "";
 
-        public Frm_comisiones()
+
+        public Frm_Comisiones()
         {
             InitializeComponent();
             funCargarVendedores();
@@ -33,14 +35,12 @@ namespace Capa_Vista_Comisiones
             Cbo_vendedor.SelectedIndex = -1;
             Lbl_filtro.Text = "";
         }
-
-        // Método para cargar vendedores en el ComboBox al iniciar el formulario
         private void funCargarVendedores()
         {
             try
             {
                 DataTable dtVendedores = logica.funObtenerVendedores();
-                
+
                 // Crear una nueva fila para "Todos los vendedores"
                 DataRow row = dtVendedores.NewRow();
                 row["Pk_id_vendedor"] = 0;
@@ -51,19 +51,11 @@ namespace Capa_Vista_Comisiones
                 Cbo_vendedor.DisplayMember = "NombreCompleto";
                 Cbo_vendedor.ValueMember = "Pk_id_vendedor";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar vendedores: " + ex.Message);
             }
         }
-
-        // Evento para buscar ventas de acuerdo al vendedor y al filtro
-        private void Btn_buscar_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        // Método para calcular el total de ventas mostrado en el DataGridView
         private void funCalcularTotalVentas()
         {
             decimal deTotalVentas = 0;
@@ -77,19 +69,157 @@ namespace Capa_Vista_Comisiones
             Txt_venta.Text = deTotalVentas.ToString("C", new CultureInfo("es-GT")); // Muestra el total en formato de moneda Q
         }
 
-        
-        private void Btn_calcular_Click(object sender, EventArgs e)
+        private void Lbl_vendedor_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void Cbo_vendedor_SelectedIndexChanged(object sender, EventArgs e)
+        private void Frm_Comisiones_Load(object sender, EventArgs e)
         {
- 
+
         }
-        
-        // Evento para calcular la comisión al hacer clic en "Calcular"
-        private void Btn_calcular_Click_1(object sender, EventArgs e)
+
+        private void Btn_buscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Cbo_vendedor.SelectedValue == null)
+                {
+                    MessageBox.Show("Seleccione un vendedor.");
+                    return;
+                }
+
+                int iIdVendedor = (int)Cbo_vendedor.SelectedValue;
+                string sFiltro = ""; // Inicializamos el filtro como una cadena vacía
+                DateTime dFechaInicio = Dtp_fecha_inicio.Value;
+                DateTime dFechaFin = Dtp_fecha_fin.Value;
+                string sValorFiltro = Cbo_filtro.SelectedValue?.ToString(); // Valor de marca o línea
+
+                // Asignar el filtro según el RadioButton seleccionado
+                if (Rdb_inventario.Checked)
+                {
+                    sFiltro = "Inventario";
+                }
+                else if (Rdb_marcas.Checked && !string.IsNullOrEmpty(sValorFiltro))
+                {
+                    sFiltro = "Marcas";
+                }
+                else if (Rdb_lineas.Checked && !string.IsNullOrEmpty(sValorFiltro))
+                {
+                    sFiltro = "Lineas";
+                }
+                else if (Rdb_costo.Checked)
+                {
+                    sFiltro = "Costo";
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un filtro(Inventario, Marcas, etc.) y periodo de fechas a buscar.");
+                    return;
+                }
+
+                // Llamar al método de lógica para obtener las ventas filtradas
+                DataTable dtVentas = logica.funObtenerVentasFiltradas(iIdVendedor, sFiltro, dFechaInicio, dFechaFin, sValorFiltro);
+                Dgv_ventas.DataSource = dtVentas;
+
+                // Calcular el total de ventas y la comisión total sumando cada fila
+                decimal deTotalVentas = 0;
+                decimal deTotalComision = 0;
+                decimal dePorcentajePromedio = 0;
+
+                if (dtVentas.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtVentas.Rows)
+                    {
+                        decimal totalVenta = row["Total"] != DBNull.Value ? Convert.ToDecimal(row["Total"]) : 0;
+                        decimal porcentaje = row["Comision"] != DBNull.Value ? Convert.ToDecimal(row["Comision"]) : 0;
+
+                        deTotalVentas += totalVenta;
+                        deTotalComision += totalVenta * porcentaje;
+                        dePorcentajePromedio += porcentaje;
+                    }
+
+                    // Calcular el porcentaje promedio
+                    dePorcentajePromedio = dePorcentajePromedio / dtVentas.Rows.Count;
+
+                    // Mostrar el porcentaje promedio redondeado en el textbox
+                    Txt_porcentaje.Text = $"{Math.Round(dePorcentajePromedio * 100, 0)}%";
+                }
+                else
+                {
+                    Txt_porcentaje.Text = "";
+                }
+
+                Txt_venta.Text = deTotalVentas.ToString("C", new System.Globalization.CultureInfo("es-GT"));
+                Txt_comision.Text = deTotalComision.ToString("C", new System.Globalization.CultureInfo("es-GT"));
+
+                Rdb_inventario.Enabled = false;
+                Rdb_marcas.Enabled = false;
+                Rdb_lineas.Enabled = false;
+                Rdb_costo.Enabled = false;
+                Cbo_vendedor.Enabled = false;
+
+                filtroActual = sFiltro;
+                valorFiltroActual = sValorFiltro;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar ventas: " + ex.Message);
+            }
+        }
+
+        private List<int> funObtenerVentasSeleccionadas()
+        {
+            List<int> iVentasSeleccionadas = new List<int>();
+            foreach (DataGridViewRow row in Dgv_ventas.Rows)
+            {
+                if (row.Cells["IdVenta"].Value != null) // "IdVenta" es el nombre de la columna que contiene el ID de la venta
+                {
+                    iVentasSeleccionadas.Add(Convert.ToInt32(row.Cells["IdVenta"].Value));
+                }
+            }
+            return iVentasSeleccionadas;
+        }
+
+        private void Btn_limpiar_Click(object sender, EventArgs e)
+        {
+            // Limpiar los TextBox
+            Txt_porcentaje.Clear();
+            Txt_venta.Clear();
+            Txt_comision.Clear();
+            Txt_nombre.Clear();
+            Lbl_filtro.Text = "";
+
+            // Desmarcar los RadioButton
+            Rdb_inventario.Checked = false;
+            Rdb_marcas.Checked = false;
+            Rdb_lineas.Checked = false;
+            Rdb_costo.Checked = false;
+
+            //Habilitar los radioButton
+            Rdb_inventario.Enabled = true;
+            Rdb_marcas.Enabled = true;
+            Rdb_lineas.Enabled = true;
+            Rdb_costo.Enabled = true;
+
+            // Restablecer el ComboBox al valor predeterminado
+            Cbo_vendedor.SelectedIndex = -1;
+            Cbo_filtro.SelectedIndex = -1;
+
+            //Habilitar combobox
+            Cbo_vendedor.Enabled = true;
+
+            // Limpiar el DataGridView
+            Dgv_ventas.DataSource = null;
+
+            // Restablecer los DateTimePicker a sus valores predeterminados
+            Dtp_fecha_inicio.Value = DateTime.Now;
+            Dtp_fecha_fin.Value = DateTime.Now;
+        }
+
+
+
+        private void Btn_calcular_Click(object sender, EventArgs e)
         {
             try
             {
@@ -119,13 +249,13 @@ namespace Capa_Vista_Comisiones
                             foreach (DataRow row in dtVendedores.Rows)
                             {
                                 int iIdVendedorActual = Convert.ToInt32(row["Pk_id_vendedor"]);
-                                
+
                                 // Obtener las ventas específicas para este vendedor
                                 DataTable dtVentasVendedor = logica.funObtenerVentasFiltradas(
-                                    iIdVendedorActual, 
-                                    filtroActual, 
-                                    Dtp_fecha_inicio.Value, 
-                                    Dtp_fecha_fin.Value, 
+                                    iIdVendedorActual,
+                                    filtroActual,
+                                    Dtp_fecha_inicio.Value,
+                                    Dtp_fecha_fin.Value,
                                     valorFiltroActual
                                 );
 
@@ -207,68 +337,18 @@ namespace Capa_Vista_Comisiones
                     MessageBox.Show("Por favor, asegúrate de haber seleccionado un vendedor y los filtros de ventas necesarios.");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error al calcular la comisión: " + ex.Message);
             }
         }
 
-        // Método para obtener los IDs de las ventas seleccionadas en el DataGridView
-        private List<int> funObtenerVentasSeleccionadas()
-        {
-            List<int> iVentasSeleccionadas = new List<int>();
-            foreach (DataGridViewRow row in Dgv_ventas.Rows)
-            {
-                if (row.Cells["IdVenta"].Value != null) // "IdVenta" es el nombre de la columna que contiene el ID de la venta
-                {
-                    iVentasSeleccionadas.Add(Convert.ToInt32(row.Cells["IdVenta"].Value));
-                }
-            }
-            return iVentasSeleccionadas;
-        }
-
-    private void Btn_limpiar_Click(object sender, EventArgs e)
-        {
-            // Limpiar los TextBox
-            Txt_porcentaje.Clear();
-            Txt_venta.Clear();
-            Txt_comision.Clear();
-            Txt_nombre.Clear();
-            Lbl_filtro.Text = "";
-
-            // Desmarcar los RadioButton
-            Rdb_inventario.Checked = false;
-            Rdb_marcas.Checked = false;
-            Rdb_lineas.Checked = false;
-            Rdb_costo.Checked = false;
-
-            //Habilitar los radioButton
-            Rdb_inventario.Enabled = true;
-            Rdb_marcas.Enabled = true;
-            Rdb_lineas.Enabled = true;
-            Rdb_costo.Enabled = true;
-
-            // Restablecer el ComboBox al valor predeterminado
-            Cbo_vendedor.SelectedIndex = -1;
-            Cbo_filtro.SelectedIndex = -1;
-            
-            //Habilitar combobox
-            Cbo_vendedor.Enabled = true;
-
-            // Limpiar el DataGridView
-            Dgv_ventas.DataSource = null;
-
-            // Restablecer los DateTimePicker a sus valores predeterminados
-            Dtp_fecha_inicio.Value = DateTime.Now;
-            Dtp_fecha_fin.Value = DateTime.Now;
-        }
 
         private void Btn_reporte_Click(object sender, EventArgs e)
         {
-            /*Frm_reporte rpt = new Frm_reporte();
-            rpt.Show();*/
+
         }
-        //funciones para el test unitario y no exponer directamente las propiedades
+
         public decimal deVenta
         {
             get { return decimal.Parse(Txt_venta.Text); }
@@ -292,117 +372,6 @@ namespace Capa_Vista_Comisiones
         {
             deComisionCalculada = deVenta * dePorcentajeComision; // Calcula y asigna la comisión
             Txt_comision.Text = deComisionCalculada.ToString("C", new CultureInfo("es-GT")); // Actualiza el TextBox con formato
-        }
-
-
-        public string funObtenerTextoComision()
-        {
-            return Txt_comision.Text;
-        }
-        //fin test
-        private void Frm_comisiones_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Gpb_ventas_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-private void Btn_buscar_Click_1(object sender, EventArgs e)
-{
-    try
-    {
-        if (Cbo_vendedor.SelectedValue == null)
-        {
-            MessageBox.Show("Seleccione un vendedor.");
-            return;
-        }
-
-        int iIdVendedor = (int)Cbo_vendedor.SelectedValue;
-        string sFiltro = ""; // Inicializamos el filtro como una cadena vacía
-        DateTime dFechaInicio = Dtp_fecha_inicio.Value;
-        DateTime dFechaFin = Dtp_fecha_fin.Value;
-        string sValorFiltro = Cbo_filtro.SelectedValue?.ToString(); // Valor de marca o línea
-
-        // Asignar el filtro según el RadioButton seleccionado
-        if (Rdb_inventario.Checked)
-        {
-            sFiltro = "Inventario";
-        }
-        else if (Rdb_marcas.Checked && !string.IsNullOrEmpty(sValorFiltro))
-        {
-            sFiltro = "Marcas";
-        }
-        else if (Rdb_lineas.Checked && !string.IsNullOrEmpty(sValorFiltro))
-        {
-            sFiltro = "Lineas";
-        }
-        else if (Rdb_costo.Checked)
-        {
-            sFiltro = "Costo";
-        }
-        else
-        {
-            MessageBox.Show("Seleccione un filtro(Inventario, Marcas, etc.) y periodo de fechas a buscar.");
-            return;
-        }
-
-        // Llamar al método de lógica para obtener las ventas filtradas
-        DataTable dtVentas = logica.funObtenerVentasFiltradas(iIdVendedor, sFiltro, dFechaInicio, dFechaFin, sValorFiltro);
-        Dgv_ventas.DataSource = dtVentas;
-
-        // Calcular el total de ventas y la comisión total sumando cada fila
-        decimal deTotalVentas = 0;
-        decimal deTotalComision = 0;
-        decimal dePorcentajePromedio = 0;
-
-        if (dtVentas.Rows.Count > 0)
-        {
-            foreach (DataRow row in dtVentas.Rows)
-            {
-                decimal totalVenta = row["Total"] != DBNull.Value ? Convert.ToDecimal(row["Total"]) : 0;
-                decimal porcentaje = row["Comision"] != DBNull.Value ? Convert.ToDecimal(row["Comision"]) : 0;
-                
-                deTotalVentas += totalVenta;
-                deTotalComision += totalVenta * porcentaje;
-                dePorcentajePromedio += porcentaje;
-            }
-
-            // Calcular el porcentaje promedio
-            dePorcentajePromedio = dePorcentajePromedio / dtVentas.Rows.Count;
-            
-            // Mostrar el porcentaje promedio redondeado en el textbox
-            Txt_porcentaje.Text = $"{Math.Round(dePorcentajePromedio * 100, 0)}%";
-        }
-        else
-        {
-            Txt_porcentaje.Text = "";
-        }
-
-        Txt_venta.Text = deTotalVentas.ToString("C", new System.Globalization.CultureInfo("es-GT"));
-        Txt_comision.Text = deTotalComision.ToString("C", new System.Globalization.CultureInfo("es-GT"));
-
-        Rdb_inventario.Enabled = false;
-        Rdb_marcas.Enabled = false;
-        Rdb_lineas.Enabled = false;
-        Rdb_costo.Enabled = false;
-        Cbo_vendedor.Enabled = false;
-
-        filtroActual = sFiltro;
-        valorFiltroActual = sValorFiltro;
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Error al buscar ventas: " + ex.Message);
-    }
-}
-
-
-        private void TtReporte_Popup(object sender, PopupEventArgs e)
-        {
-            
         }
 
         private void Rdb_marcas_CheckedChanged(object sender, EventArgs e)
@@ -440,7 +409,7 @@ private void Btn_buscar_Click_1(object sender, EventArgs e)
                     Cbo_filtro.DataSource = null;
 
                     dtFiltro = logica.funObtenerMarcas();
-                    
+
                     // Agregar opción "Todas las marcas"
                     DataRow row = dtFiltro.NewRow();
                     row["Pk_id_Marca"] = 0;
@@ -456,7 +425,7 @@ private void Btn_buscar_Click_1(object sender, EventArgs e)
                     Cbo_filtro.DataSource = null;
 
                     dtFiltro = logica.funObtenerLineas();
-                    
+
                     // Agregar opción "Todas las líneas"
                     DataRow row = dtFiltro.NewRow();
                     row["Pk_id_linea"] = 0;
@@ -498,7 +467,7 @@ private void Btn_buscar_Click_1(object sender, EventArgs e)
             }
         }
 
-        private void Cbo_vendedor_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void Cbo_vendedor_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Verificamos que haya un valor seleccionado en el ComboBox
             if (Cbo_vendedor.SelectedItem != null)
@@ -510,68 +479,10 @@ private void Btn_buscar_Click_1(object sender, EventArgs e)
                 Txt_nombre.Text = selectedItem["NombreCompleto"].ToString();
             }
         }
-
-        private void Btn_ayuda_Click(object sender, EventArgs e)
-        {
-            // Obtener la ruta del directorio del ejecutable
-            string sExecutablePath = AppDomain.CurrentDomain.BaseDirectory;
-
-            // Retroceder a la carpeta del proyecto
-            string sProjectPath = Path.GetFullPath(Path.Combine(sExecutablePath, @"..\..\..\..\..\..\Ayuda\Modulos\Comercial\"));
-            MessageBox.Show("1" + sProjectPath);
-
-
-            string sAyudaFolderPath = Path.Combine(sProjectPath, "AyudasComisiones");
-
-            string sPathAyuda = funFindFileInDirectory(sAyudaFolderPath, "AyudasComisiones.chm");
-
-            // Verifica si el archivo existe antes de intentar abrirlo
-            if (!string.IsNullOrEmpty(sPathAyuda))
-            {
-                MessageBox.Show("El archivo sí está.");
-                // Abre el archivo de ayuda .chm en la sección especificada
-                Help.ShowHelp(null, sPathAyuda, "Comisiones.html");
-            }
-            else
-            {
-                // Si el archivo no existe, muestra un mensaje de error
-                MessageBox.Show("El archivo de ayuda no se encontró.");
-            }
-        }
-
-        private string funFindFileInDirectory(string sDirectory, string sFileName)
-        {
-            try
-            {
-                // Verificamos si la carpeta existe
-                if (Directory.Exists(sDirectory))
-                {
-                    // Buscamos el archivo .chm en la carpeta
-                    string[] sFiles = Directory.GetFiles(sDirectory, "*.chm", SearchOption.TopDirectoryOnly);
-
-                    // Si encontramos el archivo, verificamos si coincide con el archivo que se busca y retornamos su ruta
-                    foreach (var file in sFiles)
-                    {
-                        if (Path.GetFileName(file).Equals(sFileName, StringComparison.OrdinalIgnoreCase))
-                        {
-                            MessageBox.Show("Archivo encontrado: " + file);
-                            return file;
-                        }
-                    }
-                }
-                else
-                {   //Mensaje de No se encontro la carpeta
-                    MessageBox.Show("No se encontró la carpeta: " + sDirectory);
-                }
-            }
-            catch (Exception ex)
-            {       //Mensaje de error al buscar el archivo
-                MessageBox.Show("Error al buscar el archivo: " + ex.Message);
-            }
-
-            // Retorna null si no se encontró el archivo
-            return null;
-        }
-
+    
+    
     }
+
+
+
 }
