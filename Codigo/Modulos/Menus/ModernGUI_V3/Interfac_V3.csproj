@@ -53,38 +53,29 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Componentes\Seguridad2_5\Capa_Controlador_Seguridad\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Carrera">
+      <HintPath>..\..\SGRRHH\DesarrolloCarrera\DesCarrera\Capa_Vista_Carrera\bin\Debug\Capa_Vista_Carrera.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_CompraVenta, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Comercial2_5\Menu_compraVenta\Capa_Vista_CompraVenta\bin\Debug\Capa_Vista_CompraVenta.dll</HintPath>
+      <HintPath>..\..\Comercial\Menu_compraVenta\Capa_Vista_CompraVenta\bin\Debug\Capa_Vista_CompraVenta.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Contabilidad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Contabilidad\Capa_Vista_Contabilidad\bin\Debug\Capa_Vista_Contabilidad.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Cotizacion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Comercial2_5\MVC_Cotizacion\Capa_Vista_Cotizacion\bin\Debug\Capa_Vista_Cotizacion.dll</HintPath>
-    </Reference>
     <Reference Include="Capa_Vista_Cuentas_Corrientes">
-      <HintPath>..\..\Cuentas Corrientes2_5\Capa_Vista_Cuentas_Corrientes\bin\Debug\Capa_Vista_Cuentas_Corrientes.dll</HintPath>
+      <HintPath>..\..\Cuentas Corrientes\Capa_Vista_Cuentas_Corrientes\bin\Debug\Capa_Vista_Cuentas_Corrientes.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Logistica, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\GestionLogistica\Capa_Vista_Logistica\bin\Debug\Capa_Vista_Logistica.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Nominas">
-      <HintPath>..\..\Nominas\Capa_Vista_Nominas\bin\Debug\Capa_Vista_Nominas.dll</HintPath>
+      <HintPath>..\..\Logistica\Capa_Vista_Logistica\bin\Debug\Capa_Vista_Logistica.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Produccion">
       <HintPath>..\..\Produccion\Produccion\Capa_Vista_Produccion\bin\Debug\Capa_Vista_Produccion.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Reporteria, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Componentes\Reporteador2_5\Capa_Vista_Reporteria\bin\Debug\Capa_Vista_Reporteria.dll</HintPath>
+    <Reference Include="Capa_Vista_RRHH">
+      <HintPath>..\..\SGRRHH\MDI_RRHH\Capa_Vista_RRHH\bin\Debug\Capa_Vista_RRHH.exe</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Seguridad">
       <HintPath>..\..\..\Componentes\Seguridad2_5\Capa_Vista_Seguridad\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
