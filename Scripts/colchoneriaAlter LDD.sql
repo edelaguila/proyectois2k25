@@ -193,6 +193,17 @@ CREATE TABLE Tbl_caja_general (
     FOREIGN KEY (Fk_id_proveedor) REFERENCES Tbl_proveedores (Pk_prov_id),
     FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Clientes (Pk_id_deuda) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+ALTER TABLE Tbl_caja_general
+   
+    DROP COLUMN mora_monto,
+    DROP COLUMN deuda_monto,
+    DROP COLUMN transaccion_monto,
+   
+    ADD COLUMN Fk_id_deuda_proveedor INT NULL,
+
+    ADD CONSTRAINT FK_Tbl_caja_general_deuda_prov
+        FOREIGN KEY (Fk_id_deuda_proveedor)
+        REFERENCES Tbl_deudas_proveedores (Pk_id_deuda);
 
 -- Datos factura Cuentas Corrientes
 

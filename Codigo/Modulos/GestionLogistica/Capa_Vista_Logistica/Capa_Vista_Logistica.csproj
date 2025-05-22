@@ -32,8 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="CapaVista_CajaCC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="CapaVista_CajaCC">
       <HintPath>..\..\Cuentas Corrientes2_5\MVC_CajaCC\CapaVista_CajaCC\bin\Debug\CapaVista_CajaCC.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Controlador_Logistica">
