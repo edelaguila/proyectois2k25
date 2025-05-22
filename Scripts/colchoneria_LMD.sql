@@ -1032,3 +1032,25 @@ INSERT INTO tbl_comisiones_encabezado (
 (7,3, '2025-01-15', 12000.00, 100.00),
 (8,3, '2025-01-15', 12000.00, 100.00),
 (9,3, '2025-01-15', 12000.00, 100.00);
+
+
+INSERT INTO tbl_factura_cliente 
+(Fk_id_venta, Fk_No_serie, Fk_No_de_facV, id_clienteFact, fecha_emision, fecha_vencimiento, Total_a_pagar, saldo)
+VALUES
+(1001, '123ABC', 1, 1, '2024-05-01', '2024-05-15', 1200.00, 1200.00), -- Carlos Ramírez
+(1002, '123ABC', 2, 2, '2024-05-03', '2024-05-17', 800.00, 800.00),   -- María González
+(1003, '456DEF', 3, 3, '2024-05-05', '2024-05-20', 1500.00, 1500.00), -- José Martínez
+(1004, '789GHI', 4, 4, '2024-05-06', '2024-05-21', 600.00, 600.00),   -- Ana Hernández
+(1005, '789GHI', 5, 5, '2024-05-07', '2024-05-22', 950.00, 950.00);   -- Luis López
+
+INSERT INTO tbl_clientes 
+(Pk_id_cliente, Clientes_nombre, Clientes_apellido, Clientes_nit, Clientes_telefon, 
+ Clientes_direccion, Clientes_No_Cuenta, estado, Cliente_email, Cliente_Tipo, 
+ Cliente_lim_credito, Cliente_dias_credito, Fecha_Registro)
+VALUES
+(1, 'Carlos', 'Ramírez', '1234567-8', '5555-1111', 'Zona 1, Ciudad', '10001', 1, 'carlos.ramirez@mail.com', 'Crédito', 5000.00, 30, '2024-01-15'),
+(2, 'María', 'González', '2345678-9', '5555-2222', 'Zona 3, Ciudad', '10002', 1, 'maria.gonzalez@mail.com', 'Contado', 0.00, 0, '2024-02-01'),
+(3, 'José', 'Martínez', '3456789-0', '5555-3333', 'Zona 7, Ciudad', '10003', 1, 'jose.martinez@mail.com', 'Crédito', 8000.00, 45, '2024-03-10'),
+(4, 'Ana', 'Hernández', '4567890-1', '5555-4444', 'Zona 9, Ciudad', '10004', 1, 'ana.hernandez@mail.com', 'Contado', 0.00, 0, '2024-04-05'),
+(5, 'Luis', 'López', '5678901-2', '5555-5555', 'Zona 11, Ciudad', '10005', 1, 'luis.lopez@mail.com', 'Crédito', 6000.00, 60, '2024-05-01');
+
