@@ -1,0 +1,92 @@
+﻿/* Fondo general */
+body {
+    background-color: #f1f3f9;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Encabezado */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+    .header h2 {
+        font-size: 24px;
+        color: #333;
+        margin: 0;
+    }
+
+/* Campo de formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Etiquetas */
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Inputs y selects */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fc;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+/* Estado con error (como Bootstrap) */
+.input-validation-error {
+    border-color: #e74c3c;
+    background-color: #fff5f5;
+}
+
+/* Texto de validación */
+.field-validation-error {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Botón */
+.btn {
+    background-color: #7B2FF7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+    .btn:hover {
+        background-color: #6823cd;
+    }
+
+/* Pie */
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+}

@@ -25,7 +25,7 @@ namespace Capa_Vista_Migracion
             navegador1.AsignarColorFondo(ColorTranslator.FromHtml("#ffd96b"));
             navegador1.AsignarColorFuente(Color.Black);
             navegador1.AsignarTabla("Tbl_empleado");
-            navegador1.ObtenerIdAplicacion("1000");
+            navegador1.ObtenerIdAplicacion("6003");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
 

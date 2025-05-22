@@ -1,0 +1,78 @@
+﻿body {
+    background-color: #f1f3f9;
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .header h2 {
+        margin: 0;
+    }
+
+.form-group {
+    margin-bottom: 20px;
+    padding-left: 10px; /* Espacio a la izquierda */
+    padding-right: 10px; /* Espacio a la derecha */
+}
+
+label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fc;
+    font-size: 14px;
+}
+
+.btn {
+    background-color: #7B2FF7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .btn:hover {
+        background-color: #6823cd;
+    }
+
+.footer {
+    margin-top: 10px;
+    font-weight: 600;
+    text-align: center;
+}
+/* Estado con error (como Bootstrap) */
+.input-validation-error {
+    border-color: #e74c3c;
+    background-color: #fff5f5;
+}
+
+/* Texto de validación */
+.field-validation-error {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+}

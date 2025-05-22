@@ -1,0 +1,84 @@
+﻿body {
+    background-color: #f1f3f9;
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.btn-purple {
+    background-color: #7B2FF7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+    .btn-purple:hover {
+        background-color: #6823cd;
+    }
+
+.document-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9fafc;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+}
+
+.document-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+    .document-info i {
+        font-size: 28px;
+        color: #7B2FF7;
+    }
+
+.document-text {
+    line-height: 1.2;
+}
+
+    .document-text .title {
+        font-weight: 600;
+    }
+
+    .document-text .details {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+.document-actions i {
+    margin-left: 20px;
+    font-size: 18px;
+    color: #7B2FF7;
+    cursor: pointer;
+}
+
+    .document-actions i:hover {
+        color: #5a1fc0;
+    }
+
