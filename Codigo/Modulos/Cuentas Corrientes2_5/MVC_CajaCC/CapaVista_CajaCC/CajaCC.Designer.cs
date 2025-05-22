@@ -35,19 +35,14 @@ namespace CapaVista_CajaCC
             this.lbl_id_cajacc = new System.Windows.Forms.Label();
             this.lbl_id_cliente_caja = new System.Windows.Forms.Label();
             this.lbl_id_proveedor_caja = new System.Windows.Forms.Label();
-            this.lbl_md_caja = new System.Windows.Forms.Label();
-            this.lbl_mm_caja = new System.Windows.Forms.Label();
-            this.lbl_mt_caja = new System.Windows.Forms.Label();
             this.lbl_saldo_restante_caja = new System.Windows.Forms.Label();
             this.lbl_estado_caja = new System.Windows.Forms.Label();
             this.lbl_fechareg_caja = new System.Windows.Forms.Label();
             this.txt_idcaja = new System.Windows.Forms.TextBox();
-            this.txt_mdcaja = new System.Windows.Forms.TextBox();
-            this.txt_mmcaja = new System.Windows.Forms.TextBox();
-            this.txt_mtcaja = new System.Windows.Forms.TextBox();
             this.txt_saldocaja = new System.Windows.Forms.TextBox();
             this.txt_estadocaja = new System.Windows.Forms.TextBox();
             this.gpb_datos_caja = new System.Windows.Forms.GroupBox();
+            this.dtp_caja = new System.Windows.Forms.DateTimePicker();
             this.cbo_deuda_caja = new System.Windows.Forms.ComboBox();
             this.lbl_iddeuda_caja = new System.Windows.Forms.Label();
             this.cbo_proveedor_caja = new System.Windows.Forms.ComboBox();
@@ -61,7 +56,8 @@ namespace CapaVista_CajaCC
             this.Btn_Ayudas = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
             this.gpb_botones_caja = new System.Windows.Forms.GroupBox();
-            this.dtp_caja = new System.Windows.Forms.DateTimePicker();
+            this.cbo_deuda_prov = new System.Windows.Forms.ComboBox();
+            this.lbl_deuda_prov = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_caja_general)).BeginInit();
             this.gpb_datos_caja.SuspendLayout();
             this.gpb_botones_caja.SuspendLayout();
@@ -109,38 +105,11 @@ namespace CapaVista_CajaCC
             // lbl_id_proveedor_caja
             // 
             this.lbl_id_proveedor_caja.AutoSize = true;
-            this.lbl_id_proveedor_caja.Location = new System.Drawing.Point(10, 134);
+            this.lbl_id_proveedor_caja.Location = new System.Drawing.Point(6, 146);
             this.lbl_id_proveedor_caja.Name = "lbl_id_proveedor_caja";
             this.lbl_id_proveedor_caja.Size = new System.Drawing.Size(74, 17);
             this.lbl_id_proveedor_caja.TabIndex = 66;
             this.lbl_id_proveedor_caja.Text = "Proveedor";
-            // 
-            // lbl_md_caja
-            // 
-            this.lbl_md_caja.AutoSize = true;
-            this.lbl_md_caja.Location = new System.Drawing.Point(334, 20);
-            this.lbl_md_caja.Name = "lbl_md_caja";
-            this.lbl_md_caja.Size = new System.Drawing.Size(113, 17);
-            this.lbl_md_caja.TabIndex = 67;
-            this.lbl_md_caja.Text = "Monto de Deuda";
-            // 
-            // lbl_mm_caja
-            // 
-            this.lbl_mm_caja.AutoSize = true;
-            this.lbl_mm_caja.Location = new System.Drawing.Point(344, 79);
-            this.lbl_mm_caja.Name = "lbl_mm_caja";
-            this.lbl_mm_caja.Size = new System.Drawing.Size(103, 17);
-            this.lbl_mm_caja.TabIndex = 68;
-            this.lbl_mm_caja.Text = "Monto de Mora";
-            // 
-            // lbl_mt_caja
-            // 
-            this.lbl_mt_caja.AutoSize = true;
-            this.lbl_mt_caja.Location = new System.Drawing.Point(309, 129);
-            this.lbl_mt_caja.Name = "lbl_mt_caja";
-            this.lbl_mt_caja.Size = new System.Drawing.Size(149, 17);
-            this.lbl_mt_caja.TabIndex = 69;
-            this.lbl_mt_caja.Text = "Monto de Transacción";
             // 
             // lbl_saldo_restante_caja
             // 
@@ -177,30 +146,6 @@ namespace CapaVista_CajaCC
             this.txt_idcaja.Size = new System.Drawing.Size(176, 22);
             this.txt_idcaja.TabIndex = 73;
             // 
-            // txt_mdcaja
-            // 
-            this.txt_mdcaja.Location = new System.Drawing.Point(464, 20);
-            this.txt_mdcaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txt_mdcaja.Name = "txt_mdcaja";
-            this.txt_mdcaja.Size = new System.Drawing.Size(176, 22);
-            this.txt_mdcaja.TabIndex = 76;
-            // 
-            // txt_mmcaja
-            // 
-            this.txt_mmcaja.Location = new System.Drawing.Point(464, 76);
-            this.txt_mmcaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txt_mmcaja.Name = "txt_mmcaja";
-            this.txt_mmcaja.Size = new System.Drawing.Size(176, 22);
-            this.txt_mmcaja.TabIndex = 77;
-            // 
-            // txt_mtcaja
-            // 
-            this.txt_mtcaja.Location = new System.Drawing.Point(464, 124);
-            this.txt_mtcaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txt_mtcaja.Name = "txt_mtcaja";
-            this.txt_mtcaja.Size = new System.Drawing.Size(176, 22);
-            this.txt_mtcaja.TabIndex = 78;
-            // 
             // txt_saldocaja
             // 
             this.txt_saldocaja.Location = new System.Drawing.Point(830, 12);
@@ -219,6 +164,8 @@ namespace CapaVista_CajaCC
             // 
             // gpb_datos_caja
             // 
+            this.gpb_datos_caja.Controls.Add(this.lbl_deuda_prov);
+            this.gpb_datos_caja.Controls.Add(this.cbo_deuda_prov);
             this.gpb_datos_caja.Controls.Add(this.dtp_caja);
             this.gpb_datos_caja.Controls.Add(this.cbo_deuda_caja);
             this.gpb_datos_caja.Controls.Add(this.lbl_iddeuda_caja);
@@ -226,16 +173,10 @@ namespace CapaVista_CajaCC
             this.gpb_datos_caja.Controls.Add(this.cbo_cliente_caja);
             this.gpb_datos_caja.Controls.Add(this.txt_estadocaja);
             this.gpb_datos_caja.Controls.Add(this.txt_saldocaja);
-            this.gpb_datos_caja.Controls.Add(this.txt_mtcaja);
-            this.gpb_datos_caja.Controls.Add(this.txt_mmcaja);
-            this.gpb_datos_caja.Controls.Add(this.txt_mdcaja);
             this.gpb_datos_caja.Controls.Add(this.txt_idcaja);
             this.gpb_datos_caja.Controls.Add(this.lbl_fechareg_caja);
             this.gpb_datos_caja.Controls.Add(this.lbl_estado_caja);
             this.gpb_datos_caja.Controls.Add(this.lbl_saldo_restante_caja);
-            this.gpb_datos_caja.Controls.Add(this.lbl_mt_caja);
-            this.gpb_datos_caja.Controls.Add(this.lbl_mm_caja);
-            this.gpb_datos_caja.Controls.Add(this.lbl_md_caja);
             this.gpb_datos_caja.Controls.Add(this.lbl_id_proveedor_caja);
             this.gpb_datos_caja.Controls.Add(this.lbl_id_cliente_caja);
             this.gpb_datos_caja.Controls.Add(this.lbl_id_cajacc);
@@ -246,10 +187,17 @@ namespace CapaVista_CajaCC
             this.gpb_datos_caja.TabStop = false;
             this.gpb_datos_caja.Text = "Ingreso de Datos";
             // 
+            // dtp_caja
+            // 
+            this.dtp_caja.Location = new System.Drawing.Point(839, 127);
+            this.dtp_caja.Name = "dtp_caja";
+            this.dtp_caja.Size = new System.Drawing.Size(197, 22);
+            this.dtp_caja.TabIndex = 86;
+            // 
             // cbo_deuda_caja
             // 
             this.cbo_deuda_caja.FormattingEnabled = true;
-            this.cbo_deuda_caja.Location = new System.Drawing.Point(105, 182);
+            this.cbo_deuda_caja.Location = new System.Drawing.Point(466, 21);
             this.cbo_deuda_caja.Name = "cbo_deuda_caja";
             this.cbo_deuda_caja.Size = new System.Drawing.Size(176, 24);
             this.cbo_deuda_caja.TabIndex = 85;
@@ -257,7 +205,7 @@ namespace CapaVista_CajaCC
             // lbl_iddeuda_caja
             // 
             this.lbl_iddeuda_caja.AutoSize = true;
-            this.lbl_iddeuda_caja.Location = new System.Drawing.Point(10, 185);
+            this.lbl_iddeuda_caja.Location = new System.Drawing.Point(374, 25);
             this.lbl_iddeuda_caja.Name = "lbl_iddeuda_caja";
             this.lbl_iddeuda_caja.Size = new System.Drawing.Size(50, 17);
             this.lbl_iddeuda_caja.TabIndex = 84;
@@ -266,7 +214,7 @@ namespace CapaVista_CajaCC
             // cbo_proveedor_caja
             // 
             this.cbo_proveedor_caja.FormattingEnabled = true;
-            this.cbo_proveedor_caja.Location = new System.Drawing.Point(105, 131);
+            this.cbo_proveedor_caja.Location = new System.Drawing.Point(105, 139);
             this.cbo_proveedor_caja.Name = "cbo_proveedor_caja";
             this.cbo_proveedor_caja.Size = new System.Drawing.Size(176, 24);
             this.cbo_proveedor_caja.TabIndex = 83;
@@ -365,6 +313,7 @@ namespace CapaVista_CajaCC
             this.Btn_Ayudas.Size = new System.Drawing.Size(65, 59);
             this.Btn_Ayudas.TabIndex = 116;
             this.Btn_Ayudas.UseVisualStyleBackColor = false;
+            this.Btn_Ayudas.Click += new System.EventHandler(this.Btn_Ayudas_Click);
             // 
             // Btn_salir
             // 
@@ -394,12 +343,23 @@ namespace CapaVista_CajaCC
             this.gpb_botones_caja.TabIndex = 118;
             this.gpb_botones_caja.TabStop = false;
             // 
-            // dtp_caja
+            // cbo_deuda_prov
             // 
-            this.dtp_caja.Location = new System.Drawing.Point(839, 127);
-            this.dtp_caja.Name = "dtp_caja";
-            this.dtp_caja.Size = new System.Drawing.Size(197, 22);
-            this.dtp_caja.TabIndex = 86;
+            this.cbo_deuda_prov.FormattingEnabled = true;
+            this.cbo_deuda_prov.Location = new System.Drawing.Point(466, 120);
+            this.cbo_deuda_prov.Name = "cbo_deuda_prov";
+            this.cbo_deuda_prov.Size = new System.Drawing.Size(176, 24);
+            this.cbo_deuda_prov.TabIndex = 87;
+            // 
+            // lbl_deuda_prov
+            // 
+            this.lbl_deuda_prov.AutoSize = true;
+            this.lbl_deuda_prov.Location = new System.Drawing.Point(374, 123);
+            this.lbl_deuda_prov.Name = "lbl_deuda_prov";
+            this.lbl_deuda_prov.Size = new System.Drawing.Size(50, 17);
+            this.lbl_deuda_prov.TabIndex = 88;
+            this.lbl_deuda_prov.Text = "Deuda";
+            this.lbl_deuda_prov.Click += new System.EventHandler(this.label1_Click);
             // 
             // frm_CajaCC
             // 
@@ -430,16 +390,10 @@ namespace CapaVista_CajaCC
         private System.Windows.Forms.Label lbl_id_cajacc;
         private System.Windows.Forms.Label lbl_id_cliente_caja;
         private System.Windows.Forms.Label lbl_id_proveedor_caja;
-        private System.Windows.Forms.Label lbl_md_caja;
-        private System.Windows.Forms.Label lbl_mm_caja;
-        private System.Windows.Forms.Label lbl_mt_caja;
         private System.Windows.Forms.Label lbl_saldo_restante_caja;
         private System.Windows.Forms.Label lbl_estado_caja;
         private System.Windows.Forms.Label lbl_fechareg_caja;
         private System.Windows.Forms.TextBox txt_idcaja;
-        private System.Windows.Forms.TextBox txt_mdcaja;
-        private System.Windows.Forms.TextBox txt_mmcaja;
-        private System.Windows.Forms.TextBox txt_mtcaja;
         private System.Windows.Forms.TextBox txt_saldocaja;
         private System.Windows.Forms.TextBox txt_estadocaja;
         private System.Windows.Forms.GroupBox gpb_datos_caja;
@@ -457,5 +411,7 @@ namespace CapaVista_CajaCC
         private System.Windows.Forms.ComboBox cbo_deuda_caja;
         private System.Windows.Forms.Label lbl_iddeuda_caja;
         private System.Windows.Forms.DateTimePicker dtp_caja;
+        private System.Windows.Forms.Label lbl_deuda_prov;
+        private System.Windows.Forms.ComboBox cbo_deuda_prov;
     }
 }

@@ -8,34 +8,30 @@ namespace CapaModelo_CajaCC
     {
         private Conexion conexion = new Conexion();
 
-        public bool InsertarCaja(int? idCliente, int? idProveedor, int idDeuda,
-            decimal deudaMonto, decimal moraMonto, decimal transaccionMonto,
+        public bool InsertarCaja(int? idCliente, int? idProveedor, int? idDeuda, int? idDeudaProveedor,
             decimal saldoRestante, int estado, string fechaRegistro)
         {
             try
             {
                 string sql = @"INSERT INTO Tbl_caja_general 
-                    (Fk_id_cliente, Fk_id_proveedor, Fk_id_deuda, 
-                    deuda_monto, mora_monto, transaccion_monto, 
+                    (Fk_id_cliente, Fk_id_proveedor, Fk_id_deuda, Fk_id_deuda_proveedor,
                     saldo_restante, estado, fecha_registro) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    VALUES (?, ?, ?, ?, ?, ?, ?)";
 
                 using (OdbcConnection conn = conexion.conexion())
                 using (OdbcCommand cmd = new OdbcCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@Fk_id_cliente", (object)idCliente ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@Fk_id_proveedor", (object)idProveedor ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Fk_id_deuda", idDeuda);
-                    cmd.Parameters.AddWithValue("@deuda_monto", deudaMonto);
-                    cmd.Parameters.AddWithValue("@mora_monto", moraMonto);
-                    cmd.Parameters.AddWithValue("@transaccion_monto", transaccionMonto);
+                    cmd.Parameters.AddWithValue("@Fk_id_deuda", (object)idDeuda ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Fk_id_deuda_proveedor", (object)idDeudaProveedor ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@saldo_restante", saldoRestante);
                     cmd.Parameters.AddWithValue("@estado", estado);
 
                     DateTime fechaValida;
                     if (!DateTime.TryParse(fechaRegistro, out fechaValida))
                     {
-                        fechaValida = DateTime.Now; // Usar fecha actual si la entrada no es válida
+                        fechaValida = DateTime.Now;
                     }
 
                     cmd.Parameters.AddWithValue("@fecha_registro", fechaValida.ToString("yyyy-MM-dd"));
@@ -50,15 +46,13 @@ namespace CapaModelo_CajaCC
             }
         }
 
-        public bool ModificarCaja(int idCaja, int? idCliente, int? idProveedor, int idDeuda,
-            decimal deudaMonto, decimal moraMonto, decimal transaccionMonto,
+        public bool ModificarCaja(int idCaja, int? idCliente, int? idProveedor, int? idDeuda, int? idDeudaProveedor,
             decimal saldoRestante, int estado, string fechaRegistro)
         {
             try
             {
                 string sql = @"UPDATE Tbl_caja_general SET 
-                    Fk_id_cliente = ?, Fk_id_proveedor = ?, Fk_id_deuda = ?, 
-                    deuda_monto = ?, mora_monto = ?, transaccion_monto = ?, 
+                    Fk_id_cliente = ?, Fk_id_proveedor = ?, Fk_id_deuda = ?, Fk_id_deuda_proveedor = ?,
                     saldo_restante = ?, estado = ?, fecha_registro = ? 
                     WHERE Pk_id_caja = ?";
 
@@ -67,17 +61,15 @@ namespace CapaModelo_CajaCC
                 {
                     cmd.Parameters.AddWithValue("@Fk_id_cliente", (object)idCliente ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@Fk_id_proveedor", (object)idProveedor ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Fk_id_deuda", idDeuda);
-                    cmd.Parameters.AddWithValue("@deuda_monto", deudaMonto);
-                    cmd.Parameters.AddWithValue("@mora_monto", moraMonto);
-                    cmd.Parameters.AddWithValue("@transaccion_monto", transaccionMonto);
+                    cmd.Parameters.AddWithValue("@Fk_id_deuda", (object)idDeuda ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Fk_id_deuda_proveedor", (object)idDeudaProveedor ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@saldo_restante", saldoRestante);
                     cmd.Parameters.AddWithValue("@estado", estado);
 
                     DateTime fechaValida;
                     if (!DateTime.TryParse(fechaRegistro, out fechaValida))
                     {
-                        fechaValida = DateTime.Now; // Usar fecha actual si la entrada no es válida
+                        fechaValida = DateTime.Now;
                     }
 
                     cmd.Parameters.AddWithValue("@fecha_registro", fechaValida.ToString("yyyy-MM-dd"));
@@ -161,10 +153,8 @@ namespace CapaModelo_CajaCC
                 string sql = @"SELECT c.Pk_id_caja as idCaja, 
                              c.Fk_id_cliente as idCliente, 
                              c.Fk_id_proveedor as idProveedor,
-                             c.Fk_id_deuda as idDeuda, 
-                             c.deuda_monto as montoDeuda, 
-                             c.mora_monto as montoMora, 
-                             c.transaccion_monto as montoTransaccion, 
+                             c.Fk_id_deuda as idDeuda,
+                             c.Fk_id_deuda_proveedor as idDeudaProveedor,
                              c.saldo_restante as saldoRestante, 
                              c.estado, 
                              c.fecha_registro as fechaRegistro
@@ -224,6 +214,7 @@ namespace CapaModelo_CajaCC
             return dt;
         }
 
+        // Método para obtener deudas de clientes
         public DataTable ObtenerDeudas()
         {
             DataTable dt = new DataTable();
@@ -244,12 +235,32 @@ namespace CapaModelo_CajaCC
             return dt;
         }
 
+        // Nuevo método para obtener deudas de proveedores
+        public DataTable ObtenerDeudasProveedores()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                string sql = "SELECT Pk_id_deuda AS id_deuda, deuda_descripcion AS deuda_descripcion FROM Tbl_deudas_proveedores";
+                using (OdbcConnection conn = conexion.conexion())
+                using (OdbcCommand cmd = new OdbcCommand(sql, conn))
+                {
+                    OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en ObtenerDeudasProveedores: " + ex.Message);
+            }
+            return dt;
+        }
+
         public DataTable BuscarCaja(string cliente, string proveedor, string estado, string fecha)
         {
             DataTable dt = new DataTable();
             try
             {
-                // Modificado para coincidir mejor con la lógica de búsqueda
                 string sql = @"SELECT * FROM Tbl_caja_general c
                            LEFT JOIN Tbl_clientes cl ON c.Fk_id_cliente = cl.Pk_id_cliente 
                            LEFT JOIN Tbl_proveedores p ON c.Fk_id_proveedor = p.Pk_prov_id
