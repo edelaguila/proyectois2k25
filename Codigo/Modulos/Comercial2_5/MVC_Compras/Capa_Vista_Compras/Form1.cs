@@ -18,10 +18,10 @@ namespace Capa_Vista_Compras
 
         public class Vendedor
         {
-            [JsonProperty("pk_id_prueba")]
+            [JsonProperty("id")]
             public int id { get; set; }
 
-            [JsonProperty("nombre_prueba")]
+            [JsonProperty("nombre")]
             public string nombre { get; set; }
 
             [JsonProperty("fk_id_vendedores")]
@@ -32,7 +32,7 @@ namespace Capa_Vista_Compras
         {
             using (HttpClient client = new HttpClient())
             {
-                string url = "http://192.168.43.250:3000/prueba";
+                string url = "http://192.168.43.90:5000/api/empleados";
 
                 try
                 {

@@ -329,7 +329,7 @@ namespace Capa_Vista_Logistica
 
         private void Btn_CuentMantClient1_Click_1(object sender, EventArgs e)
         {
-            AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Nav_Vendedores>();
+            AbrirFormulario<Capa_Vista_Compras.Form1>();
             ocultaSubMenu();
         }
 
@@ -382,7 +382,7 @@ namespace Capa_Vista_Logistica
 
         private void Btn_ComProc3_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<Capa_Vista_Comisiones.Frm_Comisiones>();
+            AbrirFormulario<Capa_Vista_Comisiones.Frm_comisiones>();
             ocultaSubMenu();
         }
 

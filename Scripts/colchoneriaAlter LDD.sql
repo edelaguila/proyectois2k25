@@ -476,9 +476,10 @@ CREATE TABLE IF NOT EXISTS Tbl_vendedores (
     vendedores_sueldo DECIMAL(10,2)NOT NULL ,
     vendedores_direccion VARCHAR(255)NOT NULL ,
     vendedores_telefono VARCHAR(20)NOT NULL ,
-	Fk_id_empleado INT,
+	Fk_id_empleado INT NOT NULL,
     estado tinyint(1) DEFAULT 1,
-    PRIMARY KEY (Pk_id_vendedor)
+    PRIMARY KEY (Pk_id_vendedor),
+    FOREIGN KEY (Fk_id_empleado) REFERENCES Tbl_empleado(pk_clave)
 );
 ALTER TABLE Tbl_clientes 
 CHANGE Clientes_estado estado TINYINT(1) DEFAULT 1;
