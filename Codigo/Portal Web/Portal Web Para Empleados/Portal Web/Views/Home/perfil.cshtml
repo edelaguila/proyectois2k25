@@ -1,0 +1,52 @@
+﻿@model Portal_Web.Models.Perfil
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Mi Perfil</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/styles/normalize.css" />
+    <link rel="stylesheet" href="~/Content/styles/perfil.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+</head>
+<body>
+    <div class="main">
+        <div class="card" style="max-width:500px;margin:auto;">
+            <h2 class="dashboard-title" style="text-align:center;">Mi Perfil</h2>
+            <i class="fa-solid fa-user"></i>
+            <div class="perfil-info" style="margin-top:2rem;">
+                <p><strong>Nombre:</strong> @Model.nombre_usuario @Model.apellido_usuario</p>
+                <p><strong>Usuario:</strong> @Model.username_usuario</p>
+                <p><strong>Correo electrónico:</strong> @Model.email_usuario</p>
+                <p><strong>Última conexión:</strong> @(Model.ultima_conexion_usuario?.ToString("dd/MM/yyyy HH:mm") ?? "Nunca")</p>
+                <p><strong>Estado:</strong> @(Model.estado_usuario ? "Activo" : "Inactivo")</p>
+            </div>
+            @if (!string.IsNullOrEmpty(Model.ruta_foto))
+            {
+                <img src="@Model.ruta_foto" alt="Foto de perfil" style="max-width:150px; max-height:150px;" />
+            }
+            else
+            {
+                <p>No tienes foto de perfil.</p>
+            }
+
+            @using (Html.BeginForm("SubirFoto", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @style = "text-align:center;margin-top:2rem;" }))
+            {
+                <label for="foto"><strong>Actualizar foto de perfil:</strong></label><br />
+                <input type="file" name="foto" id="foto" accept="image/*" style="margin-top:0.5rem;" /><br />
+                <button type="submit" class="btn-login" style="margin-top:1rem;">Subir Foto</button>
+            }
+            <div class="acciones" style="text-align:center;margin-top:2rem;">
+                <a href="@Url.Action("CambiarContraseña", "Cuenta")" class="btn-login">Cambiar Contraseña</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/1fe26c6c8c.js" crossorigin="anonymous"></script>
+</body>
+</html>

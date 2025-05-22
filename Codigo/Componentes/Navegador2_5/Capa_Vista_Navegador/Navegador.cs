@@ -72,8 +72,9 @@ namespace Capa_Vista_Navegador
 //***************************************Agregado por Kevin López 17/02/25 ****************************************************************
 //clase estatica para manejar la referencia al formulario de Consulta Simple
         public static ConsultaSimple FormConsultaSimple = null;
-//***************************************Fin Kevin López 17/02/25 ****************************************************************   
+        //***************************************Fin Kevin López 17/02/25 ****************************************************************   
 
+        string sAyudaOK;
         public Navegador()
         {
             InitializeComponent();
@@ -363,44 +364,44 @@ namespace Capa_Vista_Navegador
 
         //******************************************** CODIGO HECHO POR PABLO FLORES ***************************** 
 
-        public void AsignarAyuda(string sAyudar)
-        {
-            string sAyudaOK = logic.TestTabla("ayuda");
-            if (sAyudaOK == "")
-            {
-                if (logic.ContarRegAyuda(sAyudar) > 0)
-                {
-                    sIdAyuda = sAyudar; 
-                    sRutaAyuda = logic.ModRuta(sIdAyuda);
-                    sIndiceAyuda = logic.ModIndice(sIdAyuda); 
-                    if (sRutaAyuda == "" || sIndiceAyuda == "" || sRutaAyuda == null || sIndiceAyuda == null)
-                    {
-                        DialogResult drValidacion = MessageBox.Show("La Ruta o índice de la ayuda está vacía", "Verificación de requisitos", MessageBoxButtons.OK);
-                        if (drValidacion == DialogResult.OK)
-                        {
-                            iCorrecto = 1; 
-                        }
-                    }
-                }
-                else
-                {
-                    DialogResult drValidacion = MessageBox.Show("Por favor verifique el id de Ayuda asignado al form", "Verificación de requisitos", MessageBoxButtons.OK);
-                    if (drValidacion == DialogResult.OK)
-                    {
-                        iCorrecto = 1;
-                    }
-                }
+        //public void AsignarAyuda(string sAyudar)
+        //{
+        //    string sAyudaOK = logic.TestTabla("ayuda");
+        //    if (sAyudaOK == "")
+        //    {
+        //        if (logic.ContarRegAyuda(sAyudar) > 0)
+        //        {
+        //            sIdAyuda = sAyudar; 
+        //            sRutaAyuda = logic.ModRuta(sIdAyuda);
+        //            sIndiceAyuda = logic.ModIndice(sIdAyuda); 
+        //            if (sRutaAyuda == "" || sIndiceAyuda == "" || sRutaAyuda == null || sIndiceAyuda == null)
+        //            {
+        //                DialogResult drValidacion = MessageBox.Show("La Ruta o índice de la ayuda está vacía", "Verificación de requisitos", MessageBoxButtons.OK);
+        //                if (drValidacion == DialogResult.OK)
+        //                {
+        //                    iCorrecto = 1; 
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            DialogResult drValidacion = MessageBox.Show("Por favor verifique el id de Ayuda asignado al form", "Verificación de requisitos", MessageBoxButtons.OK);
+        //            if (drValidacion == DialogResult.OK)
+        //            {
+        //                iCorrecto = 1;
+        //            }
+        //        }
 
-            }
-            else
-            {
-                DialogResult drValidacion = MessageBox.Show(sAyudaOK + ", Por favor incluirla", "Verificación de requisitos", MessageBoxButtons.OK);
-                if (drValidacion == DialogResult.OK)
-                {
-                    iCorrecto = 1; 
-                }
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        DialogResult drValidacion = MessageBox.Show(sAyudaOK + ", Por favor incluirla", "Verificación de requisitos", MessageBoxButtons.OK);
+        //        if (drValidacion == DialogResult.OK)
+        //        {
+        //            iCorrecto = 1; 
+        //        }
+        //    }
+        //}
 
         public void AsignarReporte(string sRepo)
         {
@@ -2645,6 +2646,13 @@ namespace Capa_Vista_Navegador
                 }
             }
         }
+        /******************Agregado Ismar Cortez 5/5/25*************************************/
+        public void AsignarAyuda(string sAyudar)
+        {
+            sAyudaOK = sAyudar;
+
+        }
+        /***********************************************************************************/
 
         //****************************************************** modificado por Kateryn De Leon (30/01/2025)************************************************
         // Declarar el ToolTip en el botón de Ayuda
@@ -2673,8 +2681,17 @@ namespace Capa_Vista_Navegador
                 return;
             }
 
+            /******************Modificacion Ismar Cortez**************************/
+
+            // Concatenar el nombre con la extensión ".chm"
+            string nombreArchivoConExtension = sAyudaOK + ".chm";
+
             // Buscar el archivo AyudaNavegador.chm en la carpeta raíz y subcarpetas
-            string sPathAyuda = sfunFindFileInDirectory(sProjectPath, "AyudaNavegador.chm");
+            string sPathAyuda = sfunFindFileInDirectory(sProjectPath, nombreArchivoConExtension);
+            /*******************************************************************/
+
+            // Buscar el archivo AyudaNavegador.chm en la carpeta raíz y subcarpetas
+           // string sPathAyuda = sfunFindFileInDirectory(sProjectPath, "AyudaNavegador.chm");
 
             // Si el archivo fue encontrado, abrirlo
             if (!string.IsNullOrEmpty(sPathAyuda))
@@ -2691,7 +2708,7 @@ namespace Capa_Vista_Navegador
             }
             else
             {
-                MessageBox.Show("❌ ERROR: No se encontró el archivo AyudaNavegador.chm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); //mensaje de error
+                MessageBox.Show("❌ ERROR: No se encontró el archivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); //mensaje de error
             }
         }
 

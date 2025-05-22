@@ -31,18 +31,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Capa_Controlador_Migracion">
       <HintPath>..\Capa_Controlador_Migracion\bin\Debug\Capa_Controlador_Migracion.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Navegador">
-      <HintPath>..\..\..\..\..\..\..\..\PruebaIntegracionMigracion\proyectois2k25\Codigo\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    <Reference Include="Capa_Vista_GeneraPasaporte">
+      <HintPath>..\..\GeneracionPasaporte\Capa_Vista_GeneraPasaporte\bin\Debug\Capa_Vista_GeneraPasaporte.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Menor">
+      <HintPath>..\..\Generacion de PasaporteMenor\Capa_Vista_Menor\bin\Debug\Capa_Vista_Menor.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\..\..\..\Codigo\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Pago">
+      <HintPath>..\..\GenPago\Capa_Vista_Pago\bin\Debug\Capa_Vista_Pago.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Interfac_V3">
       <HintPath>..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,6 +68,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitaMen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CitaMen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Citas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Citas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Empleado.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Empleado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="frm_citaMenor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,14 +146,91 @@
     <Compile Include="Frm_usuario.Designer.cs">
       <DependentUpon>Frm_usuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menor.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menor.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nacionalidad.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Nacionalidad.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="oficina.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>oficina.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pago.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pago.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes.Designer.cs">
+      <DependentUpon>Reportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte_Nacionalidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte_Nacionalidad.Designer.cs">
+      <DependentUpon>Reporte_Nacionalidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte_oficina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte_oficina.Designer.cs">
+      <DependentUpon>Reporte_oficina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte_pago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte_pago.Designer.cs">
+      <DependentUpon>Reporte_pago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte_Tutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte_Tutor.Designer.cs">
+      <DependentUpon>Reporte_Tutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tutor.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tutor.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Usuario.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CitaMen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CitaMen.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Citas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Citas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empleado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_citaMenor.resx">
       <DependentUpon>frm_citaMenor.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,10 +261,52 @@
     <EmbeddedResource Include="Frm_usuario.resx">
       <DependentUpon>Frm_usuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Menor.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Menor.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nacionalidad.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Nacionalidad.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="oficina.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>oficina.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pago.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Pago.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes.resx">
+      <DependentUpon>Reportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_Nacionalidad.resx">
+      <DependentUpon>Reporte_Nacionalidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_oficina.resx">
+      <DependentUpon>Reporte_oficina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_pago.resx">
+      <DependentUpon>Reporte_pago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_Tutor.resx">
+      <DependentUpon>Reporte_Tutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tutor.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Tutor.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Usuario.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

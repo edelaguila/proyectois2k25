@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaHoras.chm
+Contents file=AyudaHoras.hhc
+Default Window=AyudaHorasExtras
+Display compile progress=No
+Language=0x580a Español (Latinoamérica)
+
+[WINDOWS]
+AyudaHorasExtras="Ayudas Horas Extras","AyudaHoras.hhc",,,,,,,,0x23520,,0x3006,,,,,,,,0
+
+
+[FILES]
+HorasExtras.html
+
+[INFOTYPES]
+

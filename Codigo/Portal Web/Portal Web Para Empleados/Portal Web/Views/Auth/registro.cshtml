@@ -1,0 +1,114 @@
+﻿@model Portal_Web.Models.Usuarios
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" />
+    <link rel="stylesheet" href="~/Content/styles/registro.css"/>
+    <link rel="stylesheet" href="~/Content/styles/normalize.css" />
+    <title>Registro de usuarios</title>
+</head>
+<body>
+    <div class="register-design">
+        <div class="register">
+            <div class="register-data">
+                <h1>Registro de Usuario</h1>
+                @if(ViewBag.Error !=null)
+                {
+                    <div style="color:red; font-weight:bold; margin-bottom:10px">
+                        @ViewBag.Error
+                    </div>
+                }
+                @if(TempData["Exito"] !=null)
+                {
+                    <div style="color:lawngreen; font-weight:bold; margin-bottom:10px">
+                        @TempData["Exito"];
+                    </div>
+                }
+                @using (Html.BeginForm("RegistrarUsuario", "Auth", FormMethod.Post, new { @class = "register-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-user"></i>
+                                @Html.TextBoxFor(m => m.nombre_usuario, new { placeholder = " " })
+                                @Html.LabelFor(m => m.nombre_usuario, "Nombre", new { @class = "input-label" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.nombre_usuario)
+                        </div>
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-user"></i>
+                                @Html.TextBoxFor(m => m.apellido_usuario, new { placeholder = " " })
+                                @Html.LabelFor(m => m.apellido_usuario, "Apellido", new { @class = "input-label" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.apellido_usuario)
+                        </div>
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-user"></i>
+                                @Html.TextBoxFor(m => m.username_usuario, new { placeholder = " " })
+                                @Html.LabelFor(m => m.username_usuario, "Nombre de Usuario", new { @class = "input-label" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.username_usuario)
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-envelope"></i>
+                                @Html.TextBoxFor(m => m.email_usuario, new { placeholder = " " })
+                                @Html.LabelFor(m => m.email_usuario, "Correo Electrónico", new { @class = "input-label" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.email_usuario)
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-lock"></i>
+                                @Html.PasswordFor(m => m.password_usuario, new { placeholder = " " })
+                                @Html.LabelFor(m => m.password_usuario, "Contraseña", new { @class = "input-label" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.password_usuario)
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-question"></i>
+                                @Html.TextBoxFor(m => m.pregunta, new { placeholder = " " })
+                                @Html.LabelFor(m => m.pregunta, "Pregunta de Seguridad", new { @class = "input-label" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.pregunta)
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-fill">
+                                <i class="fas fa-key"></i>
+                                @Html.TextBoxFor(m => m.respuesta, new { placeholder = " " })
+                                @Html.LabelFor(m => m.respuesta, "Respuesta de Seguridad", new { @class = "input-label" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.respuesta)
+                        </div>
+                        <div class="input-group">
+                            <div class="input-fill">
+                                @Html.TextBoxFor(m => m.fk_empleado, new { placeholder = " "})
+                                @Html.LabelFor(m => m.fk_empleado, "Id del empleado", new { @class = "input-label"})
+                            </div>
+                            @Html.ValidationMessageFor(m => m.fk_empleado)
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-register">Registrarse</button>
+                    <a href="@Url.Action("login", "Auth")">¿Ya tienes una cuenta? Inicia sesión</a>}
+            </div>
+        </div>
+        <div class="waves"></div>
+    </div>
+</body>
+</html>

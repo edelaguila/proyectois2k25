@@ -1,0 +1,215 @@
+﻿@{
+    ViewBag.Title = "Quejas o Reclamos";
+    Layout = null;
+}
+
+<div class="complaints-section">
+    <div class="section-header">
+        <h1>Quejas o Reclamos</h1>
+        <p>Utiliza este formulario para enviar tus quejas o reclamos</p>
+    </div>
+
+    <div class="complaints-form-container">
+        <form class="complaints-form">
+            <div class="form-group">
+                <label for="complaintType">Tipo de Queja</label>
+                <select id="complaintType" class="form-control" required>
+                    <option value="">Selecciona un tipo</option>
+                    <option value="laboral">Laboral</option>
+                    <option value="personal">Personal</option>
+                    <option value="infraestructura">Infraestructura</option>
+                    <option value="otros">Otros</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Prioridad</label>
+                <select id="priority" class="form-control" required>
+                    <option value="">Selecciona la prioridad</option>
+                    <option value="baja">Baja</option>
+                    <option value="media">Media</option>
+                    <option value="alta">Alta</option>
+                    <option value="urgente">Urgente</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Asunto</label>
+                <input type="text" id="subject" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <textarea id="description" class="form-control" rows="5" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="evidence">Evidencia (opcional)</label>
+                <input type="file" id="evidence" class="form-control-file" multiple>
+                <small class="form-text text-muted">Puedes adjuntar archivos de imagen o PDF (máx. 5MB)</small>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Enviar Queja
+                </button>
+                <button type="reset" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="complaints-history">
+        <h2>Historial de Quejas</h2>
+        <div class="complaints-list">
+            <div class="complaint-card">
+                <div class="complaint-header">
+                    <span class="badge badge-warning">En Proceso</span>
+                    <span class="complaint-date">15 Mar 2024</span>
+                </div>
+                <h3>Problema con el aire acondicionado</h3>
+                <p>El aire acondicionado de la oficina no está funcionando correctamente...</p>
+                <div class="complaint-footer">
+                    <span class="complaint-type">Infraestructura</span>
+                    <button class="btn btn-link">Ver Detalles</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .complaints-section {
+        padding: 2rem;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    .section-header h1 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+
+    .complaints-form-container {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        font-weight: 500;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary);
+        outline: none;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background: var(--primary);
+        color: white;
+    }
+
+    .btn-secondary {
+        background: var(--secondary);
+        color: var(--text);
+    }
+
+    .complaints-history {
+        margin-top: 3rem;
+    }
+
+    .complaints-list {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .complaint-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .complaint-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+    }
+
+    .badge-warning {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .complaint-date {
+        color: var(--text-light);
+        font-size: 0.875rem;
+    }
+
+    .complaint-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .complaint-type {
+        color: var(--text-light);
+        font-size: 0.875rem;
+    }
+
+    .btn-link {
+        background: none;
+        padding: 0;
+        color: var(--primary);
+        text-decoration: underline;
+    }
+</style>
