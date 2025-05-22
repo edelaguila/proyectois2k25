@@ -29,7 +29,12 @@ namespace Capa_Vista_MiguelCrisostomo
             
             // Agregar los controles al formulario
             this.Controls.Add(this.Cbo_TipoInformee);
-            //this.Controls.Add(this.Lbl_TipoInforme);
+            
+            // Deshabilitar campos inicialmente
+            Cbo_Vehiculo.Enabled = false;
+            Cbo_CodigoProd.Enabled = false;
+            Dtp_Fecha_Traslado.Enabled = false;
+            Txt_Cantidad.Enabled = false;
             
             CargarDestinos(); // Cargar destinos al iniciar el formulario
             CargarCodigosProductos(); // Cargar códigos de productos  
@@ -570,38 +575,33 @@ namespace Capa_Vista_MiguelCrisostomo
                 // Insertar en tbl_movimiento_de_inventario para el documento de salida
                 using (OdbcConnection connection = conn.Conexion())
                 {
-                    foreach (DataGridViewRow row in Dgv_Productos.Rows)
+                    // Obtener el ID de la bodega de origen
+                    string queryBodega = "SELECT Pk_ID_BODEGA FROM TBL_BODEGAS WHERE NOMBRE_BODEGA = ?";
+                    using (OdbcCommand cmdBodega = new OdbcCommand(queryBodega, connection))
                     {
-                        int codigoProducto = Convert.ToInt32(row.Cells["codigoProducto"].Value);
-                        int cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
-                        int idProducto = controlador.ObteneridProductoPorCodigo(codigoProducto);
-                        
-                        // Obtener el ID de la bodega de origen
-                        string queryBodega = "SELECT Pk_ID_BODEGA, Fk_ID_LOCAL FROM TBL_BODEGAS WHERE NOMBRE_BODEGA = ?";
-                        using (OdbcCommand cmdBodega = new OdbcCommand(queryBodega, connection))
+                        cmdBodega.Parameters.AddWithValue("@bodega", Cbo_BodegaOrigen.SelectedItem.ToString());
+                        int idBodegaOrigen = Convert.ToInt32(cmdBodega.ExecuteScalar());
+
+                        foreach (DataGridViewRow row in Dgv_Productos.Rows)
                         {
-                            cmdBodega.Parameters.AddWithValue("@bodega", Cbo_BodegaOrigen.SelectedItem.ToString());
-                            using (OdbcDataReader reader = cmdBodega.ExecuteReader())
+                            int codigoProducto = Convert.ToInt32(row.Cells["codigoProducto"].Value);
+                            int cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
+                            int idProducto = controlador.ObteneridProductoPorCodigo(codigoProducto);
+
+                            // Insertar el movimiento de inventario
+                            string queryMovimiento = @"
+                                INSERT INTO tbl_movimiento_de_inventario 
+                                (Fk_id_producto, stock, Fk_id_traslado, Fk_ID_BODEGA, Cantidad_almacen, Fk_id_compra, tipo_movimiento) 
+                                VALUES (?, ?, ?, ?, ?, NULL, 'SALIDA')";
+
+                            using (OdbcCommand cmdMovimiento = new OdbcCommand(queryMovimiento, connection))
                             {
-                                if (reader.Read())
-                                {
-                                    int idBodegaOrigen = reader.GetInt32(0);
-                                    int idLocalOrigen = reader.GetInt32(1);
-
-                                    // Insertar el movimiento de inventario
-                                    string queryMovimiento = @"
-                                        INSERT INTO tbl_movimiento_de_inventario 
-                                        (estado, Fk_id_producto, Fk_id_stock, Fk_ID_LOCALES, tipo_movimiento) 
-                                        VALUES (1, ?, ?, ?, 'SALIDA')";
-
-                                    using (OdbcCommand cmdMovimiento = new OdbcCommand(queryMovimiento, connection))
-                                    {
-                                        cmdMovimiento.Parameters.AddWithValue("@idProducto", idProducto);
-                                        cmdMovimiento.Parameters.AddWithValue("@stock", idTraslado);
-                                        cmdMovimiento.Parameters.AddWithValue("@idLocal", idLocalOrigen);
-                                        cmdMovimiento.ExecuteNonQuery();
-                                    }
-                                }
+                                cmdMovimiento.Parameters.AddWithValue("@idProducto", idProducto);
+                                cmdMovimiento.Parameters.AddWithValue("@stock", cantidad);
+                                cmdMovimiento.Parameters.AddWithValue("@idTraslado", idTraslado);
+                                cmdMovimiento.Parameters.AddWithValue("@idBodega", idBodegaOrigen);
+                                cmdMovimiento.Parameters.AddWithValue("@cantidadAlmacen", cantidad); // Puedes ajustar este valor si tienes el stock actual
+                                cmdMovimiento.ExecuteNonQuery();
                             }
                         }
                     }
@@ -1455,7 +1455,15 @@ namespace Capa_Vista_MiguelCrisostomo
 
         private void ValidarSeleccionBodegas()
         {
-            if (Cbo_BodegaOrigen.SelectedItem != null && Cbo_Sucursal.SelectedItem != null)
+            bool bodegasSeleccionadas = Cbo_BodegaOrigen.SelectedItem != null && Cbo_Sucursal.SelectedItem != null;
+            
+            // Habilitar/deshabilitar campos según la selección de bodegas
+            Cbo_Vehiculo.Enabled = bodegasSeleccionadas;
+            Cbo_CodigoProd.Enabled = bodegasSeleccionadas;
+            Dtp_Fecha_Traslado.Enabled = bodegasSeleccionadas;
+            Txt_Cantidad.Enabled = bodegasSeleccionadas;
+
+            if (bodegasSeleccionadas)
             {
                 string bodegaOrigen = Cbo_BodegaOrigen.SelectedItem.ToString();
                 string bodegaDestino = Cbo_Sucursal.SelectedItem.ToString();
@@ -1465,7 +1473,20 @@ namespace Capa_Vista_MiguelCrisostomo
                     MessageBox.Show("No puede seleccionar la misma bodega como origen y destino.", 
                         "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     Cbo_Sucursal.SelectedItem = null;
+                    
+                    // Deshabilitar campos nuevamente
+                    Cbo_Vehiculo.Enabled = false;
+                    Cbo_CodigoProd.Enabled = false;
+                    Dtp_Fecha_Traslado.Enabled = false;
+                    Txt_Cantidad.Enabled = false;
                 }
+            }
+            else
+            {
+                // Si no hay bodegas seleccionadas, limpiar los campos dependientes
+                Cbo_Vehiculo.SelectedIndex = -1;
+                Cbo_CodigoProd.SelectedIndex = -1;
+                Txt_Cantidad.Clear();
             }
         }
 
