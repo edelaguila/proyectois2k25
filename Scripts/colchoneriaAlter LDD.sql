@@ -193,6 +193,17 @@ CREATE TABLE Tbl_caja_general (
     FOREIGN KEY (Fk_id_proveedor) REFERENCES Tbl_proveedores (Pk_prov_id),
     FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Clientes (Pk_id_deuda) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+ALTER TABLE Tbl_caja_general
+   
+    DROP COLUMN mora_monto,
+    DROP COLUMN deuda_monto,
+    DROP COLUMN transaccion_monto,
+   
+    ADD COLUMN Fk_id_deuda_proveedor INT NULL,
+
+    ADD CONSTRAINT FK_Tbl_caja_general_deuda_prov
+        FOREIGN KEY (Fk_id_deuda_proveedor)
+        REFERENCES Tbl_deudas_proveedores (Pk_id_deuda);
 
 -- Datos factura Cuentas Corrientes
 
@@ -476,9 +487,10 @@ CREATE TABLE IF NOT EXISTS Tbl_vendedores (
     vendedores_sueldo DECIMAL(10,2)NOT NULL ,
     vendedores_direccion VARCHAR(255)NOT NULL ,
     vendedores_telefono VARCHAR(20)NOT NULL ,
-	Fk_id_empleado INT,
+	Fk_id_empleado INT NOT NULL,
     estado tinyint(1) DEFAULT 1,
-    PRIMARY KEY (Pk_id_vendedor)
+    PRIMARY KEY (Pk_id_vendedor),
+    FOREIGN KEY (Fk_id_empleado) REFERENCES Tbl_empleado(pk_clave)
 );
 ALTER TABLE Tbl_clientes 
 CHANGE Clientes_estado estado TINYINT(1) DEFAULT 1;
@@ -782,6 +794,10 @@ CREATE TABLE Tbl_DetalleEntradaProductos (
     precioUnitario DECIMAL(10,2),
     costoTotal DECIMAL(10,2)
 );
+
+-- Se agrego el campo FK_ID_LOCAL a la tabla tbl_bodegas para realizar el insert ala tabla tbl_movimiento_de_inventario
+ALTER TABLE tbl_bodegas
+ADD COLUMN Fk_ID_LOCAL INT(11) NOT NULL;
 
 
 -- NUEVAS TABLAS DEL MODULO COMERCIAL

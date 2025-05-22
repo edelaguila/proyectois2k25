@@ -51,6 +51,7 @@
             this.Pic_Guardar = new System.Windows.Forms.PictureBox();
             this.Pic_Ingresar = new System.Windows.Forms.PictureBox();
             this.Pic_Editar = new System.Windows.Forms.PictureBox();
+            this.Btn_Eliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Ayuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Salir)).BeginInit();
@@ -253,6 +254,7 @@
             this.Pic_Guardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Guardar.TabIndex = 27;
             this.Pic_Guardar.TabStop = false;
+            this.Pic_Guardar.Click += new System.EventHandler(this.Pic_Guardar_Click);
             // 
             // Pic_Ingresar
             // 
@@ -275,13 +277,27 @@
             this.Pic_Editar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Editar.TabIndex = 27;
             this.Pic_Editar.TabStop = false;
+            this.Pic_Editar.Click += new System.EventHandler(this.Pic_Editar_Click);
+            // 
+            // Btn_Eliminar
+            // 
+            this.Btn_Eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(210)))), ((int)(((byte)(197)))));
+            this.Btn_Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Eliminar.Image")));
+            this.Btn_Eliminar.Location = new System.Drawing.Point(989, 506);
+            this.Btn_Eliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Eliminar.Name = "Btn_Eliminar";
+            this.Btn_Eliminar.Size = new System.Drawing.Size(91, 81);
+            this.Btn_Eliminar.TabIndex = 32;
+            this.Btn_Eliminar.UseVisualStyleBackColor = false;
+            this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(1036, 758);
+            this.ClientSize = new System.Drawing.Size(1178, 758);
+            this.Controls.Add(this.Btn_Eliminar);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.Pic_Ayuda);
             this.Controls.Add(this.Pic_Salir);
@@ -339,5 +355,6 @@
         private System.Windows.Forms.PictureBox Pic_Guardar;
         private System.Windows.Forms.PictureBox Pic_Ingresar;
         private System.Windows.Forms.PictureBox Pic_Editar;
+        private System.Windows.Forms.Button Btn_Eliminar;
     }
 }

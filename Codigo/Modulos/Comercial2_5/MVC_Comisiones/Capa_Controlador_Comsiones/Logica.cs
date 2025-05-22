@@ -118,7 +118,7 @@ namespace Capa_Controlador
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 // Console.WriteLine("Error al guardar la comision: " + ex.Message);
                 return false;
@@ -130,13 +130,12 @@ namespace Capa_Controlador
             try
             {
                 return sn.funObtenerMarcas();
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
                 Console.WriteLine("Error al obtener las marcas: " + ex.Message);
                 return null;
             }
-
+            
         }
 
         public DataTable funObtenerLineas()
@@ -144,8 +143,7 @@ namespace Capa_Controlador
             try
             {
                 return sn.funObtenerLineas();
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
                 Console.WriteLine("Error al obtener las marcas: " + ex.Message);
                 return null;

@@ -1033,6 +1033,7 @@ INSERT INTO tbl_comisiones_encabezado (
 (8,3, '2025-01-15', 12000.00, 100.00),
 (9,3, '2025-01-15', 12000.00, 100.00);
 
+
 INSERT INTO tbl_factura_cliente 
 (Fk_id_venta, Fk_No_serie, Fk_No_de_facV, id_clienteFact, fecha_emision, fecha_vencimiento, Total_a_pagar, saldo)
 VALUES
@@ -1052,3 +1053,4 @@ VALUES
 (3, 'José', 'Martínez', '3456789-0', '5555-3333', 'Zona 7, Ciudad', '10003', 1, 'jose.martinez@mail.com', 'Crédito', 8000.00, 45, '2024-03-10'),
 (4, 'Ana', 'Hernández', '4567890-1', '5555-4444', 'Zona 9, Ciudad', '10004', 1, 'ana.hernandez@mail.com', 'Contado', 0.00, 0, '2024-04-05'),
 (5, 'Luis', 'López', '5678901-2', '5555-5555', 'Zona 11, Ciudad', '10005', 1, 'luis.lopez@mail.com', 'Crédito', 6000.00, 60, '2024-05-01');
+

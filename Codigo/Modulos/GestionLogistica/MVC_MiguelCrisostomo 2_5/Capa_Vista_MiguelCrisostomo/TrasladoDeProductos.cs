@@ -564,6 +564,49 @@ namespace Capa_Vista_MiguelCrisostomo
                     Cbo_Sucursal.SelectedItem?.ToString()
                 );
 
+                // Obtener el ID del traslado recién creado
+                int idTraslado = controlador.ObtenerIdTrasladoPorDocumento(documento);
+
+                // Insertar en tbl_movimiento_de_inventario para el documento de salida
+                using (OdbcConnection connection = conn.Conexion())
+                {
+                    foreach (DataGridViewRow row in Dgv_Productos.Rows)
+                    {
+                        int codigoProducto = Convert.ToInt32(row.Cells["codigoProducto"].Value);
+                        int cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
+                        int idProducto = controlador.ObteneridProductoPorCodigo(codigoProducto);
+                        
+                        // Obtener el ID de la bodega de origen
+                        string queryBodega = "SELECT Pk_ID_BODEGA, Fk_ID_LOCAL FROM TBL_BODEGAS WHERE NOMBRE_BODEGA = ?";
+                        using (OdbcCommand cmdBodega = new OdbcCommand(queryBodega, connection))
+                        {
+                            cmdBodega.Parameters.AddWithValue("@bodega", Cbo_BodegaOrigen.SelectedItem.ToString());
+                            using (OdbcDataReader reader = cmdBodega.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    int idBodegaOrigen = reader.GetInt32(0);
+                                    int idLocalOrigen = reader.GetInt32(1);
+
+                                    // Insertar el movimiento de inventario
+                                    string queryMovimiento = @"
+                                        INSERT INTO tbl_movimiento_de_inventario 
+                                        (estado, Fk_id_producto, Fk_id_stock, Fk_ID_LOCALES, tipo_movimiento) 
+                                        VALUES (1, ?, ?, ?, 'SALIDA')";
+
+                                    using (OdbcCommand cmdMovimiento = new OdbcCommand(queryMovimiento, connection))
+                                    {
+                                        cmdMovimiento.Parameters.AddWithValue("@idProducto", idProducto);
+                                        cmdMovimiento.Parameters.AddWithValue("@stock", idTraslado);
+                                        cmdMovimiento.Parameters.AddWithValue("@idLocal", idLocalOrigen);
+                                        cmdMovimiento.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
                 // Registrar el documento de entrada con el mismo documento
                 controlador.registrarEntradaProductos(
                     documento, // Usar el mismo documento
@@ -580,8 +623,6 @@ namespace Capa_Vista_MiguelCrisostomo
                     Cbo_Sucursal.SelectedIndex > -1 ? Cbo_Sucursal.SelectedItem.ToString() : null
                 );
 
-                // Obtener el ID del traslado recién creado
-                int idTraslado = controlador.ObtenerIdTrasladoPorDocumento(documento);
                 // Obtener el ID de la entrada recién creada
                 int idEntrada = controlador.ObtenerIdEntradaPorDocumento(documento);
 

@@ -9,20 +9,18 @@ namespace CapaControlador_CajaCC
         private Sentencias sn = new Sentencias();
 
         // Métodos para uso interno con tipos fuertes
-        public bool InsertarCaja(int? idCliente, int? idProveedor, int idDeuda,
-            decimal deudaMonto, decimal moraMonto, decimal transaccionMonto,
+        public bool InsertarCaja(int? idCliente, int? idProveedor, int? idDeuda, int? idDeudaProveedor,
             decimal saldoRestante, int estado, string fechaRegistro)
         {
-            return sn.InsertarCaja(idCliente, idProveedor, idDeuda, deudaMonto,
-                moraMonto, transaccionMonto, saldoRestante, estado, fechaRegistro);
+            return sn.InsertarCaja(idCliente, idProveedor, idDeuda, idDeudaProveedor,
+                saldoRestante, estado, fechaRegistro);
         }
 
-        public bool ModificarCaja(int idCaja, int? idCliente, int? idProveedor, int idDeuda,
-            decimal deudaMonto, decimal moraMonto, decimal transaccionMonto,
+        public bool ModificarCaja(int idCaja, int? idCliente, int? idProveedor, int? idDeuda, int? idDeudaProveedor,
             decimal saldoRestante, int estado, string fechaRegistro)
         {
-            return sn.ModificarCaja(idCaja, idCliente, idProveedor, idDeuda, deudaMonto,
-                moraMonto, transaccionMonto, saldoRestante, estado, fechaRegistro);
+            return sn.ModificarCaja(idCaja, idCliente, idProveedor, idDeuda, idDeudaProveedor,
+                saldoRestante, estado, fechaRegistro);
         }
 
         public bool EliminarCaja(int idCaja)
@@ -43,6 +41,11 @@ namespace CapaControlador_CajaCC
         public DataTable ObtenerDeudas()
         {
             return sn.ObtenerDeudas();
+        }
+
+        public DataTable ObtenerDeudasProveedores()
+        {
+            return sn.ObtenerDeudasProveedores();
         }
 
         public DataTable ObtenerCajas()
@@ -66,43 +69,33 @@ namespace CapaControlador_CajaCC
         }
 
         // Métodos públicos que reciben strings desde la capa de Vista y hacen parsing/validación
-        public bool InsertarCaja(string idCaja, string idCliente, string idProveedor, string idDeuda,
-            string montoDeuda, string montoMora, string montoTransaccion,
+        public bool InsertarCaja(string idCaja, string idCliente, string idProveedor, string idDeuda, string idDeudaProveedor,
             string saldo, string estado, string fechaRegistro)
         {
             int? cliente = string.IsNullOrWhiteSpace(idCliente) ? (int?)null : Convert.ToInt32(idCliente);
             int? proveedor = string.IsNullOrWhiteSpace(idProveedor) ? (int?)null : Convert.ToInt32(idProveedor);
+            int? deuda = string.IsNullOrWhiteSpace(idDeuda) ? (int?)null : Convert.ToInt32(idDeuda);
+            int? deudaProveedor = string.IsNullOrWhiteSpace(idDeudaProveedor) ? (int?)null : Convert.ToInt32(idDeudaProveedor);
 
-            // Usar el idDeuda proporcionado
-            int deuda = Convert.ToInt32(idDeuda);
-
-            decimal deudaMonto = Convert.ToDecimal(montoDeuda);
-            decimal moraMonto = Convert.ToDecimal(montoMora);
-            decimal transMonto = Convert.ToDecimal(montoTransaccion);
             decimal saldoRestante = Convert.ToDecimal(saldo);
             int estadoInt = Convert.ToInt32(estado);
 
-            return InsertarCaja(cliente, proveedor, deuda, deudaMonto, moraMonto, transMonto, saldoRestante, estadoInt, fechaRegistro);
+            return InsertarCaja(cliente, proveedor, deuda, deudaProveedor, saldoRestante, estadoInt, fechaRegistro);
         }
 
-        public bool ActualizarCaja(string idCaja, string idCliente, string idProveedor, string idDeuda,
-            string montoDeuda, string montoMora, string montoTransaccion,
+        public bool ActualizarCaja(string idCaja, string idCliente, string idProveedor, string idDeuda, string idDeudaProveedor,
             string saldo, string estado, string fechaRegistro)
         {
             int id = Convert.ToInt32(idCaja);
             int? cliente = string.IsNullOrWhiteSpace(idCliente) ? (int?)null : Convert.ToInt32(idCliente);
             int? proveedor = string.IsNullOrWhiteSpace(idProveedor) ? (int?)null : Convert.ToInt32(idProveedor);
+            int? deuda = string.IsNullOrWhiteSpace(idDeuda) ? (int?)null : Convert.ToInt32(idDeuda);
+            int? deudaProveedor = string.IsNullOrWhiteSpace(idDeudaProveedor) ? (int?)null : Convert.ToInt32(idDeudaProveedor);
 
-            // Usar el idDeuda proporcionado en lugar de idCaja
-            int deuda = Convert.ToInt32(idDeuda);
-
-            decimal deudaMonto = Convert.ToDecimal(montoDeuda);
-            decimal moraMonto = Convert.ToDecimal(montoMora);
-            decimal transMonto = Convert.ToDecimal(montoTransaccion);
             decimal saldoRestante = Convert.ToDecimal(saldo);
             int estadoInt = Convert.ToInt32(estado);
 
-            return ModificarCaja(id, cliente, proveedor, deuda, deudaMonto, moraMonto, transMonto, saldoRestante, estadoInt, fechaRegistro);
+            return ModificarCaja(id, cliente, proveedor, deuda, deudaProveedor, saldoRestante, estadoInt, fechaRegistro);
         }
 
         public bool EliminarCaja(string idCaja)
