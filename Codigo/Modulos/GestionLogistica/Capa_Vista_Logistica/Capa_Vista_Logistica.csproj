@@ -65,6 +65,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Cuentas Corrientes2_5\Capa_Vista_Cuentas_Corrientes\bin\Debug\Capa_Vista_Cuentas_Corrientes.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_DeudasClientes">
+      <HintPath>..\..\Cuentas Corrientes2_5\MVC_DeudasClientes\MVC_DeudasClientes\Capa_Vista_DeudasClientes\bin\Debug\Capa_Vista_DeudasClientes.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_DeudasProveedores, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Cuentas Corrientes2_5\MVC_DeudasProveedores\Capa_Vista_DeudasProveedores\bin\Debug\Capa_Vista_DeudasProveedores.dll</HintPath>

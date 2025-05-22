@@ -838,3 +838,56 @@ CREATE TABLE IF NOT EXISTS `tbl_ventas_pagos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- TERMINA LAS TABLAS CREADAS
+
+-- Deudas clientes
+-- 1.1 Eliminar la FK existente hacia tbl_factura
+ALTER TABLE tbl_factura_cliente
+DROP FOREIGN KEY tbl_factura_cliente_ibfk_2;
+
+-- 1.2 Convertir los campos a columnas normales
+ALTER TABLE tbl_factura_cliente
+MODIFY COLUMN Fk_id_venta INT(11) NOT NULL,
+MODIFY COLUMN Fk_No_serie INT(11) NOT NULL,
+MODIFY COLUMN Fk_No_de_facV INT(11) DEFAULT NULL;
+
+-- ===============================================
+-- 2) tbl_deudas_clientes: Redireccionar Fk_id_factura a tbl_factura_cliente
+-- ===============================================
+
+-- 2.1 Eliminar FK incorrecta a tbl_factura
+ALTER TABLE tbl_deudas_clientes
+DROP FOREIGN KEY fk_id_factura;
+
+-- 2.2 Crear nueva FK a tbl_factura_cliente
+ALTER TABLE tbl_deudas_clientes
+ADD CONSTRAINT fk_deudascli_facturacli
+  FOREIGN KEY (Fk_id_factura)
+  REFERENCES tbl_factura_cliente(Pk_id_FacturaCli);
+
+-- ===============================================
+-- 3) tbl_deudas_clientes: Redireccionar Fk_id_pago a tbl_transaccion_cuentas
+-- ===============================================
+-- NOTA: Aunque la columna Fk_id_pago aún no existe en esta estructura, deberás crearla primero si deseas agregarla.
+-- Aquí tienes el código completo con la columna incluida (si no existe aún):
+
+ALTER TABLE tbl_deudas_clientes
+ADD COLUMN Fk_id_pago VARCHAR(150) NOT NULL;
+
+-- 3.1 Crear FK a tbl_transaccion_cuentas
+ALTER TABLE tbl_deudas_clientes
+ADD CONSTRAINT fk_deudascli_transcuentas
+  FOREIGN KEY (Fk_id_pago)
+  REFERENCES tbl_transaccion_cuentas(Pk_id_tran_cue);
+
+ALTER TABLE tbl_deudas_clientes
+DROP COLUMN deuda_mora;
+ALTER TABLE tbl_clientes
+MODIFY COLUMN Cliente_email VARCHAR(50);
+
+ALTER TABLE tbl_factura_cliente
+MODIFY COLUMN Fk_No_serie VARCHAR(20);
+
+ALTER TABLE tbl_deudas_clientes
+DROP FOREIGN KEY fk_deudascli_transcuentas;
+
+SELECT *FROM tbl_deudas_proveedores;

@@ -364,7 +364,7 @@ namespace Capa_Vista_Logistica
 
         private void Btn_CuentProcCl1_Click(object sender, EventArgs e)
         {
-            AbrirFormulario<Capa_Vista_Cuentas_Corrientes.Deuda_Clts>();
+            AbrirFormulario<Capa_Vista_DeudasClientes.Deudas_Clientes>();
             ocultaSubMenu();
         }
 

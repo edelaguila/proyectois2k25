@@ -1,0 +1,18 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaMovimientos.chm
+Contents file=AyudaMov.hhc
+Default Window=AyudaMov
+Display compile progress=No
+Language=0x409 Inglés (Estados Unidos)
+
+[WINDOWS]
+AyudaMov="Formato de Ayudas CC","AyudaMov.hhc",,,,"AyudaMovClientes.html","AyudaMovClientes","AyudaMovProveedores.html","AyudaMovProveedores",0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+AyudaMovClientes.html
+AyudaMovProveedores.html
+
+[INFOTYPES]
+
