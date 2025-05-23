@@ -321,6 +321,15 @@ CREATE TABLE `venta` (
   `estado` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `tbl_commpra` (
+  `id_compra` int(11) NOT NULL,
+  `monto` int(11) NOT NULL,
+  `nombre_cliente` varchar(50) NOT NULL,
+`nombre_producto` varchar(50) NOT NULL,
+  `nombre_empleado` varchar(50) NOT NULL,
+  `estado` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- Estructura Stand-in para la vista `vwaplicacionperfil`
 -- (Véase abajo para la vista actual)
 --
@@ -609,7 +618,6 @@ ADD COLUMN `tabla` VARCHAR(50) NOT NULL;
 
 
 -- Estructura de tabla para la tabla `ayuda`
---
 
 -- Implementación de Nominas con la base de datos general ya que fue aprobado por Brandon Boch
 -- solo se espera las dos revisiones para que sea subido al repositorio principal
@@ -972,8 +980,8 @@ CREATE TABLE Tbl_vehiculos (
     marca VARCHAR(50) NOT NULL,
     color VARCHAR(30) NOT NULL,
     descripcion TEXT,
-    horaLlegada DATETIME NOT NULL,
-    horaSalida DATETIME,
+    horaLlegada VARCHAR(30),
+    horaSalida VARCHAR(30),
     pesoTotal DECIMAL(10, 2) NOT NULL,
     Fk_id_chofer INT NOT NULL,
     Estado VARCHAR (30),
@@ -982,22 +990,20 @@ CREATE TABLE Tbl_vehiculos (
 ALTER TABLE Tbl_vehiculos
 MODIFY Estado TINYINT NOT NULL DEFAULT 1;
 
-CREATE TABLE Tbl_remitente (
-    Pk_id_remitente INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    numeroIdentificacion VARCHAR(20) NOT NULL,
-    telefono VARCHAR(15) NOT NULL,
-    correoElectronico VARCHAR(100)
+CREATE TABLE IF NOT EXISTS Tbl_clientes(
+    Pk_id_cliente int(11) NOT NULL,
+    Clientes_nombre VARCHAR(100) NOT NULL,
+    Clientes_apellido VARCHAR(100) NOT NULL,
+    Clientes_nit VARCHAR(20) NOT NULL,
+    Clientes_telefon VARCHAR(20) NOT NULL ,
+    Clientes_direccion VARCHAR(255) NOT NULL,
+    Clientes_No_Cuenta VARCHAR(255) NOT NULL,
+    Clientes_estado tinyint(1) DEFAULT 1,
+    PRIMARY KEY (Pk_id_cliente)
 );
 
-CREATE TABLE Tbl_destinatario (
-    Pk_id_destinatario INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    numeroIdentificacion VARCHAR(20) NOT NULL,
-    telefono VARCHAR(15) NOT NULL,
-    correoElectronico VARCHAR(100)
-);
- 
+
+
 CREATE TABLE Tbl_datos_pedido (
     Pk_id_guia INT AUTO_INCREMENT PRIMARY KEY,
     fechaEmision DATE NOT NULL,
@@ -1007,11 +1013,9 @@ CREATE TABLE Tbl_datos_pedido (
     numeroOrdenRecojo VARCHAR(20),
     formaPago VARCHAR(50) NOT NULL,
     destino VARCHAR(255) NOT NULL,
-    Fk_id_remitente INT NOT NULL,
-    Fk_id_destinatario INT NOT NULL,
+    Fk_id_cliente INT NOT NULL,
     Fk_id_vehiculo INT NOT NULL,
-    FOREIGN KEY (Fk_id_remitente) REFERENCES Tbl_remitente(Pk_id_remitente),  
-    FOREIGN KEY (Fk_id_destinatario) REFERENCES Tbl_destinatario(Pk_id_destinatario),
+	foreign key (Fk_id_cliente) REFERENCES Tbl_clientes (Pk_id_cliente),
     FOREIGN KEY (Fk_id_vehiculo) REFERENCES Tbl_vehiculos(Pk_id_vehiculo)
 );
 
@@ -1021,8 +1025,7 @@ CREATE TABLE Tbl_Productos (
     nombreProducto VARCHAR(30) NOT NULL,
     medidaProducto VARCHAR(20) NOT NULL,
     precioUnitario DECIMAL(10, 2) NOT NULL,
-    clasificacion VARCHAR(30) NOT NULL,
-    estado VARCHAR(50) NOT NULL DEFAULT 'Activo'
+    clasificacion VARCHAR(30) NOT NULL
 );
 
 ALTER TABLE Tbl_Productos
@@ -1031,8 +1034,6 @@ ALTER TABLE Tbl_Productos
 ADD COLUMN empaque VARCHAR(50) NOT NULL;
 ALTER TABLE Tbl_Productos
 CHANGE COLUMN medidaProducto pesoProducto VARCHAR(20);
-ALTER TABLE Tbl_Productos
-MODIFY estado TINYINT NOT NULL DEFAULT 1;
 
 CREATE TABLE Tbl_TrasladoProductos (
     Pk_id_TrasladoProductos INT AUTO_INCREMENT PRIMARY KEY,
@@ -1062,19 +1063,6 @@ CREATE TABLE TBL_LOCALES (
 );
 ALTER TABLE TBL_LOCALES
 MODIFY ESTADO TINYINT NOT NULL DEFAULT 1;
-
-CREATE TABLE Tbl_movimiento_de_inventario (
-	Pk_id_movimiento INT PRIMARY KEY AUTO_INCREMENT,
-    estado TINYINT NOT NULL DEFAULT 1,
-    Fk_id_producto INT NOT NULL,
-    Fk_id_stock INT NOT NULL,
-    Fk_ID_LOCALES INT NOT NULL,
-    FOREIGN KEY (Fk_id_producto) REFERENCES Tbl_Productos(Pk_id_Producto),
-    FOREIGN KEY (Fk_id_stock) REFERENCES Tbl_TrasladoProductos(Pk_id_TrasladoProductos),
-    CONSTRAINT FK_EXISTENCIA_LOCAL FOREIGN KEY (Fk_ID_LOCALES) REFERENCES TBL_LOCALES(Pk_ID_LOCAL)
-);
-ALTER TABLE Tbl_movimiento_de_inventario
-MODIFY estado TINYINT NOT NULL DEFAULT 1;
 
 CREATE TABLE Tbl_mantenimiento (
 	Pk_id_Mantenimiento INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -1149,17 +1137,6 @@ MODIFY estado TINYINT NOT NULL DEFAULT 1;
 
 -- modulo comercial inicio
  -- Tabla Clientes
-CREATE TABLE IF NOT EXISTS Tbl_clientes(
-    Pk_id_cliente int(11) NOT NULL,
-    Clientes_nombre VARCHAR(100) NOT NULL,
-    Clientes_apellido VARCHAR(100) NOT NULL,
-    Clientes_nit VARCHAR(20) NOT NULL,
-    Clientes_telefon VARCHAR(20) NOT NULL ,
-    Clientes_direccion VARCHAR(255) NOT NULL,
-    Clientes_No_Cuenta VARCHAR(255) NOT NULL,
-    Clientes_estado tinyint(1) DEFAULT 1,
-    PRIMARY KEY (Pk_id_cliente)
-);
 
 -- Tabla Vendedores
 CREATE TABLE IF NOT EXISTS Tbl_vendedores (
@@ -1189,7 +1166,28 @@ CREATE TABLE IF NOT EXISTS Tbl_proveedores (
      PRIMARY KEY (Pk_prov_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE Tbl_compra (
+    Pk_id_compra INT AUTO_INCREMENT PRIMARY KEY,
+    Fk_prov_id INT ,
+    Fk_ID_BODEGA INT ,
+    fecha_compra DATE ,
+    numero_factura VARCHAR(50) ,
+    tipo_comprobante VARCHAR(50) ,
+    forma_pago VARCHAR(30) ,
+    subtotal DECIMAL(10,2) ,
+    impuestos DECIMAL(10,2),
+    total DECIMAL(10,2),
+    producto VARCHAR (50),
+    cantidad INT ,
+    precio  DECIMAL(10,2) ,
+    descripcion VARCHAR (50),
+    estado VARCHAR(20) DEFAULT 'Registrada', -- Registrada, Anulada, etc.
 
+    -- Relaciones
+	FOREIGN KEY (Fk_ID_BODEGA) REFERENCES tbl_bodegas(Pk_ID_BODEGA),
+    FOREIGN KEY (Fk_prov_id) REFERENCES Tbl_proveedores(Pk_prov_id)
+    
+);
 CREATE TABLE IF NOT EXISTS Tbl_lista_encabezado (
     Pk_id_lista_Encabezado INT(11) NOT NULL,
     ListEncabezado_nombre VARCHAR(50),
@@ -1469,8 +1467,8 @@ CREATE TABLE IF NOT EXISTS `Tbl_Deudas_Clientes` (
     Fk_id_cobrador INT NOT NULL,
     Fk_id_pago INT NOT NULL,
     deuda_monto DECIMAL(10, 2) NOT NULL,
-    deuda_fecha_inicio_deuda VARCHAR(255) NOT NULL,
-    deuda_fecha_vencimiento_deuda VARCHAR(255) NOT NULL,
+    deuda_fecha_inicio_deuda DATE,
+    deuda_fecha_vencimiento_deuda DATE,
     deuda_descripcion_deuda VARCHAR(255),
     deuda_estado TINYINT DEFAULT 1 NOT NULL,
     FOREIGN KEY (`Fk_id_cliente`) REFERENCES `Tbl_clientes` (Pk_id_cliente),
@@ -1483,14 +1481,14 @@ CREATE TABLE IF NOT EXISTS `Tbl_Transaccion_cliente` (
 	Pk_id_transaccion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Fk_id_cliente INT NOT NULL,
     Fk_id_pais INT NOT NULL,
-    transaccion_fecha VARCHAR(150) NOT NULL,
+    transaccion_fecha DATE NOT NULL,
     tansaccion_cuenta VARCHAR(150) NOT NULL,
     transaccion_cuotas VARCHAR(2) NOT NULL,
     transaccion_monto Decimal(10,2),
     Fk_id_pago INT NOT NULL,
     transaccion_tipo_moneda VARCHAR(100) NOT NULL,
     transaccionserie VARCHAR(100) NOT NULL,
-    transaccion_estado TINYINT DEFAULT 1 NOT NULL,
+    estado TINYINT DEFAULT 1 NOT NULL,
     FOREIGN KEY (`Fk_id_cliente`) REFERENCES `Tbl_clienteS` (`Pk_id_cliente`),
     FOREIGN KEY (`Fk_id_pago`) REFERENCES `Tbl_Formadepago` (`Pk_id_pago`),
     FOREIGN KEY (`Fk_id_pais`) REFERENCES `Tbl_paises` (`Pk_id_pais`)
@@ -1520,7 +1518,7 @@ CREATE TABLE IF NOT EXISTS Tbl_caja_cliente (
     caja_transaccion_monto DECIMAL(10, 2) NOT NULL,
     caja_saldo_restante DECIMAL(10, 2) NOT NULL DEFAULT 0,
     caja_estado TINYINT DEFAULT 1 NOT NULL, -- 0 = cancelado, 1 = pendiente
-    caja_fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    caja_fecha_registro DATE,
     FOREIGN KEY (Fk_id_cliente) REFERENCES Tbl_clientes (Pk_id_cliente),
     FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Clientes (Pk_id_deuda)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -1544,14 +1542,14 @@ CREATE TABLE IF NOT EXISTS `Tbl_Transaccion_proveedor` (
 	Pk_id_transaccion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Fk_id_proveedor INT NOT NULL,
     Fk_id_pais INT NOT NULL,
-    fecha_transaccion VARCHAR(150) NOT NULL,
+    fecha_transaccion DATE NOT NULL,
     tansaccion_cuenta VARCHAR(150) NOT NULL,
     tansaccion_cuotas VARCHAR(2) NOT NULL,
     transaccion_monto Decimal(10,2),
     Fk_id_pago INT NOT NULL,
     transaccion_tipo_moneda VARCHAR(100) NOT NULL,
     transaccion_serie VARCHAR(100) NOT NULL,
-    transaccion_estado TINYINT DEFAULT 1 NOT NULL,
+    estado TINYINT DEFAULT 1 NOT NULL,
     FOREIGN KEY (`Fk_id_proveedor`) REFERENCES `Tbl_proveedores` (`Pk_prov_id`),
     FOREIGN KEY (`Fk_id_pago`) REFERENCES `Tbl_Formadepago` (`Pk_id_pago`),
     FOREIGN KEY (`Fk_id_pais`) REFERENCES `Tbl_paises` (`Pk_id_pais`)
@@ -1796,4 +1794,5 @@ CREATE TABLE IF NOT EXISTS `tbl_historial_servicio` (
   KEY `Fk_ActivoFijo` (`Pk_Id_ActivoFijo`),
   CONSTRAINT `Fk_ActivoFijo_HistorialServicio` FOREIGN KEY (`Pk_Id_ActivoFijo`) REFERENCES `tbl_ActivoFijo` (`Pk_Id_ActivoFijo`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- FIN APROBADO POR BRANDON BOCH

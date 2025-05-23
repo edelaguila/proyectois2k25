@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35026.282
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejecucion_Cuentas_Corrientes", "Ejecucion_Cuentas_Corrientes\Ejecucion_Cuentas_Corrientes.csproj", "{C04BE58C-2FB2-4019-A0F3-8EE4F474E471}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C04BE58C-2FB2-4019-A0F3-8EE4F474E471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04BE58C-2FB2-4019-A0F3-8EE4F474E471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04BE58C-2FB2-4019-A0F3-8EE4F474E471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04BE58C-2FB2-4019-A0F3-8EE4F474E471}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30ADF2BB-FAE0-4ABF-A51B-BB34B9B63A80}
+	EndGlobalSection
+EndGlobal

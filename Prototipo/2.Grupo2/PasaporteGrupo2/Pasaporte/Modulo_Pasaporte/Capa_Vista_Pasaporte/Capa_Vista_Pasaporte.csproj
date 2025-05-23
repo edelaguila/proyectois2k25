@@ -44,6 +44,9 @@
     <Reference Include="Capa_Vista_Sol">
       <HintPath>..\..\MVC_Solicitante_Ammy_pedro\MVC_Solicitante\Capa_Vista_Sol\bin\Debug\Capa_Vista_Sol.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Tramite">
+      <HintPath>..\..\MVC_TramitePasaporte\Capa_Vista_Tramite\bin\Debug\Capa_Vista_Tramite.dll</HintPath>
+    </Reference>
     <Reference Include="Interfac_V3">
       <HintPath>..\..\..\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
     </Reference>

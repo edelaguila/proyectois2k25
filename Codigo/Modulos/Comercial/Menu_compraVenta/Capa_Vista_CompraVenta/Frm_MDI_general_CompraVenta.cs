@@ -75,28 +75,28 @@ namespace Capa_Vista_CompraVenta
 
         private void Btn_proveedores_Click(object sender, EventArgs e)
         {
-            Frm_proveedores formulario = new Frm_proveedores(idUsuario);
+            Frm_proveedores formulario = new Frm_proveedores();
             formulario.MdiParent = this;
             formulario.Show();
         }
 
         private void Btn_clientes_Click(object sender, EventArgs e)
         {
-            Frm_clientes Clie = new Frm_clientes(idUsuario);
+            Frm_clientes Clie = new Frm_clientes();
             Clie.MdiParent = this;
             Clie.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frm_MantenimientoListas Ven = new frm_MantenimientoListas(idUsuario);
+            frm_MantenimientoListas Ven = new frm_MantenimientoListas();
             Ven.MdiParent = this;
             Ven.Show();
         }
 
         private void Btn_vendedores_Click(object sender, EventArgs e)
         {
-            Frm_vendedores Ven = new Frm_vendedores(idUsuario);
+            Frm_vendedores Ven = new Frm_vendedores();
             Ven.MdiParent = this;
             Ven.Show();
         }

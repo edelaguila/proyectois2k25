@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda.chm
+Contents file=Ayuda.hhc
+Default Window=Ayuda
+Display compile progress=No
+Language=0x100a Spanish (Guatemala)
+
+[WINDOWS]
+Ayuda="Ayuda Listas","Ayuda.hhc",,"Manual-Listas-de-Precios.html",,,,,,0x23520,,0x383e,,,,,,,,0
+
+
+[FILES]
+Manual-Listas-de-Precios.html
+
+[INFOTYPES]
+

@@ -12,9 +12,10 @@ namespace Capa_Vista_ListaPrecios
 {
     public partial class frm_MantenimientoListas : Form
     {
-        public frm_MantenimientoListas(string idUsuario)
+        public frm_MantenimientoListas()
         {
             InitializeComponent();
+            string idUsuario = Interfac_V3.UsuarioSesion.GetIdUsuario();
             string[] alias = { "Codigo", "Nombre", "Descripcion", "Estado" };
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
