@@ -1892,6 +1892,21 @@ CREATE TABLE IF NOT EXISTS Tramite_Pasaporte (
     FOREIGN KEY (FK_Id_cita) REFERENCES Tbl_AgendarCita(PK_Id_cita)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Angel y Shelly
+CREATE TABLE Unidad_Biometrica (
+    id_unidad_biometrica INT AUTO_INCREMENT PRIMARY KEY,
+    Fk_Id_cuidadano INT NOT NULL,
+    Fk_Id_cita INT NOT NULL,
+    uni_fecha_cita DATE NOT NULL,
+    uni_foto VARCHAR(10) NOT NULL,
+    uni_huella VARCHAR(10) NOT NULL,
+    uni_firma VARCHAR(15),
+    uni_fecha_registro DATE NOT NULL,
+    estado TINYINT(4) NOT NULL DEFAULT 1,
+    FOREIGN KEY (Fk_Id_cuidadano) REFERENCES Tbl_Ciudadanos(Pk_Id_cuidadano),
+    FOREIGN KEY (Fk_Id_cita) REFERENCES Tbl_AgendarCita(Pk_Id_cita) 
+);
+
 -- Crear la tabla Documentacion
 CREATE TABLE IF NOT EXISTS Documentacion (
     PK_id_doc INT(11) NOT NULL AUTO_INCREMENT,

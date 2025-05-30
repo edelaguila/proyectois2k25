@@ -151,19 +151,31 @@ ADD COLUMN codigoProducto INT NOT NULL;
 
 ALTER TABLE Tbl_chofer
 ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
-ALTER TABLE Tbl_remitente
-ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
-ALTER TABLE Tbl_destinatario
-ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
+
 
 ALTER TABLE Tbl_Productos
-ADD COLUMN comisionInventario DOUBLE NOT NULL;
+ADD COLUMN comisionInventario DOUBLE NOT NULL DEFAULT 0;
 ALTER TABLE Tbl_Productos
-ADD COLUMN comisionCosto DOUBLE NOT NULL;
+ADD COLUMN comisionCosto DOUBLE NOT NULL DEFAULT 0;
 ALTER TABLE Tbl_Marca
 ADD COLUMN comision DOUBLE NOT NULL;
 ALTER TABLE Tbl_Linea
 ADD COLUMN comision DOUBLE NOT NULL;
+ALTER TABLE Tbl_Productos
+ADD COLUMN estado TINYINT NOT NULL DEFAULT 1;
+
+ALTER TABLE Tbl_Productos
+ADD COLUMN fk_id_marca INT,
+ADD COLUMN fk_id_linea INT;
+
+-- Luego agregar las constraints de clave foránea
+ALTER TABLE Tbl_Productos
+ADD CONSTRAINT fk_producto_marca 
+FOREIGN KEY (fk_id_marca) REFERENCES Tbl_Marca(Pk_id_Marca);
+
+ALTER TABLE Tbl_Productos
+ADD CONSTRAINT fk_producto_linea 
+FOREIGN KEY (fk_id_linea) REFERENCES Tbl_Linea(Pk_id_linea);
 
 -- ALTERS DEL MODULO DE CUENTAS CORRIENTES 31-10-2024
 
@@ -174,6 +186,83 @@ DROP COLUMN caja_transaccion_monto;
 ALTER TABLE Tbl_caja_cliente
 ADD COLUMN Fk_id_factura INT NOT NULL;*/
 
+-- caja General
+-- Eliminar tablas antiguas
+DROP TABLE IF EXISTS Tbl_caja_cliente;
+DROP TABLE IF EXISTS Tbl_caja_proveedor;
+
+CREATE TABLE Tbl_caja_general (
+    Pk_id_caja INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_cliente INT NULL,
+    Fk_id_proveedor INT NULL,
+    Fk_id_deuda INT NOT NULL,
+    deuda_monto DECIMAL(10, 2) NOT NULL,
+    mora_monto DECIMAL(10, 2) NOT NULL,
+    transaccion_monto DECIMAL(10, 2) NOT NULL,
+    saldo_restante DECIMAL(10, 2) NOT NULL DEFAULT 0,
+    estado TINYINT NOT NULL DEFAULT 1, -- 0 = cancelado, 1 = pendiente
+    fecha_registro DATE,
+    FOREIGN KEY (Fk_id_cliente) REFERENCES Tbl_clientes (Pk_id_cliente),
+    FOREIGN KEY (Fk_id_proveedor) REFERENCES Tbl_proveedores (Pk_prov_id),
+    FOREIGN KEY (Fk_id_deuda) REFERENCES Tbl_Deudas_Clientes (Pk_id_deuda) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+ALTER TABLE Tbl_caja_general
+   
+    DROP COLUMN mora_monto,
+    DROP COLUMN deuda_monto,
+    DROP COLUMN transaccion_monto,
+   
+    ADD COLUMN Fk_id_deuda_proveedor INT NULL,
+
+    ADD CONSTRAINT FK_Tbl_caja_general_deuda_prov
+        FOREIGN KEY (Fk_id_deuda_proveedor)
+        REFERENCES Tbl_deudas_proveedores (Pk_id_deuda);
+
+-- Datos factura Cuentas Corrientes
+
+
+CREATE TABLE IF NOT EXISTS tbl_encabezado_compras (
+    id_compra INT NOT NULL AUTO_INCREMENT,
+    numero_factura VARCHAR(50) NOT NULL,
+    No_serial_factura VARCHAR(50) NOT NULL,
+    id_proveedor INT NOT NULL,
+    fecha_compra DATE NOT NULL,
+    PRIMARY KEY (id_compra, numero_factura, No_serial_factura),
+    FOREIGN KEY (id_proveedor) REFERENCES Tbl_proveedores(Pk_prov_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS Tbl_Factura_Proveedor (
+    Pk_id_FacturaProv INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Fk_id_compra INT NOT NULL,
+    Fk_numero_factura VARCHAR(50) NOT NULL,
+    Fk_No_serial_factura VARCHAR(50) NOT NULL,
+    Fk_prov_id INT,
+    fecha_emision DATE NOT NULL,
+    fecha_vencimiento DATE NOT NULL,
+    Total_a_pagar DECIMAL(10,2) NOT NULL,
+    saldo DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (Fk_prov_id) REFERENCES Tbl_proveedores(Pk_prov_id),
+    FOREIGN KEY (Fk_id_compra, Fk_numero_factura, Fk_No_serial_factura)
+        REFERENCES tbl_encabezado_compras(id_compra, numero_factura, No_serial_factura)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+CREATE TABLE IF NOT EXISTS Tbl_Factura_Cliente (
+    Pk_id_FacturaCli INT AUTO_INCREMENT PRIMARY KEY,
+    Fk_id_venta INT NOT NULL,
+    Fk_No_serie INT NOT NULL,
+    Fk_No_de_facV INT(11) NULL,
+    id_clienteFact INT(11) NOT NULL,
+    fecha_emision DATE NOT NULL,
+    fecha_vencimiento DATE NOT NULL,
+    Total_a_pagar DECIMAL(10,2) NOT NULL,
+    saldo DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (id_clienteFact) REFERENCES Tbl_clientes(Pk_id_cliente),
+    FOREIGN KEY (Fk_No_de_facV) REFERENCES Tbl_factura(Pk_id_factura)		
+    -- FOREIGN KEY (Fk_id_venta, Fk_No_serie) REFERENCES tbl_ventas_encabezado(Pk_id_venta, Pk_No_SerieEnc)
+    -- no tiene No. de serie encabezado ventas
+    -- numero_de_facturaVenta`, se puede relacionar AGREGAR; Pendiente
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- NUEVOS ALTER DEL MODULO DE PRODUCCIÓN 03-11-2024 aprobado por Brandon Boch
 -- 2. Alter para añadir la foránea a la tabla de mantenimiento
@@ -200,11 +289,13 @@ ALTER TABLE Tbl_Formadepago
 CHANGE COLUMN pado_estado estado TINYINT DEFAULT 1 NOT NULL;
 
 -- TBL_Deudas_Clientes
-ALTER TABLE Tbl_Deudas_Clientes
-ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
+-- ALTER TABLE Tbl_Deudas_Clientes
+-- ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
 
+-- ALTER TABLE Tbl_Deudas_Clientes
+-- ADD COLUMN Efecto_trans VARCHAR(150) NOT NULL;
 ALTER TABLE Tbl_Deudas_Clientes
-ADD COLUMN Efecto_trans VARCHAR(150) NOT NULL;
+ADD COLUMN deuda_mora VARCHAR(150) NOT NULL;
 
 ALTER TABLE Tbl_Deudas_Clientes
 ADD COLUMN Fk_id_factura INT NOT NULL,
@@ -217,11 +308,10 @@ DROP COLUMN Fk_id_pago;
 
 -- TBL_Transaccion_clientes
 ALTER TABLE Tbl_Transaccion_cliente
-ADD COLUMN Fk_id_factura INT NOT NULL,
-ADD CONSTRAINT fk_factura_trans_cliente FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura),
+-- ADD COLUMN Fk_id_factura INT NOT NULL,
+-- ADD CONSTRAINT fk_factura_trans_cliente FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura),
 ADD COLUMN Fk_id_transC INT NOT NULL,
-ADD CONSTRAINT fk_transC_trans_cliente FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue),
-ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
+ADD CONSTRAINT fk_transC_trans_cliente FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue);
 
 -- Eliminar llaves foráneas 
 ALTER TABLE Tbl_Transaccion_cliente 
@@ -241,14 +331,16 @@ ALTER TABLE Tbl_mora_clientes MODIFY COLUMN morafecha VARCHAR(15) NOT NULL;
 
 -- TBL_caja_clientes
 
-ALTER TABLE Tbl_caja_cliente MODIFY COLUMN caja_fecha_registro VARCHAR(15) NOT NULL;
+/*ALTER TABLE Tbl_caja_cliente MODIFY COLUMN caja_fecha_registro VARCHAR(15) NOT NULL;
 ALTER TABLE Tbl_caja_cliente ADD COLUMN Fk_id_factura INT NOT NULL;
-ALTER TABLE Tbl_caja_cliente ADD CONSTRAINT id_factura FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura);
+ALTER TABLE Tbl_caja_cliente ADD CONSTRAINT id_factura FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura); 
 
 ALTER TABLE Tbl_caja_cliente
 DROP COLUMN caja_deuda_monto, 
 DROP COLUMN caja_mora_monto, 
-DROP COLUMN caja_transaccion_monto;
+DROP COLUMN caja_transaccion_monto; */
+
+
 
 -- TBL_Deuda_Proveedores
 ALTER TABLE Tbl_Deudas_Proveedores MODIFY COLUMN deuda_fecha_inicio VARCHAR(150) NOT NULL;
@@ -268,11 +360,26 @@ DROP FOREIGN KEY tbl_deudas_proveedores_ibfk_2;
 ALTER TABLE Tbl_Deudas_Proveedores
 DROP COLUMN Fk_id_pago;
 
+-- ----------------------------------------------------------
+
+ALTER TABLE Tbl_Deudas_Proveedores
+  MODIFY COLUMN Fk_id_factura INT NULL;
+  
+  ALTER TABLE Tbl_Deudas_Proveedores
+  DROP FOREIGN KEY fk_id_factura2;
+  
+  
+  ALTER TABLE Tbl_Deudas_Proveedores
+  ADD CONSTRAINT fk_id_factura2
+    FOREIGN KEY (Fk_id_factura)
+    REFERENCES Tbl_factura_proveedor (Pk_id_FacturaProv)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL;
+
 -- TBL_Transaccion_proveedor
 ALTER TABLE Tbl_Transaccion_proveedor
 ADD COLUMN Fk_id_transC INT NOT NULL,
-ADD CONSTRAINT fk_transC_trans_proveedor FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue),
-ADD COLUMN transaccion_tipo VARCHAR(150) NOT NULL;
+ADD CONSTRAINT fk_transC_trans_proveedor FOREIGN KEY (Fk_id_transC) REFERENCES Tbl_transaccion_cuentas(Pk_id_tran_cue);
 
 -- Eliminar llaves foráneas 
 ALTER TABLE Tbl_Transaccion_proveedor 
@@ -289,14 +396,14 @@ DROP COLUMN transaccion_serie;
 
 -- TBL_caja_proveedor
 
-ALTER TABLE Tbl_caja_proveedor MODIFY COLUMN caja_fecha_registro VARCHAR(150) NOT NULL;
+/*ALTER TABLE Tbl_caja_proveedor MODIFY COLUMN caja_fecha_registro VARCHAR(150) NOT NULL;
 ALTER TABLE Tbl_caja_proveedor
 ADD COLUMN Fk_id_factura INT NOT NULL,
 ADD CONSTRAINT fk_factura_caja FOREIGN KEY (Fk_id_factura) REFERENCES Tbl_factura(Pk_id_factura);
 
 ALTER TABLE Tbl_caja_proveedor
 DROP COLUMN caja_deuda_monto, 
-DROP COLUMN caja_transaccion_monto;
+DROP COLUMN caja_transaccion_monto; */
 
 
 -- ALTER MODULO LOGISTICA 04/11/2024
@@ -393,18 +500,34 @@ CREATE TABLE IF NOT EXISTS Tbl_vendedores (
     vendedores_sueldo DECIMAL(10,2)NOT NULL ,
     vendedores_direccion VARCHAR(255)NOT NULL ,
     vendedores_telefono VARCHAR(20)NOT NULL ,
-	Fk_id_empleado INT NOT NULL,
+	Fk_id_empleado INT,
     estado tinyint(1) DEFAULT 1,
-    FOREIGN KEY (Fk_id_empleado) REFERENCES tbl_empleados(pk_clave),
     PRIMARY KEY (Pk_id_vendedor)
 );
+ALTER TABLE Tbl_clientes 
+CHANGE Clientes_estado estado TINYINT(1) DEFAULT 1;
 
+ ALTER TABLE Tbl_clientes 
+ADD COLUMN Cliente_email VARCHAR(20) NOT NULL;
  
  ALTER TABLE Tbl_clientes 
 ADD COLUMN Cliente_Tipo VARCHAR(20) NOT NULL;
 
 ALTER TABLE Tbl_clientes
+ADD COLUMN Cliente_lim_credito DECIMAL(10, 2) DEFAULT 0.00;
+
+ALTER TABLE Tbl_clientes
+ADD COLUMN Cliente_dias_credito int (5) NOT NULL ;
+
+ALTER TABLE Tbl_clientes 
+ADD COLUMN Fecha_Registro DATE NOT NULL;
+
+
+ALTER TABLE Tbl_clientes
 ADD COLUMN Clientes_deuda DECIMAL(10, 2) DEFAULT 0.00;
+
+ALTER TABLE Tbl_clientes
+DROP COLUMN Clientes_deuda;
 
 ALTER TABLE Tbl_clientes 
 ADD Fk_id_vendedor INT NOT NULL,
@@ -412,15 +535,21 @@ ADD CONSTRAINT FK_vendedor_cliente
 FOREIGN KEY (Fk_id_vendedor) REFERENCES Tbl_vendedores(Pk_id_vendedor); 
 
 ALTER TABLE Tbl_clientes 
-CHANGE Clientes_estado estado TINYINT(1) DEFAULT 1;
+DROP FOREIGN KEY FK_vendedor_cliente;
+ALTER TABLE Tbl_clientes
+DROP COLUMN Fk_id_vendedor;
 
 ALTER TABLE Tbl_clientes 
 ADD COLUMN Fk_id_lista_Encabezado INT NOT NULL;
 
 ALTER TABLE Tbl_clientes 
 ADD CONSTRAINT FK_id_lista_Encabezado
-FOREIGN KEY (Fk_id_lista_Encabezado) 
-REFERENCES Tbl_lista_encabezado(Pk_id_lista_Encabezado);
+FOREIGN KEY (Fk_id_lista_Encabezado) REFERENCES Tbl_lista_encabezado(Pk_id_lista_Encabezado);
+
+ALTER TABLE Tbl_clientes 
+DROP FOREIGN KEY Fk_id_lista_Encabezado;
+ALTER TABLE Tbl_clientes
+DROP COLUMN FK_id_lista_Encabezado;
 
 ALTER TABLE Tbl_proveedores
 ADD COLUMN Proveedor_deuda DECIMAL(10, 2) DEFAULT 0.00;
@@ -618,3 +747,166 @@ CREATE TABLE IF NOT EXISTS Tbl_ComprasRealizadas (
     FOREIGN KEY (Fk_prov_id) REFERENCES Tbl_proveedores(Pk_prov_id)
 );
 
+-- LOGISTICA 29/04/2025
+
+CREATE TABLE Tbl_movimiento_de_inventario (
+	Pk_id_movimiento INT PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_producto INT NOT NULL,
+    stock INT NOT NULL,
+    Fk_id_traslado INT,
+    Fk_ID_BODEGA INT NOT NULL,
+    Cantidad_almacen INT NOT NULL,
+    Fk_id_compra INT,
+	tipo_movimiento varchar (30) NOT NULL,
+    FOREIGN KEY (Fk_id_producto) REFERENCES Tbl_Productos(Pk_id_Producto),
+    CONSTRAINT FK_EXISTENCIA_LOCAL FOREIGN KEY (Fk_ID_BODEGA) REFERENCES TBL_BODEGAS(Pk_ID_BODEGA)
+);
+
+-- ALTERs Parla la tabla Tbl_TrasladoProductos
+ALTER TABLE Tbl_TrasladoProductos
+ADD COLUMN bodega_origen VARCHAR(100),
+ADD COLUMN bodega_destino VARCHAR(100);
+
+-- Para que no se creen duplicidad de productos
+ALTER TABLE TBL_EXISTENCIAS_BODEGA
+ADD CONSTRAINT unique_bodega_producto UNIQUE (Fk_ID_BODEGA, Fk_ID_PRODUCTO);
+
+CREATE TABLE Tbl_EntradaProductos (
+    Pk_id_EntradaProductos INT PRIMARY KEY AUTO_INCREMENT,
+    documento VARCHAR(50),
+    fecha DATE,
+    costoTotal DECIMAL(10,2),
+    costoTotalGeneral DECIMAL(10,2),
+    precioTotal DECIMAL(10,2),
+    codigoProducto INT,
+    Fk_id_guia INT,
+    bodega_origen VARCHAR(100),
+    bodega_destino VARCHAR(100)
+);
+ALTER TABLE Tbl_EntradaProductos
+ADD COLUMN estado VARCHAR(20) NOT NULL DEFAULT 'activo';
+
+
+CREATE TABLE Tbl_DetalleTrasladoProductos (
+    Pk_id_DetalleTrasladoProductos INT AUTO_INCREMENT PRIMARY KEY,
+    Fk_id_TrasladoProductos INT,
+    codigoProducto INT,
+    cantidad INT,
+    precioUnitario DECIMAL(10,2),
+    costoTotal DECIMAL(10,2),
+    FOREIGN KEY (Fk_id_TrasladoProductos) REFERENCES Tbl_TrasladoProductos(Pk_id_TrasladoProductos),
+    FOREIGN KEY (codigoProducto) REFERENCES Tbl_Productos(codigoProducto)
+);
+
+CREATE TABLE Tbl_DetalleEntradaProductos (
+    Pk_id_DetalleEntrada INT PRIMARY KEY AUTO_INCREMENT,
+    Fk_id_EntradaProductos INT,
+    codigoProducto INT,
+    cantidad INT,
+    precioUnitario DECIMAL(10,2),
+    costoTotal DECIMAL(10,2)
+);
+
+-- Se agrego el campo FK_ID_LOCAL a la tabla tbl_bodegas para realizar el insert ala tabla tbl_movimiento_de_inventario
+ALTER TABLE tbl_bodegas
+ADD COLUMN Fk_ID_LOCAL INT(11) NOT NULL;
+
+
+-- NUEVAS TABLAS DEL MODULO COMERCIAL
+-- Tabla de Ventas Encabezado
+CREATE TABLE IF NOT EXISTS `tbl_ventas_encabezado` (
+  `Pk_id_venta` INT(11) NOT NULL AUTO_INCREMENT,
+  `Fk_id_cliente` INT(11) NOT NULL,
+  `Fk_id_vendedor` INT(11) NOT NULL,
+  `Fk_id_factura` INT(11) NULL,
+  `venta_fecha` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `venta_subtotal` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `venta_descuento` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `venta_iva` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `venta_total` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `venta_estado` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '1=Pendiente, 2=Finalizada, 3=Anulada',
+  `venta_forma_pago` VARCHAR(50) NOT NULL COMMENT 'Efectivo, Tarjeta, Transferencia',
+  `venta_observaciones` TEXT NULL,
+  PRIMARY KEY (`Pk_id_venta`),
+  FOREIGN KEY (`Fk_id_cliente`) REFERENCES `Tbl_clientes`(`Pk_id_cliente`),
+  FOREIGN KEY (`Fk_id_vendedor`) REFERENCES `Tbl_vendedores`(`Pk_id_vendedor`),
+  FOREIGN KEY (`Fk_id_factura`) REFERENCES `Tbl_factura`(`Pk_id_factura`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Tabla de Ventas Detalle
+CREATE TABLE IF NOT EXISTS `tbl_ventas_detalle` (
+  `Pk_id_venta_detalle` INT(11) NOT NULL AUTO_INCREMENT,
+  `Fk_id_venta` INT(11) NOT NULL,
+  `Fk_id_producto` INT(11) NOT NULL,
+  `detalle_cantidad` INT(11) NOT NULL,
+  `detalle_precio_unitario` DECIMAL(12,2) NOT NULL,
+  `detalle_descuento` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `detalle_subtotal` DECIMAL(12,2) NOT NULL,
+  `detalle_iva` DECIMAL(12,2) NOT NULL DEFAULT 0,
+  `detalle_total` DECIMAL(12,2) NOT NULL,
+  `detalle_estado` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '1=Activo, 0=Anulado',
+  PRIMARY KEY (`Pk_id_venta_detalle`),
+  FOREIGN KEY (`Fk_id_venta`) REFERENCES `tbl_ventas_encabezado`(`Pk_id_venta`),
+  FOREIGN KEY (`Fk_id_producto`) REFERENCES `Tbl_Productos`(`Pk_id_Producto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Tabla de Pagos de Ventas
+CREATE TABLE IF NOT EXISTS `tbl_ventas_pagos` (
+  `Pk_id_pago` INT(11) NOT NULL AUTO_INCREMENT,
+  `Fk_id_venta` INT(11) NOT NULL,
+  `Fk_id_cuenta_bancaria` INT(11) NULL,
+  `pago_monto` DECIMAL(12,2) NOT NULL,
+  `pago_fecha` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `pago_forma` VARCHAR(50) NOT NULL COMMENT 'Efectivo, Tarjeta, Transferencia, Cheque',
+  `pago_referencia` VARCHAR(100) NULL,
+  `pago_estado` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '1=Activo, 0=Anulado',
+  PRIMARY KEY (`Pk_id_pago`),
+  FOREIGN KEY (`Fk_id_venta`) REFERENCES `tbl_ventas_encabezado`(`Pk_id_venta`),
+  FOREIGN KEY (`Fk_id_cuenta_bancaria`) REFERENCES `tbl_cuentabancaria`(`pk_cuenta_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- TERMINA LAS TABLAS CREADAS
+
+-- Deudas clientes
+-- 1.1 Eliminar la FK existente hacia tbl_factura
+ALTER TABLE tbl_factura_cliente
+DROP FOREIGN KEY tbl_factura_cliente_ibfk_2;
+
+-- 1.2 Convertir los campos a columnas normales
+ALTER TABLE tbl_factura_cliente
+MODIFY COLUMN Fk_id_venta INT(11) NOT NULL,
+MODIFY COLUMN Fk_No_serie INT(11) NOT NULL,
+MODIFY COLUMN Fk_No_de_facV INT(11) DEFAULT NULL;
+
+-- ===============================================
+-- 2) tbl_deudas_clientes: Redireccionar Fk_id_factura a tbl_factura_cliente
+-- ===============================================
+
+-- 2.1 Eliminar FK incorrecta a tbl_factura
+ALTER TABLE tbl_deudas_clientes
+DROP FOREIGN KEY fk_id_factura;
+
+-- 2.2 Crear nueva FK a tbl_factura_cliente
+ALTER TABLE tbl_deudas_clientes
+ADD CONSTRAINT fk_deudascli_facturacli
+  FOREIGN KEY (Fk_id_factura)
+  REFERENCES tbl_factura_cliente(Pk_id_FacturaCli);
+
+-- ===============================================
+-- 3) tbl_deudas_clientes: Redireccionar Fk_id_pago a tbl_transaccion_cuentas
+-- ===============================================
+-- NOTA: Aunque la columna Fk_id_pago aún no existe en esta estructura, deberás crearla primero si deseas agregarla.
+-- Aquí tienes el código completo con la columna incluida (si no existe aún):
+
+ALTER TABLE tbl_deudas_clientes
+ADD COLUMN Fk_id_pago VARCHAR(150) NOT NULL;
+
+ALTER TABLE tbl_deudas_clientes
+DROP COLUMN deuda_mora;
+ALTER TABLE tbl_clientes
+MODIFY COLUMN Cliente_email VARCHAR(50);
+
+ALTER TABLE tbl_factura_cliente
+MODIFY COLUMN Fk_No_serie VARCHAR(20);
+
+SELECT *FROM tbl_deudas_proveedores;
